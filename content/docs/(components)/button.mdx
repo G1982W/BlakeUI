@@ -1,0 +1,227 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+base: base
+component: true
+---
+
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import { VariantGrid } from "@/components/variant-grid";
+import { PropsTable } from "@/components/props-table";
+import { ArrowRight, Mail, Plus, Loader2 } from "lucide-react";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="button">
+  <Button>Click me</Button>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["class-variance-authority"]}
+  useReactSlot
+  code={registry.button.source}
+  fileName="/components/ui/button.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+```tsx
+<Button
+  variant="default | secondary | destructive | outline | ghost | link"
+  size="default | xs | sm | lg | icon | icon-xs | icon-sm | icon-lg"
+>
+  Button
+</Button>
+```
+
+## Examples
+
+### Variants
+
+Use these matrices to explore each variant with every size.
+
+### Default
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["default"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### Secondary
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["secondary"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### Destructive
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["destructive"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### Outline
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["outline"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### Ghost
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["ghost"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### Link
+
+<VariantGrid
+  component="Button"
+  variants={{
+    variant: ["link"],
+    size: [
+      "default",
+      "xs",
+      "sm",
+      "lg",
+      "icon",
+      "icon-xs",
+      "icon-sm",
+      "icon-lg",
+    ],
+  }}
+/>
+
+### With Icons
+
+Buttons handle inline icons automatically. The icon spacing is managed by the built-in `gap` styles.
+
+<Preview>
+  <div className="flex flex-wrap items-center gap-2">
+    <Button>
+      <Mail />
+      Email
+    </Button>
+    <Button variant="secondary">
+      Continue
+      <ArrowRight />
+    </Button>
+  </div>
+</Preview>
+
+### Icon Sizes
+
+Use the icon sizes when the button only contains an icon.
+
+<Preview>
+  <div className="flex flex-wrap items-center gap-2">
+    <Button size="icon-xs" aria-label="Add">
+      <Plus />
+    </Button>
+    <Button size="icon-sm" aria-label="Add" variant="secondary">
+      <Plus />
+    </Button>
+    <Button size="icon" aria-label="Add">
+      <Plus />
+    </Button>
+    <Button size="icon-lg" aria-label="Add" variant="outline">
+      <Plus />
+    </Button>
+  </div>
+</Preview>
+
+### Loading
+
+You can render a spinner icon to represent a loading state.
+
+<Preview>
+  <div className="flex flex-wrap items-center gap-2">
+    <Button disabled>
+      <Loader2 className="animate-spin" />
+      Saving
+    </Button>
+    <Button variant="secondary" disabled>
+      <Loader2 className="animate-spin" />
+      Submitting
+    </Button>
+  </div>
+</Preview>
+
+## API Reference
+
+### Button
+
+The `Button` component displays a button or a component that looks like a button.
+
+<PropsTable component="Button" />

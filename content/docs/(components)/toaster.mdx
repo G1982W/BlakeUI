@@ -1,0 +1,109 @@
+---
+title: Toaster
+description: Display ephemeral toast notifications using Sonner. Add the Toaster to your app, then trigger toasts with the toast function.
+base: base
+component: true
+---
+
+import { Toaster } from "@/components/ui/sonner";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+Add the Toaster to your root layout once, then call `toast()` from anywhere in your app.
+
+<ComponentPreview name="toaster">
+  <ToastDemoButton />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["sonner", "next-themes", "lucide-react"]}
+  code={registry.sonner.source}
+  fileName="/components/ui/sonner.tsx"
+/>
+
+## Setup
+
+Render the Toaster component in your root layout (e.g. `app/layout.tsx`) so toasts can appear across the app.
+
+```tsx
+import { Toaster } from "@/components/ui/sonner";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+```
+
+## Usage
+
+Trigger toasts with the `toast` function from Sonner:
+
+```tsx
+import { toast } from "sonner";
+
+toast("Event has been created.");
+```
+
+## Examples
+
+### Default
+
+<Preview>
+  <ToastDemo variant="default" />
+</Preview>
+
+### With description
+
+<Preview>
+  <ToastDemo variant="description" />
+</Preview>
+
+### Variants
+
+The Toaster is configured with icons for success, error, warning, info, and loading. Use the `type` option when calling `toast`.
+
+<Preview>
+  <ToastDemo variant="variants" />
+</Preview>
+
+### With action
+
+<Preview>
+  <ToastDemo variant="action" />
+</Preview>
+
+## API Reference
+
+### Toaster
+
+The Toaster component wraps Sonner and applies theme-aware styles and custom icons. It should be rendered once in your root layout. It accepts all [Sonner Toaster props](https://sonner.emilkowal.ski/docs/toaster).
+
+<PropsTable component="Toaster" />
+
+### toast()
+
+Use `toast` from `"sonner"` to show notifications. See [Sonner's toast API](https://sonner.emilkowal.ski/docs/toast) for options such as `description`, `action`, `type`, `duration`, and `id`.
+
+```tsx
+import { toast } from "sonner";
+
+toast("Message");
+toast.success("Success message");
+toast.error("Error message");
+toast.warning("Warning message");
+toast.info("Info message");
+toast.loading("Loading...");
+toast("With options", { description: "...", action: { label: "Undo", onClick: () => {} } });
+```

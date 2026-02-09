@@ -1,0 +1,96 @@
+---
+title: Bar Chart
+description: Bar charts built with Recharts and the chart primitive. Use ChartContainer with BarChart for responsive, accessible bar charts.
+base: base
+component: true
+---
+
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+Bar charts display categorical data with rectangular bars. Built with [Recharts](https://recharts.org/) and the shared chart components (ChartContainer, ChartTooltip, ChartLegend).
+
+<Preview>
+  <BarChartDemo />
+</Preview>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry.chart?.source ?? ""}
+  fileName="/components/ui/chart.tsx"
+/>
+
+Install the base `chart` component first. The bar chart example uses Recharts' `BarChart`, `Bar`, `CartesianGrid`, and `XAxis`.
+
+## Usage
+
+Define your data and a `chartConfig` for labels and colors, then wrap Recharts' `BarChart` in `ChartContainer`. Use `ChartTooltip` / `ChartTooltipContent` and `ChartLegend` / `ChartLegendContent` for tooltips and legend.
+
+```tsx
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+
+const chartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+];
+
+const chartConfig = {
+  desktop: { label: "Desktop", color: "var(--chart-1)" },
+  mobile: { label: "Mobile", color: "var(--chart-2)" },
+} satisfies ChartConfig;
+
+<ChartContainer config={chartConfig} className="h-[200px] w-full">
+  <BarChart accessibilityLayer data={chartData}>
+    <CartesianGrid vertical={false} />
+    <XAxis dataKey="month" tickLine={false} axisLine={false} />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <ChartLegend content={<ChartLegendContent />} />
+    <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+    <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+  </BarChart>
+</ChartContainer>
+```
+
+## Examples
+
+### Single series
+
+A minimal bar chart with one series and tooltip.
+
+<Preview>
+  <BarChartSingleSeriesDemo />
+</Preview>
+
+### Two series (with tooltip and legend)
+
+Desktop and mobile side by side with shared legend and tooltip.
+
+<Preview>
+  <BarChartDemo />
+</Preview>
+
+### Stacked bars
+
+Multiple series stacked in the same bars.
+
+<Preview>
+  <BarChartStackedDemo />
+</Preview>
+
+## API Reference
+
+The bar chart is built from the base **Chart** component and Recharts. See the [Chart](/docs/components/chart) doc for `ChartContainer`, `ChartConfig`, `ChartTooltip`, and `ChartLegend`. Recharts API: [BarChart](https://recharts.org/en-US/api/BarChart), [Bar](https://recharts.org/en-US/api/Bar).

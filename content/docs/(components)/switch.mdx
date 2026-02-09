@@ -1,0 +1,143 @@
+---
+title: Switch
+description: A control that allows the user to toggle between two states, often on and off.
+base: base
+component: true
+---
+
+import { Switch } from "@/components/ui/switch";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="switch">
+  <div className="flex items-center gap-2">
+    <Switch id="airplane-mode" />
+    <label htmlFor="airplane-mode" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      Airplane mode
+    </label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.switch.source}
+  fileName="/components/ui/switch.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch";
+```
+
+```tsx
+<Switch checked={checked} onCheckedChange={setChecked} />
+```
+
+The Switch forwards all props to Radix UI's Switch.Root, including `checked`, `defaultChecked`, `onCheckedChange`, and `disabled`. It also supports a `size` prop for "default" or "sm".
+
+## Examples
+
+### Default
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Switch id="default-switch" />
+    <label htmlFor="default-switch" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      Default switch
+    </label>
+  </div>
+</Preview>
+
+### With label
+
+Associate the label with the switch using `htmlFor` and a matching `id`. The `peer` class on the switch (included by default) lets the label style respond to the switch state.
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Switch id="notifications" defaultChecked />
+    <label htmlFor="notifications" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      Enable notifications
+    </label>
+  </div>
+</Preview>
+
+### Sizes
+
+Use the `size` prop to switch between default and small.
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-2">
+      <Switch id="size-default" size="default" />
+      <label htmlFor="size-default" className="text-sm font-medium leading-none">
+        Default size
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Switch id="size-sm" size="sm" />
+      <label htmlFor="size-sm" className="text-sm font-medium leading-none">
+        Small size
+      </label>
+    </div>
+  </div>
+</Preview>
+
+### Disabled
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Switch id="disabled-switch" disabled />
+    <label htmlFor="disabled-switch" className="text-sm font-medium leading-none text-muted-foreground">
+      Disabled switch
+    </label>
+  </div>
+</Preview>
+
+### Controlled
+
+Control the checked state with `checked` and `onCheckedChange`.
+
+```tsx
+const [checked, setChecked] = React.useState(false);
+<Switch checked={checked} onCheckedChange={setChecked} />
+```
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Switch id="controlled" defaultChecked />
+    <label htmlFor="controlled" className="text-sm font-medium leading-none">
+      Checked by default (defaultChecked)
+    </label>
+  </div>
+</Preview>
+
+### Live Mode
+
+Use the `variant="live"` prop to display the switch with an orange background when checked, useful for indicating live or active states.
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Switch id="live-mode" variant="live" defaultChecked />
+    <label htmlFor="live-mode" className="text-sm font-medium leading-none">
+      Live mode (on)
+    </label>
+  </div>
+</Preview>
+
+```tsx
+<Switch variant="live" defaultChecked />
+```
+
+## API Reference
+
+### Switch
+
+The Switch component wraps Radix UI's Switch and displays a control for toggling between two states.
+
+<PropsTable component="Switch" />

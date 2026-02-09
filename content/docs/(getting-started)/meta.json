@@ -1,0 +1,9 @@
+{
+    "title": "Getting Started",
+    "collapsible": true,
+    "defaultOpen": true,
+    "pages": [
+        "configuration",
+        "index"
+    ]
+}

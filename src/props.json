@@ -1,0 +1,3521 @@
+{
+  "Accordion": [
+    {
+      "name": "type",
+      "type": "\"single\" | \"multiple\"",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether or not an accordion is disabled from user interaction.\n@defaultValue false",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AccordionItem": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether or not an accordion is disabled from user interaction.\n@defaultValue false",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AccordionTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AccordionContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Badge": [
+    {
+      "name": "variant",
+      "type": "\"link\" | \"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"info\" | \"positive\" | \"negative\" | \"warning\" | \"urgent\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Banner": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "closeLabel",
+      "type": "string",
+      "defaultValue": "Close",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "action",
+      "type": "BannerAction",
+      "description": "Optional action button (e.g. \"Undo\", \"View\")",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"caution\" | \"critical\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "banner": [],
+  "Button": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"link\" | \"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartContainer": [
+    {
+      "name": "config",
+      "type": "ChartConfig",
+      "description": "",
+      "required": true
+    }
+  ],
+  "Tooltip": [],
+  "ChartTooltipContent": [
+    {
+      "name": "content",
+      "type": "(ContentType<ValueType, NameType> & string)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "cursor",
+      "type": "boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | SVGProps<SVGElement>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "offset",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "viewBox",
+      "type": "CartesianViewBox",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "description": "If true, then Tooltip is always displayed, once an activeIndex is set by mouse over, or programmatically.\nIf false, then Tooltip is never displayed.\nIf active is undefined, Recharts will control when the Tooltip displays. This includes mouse and keyboard controls.",
+      "required": false
+    },
+    {
+      "name": "includeHidden",
+      "type": "boolean",
+      "description": "If true, then Tooltip will information about hidden series (defaults to false). Interacting with the hide property of Area, Bar, Line, Scatter.",
+      "required": false
+    },
+    {
+      "name": "allowEscapeViewBox",
+      "type": "AllowInDimension",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "animationDuration",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "animationEasing",
+      "type": "\"ease\" | \"ease-in\" | \"ease-out\" | \"ease-in-out\" | \"linear\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "coordinate",
+      "type": "Partial<Coordinate>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "filterNull",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultIndex",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "isAnimationActive",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "payloadUniqBy",
+      "type": "UniqueOption<Payload<ValueType, NameType>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "Partial<Coordinate>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "reverseDirection",
+      "type": "AllowInDimension",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "shared",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "trigger",
+      "type": "\"hover\" | \"click\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "useTranslate3d",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "wrapperStyle",
+      "type": "CSSProperties",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "hideLabel",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "hideIndicator",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "indicator",
+      "type": "\"line\" | \"dot\" | \"dashed\"",
+      "defaultValue": "dot",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "nameKey",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "labelKey",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Legend": [
+    {
+      "name": "dangerouslySetInnerHTML",
+      "type": "{ __html: string; }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCopy",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCopyCapture",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCut",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCutCapture",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPaste",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPasteCapture",
+      "type": "AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionEnd",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionEndCapture",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionStart",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionStartCapture",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionUpdate",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionUpdateCapture",
+      "type": "AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFocus",
+      "type": "AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFocusCapture",
+      "type": "AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBlur",
+      "type": "AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBlurCapture",
+      "type": "AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onChangeCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBeforeInput",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBeforeInputCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInput",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInputCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onReset",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onResetCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmitCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInvalid",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInvalidCapture",
+      "type": "AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoad",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onError",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onErrorCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyDown",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyDownCapture",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyPress",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyPressCapture",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyUp",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyUpCapture",
+      "type": "AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAbort",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAbortCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlay",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayThrough",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayThroughCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDurationChange",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDurationChangeCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEmptied",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEmptiedCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEncrypted",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEncryptedCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEnded",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEndedCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedData",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedDataCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedMetadata",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedMetadataCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadStart",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadStartCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPause",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPauseCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlay",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlayCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlaying",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlayingCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onProgress",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onProgressCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onRateChange",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onRateChangeCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeeked",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeekedCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeeking",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeekingCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onStalled",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onStalledCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSuspend",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSuspendCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTimeUpdate",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTimeUpdateCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onVolumeChange",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onVolumeChangeCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWaiting",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWaitingCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAuxClick",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAuxClickCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClickCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onContextMenu",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onContextMenuCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDoubleClick",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDoubleClickCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDrag",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnd",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEndCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnter",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnterCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragExit",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragExitCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragLeave",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragLeaveCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragOver",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragOverCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragStart",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragStartCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDrop",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDropCapture",
+      "type": "AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseDown",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseDownCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseMove",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseMoveCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOut",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOutCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOver",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOverCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseUp",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseUpCapture",
+      "type": "AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSelectCapture",
+      "type": "AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchCancel",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchCancelCapture",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchEnd",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchEndCapture",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchMove",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchMoveCapture",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchStart",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchStartCapture",
+      "type": "AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerDown",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerDownCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerMove",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerMoveCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerUp",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerUpCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerCancel",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerCancelCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerEnter",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerLeave",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOver",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOverCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOut",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOutCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGotPointerCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGotPointerCaptureCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLostPointerCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLostPointerCaptureCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onScroll",
+      "type": "AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onScrollCapture",
+      "type": "AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWheel",
+      "type": "AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWheelCapture",
+      "type": "AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationStart",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationStartCapture",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationEnd",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationEndCapture",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationIteration",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationIterationCapture",
+      "type": "AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTransitionEnd",
+      "type": "AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTransitionEndCapture",
+      "type": "AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerEnterCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerLeaveCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "wrapperStyle",
+      "type": "CSSProperties",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "chartWidth",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "chartHeight",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "margin",
+      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "payloadUniqBy",
+      "type": "UniqueOption<Payload>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBBoxUpdate",
+      "type": "((box: DOMRect | null) => void)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "componentDidMount": [],
+  "componentDidUpdate": [],
+  "ChartLegendContent": [
+    {
+      "name": "dangerouslySetInnerHTML",
+      "type": "({ __html: string; } & { __html: string | TrustedHTML; })",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCopy",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCopyCapture",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCut",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCutCapture",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPaste",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPasteCapture",
+      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionEnd",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionEndCapture",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionStart",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionStartCapture",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionUpdate",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCompositionUpdateCapture",
+      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFocus",
+      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFocusCapture",
+      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBlur",
+      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBlurCapture",
+      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onChangeCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBeforeInput",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBeforeInputCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInput",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInputCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onReset",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onResetCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmitCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInvalid",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onInvalidCapture",
+      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoad",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onError",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onErrorCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyDown",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyDownCapture",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyPress",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "@deprecated Use `onKeyUp` or `onKeyDown` instead",
+      "required": false
+    },
+    {
+      "name": "onKeyPressCapture",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "@deprecated Use `onKeyUpCapture` or `onKeyDownCapture` instead",
+      "required": false
+    },
+    {
+      "name": "onKeyUp",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onKeyUpCapture",
+      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAbort",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAbortCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlay",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayThrough",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCanPlayThroughCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDurationChange",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDurationChangeCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEmptied",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEmptiedCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEncrypted",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEncryptedCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEnded",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onEndedCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedData",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedDataCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedMetadata",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadedMetadataCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadStart",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLoadStartCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPause",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPauseCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlay",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlayCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlaying",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPlayingCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onProgress",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onProgressCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onRateChange",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onRateChangeCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeeked",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeekedCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeeking",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSeekingCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onStalled",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onStalledCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSuspend",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSuspendCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTimeUpdate",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTimeUpdateCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onVolumeChange",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onVolumeChangeCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWaiting",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWaitingCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAuxClick",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAuxClickCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClickCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onContextMenu",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onContextMenuCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDoubleClick",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDoubleClickCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDrag",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnd",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEndCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnter",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragEnterCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragExit",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragExitCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragLeave",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragLeaveCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragOver",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragOverCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragStart",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragStartCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDrop",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDropCapture",
+      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseDown",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseDownCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseMove",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseMoveCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOut",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOutCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOver",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseOverCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseUp",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onMouseUpCapture",
+      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSelectCapture",
+      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchCancel",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchCancelCapture",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchEnd",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchEndCapture",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchMove",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchMoveCapture",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchStart",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTouchStartCapture",
+      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerDown",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerDownCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerMove",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerMoveCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerUp",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerUpCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerCancel",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerCancelCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerEnter",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerLeave",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOver",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOverCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOut",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerOutCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGotPointerCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGotPointerCaptureCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLostPointerCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLostPointerCaptureCapture",
+      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onScroll",
+      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onScrollCapture",
+      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWheel",
+      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onWheelCapture",
+      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationStart",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationStartCapture",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationEnd",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationEndCapture",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationIteration",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationIterationCapture",
+      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTransitionEnd",
+      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onTransitionEndCapture",
+      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "payloadUniqBy",
+      "type": "UniqueOption<Payload>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "wrapperStyle",
+      "type": "CSSProperties",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "nameKey",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerEnterCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerLeaveCapture",
+      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "chartWidth",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "chartHeight",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "margin",
+      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBBoxUpdate",
+      "type": "((box: DOMRect | null) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "hideIcon",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartStyle": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "config",
+      "type": "ChartConfig",
+      "description": "",
+      "required": true
+    }
+  ],
+  "Checkbox": [
+    {
+      "name": "label",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChipMenu": [
+    {
+      "name": "value",
+      "type": "string | null",
+      "description": "Currently selected value (must match an option's value).",
+      "required": true
+    },
+    {
+      "name": "onValueChange",
+      "type": "(value: string) => void",
+      "description": "Callback when selection changes.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "type": "ChipMenuOption[]",
+      "description": "Menu options.",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "defaultValue": "Select…",
+      "description": "Placeholder when no value is selected.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"link\" | \"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"info\" | \"positive\" | \"negative\" | \"warning\" | \"urgent\" | null",
+      "defaultValue": "default",
+      "description": "Badge variant.",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Optional class for the trigger badge.",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "description": "Optional class for the dropdown content.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the chip is disabled.",
+      "required": false
+    }
+  ],
+  "ContextMenu": [],
+  "ContextMenuTrigger": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuCheckboxItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuRadioItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuShortcut": [],
+  "ContextMenuGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuPortal": [],
+  "ContextMenuSub": [],
+  "ContextMenuSubContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuSubTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextMenuRadioGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ContextView": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "Main title (e.g. \"Drawer title\")",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Secondary text below the title",
+      "required": false
+    },
+    {
+      "name": "link",
+      "type": "ReactNode",
+      "description": "Optional link (e.g. \"Optional link\" with icon). Shown when variant is `full` or `withLink`.",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "ReactNode",
+      "description": "Primary action button. Shown when variant is `full` or `withActions`.",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "ReactNode",
+      "description": "Secondary action button. Shown when variant is `full` or `withActions`.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"full\" | \"withActions\" | \"withLink\" | \"minimal\" | null",
+      "defaultValue": "full",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Dock": [
+    {
+      "name": "position",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "defaultValue": "bottom",
+      "description": "Where the dock is anchored.",
+      "required": false
+    },
+    {
+      "name": "autoHide",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "When true, dock hides off-screen and shows on edge hover.",
+      "required": false
+    },
+    {
+      "name": "magnification",
+      "type": "number",
+      "defaultValue": "1.4",
+      "description": "Scale of the hovered icon (macOS-like zoom). Default 1.4.",
+      "required": false
+    },
+    {
+      "name": "hideDelay",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "Delay in ms before hiding when pointer leaves. Default 300.",
+      "required": false
+    },
+    {
+      "name": "triggerSize",
+      "type": "number",
+      "defaultValue": "24",
+      "description": "Thickness of the edge trigger zone in px for auto-hide. Default 24.",
+      "required": false
+    }
+  ],
+  "DockItem": [
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "description": "Shown in tooltip on hover.",
+      "required": true
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Icon element (e.g. Lucide icon).",
+      "required": true
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "description": "If set, renders as a link.",
+      "required": false
+    },
+    {
+      "name": "badge",
+      "type": "ReactNode",
+      "description": "Optional badge (e.g. notification dot).",
+      "required": false
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Internal: set by Dock.",
+      "required": false
+    }
+  ],
+  "Drawer": [
+    {
+      "name": "activeSnapPoint",
+      "type": "string | number | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "setActiveSnapPoint",
+      "type": "((snapPoint: string | number | null) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "closeThreshold",
+      "type": "number",
+      "defaultValue": "0.25",
+      "description": "Number between 0 and 1 that determines when the drawer should be closed.\nExample: threshold of 0.5 would close the drawer if the user swiped for 50% of the height of the drawer or more.",
+      "required": false
+    },
+    {
+      "name": "noBodyStyles",
+      "type": "boolean",
+      "description": "When `true` the `body` doesn't get any styles assigned from Vaul",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "shouldScaleBackground",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "setBackgroundColorOnScale",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When `false` we don't change body's background color when the drawer is open.",
+      "required": false
+    },
+    {
+      "name": "scrollLockTimeout",
+      "type": "number",
+      "defaultValue": "500ms",
+      "description": "Duration for which the drawer is not draggable after scrolling content inside of the drawer.",
+      "required": false
+    },
+    {
+      "name": "fixed",
+      "type": "boolean",
+      "description": "When `true`, don't move the drawer upwards if there's space, but rather only change it's height so it's fully scrollable when the keyboard is open",
+      "required": false
+    },
+    {
+      "name": "handleOnly",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "When `true` only allows the drawer to be dragged by the `<Drawer.Handle />` component.",
+      "required": false
+    },
+    {
+      "name": "dismissible",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When `false` dragging, clicking outside, pressing esc, etc. will not close the drawer.\nUse this in comination with the `open` prop, otherwise you won't be able to open/close the drawer.",
+      "required": false
+    },
+    {
+      "name": "onDrag",
+      "type": "((event: PointerEvent<HTMLDivElement>, percentageDragged: number) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onRelease",
+      "type": "((event: PointerEvent<HTMLDivElement>, open: boolean) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "modal",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When `false` it allows to interact with elements outside of the drawer without closing it.",
+      "required": false
+    },
+    {
+      "name": "nested",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "defaultValue": "'bottom'",
+      "description": "Direction of the drawer. Can be `top` or `bottom`, `left`, `right`.",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Opened by default, skips initial enter animation. Still reacts to `open` state changes",
+      "required": false
+    },
+    {
+      "name": "disablePreventScroll",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "When set to `true` prevents scrolling on the document body on mount, and restores it on unmount.",
+      "required": false
+    },
+    {
+      "name": "repositionInputs",
+      "type": "boolean",
+      "defaultValue": "true when {@link snapPoints } is defined",
+      "description": "When `true` Vaul will reposition inputs rather than scroll then into view if the keyboard is in the way.\nSetting it to `false` will fall back to the default browser behavior.",
+      "required": false
+    },
+    {
+      "name": "snapToSequentialPoint",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disabled velocity based swiping for snap points.\nThis means that a snap point won't be skipped even if the velocity is high enough.\nUseful if each snap point in a drawer is equally important.",
+      "required": false
+    },
+    {
+      "name": "container",
+      "type": "HTMLElement | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAnimationEnd",
+      "type": "((open: boolean) => void)",
+      "description": "Gets triggered after the open or close animation ends, it receives an `open` argument with the `open` state of the drawer by the time the function was triggered.\nUseful to revert any state changes for example.",
+      "required": false
+    },
+    {
+      "name": "preventScrollRestoration",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerPortal": [],
+  "DrawerOverlay": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerClose": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerHeader": [],
+  "DrawerFooter": [],
+  "DrawerTitle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DrawerBar": [],
+  "DrawerTitleBlock": [],
+  "DrawerBody": [],
+  "TopBar": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"pink\" | \"darkBlue\" | \"yellow\" | \"teal\" | \"darkTeal\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TopBarLeft": [],
+  "TopBarRight": [],
+  "DropdownMenu": [],
+  "DropdownMenuTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuCheckboxItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuRadioItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuShortcut": [],
+  "DropdownMenuGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuPortal": [],
+  "DropdownMenuSub": [],
+  "DropdownMenuSubContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuSubTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "inset",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DropdownMenuRadioGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FormItem": [],
+  "FormLabel": [],
+  "FormControl": [],
+  "FormDescription": [],
+  "FormMessage": [],
+  "FormField": [
+    {
+      "name": "render",
+      "type": "({ field, fieldState, formState, }: { field: ControllerRenderProps<TFieldValues, TName>; fieldState: ControllerFieldState; formState: UseFormStateReturn<TFieldValues>; }) => ReactElement<...>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "rules",
+      "type": "Omit<RegisterOptions<TFieldValues, TName>, \"disabled\" | \"valueAsNumber\" | \"valueAsDate\" | \"setValueAs\">",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "shouldUnregister",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "any",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "Control<TFieldValues, any, TFieldValues>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "exact",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Input": [
+    {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the input is disabled",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"checkbox\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"image\" | \"month\" | \"number\" | \"password\" | \"radio\" | \"range\" | \"reset\" | \"search\" | \"submit\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+      "description": "The type of input",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "The placeholder text",
+      "required": false
+    }
+  ],
+  "AppLink": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "MouseEventHandler<HTMLAnchorElement>",
+      "description": "Optional event handler for when Link is clicked.",
+      "required": false
+    },
+    {
+      "name": "onMouseEnter",
+      "type": "MouseEventHandler<HTMLAnchorElement>",
+      "description": "Optional event handler for when the mouse pointer is moved onto Link",
+      "required": false
+    },
+    {
+      "name": "onTouchStart",
+      "type": "TouchEventHandler<HTMLAnchorElement>",
+      "description": "Optional event handler for when Link is touched.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "href",
+      "type": "Url",
+      "description": "The path or URL to navigate to. It can also be an object.\n@example https://nextjs.org/docs/api-reference/next/link#with-url-object",
+      "required": true
+    },
+    {
+      "name": "replace",
+      "type": "boolean",
+      "description": "Replace the current `history` state instead of adding a new url into the stack.\n@defaultValue `false`",
+      "required": false
+    },
+    {
+      "name": "as",
+      "type": "Url",
+      "description": "Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our [previous docs](https://github.com/vercel/next.js/blob/v9.5.2/docs/api-reference/next/link.md#dynamic-routes) to see how it worked. Note: when this path differs from the one provided in `href` the previous `href`/`as` behavior is used as shown in the [previous docs](https://github.com/vercel/next.js/blob/v9.5.2/docs/api-reference/next/link.md#dynamic-routes).",
+      "required": false
+    },
+    {
+      "name": "scroll",
+      "type": "boolean",
+      "description": "Whether to override the default scroll behavior\n@example https://nextjs.org/docs/api-reference/next/link#disable-scrolling-to-the-top-of-the-page\n@defaultValue `true`",
+      "required": false
+    },
+    {
+      "name": "shallow",
+      "type": "boolean",
+      "description": "Update the path of the current page without rerunning [`getStaticProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props), [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props) or [`getInitialProps`](/docs/pages/api-reference/functions/get-initial-props).\n@defaultValue `false`",
+      "required": false
+    },
+    {
+      "name": "passHref",
+      "type": "boolean",
+      "description": "Forces `Link` to send the `href` property to its child.\n@defaultValue `false`",
+      "required": false
+    },
+    {
+      "name": "prefetch",
+      "type": "boolean | \"auto\" | null",
+      "description": "Prefetch the page in the background.\nAny `<Link />` that is in the viewport (initially or through scroll) will be prefetched.\nPrefetch can be disabled by passing `prefetch={false}`. Prefetching is only enabled in production.\n\nIn App Router:\n- \"auto\", null, undefined (default): For statically generated pages, this will prefetch the full React Server Component data. For dynamic pages, this will prefetch up to the nearest route segment with a [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading) file. If there is no loading file, it will not fetch the full tree to avoid fetching too much data.\n- `true`: This will prefetch the full React Server Component data for all route segments, regardless of whether they contain a segment with `loading.js`.\n- `false`: This will not prefetch any data, even on hover.\n\nIn Pages Router:\n- `true` (default): The full route & its data will be prefetched.\n- `false`: Prefetching will not happen when entering the viewport, but will still happen on hover.\n@defaultValue `true` (pages router) or `null` (app router)",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string | false",
+      "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
+      "required": false
+    },
+    {
+      "name": "legacyBehavior",
+      "type": "boolean",
+      "description": "Enable legacy link behavior.\n@deprecated This will be removed in a future version\n@defaultValue `false`\n@see https://github.com/vercel/next.js/commit/489e65ed98544e69b0afd7e0cfc3f9f6c2b803b7",
+      "required": false
+    },
+    {
+      "name": "onNavigate",
+      "type": "OnNavigateEventHandler",
+      "description": "Optional event handler for when the `<Link>` is navigated.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"secondary\" | \"primary\" | null",
+      "description": "",
+      "required": false
+    }
+  ],
+  "List": [
+    {
+      "name": "header",
+      "type": "ReactNode",
+      "description": "Optional header content (e.g. title) rendered above the list",
+      "required": false
+    }
+  ],
+  "ListItem": [
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "secondary",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"iconTitleSecondaryValue\" | \"titleSecondaryValue\" | \"iconTitleValue\" | \"titleValue\" | \"valueOnly\" | null",
+      "defaultValue": "iconTitleSecondaryValue",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "withBackground",
+      "type": "boolean | null",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ListView": [],
+  "NativeSelect": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "RadioGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "RadioGroupItem": [
+    {
+      "name": "label",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Toaster": [],
+  "Switch": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"live\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Tabs": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TabsList": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"line\" | \"default\" | \"overflow\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TabsTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TabsContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Textarea": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TooltipTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TooltipContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "TooltipProvider": []
+}

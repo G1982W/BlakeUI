@@ -1,0 +1,136 @@
+---
+title: Drawer
+description: A panel that slides in from the edge of the screen. Built with Vaul; supports top, bottom, left, and right directions with drag-to-dismiss.
+base: base
+component: true
+---
+
+import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, DrawerBar, DrawerTitleBlock, DrawerBody, TopBar, TopBarLeft, TopBarRight, ContextView } from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+The demo shows an app-style drawer fixed to the **right** (300px wide) with **TopBar** (app branding variants) and **ContextView** (full, with actions, with link, or minimal). Pick top bar and context view variants, then click **Open drawer**; use the close icon or click outside to dismiss.
+
+<ComponentPreview name="drawer">
+  <DrawerDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["vaul"]}
+  code={registry.drawer?.source ?? ""}
+  fileName="/components/ui/drawer.tsx"
+/>
+
+## Usage
+
+Compose `Drawer`, `DrawerTrigger`, `DrawerContent`, and optional `DrawerHeader`, `DrawerTitle`, `DrawerDescription`, `DrawerFooter`, and `DrawerClose`. Control open state with `open` and `onOpenChange` for a controlled drawer.
+
+```tsx
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Title</DrawerTitle>
+      <DrawerDescription>Description</DrawerDescription>
+    </DrawerHeader>
+    <div className="p-4">Content</div>
+    <DrawerFooter>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+      <Button>Submit</Button>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+### Direction and app-drawer layout
+
+Set `direction` on the root (e.g. `"right"` for a 300px right-side panel with shadow and rounded left edge). Use **TopBar** (with `variant`) for the header bar; **TopBarLeft** and **TopBarRight** for icon + name and menu + close. Use **ContextView** (with `variant`) for the block below: title, description, optional link, and optional primary/secondary actions. **ContextView** variants: `full` (link + buttons), `withActions` (buttons only), `withLink` (link only), `minimal` (title + description). Then **DrawerBody** for the main scrollable content.
+
+```tsx
+<Drawer direction="right">
+  <DrawerTrigger asChild><Button>Open drawer</Button></DrawerTrigger>
+  <DrawerContent>
+    <TopBar variant="default">
+      <TopBarLeft><Icon /><span>App Name</span></TopBarLeft>
+      <TopBarRight>
+        <Button size="icon">⋯</Button>
+        <DrawerClose asChild><Button size="icon">×</Button></DrawerClose>
+      </TopBarRight>
+    </TopBar>
+    <ContextView
+      variant="full"
+      title="Drawer title"
+      description="Secondary information"
+      link={<a href="#">Optional link</a>}
+      primaryAction={<Button className="w-full">Primary action</Button>}
+      secondaryAction={<Button variant="outline" className="w-full">Secondary action</Button>}
+    />
+    <DrawerBody>Main content</DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Examples
+
+### App drawer with TopBar and ContextView
+
+Right-side drawer (300px) with **TopBar** app-branding variants and **ContextView** variants (full, with actions, with link, minimal).
+
+<Preview>
+  <DrawerDemo />
+</Preview>
+
+## API Reference
+
+### Drawer (root)
+
+<PropsTable component="Drawer" />
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `open` | `boolean` | Controlled open state. |
+| `onOpenChange` | `(open: boolean) => void` | Called when open state changes. |
+| `direction` | `"top" \| "bottom" \| "left" \| "right"` | Slide direction. Default: `"bottom"`. |
+
+### DrawerTrigger, DrawerContent, DrawerClose
+
+Use `DrawerTrigger` to open; wrap content in `DrawerContent`. Use `DrawerClose` inside the drawer to close (e.g. on a button with `asChild`).
+
+### DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription
+
+Layout and accessibility: put title and description in `DrawerHeader`, actions in `DrawerFooter`. `DrawerTitle` and `DrawerDescription` are used for screen readers.
+
+### TopBar (app branding)
+
+Separate component used as the drawer header. **TopBar** accepts a `variant`: `"default"` (light), `"pink"`, `"darkBlue"`, `"yellow"`, `"teal"`, `"darkTeal"`. Use **TopBarLeft** for icon + app name and **TopBarRight** for menu + close. Exported from the drawer module for use inside `DrawerContent`.
+
+### ContextView (drawer/header context)
+
+Section below the top bar with title, description, and optional link and action buttons. **ContextView** accepts `variant`: `"full"` (link + primary + secondary actions), `"withActions"` (buttons only), `"withLink"` (link only), `"minimal"` (title + description only). Props: `title`, `description`, `link`, `primaryAction`, `secondaryAction`. Exported from the drawer module for use inside `DrawerContent`.
+
+### DrawerBar, DrawerTitleBlock, DrawerBody
+
+**DrawerBar** is a simple header bar (no variants). **DrawerTitleBlock** wraps the title, secondary text, and optional link. **DrawerBody** is the main scrollable area below a divider. Prefer **TopBar** for app-branding variants.

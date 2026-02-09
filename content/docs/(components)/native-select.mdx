@@ -1,0 +1,148 @@
+---
+title: Native Select
+description: A styled native HTML select element with option and optgroup support.
+base: base
+component: true
+---
+
+import {
+  NativeSelect,
+  NativeSelectOption,
+  NativeSelectOptGroup,
+} from "@/components/ui/native-select";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="native-select">
+  <NativeSelect>
+    <NativeSelectOption value="">Select a fruit</NativeSelectOption>
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    <NativeSelectOption value="orange">Orange</NativeSelectOption>
+  </NativeSelect>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry["native-select"].source}
+  fileName="/components/ui/native-select.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+  NativeSelectOptGroup,
+} from "@/components/ui/native-select";
+```
+
+```tsx
+<NativeSelect value={value} onChange={(e) => setValue(e.target.value)}>
+  <NativeSelectOption value="">Choose...</NativeSelectOption>
+  <NativeSelectOption value="a">Option A</NativeSelectOption>
+  <NativeSelectOption value="b">Option B</NativeSelectOption>
+</NativeSelect>
+```
+
+NativeSelect forwards all native `<select>` props. Use `NativeSelectOption` for `<option>` and `NativeSelectOptGroup` for `<optgroup>`. The component supports a `size` prop for "default" or "sm".
+
+## Examples
+
+### Default
+
+<Preview>
+  <NativeSelect>
+    <NativeSelectOption value="">Select an option</NativeSelectOption>
+    <NativeSelectOption value="one">One</NativeSelectOption>
+    <NativeSelectOption value="two">Two</NativeSelectOption>
+    <NativeSelectOption value="three">Three</NativeSelectOption>
+  </NativeSelect>
+</Preview>
+
+### With label
+
+<Preview>
+  <div className="grid w-full max-w-sm items-center gap-2">
+    <label htmlFor="fruit" className="text-sm font-medium leading-none">
+      Fruit
+    </label>
+    <NativeSelect id="fruit">
+      <NativeSelectOption value="">Select a fruit</NativeSelectOption>
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+      <NativeSelectOption value="orange">Orange</NativeSelectOption>
+    </NativeSelect>
+  </div>
+</Preview>
+
+### With optgroup
+
+Use `NativeSelectOptGroup` to group options under a label.
+
+<Preview>
+  <NativeSelect className="min-w-[180px]">
+    <NativeSelectOption value="">Select a timezone</NativeSelectOption>
+    <NativeSelectOptGroup label="North America">
+      <NativeSelectOption value="est">Eastern (EST)</NativeSelectOption>
+      <NativeSelectOption value="cst">Central (CST)</NativeSelectOption>
+      <NativeSelectOption value="pst">Pacific (PST)</NativeSelectOption>
+    </NativeSelectOptGroup>
+    <NativeSelectOptGroup label="Europe">
+      <NativeSelectOption value="gmt">GMT</NativeSelectOption>
+      <NativeSelectOption value="cet">CET</NativeSelectOption>
+    </NativeSelectOptGroup>
+  </NativeSelect>
+</Preview>
+
+### Sizes
+
+Use the `size` prop to switch between default and small.
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <NativeSelect size="default" className="w-[200px]">
+      <NativeSelectOption value="">Default size</NativeSelectOption>
+      <NativeSelectOption value="a">Option A</NativeSelectOption>
+    </NativeSelect>
+    <NativeSelect size="sm" className="w-[200px]">
+      <NativeSelectOption value="">Small size</NativeSelectOption>
+      <NativeSelectOption value="a">Option A</NativeSelectOption>
+    </NativeSelect>
+  </div>
+</Preview>
+
+### Disabled
+
+<Preview>
+  <NativeSelect disabled className="w-[200px]">
+    <NativeSelectOption value="">Disabled select</NativeSelectOption>
+    <NativeSelectOption value="a">Option A</NativeSelectOption>
+  </NativeSelect>
+</Preview>
+
+## API Reference
+
+### NativeSelect
+
+A styled native `<select>` with consistent focus and invalid styles. Accepts all native select props plus `size` ("default" | "sm").
+
+<PropsTable component="NativeSelect" />
+
+### NativeSelectOption
+
+Renders a native `<option>`. Use `value` and optional `disabled`.
+
+<PropsTable component="NativeSelectOption" />
+
+### NativeSelectOptGroup
+
+Renders a native `<optgroup>` to group options. Use the `label` prop for the group heading.
+
+<PropsTable component="NativeSelectOptGroup" />

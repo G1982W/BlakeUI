@@ -1,0 +1,87 @@
+---
+title: Chip Menu
+description: A select control that looks like a chip (badge) and opens a dropdown menu. Built from Badge and DropdownMenu.
+base: base
+component: true
+---
+
+import { ChipMenu } from "@/components/ui/chip-menu";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+The chip menu shows the current selection (or a placeholder) in a Badge and opens a dropdown when clicked.
+
+<ComponentPreview name="chip-menu">
+  <ChipMenuDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["lucide-react"]}
+  code={registry["chip-menu"]?.source ?? ""}
+  fileName="/components/ui/chip-menu.tsx"
+/>
+
+The chip menu uses the Badge and DropdownMenu components. Ensure those are installed if you copy the source.
+
+## Usage
+
+Control the selected value with `value` and `onValueChange`. Pass `options` as an array of `{ value, label, disabled? }`.
+
+```tsx
+import { ChipMenu } from "@/components/ui/chip-menu";
+
+const [status, setStatus] = useState<string | null>(null);
+
+<ChipMenu
+  value={status}
+  onValueChange={setStatus}
+  options={[
+    { value: "new", label: "New" },
+    { value: "active", label: "Active" },
+    { value: "done", label: "Done" },
+  ]}
+  placeholder="Status"
+  variant="default"
+/>
+```
+
+## Examples
+
+### With placeholder
+
+When no value is selected, the chip shows the placeholder in muted text.
+
+<Preview>
+  <ChipMenuDemo />
+</Preview>
+
+### Variants
+
+Use the `variant` prop to match Badge variants (default, secondary, outline, etc.).
+
+<Preview>
+  <ChipMenuDemoVariants />
+</Preview>
+
+## API Reference
+
+### ChipMenu
+
+<PropsTable component="ChipMenu" />
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `value` | `string \| null` | Currently selected option value. |
+| `onValueChange` | `(value: string) => void` | Called when the user picks an option. |
+| `options` | `ChipMenuOption[]` | `{ value, label, disabled? }[]`. |
+| `placeholder` | `string` | Shown when no value is selected. Default: `"Select…"`. |
+| `variant` | Badge variant | Badge style. Default: `"default"`. |
+| `className` | `string` | Optional class for the trigger badge. |
+| `contentClassName` | `string` | Optional class for the dropdown content. |
+| `disabled` | `boolean` | Disables the chip and menu. |

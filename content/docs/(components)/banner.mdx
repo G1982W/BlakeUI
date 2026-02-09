@@ -1,0 +1,110 @@
+---
+title: Banner
+description: Persistent notification banners that do not auto-dismiss. Use the banner() helper with Sonner or render the Banner component inline with a close button.
+base: base
+component: true
+---
+
+import { Banner } from "@/components/ui/banner";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+Banners use the same toast system (Sonner) but stay visible until the user closes them. They show a close (×) button and support three variants.
+
+<ComponentPreview name="banner">
+  <BannerDemoButtons />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["class-variance-authority", "sonner", "lucide-react"]}
+  code={registry.banner?.source ?? ""}
+  fileName="/components/ui/banner.tsx"
+/>
+
+## Usage
+
+Use the `banner()` helper to show a persistent notification (requires `<Toaster />` in your layout), or render `<Banner>` inline.
+
+```tsx
+import { banner } from "@/components/ui/banner";
+
+banner("Your session will expire in 5 minutes.");
+banner("Save your work before leaving.", { variant: "caution" });
+banner("Verification failed.", { variant: "critical", title: "Error" });
+```
+
+```tsx
+import { Banner } from "@/components/ui/banner";
+
+<Banner variant="caution" onClose={() => setShow(false)}>
+  Please review the updated terms.
+</Banner>
+```
+
+## Examples
+
+### Via banner() (toast)
+
+Banners do not auto-dismiss. Click to show each variant.
+
+<Preview>
+  <BannerDemoButtons />
+</Preview>
+
+### Inline Banner
+
+Render the Banner component with `onClose` to show a dismissible banner in the page.
+
+<Preview>
+  <BannerDemoInline variant="default" />
+</Preview>
+
+### Variants
+
+**Default** — Neutral, informational.
+
+<Preview>
+  <BannerDemoInline variant="default" />
+</Preview>
+
+**Caution** — Warning / attention.
+
+<Preview>
+  <BannerDemoInline variant="caution" />
+</Preview>
+
+**Critical** — Error / urgent.
+
+<Preview>
+  <BannerDemoInline variant="critical" />
+</Preview>
+
+## API Reference
+
+### Banner
+
+The Banner component renders a persistent alert with optional title, content, and close button.
+
+<PropsTable component="Banner" />
+
+### banner()
+
+Show a persistent banner via the toast system. Banners do not auto-dismiss and display a close button.
+
+```tsx
+import { banner } from "@/components/ui/banner";
+
+banner(message, { variant?, title?, description? });
+```
+
+| Option       | Type                    | Description                          |
+| ------------ | ----------------------- | ------------------------------------ |
+| `variant`    | `"default" \| "caution" \| "critical"` | Visual variant. Default: `"default"`. |
+| `title`      | `React.ReactNode`       | Optional heading.                    |
+| `description`| `React.ReactNode`       | Body content (overrides `message` when set). |

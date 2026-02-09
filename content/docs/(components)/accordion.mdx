@@ -1,0 +1,136 @@
+---
+title: Accordion
+description: Accessible disclosure widget with animated panels.
+base: base
+component: true
+---
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="accordion">
+  <Accordion type="single" collapsible className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>What is Blake UI?</AccordionTrigger>
+      <AccordionContent>
+        Blake UI is a component library inspired by AlignUI documentation.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It uses Radix primitives to ensure keyboard and screen-reader
+        support.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["@radix-ui/react-accordion", "lucide-react"]}
+  code={registry.accordion?.source ?? ""}
+  fileName="/components/ui/accordion.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+```
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Trigger</AccordionTrigger>
+    <AccordionContent>Content</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Single Expand
+
+<Preview>
+  <Accordion type="single" collapsible className="w-full max-w-md">
+    <AccordionItem value="single-1">
+      <AccordionTrigger>Is toggle animation included?</AccordionTrigger>
+      <AccordionContent>
+        Yes, panels animate open/close with a smooth transition using Tailwind
+        keyframes.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="single-2">
+      <AccordionTrigger>Can I collapse all?</AccordionTrigger>
+      <AccordionContent>
+        Pass `collapsible` to allow all panels to close. Without it, one stays
+        open.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Preview>
+
+### Multiple Expand
+
+<Preview>
+  <Accordion type="multiple" className="w-full max-w-md">
+    <AccordionItem value="multi-1">
+      <AccordionTrigger>First panel</AccordionTrigger>
+      <AccordionContent>
+        Multiple items can stay open when using `type="multiple"`.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="multi-2">
+      <AccordionTrigger>Second panel</AccordionTrigger>
+      <AccordionContent>
+        The component accepts arbitrary content, including lists and code
+        blocks.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="multi-3">
+      <AccordionTrigger>Third panel</AccordionTrigger>
+      <AccordionContent>
+        Combine with icons or badges by adding children inside the trigger.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Preview>
+
+## API Reference
+
+### Accordion
+
+The root component. Directly extends Radix Accordion root props.
+
+| Prop          | Type      | Default     | Description                                |
+| ------------- | --------- | ----------- | ------------------------------------------ | ------------------------------------------- |
+| `type`        | `"single" | "multiple"` | -                                          | Defines whether one or multiple items open. |
+| `collapsible` | `boolean` | `false`     | Allows collapsing the currently open item. |
+
+### AccordionItem
+
+Wraps each section. Accepts Radix item props.
+
+### AccordionTrigger
+
+The button that toggles visibility. Forwards button HTML attributes.
+
+### AccordionContent
+
+The panel that reveals content. Animates open/close automatically.

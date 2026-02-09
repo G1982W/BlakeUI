@@ -1,0 +1,304 @@
+---
+title: Radio Group
+description: A set of checkable buttons where no more than one can be checked at a time.
+base: base
+component: true
+---
+
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="radio-group">
+  <RadioGroup defaultValue="option-one">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-one" id="option-one" />
+      <label htmlFor="option-one" className="text-sm font-medium leading-none cursor-pointer">
+        Option One
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-two" id="option-two" />
+      <label htmlFor="option-two" className="text-sm font-medium leading-none cursor-pointer">
+        Option Two
+      </label>
+    </div>
+  </RadioGroup>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry["radio-group"].source}
+  fileName="/components/ui/radio-group.tsx"
+/>
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+```
+
+```tsx
+<RadioGroup value={value} onValueChange={setValue}>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="apple" id="apple" />
+    <label htmlFor="apple">Apple</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="orange" id="orange" />
+    <label htmlFor="orange">Orange</label>
+  </div>
+</RadioGroup>
+```
+
+The RadioGroup manages the selected value. Use `value` and `onValueChange` for controlled mode, or `defaultValue` for uncontrolled. Each RadioGroupItem must have a unique `value` prop.
+
+## Examples
+
+### Default
+
+<Preview>
+  <RadioGroup defaultValue="default">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="default" id="r1-default" />
+      <label htmlFor="r1-default" className="text-sm font-medium leading-none cursor-pointer">
+        Default
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="comfortable" id="r1-comfortable" />
+      <label htmlFor="r1-comfortable" className="text-sm font-medium leading-none cursor-pointer">
+        Comfortable
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="compact" id="r1-compact" />
+      <label htmlFor="r1-compact" className="text-sm font-medium leading-none cursor-pointer">
+        Compact
+      </label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+### With labels
+
+Associate each option with a label using `htmlFor` and a matching `id` on the RadioGroupItem for better accessibility.
+
+<Preview>
+  <RadioGroup defaultValue="card">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="card" id="payment-card" />
+      <label htmlFor="payment-card" className="text-sm font-medium leading-none cursor-pointer">
+        Credit card
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="paypal" id="payment-paypal" />
+      <label htmlFor="payment-paypal" className="text-sm font-medium leading-none cursor-pointer">
+        PayPal
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="bank" id="payment-bank" />
+      <label htmlFor="payment-bank" className="text-sm font-medium leading-none cursor-pointer">
+        Bank transfer
+      </label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+### Disabled
+
+Disable the entire group with `disabled` on RadioGroup, or disable a single option with `disabled` on RadioGroupItem.
+
+<Preview>
+  <RadioGroup defaultValue="yes" disabled>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="yes" id="disabled-yes" />
+      <label htmlFor="disabled-yes" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+        Yes (group disabled)
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="no" id="disabled-no" />
+      <label htmlFor="disabled-no" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+        No
+      </label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+<Preview>
+  <RadioGroup defaultValue="active">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="active" id="item-active" />
+      <label htmlFor="item-active" className="text-sm font-medium leading-none cursor-pointer">
+        Active
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="disabled-option" id="item-disabled" disabled />
+      <label htmlFor="item-disabled" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+        Disabled option
+      </label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+### Controlled
+
+Control the selected value with `value` and `onValueChange` on RadioGroup.
+
+```tsx
+const [value, setValue] = React.useState("one");
+<RadioGroup value={value} onValueChange={setValue}>
+  <RadioGroupItem value="one" id="one" />
+  <RadioGroupItem value="two" id="two" />
+</RadioGroup>
+```
+
+<Preview>
+  <RadioGroup defaultValue="small">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="small" id="size-small" />
+      <label htmlFor="size-small" className="text-sm font-medium leading-none cursor-pointer">
+        Small (defaultValue)
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="medium" id="size-medium" />
+      <label htmlFor="size-medium" className="text-sm font-medium leading-none cursor-pointer">
+        Medium
+      </label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="large" id="size-large" />
+      <label htmlFor="size-large" className="text-sm font-medium leading-none cursor-pointer">
+        Large
+      </label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+### With description
+
+Use the `label` and `description` props to add a label and helper text to each radio option.
+
+<Preview>
+  <RadioGroup defaultValue="free">
+    <RadioGroupItem
+      value="free"
+      id="plan-free"
+      label="Free Plan"
+      description="Perfect for personal projects and small teams."
+    />
+    <RadioGroupItem
+      value="pro"
+      id="plan-pro"
+      label="Pro Plan"
+      description="Advanced features for growing businesses."
+    />
+    <RadioGroupItem
+      value="enterprise"
+      id="plan-enterprise"
+      label="Enterprise Plan"
+      description="Custom solutions with dedicated support."
+    />
+  </RadioGroup>
+</Preview>
+
+```tsx
+<RadioGroup defaultValue="free">
+  <RadioGroupItem
+    value="free"
+    id="plan-free"
+    label="Free Plan"
+    description="Perfect for personal projects and small teams."
+  />
+  <RadioGroupItem
+    value="pro"
+    id="plan-pro"
+    label="Pro Plan"
+    description="Advanced features for growing businesses."
+  />
+  <RadioGroupItem
+    value="enterprise"
+    id="plan-enterprise"
+    label="Enterprise Plan"
+    description="Custom solutions with dedicated support."
+  />
+</RadioGroup>
+```
+
+### Focused
+
+The radio button shows a focus ring when focused via keyboard navigation. Click or use Tab key to focus this radio button.
+
+<Preview>
+  <RadioGroup>
+    <RadioGroupItem
+      value="focused"
+      id="focused-example"
+      label="Label"
+      description="Description"
+    />
+  </RadioGroup>
+</Preview>
+
+```tsx
+<RadioGroup>
+  <RadioGroupItem
+    value="focused"
+    id="focused-example"
+    label="Label"
+    description="Description"
+  />
+</RadioGroup>
+```
+
+### Focused + Selected
+
+The radio button can be both selected and focused at the same time.
+
+<Preview>
+  <RadioGroup defaultValue="focused-selected">
+    <RadioGroupItem
+      value="focused-selected"
+      id="focused-selected-example"
+      label="Label"
+      description="Description"
+      autoFocus
+    />
+  </RadioGroup>
+</Preview>
+
+```tsx
+<RadioGroup defaultValue="focused-selected">
+  <RadioGroupItem
+    value="focused-selected"
+    id="focused-selected-example"
+    label="Label"
+    description="Description"
+    autoFocus
+  />
+</RadioGroup>
+```
+
+## API Reference
+
+### RadioGroup
+
+The RadioGroup component wraps Radix UI's RadioGroup.Root and manages the selected value and layout of radio items.
+
+<PropsTable component="RadioGroup" />
+
+### RadioGroupItem
+
+RadioGroupItem represents a single option. Each item must have a unique `value` that is used when that option is selected.
+
+<PropsTable component="RadioGroupItem" />

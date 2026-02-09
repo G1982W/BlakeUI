@@ -1,0 +1,94 @@
+---
+title: Link
+description: Text link component with primary and secondary variants.
+base: base
+component: true
+---
+
+import { AppLink } from "@/components/ui/link";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="link">
+  <AppLink href="#example">Visit Docs</AppLink>
+</ComponentPreview>
+
+## Installation
+
+<Installation code={registry.link.source} fileName="/components/ui/link.tsx" />
+
+## Usage
+
+```tsx
+import { AppLink } from "@/components/ui/link";
+```
+
+```tsx
+<AppLink href="/docs">Doc Link</AppLink>
+```
+
+## Examples
+
+### Primary
+
+<Preview>
+  <div className="space-x-2 space-y-2">
+    <AppLink href="#primary">Primary link</AppLink>
+    <AppLink href="#primary" disabled>
+      Disabled primary
+    </AppLink>
+  </div>
+</Preview>
+
+### Secondary
+
+<Preview>
+  <div className="space-x-2 space-y-2">
+    <AppLink href="#secondary" variant="secondary">
+      Secondary link
+    </AppLink>
+    <AppLink href="#secondary" variant="secondary" disabled="true">
+      Disabled secondary
+    </AppLink>
+  </div>
+</Preview>
+
+### With Icon
+
+You can use Lucide icons with the `AppLink` component.
+
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
+
+<Preview>
+  <div className="flex flex-col space-y-4">
+    <div className="flex items-center space-x-4">
+      <AppLink href="#icon-leading">
+        <Github className="size-4" />
+        GitHub
+      </AppLink>
+      <AppLink href="#icon-trailing" variant="secondary">
+        Read More
+        <ArrowRight className="size-4" />
+      </AppLink>
+    </div>
+    <div className="flex items-center space-x-4">
+       <AppLink href="https://google.com" target="_blank">
+        External Link
+        <ExternalLink className="size-4" />
+      </AppLink>
+    </div>
+  </div>
+</Preview>
+
+## API Reference
+
+### AppLink
+
+| Prop       | Type                       | Description                          |
+| ---------- | -------------------------- | ------------------------------------ |
+| `variant`  | `"primary" \| "secondary"` | Controls underline and color styles. |
+| `disabled` | `boolean`                  | Disables interaction and focus.      |
+| `href`     | `string`                   | Destination URL.                     |

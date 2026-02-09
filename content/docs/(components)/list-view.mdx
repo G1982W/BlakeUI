@@ -1,0 +1,224 @@
+---
+title: List View
+description: List item component with multiple layout variants and optional background. Use for rows with icon, title, secondary text, and value.
+base: base
+component: true
+---
+
+import { List, ListItem, ListView } from "@/components/ui/list-view";
+import { FileText } from "lucide-react";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+List view renders rows with optional icon, title, secondary info, and value. Use `List` as a wrapper that takes list view components (e.g. `ListItem` children). Choose a `variant` for the layout and set `withBackground` for the optional rounded background.
+
+<ComponentPreview name="list-view">
+  <ListViewDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["class-variance-authority"]}
+  code={registry["list-view"]?.source ?? ""}
+  fileName="/components/ui/list-view.tsx"
+/>
+
+## Usage
+
+Use `List` as the wrapper (optionally with a `header`) and pass `ListItem` children. You can also use `ListView` directly. Set `variant` and `withBackground` on each item as needed.
+
+```tsx
+import { List, ListItem } from "@/components/ui/list-view";
+import { FileText } from "lucide-react";
+
+<List header="Documents">
+  <ListItem
+    variant="iconTitleSecondaryValue"
+    icon={<FileText />}
+    title="Report.pdf"
+    secondary="Last edited 2h ago"
+    value="12 KB"
+  />
+  <ListItem
+    variant="iconTitleSecondaryValue"
+    icon={<FileText />}
+    title="Notes.txt"
+    secondary="Updated yesterday"
+    value="2 KB"
+  />
+</List>
+```
+
+## Variants
+
+| Variant | Shows |
+| --------| ----- |
+| `iconTitleSecondaryValue` | Icon, title, secondary, value (default) |
+| `titleSecondaryValue` | Title, secondary, value |
+| `iconTitleValue` | Icon, title, value |
+| `titleValue` | Title, value |
+| `valueOnly` | Value only |
+
+Set `withBackground` to `true` to add a rounded background (e.g. `#F9F6F1` in light mode).
+
+## Examples
+
+### List wrapper
+
+`List` wraps list view components and can show an optional header above the items.
+
+<Preview>
+  <List header="Recent files" className="max-w-md">
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      icon={<FileText />}
+      title="Report.pdf"
+      secondary="Last edited 2h ago"
+      value="12 KB"
+    />
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      icon={<FileText />}
+      title="Notes.txt"
+      secondary="Updated yesterday"
+      value="2 KB"
+    />
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      icon={<FileText />}
+      title="Draft.docx"
+      secondary="Created today"
+      value="24 KB"
+    />
+  </List>
+</Preview>
+
+### iconTitleSecondaryValue (full)
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      icon={<FileText />}
+      title="Title"
+      secondary="Secondary info"
+      value="Value"
+    />
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      icon={<FileText />}
+      title="Another row"
+      secondary="Extra detail"
+      value="123"
+    />
+  </List>
+</Preview>
+
+### titleSecondaryValue
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem
+      variant="titleSecondaryValue"
+      title="Title"
+      secondary="Secondary info"
+      value="Value"
+    />
+    <ListItem
+      variant="titleSecondaryValue"
+      title="Second item"
+      secondary="More details"
+      value="Value"
+    />
+  </List>
+</Preview>
+
+### iconTitleValue
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem
+      variant="iconTitleValue"
+      icon={<FileText />}
+      title="Title"
+      value="Value"
+    />
+    <ListItem
+      variant="iconTitleValue"
+      icon={<FileText />}
+      title="Another"
+      value="Value"
+    />
+  </List>
+</Preview>
+
+### titleValue
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem variant="titleValue" title="Title" value="Value" />
+    <ListItem variant="titleValue" title="Second" value="Value" />
+  </List>
+</Preview>
+
+### valueOnly
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem variant="valueOnly" value="Value" />
+    <ListItem variant="valueOnly" value="Value" />
+  </List>
+</Preview>
+
+### With background (all variants)
+
+<Preview>
+  <List className="max-w-md">
+    <ListItem
+      variant="iconTitleSecondaryValue"
+      withBackground
+      icon={<FileText />}
+      title="Title"
+      secondary="Secondary"
+      value="Value"
+    />
+    <ListItem
+      variant="titleSecondaryValue"
+      withBackground
+      title="Title"
+      secondary="Secondary"
+      value="Value"
+    />
+    <ListItem
+      variant="iconTitleValue"
+      withBackground
+      icon={<FileText />}
+      title="Title"
+      value="Value"
+    />
+    <ListItem variant="titleValue" withBackground title="Title" value="Value" />
+    <ListItem variant="valueOnly" withBackground value="Value" />
+  </List>
+</Preview>
+
+## API Reference
+
+### List
+
+Wrapper that renders an optional `header` and a `ListView` containing its children. Pass `ListItem` (or other list view components) as children.
+
+| Prop      | Type              | Description                          |
+| --------- | ----------------- | ------------------------------------ |
+| `header`  | `React.ReactNode` | Optional title/content above the list |
+| `className` | `string`       | Applied to the wrapper div           |
+
+### ListItem
+
+<PropsTable component="ListItem" />
+
+Exports: `List`, `ListView`, `ListItem`, `listItemVariants`.

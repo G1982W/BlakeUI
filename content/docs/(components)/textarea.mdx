@@ -1,0 +1,78 @@
+---
+title: Textarea
+description: A multi-line text input field for longer content.
+base: base
+component: true
+---
+
+import { Textarea } from "@/components/ui/textarea";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="textarea">
+  <Textarea placeholder="Type your message here." />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.textarea.source}
+  fileName="/components/ui/textarea.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Textarea } from "@/components/ui/textarea";
+```
+
+```tsx
+<Textarea placeholder="Type your message here." />
+```
+
+The Textarea accepts all native `<textarea>` props, including `placeholder`, `disabled`, `rows`, `value`, and `onChange`.
+
+## Examples
+
+### Default
+
+<Preview>
+  <Textarea placeholder="Type your message here." />
+</Preview>
+
+### With label
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-2">
+    <label htmlFor="message" className="text-sm font-medium leading-none">
+      Message
+    </label>
+    <Textarea id="message" placeholder="Type your message here." />
+  </div>
+</Preview>
+
+### Disabled
+
+<Preview>
+  <Textarea placeholder="Disabled textarea" disabled />
+</Preview>
+
+### With rows
+
+Use the `rows` prop to control the initial height.
+
+<Preview>
+  <Textarea placeholder="Brief description..." rows={3} className="max-w-sm" />
+</Preview>
+
+## API Reference
+
+### Textarea
+
+The Textarea component displays a styled multi-line text input. It forwards all native textarea props and supports focus, invalid, and disabled styles.
+
+<PropsTable component="Textarea" />

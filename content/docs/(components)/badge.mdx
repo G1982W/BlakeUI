@@ -1,0 +1,116 @@
+---
+title: Badge
+description: Displays a badge or a component that looks like a badge.
+base: base
+component: true
+---
+
+import { Badge } from "@/components/ui/badge";
+import { Preview } from "@/components/preview";
+import { VariantGrid } from "@/components/variant-grid";
+import { PropsTable } from "@/components/props-table";
+import { ArrowUpRight, BadgeCheck, Bookmark } from "lucide-react";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="badge">
+  <Badge>Badge</Badge>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["class-variance-authority"]}
+  useReactSlot
+  code={registry.badge.source}
+  fileName="/components/ui/badge.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge";
+```
+
+```tsx
+<Badge variant="default | outline | secondary | destructive | ghost | link">
+  Badge
+</Badge>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the badge style.
+
+<VariantGrid
+  component="Badge"
+  variants={{
+    variant: [
+      "default",
+      "info",
+      "positive",
+      "negative",
+      "warning",
+      "urgent",
+    ],
+  }}
+/>
+
+### With Icon
+
+You can render icons inside the badge. The icon sizing is handled automatically.
+
+<Preview>
+  <div className="flex flex-wrap gap-2">
+    <Badge variant="default">
+      <BadgeCheck />
+      Verified
+    </Badge>
+    <Badge variant="info">
+      Bookmark
+      <Bookmark />
+    </Badge>
+  </div>
+</Preview>
+
+### As Link
+
+Use `asChild` to render a badge as a link.
+
+<Preview>
+  <Badge asChild>
+    <a href="#link" classname="hover:cursor-pointer">
+      Open Link <ArrowUpRight />
+    </a>
+  </Badge>
+</Preview>
+
+### Custom Colors
+
+You can override the colors by adding custom classes.
+
+<Preview>
+  <div className="flex flex-wrap gap-2">
+    <Badge className="bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+      Blue
+    </Badge>
+    <Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+      Green
+    </Badge>
+    <Badge className="bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">
+      Purple
+    </Badge>
+  </div>
+</Preview>
+
+## API Reference
+
+### Badge
+
+The `Badge` component displays a badge or a component that looks like a badge.
+
+<PropsTable component="Badge" />

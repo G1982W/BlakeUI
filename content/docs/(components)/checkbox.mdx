@@ -1,0 +1,194 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and unchecked states.
+base: base
+component: true
+---
+
+import { Checkbox } from "@/components/ui/checkbox";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="checkbox">
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <label htmlFor="terms" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      Accept terms and conditions
+    </label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.checkbox.source}
+  fileName="/components/ui/checkbox.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+```
+
+```tsx
+<Checkbox checked={checked} onCheckedChange={setChecked} />
+```
+
+The Checkbox forwards all props to Radix UI's Checkbox.Root, including `checked`, `defaultChecked`, `onCheckedChange`, and `disabled`.
+
+## Examples
+
+### Default
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="default" />
+    <label htmlFor="default" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      Default checkbox
+    </label>
+  </div>
+</Preview>
+
+### With label
+
+Use the `peer` class on the checkbox (included by default) so the label can respond to the checkbox state. Associate the label with the checkbox using `htmlFor` and a matching `id`.
+
+<Preview>
+  <div className="flex items-center space-x-2">
+    <Checkbox id="newsletter" />
+    <label
+      htmlFor="newsletter"
+      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+    >
+      Subscribe to newsletter
+    </label>
+  </div>
+</Preview>
+
+### Disabled
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled" disabled />
+    <label htmlFor="disabled" className="text-sm font-medium leading-none text-muted-foreground">
+      Disabled checkbox
+    </label>
+  </div>
+</Preview>
+
+### Controlled
+
+Control the checked state with `checked` and `onCheckedChange`. The callback receives a boolean or `"indeterminate"` for tri-state support.
+
+```tsx
+const [checked, setChecked] = React.useState(false);
+<Checkbox checked={checked} onCheckedChange={setChecked} />
+```
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="controlled" defaultChecked />
+    <label htmlFor="controlled" className="text-sm font-medium leading-none">
+      Checked by default (defaultChecked)
+    </label>
+  </div>
+</Preview>
+
+### With description
+
+Use the `description` prop to add helper text below the checkbox label.
+
+<Preview>
+  <Checkbox
+    id="description-example"
+    label="Accept terms and conditions"
+    description="You agree to our Terms of Service and Privacy Policy."
+  />
+</Preview>
+
+```tsx
+<Checkbox
+  id="description-example"
+  label="Accept terms and conditions"
+  description="You agree to our Terms of Service and Privacy Policy."
+/>
+```
+
+### Focused
+
+The checkbox shows a focus ring when focused via keyboard navigation.
+
+<Preview>
+  <Checkbox
+    id="focused-example"
+    label="Label"
+    description="Description"
+    autoFocus
+  />
+</Preview>
+
+```tsx
+<Checkbox
+  id="focused-example"
+  label="Label"
+  description="Description"
+  autoFocus
+/>
+```
+
+### Focused + Selected
+
+The checkbox can be both checked and focused at the same time. Click on the checkbox to see the focus ring combined with the checked state.
+
+<Preview>
+  <Checkbox
+    id="focused-selected-example"
+    label="Label"
+    description="Description"
+    defaultChecked
+  />
+</Preview>
+
+```tsx
+<Checkbox
+  id="focused-selected-example"
+  label="Label"
+  description="Description"
+  defaultChecked
+/>
+```
+
+### Indeterminate
+
+The checkbox supports an indeterminate state, useful for parent checkboxes when only some child items are selected.
+
+<Preview>
+  <Checkbox
+    id="indeterminate-example"
+    label="Label"
+    description="Description"
+    checked="indeterminate"
+  />
+</Preview>
+
+```tsx
+<Checkbox
+  id="indeterminate-example"
+  label="Label"
+  description="Description"
+  checked="indeterminate"
+/>
+```
+
+## API Reference
+
+### Checkbox
+
+The Checkbox component wraps Radix UI's Checkbox and displays a control for toggling between checked and unchecked states.
+
+<PropsTable component="Checkbox" />

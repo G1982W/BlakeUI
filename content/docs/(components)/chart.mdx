@@ -1,0 +1,88 @@
+---
+title: Chart
+description: Base chart primitive built with Recharts. Use ChartContainer, ChartTooltip, and ChartLegend to build bar, line, and other charts.
+base: base
+component: true
+---
+
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+Charts are built with [Recharts](https://recharts.org/). The chart component provides a responsive container, config-driven colors, and custom tooltip and legend content.
+
+<ComponentPreview name="chart">
+  <ChartGridDemo />
+</ComponentPreview>
+
+## Examples
+
+### Overview
+
+The grid below shows single-series, multi-series, and stacked chart variants built with the same config and primitives.
+
+<Preview>
+  <ChartGridDemo />
+</Preview>
+
+### Line chart
+
+Line chart with two series, tooltip, and legend.
+
+<Preview>
+  <LineChartDemo />
+</Preview>
+
+### Bar chart
+
+Bar chart with two series, tooltip, and legend.
+
+<Preview>
+  <BarChartDemo />
+</Preview>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry.chart?.source ?? ""}
+  fileName="/components/ui/chart.tsx"
+/>
+
+## Usage
+
+Wrap your Recharts chart (e.g. `BarChart`, `LineChart`) in `ChartContainer` and pass a `config` object for labels and colors. Use `var(--color-KEY)` in your series to reference config colors.
+
+```tsx
+import { Bar, BarChart } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+
+const chartConfig = {
+  desktop: { label: "Desktop", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+<ChartContainer config={chartConfig} className="h-[200px] w-full">
+  <BarChart data={data}>
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <Bar dataKey="desktop" fill="var(--color-desktop)" />
+  </BarChart>
+</ChartContainer>
+```
+
+## Chart config
+
+Define a `ChartConfig` with a key per series: `label`, optional `icon`, and `color` (or `theme` for light/dark).
+
+## API Reference
+
+<PropsTable component="ChartContainer" />
+
+Exports: `ChartContainer`, `ChartTooltip`, `ChartTooltipContent`, `ChartLegend`, `ChartLegendContent`, `ChartStyle`, and type `ChartConfig`.

@@ -1,0 +1,65 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+base: base
+component: true
+---
+
+import { Input } from "@/components/ui/input";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="input">
+  <Input type="email" placeholder="Email" heading = "Email" description="Description"/>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.input.source}
+  fileName="/components/ui/input.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input";
+```
+
+```tsx
+<Input type="email" placeholder="Email" />
+```
+
+## Examples
+
+### Default
+
+<Preview>
+  <Input type="email" placeholder="Email" heading = "Email" description="Description" />
+</Preview>
+
+### Disabled
+
+<Preview>
+  <Input disabled type="email" placeholder="Email" />
+</Preview>
+
+### File
+
+<Preview>
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Input id="picture" type="file" />
+  </div>
+</Preview>
+
+## API Reference
+
+### Input
+
+The `Input` component displays a form input field or a component that looks like an input field.
+
+<PropsTable component="Input" />

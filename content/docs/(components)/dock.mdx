@@ -1,0 +1,75 @@
+---
+title: Dock
+description: An app dock that can auto-hide and be positioned at any edge, with macOS-like zoom animation on hover.
+base: base
+component: true
+---
+
+import { Dock, DockItem } from "@/components/ui/dock";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+The dock shows a row (or column) of icons with tooltips. Hover an icon to see the macOS-like magnification. Use **Position** to choose the edge (top, bottom, left, right) and **Auto-hide** to switch between always visible and auto-hide (dock hides until you hover the edge).
+
+<ComponentPreview name="dock">
+  <DockDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry.dock?.source ?? ""}
+  fileName="/components/ui/dock.tsx"
+/>
+
+The dock uses the Tooltip component. Ensure it is installed.
+
+## Usage
+
+Use `Dock` as a fixed bar and `DockItem` for each icon. Set `position` to `"top"`, `"bottom"`, `"left"`, or `"right"`. Enable `autoHide` so the dock hides off-screen and appears when the pointer nears the edge.
+
+```tsx
+import { Dock, DockItem } from "@/components/ui/dock";
+import { HomeIcon, SettingsIcon } from "lucide-react";
+
+<Dock position="bottom" autoHide>
+  <DockItem icon={<HomeIcon />} label="Home" />
+  <DockItem icon={<SettingsIcon />} label="Settings" />
+</Dock>;
+```
+
+## Examples
+
+The demo below is the same dock used in the component preview. One set of controls drives both **position** and **auto-hide**:
+
+- **Position** — Always visible: the dock stays on the chosen edge (top, bottom, left, right).
+- **Auto-hide off** (default) — Same as above; the dock is always visible.
+- **Auto-hide on** — The dock hides off-screen; hover the edge to show it, move away to hide it.
+
+## API Reference
+
+### Dock
+
+<PropsTable component="Dock" />
+
+| Prop            | Type                                     | Default    | Description                                               |
+| --------------- | ---------------------------------------- | ---------- | --------------------------------------------------------- |
+| `position`      | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Where the dock is anchored.                               |
+| `autoHide`      | `boolean`                                | `false`    | When true, dock hides off-screen and shows on edge hover. |
+| `magnification` | `number`                                 | `1.4`      | Scale of the hovered icon (macOS-like zoom).              |
+| `hideDelay`     | `number`                                 | `300`      | Delay in ms before hiding when pointer leaves.            |
+| `triggerSize`   | `number`                                 | `24`       | Thickness in px of the edge trigger zone for auto-hide.   |
+
+### DockItem
+
+| Prop    | Type              | Description                               |
+| ------- | ----------------- | ----------------------------------------- |
+| `icon`  | `React.ReactNode` | Icon element (e.g. Lucide icon).          |
+| `label` | `React.ReactNode` | Shown in tooltip on hover.                |
+| `href`  | `string`          | If set, the item renders as a link.       |
+| `badge` | `React.ReactNode` | Optional badge (e.g. notification count). |

@@ -1,0 +1,97 @@
+---
+title: Line Chart
+description: Line charts built with Recharts and the chart primitive. Use ChartContainer with LineChart for responsive, accessible line charts.
+base: base
+component: true
+---
+
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+Line charts display trends over time or categories. Built with [Recharts](https://recharts.org/) and the shared chart components (ChartContainer, ChartTooltip, ChartLegend).
+
+<Preview>
+  <LineChartDemo />
+</Preview>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry.chart?.source ?? ""}
+  fileName="/components/ui/chart.tsx"
+/>
+
+Install the base `chart` component first. The line chart example uses Recharts' `LineChart`, `Line`, `CartesianGrid`, `XAxis`, and `YAxis`.
+
+## Usage
+
+Define your data and a `chartConfig`, then wrap Recharts' `LineChart` in `ChartContainer`. Use `ChartTooltip` / `ChartTooltipContent` and `ChartLegend` / `ChartLegendContent` for tooltips and legend.
+
+```tsx
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+
+const chartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+];
+
+const chartConfig = {
+  desktop: { label: "Desktop", color: "var(--chart-1)" },
+  mobile: { label: "Mobile", color: "var(--chart-2)" },
+} satisfies ChartConfig;
+
+<ChartContainer config={chartConfig} className="h-[200px] w-full">
+  <LineChart accessibilityLayer data={chartData}>
+    <CartesianGrid vertical={false} strokeDasharray="3 3" />
+    <XAxis dataKey="month" tickLine={false} axisLine={false} />
+    <YAxis tickLine={false} axisLine={false} />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <ChartLegend content={<ChartLegendContent />} />
+    <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+    <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
+  </LineChart>
+</ChartContainer>
+```
+
+## Examples
+
+### Single series
+
+A minimal line chart with one series and tooltip.
+
+<Preview>
+  <LineChartSingleSeriesDemo />
+</Preview>
+
+### Two series (with tooltip and legend)
+
+Desktop and mobile traffic with shared legend and tooltip.
+
+<Preview>
+  <LineChartDemo />
+</Preview>
+
+### Multi-series (four lines)
+
+Multiple series with config-driven colors and legend.
+
+<Preview>
+  <LineChartMultiSeriesDemo />
+</Preview>
+
+## API Reference
+
+The line chart is built from the base **Chart** component and Recharts. See the [Chart](/docs/components/chart) doc for `ChartContainer`, `ChartConfig`, `ChartTooltip`, and `ChartLegend`. Recharts API: [LineChart](https://recharts.org/en-US/api/LineChart), [Line](https://recharts.org/en-US/api/Line).

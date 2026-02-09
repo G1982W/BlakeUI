@@ -1,0 +1,41 @@
+---
+title: Form
+description: Building forms with React Hook Form and Zod.
+base: base
+component: true
+---
+
+import { FormDemo } from "@/components/ui/form-demo";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="form-demo">
+  <FormDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.form.source}
+  fileName="/components/ui/form.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Form } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+```
+
+## Features
+
+- [x] Accessible by default.
+- [x] Works with React Hook Form.
+- [x] Validation with Zod.
+- [x] Support for Tooltips and complex layouts.

@@ -1,0 +1,222 @@
+---
+title: Tabs
+description: A set of layered sections (tab panels) that display one panel at a time, with triggers to switch between them.
+base: base
+component: true
+---
+
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="tabs">
+  <Tabs defaultValue="account" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">
+        Make changes to your account here.
+      </p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground">
+        Change your password here.
+      </p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["class-variance-authority"]}
+  code={registry.tabs.source}
+  fileName="/components/ui/tabs.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+```
+
+```tsx
+<Tabs defaultValue="tab1" value={value} onValueChange={setValue}>
+  <TabsList>
+    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">Content for tab 1</TabsContent>
+  <TabsContent value="tab2">Content for tab 2</TabsContent>
+</Tabs>
+```
+
+Use `Tabs` as the root with `defaultValue` (uncontrolled) or `value` and `onValueChange` (controlled). Each `TabsTrigger` and `TabsContent` must have a matching `value`. `TabsList` supports a `variant` of "default" (pill background) or "line".
+
+## Examples
+
+### Default
+
+<Preview>
+  <Tabs defaultValue="overview" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+      <TabsTrigger value="reports">Reports</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <p className="text-sm text-muted-foreground">Overview content.</p>
+    </TabsContent>
+    <TabsContent value="analytics">
+      <p className="text-sm text-muted-foreground">Analytics content.</p>
+    </TabsContent>
+    <TabsContent value="reports">
+      <p className="text-sm text-muted-foreground">Reports content.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Line variant
+
+Use `variant="line"` on TabsList for an underline-style tab list.
+
+<Preview>
+  <Tabs defaultValue="one" className="w-full max-w-md">
+    <TabsList variant="line">
+      <TabsTrigger value="one">One</TabsTrigger>
+      <TabsTrigger value="two">Two</TabsTrigger>
+      <TabsTrigger value="three">Three</TabsTrigger>
+    </TabsList>
+    <TabsContent value="one">
+      <p className="text-sm text-muted-foreground">Content for tab one.</p>
+    </TabsContent>
+    <TabsContent value="two">
+      <p className="text-sm text-muted-foreground">Content for tab two.</p>
+    </TabsContent>
+    <TabsContent value="three">
+      <p className="text-sm text-muted-foreground">Content for tab three.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Vertical orientation
+
+Set `orientation="vertical"` on Tabs to stack the list and content side by side.
+
+<Preview>
+  <Tabs defaultValue="general" orientation="vertical" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="general">General</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+      <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    </TabsList>
+    <TabsContent value="general">
+      <p className="text-sm text-muted-foreground">General settings.</p>
+    </TabsContent>
+    <TabsContent value="security">
+      <p className="text-sm text-muted-foreground">Security settings.</p>
+    </TabsContent>
+    <TabsContent value="notifications">
+      <p className="text-sm text-muted-foreground">Notification settings.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Disabled trigger
+
+Disable a single tab with the `disabled` prop on TabsTrigger.
+
+<Preview>
+  <Tabs defaultValue="active" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="active">Active</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+    </TabsList>
+    <TabsContent value="active">
+      <p className="text-sm text-muted-foreground">This tab is active.</p>
+    </TabsContent>
+    <TabsContent value="disabled">
+      <p className="text-sm text-muted-foreground">This tab is disabled.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Overflow variant
+
+The `overflow` variant transforms the tab list into a dropdown menu. This is useful for compact layouts where a full list of triggers might not fit.
+
+<Preview>
+  <Tabs defaultValue="overview" className="w-full max-w-md">
+    <TabsList variant="overflow">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+      <TabsTrigger value="reports">Reports</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Overview content.</p>
+    </TabsContent>
+    <TabsContent value="analytics">
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Analytics content.</p>
+    </TabsContent>
+    <TabsContent value="reports">
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Reports content.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Settings content.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Controlled
+
+Control the active tab with `value` and `onValueChange` on Tabs.
+
+```tsx
+const [value, setValue] = React.useState("tab1");
+<Tabs value={value} onValueChange={setValue}>
+  ...
+</Tabs>
+```
+
+## API Reference
+
+### Tabs
+
+The root component that manages tab state. Supports `value`, `defaultValue`, `onValueChange`, and `orientation` ("horizontal" | "vertical").
+
+<PropsTable component="Tabs" />
+
+### TabsList
+
+Container for the tab triggers. Use the `variant` prop for "default" (pill) or "line" styling.
+
+<PropsTable component="TabsList" />
+
+### TabsTrigger
+
+The button that switches to a tab. Each trigger must have a unique `value` that matches a TabsContent panel.
+
+<PropsTable component="TabsTrigger" />
+
+### TabsContent
+
+The panel shown when its tab is active. Each content must have a `value` matching a TabsTrigger.
+
+<PropsTable component="TabsContent" />

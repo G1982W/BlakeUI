@@ -1,0 +1,186 @@
+---
+title: Context Menu
+description: A menu that appears on right-click or long-press for contextual actions.
+base: base
+component: true
+---
+
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+  ContextMenuSeparator,
+  ContextMenuLabel,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+} from "@/components/ui/context-menu";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="context-menu">
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Back</ContextMenuItem>
+      <ContextMenuItem>Forward</ContextMenuItem>
+      <ContextMenuItem>Reload</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Save Page As...</ContextMenuItem>
+      <ContextMenuItem>Print...</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>View Page Source</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui", "lucide-react"]}
+  code={registry["context-menu"]?.source ?? ""}
+  fileName="/components/ui/context-menu.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
+```
+
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Action</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
+      Right click for menu
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Copy</ContextMenuItem>
+      <ContextMenuItem>Paste</ContextMenuItem>
+      <ContextMenuItem>Cut</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</Preview>
+
+### With Labels and Shortcuts
+
+<Preview>
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
+      Right click for menu
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuLabel>Actions</ContextMenuLabel>
+      <ContextMenuSeparator />
+      <ContextMenuItem>
+        Copy <ContextMenuShortcut>⌘C</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        Paste <ContextMenuShortcut>⌘V</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</Preview>
+
+### With Submenu
+
+<Preview>
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
+      Right click for menu
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>New File</ContextMenuItem>
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>New Window</ContextMenuSubTrigger>
+        <ContextMenuSubContent>
+          <ContextMenuItem>Empty</ContextMenuItem>
+          <ContextMenuItem>From Template</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Open...</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</Preview>
+
+### With Checkbox and Radio Items
+
+<Preview>
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
+      Right click for menu
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuCheckboxItem checked>
+        Show Bookmarks Bar
+      </ContextMenuCheckboxItem>
+      <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+      <ContextMenuSeparator />
+      <ContextMenuLabel>View Mode</ContextMenuLabel>
+      <ContextMenuRadioGroup value="grid">
+        <ContextMenuRadioItem value="grid">Grid</ContextMenuRadioItem>
+        <ContextMenuRadioItem value="list">List</ContextMenuRadioItem>
+      </ContextMenuRadioGroup>
+    </ContextMenuContent>
+  </ContextMenu>
+</Preview>
+
+## API Reference
+
+### ContextMenu
+
+Root component. Wraps the trigger and content.
+
+### ContextMenuTrigger
+
+The element that triggers the menu on right-click.
+
+### ContextMenuContent
+
+The popover content. Automatically portaled.
+
+### ContextMenuItem
+
+A menu item. Supports `variant="destructive"` and `inset`.
+
+### ContextMenuSub / ContextMenuSubTrigger / ContextMenuSubContent
+
+For nested submenus.
+
+### ContextMenuCheckboxItem / ContextMenuRadioItem
+
+Items with check/radio state.
+
+### ContextMenuLabel / ContextMenuSeparator / ContextMenuShortcut
+
+Label, divider, and shortcut display helpers.
