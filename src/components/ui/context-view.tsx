@@ -20,7 +20,7 @@ const contextViewVariants = cva("flex flex-col px-4 py-4", {
 })
 
 export interface ContextViewProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,
     VariantProps<typeof contextViewVariants> {
   /** Main title (e.g. "Drawer title") */
   title?: React.ReactNode

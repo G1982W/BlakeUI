@@ -42,13 +42,9 @@ const formSchema = z.object({
     }).max(160, {
         message: "Bio must not be longer than 160 characters.",
     }),
-    type: z.enum(["personal", "company", "non-profit"], {
-        required_error: "You need to select an account type.",
-    }),
-    language: z.string({
-        required_error: "Please select a language.",
-    }),
-    notifications: z.boolean().default(false),
+    type: z.enum(["personal", "company", "non-profit"]),
+    language: z.string(),
+    notifications: z.boolean(),
     terms: z.boolean().refine((val) => val === true, {
         message: "You must accept the terms and conditions.",
     }),
