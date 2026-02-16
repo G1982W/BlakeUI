@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex flex-nowrap items-center justify-center rounded-[4px] border border-transparent px-[6px] py-[2px] text-xs font-medium leading-none w-fit whitespace-nowrap shrink-0 no-underline [&>svg]:size-3 [&>svg]:shrink-0 gap-1 [&>svg]:pointer-events-none [&>p]:m-1 [&>p]:p-0 [&>p]:leading-none [a&]:inline-flex [a&]:items-center [a&]:gap-1 [a&]:whitespace-nowrap [a&]:flex-nowrap [a&]:p-0 [a&]:m-0 [a&>p]:m-0 [a&>p]:inline-flex [a&>p]:items-center [a&>p]:gap-1 [a&>p]:whitespace-nowrap [a&>p]:px-[6px] [a&>p]:py-[2px] [a&>p]:leading-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+  "inline-flex max-w-full shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-[4px] border border-transparent px-[6px] py-[2px] text-xs font-medium leading-none no-underline transition-[color,box-shadow] overflow-hidden [&_svg]:pointer-events-none [&_svg]:inline-block [&_svg]:size-3 [&_svg]:shrink-0 [&_svg]:align-middle focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {

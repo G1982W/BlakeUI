@@ -127,15 +127,15 @@
     },
     {
       "name": "variant",
-      "type": "\"link\" | \"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | null",
-      "defaultValue": "default",
+      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
+      "defaultValue": "primary",
       "description": "",
       "required": false
     },
     {
       "name": "size",
-      "type": "\"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\" | null",
-      "defaultValue": "default",
+      "type": "\"sm\" | \"md\" | \"lg\" | null",
+      "defaultValue": "md",
       "description": "",
       "required": false
     },
@@ -2652,16 +2652,16 @@
       "required": false
     },
     {
-      "name": "icon",
-      "type": "ReactNode",
-      "description": "Icon element (e.g. Lucide icon).",
-      "required": true
-    },
-    {
       "name": "href",
       "type": "string",
       "description": "If set, renders as a link.",
       "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Icon element (e.g. Lucide icon).",
+      "required": true
     },
     {
       "name": "badge",

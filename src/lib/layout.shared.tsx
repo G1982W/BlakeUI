@@ -1,10 +1,15 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { DocsNavbar } from "@/components/docs-navbar";
-import { Twitter } from "lucide-react";
+import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: "Blake UI",
+      title: (
+        <span className="inline-flex items-center gap-0">
+          <BlakeLogoIcon className="size-10 shrink-0" />
+          <span>Blake UI</span>
+        </span>
+      ),
       url: "/docs",
       component: <DocsNavbar />,
     },
@@ -26,6 +31,9 @@ export function baseOptions(): BaseLayoutProps {
       // },
     ],
     searchToggle: {
+      enabled: false,
+    },
+    themeSwitch: {
       enabled: false,
     },
   };

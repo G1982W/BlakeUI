@@ -114,7 +114,7 @@ export function DrawerDemo() {
       </div>
       <Drawer direction="right">
         <DrawerTrigger asChild>
-          <Button variant="outline">Open drawer</Button>
+          <Button variant="secondary">Open drawer</Button>
         </DrawerTrigger>
         <DrawerContent className="flex h-full max-h-dvh flex-col">
           <TopBar variant={topBarVariant}>
@@ -125,12 +125,12 @@ export function DrawerDemo() {
               </span>
             </TopBarLeft>
             <TopBarRight>
-              <Button size="icon" variant="ghost" className="size-8">
+              <Button size="sm" variant="primary" className="size-8">
                 <MoreHorizontal className="size-4" />
                 <span className="sr-only">More options</span>
               </Button>
               <DrawerClose asChild>
-                <Button size="icon" variant="ghost" className="size-8">
+                <Button size="sm" variant="primary" className="size-8">
                   <X className="size-4" />
                   <span className="sr-only">Close</span>
                 </Button>
@@ -157,7 +157,7 @@ export function DrawerDemo() {
               </Button>
             }
             secondaryAction={
-              <Button variant="outline" className="w-full">
+              <Button variant="secondary" className="w-full">
                 Secondary action
               </Button>
             }

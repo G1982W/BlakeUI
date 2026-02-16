@@ -1,0 +1,298 @@
+---
+title: Installation
+description: Step-by-step configuration for Next.js.
+---
+
+# Next.js
+
+Step-by-step configuration for Next.js.
+
+Kickstart with a Next.js starter. Everything is set up so you can begin building quickly.
+
+## Initialize a NextJS Project
+
+If you do not already have a Next.js project, follow the official Next.js setup guide to create one quickly.
+
+## Make sure you have Tailwind CSS v4 installed
+
+Follow the Tailwind CSS v4 setup in your Next.js project and ensure you have a global CSS file (for example `app/global.css`).
+
+## Add styles (Manual)
+
+Add the following to your global CSS file (`app/global.css`). This includes the required theme token mappings and light/dark variables used by the docs and components.
+
+```css
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-brand: var(--brand);
+  --color-critical: var(--critical);
+  --color-border-neutral: var(--border-neutral);
+  --color-code-background: var(--code-background);
+  --color-link-secondary: var(--link-secondary);
+  --color-link-disabled: var(--link-disabled);
+  --color-menu-heading: var(--menu-heading);
+  --color-badge-default: var(--badge-default);
+  --color-badge-default-foreground: var(--badge-default-foreground);
+  --color-badge-default-border: var(--badge-default-border);
+  --color-badge-info: var(--badge-info);
+  --color-badge-info-foreground: var(--badge-info-foreground);
+  --color-badge-info-border: var(--badge-info-border);
+  --color-badge-positive: var(--badge-positive);
+  --color-badge-positive-foreground: var(--badge-positive-foreground);
+  --color-badge-positive-border: var(--badge-positive-border);
+  --color-badge-negative: var(--badge-negative);
+  --color-badge-negative-foreground: var(--badge-negative-foreground);
+  --color-badge-negative-border: var(--badge-negative-border);
+  --color-badge-warning: var(--badge-warning);
+  --color-badge-warning-foreground: var(--badge-warning-foreground);
+  --color-badge-warning-border: var(--badge-warning-border);
+  --color-badge-urgent: var(--badge-urgent);
+  --color-badge-urgent-foreground: var(--badge-urgent-foreground);
+  --color-badge-urgent-border: var(--badge-urgent-border);
+  --color-tooltip: var(--tooltip);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+  --color-button-background: var(--button-background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-banner-destructive: var(--banner-destructive);
+  --color-banner-border: var(--banner-border);
+  --color-banner-text: var(--banner-text);
+  --color-chip-menu-placeholder: var(--chip-menu-placeholder);
+  --color-input-heading: var(--input-heading);
+  --color-input-description: var(--input-description);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --background: #faf9f6;
+  --foreground: #30313D;
+  --card: #ffffff;
+  --card-foreground: #30313D;
+  --popover: #ffffff;
+  --popover-foreground: #30313D;
+  --surface: #ffffff;
+  --surface-foreground: #30313D;
+  --brand: #436283;
+  --brand-foreground: #ffffff;
+  --critical: #c00000;
+  --critical-foreground: #ffffff;
+  --primary: #482b6b;
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #30313D;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #30313D;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #482b6b5c;
+  --code-background: #ffffff;
+  --button-background: rgb(243, 240, 240);
+  --link-secondary: #414552;
+  --link-disabled: #a3acba;
+  --menu-heading: #6a7383;
+  --chip-menu-placeholder: #6a7383;
+  --badge-default: #ebeef1;
+  --badge-default-foreground: #6a7383;
+  --badge-default-border: #d5dbe1;
+  --badge-info: #cff5f6;
+  --badge-info-foreground: #0055bc;
+  --badge-info-border: #a2e5ef;
+  --badge-positive: #d7f7c2;
+  --badge-positive-foreground: #006908;
+  --badge-positive-border: #a6eb84;
+  --badge-negative: #fcedb9;
+  --badge-negative-foreground: #a82c00;
+  --badge-negative-border: #fcd579;
+  --badge-warning: #ffe7f2;
+  --badge-warning-foreground: #b3093c;
+  --badge-warning-border: #ffccdf;
+  --badge-urgent: #df1b41;
+  --badge-urgent-foreground: #ffffff;
+  --badge-urgent-border: #df1b41;
+  --tooltip: #30313D;
+  --tooltip-foreground: #ffffff;
+  --banner-destructive: #fff5fa;
+  --banner-border: #d7d7d0;
+  --banner-text: #6a7383;
+  --border-neutral: #d7d7d0;
+  --input-heading: #30313D;
+  --input-description: #6a7383;
+  --chart-1: #482b6b;
+  --chart-2: #013260;
+  --chart-3: #0196ed;
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #faf9f6;
+  --sidebar-foreground: #30313D;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef2f7;
+  --sidebar-accent-foreground: #30313D;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #93c5fd;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #482b6b5c;
+  --code-background: oklch(0.205 0 0);
+  --button-background: oklch(0.269 0 0);
+  --link-secondary: oklch(0.708 0 0);
+  --link-disabled: #a3acba;
+  --menu-heading: #6a7383;
+  --chip-menu-placeholder: #6a7383;
+  --badge-default: #ebeef1;
+  --badge-default-foreground: #6a7383;
+  --badge-default-border: #d5dbe1;
+  --badge-info: #cff5f6;
+  --badge-info-foreground: #0055bc;
+  --badge-info-border: #a2e5ef;
+  --badge-positive: #d7f7c2;
+  --badge-positive-foreground: #006908;
+  --badge-positive-border: #a6eb84;
+  --badge-negative: #fcedb9;
+  --badge-negative-foreground: #a82c00;
+  --badge-negative-border: #fcd579;
+  --badge-warning: #ffe7f2;
+  --badge-warning-foreground: #b3093c;
+  --badge-warning-border: #ffccdf;
+  --badge-urgent: #df1b41;
+  --badge-urgent-foreground: #ffffff;
+  --badge-urgent-border: #df1b41;
+  --tooltip: #30313D;
+  --tooltip-foreground: #ffffff;
+  --banner-destructive: #fff5fa;
+  --banner-border: #d7d7d0;
+  --banner-text: #6a7383;
+  --input-heading: #30313D;
+  --input-description: #6a7383;
+  --chart-1: #482b6b;
+  --chart-2: #013260;
+  --chart-3: #0196ed;
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+```
+
+## Add the required utils
+
+Set up the utility helpers used across the docs/components:
+
+1. `cn`
+2. `tv`
+3. `recursiveCloneChildren`
+4. `Polymorphic`
+
+## Add the icon library
+
+```package-install
+npm install @remixicon/react
+```
+
+## Setup font
+
+Use `next/font/google` in your app layout:
+
+```tsx
+import { Outfit as FontSans } from "next/font/google";
+import "./global.css";
+
+const outfit = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={outfit.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Add Dark Mode (Optional)
+
+To enable dark mode globally, add `dark` on your root html element.
+
+```tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="dark">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## That's all!
+
+You can now start adding components to your app.

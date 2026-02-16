@@ -8,7 +8,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from "fumadocs-ui/components/tabs";
-import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import { registry } from "./registry";
 
 interface VariantGridProps {
@@ -33,10 +33,10 @@ export function VariantGrid({
     (acc, key) => {
       const values = variants[key];
       return acc.flatMap((combo) =>
-        values.map((value) => ({ ...combo, [key]: value }))
+        values.map((value) => ({ ...combo, [key]: value })),
       );
     },
-    [{}] as Record<string, string>[]
+    [{}] as Record<string, string>[],
   );
   const isButton = componentName === "Button";
   const codeSnippet = combinations
@@ -69,7 +69,7 @@ export function VariantGrid({
         </TabsList>
       </div>
 
-      <TabsContent value="preview" className="m-0">
+      <TabsContent value="preview" className="m-0 bg-background">
         <div className="flex flex-wrap items-center justify-center gap-4 px-4 py-6">
           {combinations.map((props, index) => {
             const sizeValue = props.size ?? "";
@@ -97,14 +97,14 @@ export function VariantGrid({
       </TabsContent>
 
       <TabsContent value="code" className="m-0">
-        <CodeBlock
-          title={`${componentName} usage`}
-          className="m-4 rounded-2xl border bg-background/70"
-        >
-          <Pre>
-            <code className="language-tsx">{codeSnippet}</code>
-          </Pre>
-        </CodeBlock>
+        <DynamicCodeBlock
+          lang="tsx"
+          code={codeSnippet}
+          codeblock={{
+            title: `${componentName} usage`,
+            className: "m-4 rounded-2xl border bg-background/70",
+          }}
+        />
       </TabsContent>
     </Tabs>
   );

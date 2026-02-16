@@ -20,11 +20,13 @@ import { DrawerDemo } from "@/components/drawer-demo";
 import { FormDemo } from "@/components/ui/form-demo";
 import { ChartGridDemo } from "@/components/ui/chart-demo";
 import { ListViewDemo } from "@/components/list-view-demo";
+import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
     ...components,
+    p: (props) => <span {...props} />,
     ComponentPreview,
     ComponentsGrid,
     ToastDemo,
@@ -44,5 +46,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FormDemo,
     ChartGridDemo,
     ListViewDemo,
+    ButtonVariantShowcase,
   } as MDXComponents;
 }

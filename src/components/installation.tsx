@@ -7,6 +7,7 @@ import {
   Pre,
 } from "fumadocs-ui/components/codeblock";
 import { cn } from "@/lib/utils";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 
 type InstallationProps = {
   dependencies?: string[];
@@ -69,37 +70,37 @@ export default function Installation({
             </CodeBlockTabsList>
             <div className="p-3">
               <CodeBlockTab value="npm">
-                <CodeBlock
-                  title="terminal"
-                  className="my-0 rounded-lg border bg-background/80 shadow-none"
-                  viewportProps={{ className: "px-4 py-3" }}
-                >
-                  <Pre>
-                    <code className={`language-bash`}>{commands.npm}</code>
-                  </Pre>
-                </CodeBlock>
+                <DynamicCodeBlock
+                  lang="bash"
+                  code={commands.npm}
+                  codeblock={{
+                    title: `terminal`,
+                    className:
+                      "my-0 rounded-lg border bg-code-background shadow-none",
+                  }}
+                />
               </CodeBlockTab>
               <CodeBlockTab value="pnpm">
-                <CodeBlock
-                  title="terminal"
-                  className="my-0 rounded-lg border bg-background/80 shadow-none"
-                  viewportProps={{ className: "px-4 py-3" }}
-                >
-                  <Pre>
-                    <code className={`language-bash`}>{commands.pnpm}</code>
-                  </Pre>
-                </CodeBlock>
+                <DynamicCodeBlock
+                  lang="bash"
+                  code={commands.pnpm}
+                  codeblock={{
+                    title: `terminal`,
+                    className:
+                      "my-0 rounded-lg border bg-code-background shadow-none",
+                  }}
+                />
               </CodeBlockTab>
               <CodeBlockTab value="yarn">
-                <CodeBlock
-                  title="terminal"
-                  className="my-0 rounded-lg border bg-background/80 shadow-none"
-                  viewportProps={{ className: "px-4 py-3" }}
-                >
-                  <Pre>
-                    <code className={`language-bash`}>{commands.yarn}</code>
-                  </Pre>
-                </CodeBlock>
+                <DynamicCodeBlock
+                  lang="bash"
+                  code={commands.yarn}
+                  codeblock={{
+                    title: `terminal`,
+                    className:
+                      "my-0 rounded-lg border bg-code-background shadow-none",
+                  }}
+                />
               </CodeBlockTab>
             </div>
           </CodeBlockTabs>
@@ -112,15 +113,15 @@ export default function Installation({
         </code>{" "}
         file and paste the following code into it.
       </h3>
-      <CodeBlock
-        title={fileName}
-        className="my-4 rounded-lg border bg-muted/30 shadow-none"
-        viewportProps={{ className: "px-4 py-4" }}
-      >
-        <Pre>
-          <code className={`language-${language}`}>{code}</code>
-        </Pre>
-      </CodeBlock>
+
+      <DynamicCodeBlock
+        lang="tsx"
+        code={code}
+        codeblock={{
+          title: `${fileName} usage`,
+          className: "m-4 rounded-2xl border bg-code-background",
+        }}
+      />
       <h3 className="relative mt-8 text-sm font-semibold text-foreground">
         Check the import paths to ensure they match your project setup.
       </h3>

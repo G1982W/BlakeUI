@@ -7,9 +7,9 @@ component: true
 
 import { Button } from "@/components/ui/button";
 import { Preview } from "@/components/preview";
-import { VariantGrid } from "@/components/variant-grid";
+import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 import { PropsTable } from "@/components/props-table";
-import { ArrowRight, Mail, Plus, Loader2 } from "lucide-react";
+import { ArrowRight, Mail, Loader2 } from "lucide-react";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
 
@@ -35,140 +35,35 @@ import { Button } from "@/components/ui/button";
 ```
 
 ```tsx
-<Button
-  variant="default | secondary | destructive | outline | ghost | link"
-  size="default | xs | sm | lg | icon | icon-xs | icon-sm | icon-lg"
->
+<Button variant="primary | secondary | destructive" size="sm | md | lg">
   Button
 </Button>
 ```
 
-## Examples
+## Variants
 
-### Variants
+The button has 3 variants and 3 sizes. Each variant is shown below with all sizes (left to right) and the default, disabled, hover, and focus states.
 
-Use these matrices to explore each variant with every size.
+### Primary
 
-### Default
-
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["default"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
+<ButtonVariantShowcase variant="primary" title="Primary" />
 
 ### Secondary
 
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["secondary"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
+<ButtonVariantShowcase variant="secondary" title="Secondary" />
 
 ### Destructive
 
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["destructive"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
+<ButtonVariantShowcase variant="destructive" title="Destructive" />
 
-### Outline
-
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["outline"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
-
-### Ghost
-
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["ghost"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
-
-### Link
-
-<VariantGrid
-  component="Button"
-  variants={{
-    variant: ["link"],
-    size: [
-      "default",
-      "xs",
-      "sm",
-      "lg",
-      "icon",
-      "icon-xs",
-      "icon-sm",
-      "icon-lg",
-    ],
-  }}
-/>
+## Examples
 
 ### With Icons
 
 Buttons handle inline icons automatically. The icon spacing is managed by the built-in `gap` styles.
 
 <Preview>
-  <div className="flex flex-wrap items-center gap-2">
+  <div className="flex flex-wrap items-center gap-2 self-start">
     <Button>
       <Mail />
       Email
@@ -176,27 +71,6 @@ Buttons handle inline icons automatically. The icon spacing is managed by the bu
     <Button variant="secondary">
       Continue
       <ArrowRight />
-    </Button>
-  </div>
-</Preview>
-
-### Icon Sizes
-
-Use the icon sizes when the button only contains an icon.
-
-<Preview>
-  <div className="flex flex-wrap items-center gap-2">
-    <Button size="icon-xs" aria-label="Add">
-      <Plus />
-    </Button>
-    <Button size="icon-sm" aria-label="Add" variant="secondary">
-      <Plus />
-    </Button>
-    <Button size="icon" aria-label="Add">
-      <Plus />
-    </Button>
-    <Button size="icon-lg" aria-label="Add" variant="outline">
-      <Plus />
     </Button>
   </div>
 </Preview>

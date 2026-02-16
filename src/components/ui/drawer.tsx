@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
 
-import { cn } from "@/lib/utils"
-import { ContextView } from "@/components/ui/context-view"
-import { TopBar, TopBarLeft, TopBarRight } from "@/components/ui/top-bar"
+import { cn } from "@/lib/utils";
+import { ContextView } from "@/components/ui/context-view";
+import { TopBar, TopBarLeft, TopBarRight } from "@/components/ui/top-bar";
 
 function Drawer({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+  return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
 }
 
 function DrawerTrigger({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
-  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
+  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
 function DrawerPortal({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
-  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
+  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
 function DrawerClose({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Close>) {
-  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
+  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
 function DrawerOverlay({
@@ -40,11 +40,11 @@ function DrawerOverlay({
       data-slot="drawer-overlay"
       className={cn(
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerContent({
@@ -58,12 +58,12 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer-content bg-background fixed z-50 flex h-full flex-col overflow-hidden",
+          "group/drawer-content bg-code-background fixed z-50 flex h-full flex-col overflow-hidden",
           "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
           "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
-          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-[300px] data-[vaul-drawer-direction=right]:max-w-[100vw] data-[vaul-drawer-direction=right]:rounded-l-lg data-[vaul-drawer-direction=right]:shadow-[-4px_0_24px_rgba(0,0,0,0.08)]",
+          "data-[vaul-drawer-direction=right]:top-6 data-[vaul-drawer-direction=right]:bottom-6 data-[vaul-drawer-direction=right]:right-6 data-[vaul-drawer-direction=right]:h-auto data-[vaul-drawer-direction=right]:min-w-[340px] data-[vaul-drawer-direction=right]:max-w-[calc(100vw-3rem)] data-[vaul-drawer-direction=right]:rounded-lg data-[vaul-drawer-direction=right]:shadow-[-4px_0_24px_rgba(0,0,0,0.08)]",
           "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
-          className
+          className,
         )}
         {...props}
       >
@@ -71,7 +71,7 @@ function DrawerContent({
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
-  )
+  );
 }
 
 function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
@@ -80,11 +80,11 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="drawer-header"
       className={cn(
         "flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-left",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
@@ -94,7 +94,7 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
       className={cn("mt-auto flex flex-col gap-2 p-4", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerTitle({
@@ -107,7 +107,7 @@ function DrawerTitle({
       className={cn("text-foreground font-semibold", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerDescription({
@@ -120,7 +120,7 @@ function DrawerDescription({
       className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerBar({ className, ...props }: React.ComponentProps<"div">) {
@@ -129,21 +129,24 @@ function DrawerBar({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="drawer-bar"
       className={cn(
         "flex flex-none items-center justify-between gap-2 border-b border-border bg-background px-4 py-3",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function DrawerTitleBlock({ className, ...props }: React.ComponentProps<"div">) {
+function DrawerTitleBlock({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-title-block"
       className={cn("flex flex-col gap-1 px-4 py-4", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DrawerBody({ className, ...props }: React.ComponentProps<"div">) {
@@ -152,11 +155,11 @@ function DrawerBody({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="drawer-body"
       className={cn(
         "flex min-h-0 flex-1 flex-col overflow-auto border-t border-border px-4 py-4",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -177,4 +180,4 @@ export {
   TopBarLeft,
   TopBarRight,
   ContextView,
-}
+};
