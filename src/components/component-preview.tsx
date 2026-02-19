@@ -30,14 +30,12 @@ export function ComponentPreview({
   return (
     <div className={cn("group my-4 flex flex-col space-y-2", className)}>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 rounded-md border bg-muted p-1 text-xs">
+        <div className="flex items-center gap-1 rounded-md border text-foreground bg-white p-1 text-xs">
           <button
             onClick={() => setTab("preview")}
             className={cn(
-              "rounded-sm px-3 py-1 font-medium transition-all hover:text-foreground",
-              tab === "preview"
-                ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground",
+              "rounded-sm cursor-pointer px-3 py-1 font-medium transition-all hover:text-foreground hover:bg-background",
+              tab === "preview" ? "bg-background  shadow-sm" : "",
             )}
           >
             Preview
@@ -45,10 +43,8 @@ export function ComponentPreview({
           <button
             onClick={() => setTab("code")}
             className={cn(
-              "rounded-sm px-3 py-1 font-medium transition-all hover:text-foreground",
-              tab === "code"
-                ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground",
+              "rounded-sm cursor-pointer px-3 py-1 font-medium text-foreground transition-all hover:text-foreground hover:bg-background",
+              tab === "code" ? "bg-background  shadow-sm" : "",
             )}
           >
             Code
