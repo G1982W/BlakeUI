@@ -85,9 +85,11 @@
 }
 
 :root {
-    --color-fd-foreground: #3c303d;
-    --radius: 0.75rem;
+    /* --color-fd-foreground: #3c303d; */
+    /* --foreground: #0f172a; */
+    --foreground: #3c303d;
     --background: #faf9f6;
+    --radius: 0.75rem;
     --sidebar: #faf9f6;
     /* --background: #f8fafc; */
     --code-background: #ffffff;
@@ -119,7 +121,7 @@
     --banner-destructive: #FFF5FA;
     --banner-border: #D7D7D0;
     --banner-text: #6A7383;
-    --foreground: #0f172a;
+
     --card: #ffffff;
     --card-foreground: #0f172a;
     --popover: #ffffff;
@@ -164,7 +166,7 @@
 }
 
 .dark {
-    --color-fd-foreground: #ffffff;
+    /* --color-fd-foreground: #ffffff; */
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
     --code-background: oklch(0.205 0 0);
@@ -265,18 +267,13 @@
     --fd-sidebar-width: 280px;
     --fd-toc-width: 240px;
     --fd-layout-width: 92rem;
-    --docs-active: #f97316;
-    /* --color-fd-foreground: #30313D; */
-    /* --color-fd-foreground: #3c303d; */
-
-    /* generate dark mode color for color-fd-foreground */
-    /* @media (prefers-color-scheme: dark) { */
-    /* --color-fd-foreground: #ffffff; */
-    /* } */
-
-    /* @media (prefers-color-scheme: light) {
-        --color-fd-foreground: #30313D;
-    } */
+    /* Fumadocs: use project --foreground for all text */
+    --color-fd-foreground: var(--foreground);
+    --color-fd-muted-foreground: var(--foreground);
+    --color-fd-card-foreground: var(--foreground);
+    --color-fd-popover-foreground: var(--foreground);
+    --color-fd-secondary-foreground: var(--foreground);
+    --color-fd-accent-foreground: var(--foreground);
 }
 
 h1,
@@ -300,6 +297,21 @@ h4 {
 
 #nd-page {
     max-width: none !important;
+}
+
+/* Fumadocs prose: use exact --foreground (overrides oklab color-mix) */
+.prose {
+    --tw-prose-body: var(--foreground);
+    --tw-prose-headings: var(--foreground);
+    --tw-prose-lead: var(--foreground);
+    --tw-prose-links: var(--foreground);
+    --tw-prose-bold: var(--foreground);
+    --tw-prose-counters: var(--foreground);
+    --tw-prose-bullets: var(--foreground);
+    --tw-prose-quotes: var(--foreground);
+    --tw-prose-captions: var(--foreground);
+    --tw-prose-code: var(--foreground);
+    --tw-prose-kbd: var(--foreground);
 }
 
 /* Navbar (first child: header or custom nav component) spans from after sidebar to right edge */
@@ -356,7 +368,7 @@ h4 {
     background: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
 
     /* &:hover { */
-    /* background: color-mix(in oklab, var(--docs-active) 35%, transparent); */
+    /* background: color-mix(in oklab, var(--color-brand) 35%, transparent); */
     /* background: color-mix(in oklab, var(--muted-foreground) 35%, transparent); */
     /* } */
 }
@@ -366,11 +378,11 @@ h4 {
 }
 
 #nd-sidebar a[data-active="true"] {
-    color: var(--docs-active);
+    color: var(--color-brand);
 }
 
 #nd-sidebar a[data-active="true"]::before {
-    background: var(--docs-active);
+    background: var(--color-brand);
 }
 
 /* Collapsible folder content: remove left border, add bottom padding */
@@ -390,11 +402,11 @@ h4 {
 }
 
 #nd-toc a[data-active="true"] {
-    color: var(--docs-active);
+    color: var(--color-brand);
 }
 
 #nd-toc .bg-fd-primary {
-    background: var(--docs-active);
+    background: var(--color-brand);
 }
 
 figure>pre {
