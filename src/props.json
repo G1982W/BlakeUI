@@ -2595,6 +2595,20 @@
       "required": false
     }
   ],
+  "DataTable": [
+    {
+      "name": "columns",
+      "type": "ColumnDef<TData, TValue>[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "data",
+      "type": "TData[]",
+      "description": "",
+      "required": true
+    }
+  ],
   "Dock": [
     {
       "name": "position",
@@ -3424,6 +3438,14 @@
       "required": false
     }
   ],
+  "Table": [],
+  "TableHeader": [],
+  "TableBody": [],
+  "TableFooter": [],
+  "TableHead": [],
+  "TableRow": [],
+  "TableCell": [],
+  "TableCaption": [],
   "Tabs": [
     {
       "name": "asChild",

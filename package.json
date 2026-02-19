@@ -13,6 +13,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.2.4",
+    "@tanstack/react-table": "^8.21.3",
     "fumadocs-core": "16.4.8",
     "fumadocs-mdx": "14.2.6",
     "fumadocs-ui": "16.4.8",
