@@ -1,6 +1,7 @@
 export function BlakeLogoIcon({ className }: { className?: string }) {
   return (
     <svg
+      className={className}
       width="69"
       height="72"
       viewBox="0 0 69 72"

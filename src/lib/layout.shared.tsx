@@ -6,7 +6,7 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: (
         <span className="block -mb-6 items-center gap-0">
-          <BlakeLogoIcon className="w-8 h-8" />
+          <BlakeLogoIcon className="w-14 h-14" />
           {/* <span>Blake UI</span> */}
         </span>
       ),
