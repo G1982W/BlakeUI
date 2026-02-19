@@ -135,6 +135,8 @@
     --critical-foreground: #FFFFFF;
 
     --border-neutral: #D7D7D0;
+    --border: #D7D7D0;
+    /* --border: #dc0f0f; */
 
     --primary: #482B6B;
     --primary-foreground: #ffffff;
@@ -148,7 +150,7 @@
     --destructive-foreground: #ffffff;
     --input-heading: #30313D;
     --input-description: #6A7383;
-    --border: #e2e8f0;
+    /* --border: #e2e8f0; */
     --input: #e2e8f0;
     --ring: #482B6B5C;
     --chart-1: #482B6B;
@@ -276,6 +278,10 @@
     --color-fd-secondary-foreground: var(--foreground);
     --color-fd-accent: var(--accent);
     --color-fd-accent-foreground: var(--foreground);
+    /* Fumadocs: use project border */
+    /* --color-fd-border: var(--border-neutral); */
+    /* --color-fd-border: red; */
+    --sidebar-border: var(--border-neutral);
 }
 
 h1,
@@ -322,11 +328,13 @@ h4 {
     border-color: var(--border) !important;
     color: var(--foreground) !important;
 }
+
 [data-theme-toggle] button,
 [data-theme-toggle] svg,
 [data-theme-toggle] [class*="text-fd"] {
     color: var(--foreground) !important;
 }
+
 [data-theme-toggle] [class*="bg-fd-accent"] {
     background: var(--accent) !important;
     color: var(--foreground) !important;
