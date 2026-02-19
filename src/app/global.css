@@ -267,12 +267,14 @@
     --fd-sidebar-width: 280px;
     --fd-toc-width: 240px;
     --fd-layout-width: 92rem;
-    /* Fumadocs: use project --foreground for all text */
+    /* Fumadocs: use project background/foreground for UI and text */
     --color-fd-foreground: var(--foreground);
     --color-fd-muted-foreground: var(--foreground);
     --color-fd-card-foreground: var(--foreground);
+    --color-fd-popover: var(--background);
     --color-fd-popover-foreground: var(--foreground);
     --color-fd-secondary-foreground: var(--foreground);
+    --color-fd-accent: var(--accent);
     --color-fd-accent-foreground: var(--foreground);
 }
 
@@ -313,6 +315,23 @@ h4 {
     --tw-prose-code: var(--foreground);
     --tw-prose-kbd: var(--foreground);
 }
+
+/* Light/dark mode toggle and any fd popover/modal: force background and foreground */
+[data-theme-toggle] {
+    background: var(--background) !important;
+    border-color: var(--border) !important;
+    color: var(--foreground) !important;
+}
+[data-theme-toggle] button,
+[data-theme-toggle] svg,
+[data-theme-toggle] [class*="text-fd"] {
+    color: var(--foreground) !important;
+}
+[data-theme-toggle] [class*="bg-fd-accent"] {
+    background: var(--accent) !important;
+    color: var(--foreground) !important;
+}
+
 
 /* Navbar (first child: header or custom nav component) spans from after sidebar to right edge */
 #nd-docs-layout>*:first-child {

@@ -24,7 +24,7 @@ function DocsSearchButton({ className }: { className?: string }) {
       className={cn(
         "inline-flex items-center gap-2 rounded-lg border bg-secondary/60 p-1.5 ps-2 text-sm text-muted-foreground transition-colors",
         "hover:bg-accent hover:text-accent-foreground",
-        className
+        className,
       )}
       onClick={() => setOpenSearch(true)}
       data-search-full=""
@@ -55,8 +55,8 @@ function ThemeModeSelector() {
         <button
           type="button"
           className={cn(
-            "inline-flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors",
-            "hover:border-foreground/20 hover:text-foreground"
+            "inline-flex size-9 items-center justify-center rounded-md border text-foreground transition-colors",
+            "hover:border-foreground/20 hover:text-foreground",
           )}
           aria-label="Toggle theme"
         >
@@ -71,16 +71,16 @@ function ThemeModeSelector() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={8}>
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun className="size-4" />
-          Light
+          <Sun className="size-4 text-foreground" />
+          <span className="text-foreground">Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon className="size-4" />
-          Dark
+          <Moon className="size-4 text-foreground" />
+          <span className="text-foreground">Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Laptop className="size-4" />
-          System
+          <Laptop className="size-4 text-foreground" />
+          <span className="text-foreground">System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -102,8 +102,8 @@ export function DocsNavbar() {
           <a
             href="https://x.com/blakeui"
             className={cn(
-              "inline-flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors",
-              "hover:border-foreground/20 hover:text-foreground"
+              "inline-flex size-9 items-center justify-center rounded-md border text-foreground transition-colors",
+              "hover:border-foreground/20 hover:text-foreground",
             )}
             aria-label="Twitter"
             rel="noreferrer"
@@ -122,13 +122,13 @@ export function DocsNavbar() {
             href="https://github.com/blakeui"
             className={cn(
               "inline-flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors",
-              "hover:border-foreground/20 hover:text-foreground"
+              "hover:border-foreground/20 hover:text-foreground",
             )}
             aria-label="GitHub"
             rel="noreferrer"
             target="_blank"
           >
-            <Github className="size-4" />
+            <Github className="size-4 text-foreground" />
           </a>
         </div>
       </div>
