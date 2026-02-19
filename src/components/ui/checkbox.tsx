@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CheckIcon, MinusIcon } from "lucide-react"
-import { Checkbox as CheckboxPrimitive } from "radix-ui"
+import * as React from "react";
+import { CheckIcon, MinusIcon } from "lucide-react";
+import { Checkbox as CheckboxPrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimitive.Root> {
-  description?: string
-  label?: string
+interface CheckboxProps extends React.ComponentProps<
+  typeof CheckboxPrimitive.Root
+> {
+  description?: string;
+  label?: string;
 }
 
 const Checkbox = React.forwardRef<
@@ -21,8 +23,8 @@ const Checkbox = React.forwardRef<
       ref={ref}
       data-slot="checkbox"
       className={cn(
-        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground dark:data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 data-[state=checked]:focus-visible:border-ring data-[state=checked]:focus-visible:ring-ring/50 data-[state=indeterminate]:focus-visible:border-ring data-[state=indeterminate]:focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] data-[state=checked]:focus-visible:ring-[3px] data-[state=indeterminate]:focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
+        "peer border-input dark:bg-input/30 data-[state=checked]:bg-brand data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-brand data-[state=checked]:border-primary data-[state=indeterminate]:bg-brand data-[state=indeterminate]:text-primary-foreground dark:data-[state=indeterminate]:bg-brand data-[state=indeterminate]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 data-[state=checked]:focus-visible:border-ring data-[state=checked]:focus-visible:ring-ring/50 data-[state=indeterminate]:focus-visible:border-ring data-[state=indeterminate]:focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] data-[state=checked]:focus-visible:ring-[3px] data-[state=indeterminate]:focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        className,
       )}
       {...props}
     >
@@ -37,10 +39,10 @@ const Checkbox = React.forwardRef<
         )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-  )
+  );
 
   if (!label && !description) {
-    return checkbox
+    return checkbox;
   }
 
   return (
@@ -55,11 +57,13 @@ const Checkbox = React.forwardRef<
             {label}
           </label>
         )}
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
+        {description && (
+          <p className="text-sm text-muted-foreground">{description}</p>
+        )}
       </div>
     </div>
-  )
-})
-Checkbox.displayName = "Checkbox"
+  );
+});
+Checkbox.displayName = "Checkbox";
 
-export { Checkbox }
+export { Checkbox };
