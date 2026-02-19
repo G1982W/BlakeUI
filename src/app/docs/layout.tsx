@@ -6,7 +6,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
     <DocsLayout
       tree={source.getPageTree()}
-      sidebar={{ defaultOpenLevel: 2, collapsible: true }}
+      sidebar={{ defaultOpenLevel: 2, collapsible: false }}
       {...baseOptions()}
     >
       {children}

@@ -5,9 +5,9 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <span className="inline-flex items-center gap-0">
-          <BlakeLogoIcon className="size-10 shrink-0" />
-          <span>Blake UI</span>
+        <span className="block items-center gap-0">
+          <BlakeLogoIcon className="w-8 h-8 " />
+          {/* <span>Blake UI</span> */}
         </span>
       ),
       url: "/docs",
