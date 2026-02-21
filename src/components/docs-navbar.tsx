@@ -11,6 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { User } from "@supabase/supabase-js";
+import { Button } from "@/components/ui/button";
+import { LogIn, LogOut } from "lucide-react";
 
 function DocsSearchButton({ className }: { className?: string }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
@@ -88,6 +94,33 @@ function ThemeModeSelector() {
 }
 
 export function DocsNavbar() {
+  const router = useRouter();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    router.refresh();
+    router.push("/");
+  }
+  async function handleLogin() {
+    // redirect to /login
+    router.push("/login");
+  }
   return (
     <div className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
@@ -130,6 +163,27 @@ export function DocsNavbar() {
           >
             <Github className="size-4 text-foreground" />
           </a>
+          {user ? (
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={handleLogout}
+              className="gap-1.5"
+            >
+              <LogOut className="size-4" />
+              Logout
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={handleLogin}
+              className="gap-1.5"
+            >
+              <LogIn className="size-4" />
+              Login
+            </Button>
+          )}
         </div>
       </div>
     </div>
