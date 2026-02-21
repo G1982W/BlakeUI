@@ -61,6 +61,40 @@
       "required": false
     }
   ],
+  "Avatar": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarImage": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarFallback": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarBadge": [],
+  "AvatarGroup": [],
+  "AvatarGroupCount": [],
   "Badge": [
     {
       "name": "variant",
@@ -126,16 +160,16 @@
       "required": false
     },
     {
-      "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
-      "defaultValue": "primary",
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "defaultValue": "md",
       "description": "",
       "required": false
     },
     {
-      "name": "size",
-      "type": "\"sm\" | \"md\" | \"lg\" | null",
-      "defaultValue": "md",
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
+      "defaultValue": "primary",
       "description": "",
       "required": false
     },

@@ -1,0 +1,56 @@
+---
+title: Data Table 22
+description: Data table variant with extended features. Built with TanStack Table and the base Table component.
+base: base
+component: true
+---
+
+import { DataTable22 } from "@/components/ui/data-table22";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table22">
+  <DataTable22 />
+</ComponentPreview>
+
+## Introduction
+
+Data Table 22 uses the same base [Table](/docs/components/table) component and [TanStack Table](https://tanstack.com/table/latest) as the standard [Data Table](/docs/premium-components/data-table). Use it when you need the same table capabilities with a dedicated doc for this variant.
+
+## Installation
+
+1. Add the base Table component and the Data Table component to your project.
+
+2. Install `@tanstack/react-table`:
+
+```bash
+pnpm add @tanstack/react-table
+```
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table22"]?.source ?? ""}
+  fileName="/components/ui/data-table22.tsx"
+/>
+
+You also need the [Table](/docs/components/table) component in `@/components/ui/table.tsx`.
+
+## Usage
+
+```tsx
+import { DataTable22 } from "@/components/ui/data-table22";
+
+<DataTable22 />
+```
+
+For full documentation on columns, pagination, row actions, and extending with sorting and filtering, see the [Data Table](/docs/premium-components/data-table) doc.
+
+## API Reference
+
+### DataTable22
+
+<PropsTable component="DataTable22" />
