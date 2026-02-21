@@ -35,7 +35,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint2_radial_21433_9179)"
           stroke="url(#paint3_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="12.1821"
@@ -43,7 +43,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint4_radial_21433_9179)"
           stroke="url(#paint5_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="15.0913"
@@ -51,7 +51,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint6_radial_21433_9179)"
           stroke="url(#paint7_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="20.9091"
@@ -59,7 +59,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint8_radial_21433_9179)"
           stroke="url(#paint9_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="18"
@@ -67,7 +67,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint10_radial_21433_9179)"
           stroke="url(#paint11_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="20.9091"
@@ -75,7 +75,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint12_radial_21433_9179)"
           stroke="url(#paint13_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="18"
@@ -83,7 +83,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint14_radial_21433_9179)"
           stroke="url(#paint15_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="26.7275"
@@ -91,7 +91,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint16_radial_21433_9179)"
           stroke="url(#paint17_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="23.8183"
@@ -99,7 +99,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint18_radial_21433_9179)"
           stroke="url(#paint19_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="26.7275"
@@ -107,7 +107,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint20_radial_21433_9179)"
           stroke="url(#paint21_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="23.8183"
@@ -115,7 +115,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint22_radial_21433_9179)"
           stroke="url(#paint23_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="32.5459"
@@ -123,7 +123,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint24_radial_21433_9179)"
           stroke="url(#paint25_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="29.6367"
@@ -131,7 +131,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint26_radial_21433_9179)"
           stroke="url(#paint27_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="32.5459"
@@ -139,7 +139,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint28_radial_21433_9179)"
           stroke="url(#paint29_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="29.6367"
@@ -147,7 +147,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint30_radial_21433_9179)"
           stroke="url(#paint31_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="38.3637"
@@ -155,7 +155,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint32_radial_21433_9179)"
           stroke="url(#paint33_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="35.4545"
@@ -163,7 +163,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint34_radial_21433_9179)"
           stroke="url(#paint35_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="38.3637"
@@ -171,7 +171,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint36_radial_21433_9179)"
           stroke="url(#paint37_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="35.4545"
@@ -179,7 +179,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint38_radial_21433_9179)"
           stroke="url(#paint39_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="44.1821"
@@ -187,7 +187,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint40_radial_21433_9179)"
           stroke="url(#paint41_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="41.2729"
@@ -195,7 +195,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint42_radial_21433_9179)"
           stroke="url(#paint43_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="44.1821"
@@ -203,7 +203,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint44_radial_21433_9179)"
           stroke="url(#paint45_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="41.2729"
@@ -211,7 +211,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint46_radial_21433_9179)"
           stroke="url(#paint47_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="50"
@@ -219,7 +219,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint48_radial_21433_9179)"
           stroke="url(#paint49_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="47.0913"
@@ -227,7 +227,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint50_radial_21433_9179)"
           stroke="url(#paint51_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="50"
@@ -235,7 +235,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint52_radial_21433_9179)"
           stroke="url(#paint53_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="47.0913"
@@ -243,7 +243,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint54_radial_21433_9179)"
           stroke="url(#paint55_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="55.8183"
@@ -251,7 +251,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint56_radial_21433_9179)"
           stroke="url(#paint57_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="52.9091"
@@ -259,7 +259,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint58_radial_21433_9179)"
           stroke="url(#paint59_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="55.8183"
@@ -267,7 +267,7 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint60_radial_21433_9179)"
           stroke="url(#paint61_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
         <circle
           cx="52.9091"
@@ -275,13 +275,13 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           r="1.55455"
           fill="url(#paint62_radial_21433_9179)"
           stroke="url(#paint63_linear_21433_9179)"
-          stroke-width="0.2"
+          strokeWidth="0.2"
         />
       </g>
       <g filter="url(#filter1_di_21433_9179)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M29.5776 25.0992C30.3868 24.046 31.3916 23.2129 32.5913 22.5992C33.9943 21.8658 35.5409 21.4986 37.231 21.4986C39.3034 21.4986 41.1687 22.0246 42.8267 23.0767C44.5167 24.129 45.8407 25.5488 46.7974 27.3345C47.7538 29.1201 48.2319 31.129 48.2319 33.3609C48.2319 35.5928 47.7538 37.6017 46.7974 39.3872C45.8407 41.1729 44.5167 42.5918 42.8267 43.6441C41.1686 44.6644 39.3035 45.1753 37.231 45.1753C35.5091 45.1753 33.9465 44.8241 32.5435 44.1226C31.3492 43.4838 30.3607 42.6394 29.5776 41.5894V44.6968H25.2729V10.5454H29.5776V25.0992ZM36.561 25.564C35.1262 25.564 33.8668 25.8993 32.7827 26.5689C31.6985 27.2066 30.8534 28.1156 30.2476 29.2954C29.6417 30.4752 29.3384 31.8303 29.3384 33.3609C29.3384 34.8595 29.6258 36.1986 30.1997 37.3784C30.8056 38.5264 31.6507 39.4354 32.7349 40.105C33.8509 40.7746 35.1102 41.1099 36.5132 41.1099C37.948 41.1099 39.2074 40.7745 40.2915 40.105C41.3757 39.4354 42.2368 38.5264 42.8745 37.3784C43.5122 36.1986 43.8315 34.8436 43.8315 33.313C43.8315 31.8143 43.5122 30.4753 42.8745 29.2954C42.2368 28.1156 41.3757 27.2066 40.2915 26.5689C39.2074 25.8994 37.964 25.564 36.561 25.564Z"
           fill="white"
         />
@@ -294,9 +294,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           width="72"
           height="72"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -381,9 +381,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           width="30.959"
           height="42.6299"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -435,9 +435,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="52"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#617489" />
-          <stop offset="0.0989583" stop-color="#3E5670" />
-          <stop offset="1" stop-color="#0F1011" />
+          <stop stopColor="#617489" />
+          <stop offset="0.0989583" stopColor="#3E5670" />
+          <stop offset="1" stopColor="#0F1011" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_21433_9179"
@@ -447,8 +447,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="18.4353"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#617489" stop-opacity="0.22" />
-          <stop offset="1" stop-color="#0F1011" />
+          <stop stopColor="#617489" stopOpacity="0.22" />
+          <stop offset="1" stopColor="#0F1011" />
         </linearGradient>
         <radialGradient
           id="paint2_radial_21433_9179"
@@ -458,9 +458,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(15.142 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint3_linear_21433_9179"
@@ -470,8 +470,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint4_radial_21433_9179"
@@ -481,9 +481,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(12.2328 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint5_linear_21433_9179"
@@ -493,8 +493,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint6_radial_21433_9179"
@@ -504,9 +504,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(15.142 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint7_linear_21433_9179"
@@ -516,8 +516,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint8_radial_21433_9179"
@@ -527,9 +527,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(20.9598 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint9_linear_21433_9179"
@@ -539,8 +539,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint10_radial_21433_9179"
@@ -550,9 +550,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(18.0507 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint11_linear_21433_9179"
@@ -562,8 +562,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint12_radial_21433_9179"
@@ -573,9 +573,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(20.9598 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint13_linear_21433_9179"
@@ -585,8 +585,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint14_radial_21433_9179"
@@ -596,9 +596,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(18.0507 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint15_linear_21433_9179"
@@ -608,8 +608,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint16_radial_21433_9179"
@@ -619,9 +619,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(26.7782 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint17_linear_21433_9179"
@@ -631,8 +631,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint18_radial_21433_9179"
@@ -642,9 +642,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(23.869 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint19_linear_21433_9179"
@@ -654,8 +654,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint20_radial_21433_9179"
@@ -665,9 +665,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(26.7782 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint21_linear_21433_9179"
@@ -677,8 +677,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint22_radial_21433_9179"
@@ -688,9 +688,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(23.869 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint23_linear_21433_9179"
@@ -700,8 +700,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint24_radial_21433_9179"
@@ -711,9 +711,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(32.5966 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint25_linear_21433_9179"
@@ -723,8 +723,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint26_radial_21433_9179"
@@ -734,9 +734,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(29.6874 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint27_linear_21433_9179"
@@ -746,8 +746,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint28_radial_21433_9179"
@@ -757,9 +757,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(32.5966 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint29_linear_21433_9179"
@@ -769,8 +769,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint30_radial_21433_9179"
@@ -780,9 +780,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(29.6874 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint31_linear_21433_9179"
@@ -792,8 +792,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint32_radial_21433_9179"
@@ -803,9 +803,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(38.4144 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint33_linear_21433_9179"
@@ -815,8 +815,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint34_radial_21433_9179"
@@ -826,9 +826,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(35.5053 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint35_linear_21433_9179"
@@ -838,8 +838,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint36_radial_21433_9179"
@@ -849,9 +849,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(38.4144 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint37_linear_21433_9179"
@@ -861,8 +861,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint38_radial_21433_9179"
@@ -872,9 +872,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(35.5053 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint39_linear_21433_9179"
@@ -884,8 +884,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint40_radial_21433_9179"
@@ -895,9 +895,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(44.2328 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint41_linear_21433_9179"
@@ -907,8 +907,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint42_radial_21433_9179"
@@ -918,9 +918,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(41.3236 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint43_linear_21433_9179"
@@ -930,8 +930,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint44_radial_21433_9179"
@@ -941,9 +941,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(44.2328 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint45_linear_21433_9179"
@@ -953,8 +953,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint46_radial_21433_9179"
@@ -964,9 +964,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(41.3236 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint47_linear_21433_9179"
@@ -976,8 +976,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint48_radial_21433_9179"
@@ -987,9 +987,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(50.0507 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint49_linear_21433_9179"
@@ -999,8 +999,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint50_radial_21433_9179"
@@ -1010,9 +1010,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(47.142 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint51_linear_21433_9179"
@@ -1022,8 +1022,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint52_radial_21433_9179"
@@ -1033,9 +1033,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(50.0507 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint53_linear_21433_9179"
@@ -1045,8 +1045,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint54_radial_21433_9179"
@@ -1056,9 +1056,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(47.142 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint55_linear_21433_9179"
@@ -1068,8 +1068,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint56_radial_21433_9179"
@@ -1079,9 +1079,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(55.869 15.5211) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint57_linear_21433_9179"
@@ -1091,8 +1091,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="19.3246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint58_radial_21433_9179"
@@ -1102,9 +1102,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(52.9598 11.8848) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint59_linear_21433_9179"
@@ -1114,8 +1114,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="15.6883"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint60_radial_21433_9179"
@@ -1125,9 +1125,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(55.869 8.24838) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint61_linear_21433_9179"
@@ -1137,8 +1137,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="12.0519"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient
           id="paint62_radial_21433_9179"
@@ -1148,9 +1148,9 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(52.9598 4.61203) rotate(90) scale(4.14926)"
         >
-          <stop offset="0.283703" stop-color="#0F1011" />
-          <stop offset="0.817708" stop-color="#3E5670" />
-          <stop offset="0.974871" stop-color="#617489" />
+          <stop offset="0.283703" stopColor="#0F1011" />
+          <stop offset="0.817708" stopColor="#3E5670" />
+          <stop offset="0.974871" stopColor="#617489" />
         </radialGradient>
         <linearGradient
           id="paint63_linear_21433_9179"
@@ -1160,8 +1160,8 @@ export function BlakeLogoIcon({ className }: { className?: string }) {
           y2="8.41551"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.219025" stop-color="#384D63" stop-opacity="0" />
-          <stop offset="1" stop-color="#8BB4E0" stop-opacity="0.45" />
+          <stop offset="0.219025" stopColor="#384D63" stopOpacity="0" />
+          <stop offset="1" stopColor="#8BB4E0" stopOpacity="0.45" />
         </linearGradient>
       </defs>
     </svg>
