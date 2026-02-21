@@ -1388,7 +1388,7 @@ export function DataTable22() {
   });
 
   return (
-    <section className="py-32">
+    <section className="py-2">
       <div className="container">
         <div className="w-full">
           <div className="mb-8 text-left">

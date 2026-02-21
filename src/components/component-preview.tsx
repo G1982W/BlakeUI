@@ -4,17 +4,37 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import registry from "@/registry.json";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { Lock } from "lucide-react";
+import Link from "next/link";
 
 interface ComponentPreviewProps {
   name: string;
   children: React.ReactNode;
   className?: string;
+  /** When true, the Code tab shows a buy overlay instead of the full source. */
+  premium?: boolean;
 }
+
+const PREMIUM_OVERLAY_CONTENT = {
+  title: "Get Instant Access to the Code",
+  subtitle:
+    "Get instant access to this block and all 1350 other blocks, available to copy/paste or install via the shadcn CLI.",
+  list: [
+    "1193+ Shadcn blocks",
+    "1189+ Shadcn components",
+    "12 Next.js, Astro templates (Premium)",
+    "Figma UI Kit (Premium)",
+    "Lifetime updates & unlimited projects",
+  ],
+  ctaLabel: "Get access",
+  ctaHref: "/pricing",
+};
 
 export function ComponentPreview({
   name,
   children,
   className,
+  premium = false,
 }: ComponentPreviewProps) {
   const [tab, setTab] = React.useState<"preview" | "code">("preview");
   const [copied, setCopied] = React.useState(false);
@@ -22,10 +42,13 @@ export function ComponentPreview({
   const code = (registry as any)[name]?.source || "";
 
   const copyToClipboard = () => {
+    if (premium) return;
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const showPremiumOverlay = premium && tab === "code";
 
   return (
     <div className={cn("group my-4 flex flex-col space-y-2", className)}>
@@ -52,7 +75,11 @@ export function ComponentPreview({
         </div>
         <button
           onClick={copyToClipboard}
-          className="flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50"
+          disabled={premium}
+          className={cn(
+            "flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+            premium && "opacity-60",
+          )}
         >
           {copied ? "Copied!" : "Copy Code"}
         </button>
@@ -64,15 +91,60 @@ export function ComponentPreview({
             {children}
           </div>
         ) : (
-          <DynamicCodeBlock
-            lang="tsx"
-            code={code}
-            codeblock={{
-              title: undefined,
-              className:
-                "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
-            }}
-          />
+          <div
+            className={cn("relative min-h-[320px]", premium && "min-h-[520px]")}
+          >
+            <div
+              className={cn(
+                "transition-opacity",
+                showPremiumOverlay &&
+                  "pointer-events-none select-none opacity-30",
+              )}
+            >
+              <DynamicCodeBlock
+                lang="tsx"
+                code={code}
+                codeblock={{
+                  title: undefined,
+                  className:
+                    "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
+                }}
+              />
+            </div>
+            {showPremiumOverlay && (
+              <div className="absolute inset-0 flex items-center justify-center p-6">
+                <div className="w-full max-w-md rounded-xl border border-border bg-background/95 p-6 shadow-lg backdrop-blur-sm">
+                  <div className="mb-4 flex items-center justify-center gap-2 text-primary">
+                    <Lock className="size-5" />
+                    <span className="text-sm font-medium">Premium</span>
+                  </div>
+                  <h3 className="text-center text-lg font-semibold text-foreground">
+                    {PREMIUM_OVERLAY_CONTENT.title}
+                  </h3>
+                  <p className="mt-2 text-center text-sm text-muted-foreground">
+                    {PREMIUM_OVERLAY_CONTENT.subtitle}
+                  </p>
+                  <p className="mt-4 text-sm font-medium text-foreground">
+                    What you&apos;ll get:
+                  </p>
+                  <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
+                    {PREMIUM_OVERLAY_CONTENT.list.map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={PREMIUM_OVERLAY_CONTENT.ctaHref}
+                    className="mt-6 flex w-full items-center justify-center rounded-md border border-primary bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    {PREMIUM_OVERLAY_CONTENT.ctaLabel}
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>
