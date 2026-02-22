@@ -6,12 +6,13 @@ import registry from "@/registry.json";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import { Lock } from "lucide-react";
 import Link from "next/link";
+import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
 interface ComponentPreviewProps {
   name: string;
   children: React.ReactNode;
   className?: string;
-  /** When true, the Code tab shows a buy overlay instead of the full source. */
+  /** When true, the Code tab shows a buy overlay unless the user has an active subscription. */
   premium?: boolean;
 }
 
@@ -38,17 +39,23 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   const [tab, setTab] = React.useState<"preview" | "code">("preview");
   const [copied, setCopied] = React.useState(false);
+  const { isLoading: subscriptionLoading, hasActiveSubscription } =
+    useSubscriptionStatus();
 
   const code = (registry as any)[name]?.source || "";
 
   const copyToClipboard = () => {
-    if (premium) return;
+    if (premium && !hasActiveSubscription) return;
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const showPremiumOverlay = premium && tab === "code";
+  const showPremiumOverlay =
+    premium &&
+    tab === "code" &&
+    (subscriptionLoading || !hasActiveSubscription);
+  const disableCopy = premium && !hasActiveSubscription;
 
   return (
     <div className={cn("group my-4 flex flex-col space-y-2", className)}>
@@ -75,10 +82,10 @@ export function ComponentPreview({
         </div>
         <button
           onClick={copyToClipboard}
-          disabled={premium}
+          disabled={disableCopy}
           className={cn(
             "flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
-            premium && "opacity-60",
+            disableCopy && "opacity-60",
           )}
         >
           {copied ? "Copied!" : "Copy Code"}
@@ -94,28 +101,26 @@ export function ComponentPreview({
           <div
             className={cn("relative min-h-[320px]", premium && "min-h-[520px]")}
           >
-            {!showPremiumOverlay && (
-              <div
-                className={cn(
-                  "transition-opacity",
-                  showPremiumOverlay &&
-                    "pointer-events-none select-none opacity-30",
-                )}
-              >
-                <DynamicCodeBlock
-                  lang="tsx"
-                  code={code}
-                  codeblock={{
-                    title: undefined,
-                    className:
-                      "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
-                  }}
-                />
-              </div>
-            )}
+            <div
+              className={cn(
+                "transition-opacity",
+                showPremiumOverlay &&
+                  "pointer-events-none select-none opacity-30",
+              )}
+            >
+              <DynamicCodeBlock
+                lang="tsx"
+                code={code}
+                codeblock={{
+                  title: undefined,
+                  className:
+                    "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
+                }}
+              />
+            </div>
             {showPremiumOverlay && (
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                <div className="w-full max-w-md rounded-xl border border-border bg-background/95 p-6 shadow-lg backdrop-blur-sm">
+              <div className="absolute backdrop-blur-xs inset-0 flex items-center justify-center p-6">
+                <div className="w-full max-w-md rounded-xl border border-border bg-background/95 p-6 shadow-lg ">
                   <div className="mb-4 flex items-center justify-center gap-2 text-primary">
                     <Lock className="size-5" />
                     <span className="text-sm font-medium">Premium</span>

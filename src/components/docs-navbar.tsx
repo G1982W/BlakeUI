@@ -16,7 +16,8 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
-import { LogIn, LogOut } from "lucide-react";
+import { AppLink } from "@/components/ui/link";
+import { LogIn, LogOut, User as UserIcon } from "lucide-react";
 
 function DocsSearchButton({ className }: { className?: string }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
@@ -164,15 +165,24 @@ export function DocsNavbar() {
             <Github className="size-4 text-foreground" />
           </a>
           {user ? (
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={handleLogout}
-              className="gap-1.5"
-            >
-              <LogOut className="size-4" />
-              Logout
-            </Button>
+            <>
+              <AppLink
+                href="/profile"
+                className="inline-flex items-center gap-1.5 rounded-button border border-border-neutral bg-surface px-2 py-1 text-sm font-medium text-surface-foreground hover:shadow-[0px_2px_5px_0px_#40445214]"
+              >
+                <UserIcon className="size-4" />
+                Profile
+              </AppLink>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={handleLogout}
+                className="gap-1.5"
+              >
+                <LogOut className="size-4" />
+                Logout
+              </Button>
+            </>
           ) : (
             <Button
               variant="primary"

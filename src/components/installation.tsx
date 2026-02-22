@@ -1,13 +1,14 @@
+"use client";
+
 import {
-  CodeBlock,
   CodeBlockTab,
   CodeBlockTabs,
   CodeBlockTabsList,
   CodeBlockTabsTrigger,
-  Pre,
 } from "fumadocs-ui/components/codeblock";
 import { cn } from "@/lib/utils";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
 type InstallationProps = {
   dependencies?: string[];
@@ -16,6 +17,8 @@ type InstallationProps = {
   fileName: string;
   language?: string;
   className?: string;
+  /** When true, content is only shown to logged-in users with an active subscription. */
+  premium?: boolean;
 };
 
 function buildCommands(packages: string[]) {
@@ -42,7 +45,15 @@ export default function Installation({
   fileName,
   language = "tsx",
   className,
+  premium = false,
 }: InstallationProps) {
+  const { isLoading: subscriptionLoading, hasActiveSubscription } =
+    useSubscriptionStatus();
+
+  if (premium && (subscriptionLoading || !hasActiveSubscription)) {
+    return null;
+  }
+
   const packages = [
     ...dependencies,
     ...(useReactSlot ? ["@radix-ui/react-slot"] : []),

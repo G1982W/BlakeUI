@@ -1,19 +1,34 @@
-import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
+import { NextResponse } from "next/server";
+import Stripe from "stripe";
+import { createClient } from "@/lib/supabase/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!,
-    //  { apiVersion: "2026-01-28.clover" }
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: Request) {
-    const { priceId, successUrl, cancelUrl } = await req.json();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
-    const session = await stripe.checkout.sessions.create({
-        mode: 'payment',
-        line_items: [{ price: priceId, quantity: 1 }],
-        success_url: successUrl,
-        cancel_url: cancelUrl,
-    });
+  const { priceId, successUrl, cancelUrl } = await req.json();
+  if (!priceId || !successUrl || !cancelUrl) {
+    return NextResponse.json(
+      { error: "Missing priceId, successUrl, or cancelUrl" },
+      { status: 400 }
+    );
+  }
 
-    return NextResponse.json({ url: session.url });
+  const session = await stripe.checkout.sessions.create({
+    mode: "subscription",
+    line_items: [{ price: priceId, quantity: 1 }],
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    client_reference_id: user.id,
+    customer_email: user.email ?? undefined,
+  });
+
+  return NextResponse.json({ url: session.url });
 }

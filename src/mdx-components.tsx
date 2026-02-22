@@ -1,6 +1,7 @@
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { ComponentPreview } from "@/components/component-preview";
+import { PremiumOnly } from "@/components/premium-only";
 import { ComponentsGrid } from "@/components/components-grid";
 import { ToastDemo, ToastDemoButton } from "@/components/toast-demo";
 import { BannerDemoButtons, BannerDemoInline } from "@/components/banner-demo";
@@ -28,6 +29,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...components,
     p: (props) => <span {...props} />,
     ComponentPreview,
+    PremiumOnly,
     ComponentsGrid,
     ToastDemo,
     ToastDemoButton,
