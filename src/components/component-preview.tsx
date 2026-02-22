@@ -94,23 +94,25 @@ export function ComponentPreview({
           <div
             className={cn("relative min-h-[320px]", premium && "min-h-[520px]")}
           >
-            <div
-              className={cn(
-                "transition-opacity",
-                showPremiumOverlay &&
-                  "pointer-events-none select-none opacity-30",
-              )}
-            >
-              <DynamicCodeBlock
-                lang="tsx"
-                code={code}
-                codeblock={{
-                  title: undefined,
-                  className:
-                    "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
-                }}
-              />
-            </div>
+            {!showPremiumOverlay && (
+              <div
+                className={cn(
+                  "transition-opacity",
+                  showPremiumOverlay &&
+                    "pointer-events-none select-none opacity-30",
+                )}
+              >
+                <DynamicCodeBlock
+                  lang="tsx"
+                  code={code}
+                  codeblock={{
+                    title: undefined,
+                    className:
+                      "my-0 rounded-lg border bg-code-background shadow-none text-xs text-zinc-50 font-mono",
+                  }}
+                />
+              </div>
+            )}
             {showPremiumOverlay && (
               <div className="absolute inset-0 flex items-center justify-center p-6">
                 <div className="w-full max-w-md rounded-xl border border-border bg-background/95 p-6 shadow-lg backdrop-blur-sm">
@@ -137,7 +139,7 @@ export function ComponentPreview({
                   </ul>
                   <Link
                     href={PREMIUM_OVERLAY_CONTENT.ctaHref}
-                    className="mt-6 flex w-full items-center justify-center rounded-md border border-primary bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    className="mt-6 flex w-full items-center justify-center rounded-md border border-primary bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/95"
                   >
                     {PREMIUM_OVERLAY_CONTENT.ctaLabel}
                   </Link>

@@ -2643,6 +2643,92 @@
       "required": true
     }
   ],
+  "useDataTable": [
+    {
+      "name": "data",
+      "type": "TData[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "columns",
+      "type": "ColumnDef<TData, unknown>[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "getRowId",
+      "type": "((row: TData) => string)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "initialSorting",
+      "type": "SortingState",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "initialGlobalFilter",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "initialSelection",
+      "type": "RowSelectionState",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "enableRowSelection",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableRowActions": [
+    {
+      "name": "row",
+      "type": "Row<TData>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "schema",
+      "type": "ZodType<unknown, unknown, $ZodTypeInternals<unknown, unknown>>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "itemName",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "idField",
+      "type": "string",
+      "defaultValue": "id",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableColumnHeader": [
+    {
+      "name": "column",
+      "type": "Column<TData, TValue>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "",
+      "required": true
+    }
+  ],
+  "getOrderStatusMeta": [],
   "Dock": [
     {
       "name": "position",

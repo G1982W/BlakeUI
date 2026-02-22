@@ -1,12 +1,22 @@
 "use client";
 
-export function CheckoutButton() {
+import { Button } from "@/components/ui/button";
+
+interface CheckoutButtonProps {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export function CheckoutButton({
+  children = "Pay",
+  className,
+}: CheckoutButtonProps) {
   const handlePay = async () => {
     const res = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        priceId: "price_1T3IwjCteWMYrDNwgrDZ2GEJ",
+        priceId: "price_1T3e9WCteWMYrDNwbdQGtWDW",
         successUrl: `${window.location.origin}/payment/success`,
         cancelUrl: `${window.location.origin}/payment/cancel`,
       }),
@@ -16,13 +26,15 @@ export function CheckoutButton() {
   };
 
   return (
-    <button
-      className="whitespace-nowrap px-3 py-1 cursor-pointer bg-red-800 rounded-md text-white"
+    <Button
+      variant="secondary"
+      size="lg"
       type="button"
       onClick={handlePay}
+      className={className}
     >
-      Pay
-    </button>
+      {children}
+    </Button>
   );
 }
 // 5. Webhooks (recommended for production)

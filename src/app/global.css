@@ -138,7 +138,8 @@
     --border: #D7D7D0;
     /* --border: #dc0f0f; */
 
-    --primary: #482B6B;
+    /* --primary: #482B6B; */
+    --primary: #436283;
     --primary-foreground: #ffffff;
     --secondary: #ffffff;
     --secondary-foreground: #0f172a;
