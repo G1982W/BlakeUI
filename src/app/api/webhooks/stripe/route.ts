@@ -57,10 +57,10 @@ export async function POST(req: Request) {
     ) {
       return NextResponse.json({ received: true });
     }
-    const sub = await stripe.subscriptions.retrieve(
+    const sub = (await stripe.subscriptions.retrieve(
       session.subscription as string
-    );
-    const firstItem = sub.items.data[0];
+    )) as Stripe.Subscription;
+    const firstItem = sub.items.data[0] as Stripe.SubscriptionItem | undefined;
     const priceId = firstItem?.price?.id;
     const productId = firstItem?.price?.product as string;
     const periodStart = firstItem?.current_period_start;
@@ -96,7 +96,7 @@ export async function POST(req: Request) {
     });
   } else if (event.type === "customer.subscription.updated") {
     const sub = event.data.object as Stripe.Subscription;
-    const firstItem = sub.items.data[0];
+    const firstItem = sub.items.data[0] as Stripe.SubscriptionItem | undefined;
     const priceId = firstItem?.price?.id;
     const productId = firstItem?.price?.product as string;
     const periodStart = firstItem?.current_period_start;
