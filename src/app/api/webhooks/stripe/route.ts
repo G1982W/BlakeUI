@@ -60,8 +60,11 @@ export async function POST(req: Request) {
     const sub = await stripe.subscriptions.retrieve(
       session.subscription as string
     );
-    const priceId = sub.items.data[0]?.price?.id;
-    const productId = sub.items.data[0]?.price?.product as string;
+    const firstItem = sub.items.data[0];
+    const priceId = firstItem?.price?.id;
+    const productId = firstItem?.price?.product as string;
+    const periodStart = firstItem?.current_period_start;
+    const periodEnd = firstItem?.current_period_end;
     let productName = "";
     try {
       const product = await stripe.products.retrieve(productId);
@@ -77,8 +80,8 @@ export async function POST(req: Request) {
         stripe_price_id: priceId,
         product_name: productName,
         status: sub.status,
-        current_period_start: unixToISO(sub.current_period_start),
-        current_period_end: unixToISO(sub.current_period_end),
+        current_period_start: unixToISO(periodStart),
+        current_period_end: unixToISO(periodEnd),
         cancel_at_period_end: sub.cancel_at_period_end ?? false,
         updated_at: new Date().toISOString(),
       },
@@ -93,8 +96,11 @@ export async function POST(req: Request) {
     });
   } else if (event.type === "customer.subscription.updated") {
     const sub = event.data.object as Stripe.Subscription;
-    const priceId = sub.items.data[0]?.price?.id;
-    const productId = sub.items.data[0]?.price?.product as string;
+    const firstItem = sub.items.data[0];
+    const priceId = firstItem?.price?.id;
+    const productId = firstItem?.price?.product as string;
+    const periodStart = firstItem?.current_period_start;
+    const periodEnd = firstItem?.current_period_end;
     let productName = "";
     try {
       const product = await stripe.products.retrieve(productId);
@@ -115,8 +121,8 @@ export async function POST(req: Request) {
           stripe_price_id: priceId,
           product_name: productName,
           status: sub.status,
-          current_period_start: unixToISO(sub.current_period_start),
-          current_period_end: unixToISO(sub.current_period_end),
+          current_period_start: unixToISO(periodStart),
+          current_period_end: unixToISO(periodEnd),
           cancel_at_period_end: sub.cancel_at_period_end ?? false,
           updated_at: new Date().toISOString(),
         },
