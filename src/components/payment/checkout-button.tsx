@@ -16,7 +16,6 @@ export function CheckoutButton({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        priceId: "price_1T3e9WCteWMYrDNwbdQGtWDW",
         successUrl: `${window.location.origin}/payment/success`,
         cancelUrl: `${window.location.origin}/payment/cancel`,
       }),

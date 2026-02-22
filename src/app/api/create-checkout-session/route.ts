@@ -13,10 +13,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { priceId, successUrl, cancelUrl } = await req.json();
+  const body = await req.json().catch(() => ({}));
+  const priceId =
+    body.priceId ?? process.env.STRIPE_PRICE_ID;
+  const { successUrl, cancelUrl } = body;
   if (!priceId || !successUrl || !cancelUrl) {
     return NextResponse.json(
-      { error: "Missing priceId, successUrl, or cancelUrl" },
+      { error: "Missing priceId, successUrl, or cancelUrl. Set STRIPE_PRICE_ID in .env.local or pass priceId in the request body." },
       { status: 400 }
     );
   }
