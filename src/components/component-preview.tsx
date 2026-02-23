@@ -60,7 +60,7 @@ export function ComponentPreview({
   return (
     <div className={cn("group my-4 flex flex-col space-y-2", className)}>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 rounded-md border text-foreground bg-white p-1 text-xs">
+        <div className="flex items-center gap-1 rounded-md border text-foreground bg-code-background p-1 text-xs">
           <button
             onClick={() => setTab("preview")}
             className={cn(
