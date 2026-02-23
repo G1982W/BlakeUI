@@ -446,5 +446,9 @@ figure>pre {
     background-color: var(--code-background);
 }
 
+/* Sonner toast description: use theme foreground */
+.toaster [data-sonner-toast][data-styled] [data-description] {
+    color: var(--background);
+}
 
 @source "../components/**/*.{ts,tsx}";

@@ -5,13 +5,12 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const linkVariants = cva(
-  "inline-flex items-center text-brand gap-1 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 [aria-disabled=true]:pointer-events-none [aria-disabled=true]:opacity-50 [aria-disabled=true]:text-link-disabled [aria-disabled=true]:hover:text-link-disabled",
+  "inline-flex items-center text-foreground gap-1 px-1 py-1 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 [aria-disabled=true]:pointer-events-none [aria-disabled=true]:opacity-50 [aria-disabled=true]:text-link-disabled [aria-disabled=true]:hover:text-link-disabled",
   {
     variants: {
       variant: {
-        primary: " hover:text-brand/95 no-underline",
-        secondary:
-          " underline decoration-dotted underline-offset-4 hover:text-brand/95",
+        primary: "no-underline",
+        secondary: "underline decoration-dotted underline-offset-4",
       },
     },
     defaultVariants: {

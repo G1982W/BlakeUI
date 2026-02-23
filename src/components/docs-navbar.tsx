@@ -18,6 +18,7 @@ import type { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/link";
 import { LogIn, LogOut, User as UserIcon } from "lucide-react";
+import TwitterIcon from "@/components/icons/twitter";
 
 function DocsSearchButton({ className }: { className?: string }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
@@ -59,7 +60,7 @@ function ThemeModeSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
+        {/* <button
           type="button"
           className={cn(
             "inline-flex size-9 items-center justify-center rounded-md border text-foreground transition-colors",
@@ -74,7 +75,17 @@ function ThemeModeSelector() {
           ) : (
             <Laptop className="size-4" />
           )}
-        </button>
+        </button> */}
+
+        <Button variant="primary" size="sm">
+          {theme === "dark" ? (
+            <Moon className="size-4" />
+          ) : theme === "light" ? (
+            <Sun className="size-4" />
+          ) : (
+            <Laptop className="size-4" />
+          )}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={8}>
         <DropdownMenuItem onClick={() => setTheme("light")}>
@@ -126,44 +137,16 @@ export function DocsNavbar() {
     <div className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
         <div className="flex items-center gap-3">
-          {/* <Link href="/docs" className="text-sm font-semibold">
-            Blake UI
-          </Link> */}
           <DocsSearchButton className="hidden min-w-[350px] sm:inline-flex" />
         </div>
         <div className="flex items-center gap-2">
           <ThemeModeSelector />
-          <a
-            href="https://x.com/blakeui"
-            className={cn(
-              "inline-flex size-9 items-center justify-center rounded-md border text-foreground transition-colors",
-              "hover:border-foreground/20 hover:text-foreground",
-            )}
-            aria-label="Twitter"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <svg
-              aria-hidden="true"
-              className="size-4"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.637 7.584H.474l8.598-9.83L0 1.154h7.594l5.243 6.932zm-1.291 19.493h2.04L6.486 3.24H4.298z" />
-            </svg>
-          </a>
-          <a
-            href="https://github.com/blakeui"
-            className={cn(
-              "inline-flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors",
-              "hover:border-foreground/20 hover:text-foreground",
-            )}
-            aria-label="GitHub"
-            rel="noreferrer"
-            target="_blank"
-          >
+          <AppLink href="https://github.com/blakeui" target="_blank">
+            <TwitterIcon className="size-4 text-foreground" />
+          </AppLink>
+          <AppLink href="https://github.com/blakeui" target="_blank">
             <Github className="size-4 text-foreground" />
-          </a>
+          </AppLink>
           {user ? (
             <>
               <AppLink
@@ -184,15 +167,10 @@ export function DocsNavbar() {
               </Button>
             </>
           ) : (
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={handleLogin}
-              className="gap-1.5"
-            >
+            <AppLink href="/login" variant="primary" className="gap-1.5">
               <LogIn className="size-4" />
               Login
-            </Button>
+            </AppLink>
           )}
         </div>
       </div>
