@@ -1,15 +1,14 @@
 "use client";
 
 import * as React from "react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import type { ChartConfig } from "@/components/ui/chart";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import { cn } from "@/lib/utils";
 
 const data = [
   { month: "Jan", min: 10, max: 45, avg: 26 },
@@ -25,14 +24,28 @@ const chartConfig = {
   avg: { label: "Average", color: "var(--brand)" },
 } satisfies ChartConfig;
 
-export function ChartCard14() {
+export function ChartCard14({ className }: { className?: string }) {
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
+    <div
+      className={cn(
+        "rounded-lg border border-border bg-background p-4",
+        className,
+      )}
+    >
       <p className="mb-4 text-sm font-medium">Range with average</p>
       <ChartContainer config={chartConfig} className="h-[200px] w-full">
         <AreaChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-muted" vertical={false} />
-          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 12 }} />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            className="stroke-muted"
+            vertical={false}
+          />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tick={{ fontSize: 12 }}
+          />
           <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 12 }} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Area

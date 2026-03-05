@@ -108,6 +108,13 @@ export function ChartGroup14() {
             icon: Globe,
             positive: false,
           },
+          {
+            label: "Users",
+            value: "2,847",
+            change: "+8%",
+            icon: Users,
+            positive: true,
+          },
         ].map((stat) => (
           <Card key={stat.label}>
             <CardContent className="flex items-center justify-between p-3">

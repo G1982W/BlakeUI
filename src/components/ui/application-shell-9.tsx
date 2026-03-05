@@ -47,6 +47,7 @@ import {
   SidebarMenuSub,
   SidebarProvider,
 } from "@/components/ui/sidebar";
+import { BlakeLogoIcon } from "../blake-logo-icon";
 
 type SidebarModule = {
   id: string;
@@ -91,13 +92,7 @@ const fileTreeData: TreeItem[] = [
 ];
 
 function Logo({ className }: { className?: string }) {
-  return (
-    <img
-      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg"
-      alt="Logo"
-      className={cn("size-5 dark:invert", className)}
-    />
-  );
+  return <BlakeLogoIcon className={cn("size-5 dark:invert", className)} />;
 }
 
 function Tree({ item }: { item: TreeItem }) {
@@ -155,12 +150,8 @@ export function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
-                  <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg"
-                    alt="Shadcnblocks"
-                    className="size-5 invert dark:invert-0"
-                  />
+                <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
+                  <BlakeLogoIcon className="w-full h-full" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Shadcnblocks</span>
@@ -361,13 +352,7 @@ export function ApplicationShell9() {
   };
 
   return (
-    <SidebarProvider contained className="h-svh overflow-hidden">
-      <AppSidebar
-        activeModule={activeModule}
-        onModuleChange={handleModuleChange}
-        className="hidden md:flex"
-      />
-
+    <SidebarProvider contained className="h-svh overflow-auto w-full">
       <div className="flex h-full w-full flex-col md:hidden">
         <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-3">
           <div className="flex items-center gap-2">
@@ -600,107 +585,113 @@ export function ApplicationShell9() {
         </Drawer>
       </div>
 
-      <div className="hidden min-w-0 flex-1 flex-col overflow-hidden md:flex">
-        <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-4">
-          <nav className="flex items-center gap-1 text-sm">
-            <span className="font-medium">Shadcnblocks</span>
-            <ChevronRight className="size-4 text-muted-foreground" />
-            <span className="text-muted-foreground">my-project</span>
-          </nav>
-          <div className="flex items-center gap-2">
-            <Button variant="primary" size="sm" className="h-8 gap-1.5">
-              <Play className="size-4" />
-              <span>Preview</span>
-            </Button>
-            <Button variant="primary" size="sm" className="size-8 p-0">
-              <Plus className="size-4" />
-            </Button>
-            <Button variant="primary" size="sm" className="size-8 p-0">
-              <History className="size-4" />
-            </Button>
-            <Button
-              variant="primary"
-              size="sm"
-              className={cn("size-8 p-0", isChatOpen && "bg-muted")}
-              onClick={() => setIsChatOpen(!isChatOpen)}
-            >
-              <PanelRight className="size-4" />
-            </Button>
-          </div>
-        </header>
-
-        <div className="flex min-h-0 flex-1 overflow-hidden">
-          {renderSidebar()}
-
-          <SidebarInset className="min-h-0 flex-col overflow-hidden">
-            <div className="flex flex-1 overflow-hidden">
-              <div
-                className={cn(
-                  "flex flex-1 items-center justify-center bg-muted/30",
-                )}
+      <div className="hidden md:flex min-w-max h-full flex-1">
+        <AppSidebar
+          activeModule={activeModule}
+          onModuleChange={handleModuleChange}
+        />
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-4">
+            <nav className="flex items-center gap-1 text-sm">
+              <span className="font-medium">Shadcnblocks</span>
+              <ChevronRight className="size-4 text-muted-foreground" />
+              <span className="text-muted-foreground">my-project</span>
+            </nav>
+            <div className="flex items-center gap-2">
+              <Button variant="primary" size="sm" className="h-8 gap-1.5">
+                <Play className="size-4" />
+                <span>Preview</span>
+              </Button>
+              <Button variant="primary" size="sm" className="size-8 p-0">
+                <Plus className="size-4" />
+              </Button>
+              <Button variant="primary" size="sm" className="size-8 p-0">
+                <History className="size-4" />
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
+                className={cn("size-8 p-0", isChatOpen && "bg-muted")}
+                onClick={() => setIsChatOpen(!isChatOpen)}
               >
-                {!isChatOpen ? (
-                  <div className="flex flex-col items-center gap-4 text-center">
-                    <Logo className="size-16 opacity-30" />
-                    <div className="space-y-2">
-                      <h3 className="text-lg font-medium">Start building</h3>
-                      <p className="max-w-sm text-sm text-muted-foreground">
-                        Describe what you want to create and let AI help you
-                        build it
-                      </p>
+                <PanelRight className="size-4" />
+              </Button>
+            </div>
+          </header>
+
+          <div className="flex min-h-0 flex-1 overflow-hidden">
+            {renderSidebar()}
+
+            <SidebarInset className="min-h-0 flex-col overflow-hidden">
+              <div className="flex flex-1 overflow-hidden">
+                <div
+                  className={cn(
+                    "flex flex-1 items-center justify-center bg-muted/30",
+                  )}
+                >
+                  {!isChatOpen ? (
+                    <div className="flex flex-col items-center gap-4 text-center">
+                      <Logo className="size-16 opacity-30" />
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-medium">Start building</h3>
+                        <p className="max-w-sm text-sm text-muted-foreground">
+                          Describe what you want to create and let AI help you
+                          build it
+                        </p>
+                      </div>
+                      <Button
+                        onClick={() => setIsChatOpen(true)}
+                        className="gap-2"
+                      >
+                        <MessageSquare className="size-4" />
+                        Open Chat
+                      </Button>
                     </div>
-                    <Button
-                      onClick={() => setIsChatOpen(true)}
-                      className="gap-2"
-                    >
-                      <MessageSquare className="size-4" />
-                      Open Chat
-                    </Button>
+                  ) : (
+                    <Logo className="size-16 opacity-30" />
+                  )}
+                </div>
+
+                {isChatOpen && (
+                  <div className="flex w-[400px] shrink-0 flex-col border-l">
+                    <div className="flex h-10 items-center justify-between border-b px-4">
+                      <div className="flex items-center gap-2">
+                        <MessageSquare className="size-4" />
+                        <span className="text-sm font-medium">Chat</span>
+                      </div>
+                    </div>
+                    <ScrollArea className="flex-1 p-4">
+                      <div className="flex justify-end">
+                        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
+                          Build me a landing page for shadcnblocks with a hero
+                          section, features grid, and pricing table
+                        </div>
+                      </div>
+                    </ScrollArea>
+
+                    <div className="border-t p-3">
+                      <div className="rounded-lg border bg-background">
+                        <textarea
+                          placeholder="Describe what you want to build..."
+                          rows={3}
+                          className="w-full resize-none bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
+                        />
+                        <div className="flex items-center justify-between border-t px-3 py-2">
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span>Press Enter to send</span>
+                          </div>
+                          <Button size="sm" className="h-7 gap-1.5 px-3">
+                            <span>Send</span>
+                            <ChevronRight className="size-3" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  <Logo className="size-16 opacity-30" />
                 )}
               </div>
-
-              {isChatOpen && (
-                <div className="flex w-[400px] shrink-0 flex-col border-l">
-                  <div className="flex h-10 items-center justify-between border-b px-4">
-                    <div className="flex items-center gap-2">
-                      <MessageSquare className="size-4" />
-                      <span className="text-sm font-medium">Chat</span>
-                    </div>
-                  </div>
-                  <ScrollArea className="flex-1 p-4">
-                    <div className="flex justify-end">
-                      <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                        Build me a landing page for shadcnblocks with a hero
-                        section, features grid, and pricing table
-                      </div>
-                    </div>
-                  </ScrollArea>
-
-                  <div className="border-t p-3">
-                    <div className="rounded-lg border bg-background">
-                      <textarea
-                        placeholder="Describe what you want to build..."
-                        rows={3}
-                        className="w-full resize-none bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
-                      />
-                      <div className="flex items-center justify-between border-t px-3 py-2">
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span>Press Enter to send</span>
-                        </div>
-                        <Button size="sm" className="h-7 gap-1.5 px-3">
-                          <span>Send</span>
-                          <ChevronRight className="size-3" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </SidebarInset>
+            </SidebarInset>
+          </div>
         </div>
       </div>
     </SidebarProvider>

@@ -1,16 +1,15 @@
 "use client";
 
 import * as React from "react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Legend,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts";
 import type { ChartConfig } from "@/components/ui/chart";
-import { ChartContainer, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  ChartContainer,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import { cn } from "@/lib/utils";
 
 const data = [
   { month: "Jan", a: 1200, b: 800, c: 400 },
@@ -26,20 +25,55 @@ const chartConfig = {
   c: { label: "Series C", color: "var(--chart-3)" },
 } satisfies ChartConfig;
 
-export function ChartCard9() {
+export function ChartCard9({ className }: { className?: string }) {
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
+    <div
+      className={cn(
+        "rounded-lg border border-border bg-background p-4",
+        className,
+      )}
+    >
       <p className="mb-4 text-sm font-medium">Stacked composition</p>
       <ChartContainer config={chartConfig} className="h-[220px] w-full">
         <AreaChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-muted" vertical={false} />
-          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 12 }} />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            className="stroke-muted"
+            vertical={false}
+          />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tick={{ fontSize: 12 }}
+          />
           <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 12 }} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Legend content={<ChartLegendContent />} />
-          <Area type="monotone" dataKey="a" stackId="1" stroke="var(--chart-1)" fill="var(--chart-1)" fillOpacity={0.6} />
-          <Area type="monotone" dataKey="b" stackId="1" stroke="var(--chart-2)" fill="var(--chart-2)" fillOpacity={0.6} />
-          <Area type="monotone" dataKey="c" stackId="1" stroke="var(--chart-3)" fill="var(--chart-3)" fillOpacity={0.6} />
+          <Area
+            type="monotone"
+            dataKey="a"
+            stackId="1"
+            stroke="var(--chart-1)"
+            fill="var(--chart-1)"
+            fillOpacity={0.6}
+          />
+          <Area
+            type="monotone"
+            dataKey="b"
+            stackId="1"
+            stroke="var(--chart-2)"
+            fill="var(--chart-2)"
+            fillOpacity={0.6}
+          />
+          <Area
+            type="monotone"
+            dataKey="c"
+            stackId="1"
+            stroke="var(--chart-3)"
+            fill="var(--chart-3)"
+            fillOpacity={0.6}
+          />
         </AreaChart>
       </ChartContainer>
     </div>
