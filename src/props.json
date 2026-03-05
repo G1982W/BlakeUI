@@ -4737,6 +4737,13 @@
       "type": "((open: boolean) => void)",
       "description": "",
       "required": false
+    },
+    {
+      "name": "contained",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "When true, sidebar stays inside the provider instead of fixed to viewport",
+      "required": false
     }
   ],
   "SidebarRail": [
@@ -5011,9 +5018,21 @@
   ],
   "Textarea": [
     {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
       "name": "disabled",
       "type": "boolean",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
       "required": false
     },
     {

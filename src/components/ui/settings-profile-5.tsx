@@ -46,6 +46,8 @@ export function SettingsProfile5() {
                 onChange={(e) => setRole(e.target.value)}
               />
               <Textarea
+                heading="Bio"
+                description="A short bio about yourself."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 className="min-h-16"
