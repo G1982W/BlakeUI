@@ -1,0 +1,52 @@
+---
+title: Config 5
+description: Sectioned profile form with personal info, work details, and social links; avatar with upload button.
+base: base
+component: true
+---
+
+import { SettingsProfile2 } from "@/components/ui/settings-profile-2";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-profile-2" premium>
+  <SettingsProfile2 />
+</ComponentPreview>
+
+## Introduction
+
+**Config 5** is a comprehensive profile form:
+
+- **Avatar** at the top with a camera overlay button for upload.
+- **Personal Information**: Name, username (with @ prefix), and bio in a grid.
+- **Work**: Job title, company, location.
+- **Social Links**: Website, Twitter, LinkedIn, GitHub with platform icons.
+- **Actions**: Cancel and Save changes at the bottom.
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), and [Avatar](/docs/components/avatar). Good for professional or portfolio profiles where users maintain detailed public info.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-profile-2"]?.source ?? ""}
+  fileName="/components/ui/settings-profile-2.tsx"
+/>
+
+You need the Button, Input, Textarea, and Avatar components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsProfile2 } from "@/components/ui/settings-profile-2";
+
+<SettingsProfile2 />
+```
+
+Connect the form to your profile API and add photo upload and validation as needed.

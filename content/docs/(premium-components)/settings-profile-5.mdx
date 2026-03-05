@@ -1,0 +1,49 @@
+---
+title: Config 3
+description: Two-column profile editor with form on the left and live preview on the right showing how the profile will appear.
+base: base
+component: true
+---
+
+import { SettingsProfile5 } from "@/components/ui/settings-profile-5";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-profile-5" premium>
+  <SettingsProfile5 />
+</ComponentPreview>
+
+## Introduction
+
+**Config 3** provides a profile editor with live preview:
+
+- **Left column**: Two cards—Basic Information (avatar, name, username, role, bio, location) and Links (website, Twitter, LinkedIn, GitHub).
+- **Right column**: Sticky “Public view” preview that updates as the user types. Shows avatar, name, @username, role, location, bio, and social icon links.
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), [Avatar](/docs/components/avatar), and [Badge](/docs/components/badge). Ideal when users need immediate feedback on how their profile will look to others.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-profile-5"]?.source ?? ""}
+  fileName="/components/ui/settings-profile-5.tsx"
+/>
+
+You need the Button, Input, Textarea, Avatar, and Badge components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsProfile5 } from "@/components/ui/settings-profile-5";
+
+<SettingsProfile5 />
+```
+
+Hook the form state to your profile API and use the same data to render the live preview and save endpoint.

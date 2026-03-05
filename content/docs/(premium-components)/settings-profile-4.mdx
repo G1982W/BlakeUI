@@ -1,0 +1,51 @@
+---
+title: Config 4
+description: Full-page profile editor with sidebar navigation (Personal Info, Contact, Social, Preferences) and sticky save bar.
+base: base
+component: true
+---
+
+import { SettingsProfile4 } from "@/components/ui/settings-profile-4";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-profile-4" premium>
+  <SettingsProfile4 />
+</ComponentPreview>
+
+## Introduction
+
+**Config 4** is a full-page profile editing layout:
+
+- **Header**: Breadcrumb (Home / Profile) and “Profile settings” title.
+- **Sidebar**: Sections—Personal Info, Contact, Social Links, Preferences—with icons. Active section is highlighted.
+- **Main content**: The selected section in a card. Personal Info (avatar, name, username, bio), Contact (email, phone, location, website), Social (Twitter, LinkedIn, GitHub), Preferences (language, timezone selects).
+- **Sticky footer**: Cancel and Save buttons.
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), [Avatar](/docs/components/avatar), and [Native Select](/docs/components/native-select). Suited to dedicated account or profile settings pages.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-profile-4"]?.source ?? ""}
+  fileName="/components/ui/settings-profile-4.tsx"
+/>
+
+You need the Button, Input, Textarea, Avatar, and Native Select components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsProfile4 } from "@/components/ui/settings-profile-4";
+
+<SettingsProfile4 />
+```
+
+Wire each section to your profile data and add save/cancel handlers in the footer.

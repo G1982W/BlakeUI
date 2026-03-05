@@ -1,0 +1,53 @@
+---
+title: Config 2
+description: Multi-step profile setup wizard with progress indicator, Basic Info, Contact, Social, and Review steps.
+base: base
+component: true
+---
+
+import { SettingsProfile6 } from "@/components/ui/settings-profile-6";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-profile-6" premium>
+  <SettingsProfile6 />
+</ComponentPreview>
+
+## Introduction
+
+**Config 2** is a profile setup wizard:
+
+- **Progress indicator** at the top: four steps (Basic Info, Contact, Social, Review) with numbers; completed steps show a checkmark.
+- **Step 1 – Basic Info**: Avatar, name, username, bio.
+- **Step 2 – Contact**: Email, phone.
+- **Step 3 – Social**: Website and social links.
+- **Step 4 – Review**: Summary of entered data.
+- **Navigation**: “Skip to review” on step 1, “Back” and “Continue” (or “Complete Setup” on the last step).
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), and [Avatar](/docs/components/avatar). Good for onboarding or guided profile completion.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-profile-6"]?.source ?? ""}
+  fileName="/components/ui/settings-profile-6.tsx"
+/>
+
+You need the Button, Input, Textarea, and Avatar components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsProfile6 } from "@/components/ui/settings-profile-6";
+
+<SettingsProfile6 />
+```
+
+Connect the wizard to your profile API and add validation or submission on “Complete Setup” as needed.

@@ -1,0 +1,50 @@
+---
+title: Config 1
+description: Compact profile card with inline editing—click a field to edit, save with Enter or the check button.
+base: base
+component: true
+---
+
+import { SettingsProfile7 } from "@/components/ui/settings-profile-7";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-profile-7" premium>
+  <SettingsProfile7 />
+</ComponentPreview>
+
+## Introduction
+
+**Config 1** is a compact inline-edit profile card:
+
+- **Avatar** on the left with a small edit overlay for photo.
+- **Fields** (Name, Username, Email, Bio) stacked with labels and current values. Empty values show “Not set.”
+- **Inline edit**: Hover to show a pencil icon; click to turn the value into an input. Use the check button or Enter to save, X or Escape to cancel. Only one field is editable at a time.
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), and [Avatar](/docs/components/avatar). Suited to dashboards or sidebars where users need quick profile edits without a full form.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-profile-7"]?.source ?? ""}
+  fileName="/components/ui/settings-profile-7.tsx"
+/>
+
+You need the Button, Input, and Avatar components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsProfile7 } from "@/components/ui/settings-profile-7";
+
+<SettingsProfile7 />
+```
+
+Wire the component to your profile data and save API; the block keeps local state for the demo.
