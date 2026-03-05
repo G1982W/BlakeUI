@@ -1,0 +1,49 @@
+---
+title: Field Map 2
+description: Data import UI with empty table state, file browse trigger, and dialog to map source columns to target fields with combobox and preview.
+base: base
+component: true
+---
+
+import { FieldMapping1 } from "@/components/ui/field-mapping-1";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="field-mapping-1" premium>
+  <FieldMapping1 />
+</ComponentPreview>
+
+## Introduction
+
+**Field Map 2** is a column-to-field mapping flow for imports (e.g. CSV):
+
+- **Empty state**: Table with a “No data imported” message and an overlay with a “Browse files” button that opens the mapping dialog.
+- **Mapping dialog**: Source columns listed as badges on the left; each maps to a target field via a combobox. A preview panel shows sample values for the selected/focused column. Header includes Exit and Save.
+
+Uses [Button](/docs/components/button), [Badge](/docs/components/badge), [Combobox](/docs/components/combobox), [Dialog](/docs/components/dialog), and [Table](/docs/components/table). Suited to ETL, CRM imports, or spreadsheet integrations where users map file columns to app fields.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["field-mapping-1"]?.source ?? ""}
+  fileName="/components/ui/field-mapping-1.tsx"
+/>
+
+You need the Button, Badge, Combobox, Dialog, and Table components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { FieldMapping1 } from "@/components/ui/field-mapping-1";
+
+<FieldMapping1 />
+```
+
+Wire “Browse files” to your file input and parser, and feed source columns and target field options from your schema. Connect Save to your import API. You can also install the official block with `npx shadcn add @shadcnblocks/field-mapping1` (requires `SHADCNBLOCKS_API_KEY` in your environment).

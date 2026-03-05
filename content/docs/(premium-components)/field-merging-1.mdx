@@ -1,0 +1,49 @@
+---
+title: Field Map 1
+description: User table with row selection and merge dialog to combine duplicate records by choosing field values per source into a unified entry.
+base: base
+component: true
+---
+
+import { FieldMerging1 } from "@/components/ui/field-merging-1";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="field-merging-1" premium>
+  <FieldMerging1 />
+</ComponentPreview>
+
+## Introduction
+
+**Field Map 1** is a duplicate-record merge flow:
+
+- **Table**: Users with avatars, name, company, role, email, and row checkboxes. Select two or more rows to enable the Merge button.
+- **Merge dialog**: Selected records shown as source cards; for each field (name, company, role, email) choose which record’s value to keep via radio buttons. A merged preview updates as you select.
+
+Uses [Button](/docs/components/button), [Checkbox](/docs/components/checkbox), [Avatar](/docs/components/avatar), [Badge](/docs/components/badge), [Radio Group](/docs/components/radio-group), [Dialog](/docs/components/dialog), and [Table](/docs/components/table). Suited to CRM-style deduplication where users pick the best value per field from duplicates.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["field-merging-1"]?.source ?? ""}
+  fileName="/components/ui/field-merging-1.tsx"
+/>
+
+You need the Button, Checkbox, Avatar, Badge, Radio Group, Dialog, and Table components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { FieldMerging1 } from "@/components/ui/field-merging-1";
+
+<FieldMerging1 />
+```
+
+Replace the sample user data with your API and wire the “Merge records” action to your backend. You can also install the official block with `npx shadcn add @shadcnblocks/field-merging1` (requires `SHADCNBLOCKS_API_KEY` in your environment).
