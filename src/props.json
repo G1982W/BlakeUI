@@ -189,6 +189,13 @@
       "required": false
     }
   ],
+  "Card": [],
+  "CardHeader": [],
+  "CardFooter": [],
+  "CardTitle": [],
+  "CardAction": [],
+  "CardDescription": [],
+  "CardContent": [],
   "ChartContainer": [
     {
       "name": "config",
@@ -2987,6 +2994,42 @@
       "required": true
     }
   ],
+  "DataTable14": [
+    {
+      "name": "data",
+      "type": "OrderFilterRow[]",
+      "defaultValue": "[\n  { id: \"1\", orderId: \"ORD-101\", customer: \"Alice\", orderStatus: \"Processing\", paymentStatus: \"Paid\", total: \"$120\" },\n  { id: \"2\", orderId: \"ORD-102\", customer: \"Bob\", orderStatus: \"Shipped\", paymentStatus: \"Paid\", total: \"$85\" },\n  { id: \"3\", orderId: \"ORD-103\", customer: \"Carol\", orderStatus: \"Pending\", paymentStatus: \"Pending\", total: \"$200\" },\n  { id: \"4\", orderId: \"ORD-104\", customer: \"Dave\", orderStatus: \"Delivered\", paymentStatus: \"Paid\", total: \"$56\" },\n  { id: \"5\", orderId: \"ORD-105\", customer: \"Eve\", orderStatus: \"Processing\", paymentStatus: \"Failed\", total: \"$340\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable16": [
+    {
+      "name": "data",
+      "type": "OrderRow[]",
+      "defaultValue": "[\n  { id: \"1\", orderId: \"ORD-001\", customer: \"Acme Corp\", total: \"$384.92\", status: \"Processing\", shipping: \"Express\", tracking: \"1Z999AA10123456784\", warehouse: \"WH-North\", assigned: \"Jane\" },\n  { id: \"2\", orderId: \"ORD-002\", customer: \"Beta Inc\", total: \"$156.00\", status: \"Shipped\", shipping: \"Standard\", tracking: \"1Z999AA10987654321\", warehouse: \"WH-South\", assigned: \"John\" },\n  { id: \"3\", orderId: \"ORD-003\", customer: \"Gamma LLC\", total: \"$892.50\", status: \"Pending\", shipping: \"Express\", tracking: \"-\", warehouse: \"WH-North\", assigned: \"Jane\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable20": [
+    {
+      "name": "data",
+      "type": "ResizeRow[]",
+      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", availability: \"Available\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable21": [
+    {
+      "name": "data",
+      "type": "ColumnManageRow[]",
+      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", availability: \"Available\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
   "useDataTable": [
     {
       "name": "data",
@@ -3073,6 +3116,60 @@
     }
   ],
   "getOrderStatusMeta": [],
+  "DataTable26": [
+    {
+      "name": "data",
+      "type": "TransactionRow[]",
+      "defaultValue": "[\n  { id: \"1\", date: \"2024-01-15\", description: \"Payment received\", amount: \"$1,200.00\", status: \"Completed\", category: \"Income\" },\n  { id: \"2\", date: \"2024-01-14\", description: \"Office supplies\", amount: \"-$89.50\", status: \"Pending\", category: \"Expense\" },\n  { id: \"3\", date: \"2024-01-13\", description: \"Subscription\", amount: \"-$29.99\", status: \"Completed\", category: \"Expense\" },\n  { id: \"4\", date: \"2024-01-12\", description: \"Invoice #1024\", amount: \"$450.00\", status: \"Completed\", category: \"Income\" },\n  { id: \"5\", date: \"2024-01-11\", description: \"Refund\", amount: \"$50.00\", status: \"Completed\", category: \"Income\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable27": [
+    {
+      "name": "data",
+      "type": "VirtualRow[]",
+      "defaultValue": "Array.from({ length: 20 }, (_, i) => ({\n  id: String(i + 1),\n  name: `Record ${i + 1}`,\n  status: i % 3 === 0 ? \"Active\" : i % 3 === 1 ? \"Pending\" : \"Completed\",\n  role: i % 2 === 0 ? \"Admin\" : \"User\",\n  amount: `$${(i + 1) * 100}`,\n}))",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable29": [
+    {
+      "name": "data",
+      "type": "EditableRow[]",
+      "defaultValue": "[\n  { id: \"1\", name: \"Item A\", quantity: 10, status: \"Active\" },\n  { id: \"2\", name: \"Item B\", quantity: 25, status: \"Pending\" },\n  { id: \"3\", name: \"Item C\", quantity: 5, status: \"Active\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable32": [
+    {
+      "name": "data",
+      "type": "MultiSortRow[]",
+      "defaultValue": "[\n  { id: \"1\", name: \"Alice\", status: \"Active\", role: \"Admin\", value: \"100\" },\n  { id: \"2\", name: \"Bob\", status: \"Pending\", role: \"User\", value: \"200\" },\n  { id: \"3\", name: \"Carol\", status: \"Active\", role: \"Editor\", value: \"150\" },\n  { id: \"4\", name: \"Dave\", status: \"Inactive\", role: \"User\", value: \"80\" },\n  { id: \"5\", name: \"Eve\", status: \"Active\", role: \"Admin\", value: \"300\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable4": [
+    {
+      "name": "data",
+      "type": "InventoryRow[]",
+      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", price: \"$29.99\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", price: \"$49.99\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", price: \"$99.00\", availability: \"Available\" },\n  { id: \"4\", sku: \"SKU-004\", name: \"Gadget X\", type: \"Product\", stock: \"Out\", price: \"$19.99\", availability: \"Unavailable\" },\n  { id: \"5\", sku: \"SKU-005\", name: \"Bundle Y\", type: \"Bundle\", stock: \"In stock\", price: \"$149.00\", availability: \"Available\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable5": [
+    {
+      "name": "data",
+      "type": "InventoryRow[]",
+      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", price: \"$29.99\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", price: \"$49.99\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", price: \"$99.00\", availability: \"Available\" },\n  { id: \"4\", sku: \"SKU-004\", name: \"Gadget X\", type: \"Product\", stock: \"Out\", price: \"$19.99\", availability: \"Unavailable\" },\n  { id: \"5\", sku: \"SKU-005\", name: \"Bundle Y\", type: \"Bundle\", stock: \"In stock\", price: \"$149.00\", availability: \"Available\" },\n]",
+      "description": "",
+      "required": false
+    }
+  ],
   "Dialog": [],
   "DialogPortal": [],
   "DialogOverlay": [
@@ -3912,6 +4009,202 @@
     }
   ],
   "ListView": [],
+  "Login4": [
+    {
+      "name": "logo",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Log in",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGoogle",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFacebook",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGitHub",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "((email: string, password: string, rememberMe: boolean) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "rememberMeDefault",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signUpHref",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forgotPasswordHref",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login6": [
+    {
+      "name": "logo",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGoogle",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "((email: string, password: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signUpHref",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forgotPasswordHref",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login7": [
+    {
+      "name": "logo",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onGoogle",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "((email: string, password: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login9": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Log In",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.shadcnblocks.com\",\n    src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg\",\n    alt: \"shadcnblocks logo\",\n    title: \"shadcnblocks.com\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "googleText",
+      "type": "string",
+      "defaultValue": "Continue with Google",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "githubText",
+      "type": "string",
+      "defaultValue": "Continue with GitHub",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "linkedInText",
+      "type": "string",
+      "defaultValue": "Continue with LinkedIn",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "emailText",
+      "type": "string",
+      "defaultValue": "Continue with email",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "New to shadcnblocks?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "NativeSelect": [
     {
       "name": "disabled",
@@ -4087,6 +4380,127 @@
   ],
   "Skeleton": [],
   "Toaster": [],
+  "StatsCard3": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue target",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "$18,240",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "defaultValue": "$25,000",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "percent",
+      "type": "number",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard4": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "current",
+      "type": "string",
+      "defaultValue": "$24,800",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "previous",
+      "type": "string",
+      "defaultValue": "$22,100",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "currentLabel",
+      "type": "string",
+      "defaultValue": "This month",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "previousLabel",
+      "type": "string",
+      "defaultValue": "Last month",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard6": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "total",
+      "type": "string",
+      "defaultValue": "$24,800",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "BreakdownItem[]",
+      "defaultValue": "[\n    { label: \"Subscription\", value: \"$18,200\", percent: 73 },\n    { label: \"One-time\", value: \"$4,200\", percent: 17 },\n    { label: \"Add-ons\", value: \"$2,400\", percent: 10 },\n  ]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard7": [
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "3.2 GB",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "percent",
+      "type": "number",
+      "defaultValue": "72",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "Storage used",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard8": [
+    {
+      "name": "status",
+      "type": "\"warning\" | \"critical\" | \"healthy\"",
+      "defaultValue": "healthy",
+      "description": "",
+      "required": false
+    }
+  ],
   "Switch": [
     {
       "name": "asChild",

@@ -22,6 +22,7 @@ import { FormDemo } from "@/components/ui/form-demo";
 import { ChartGridDemo } from "@/components/ui/chart-demo";
 import { ListViewDemo } from "@/components/list-view-demo";
 import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
+import { Login4Demo } from "@/components/login-4-demo";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -49,5 +50,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ChartGridDemo,
     ListViewDemo,
     ButtonVariantShowcase,
+    Login4Demo,
   } as MDXComponents;
 }

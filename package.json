@@ -30,6 +30,7 @@
     "react-day-picker": "^9.14.0",
     "react-dom": "^19.2.3",
     "react-hook-form": "^7.53.2",
+    "react-icons": "^5.6.0",
     "recharts": "2.15.4",
     "sonner": "^2.0.7",
     "stripe": "^20.3.1",
@@ -39,7 +40,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
-    "@types/fs-extra": "^2.15.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.0.10",
     "@types/react": "^19.2.9",
