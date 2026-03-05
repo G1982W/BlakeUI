@@ -1,0 +1,49 @@
+---
+title: Config Members 3
+description: Vertical member list with avatars, role badges, search, help link, and invite dialog with dropdown actions.
+base: base
+component: true
+---
+
+import { SettingsMembers2 } from "@/components/ui/settings-members-2";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-members-2" premium>
+  <SettingsMembers2 />
+</ComponentPreview>
+
+## Introduction
+
+**Config Members 3** is a list-based members view:
+
+- **Header**: “Members” title, subheading with a “Learn more” help link, search input, and Invite button.
+- **List**: Each row shows avatar, name, email, role badge, and a three-dot menu (Change role, Remove). Invite dialog includes email and role selector.
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Badge](/docs/components/badge), [Dropdown Menu](/docs/components/dropdown-menu), [Dialog](/docs/components/dialog), and [Native Select](/docs/components/native-select). Compact and suitable for smaller teams or when a table is not needed.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-members-2"]?.source ?? ""}
+  fileName="/components/ui/settings-members-2.tsx"
+/>
+
+You need the Button, Input, Avatar, Badge, Dropdown Menu, Dialog, and Native Select components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsMembers2 } from "@/components/ui/settings-members-2";
+
+<SettingsMembers2 />
+```
+
+Wire search to filter the list and connect invite and dropdown actions to your API.

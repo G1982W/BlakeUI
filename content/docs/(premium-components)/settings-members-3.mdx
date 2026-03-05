@@ -1,0 +1,49 @@
+---
+title: Config Members 1
+description: Responsive card grid of team members with avatars, role badges, join dates, and dropdown actions. Invite dialog.
+base: base
+component: true
+---
+
+import { SettingsMembers3 } from "@/components/ui/settings-members-3";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-members-3" premium>
+  <SettingsMembers3 />
+</ComponentPreview>
+
+## Introduction
+
+**Config Members 1** displays team members in a card grid:
+
+- **Header**: “Team members” title and Invite button that opens a dialog (email input, role selector).
+- **Cards**: Each card shows avatar, name, email, color-coded role badge (Admin, Member, Viewer), join date, and a three-dot menu (Send email, Change role, Remove).
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Badge](/docs/components/badge), [Dropdown Menu](/docs/components/dropdown-menu), [Dialog](/docs/components/dialog), and [Native Select](/docs/components/native-select). Suited to team/workspace settings where a visual, scannable layout is preferred.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-members-3"]?.source ?? ""}
+  fileName="/components/ui/settings-members-3.tsx"
+/>
+
+You need the Button, Input, Avatar, Badge, Dropdown Menu, Dialog, and Native Select components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsMembers3 } from "@/components/ui/settings-members-3";
+
+<SettingsMembers3 />
+```
+
+Replace the static member list with data from your API and wire the invite dialog and dropdown actions to your backend.

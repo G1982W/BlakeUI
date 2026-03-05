@@ -1,0 +1,50 @@
+---
+title: Config Members 4
+description: Members table with search, role filter popover, invite dialog (bulk emails), and status badges (Active, Pending).
+base: base
+component: true
+---
+
+import { SettingsMembers1 } from "@/components/ui/settings-members-1";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="settings-members-1" premium>
+  <SettingsMembers1 />
+</ComponentPreview>
+
+## Introduction
+
+**Config Members 4** is a table-based team management UI:
+
+- **Toolbar**: Search input, role filter popover (Admin, Editor, Viewer checkboxes), and Invite button.
+- **Invite dialog**: Textarea for bulk email addresses and role selector.
+- **Table**: Columns for Name, Email, Role, and Status. Status uses badges (e.g. Active, Pending).
+
+Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), [Badge](/docs/components/badge), [Checkbox](/docs/components/checkbox), [Popover](/docs/components/popover), [Dialog](/docs/components/dialog), [Native Select](/docs/components/native-select), and [Table](/docs/components/table). Suited to settings pages that need search, filtering, and bulk invite.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["settings-members-1"]?.source ?? ""}
+  fileName="/components/ui/settings-members-1.tsx"
+/>
+
+You need the Button, Input, Textarea, Badge, Checkbox, Popover, Dialog, Native Select, and Table components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { SettingsMembers1 } from "@/components/ui/settings-members-1";
+
+<SettingsMembers1 />
+```
+
+Connect search and role filters to table data and wire the invite dialog (e.g. bulk invite API) and status to your backend.
