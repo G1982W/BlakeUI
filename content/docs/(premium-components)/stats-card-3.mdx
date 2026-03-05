@@ -1,0 +1,55 @@
+---
+title: Stats Card 6
+description: Metric card showing progress toward a goal with a progress bar and target value.
+base: base
+component: true
+---
+
+import { StatsCard3 } from "@/components/ui/stats-card-3";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-3" premium>
+  <StatsCard3 />
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 6** is a goal-tracking metric card:
+
+- **Value**: Current value with optional unit (e.g. currency).
+- **Progress bar**: Horizontal bar showing percentage toward the target; capped at 100%.
+- **Helper text**: Percentage complete and target amount below the bar.
+- **Use case**: Revenue targets, quota progress, OKRs.
+
+Uses Card. Progress is implemented with a simple div bar; you can swap in a Progress component if available.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["stats-card-3"]?.source ?? ""}
+  fileName="/components/ui/stats-card-3.tsx"
+/>
+
+Requires Card.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard3 } from "@/components/ui/stats-card-3";
+
+<StatsCard3
+  title="Revenue target"
+  value="$18,240"
+  target="$25,000"
+/>
+```
+
+For custom percentage (e.g. when value/target are not easily parsed), pass `percent={73}`.

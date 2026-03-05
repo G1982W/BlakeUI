@@ -1,0 +1,48 @@
+---
+title: Stats Card 3
+description: Metric card with a mini donut chart showing percentage completion alongside the value.
+base: base
+component: true
+---
+
+import { StatsCard7 } from "@/components/ui/stats-card-7";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-7" premium>
+  <StatsCard7 />
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 3** combines a mini donut with a value display:
+
+- **Donut**: Percentage fill with the ring; thin ring for a compact look.
+- **Value and label**: Main value and context (e.g. "72% of quota") beside the donut.
+- **Use case**: Quota, storage, or capacity metrics where both absolute value and percentage matter.
+
+Uses Card, ChartContainer, and Recharts Pie.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["stats-card-7"]?.source ?? ""}
+  fileName="/components/ui/stats-card-7.tsx"
+/>
+
+Requires Card, Chart component, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard7 } from "@/components/ui/stats-card-7";
+
+<StatsCard7 value="3.2 GB" percent={72} label="Storage used" />
+```

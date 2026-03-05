@@ -1,0 +1,54 @@
+---
+title: Stats Card 2
+description: Metric card with a color-coded status indicator (healthy, warning, or critical).
+base: base
+component: true
+---
+
+import { StatsCard8 } from "@/components/ui/stats-card-8";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-8" premium>
+  <div className="grid gap-4 sm:grid-cols-3">
+    <StatsCard8 status="healthy" />
+    <StatsCard8 status="warning" />
+    <StatsCard8 status="critical" />
+  </div>
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 2** is a metric card with a status indicator:
+
+- **Status**: Color-coded badge with icon—healthy (green), warning (yellow), or critical (red).
+- **Layout**: Muted title, bold metric value, then status badge with icon and label.
+- **Use case**: Operational metrics (uptime, error rates) where health thresholds matter.
+
+Uses Card and lucide-react icons.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["lucide-react"]}
+  code={registry["stats-card-8"]?.source ?? ""}
+  fileName="/components/ui/stats-card-8.tsx"
+/>
+
+Requires Card. Pass `status="healthy" | "warning" | "critical"`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard8 } from "@/components/ui/stats-card-8";
+
+<StatsCard8 status="healthy" />
+<StatsCard8 status="warning" />
+<StatsCard8 status="critical" />
+```

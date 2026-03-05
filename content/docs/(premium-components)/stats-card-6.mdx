@@ -1,0 +1,56 @@
+---
+title: Stats Card 4
+description: Metric card showing a total value with a breakdown list of contributing segments below.
+base: base
+component: true
+---
+
+import { StatsCard6 } from "@/components/ui/stats-card-6";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-6" premium>
+  <StatsCard6 />
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 4** shows a total with a breakdown list:
+
+- **Total**: Bold total value at the top.
+- **Breakdown**: List of segments with colored dot, label, value, and optional percentage.
+- **Use case**: Revenue by source, users by plan, or any segmented total.
+
+Uses Card. No extra dependencies.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["stats-card-6"]?.source ?? ""}
+  fileName="/components/ui/stats-card-6.tsx"
+/>
+
+Requires Card.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard6 } from "@/components/ui/stats-card-6";
+
+<StatsCard6
+  title="Revenue"
+  total="$24,800"
+  items={[
+    { label: "Subscription", value: "$18,200", percent: 73 },
+    { label: "One-time", value: "$4,200", percent: 17 },
+    { label: "Add-ons", value: "$2,400", percent: 10 },
+  ]}
+/>
+```
