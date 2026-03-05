@@ -1,0 +1,55 @@
+---
+title: Login Page 3
+description: Compact login form with email and password, sign-in and Google buttons, sign-up and forgot password links.
+base: base
+component: true
+---
+
+import { Login6 } from "@/components/ui/login-6";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="login-6" premium>
+  <Login6 logo={<span className="text-lg font-semibold">Logo</span>} />
+</ComponentPreview>
+
+## Introduction
+
+**Login Page 3** is a compact auth block:
+
+- **Logo and copy**: Optional logo; “Sign in” and short description.
+- **Google**: “Sign in with Google” then OR divider.
+- **Email + password**: Labeled fields and “Sign in” button.
+- **Links**: Forgot password and “No account? Sign up” below.
+
+Uses Button and Input.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["login-6"]?.source ?? ""}
+  fileName="/components/ui/login-6.tsx"
+/>
+
+Requires Button and Input.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Login6 } from "@/components/ui/login-6";
+
+<Login6
+  logo={<YourLogo />}
+  onGoogle={() => {}}
+  onSubmit={(email, password) => {}}
+  signUpHref="/signup"
+  forgotPasswordHref="/forgot-password"
+/>
+```

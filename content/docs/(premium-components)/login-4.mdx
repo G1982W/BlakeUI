@@ -1,0 +1,60 @@
+---
+title: Login Page 4
+description: Login form with email and password, Remember me checkbox, Google/Facebook/GitHub, forgot password and signup links.
+base: base
+component: true
+---
+
+import { Login4 } from "@/components/ui/login-4";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="login-4" premium>
+  <Login4 logo={<span className="text-lg font-semibold">Logo</span>} onGoogle={() => {}} onGitHub={() => {}} />
+</ComponentPreview>
+
+## Introduction
+
+**Login Page 4** includes credentials and optional social login:
+
+- **Logo and title**: Optional logo; configurable “Log in” heading.
+- **Email + password**: Labeled inputs.
+- **Remember me**: Checkbox and “Forgot password?” link.
+- **Log in**: Primary submit button.
+- **OR + social**: Optional Google, Facebook, and/or GitHub buttons (only shown if callbacks are passed).
+- **Sign up**: Link at the bottom.
+
+Uses Button, Input, and Checkbox.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["login-4"]?.source ?? ""}
+  fileName="/components/ui/login-4.tsx"
+/>
+
+Requires Button, Input, and Checkbox.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Login4 } from "@/components/ui/login-4";
+
+<Login4
+  logo={<YourLogo />}
+  title="Log in"
+  onGoogle={() => {}}
+  onFacebook={() => {}}
+  onGitHub={() => {}}
+  onSubmit={(email, password, rememberMe) => {}}
+  signUpHref="/signup"
+  forgotPasswordHref="/forgot-password"
+/>
+```
