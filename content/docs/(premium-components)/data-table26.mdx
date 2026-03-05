@@ -1,0 +1,49 @@
+---
+title: Data Table 6
+description: Transaction table with sticky columns, horizontal scroll navigation buttons, sortable headers, and row selection.
+base: base
+component: true
+---
+
+import { DataTable26 } from "@/components/ui/data-table26";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table26" premium>
+  <DataTable26 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 6** is for wide financial data:
+
+- **Sticky columns**: Date and description stay fixed on the left while scrolling horizontally.
+- **Scroll buttons**: Left/right buttons to scroll the table.
+- **Sortable**: Click headers to sort.
+- **Row selection**: Checkbox column; status badges for payment/transaction status.
+
+Uses Table, Button, Checkbox, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table26"]?.source ?? ""}
+  fileName="/components/ui/data-table26.tsx"
+/>
+
+Requires Table, Button, Checkbox, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable26 } from "@/components/ui/data-table26";
+
+<DataTable26 data={transactionRows} />
+```

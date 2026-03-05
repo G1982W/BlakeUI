@@ -1,0 +1,51 @@
+---
+title: Data Table 5
+description: Data table for large datasets with fixed-height scroll, sortable columns, row selection, and row action menus.
+base: base
+component: true
+---
+
+import { DataTable27 } from "@/components/ui/data-table27";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table27" premium>
+  <DataTable27 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 5** is built for many rows:
+
+- **Fixed height**: Scrollable body with sticky header.
+- **Sortable columns**: Click headers to sort.
+- **Row selection**: Checkbox column.
+- **Row actions**: Three-dot menu per row (Edit, View, Copy ID).
+
+For true virtualization (only visible rows in the DOM), add @tanstack/react-virtual and render rows in a virtualizer.
+
+Uses Table, Button, Checkbox, DropdownMenu, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table27"]?.source ?? ""}
+  fileName="/components/ui/data-table27.tsx"
+/>
+
+Requires Table, Button, Checkbox, DropdownMenu, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable27 } from "@/components/ui/data-table27";
+
+<DataTable27 data={records} />
+```

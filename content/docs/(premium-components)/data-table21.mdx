@@ -1,0 +1,48 @@
+---
+title: Data Table 7
+description: Data table with column header menus for sorting and hiding columns, plus availability badges.
+base: base
+component: true
+---
+
+import { DataTable21 } from "@/components/ui/data-table21";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table21" premium>
+  <DataTable21 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 7** adds column management:
+
+- **Header dropdown**: Each column header has a menu with sort ascending/descending and hide/show column.
+- **Visibility**: Toggle column visibility from the header menu.
+- **Sortable**: Sort from the same menu or by clicking the header.
+
+Uses Table, Button, DropdownMenu, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table21"]?.source ?? ""}
+  fileName="/components/ui/data-table21.tsx"
+/>
+
+Requires Table, Button, DropdownMenu, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable21 } from "@/components/ui/data-table21";
+
+<DataTable21 data={inventoryRows} />
+```

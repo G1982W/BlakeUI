@@ -1,0 +1,51 @@
+---
+title: Data Table 10
+description: Data table with tabbed order status filters, button-style payment filters, global search, and full pagination.
+base: base
+component: true
+---
+
+import { DataTable14 } from "@/components/ui/data-table14";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table14" premium>
+  <DataTable14 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 10** combines multiple filters and pagination:
+
+- **Tabs**: Filter by order status (All, Processing, Shipped, Pending, Delivered) with counts.
+- **Button filters**: Payment status (All, Paid, Pending, Failed).
+- **Global search**: Search input filters across columns.
+- **Pagination**: Page size selector, previous/next, and row range display.
+
+Uses Table, Button, Input, Tabs, NativeSelect, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table14"]?.source ?? ""}
+  fileName="/components/ui/data-table14.tsx"
+/>
+
+Requires Table, Button, Input, Tabs, NativeSelect, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable14 } from "@/components/ui/data-table14";
+
+<DataTable14 data={orderRows} />
+```
+
+Replace with your order data (orderId, customer, orderStatus, paymentStatus, total).

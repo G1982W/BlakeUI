@@ -1,0 +1,51 @@
+---
+title: Data Table 9
+description: Data table with expandable rows revealing order details (shipping, tracking, warehouse, assigned), sortable columns, and row actions.
+base: base
+component: true
+---
+
+import { DataTable16 } from "@/components/ui/data-table16";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table16" premium>
+  <DataTable16 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 9** uses expandable rows:
+
+- **Expand**: Chevron on each row toggles a detail panel below (shipping, tracking, warehouse, assigned).
+- **Row selection**: Checkbox column.
+- **Sortable**: Click headers to sort.
+- **Row actions**: Three-dot menu per row.
+
+Uses Table, Button, Checkbox, DropdownMenu, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table16"]?.source ?? ""}
+  fileName="/components/ui/data-table16.tsx"
+/>
+
+Requires Table, Button, Checkbox, DropdownMenu, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable16 } from "@/components/ui/data-table16";
+
+<DataTable16 data={orderRows} />
+```
+
+Ensure each row has optional fields (e.g. shipping, tracking, warehouse, assigned) for the expanded content.

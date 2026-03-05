@@ -1,0 +1,50 @@
+---
+title: Data Table 3
+description: Data table with multi-column sorting via popover, sort priority management, row selection, and optional pinned columns.
+base: base
+component: true
+---
+
+import { DataTable32 } from "@/components/ui/data-table32";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table32" premium>
+  <DataTable32 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 3** supports multi-sort and row selection:
+
+- **Sort popover**: Add, remove, and reorder sort rules; toggle ascending/descending per rule.
+- **Row selection**: Checkbox column to select rows.
+- **Apply**: Sort rules applied when you click Apply in the popover.
+
+Uses Table, Button, Checkbox, Popover, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table32"]?.source ?? ""}
+  fileName="/components/ui/data-table32.tsx"
+/>
+
+Requires Table, Button, Checkbox, Popover, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable32 } from "@/components/ui/data-table32";
+
+<DataTable32 data={rows} />
+```
+
+Replace sample data with your own; extend the sort popover to support drag-and-drop priority if needed.

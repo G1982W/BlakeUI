@@ -1,0 +1,50 @@
+---
+title: Data Table 4
+description: Data table with inline cell editing (double-click), sortable columns, and dropdown for status.
+base: base
+component: true
+---
+
+import { DataTable29 } from "@/components/ui/data-table29";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table29" premium>
+  <DataTable29 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 4** supports inline editing:
+
+- **Double-click to edit**: Name and quantity cells switch to inputs on double-click; blur or Enter saves.
+- **Status**: Dropdown menu to change status (Active, Pending, Inactive).
+- **Sortable**: Column headers sort the data.
+
+Uses Table, Button, Input, DropdownMenu, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table29"]?.source ?? ""}
+  fileName="/components/ui/data-table29.tsx"
+/>
+
+Requires Table, Button, Input, DropdownMenu, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable29 } from "@/components/ui/data-table29";
+
+<DataTable29 data={editableRows} />
+```
+
+Use controlled data and an `onChange` callback if you need to persist edits to a server.

@@ -1,0 +1,48 @@
+---
+title: Data Table 8
+description: Data table with resizable columns via drag handles, sortable headers, and availability badges.
+base: base
+component: true
+---
+
+import { DataTable20 } from "@/components/ui/data-table20";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table20" premium>
+  <DataTable20 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 8** supports resizable columns:
+
+- **Resize handle**: Drag the vertical handle on the right edge of a header to change column width.
+- **Sortable**: Click headers to sort.
+- **Badges**: Availability shown as secondary badges.
+
+Uses Table, Button, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table20"]?.source ?? ""}
+  fileName="/components/ui/data-table20.tsx"
+/>
+
+Requires Table, Button, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable20 } from "@/components/ui/data-table20";
+
+<DataTable20 data={inventoryRows} />
+```
