@@ -1,0 +1,51 @@
+---
+title: Charts Group 3
+description: Full dashboard with preset date buttons, custom date range picker, stats row, and multiple chart cards that respond to date selection.
+base: base
+component: true
+---
+
+import { ChartGroup12 } from "@/components/ui/chart-group-12";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-12" premium>
+  <ChartGroup12 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts Group 3** is a complete dashboard section:
+
+- **Date controls**: Preset buttons (7d, 30d, 90d) and custom date range picker.
+- **Stats row**: Four metric cards (revenue, orders, conversion, avg. order).
+- **Bento grid**: Area chart, donut chart, quick stats card, and horizontal bar chart.
+- **Responsive**: Grid collapses on smaller screens; all sections can react to date range.
+
+Uses Chart, Card, Button, Popover, Calendar, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts", "date-fns", "react-day-picker"]}
+  code={registry["chart-group-12"]?.source ?? ""}
+  fileName="/components/ui/chart-group-12.tsx"
+/>
+
+Requires Chart, Card, Popover, Calendar, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup12 } from "@/components/ui/chart-group-12";
+
+<ChartGroup12 />
+```
+
+Wire the preset and custom date range to filter your data and update stats and charts.

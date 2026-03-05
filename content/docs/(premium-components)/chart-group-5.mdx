@@ -1,0 +1,50 @@
+---
+title: Charts Group 5
+description: Year-over-year comparison with a dual-line chart and summary card showing totals and growth percentage.
+base: base
+component: true
+---
+
+import { ChartGroup5 } from "@/components/ui/chart-group-5";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-5" premium>
+  <ChartGroup5 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts Group 5** is a period-over-period comparison layout:
+
+- **Dual-line chart**: Current year (solid) vs previous year (dashed), two-thirds width.
+- **Summary card**: Totals for both periods and calculated growth percentage (e.g. +8.2%).
+- **Layout**: Stacks on mobile with chart on top.
+
+Totals and growth are derived from the chart data. Uses Chart, Card, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-group-5"]?.source ?? ""}
+  fileName="/components/ui/chart-group-5.tsx"
+/>
+
+Requires Chart, Card, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup5 } from "@/components/ui/chart-group-5";
+
+<ChartGroup5 />
+```
+
+Replace the sample data array with your current and previous period series; the summary card updates from the same data.

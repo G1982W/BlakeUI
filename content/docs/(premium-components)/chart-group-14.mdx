@@ -1,0 +1,53 @@
+---
+title: Charts Group 2
+description: Full analytics bento dashboard with date presets, stat cards with icons and badges, charts, top pages list, and active users.
+base: base
+component: true
+---
+
+import { ChartGroup14 } from "@/components/ui/chart-group-14";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-14" premium>
+  <ChartGroup14 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts Group 2** is a full analytics bento dashboard:
+
+- **Header**: Select dropdown for date presets and calendar button for custom ranges.
+- **Stat cards**: Colored icons and change badges (e.g. +12%, -3%).
+- **Revenue chart**: Area chart spanning two columns.
+- **Traffic channels**: Donut chart with session distribution.
+- **Top pages**: Ranked list with view counts; "View all" link.
+- **Active users**: Avatars with "View all" link.
+
+Uses Chart, Card, NativeSelect, Popover, Calendar, Avatar, Badge, Button, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts", "date-fns", "react-day-picker"]}
+  code={registry["chart-group-14"]?.source ?? ""}
+  fileName="/components/ui/chart-group-14.tsx"
+/>
+
+Requires Chart, Card, NativeSelect, Popover, Calendar, Avatar, Badge, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup14 } from "@/components/ui/chart-group-14";
+
+<ChartGroup14 />
+```
+
+Connect the date select and calendar to your data range; replace top pages and active users with real data.

@@ -1,0 +1,52 @@
+---
+title: Charts Group 1
+description: Business analytics bento with date navigation, compare toggle, export menu, and switchable chart views in a bento grid.
+base: base
+component: true
+---
+
+import { ChartGroup15 } from "@/components/ui/chart-group-15";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-15" premium>
+  <ChartGroup15 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts Group 1** is a business analytics dashboard:
+
+- **Header**: Date range with navigation arrows, compare toggle, and export dropdown.
+- **Stats row**: Key metrics (revenue, profit, orders).
+- **Main chart**: Tabs to switch between revenue, profit, and orders visualizations.
+- **Device breakdown**: Donut chart with center text.
+- **Bento grid**: Responsive layout with multiple chart types.
+
+Uses Chart, Tabs, Button, DropdownMenu, Popover, Calendar, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts", "date-fns", "react-day-picker"]}
+  code={registry["chart-group-15"]?.source ?? ""}
+  fileName="/components/ui/chart-group-15.tsx"
+/>
+
+Requires Chart, Card, Tabs, Button, DropdownMenu, Popover, Calendar, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup15 } from "@/components/ui/chart-group-15";
+
+<ChartGroup15 />
+```
+
+Wire the date navigation and compare toggle to your data and date state as needed.

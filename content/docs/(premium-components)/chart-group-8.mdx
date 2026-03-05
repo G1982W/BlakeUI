@@ -1,0 +1,51 @@
+---
+title: Charts Group 4
+description: Bento-style grid with four chart types—area, donut, horizontal bar, and vertical bar—in varying card sizes.
+base: base
+component: true
+---
+
+import { ChartGroup8 } from "@/components/ui/chart-group-8";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-8" premium>
+  <ChartGroup8 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts Group 4** is a bento grid of mixed charts:
+
+- **Area chart**: Time series in a two-column card.
+- **Donut chart**: Distribution with legend in a single-column card.
+- **Horizontal bar chart**: Category values in a two-column card.
+- **Vertical bar chart**: Values by category in a single-column card.
+
+Layout is responsive: two columns on tablet, single column on mobile. Uses Chart, Card, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-group-8"]?.source ?? ""}
+  fileName="/components/ui/chart-group-8.tsx"
+/>
+
+Requires Chart, Card, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup8 } from "@/components/ui/chart-group-8";
+
+<ChartGroup8 />
+```
+
+Replace the sample data in each chart with your own datasets.
