@@ -1,0 +1,50 @@
+---
+title: Charts 2
+description: Radar (spider) chart for multi-attribute comparison with a polygon per series.
+base: base
+component: true
+---
+
+import { ChartCard20 } from "@/components/ui/chart-card-20";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-20" premium>
+  <ChartCard20 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 2** is a radar chart:
+
+- **Axes**: One axis per dimension (e.g. Speed, Quality, Support, Design, Docs).
+- **Polygon**: Filled shape showing values from center to edge; tooltips on hover.
+- **Card**: Wrapped in a bordered card with a title.
+
+Good for skill profiles, product comparisons, or any multi-dimensional comparison. Uses [Chart](/docs/components/chart) and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-card-20"]?.source ?? ""}
+  fileName="/components/ui/chart-card-20.tsx"
+/>
+
+You need the Chart component and `recharts`. Optional: `npx shadcn add @shadcnblocks/chart-card20`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard20 } from "@/components/ui/chart-card-20";
+
+<ChartCard20 />
+```
+
+Replace the sample data with your dimensions and values.

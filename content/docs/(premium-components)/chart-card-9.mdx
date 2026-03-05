@@ -1,0 +1,50 @@
+---
+title: Charts 5
+description: Stacked area chart showing multiple series and composition over time with legend.
+base: base
+component: true
+---
+
+import { ChartCard9 } from "@/components/ui/chart-card-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-9" premium>
+  <ChartCard9 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 5** is a stacked area chart:
+
+- **Layers**: Multiple series stacked (e.g. Series A, B, C) with distinct colors.
+- **Legend**: Labels below the chart; tooltips show all series at each point.
+- **Card**: Bordered card with title.
+
+Good for composition over time (traffic, revenue by product). Uses [Chart](/docs/components/chart) and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-card-9"]?.source ?? ""}
+  fileName="/components/ui/chart-card-9.tsx"
+/>
+
+You need the Chart component and `recharts`. Optional: `npx shadcn add @shadcnblocks/chart-card9`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard9 } from "@/components/ui/chart-card-9";
+
+<ChartCard9 />
+```
+
+Replace the sample data with your time series and series keys.

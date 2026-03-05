@@ -1,0 +1,50 @@
+---
+title: Charts 4
+description: Range area chart with a min/max band and an average line overlay.
+base: base
+component: true
+---
+
+import { ChartCard14 } from "@/components/ui/chart-card-14";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-14" premium>
+  <ChartCard14 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 4** is a range area chart:
+
+- **Band**: Shaded area between min and max over time.
+- **Average**: Dashed line for the average (or central tendency).
+- **Tooltips**: Min, max, and average on hover.
+
+Good for ranges (e.g. response times, temperature, price spread). Uses [Chart](/docs/components/chart) and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-card-14"]?.source ?? ""}
+  fileName="/components/ui/chart-card-14.tsx"
+/>
+
+You need the Chart component and `recharts`. Optional: `npx shadcn add @shadcnblocks/chart-card14`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard14 } from "@/components/ui/chart-card-14";
+
+<ChartCard14 />
+```
+
+Replace the sample data with your time series (min, max, avg).

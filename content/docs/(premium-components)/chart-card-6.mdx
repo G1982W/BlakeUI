@@ -1,0 +1,50 @@
+---
+title: Charts 6
+description: Multi-line chart comparing two series (e.g. current vs previous period) with solid and dashed lines and legend.
+base: base
+component: true
+---
+
+import { ChartCard6 } from "@/components/ui/chart-card-6";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-6" premium>
+  <ChartCard6 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 6** is a multi-line comparison chart:
+
+- **Lines**: Two series (e.g. current period solid, previous period dashed) with distinct colors.
+- **Legend**: Labels below the chart; tooltips show both values at each point.
+- **Card**: Bordered card with title.
+
+Good for period-over-period or year-over-year comparison. Uses [Chart](/docs/components/chart) and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-card-6"]?.source ?? ""}
+  fileName="/components/ui/chart-card-6.tsx"
+/>
+
+You need the Chart component and `recharts`. Optional: `npx shadcn add @shadcnblocks/chart-card6`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard6 } from "@/components/ui/chart-card-6";
+
+<ChartCard6 />
+```
+
+Replace the sample data with your time series and series keys.

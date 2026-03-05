@@ -1,0 +1,50 @@
+---
+title: Charts 3
+description: Radial bar chart with concentric rings for categorical comparison and legend.
+base: base
+component: true
+---
+
+import { ChartCard19 } from "@/components/ui/chart-card-19";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-19" premium>
+  <ChartCard19 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 3** is a radial bar chart:
+
+- **Rings**: Concentric bars, one per category, with length proportional to value.
+- **Legend**: Labels and colors for each category; tooltips on hover.
+- **Card**: Bordered card with title.
+
+Useful for share-of-whole (e.g. browser share, segments). Uses [Chart](/docs/components/chart) and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-card-19"]?.source ?? ""}
+  fileName="/components/ui/chart-card-19.tsx"
+/>
+
+You need the Chart component and `recharts`. Optional: `npx shadcn add @shadcnblocks/chart-card19`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard19 } from "@/components/ui/chart-card-19";
+
+<ChartCard19 />
+```
+
+Replace the sample data with your categories and values.

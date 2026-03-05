@@ -1,0 +1,49 @@
+---
+title: Charts 1
+description: Bullet chart showing actual value against a target with colored performance ranges (poor, satisfactory, good).
+base: base
+component: true
+---
+
+import { ChartCard26 } from "@/components/ui/chart-card-26";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-card-26" premium>
+  <ChartCard26 />
+</ComponentPreview>
+
+## Introduction
+
+**Charts 1** is a bullet chart for KPIs:
+
+- **Ranges**: Background zones (e.g. poor / satisfactory / good) with distinct colors.
+- **Actual**: Horizontal bar showing the current value.
+- **Target**: Marker (e.g. triangle) for the target value.
+- **Legend**: Actual, target, and range labels.
+
+Compact layout for dashboards where you need actual vs target with qualitative context. You can replace the static values with props and wire to your data.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["chart-card-26"]?.source ?? ""}
+  fileName="/components/ui/chart-card-26.tsx"
+/>
+
+No extra dependencies. Optional: use `npx shadcn add @shadcnblocks/chart-card26` (requires `SHADCNBLOCKS_API_KEY`).
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartCard26 } from "@/components/ui/chart-card-26";
+
+<ChartCard26 />
+```
