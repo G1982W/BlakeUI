@@ -13,7 +13,10 @@ const NavigationMenu = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Root
     ref={ref}
-    className={cn("relative z-10 flex max-w-max flex-1 items-center justify-center", className)}
+    className={cn(
+      "relative z-10 flex max-w-max flex-1 items-center justify-center",
+      className,
+    )}
     {...props}
   >
     {children}
@@ -30,7 +33,7 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     className={cn(
       "group flex flex-1 list-none items-center justify-center space-x-1",
-      className
+      className,
     )}
     {...props}
   />
@@ -65,7 +68,7 @@ const NavigationMenuContent = React.forwardRef<
     ref={ref}
     className={cn(
       "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 left-0 top-0 w-full md:absolute md:w-auto",
-      className
+      className,
     )}
     {...props}
   />
@@ -82,7 +85,7 @@ const NavigationMenuViewport = React.forwardRef<
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-md border shadow-md md:w-(--radix-navigation-menu-viewport-width)",
-        className
+        className,
       )}
       ref={ref}
       {...props}
@@ -92,9 +95,7 @@ const NavigationMenuViewport = React.forwardRef<
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;
 
-export {
-  navigationMenuTriggerStyle,
-} from "@/lib/navigation-menu-styles";
+export { navigationMenuTriggerStyle } from "@/lib/navigation-menu-styles";
 export {
   NavigationMenu,
   NavigationMenuList,

@@ -14,6 +14,7 @@ interface ComponentPreviewProps {
   className?: string;
   /** When true, the Code tab shows a buy overlay unless the user has an active subscription. */
   premium?: boolean;
+  previewClassName?: string;
 }
 
 const PREMIUM_OVERLAY_CONTENT = {
@@ -35,6 +36,7 @@ export function ComponentPreview({
   name,
   children,
   className,
+  previewClassName,
   premium = false,
 }: ComponentPreviewProps) {
   const [tab, setTab] = React.useState<"preview" | "code">("preview");
@@ -92,9 +94,19 @@ export function ComponentPreview({
         </button>
       </div>
 
-      <div className="relative overflow-hidden rounded-lg border bg-code-background">
+      <div
+        className={cn(
+          "relative rounded-lg border bg-code-background",
+          tab === "preview" ? "overflow-visible" : "overflow-hidden",
+        )}
+      >
         {tab === "preview" ? (
-          <div className="flex min-h-[200px] w-full items-center justify-center p-10 ring-offset-background transition-colors">
+          <div
+            className={cn(
+              "flex w-full items-center justify-center p-10 ring-offset-background transition-colors",
+              previewClassName,
+            )}
+          >
             {children}
           </div>
         ) : (

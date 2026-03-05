@@ -26,20 +26,30 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-export function Navbar1() {
+import { cn } from "@/lib/utils";
+
+export function Navbar1({ className }: { className?: string }) {
   return (
-    <nav className="sticky top-0 z-40 flex h-14 items-center border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
+    <nav
+      className={cn(
+        "sticky top-0 z-40 flex h-14 items-center border-b border-border bg-background/95 backdrop-blur",
+        className,
+      )}
+    >
+      <div
+        className={cn(
+          "mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6",
+        )}
+      >
         <a href="#" className="text-lg font-semibold">
           Brand
         </a>
-
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="gap-1">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Products</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 w-[280px]">
+                <ul className="grid  gap-3 p-4 w-[280px] ">
                   <li>
                     <NavigationMenuLink asChild>
                       <a
@@ -106,7 +116,6 @@ export function Navbar1() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-
         <div className="flex items-center gap-2">
           <Button variant="primary" size="sm" className="hidden sm:inline-flex">
             Log in
