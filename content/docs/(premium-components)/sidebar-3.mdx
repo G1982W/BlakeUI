@@ -1,0 +1,52 @@
+---
+title: Sidebar 2
+description: Sidebar with multiple labeled navigation groups (Overview, Projects, Team, Workspace) and footer utilities.
+base: base
+component: true
+---
+
+import { Sidebar3 } from "@/components/ui/sidebar-3";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="sidebar-3" premium>
+  <Sidebar3 />
+</ComponentPreview>
+
+## Introduction
+
+**Side Sheet 2** organizes navigation into labeled groups:
+
+- **Overview**: Dashboard, Tasks.
+- **Projects**: Active, Archived.
+- **Team**: Members, Sprints.
+- **Workspace**: Integrations.
+- **Footer**: Help and Settings links.
+
+Main area includes a simple breadcrumb (Home / Dashboard). Ideal for apps with many nav items across different sections.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["sidebar-3"]?.source ?? ""}
+  fileName="/components/ui/sidebar-3.tsx"
+/>
+
+You need the Button component in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Sidebar3 } from "@/components/ui/sidebar-3";
+
+<Sidebar3 />;
+```
+
+Replace group labels and items with your own structure. Connect breadcrumb to your router.

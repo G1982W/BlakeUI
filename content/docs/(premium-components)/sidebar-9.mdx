@@ -1,0 +1,50 @@
+---
+title: Sidebar 1
+description: Collapsible sidebar that shrinks to icon-only rail, with nav links and settings in the footer.
+base: base
+component: true
+---
+
+import { Sidebar9 } from "@/components/ui/sidebar-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="sidebar-9" premium>
+  <Sidebar9 />
+</ComponentPreview>
+
+## Introduction
+
+**Side Sheet 1** is a simple sidebar layout with:
+
+- **Collapsible rail**: Toggle to expand (full labels) or collapse (icons only). Logo/brand and collapse button in the header.
+- **Nav links**: Dashboard, Projects, Team with icons.
+- **Footer**: Settings link.
+
+Uses [Button](/docs/components/button). Suited to apps that need a compact side navigation that can collapse to save space.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["sidebar-9"]?.source ?? ""}
+  fileName="/components/ui/sidebar-9.tsx"
+/>
+
+You need the Button component in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Sidebar9 } from "@/components/ui/sidebar-9";
+
+<Sidebar9 />;
+```
+
+Replace nav items and links with your routes. Wire the collapse state to layout or persist it if needed.

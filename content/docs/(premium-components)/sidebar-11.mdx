@@ -1,0 +1,50 @@
+---
+title: Sidebar 4
+description: Sidebar with collapsible nav group and user block (avatar + dropdown) in the footer.
+base: base
+component: true
+---
+
+import { Sidebar11 } from "@/components/ui/sidebar-11";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="sidebar-11" premium>
+  <Sidebar11 />
+</ComponentPreview>
+
+## Introduction
+
+**Side Sheet 4** provides:
+
+- **Collapsible nav**: Single “Navigation” section (Dashboard, Projects, Team) that expands and collapses.
+- **User footer**: Avatar, name, and email in a button that opens a dropdown (Profile, Settings, Log out).
+- **Main area**: Breadcrumb and content.
+
+Uses [Button](/docs/components/button), [Avatar](/docs/components/avatar), [Dropdown Menu](/docs/components/dropdown-menu), and [Collapsible](/docs/components/collapsible). Suited to app shells that need a compact sidebar with user menu.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["sidebar-11"]?.source ?? ""}
+  fileName="/components/ui/sidebar-11.tsx"
+/>
+
+You need the Button, Avatar, Dropdown Menu, and Collapsible components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Sidebar11 } from "@/components/ui/sidebar-11";
+
+<Sidebar11 />;
+```
+
+Replace nav items and user dropdown entries with your routes and account actions.

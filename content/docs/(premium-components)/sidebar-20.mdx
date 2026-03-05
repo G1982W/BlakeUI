@@ -1,0 +1,50 @@
+---
+title: Sidebar 3
+description: Sidebar with collapsible sections (Dashboard, Docs), breadcrumb in main area, and separator.
+base: base
+component: true
+---
+
+import { Sidebar20 } from "@/components/ui/sidebar-20";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="sidebar-20" premium>
+  <Sidebar20 />
+</ComponentPreview>
+
+## Introduction
+
+**Side Sheet 3** includes:
+
+- **Collapsible sections**: Dashboard (Overview, Analytics) and Docs (Getting started, API) with expand/collapse triggers.
+- **Separator** between nav and Settings.
+- **Main area**: Breadcrumb (Home / Dashboard / Overview) and content.
+
+Uses [Button](/docs/components/button) and [Collapsible](/docs/components/collapsible). Good for doc-style or dashboard layouts with grouped links.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["sidebar-20"]?.source ?? ""}
+  fileName="/components/ui/sidebar-20.tsx"
+/>
+
+You need the Button and Collapsible components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Sidebar20 } from "@/components/ui/sidebar-20";
+
+<Sidebar20 />;
+```
+
+Replace sections and breadcrumb segments with your routes and content.

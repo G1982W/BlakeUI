@@ -1,0 +1,51 @@
+---
+title: Sidebar 5
+description: Sidebar with collapsible labeled sections, separators, and user dropdown in the footer.
+base: base
+component: true
+---
+
+import { Sidebar10 } from "@/components/ui/sidebar-10";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="sidebar-10" premium>
+  <Sidebar10 />
+</ComponentPreview>
+
+## Introduction
+
+**Side Sheet 5** includes:
+
+- **Collapsible sections**: Overview (Dashboard, Projects) and Team (Members), each with a label and expand/collapse.
+- **Separator** between sections.
+- **User footer**: Avatar and name/email in a button that opens a dropdown (Settings, Log out).
+- **Main area**: Breadcrumb and content.
+
+Uses [Button](/docs/components/button), [Avatar](/docs/components/avatar), [Dropdown Menu](/docs/components/dropdown-menu), and [Collapsible](/docs/components/collapsible). Good for dashboards that need grouped nav and a clear user block.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["sidebar-10"]?.source ?? ""}
+  fileName="/components/ui/sidebar-10.tsx"
+/>
+
+You need the Button, Avatar, Dropdown Menu, and Collapsible components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Sidebar10 } from "@/components/ui/sidebar-10";
+
+<Sidebar10 />;
+```
+
+Replace section labels, nav items, and user menu with your own data and routes.
