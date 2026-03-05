@@ -346,7 +346,6 @@ h4 {
     color: var(--foreground) !important;
 }
 
-
 /* Navbar (first child: header or custom nav component) spans from after sidebar to right edge */
 #nd-docs-layout>*:first-child {
     grid-column: 2 / -1;

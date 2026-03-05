@@ -37,11 +37,51 @@ export type InventoryRow = {
 };
 
 const defaultData: InventoryRow[] = [
-  { id: "1", sku: "SKU-001", name: "Widget A", type: "Product", stock: "In stock", price: "$29.99", availability: "Available" },
-  { id: "2", sku: "SKU-002", name: "Widget B", type: "Product", stock: "Low", price: "$49.99", availability: "Limited" },
-  { id: "3", sku: "SKU-003", name: "Service Pack", type: "Service", stock: "In stock", price: "$99.00", availability: "Available" },
-  { id: "4", sku: "SKU-004", name: "Gadget X", type: "Product", stock: "Out", price: "$19.99", availability: "Unavailable" },
-  { id: "5", sku: "SKU-005", name: "Bundle Y", type: "Bundle", stock: "In stock", price: "$149.00", availability: "Available" },
+  {
+    id: "1",
+    sku: "SKU-001",
+    name: "Widget A",
+    type: "Product",
+    stock: "In stock",
+    price: "$29.99",
+    availability: "Available",
+  },
+  {
+    id: "2",
+    sku: "SKU-002",
+    name: "Widget B",
+    type: "Product",
+    stock: "Low",
+    price: "$49.99",
+    availability: "Limited",
+  },
+  {
+    id: "3",
+    sku: "SKU-003",
+    name: "Service Pack",
+    type: "Service",
+    stock: "In stock",
+    price: "$99.00",
+    availability: "Available",
+  },
+  {
+    id: "4",
+    sku: "SKU-004",
+    name: "Gadget X",
+    type: "Product",
+    stock: "Out",
+    price: "$19.99",
+    availability: "Unavailable",
+  },
+  {
+    id: "5",
+    sku: "SKU-005",
+    name: "Bundle Y",
+    type: "Bundle",
+    stock: "In stock",
+    price: "$149.00",
+    availability: "Available",
+  },
 ];
 
 const stockVariant = (stock: string) =>
@@ -52,18 +92,50 @@ export function DataTable4({ data = defaultData }: { data?: InventoryRow[] }) {
 
   const columns: ColumnDef<InventoryRow>[] = React.useMemo(
     () => [
-      { accessorKey: "sku", header: "SKU", cell: ({ row }) => <span className="font-mono text-xs uppercase">{row.original.sku}</span> },
+      {
+        accessorKey: "sku",
+        header: "SKU",
+        cell: ({ row }) => (
+          <span className="font-mono text-xs uppercase">
+            {row.original.sku}
+          </span>
+        ),
+      },
       { accessorKey: "name", header: "Item name" },
       { accessorKey: "type", header: "Type" },
       {
         accessorKey: "stock",
         header: "Stock",
-        cell: ({ row }) => <Badge variant="outline" className={cn(stockVariant(row.original.stock) === "positive" && "border-green-500/50 text-green-700 dark:text-green-400", stockVariant(row.original.stock) === "warning" && "border-amber-500/50 text-amber-700 dark:text-amber-400")}>{row.original.stock}</Badge>,
+        cell: ({ row }) => (
+          <Badge
+            variant="outline"
+            className={cn(
+              stockVariant(row.original.stock) === "positive" &&
+                "border-green-500/50 text-green-700 dark:text-green-400",
+              stockVariant(row.original.stock) === "warning" &&
+                "border-amber-500/50 text-amber-700 dark:text-amber-400",
+            )}
+          >
+            {row.original.stock}
+          </Badge>
+        ),
       },
-      { accessorKey: "price", header: "Price", cell: ({ row }) => <span className="tabular-nums">{row.original.price}</span> },
-      { accessorKey: "availability", header: "Availability", cell: ({ row }) => <Badge variant="secondary">{row.original.availability}</Badge> },
+      {
+        accessorKey: "price",
+        header: "Price",
+        cell: ({ row }) => (
+          <span className="tabular-nums">{row.original.price}</span>
+        ),
+      },
+      {
+        accessorKey: "availability",
+        header: "Availability",
+        cell: ({ row }) => (
+          <Badge variant="secondary">{row.original.availability}</Badge>
+        ),
+      },
     ],
-    []
+    [],
   );
 
   const table = useReactTable({
@@ -79,49 +151,80 @@ export function DataTable4({ data = defaultData }: { data?: InventoryRow[] }) {
     <div className="space-y-4 rounded-lg border border-border bg-background p-4">
       <div>
         <h2 className="text-lg font-semibold">Inventory</h2>
-        <p className="text-sm text-muted-foreground">Scrollable table with sortable columns.</p>
+        <p className="text-sm text-muted-foreground">
+          Scrollable table with sortable columns.
+        </p>
       </div>
       <div className="overflow-x-auto rounded-md border border-border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup: HeaderGroup<InventoryRow>) => (
-              <TableRow key={headerGroup.id} className="bg-muted/50">
-                {headerGroup.headers.map((header: Header<InventoryRow, unknown>) => {
-                  const canSort = header.column.getCanSort();
-                  const sorted = header.column.getIsSorted();
-                  return (
-                    <TableHead key={header.id}>
-                      {canSort ? (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="-ml-3 h-8 gap-1"
-                          onClick={() => header.column.toggleSorting(sorted === "asc")}
-                        >
-                          {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                          {sorted === "desc" ? <ArrowDown className="size-4" /> : sorted === "asc" ? <ArrowUp className="size-4" /> : <ChevronsUpDown className="size-4 opacity-50" />}
-                        </Button>
-                      ) : (
-                        header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())
-                      )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+            {table
+              .getHeaderGroups()
+              .map((headerGroup: HeaderGroup<InventoryRow>) => (
+                <TableRow key={headerGroup.id} className="bg-muted/50">
+                  {headerGroup.headers.map(
+                    (header: Header<InventoryRow, unknown>) => {
+                      const canSort = header.column.getCanSort();
+                      const sorted = header.column.getIsSorted();
+                      return (
+                        <TableHead key={header.id}>
+                          {canSort ? (
+                            <Button
+                              variant="secondary"
+                              size="sm"
+                              className="-ml-3 h-8 gap-1"
+                              onClick={() =>
+                                header.column.toggleSorting(sorted === "asc")
+                              }
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext(),
+                                  )}
+                              {sorted === "desc" ? (
+                                <ArrowDown className="size-4" />
+                              ) : sorted === "asc" ? (
+                                <ArrowUp className="size-4" />
+                              ) : (
+                                <ChevronsUpDown className="size-4 opacity-50" />
+                              )}
+                            </Button>
+                          ) : header.isPlaceholder ? null : (
+                            flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )
+                          )}
+                        </TableHead>
+                      );
+                    },
+                  )}
+                </TableRow>
+              ))}
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.map((row: Row<InventoryRow>) => (
               <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell: Cell<InventoryRow, unknown>) => (
-                  <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                ))}
+                {row
+                  .getVisibleCells()
+                  .map((cell: Cell<InventoryRow, unknown>) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
-      <p className="text-xs text-muted-foreground sm:hidden">Swipe to see all columns.</p>
+      <p className="text-xs text-muted-foreground sm:hidden">
+        Swipe to see all columns.
+      </p>
     </div>
   );
 }

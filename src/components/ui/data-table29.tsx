@@ -44,14 +44,24 @@ const defaultData: EditableRow[] = [
   { id: "3", name: "Item C", quantity: 5, status: "Active" },
 ];
 
-export function DataTable29({ data: initialData = defaultData }: { data?: EditableRow[] }) {
+export function DataTable29({
+  data: initialData = defaultData,
+}: {
+  data?: EditableRow[];
+}) {
   const [data, setData] = React.useState(initialData);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [editing, setEditing] = React.useState<string | null>(null);
   const [editValue, setEditValue] = React.useState<string>("");
 
-  const updateCell = (rowId: string, key: keyof EditableRow, value: string | number) => {
-    setData((prev) => prev.map((r) => (r.id === rowId ? { ...r, [key]: value } : r)));
+  const updateCell = (
+    rowId: string,
+    key: keyof EditableRow,
+    value: string | number,
+  ) => {
+    setData((prev) =>
+      prev.map((r) => (r.id === rowId ? { ...r, [key]: value } : r)),
+    );
     setEditing(null);
   };
 
@@ -69,7 +79,9 @@ export function DataTable29({ data: initialData = defaultData }: { data?: Editab
               value={editValue}
               onChange={(e) => setEditValue(e.target.value)}
               onBlur={() => updateCell(row.id, "name", editValue)}
-              onKeyDown={(e) => e.key === "Enter" && updateCell(row.id, "name", editValue)}
+              onKeyDown={(e) =>
+                e.key === "Enter" && updateCell(row.id, "name", editValue)
+              }
             />
           ) : (
             <div
@@ -96,8 +108,13 @@ export function DataTable29({ data: initialData = defaultData }: { data?: Editab
               className="h-8 w-20"
               value={editValue}
               onChange={(e) => setEditValue(e.target.value)}
-              onBlur={() => updateCell(row.id, "quantity", parseInt(editValue, 10) || 0)}
-              onKeyDown={(e) => e.key === "Enter" && updateCell(row.id, "quantity", parseInt(editValue, 10) || 0)}
+              onBlur={() =>
+                updateCell(row.id, "quantity", parseInt(editValue, 10) || 0)
+              }
+              onKeyDown={(e) =>
+                e.key === "Enter" &&
+                updateCell(row.id, "quantity", parseInt(editValue, 10) || 0)
+              }
             />
           ) : (
             <div
@@ -118,20 +135,36 @@ export function DataTable29({ data: initialData = defaultData }: { data?: Editab
         cell: ({ row }) => (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-8 -ml-2 font-normal">
+              <Button
+                variant="secondary"
+                size="sm"
+                className="h-8 -ml-2 font-normal"
+              >
                 {row.original.status}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuItem onClick={() => updateCell(row.id, "status", "Active")}>Active</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => updateCell(row.id, "status", "Pending")}>Pending</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => updateCell(row.id, "status", "Inactive")}>Inactive</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => updateCell(row.id, "status", "Active")}
+              >
+                Active
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => updateCell(row.id, "status", "Pending")}
+              >
+                Pending
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => updateCell(row.id, "status", "Inactive")}
+              >
+                Inactive
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ),
       },
     ],
-    [editing, editValue]
+    [editing, editValue],
   );
 
   const table = useReactTable({
@@ -147,38 +180,75 @@ export function DataTable29({ data: initialData = defaultData }: { data?: Editab
     <div className="space-y-4 rounded-lg border border-border bg-background p-4">
       <div>
         <h2 className="text-lg font-semibold">Editable cells</h2>
-        <p className="text-sm text-muted-foreground">Double-click a cell to edit. Use context for status.</p>
+        <p className="text-sm text-muted-foreground">
+          Double-click a cell to edit. Use context for status.
+        </p>
       </div>
       <div className="max-h-[280px] overflow-auto rounded-md border border-border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup: HeaderGroup<EditableRow>) => (
-              <TableRow key={headerGroup.id} className="sticky top-0 bg-muted/80">
-                {headerGroup.headers.map((header: Header<EditableRow, unknown>) => {
-                  const canSort = header.column.getCanSort();
-                  const sorted = header.column.getIsSorted();
-                  return (
-                    <TableHead key={header.id}>
-                      {canSort ? (
-                        <Button variant="ghost" size="sm" className="-ml-3 h-8 gap-1" onClick={() => header.column.toggleSorting(sorted === "asc")}>
-                          {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                          {sorted === "desc" ? <ArrowDown className="size-4" /> : sorted === "asc" ? <ArrowUp className="size-4" /> : <ChevronsUpDown className="size-4 opacity-50" />}
-                        </Button>
-                      ) : (
-                        header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())
-                      )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+            {table
+              .getHeaderGroups()
+              .map((headerGroup: HeaderGroup<EditableRow>) => (
+                <TableRow
+                  key={headerGroup.id}
+                  className="sticky top-0 bg-muted/80"
+                >
+                  {headerGroup.headers.map(
+                    (header: Header<EditableRow, unknown>) => {
+                      const canSort = header.column.getCanSort();
+                      const sorted = header.column.getIsSorted();
+                      return (
+                        <TableHead key={header.id}>
+                          {canSort ? (
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              className="-ml-3 h-8 gap-1"
+                              onClick={() =>
+                                header.column.toggleSorting(sorted === "asc")
+                              }
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext(),
+                                  )}
+                              {sorted === "desc" ? (
+                                <ArrowDown className="size-4" />
+                              ) : sorted === "asc" ? (
+                                <ArrowUp className="size-4" />
+                              ) : (
+                                <ChevronsUpDown className="size-4 opacity-50" />
+                              )}
+                            </Button>
+                          ) : header.isPlaceholder ? null : (
+                            flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )
+                          )}
+                        </TableHead>
+                      );
+                    },
+                  )}
+                </TableRow>
+              ))}
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.map((row: Row<EditableRow>) => (
               <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell: Cell<EditableRow, unknown>) => (
-                  <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                ))}
+                {row
+                  .getVisibleCells()
+                  .map((cell: Cell<EditableRow, unknown>) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
               </TableRow>
             ))}
           </TableBody>

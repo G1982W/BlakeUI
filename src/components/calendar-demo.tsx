@@ -17,13 +17,18 @@ export function CalendarDemo() {
 
 export function CalendarRangeDemo() {
   const [range, setRange] = React.useState<
-    { from?: Date; to?: Date } | undefined
+    { from: Date; to: Date } | undefined
   >(undefined);
   return (
     <Calendar
       mode="range"
-      selected={range}
-      onSelect={setRange}
+      selected={{ from: range?.from, to: range?.to }}
+      onSelect={(selected) =>
+        setRange({
+          from: selected?.from ?? new Date(),
+          to: selected?.to ?? new Date(),
+        })
+      }
       className="rounded-lg border"
     />
   );

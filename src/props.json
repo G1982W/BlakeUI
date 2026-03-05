@@ -61,6 +61,44 @@
       "required": false
     }
   ],
+  "AppSidebar": [
+    {
+      "name": "activeModule",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "onModuleChange",
+      "type": "(moduleId: string) => void",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"sidebar\" | \"floating\" | \"inset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "\"none\" | \"offcanvas\" | \"icon\"",
+      "description": "",
+      "required": false
+    }
+  ],
   "Avatar": [
     {
       "name": "asChild",
@@ -2998,7 +3036,7 @@
     {
       "name": "data",
       "type": "OrderFilterRow[]",
-      "defaultValue": "[\n  { id: \"1\", orderId: \"ORD-101\", customer: \"Alice\", orderStatus: \"Processing\", paymentStatus: \"Paid\", total: \"$120\" },\n  { id: \"2\", orderId: \"ORD-102\", customer: \"Bob\", orderStatus: \"Shipped\", paymentStatus: \"Paid\", total: \"$85\" },\n  { id: \"3\", orderId: \"ORD-103\", customer: \"Carol\", orderStatus: \"Pending\", paymentStatus: \"Pending\", total: \"$200\" },\n  { id: \"4\", orderId: \"ORD-104\", customer: \"Dave\", orderStatus: \"Delivered\", paymentStatus: \"Paid\", total: \"$56\" },\n  { id: \"5\", orderId: \"ORD-105\", customer: \"Eve\", orderStatus: \"Processing\", paymentStatus: \"Failed\", total: \"$340\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    orderId: \"ORD-101\",\n    customer: \"Alice\",\n    orderStatus: \"Processing\",\n    paymentStatus: \"Paid\",\n    total: \"$120\",\n  },\n  {\n    id: \"2\",\n    orderId: \"ORD-102\",\n    customer: \"Bob\",\n    orderStatus: \"Shipped\",\n    paymentStatus: \"Paid\",\n    total: \"$85\",\n  },\n  {\n    id: \"3\",\n    orderId: \"ORD-103\",\n    customer: \"Carol\",\n    orderStatus: \"Pending\",\n    paymentStatus: \"Pending\",\n    total: \"$200\",\n  },\n  {\n    id: \"4\",\n    orderId: \"ORD-104\",\n    customer: \"Dave\",\n    orderStatus: \"Delivered\",\n    paymentStatus: \"Paid\",\n    total: \"$56\",\n  },\n  {\n    id: \"5\",\n    orderId: \"ORD-105\",\n    customer: \"Eve\",\n    orderStatus: \"Processing\",\n    paymentStatus: \"Failed\",\n    total: \"$340\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3007,7 +3045,7 @@
     {
       "name": "data",
       "type": "OrderRow[]",
-      "defaultValue": "[\n  { id: \"1\", orderId: \"ORD-001\", customer: \"Acme Corp\", total: \"$384.92\", status: \"Processing\", shipping: \"Express\", tracking: \"1Z999AA10123456784\", warehouse: \"WH-North\", assigned: \"Jane\" },\n  { id: \"2\", orderId: \"ORD-002\", customer: \"Beta Inc\", total: \"$156.00\", status: \"Shipped\", shipping: \"Standard\", tracking: \"1Z999AA10987654321\", warehouse: \"WH-South\", assigned: \"John\" },\n  { id: \"3\", orderId: \"ORD-003\", customer: \"Gamma LLC\", total: \"$892.50\", status: \"Pending\", shipping: \"Express\", tracking: \"-\", warehouse: \"WH-North\", assigned: \"Jane\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    orderId: \"ORD-001\",\n    customer: \"Acme Corp\",\n    total: \"$384.92\",\n    status: \"Processing\",\n    shipping: \"Express\",\n    tracking: \"1Z999AA10123456784\",\n    warehouse: \"WH-North\",\n    assigned: \"Jane\",\n  },\n  {\n    id: \"2\",\n    orderId: \"ORD-002\",\n    customer: \"Beta Inc\",\n    total: \"$156.00\",\n    status: \"Shipped\",\n    shipping: \"Standard\",\n    tracking: \"1Z999AA10987654321\",\n    warehouse: \"WH-South\",\n    assigned: \"John\",\n  },\n  {\n    id: \"3\",\n    orderId: \"ORD-003\",\n    customer: \"Gamma LLC\",\n    total: \"$892.50\",\n    status: \"Pending\",\n    shipping: \"Express\",\n    tracking: \"-\",\n    warehouse: \"WH-North\",\n    assigned: \"Jane\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3016,7 +3054,7 @@
     {
       "name": "data",
       "type": "ResizeRow[]",
-      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", availability: \"Available\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3025,7 +3063,7 @@
     {
       "name": "data",
       "type": "ColumnManageRow[]",
-      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", availability: \"Available\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3120,7 +3158,7 @@
     {
       "name": "data",
       "type": "TransactionRow[]",
-      "defaultValue": "[\n  { id: \"1\", date: \"2024-01-15\", description: \"Payment received\", amount: \"$1,200.00\", status: \"Completed\", category: \"Income\" },\n  { id: \"2\", date: \"2024-01-14\", description: \"Office supplies\", amount: \"-$89.50\", status: \"Pending\", category: \"Expense\" },\n  { id: \"3\", date: \"2024-01-13\", description: \"Subscription\", amount: \"-$29.99\", status: \"Completed\", category: \"Expense\" },\n  { id: \"4\", date: \"2024-01-12\", description: \"Invoice #1024\", amount: \"$450.00\", status: \"Completed\", category: \"Income\" },\n  { id: \"5\", date: \"2024-01-11\", description: \"Refund\", amount: \"$50.00\", status: \"Completed\", category: \"Income\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    date: \"2024-01-15\",\n    description: \"Payment received\",\n    amount: \"$1,200.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n  {\n    id: \"2\",\n    date: \"2024-01-14\",\n    description: \"Office supplies\",\n    amount: \"-$89.50\",\n    status: \"Pending\",\n    category: \"Expense\",\n  },\n  {\n    id: \"3\",\n    date: \"2024-01-13\",\n    description: \"Subscription\",\n    amount: \"-$29.99\",\n    status: \"Completed\",\n    category: \"Expense\",\n  },\n  {\n    id: \"4\",\n    date: \"2024-01-12\",\n    description: \"Invoice #1024\",\n    amount: \"$450.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n  {\n    id: \"5\",\n    date: \"2024-01-11\",\n    description: \"Refund\",\n    amount: \"$50.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3156,7 +3194,7 @@
     {
       "name": "data",
       "type": "InventoryRow[]",
-      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", price: \"$29.99\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", price: \"$49.99\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", price: \"$99.00\", availability: \"Available\" },\n  { id: \"4\", sku: \"SKU-004\", name: \"Gadget X\", type: \"Product\", stock: \"Out\", price: \"$19.99\", availability: \"Unavailable\" },\n  { id: \"5\", sku: \"SKU-005\", name: \"Bundle Y\", type: \"Bundle\", stock: \"In stock\", price: \"$149.00\", availability: \"Available\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    price: \"$29.99\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    price: \"$49.99\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    price: \"$99.00\",\n    availability: \"Available\",\n  },\n  {\n    id: \"4\",\n    sku: \"SKU-004\",\n    name: \"Gadget X\",\n    type: \"Product\",\n    stock: \"Out\",\n    price: \"$19.99\",\n    availability: \"Unavailable\",\n  },\n  {\n    id: \"5\",\n    sku: \"SKU-005\",\n    name: \"Bundle Y\",\n    type: \"Bundle\",\n    stock: \"In stock\",\n    price: \"$149.00\",\n    availability: \"Available\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3165,7 +3203,7 @@
     {
       "name": "data",
       "type": "InventoryRow[]",
-      "defaultValue": "[\n  { id: \"1\", sku: \"SKU-001\", name: \"Widget A\", type: \"Product\", stock: \"In stock\", price: \"$29.99\", availability: \"Available\" },\n  { id: \"2\", sku: \"SKU-002\", name: \"Widget B\", type: \"Product\", stock: \"Low\", price: \"$49.99\", availability: \"Limited\" },\n  { id: \"3\", sku: \"SKU-003\", name: \"Service Pack\", type: \"Service\", stock: \"In stock\", price: \"$99.00\", availability: \"Available\" },\n  { id: \"4\", sku: \"SKU-004\", name: \"Gadget X\", type: \"Product\", stock: \"Out\", price: \"$19.99\", availability: \"Unavailable\" },\n  { id: \"5\", sku: \"SKU-005\", name: \"Bundle Y\", type: \"Bundle\", stock: \"In stock\", price: \"$149.00\", availability: \"Available\" },\n]",
+      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    price: \"$29.99\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    price: \"$49.99\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    price: \"$99.00\",\n    availability: \"Available\",\n  },\n  {\n    id: \"4\",\n    sku: \"SKU-004\",\n    name: \"Gadget X\",\n    type: \"Product\",\n    stock: \"Out\",\n    price: \"$19.99\",\n    availability: \"Unavailable\",\n  },\n  {\n    id: \"5\",\n    sku: \"SKU-005\",\n    name: \"Bundle Y\",\n    type: \"Bundle\",\n    stock: \"In stock\",\n    price: \"$149.00\",\n    availability: \"Available\",\n  },\n]",
       "description": "",
       "required": false
     }
@@ -3310,16 +3348,16 @@
       "required": false
     },
     {
-      "name": "href",
-      "type": "string",
-      "description": "If set, renders as a link.",
-      "required": false
-    },
-    {
       "name": "icon",
       "type": "ReactNode",
       "description": "Icon element (e.g. Lucide icon).",
       "required": true
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "description": "If set, renders as a link.",
+      "required": false
     },
     {
       "name": "badge",
@@ -4143,56 +4181,37 @@
   ],
   "Login9": [
     {
-      "name": "heading",
-      "type": "string",
-      "defaultValue": "Log In",
-      "description": "",
-      "required": false
-    },
-    {
       "name": "logo",
-      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
-      "defaultValue": "{\n    url: \"https://www.shadcnblocks.com\",\n    src: \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg\",\n    alt: \"shadcnblocks logo\",\n    title: \"shadcnblocks.com\",\n  }",
+      "type": "ReactNode",
       "description": "",
       "required": false
     },
     {
-      "name": "googleText",
-      "type": "string",
-      "defaultValue": "Continue with Google",
+      "name": "onGoogle",
+      "type": "(() => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "githubText",
-      "type": "string",
-      "defaultValue": "Continue with GitHub",
+      "name": "onGitHub",
+      "type": "(() => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "linkedInText",
-      "type": "string",
-      "defaultValue": "Continue with LinkedIn",
+      "name": "onLinkedIn",
+      "type": "(() => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "emailText",
-      "type": "string",
-      "defaultValue": "Continue with email",
+      "name": "onEmailSubmit",
+      "type": "((email: string) => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "signupText",
-      "type": "string",
-      "defaultValue": "New to shadcnblocks?",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "signupUrl",
+      "name": "signUpHref",
       "type": "string",
       "defaultValue": "#",
       "description": "",
@@ -4374,6 +4393,402 @@
     {
       "name": "description",
       "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ScrollArea": [
+    {
+      "name": "type",
+      "type": "\"auto\" | \"hover\" | \"always\" | \"scroll\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ScrollBar": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Separator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Sheet": [],
+  "SheetTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetClose": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "defaultValue": "right",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetHeader": [],
+  "SheetFooter": [],
+  "SheetTitle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Sidebar": [
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "defaultValue": "left",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"sidebar\" | \"floating\" | \"inset\"",
+      "defaultValue": "sidebar",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "\"none\" | \"offcanvas\" | \"icon\"",
+      "defaultValue": "offcanvas",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarContent": [],
+  "SidebarFooter": [],
+  "SidebarGroup": [],
+  "SidebarGroupAction": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarGroupContent": [],
+  "SidebarGroupLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarHeader": [],
+  "SidebarInput": [
+    {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the input is disabled",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"checkbox\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"image\" | \"month\" | \"number\" | \"password\" | \"radio\" | \"range\" | \"reset\" | \"search\" | \"submit\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+      "description": "The type of input",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "The placeholder text",
+      "required": false
+    }
+  ],
+  "SidebarInset": [],
+  "SidebarMenu": [],
+  "SidebarMenuAction": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showOnHover",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuBadge": [],
+  "SidebarMenuButton": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "tooltip",
+      "type": "string | (TooltipContentProps & RefAttributes<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuItem": [],
+  "SidebarMenuSkeleton": [
+    {
+      "name": "showIcon",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuSub": [],
+  "SidebarMenuSubButton": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "defaultValue": "md",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuSubItem": [],
+  "SidebarProvider": [
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarRail": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarTrigger": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
       "description": "",
       "required": false
     }

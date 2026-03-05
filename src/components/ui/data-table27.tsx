@@ -13,7 +13,12 @@ import {
   useReactTable,
   type SortingState,
 } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ChevronsUpDown, MoreHorizontal } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronsUpDown,
+  MoreHorizontal,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -72,15 +77,27 @@ export function DataTable27({ data = defaultData }: { data?: VirtualRow[] }) {
         ),
       },
       { accessorKey: "name", header: "Name" },
-      { accessorKey: "status", header: "Status", cell: ({ row }) => <Badge variant="secondary">{row.original.status}</Badge> },
+      {
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => (
+          <Badge variant="secondary">{row.original.status}</Badge>
+        ),
+      },
       { accessorKey: "role", header: "Role" },
-      { accessorKey: "amount", header: "Amount", cell: ({ row }) => <span className="tabular-nums">{row.original.amount}</span> },
+      {
+        accessorKey: "amount",
+        header: "Amount",
+        cell: ({ row }) => (
+          <span className="tabular-nums">{row.original.amount}</span>
+        ),
+      },
       {
         id: "actions",
         cell: ({ row }) => (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+              <Button variant="secondary" size="sm" className="h-8 w-8 p-0">
                 <MoreHorizontal className="size-4" />
                 <span className="sr-only">Actions</span>
               </Button>
@@ -94,7 +111,7 @@ export function DataTable27({ data = defaultData }: { data?: VirtualRow[] }) {
         ),
       },
     ],
-    []
+    [],
   );
 
   const table = useReactTable({
@@ -111,38 +128,80 @@ export function DataTable27({ data = defaultData }: { data?: VirtualRow[] }) {
     <div className="space-y-4 rounded-lg border border-border bg-background p-4">
       <div>
         <h2 className="text-lg font-semibold">Virtualized table</h2>
-        <p className="text-sm text-muted-foreground">Fixed height, sortable, row selection, row actions.</p>
+        <p className="text-sm text-muted-foreground">
+          Fixed height, sortable, row selection, row actions.
+        </p>
       </div>
       <div className="max-h-[360px] overflow-auto rounded-md border border-border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup: HeaderGroup<VirtualRow>) => (
-              <TableRow key={headerGroup.id} className="sticky top-0 bg-muted/80">
-                {headerGroup.headers.map((header: Header<VirtualRow, unknown>) => {
-                  const canSort = header.column.getCanSort();
-                  const sorted = header.column.getIsSorted();
-                  return (
-                    <TableHead key={header.id}>
-                      {canSort && header.id !== "select" && header.id !== "actions" ? (
-                        <Button variant="ghost" size="sm" className="-ml-3 h-8 gap-1" onClick={() => header.column.toggleSorting(sorted === "asc")}>
-                          {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                          {sorted === "desc" ? <ArrowDown className="size-4" /> : sorted === "asc" ? <ArrowUp className="size-4" /> : <ChevronsUpDown className="size-4 opacity-50" />}
-                        </Button>
-                      ) : (
-                        header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())
-                      )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+            {table
+              .getHeaderGroups()
+              .map((headerGroup: HeaderGroup<VirtualRow>) => (
+                <TableRow
+                  key={headerGroup.id}
+                  className="sticky top-0 bg-muted/80"
+                >
+                  {headerGroup.headers.map(
+                    (header: Header<VirtualRow, unknown>) => {
+                      const canSort = header.column.getCanSort();
+                      const sorted = header.column.getIsSorted();
+                      return (
+                        <TableHead key={header.id}>
+                          {canSort &&
+                          header.id !== "select" &&
+                          header.id !== "actions" ? (
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              className="-ml-3 h-8 gap-1"
+                              onClick={() =>
+                                header.column.toggleSorting(sorted === "asc")
+                              }
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext(),
+                                  )}
+                              {sorted === "desc" ? (
+                                <ArrowDown className="size-4" />
+                              ) : sorted === "asc" ? (
+                                <ArrowUp className="size-4" />
+                              ) : (
+                                <ChevronsUpDown className="size-4 opacity-50" />
+                              )}
+                            </Button>
+                          ) : header.isPlaceholder ? null : (
+                            flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )
+                          )}
+                        </TableHead>
+                      );
+                    },
+                  )}
+                </TableRow>
+              ))}
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.map((row: Row<VirtualRow>) => (
-              <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                {row.getVisibleCells().map((cell: Cell<VirtualRow, unknown>) => (
-                  <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                ))}
+              <TableRow
+                key={row.id}
+                data-state={row.getIsSelected() && "selected"}
+              >
+                {row
+                  .getVisibleCells()
+                  .map((cell: Cell<VirtualRow, unknown>) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
               </TableRow>
             ))}
           </TableBody>
