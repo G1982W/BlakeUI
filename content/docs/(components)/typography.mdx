@@ -1,0 +1,133 @@
+---
+title: Typography
+description: Utility-class patterns for headings, text, and prose.
+base: base
+component: true
+---
+
+import { Preview } from "@/components/preview";
+
+## Overview
+
+We don’t ship a dedicated Typography component. Instead, use Tailwind utility classes to build consistent headings, paragraphs, lists, and other rich text blocks.
+
+This page is based on [shadcn/ui Typography](https://ui.shadcn.com/docs/components/radix/typography) and adapted for this codebase.
+
+## Examples
+
+### Headings
+
+<Preview>
+  <div className="space-y-4">
+    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
+      Taxing Laughter: The Joke Tax Chronicles
+    </h1>
+    <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+      The People of the Kingdom
+    </h2>
+    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+      The Joke Tax
+    </h3>
+    <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+      People stopped telling jokes
+    </h4>
+  </div>
+</Preview>
+
+```tsx
+export function TypographyH1({ children }: { children: React.ReactNode }) {
+  return (
+    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
+      {children}
+    </h1>
+  );
+}
+```
+
+### Paragraphs and text variants
+
+<Preview>
+  <div className="space-y-4">
+    <p className="leading-7 [&:not(:first-child)]:mt-6">
+      The king, seeing how much happier his subjects were, realized the error of
+      his ways and repealed the joke tax.
+    </p>
+    <p className="text-muted-foreground text-xl">
+      A modal dialog that interrupts the user with important content and expects a response.
+    </p>
+    <div className="text-lg font-semibold">Are you absolutely sure?</div>
+    <small className="text-sm leading-none font-medium">Email address</small>
+    <p className="text-muted-foreground text-sm">
+      Enter your email address to receive a password reset link.
+    </p>
+  </div>
+</Preview>
+
+### Blockquote
+
+<Preview>
+  <blockquote className="mt-6 border-l-2 pl-6 italic">
+    “After all,” he said, “everyone enjoys a good joke, so it’s only fair that
+    they should pay for the privilege.”
+  </blockquote>
+</Preview>
+
+### Lists
+
+<Preview>
+  <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
+    <li>1st level of puns: 5 gold coins</li>
+    <li>2nd level of jokes: 10 gold coins</li>
+    <li>3rd level of one-liners: 20 gold coins</li>
+  </ul>
+</Preview>
+
+### Inline code
+
+<Preview>
+  <p className="leading-7">
+    Install{" "}
+    <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+      @radix-ui/react-alert-dialog
+    </code>{" "}
+    to get started.
+  </p>
+</Preview>
+
+### Table
+
+<Preview>
+  <div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+      <thead>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+          <th className="border px-4 py-2 text-left font-bold">
+            King&apos;s Treasury
+          </th>
+          <th className="border px-4 py-2 text-left font-bold">
+            People&apos;s happiness
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+          <td className="border px-4 py-2 text-left">Empty</td>
+          <td className="border px-4 py-2 text-left">Overflowing</td>
+        </tr>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+          <td className="border px-4 py-2 text-left">Modest</td>
+          <td className="border px-4 py-2 text-left">Satisfied</td>
+        </tr>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+          <td className="border px-4 py-2 text-left">Full</td>
+          <td className="border px-4 py-2 text-left">Ecstatic</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</Preview>
+
+## Notes
+
+- These patterns are meant for UI surfaces (cards, modals, settings pages). Your docs pages may already apply their own “prose” styling.
+- Feel free to extract these into local components (e.g. `TypographyH1`, `TypographyMuted`) if you want a shared API in your app.

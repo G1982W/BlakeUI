@@ -1,0 +1,135 @@
+---
+title: Command
+description: Fast command palette with search and keyboard navigation.
+base: base
+component: true
+---
+
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from "@/components/ui/command";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="command">
+  <Command className="rounded-lg border shadow-md">
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Suggestions">
+        <CommandItem>Calendar</CommandItem>
+        <CommandItem>Search</CommandItem>
+        <CommandItem>Settings</CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="Settings">
+        <CommandItem>Profile</CommandItem>
+        <CommandItem>Log out</CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</ComponentPreview>
+
+## Installation
+
+Command uses the Dialog component. Add both `dialog.tsx` and `command.tsx`.
+
+<Installation
+  dependencies={["cmdk", "lucide-react"]}
+  code={registry.command?.source ?? ""}
+  fileName="/components/ui/command.tsx"
+/>
+
+## Usage
+
+**Inline command (e.g. in a popover or sidebar):**
+
+```tsx
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandSeparator,
+} from "@/components/ui/command";
+
+<Command>
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+**Command dialog (palette opened by shortcut):**
+
+```tsx
+import { CommandDialog } from "@/components/ui/command";
+
+const [open, setOpen] = React.useState(false);
+
+React.useEffect(() => {
+  const down = (e: KeyboardEvent) => {
+    if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setOpen((o) => !o);
+    }
+  };
+  document.addEventListener("keydown", down);
+  return () => document.removeEventListener("keydown", down);
+}, []);
+
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</CommandDialog>
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Command className="rounded-lg border shadow-md max-w-md">
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Frameworks">
+        <CommandItem>Next.js</CommandItem>
+        <CommandItem>Remix</CommandItem>
+        <CommandItem>Astro</CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</Preview>
+
+## API Reference
+
+The Command component is built on [cmdk](https://cmdk.pacocoursey.com/). It composes `Command`, `CommandInput`, `CommandList`, `CommandEmpty`, `CommandGroup`, `CommandItem`, `CommandSeparator`, and `CommandDialog` (dialog variant). See the cmdk docs for full behavior and keyboard shortcuts.

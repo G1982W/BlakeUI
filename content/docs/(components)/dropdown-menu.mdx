@@ -1,0 +1,117 @@
+---
+title: Dropdown Menu
+description: A menu triggered by a button, with items and optional submenus.
+base: base
+component: true
+---
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuGroup,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="dropdown-menu">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="primary">Open menu</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuLabel>My account</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Settings</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Log out</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui", "lucide-react"]}
+  code={registry["dropdown-menu"]?.source ?? ""}
+  fileName="/components/ui/dropdown-menu.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button>Open</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Action</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="primary">Open menu</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">
+      <DropdownMenuItem>Copy</DropdownMenuItem>
+      <DropdownMenuItem>Paste</DropdownMenuItem>
+      <DropdownMenuItem>Cut</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</Preview>
+
+### With labels and shortcuts
+
+<Preview>
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="primary">Open</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>
+        Copy
+        <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Paste
+        <DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</Preview>
+
+## API Reference
+
+See the [Radix UI Dropdown Menu documentation](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) for full API.

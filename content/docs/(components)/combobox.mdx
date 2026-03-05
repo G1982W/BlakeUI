@@ -1,0 +1,153 @@
+---
+title: Combobox
+description: Autocomplete input with a list of suggestions.
+base: base
+component: true
+---
+
+import { Combobox, ComboboxInput } from "@/components/ui/combobox";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="combobox">
+  <Combobox
+    items={["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]}
+    placeholder="Select a framework"
+  />
+</ComponentPreview>
+
+## Installation
+
+The Combobox uses the Popover component. Add both `popover.tsx` and `combobox.tsx` to your project.
+
+<Installation
+  dependencies={["radix-ui"]}
+  code={registry.combobox?.source ?? ""}
+  fileName="/components/ui/combobox.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Combobox, ComboboxInput } from "@/components/ui/combobox";
+```
+
+**Button trigger (select one):**
+
+```tsx
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
+
+export function ExampleCombobox() {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <Combobox
+      items={frameworks}
+      value={value}
+      onValueChange={setValue}
+      placeholder="Select a framework"
+    />
+  );
+}
+```
+
+**Input trigger (search and select):**
+
+```tsx
+export function ExampleComboboxInput() {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <ComboboxInput
+      items={frameworks}
+      value={value}
+      onValueChange={setValue}
+      placeholder="Search frameworks..."
+    />
+  );
+}
+```
+
+## Custom items
+
+Use `itemToStringValue` when your items are objects.
+
+```tsx
+type Framework = { label: string; value: string };
+
+const frameworks: Framework[] = [
+  { label: "Next.js", value: "next" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt", value: "nuxt" },
+];
+
+<Combobox
+  items={frameworks}
+  itemToStringValue={(f) => f.label}
+  onValueChange={(v) => setValue(v)}
+  placeholder="Select a framework"
+/>
+```
+
+## Examples
+
+### Basic
+
+A simple combobox with a list of frameworks.
+
+<Preview>
+  <Combobox
+    items={["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]}
+    placeholder="Select a framework"
+  />
+</Preview>
+
+### With input
+
+Use `ComboboxInput` to type and filter options.
+
+<Preview>
+  <div className="w-[280px]">
+    <ComboboxInput
+      items={["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]}
+      placeholder="Search frameworks..."
+    />
+  </div>
+</Preview>
+
+### Custom items
+
+When items are objects with `label` and `value`, the component uses `label` by default. Pass `itemToStringValue` only when you need a custom label (e.g. in app code, not from server-rendered docs).
+
+<Preview>
+  <Combobox
+    items={[
+      { label: "Next.js", value: "next" },
+      { label: "SvelteKit", value: "sveltekit" },
+      { label: "Nuxt", value: "nuxt" },
+    ]}
+    placeholder="Select a framework"
+  />
+</Preview>
+
+## API Reference
+
+### Combobox
+
+| Prop               | Type                              | Description                          |
+| ------------------ | --------------------------------- | ------------------------------------ |
+| `items`            | `string[]` or `ComboboxOption[]`   | Options to display.                  |
+| `value`            | `string`                          | Controlled selected value.           |
+| `onValueChange`    | `(value: string) => void`         | Called when selection changes.       |
+| `placeholder`      | `string`                          | Placeholder when nothing selected.   |
+| `emptyText`        | `string`                          | Text when filter has no results.     |
+| `itemToStringValue` | `(item) => string`              | Custom label for object items.       |
+| `disabled`         | `boolean`                         | Disable the trigger.                 |
+| `children`         | `ReactNode`                       | Custom trigger (default: Button).    |
+
+### ComboboxInput
+
+Same as Combobox but uses an Input as the trigger and filters as the user types. Use `placeholder` for the input placeholder.

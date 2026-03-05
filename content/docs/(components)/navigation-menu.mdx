@@ -1,0 +1,145 @@
+---
+title: Navigation Menu
+description: A collection of links for navigating with optional dropdown content.
+base: base
+component: true
+---
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/lib/navigation-menu-styles";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="navigation-menu">
+  <NavigationMenu>
+    <NavigationMenuList className="gap-1">
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid gap-3 p-4 w-[400px] md:w-[500px]">
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  href="#"
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
+                >
+                  <div className="text-sm font-medium">Introduction</div>
+                  <p className="text-muted-foreground text-sm">
+                    Learn the basics and get started quickly.
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  href="#"
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
+                >
+                  <div className="text-sm font-medium">Installation</div>
+                  <p className="text-muted-foreground text-sm">
+                    How to install and configure the library.
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#" className={navigationMenuTriggerStyle}>
+          Documentation
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#" className={navigationMenuTriggerStyle}>
+          Blog
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui", "lucide-react"]}
+  code={registry["navigation-menu"]?.source ?? ""}
+  fileName="/components/ui/navigation-menu.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/lib/navigation-menu-styles";
+```
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Item one</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        Item one content
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle}>
+        Link item
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Examples
+
+### With links and dropdown
+
+<Preview>
+  <NavigationMenu>
+    <NavigationMenuList className="gap-1">
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid gap-3 p-4 w-[400px]">
+            <li>
+              <NavigationMenuLink asChild>
+                <a href="#" className="block rounded-md p-3 hover:bg-accent">
+                  <span className="text-sm font-medium">Introduction</span>
+                </a>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#" className={navigationMenuTriggerStyle}>
+          Docs
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</Preview>
+
+## API Reference
+
+See the [Radix UI Navigation Menu documentation](https://www.radix-ui.com/primitives/docs/components/navigation-menu) for more information.

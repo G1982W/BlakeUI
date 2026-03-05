@@ -1,0 +1,242 @@
+---
+title: Calendar
+description: A calendar component for selecting a date or a range of dates.
+base: base
+component: true
+---
+
+import { Calendar } from "@/components/ui/calendar";
+import {
+  CalendarDemo,
+  CalendarRangeDemo,
+  CalendarDropdownDemo,
+  CalendarWeekNumbersDemo,
+  CalendarTimezoneDemo,
+} from "@/components/calendar-demo";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="calendar">
+  <CalendarDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["react-day-picker"]}
+  code={registry.calendar?.source ?? ""}
+  fileName="/components/ui/calendar.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Calendar } from "@/components/ui/calendar";
+```
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+return (
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-lg border"
+  />
+);
+```
+
+See the [React DayPicker documentation](https://daypicker.dev/) for more information.
+
+## About
+
+The Calendar component is built on top of [React DayPicker](https://daypicker.dev/).
+
+## Date Picker
+
+You can use the Calendar component to build a date picker by combining it with a Popover and an Input.
+
+## Persian / Hijri / Jalali Calendar
+
+To use the Persian calendar, edit `components/ui/calendar.tsx` and replace the import:
+
+```tsx
+- import { DayPicker } from "react-day-picker"
++ import { DayPicker } from "react-day-picker/persian"
+```
+
+## Selected Date (With TimeZone)
+
+The Calendar component accepts a `timeZone` prop so dates are displayed and selected in the user's local timezone.
+
+<Preview>
+  <CalendarTimezoneDemo />
+</Preview>
+
+```tsx
+export function CalendarWithTimezone() {
+  const [date, setDate] = React.useState<Date | undefined>(undefined);
+  const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined);
+
+  React.useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  }, []);
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      timeZone={timeZone}
+      className="rounded-lg border"
+    />
+  );
+}
+```
+
+**Note:** If the selected date appears offset (e.g. selecting the 20th highlights the 19th), set the `timeZone` prop to the user's local timezone.
+
+**Why client-side?** Timezone is detected with `Intl.DateTimeFormat().resolvedOptions().timeZone` inside `useEffect` to avoid hydration mismatches when server and client timezones differ.
+
+## Examples
+
+### Basic
+
+A basic calendar with single-date selection. Use `className="rounded-lg border"` to style the calendar.
+
+<Preview>
+  <CalendarDemo />
+</Preview>
+
+```tsx
+"use client";
+
+import { Calendar } from "@/components/ui/calendar";
+
+export function CalendarBasic() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      className="rounded-lg border"
+    />
+  );
+}
+```
+
+### Range Calendar
+
+Use `mode="range"` to enable range selection.
+
+<Preview>
+  <CalendarRangeDemo />
+</Preview>
+
+```tsx
+"use client";
+
+import { Calendar } from "@/components/ui/calendar";
+
+export function CalendarRange() {
+  const [range, setRange] = React.useState<
+    { from?: Date; to?: Date } | undefined
+  >(undefined);
+  return (
+    <Calendar
+      mode="range"
+      selected={range}
+      onSelect={setRange}
+      className="rounded-lg border"
+    />
+  );
+}
+```
+
+### Month and Year Selector
+
+Use `captionLayout="dropdown"` to show month and year dropdowns.
+
+<Preview>
+  <CalendarDropdownDemo />
+</Preview>
+
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  captionLayout="dropdown"
+  fromYear={1926}
+  toYear={2026}
+  className="rounded-lg border"
+/>
+```
+
+### Custom Cell Size
+
+Customize the size of calendar cells with the `--cell-size` CSS variable. You can use breakpoint-specific values:
+
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]"
+/>
+```
+
+Or use fixed values:
+
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:2.75rem] md:[--cell-size:3rem]"
+/>
+```
+
+### Week Numbers
+
+Use `showWeekNumber` to show week numbers.
+
+<Preview>
+  <CalendarWeekNumbersDemo />
+</Preview>
+
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  showWeekNumber
+  className="rounded-lg border"
+/>
+```
+
+## RTL
+
+When using RTL, import the locale from `react-day-picker/locale` and pass both the `locale` and `dir` props to the Calendar:
+
+```tsx
+import { arSA } from "react-day-picker/locale";
+
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  locale={arSA}
+  dir="rtl"
+  className="rounded-lg border"
+/>
+```
+
+## API Reference
+
+See the [React DayPicker documentation](https://daypicker.dev/) for more information on the Calendar component props and behavior.

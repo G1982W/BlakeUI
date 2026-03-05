@@ -181,6 +181,14 @@
       "required": false
     }
   ],
+  "Calendar": [
+    {
+      "name": "disabled",
+      "type": "Matcher | Matcher[]",
+      "description": "Apply the `disabled` modifier to the matching days. Disabled days cannot be\nselected when in a selection mode is set.\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled",
+      "required": false
+    }
+  ],
   "ChartContainer": [
     {
       "name": "config",
@@ -2443,6 +2451,342 @@
       "required": false
     }
   ],
+  "Collapsible": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CollapsibleTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CollapsibleContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Combobox": [
+    {
+      "name": "items",
+      "type": "string[] | ComboboxOption[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "defaultValue": "Select...",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "defaultValue": "No results found.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "itemToStringValue",
+      "type": "((item: string | ComboboxOption) => string)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxInput": [
+    {
+      "name": "items",
+      "type": "string[] | ComboboxOption[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "defaultValue": "Search...",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "defaultValue": "No results found.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "itemToStringValue",
+      "type": "((item: string | ComboboxOption) => string)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Command": [
+    {
+      "name": "filter",
+      "type": "CommandFilter",
+      "description": "Custom filter function for whether each command menu item should matches the given search query.\nIt should return a number between 0 and 1, with 1 being the best match and 0 being hidden entirely.\nBy default, uses the `command-score` library.",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Accessible label for this command menu. Not shown visibly.",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Optional controlled state of the selected command menu item.",
+      "required": false
+    },
+    {
+      "name": "shouldFilter",
+      "type": "boolean",
+      "description": "Optionally set to `false` to turn off the automatic filtering and sorting.\nIf `false`, you must conditionally render valid items based on the search query yourself.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "Event handler called when the selected item of the menu changes.",
+      "required": false
+    },
+    {
+      "name": "loop",
+      "type": "boolean",
+      "description": "Optionally set to `true` to turn on looping around when using the arrow keys.",
+      "required": false
+    },
+    {
+      "name": "disablePointerSelection",
+      "type": "boolean",
+      "description": "Optionally set to `true` to disable selection via pointer events.",
+      "required": false
+    },
+    {
+      "name": "vimBindings",
+      "type": "boolean",
+      "description": "Set to `false` to disable ctrl+n/j/p/k shortcuts. Defaults to `true`.",
+      "required": false
+    }
+  ],
+  "CommandInput": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Optional controlled state for the value of the search input.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((search: string) => void)",
+      "description": "Event handler called when the search value changes.",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CommandList": [
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Accessible label for this List of suggestions. Not shown visibly.",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CommandEmpty": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CommandGroup": [
+    {
+      "name": "heading",
+      "type": "ReactNode",
+      "description": "Optional heading to render for this group.",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "If no heading is provided, you must provide a value that is unique for this group.",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "Whether this group is forcibly rendered regardless of filtering.",
+      "required": false
+    }
+  ],
+  "CommandItem": [
+    {
+      "name": "onSelect",
+      "type": "((value: string) => void)",
+      "description": "Event handler for when this item is selected, either via click or keyboard selection.",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether this item is currently disabled.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "A unique value for this item.\nIf no value is provided, it will be inferred from `children` or the rendered `textContent`. If your `textContent` changes between renders, you _must_ provide a stable, unique `value`.",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "Whether this item is forcibly rendered regardless of filtering.",
+      "required": false
+    },
+    {
+      "name": "keywords",
+      "type": "string[]",
+      "description": "Optional keywords to match against when filtering.",
+      "required": false
+    }
+  ],
+  "CommandSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "alwaysRender",
+      "type": "boolean",
+      "description": "Whether this separator should always be rendered. Useful if you disable automatic filtering.",
+      "required": false
+    }
+  ],
+  "CommandDialog": [],
   "ContextMenu": [],
   "ContextMenuTrigger": [
     {
@@ -2729,6 +3073,89 @@
     }
   ],
   "getOrderStatusMeta": [],
+  "Dialog": [],
+  "DialogPortal": [],
+  "DialogOverlay": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogClose": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showClose",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogHeader": [],
+  "DialogFooter": [],
+  "DialogTitle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
   "Dock": [
     {
       "name": "position",
@@ -3277,6 +3704,29 @@
       "required": false
     }
   ],
+  "HoverCard": [],
+  "HoverCardTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "HoverCardContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
   "Input": [
     {
       "name": "heading",
@@ -3477,6 +3927,118 @@
       "required": false
     }
   ],
+  "navigationMenuTriggerStyle": [],
+  "NavigationMenu": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuList": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuLink": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuViewport": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Popover": [],
+  "PopoverTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "PopoverContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "PopoverAnchor": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
   "RadioGroup": [
     {
       "name": "asChild",
@@ -3523,6 +4085,7 @@
       "required": false
     }
   ],
+  "Skeleton": [],
   "Toaster": [],
   "Switch": [
     {

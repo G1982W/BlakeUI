@@ -56,29 +56,19 @@ function DocsSearchButton({ className }: { className?: string }) {
 
 function ThemeModeSelector() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {/* <button
-          type="button"
-          className={cn(
-            "inline-flex size-9 items-center justify-center rounded-md border text-foreground transition-colors",
-            "hover:border-foreground/20 hover:text-foreground",
-          )}
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? (
-            <Moon className="size-4" />
-          ) : theme === "light" ? (
-            <Sun className="size-4" />
-          ) : (
-            <Laptop className="size-4" />
-          )}
-        </button> */}
-
         <Button variant="primary" size="sm">
-          {theme === "dark" ? (
+          {!mounted ? (
+            <Laptop className="size-4" />
+          ) : theme === "dark" ? (
             <Moon className="size-4" />
           ) : theme === "light" ? (
             <Sun className="size-4" />

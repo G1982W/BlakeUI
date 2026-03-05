@@ -1,0 +1,112 @@
+---
+title: Dialog
+description: A window over the page for critical actions or information.
+base: base
+component: true
+---
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="dialog">
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button variant="primary">Open dialog</Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Edit profile</DialogTitle>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you&apos;re done.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        <p className="text-muted-foreground text-sm">
+          Dialog content goes here.
+        </p>
+      </div>
+      <DialogFooter>
+        <Button variant="primary">Save changes</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui", "lucide-react"]}
+  code={registry.dialog?.source ?? ""}
+  fileName="/components/ui/dialog.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Open</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Title</DialogTitle>
+      <DialogDescription>Description</DialogDescription>
+    </DialogHeader>
+    <div>Content</div>
+    <DialogFooter>
+      <Button>Save</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button variant="primary">Open dialog</Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogDescription>
+          A short description for the dialog.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <Button variant="primary">Confirm</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</Preview>
+
+## API Reference
+
+See the [Radix UI Dialog documentation](https://www.radix-ui.com/primitives/docs/components/dialog) for props and behavior.

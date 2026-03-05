@@ -1,0 +1,128 @@
+---
+title: Collapsible
+description: An interactive component that expands and collapses a panel.
+base: base
+component: true
+---
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+import { ChevronDown } from "lucide-react";
+
+## Example
+
+<ComponentPreview name="collapsible">
+  <Collapsible className="w-full max-w-md">
+    <CollapsibleTrigger asChild>
+      <Button variant="primary" className="group w-full justify-between">
+        Can I use this in my project?
+        <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+      </Button>
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pt-2 text-sm text-muted-foreground">
+        Yes. Free to use for personal and commercial projects. No attribution
+        required.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui"]}
+  code={registry.collapsible?.source ?? ""}
+  fileName="/components/ui/collapsible.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+```
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Can I use this in my project?</CollapsibleTrigger>
+  <CollapsibleContent>
+    Yes. Free to use for personal and commercial projects. No attribution
+    required.
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## Controlled state
+
+Use the `open` and `onOpenChange` props to control the state.
+
+```tsx
+import * as React from "react";
+
+export function Example() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+      <CollapsibleContent>Content</CollapsibleContent>
+    </Collapsible>
+  );
+}
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Collapsible className="w-full max-w-md">
+    <CollapsibleTrigger asChild>
+      <Button variant="primary" className="group w-full justify-between">
+        Toggle details
+        <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+      </Button>
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pt-2 text-sm text-muted-foreground">
+        This is the collapsible content. It can be shown or hidden by toggling
+        the trigger.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+</Preview>
+
+### With card
+
+<Preview>
+  <div className="w-full max-w-md rounded-lg border bg-card p-4">
+    <div className="flex items-center justify-between">
+      <span className="text-sm font-medium">Order #4189</span>
+      <Collapsible>
+        <CollapsibleTrigger asChild>
+          <Button variant="primary" size="sm">Toggle details</Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="pt-2 text-sm text-muted-foreground space-y-1">
+            <p><strong>Status</strong> Shipped</p>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    </div>
+  </div>
+</Preview>
+
+## API Reference
+
+See the [Radix UI Collapsible documentation](https://www.radix-ui.com/primitives/docs/components/collapsible) for more information.
