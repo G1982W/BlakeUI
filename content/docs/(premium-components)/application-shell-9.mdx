@@ -1,0 +1,50 @@
+---
+title: App Shell 1
+description: IDE-style application shell with activity bar, file explorer sidebar with collapsible folders, and panel toggle.
+base: base
+component: true
+---
+
+import { ApplicationShell9 } from "@/components/ui/application-shell-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="application-shell-9" premium>
+  <ApplicationShell9 />
+</ComponentPreview>
+
+## Introduction
+
+**App Shell 1** is an IDE-style layout inspired by code editors. It includes:
+
+- **Activity bar** (left): Icons for Explorer, Search, Source control, and Settings. The Explorer icon toggles the file sidebar.
+- **File explorer sidebar**: Collapsible folder tree (e.g. `src`, `public`) with file items and optional count badges, plus a “New file” button.
+- **Main area**: Header with title and a panel toggle; content area and an optional bottom panel for output or tools.
+
+It uses the [Button](/docs/components/button) and [Collapsible](/docs/components/collapsible) components. Ideal for file managers, dev tools, or any app that needs a VS Code–like layout.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["application-shell-9"]?.source ?? ""}
+  fileName="/components/ui/application-shell-9.tsx"
+/>
+
+You need the Button and Collapsible components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ApplicationShell9 } from "@/components/ui/application-shell-9";
+
+<ApplicationShell9 />
+```
+
+Replace the placeholder file tree, labels, and main content with your own data and views. The shell is self-contained; extend it with props or by editing the component to wire up routing and real file data.

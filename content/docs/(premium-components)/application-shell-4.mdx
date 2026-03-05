@@ -1,0 +1,49 @@
+---
+title: App Shell 2
+description: Application shell with top navigation using tab-style links, search input, user dropdown, and mobile drawer menu.
+base: base
+component: true
+---
+
+import { ApplicationShell4 } from "@/components/ui/application-shell-4";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="application-shell-4" premium>
+  <ApplicationShell4 />
+</ComponentPreview>
+
+## Introduction
+
+**App Shell 2** is a top-navigation layout with:
+
+- **Header**: Logo, horizontal tab-style nav links (Dashboard, Projects, Team) with active state, search input, and user avatar dropdown (name, email, profile, settings, log out).
+- **Mobile**: Hamburger opens a left-side drawer with the same nav links and user info.
+
+It uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Dropdown Menu](/docs/components/dropdown-menu), and [Drawer](/docs/components/drawer). Suited to apps with a flat navigation structure and clear tab-style feedback.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["application-shell-4"]?.source ?? ""}
+  fileName="/components/ui/application-shell-4.tsx"
+/>
+
+You need the Button, Input, Avatar, Dropdown Menu, and Drawer components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ApplicationShell4 } from "@/components/ui/application-shell-4";
+
+<ApplicationShell4 />
+```
+
+Replace the logo, tab labels, search behavior, and user dropdown content with your own routes and data. Wire the active tab to your router or state as needed.

@@ -1,0 +1,50 @@
+---
+title: App Shell 3
+description: Application shell with top navigation, dropdown nav groups, search, org switcher, notification, user menu, and mobile bottom navigation.
+base: base
+component: true
+---
+
+import { ApplicationShell13 } from "@/components/ui/application-shell-13";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="application-shell-13" premium>
+  <ApplicationShell13 />
+</ComponentPreview>
+
+## Introduction
+
+**App Shell 3** is a dashboard-style shell with:
+
+- **Top header**: Logo, mobile menu button, centered search, notification bell (with badge), user dropdown (profile/settings/log out), and organization switcher.
+- **Secondary nav (desktop)**: Dropdown menus for Overview, Projects, Team, and Workspace, each with nested items.
+- **Mobile**: Left drawer for full navigation; fixed bottom bar with four icon items (Home, Projects, Team, Settings).
+
+It uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Dropdown Menu](/docs/components/dropdown-menu), and [Drawer](/docs/components/drawer). Good for dashboards and apps that need both desktop dropdown nav and a simple mobile bottom nav.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["application-shell-13"]?.source ?? ""}
+  fileName="/components/ui/application-shell-13.tsx"
+/>
+
+You need the Button, Input, Avatar, Dropdown Menu, and Drawer components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ApplicationShell13 } from "@/components/ui/application-shell-13";
+
+<ApplicationShell13 />
+```
+
+Replace the nav groups, org switcher options, user info, and bottom nav items with your own routes and data. Connect the active bottom nav item to your router or state.
