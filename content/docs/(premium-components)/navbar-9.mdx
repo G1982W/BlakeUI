@@ -1,0 +1,49 @@
+---
+title: Navigation 2
+description: Navbar with logo, nav links and dropdown, optional star count, and mobile drawer with accordion menu.
+base: base
+component: true
+---
+
+import { Navbar9 } from "@/components/ui/navbar-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="navbar-9" premium>
+  <Navbar9 />
+</ComponentPreview>
+
+## Introduction
+
+**Navigation 2** provides a clean navbar with:
+
+- **Desktop**: Logo, navigation with a dropdown (Features) and direct links (Docs, Blog), optional GitHub-style star count, and a primary CTA (Get started).
+- **Mobile**: Left-side drawer with accordion (Features expandable), Docs and Blog links, and star count in the footer.
+
+It uses the [Navigation Menu](/docs/components/navigation-menu), [Drawer](/docs/components/drawer), and [Accordion](/docs/components/accordion) components.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["navbar-9"]?.source ?? ""}
+  fileName="/components/ui/navbar-9.tsx"
+/>
+
+You need the Navigation Menu, Drawer, Accordion, and Button components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Navbar9 } from "@/components/ui/navbar-9";
+
+<Navbar9 />
+```
+
+Replace the logo, links (Features, Docs, Blog), star count (e.g. "12.5k"), and CTA with your own content. The star badge can link to your repo or be hidden on smaller screens.

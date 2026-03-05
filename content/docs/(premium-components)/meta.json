@@ -2,5 +2,13 @@
   "title": "Premium Components",
   "collapsible": true,
   "defaultOpen": true,
-  "pages": ["data-table","data-table22"]
+  "pages": [
+    "---Navbars---",
+    "navbar-1",
+    "navbar-9",
+    "navbar-29",
+    "--- Data Tables ---",
+    "data-table",
+    "data-table22"
+  ]
 }

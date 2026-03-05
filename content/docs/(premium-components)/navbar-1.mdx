@@ -1,0 +1,49 @@
+---
+title: Navigation 1
+description: Responsive navbar with desktop dropdown menus, login/signup, and mobile drawer with accordion navigation.
+base: base
+component: true
+---
+
+import { Navbar1 } from "@/components/ui/navbar-1";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="navbar-1" premium>
+  <Navbar1 />
+</ComponentPreview>
+
+## Introduction
+
+**Navigation 1** is a responsive navigation bar for both desktop and mobile. It includes:
+
+- **Desktop**: Logo, navigation menu with dropdowns (Products, Docs), standalone About link, and Log in / Sign up buttons.
+- **Mobile**: Hamburger button that opens a left-side drawer with accordion sections (Products, Docs), About link, and auth buttons.
+
+It uses the [Navigation Menu](/docs/components/navigation-menu), [Drawer](/docs/components/drawer), and [Accordion](/docs/components/accordion) components.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["navbar-1"]?.source ?? ""}
+  fileName="/components/ui/navbar-1.tsx"
+/>
+
+You need the Navigation Menu, Drawer, Accordion, and Button components in your project.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Navbar1 } from "@/components/ui/navbar-1";
+
+<Navbar1 />
+```
+
+Replace the placeholder links and copy (Brand, Products, Docs, About, Log in, Sign up) with your own routes and labels. The component is self-contained; customize by editing the component file or by forking it and passing props if you extend it.
