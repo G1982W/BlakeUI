@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import registry from "@/registry.json";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { Lock } from "lucide-react";
+import { Lock, Maximize2, X } from "lucide-react";
 import Link from "next/link";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
@@ -41,8 +41,22 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   const [tab, setTab] = React.useState<"preview" | "code">("preview");
   const [copied, setCopied] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(false);
   const { isLoading: subscriptionLoading, hasActiveSubscription } =
     useSubscriptionStatus();
+
+  React.useEffect(() => {
+    if (!expanded) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setExpanded(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [expanded]);
 
   const code = (registry as any)[name]?.source || "";
 
@@ -82,17 +96,63 @@ export function ComponentPreview({
             Code
           </button>
         </div>
-        <button
-          onClick={copyToClipboard}
-          disabled={disableCopy}
-          className={cn(
-            "flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
-            disableCopy && "opacity-60",
+        <div className="flex items-center gap-2">
+          {tab === "preview" && (
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className="flex h-8 items-center justify-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95"
+              title="Expand to full screen"
+              aria-label="Expand to full screen"
+            >
+              <Maximize2 className="size-3.5" />
+              Expand
+            </button>
           )}
-        >
-          {copied ? "Copied!" : "Copy Code"}
-        </button>
+          <button
+            onClick={copyToClipboard}
+            disabled={disableCopy}
+            className={cn(
+              "flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+              disableCopy && "opacity-60",
+            )}
+          >
+            {copied ? "Copied!" : "Copy Code"}
+          </button>
+        </div>
       </div>
+
+      {expanded && (
+        <div
+          className="fixed inset-0 z-200 flex h-screen max-h-screen flex-col overflow-hidden bg-background"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Component preview full screen"
+        >
+          <div className="flex shrink-0 items-center justify-between border-b border-border bg-background px-4 py-2">
+            <span className="text-sm font-medium text-muted-foreground">
+              Full screen preview — Press Escape to close
+            </span>
+            <button
+              type="button"
+              onClick={() => setExpanded(false)}
+              className="flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              title="Close full screen"
+              aria-label="Close full screen"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
+          <div
+            className={cn(
+              "h-[calc(100vh-3.5rem)] max-h-[calc(100vh-3.5rem)] overflow-auto p-6",
+              previewClassName,
+            )}
+          >
+            {children}
+          </div>
+        </div>
+      )}
 
       <div
         className={cn(
