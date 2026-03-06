@@ -50,14 +50,17 @@ const users = [
 
 const fieldKeys = ["name", "company", "role", "email"] as const;
 
+type User = (typeof users)[number];
+
 export function FieldMerging1() {
+  const [usersList, setUsersList] = React.useState<User[]>(users);
   const [selected, setSelected] = React.useState<Set<string>>(new Set());
   const [mergeOpen, setMergeOpen] = React.useState(false);
   const [mergedField, setMergedField] = React.useState<Record<string, string>>(
     {},
   );
 
-  const selectedUsers = users.filter((u) => selected.has(u.id));
+  const selectedUsers = usersList.filter((u) => selected.has(u.id));
   const canMerge = selectedUsers.length >= 2;
 
   const setRowSelected = (id: string, checked: boolean) => {
@@ -82,13 +85,29 @@ export function FieldMerging1() {
 
   React.useEffect(() => {
     if (!mergeOpen) return;
-    const initialSelected = users.filter((u) => selected.has(u.id));
+    const initialSelected = usersList.filter((u) => selected.has(u.id));
     if (initialSelected.length >= 2) {
       setMergedField(
         Object.fromEntries(fieldKeys.map((k) => [k, initialSelected[0].id])),
       );
     }
-  }, [mergeOpen]);
+  }, [mergeOpen, selected, usersList]);
+
+  const handleMergeRecords = () => {
+    if (selectedUsers.length < 2) return;
+    const mergedUser: User = {
+      id: `merged-${Array.from(selected).sort().join("-")}`,
+      name: getMergedValue("name"),
+      company: getMergedValue("company"),
+      role: getMergedValue("role"),
+      email: getMergedValue("email"),
+    };
+    setUsersList((prev) =>
+      prev.filter((u) => !selected.has(u.id)).concat(mergedUser),
+    );
+    setSelected(new Set());
+    setMergeOpen(false);
+  };
 
   return (
     <div className="rounded-lg border border-border bg-background p-6">
@@ -208,7 +227,11 @@ export function FieldMerging1() {
               >
                 Cancel
               </Button>
-              <Button variant="secondary" size="sm">
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={handleMergeRecords}
+              >
                 Merge records
               </Button>
             </DialogFooter>
@@ -226,7 +249,7 @@ export function FieldMerging1() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {users.map((user) => (
+          {usersList.map((user) => (
             <TableRow key={user.id}>
               <TableCell>
                 <Checkbox

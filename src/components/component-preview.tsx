@@ -124,7 +124,7 @@ export function ComponentPreview({
 
       {expanded && (
         <div
-          className="fixed bg-white inset-0 z-200 flex h-screen max-h-screen flex-col overflow-hidden bg-background"
+          className="fixed bg-white inset-0 z-200 flex h-screen max-h-screen flex-col overflow-hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Component preview full screen"
@@ -163,7 +163,7 @@ export function ComponentPreview({
         {tab === "preview" ? (
           <div
             className={cn(
-              "flex w-full items-center justify-center p-10 ring-offset-background transition-colors",
+              "flex w-full min-w-0 justify-center overflow-visible p-10 ring-offset-background transition-colors",
               previewClassName,
             )}
           >
