@@ -462,68 +462,70 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
 
   return (
     <div className={cn("flex min-h-[520px] flex-col overflow-auto", className)}>
-      {/* Top navigation bar */}
-      <header className="sticky top-0 z-50 bg-background">
-        <div className="flex h-14 min-w-0 items-center gap-2 border-b px-4 sm:gap-4 lg:px-6">
-          {/* Mobile menu */}
-          <MobileNav
-            activeGroupIndex={activeGroupIndex}
-            onSelectGroup={setActiveGroupIndex}
-          />
-
-          {/* Logo */}
-          <a href="#" className="flex shrink-0 items-center gap-2">
-            <img
-              src={sidebarData.logo.src}
-              alt={sidebarData.logo.alt}
-              className="size-8 rounded-sm"
+      <div className="flex min-w-fit flex-1 flex-col">
+        {/* Top navigation bar */}
+        <header className="sticky top-0 z-50 bg-background">
+          <div className="flex h-14 items-center gap-2 border-b px-4 sm:gap-4 lg:px-6">
+            {/* Mobile menu */}
+            <MobileNav
+              activeGroupIndex={activeGroupIndex}
+              onSelectGroup={setActiveGroupIndex}
             />
-            <span className="hidden font-semibold sm:inline">
-              {sidebarData.logo.title}
-            </span>
-          </a>
 
-          {/* Desktop navigation - group tabs */}
-          <nav className="ml-4 hidden items-center gap-1 md:flex">
-            {sidebarData.navGroups.map((group, index) => (
-              <NavDropdown
-                key={group.title}
-                group={group}
-                isActive={index === activeGroupIndex}
-                onSelect={() => setActiveGroupIndex(index)}
+            {/* Logo */}
+            <a href="#" className="flex shrink-0 items-center gap-2">
+              <img
+                src={sidebarData.logo.src}
+                alt={sidebarData.logo.alt}
+                className="size-8 rounded-sm"
               />
-            ))}
-          </nav>
+              <span className="hidden font-semibold sm:inline">
+                {sidebarData.logo.title}
+              </span>
+            </a>
 
-          {/* Right side */}
-          <div className="ml-auto flex shrink-0 items-center gap-2">
-            <div className="relative hidden md:block">
-              <Search className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search..."
-                className="h-9 w-64 pl-8"
-              />
+            {/* Desktop navigation - group tabs */}
+            <nav className="ml-4 hidden items-center gap-1 md:flex">
+              {sidebarData.navGroups.map((group, index) => (
+                <NavDropdown
+                  key={group.title}
+                  group={group}
+                  isActive={index === activeGroupIndex}
+                  onSelect={() => setActiveGroupIndex(index)}
+                />
+              ))}
+            </nav>
+
+            {/* Right side */}
+            <div className="ml-auto flex shrink-0 items-center gap-2">
+              <div className="relative hidden md:block">
+                <Search className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  className="h-9 w-64 pl-8"
+                />
+              </div>
+              <Button variant="primary" size="sm" className="md:hidden">
+                <Search className="size-5" />
+              </Button>
+              {sidebarData.user && <NavUser user={sidebarData.user} />}
             </div>
-            <Button variant="primary" size="sm" className="md:hidden">
-              <Search className="size-5" />
-            </Button>
-            {sidebarData.user && <NavUser user={sidebarData.user} />}
           </div>
-        </div>
 
-        {/* Sub-navigation row */}
-        <SubNav
-          group={activeGroup}
-          activeItem={activeItem}
-          onSelectItem={setActiveItem}
-        />
-      </header>
+          {/* Sub-navigation row */}
+          <SubNav
+            group={activeGroup}
+            activeItem={activeItem}
+            onSelectItem={setActiveItem}
+          />
+        </header>
 
-      {/* Main content */}
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
-        <div className="h-[200px] flex-1 rounded-xl bg-muted/50 " />
-      </main>
+        {/* Main content */}
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
+          <div className="h-[200px] flex-1 rounded-xl bg-muted/50 " />
+        </main>
+      </div>
     </div>
   );
 }
