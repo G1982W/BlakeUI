@@ -196,28 +196,28 @@ export function DataTable14({
       </Tabs>
       <div className="flex flex-wrap gap-2">
         <Button
-          variant={paymentFilter === "all" ? "primary" : "secondary"}
+          variant={paymentFilter === "all" ? "secondary" : "primary"}
           size="sm"
           onClick={() => setPaymentFilter("all")}
         >
           All
         </Button>
         <Button
-          variant={paymentFilter === "Paid" ? "primary" : "secondary"}
+          variant={paymentFilter === "Paid" ? "secondary" : "primary"}
           size="sm"
           onClick={() => setPaymentFilter("Paid")}
         >
           Paid
         </Button>
         <Button
-          variant={paymentFilter === "Pending" ? "primary" : "secondary"}
+          variant={paymentFilter === "Pending" ? "secondary" : "primary"}
           size="sm"
           onClick={() => setPaymentFilter("Pending")}
         >
           Pending
         </Button>
         <Button
-          variant={paymentFilter === "Failed" ? "primary" : "secondary"}
+          variant={paymentFilter === "Failed" ? "secondary" : "primary"}
           size="sm"
           onClick={() => setPaymentFilter("Failed")}
         >
@@ -297,23 +297,25 @@ export function DataTable14({
           </TableBody>
         </Table>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <span>Rows per page</span>
-          <NativeSelect
-            className="w-16"
-            value={String(table.getState().pagination.pageSize)}
-            onChange={(e) => table.setPageSize(Number(e.target.value))}
-          >
-            <NativeSelectOption value="5">5</NativeSelectOption>
-            <NativeSelectOption value="10">10</NativeSelectOption>
-            <NativeSelectOption value="20">20</NativeSelectOption>
-          </NativeSelect>
-          <span>
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground sm:flex-nowrap">
+          <span className="whitespace-nowrap">Rows per page</span>
+          <div className="w-20 shrink-0">
+            <NativeSelect
+              className="w-full min-w-0"
+              value={String(table.getState().pagination.pageSize)}
+              onChange={(e) => table.setPageSize(Number(e.target.value))}
+            >
+              <NativeSelectOption value="5">5</NativeSelectOption>
+              <NativeSelectOption value="10">10</NativeSelectOption>
+              <NativeSelectOption value="20">20</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <span className="whitespace-nowrap">
             {table.getState().pagination.pageIndex *
               table.getState().pagination.pageSize +
               1}
-            -
+            –
             {Math.min(
               (table.getState().pagination.pageIndex + 1) *
                 table.getState().pagination.pageSize,
@@ -322,7 +324,7 @@ export function DataTable14({
             of {table.getFilteredRowModel().rows.length}
           </span>
         </div>
-        <div className="flex gap-1">
+        <div className="flex shrink-0 gap-1">
           <Button
             variant="secondary"
             size="sm"
