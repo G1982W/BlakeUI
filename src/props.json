@@ -61,6 +61,14 @@
       "required": false
     }
   ],
+  "ApplicationShell4": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "AppSidebar": [
     {
       "name": "activeModule",
@@ -234,6 +242,159 @@
   "CardAction": [],
   "CardDescription": [],
   "CardContent": [],
+  "ChartCard14": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Response Time Range",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Min, max, and average response times",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard19": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Browser Share",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Traffic by browser type",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard20": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Skill Assessment",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Competency scores across areas",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard26": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue with Target Band",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Monthly revenue within acceptable range",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "number",
+      "defaultValue": "280",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "upperBound",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "lowerBound",
+      "type": "number",
+      "defaultValue": "240",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard6": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue Comparison",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Current year vs previous year",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard9": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Traffic Sources",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Visitors by device type over time",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "ChartContainer": [
     {
       "name": "config",
@@ -3784,6 +3945,14 @@
       "required": false
     }
   ],
+  "FieldMapping1": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "FormItem": [],
   "FormLabel": [],
   "FormControl": [],
@@ -4235,6 +4404,14 @@
       "name": "size",
       "type": "\"default\" | \"sm\"",
       "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Navbar1": [
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }

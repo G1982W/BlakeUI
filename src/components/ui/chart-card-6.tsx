@@ -1,71 +1,106 @@
 "use client";
 
-import * as React from "react";
-import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import type { ChartConfig } from "@/components/ui/chart";
-import {
-  ChartContainer,
-  ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import { Line, LineChart, CartesianGrid, XAxis, YAxis, Legend } from "recharts";
+
 import { cn } from "@/lib/utils";
 
-const data = [
-  { month: "Jan", current: 4200, previous: 3800 },
-  { month: "Feb", current: 4500, previous: 4100 },
-  { month: "Mar", current: 4100, previous: 4400 },
-  { month: "Apr", current: 4800, previous: 4300 },
-  { month: "May", current: 5200, previous: 4600 },
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart";
+
+interface ChartCard6Props {
+  title?: string;
+  description?: string;
+  className?: string;
+}
+
+const chartData = [
+  { month: "Jan", current: 186, previous: 165 },
+  { month: "Feb", current: 305, previous: 280 },
+  { month: "Mar", current: 237, previous: 251 },
+  { month: "Apr", current: 273, previous: 240 },
+  { month: "May", current: 209, previous: 195 },
+  { month: "Jun", current: 314, previous: 285 },
 ];
 
 const chartConfig = {
-  current: { label: "Current", color: "var(--brand)" },
-  previous: { label: "Previous", color: "var(--muted-foreground)" },
+  current: {
+    label: "This Year",
+    color: "var(--chart-1)",
+  },
+  previous: {
+    label: "Last Year",
+    color: "var(--chart-4)",
+  },
 } satisfies ChartConfig;
 
-export function ChartCard6({ className }: { className?: string }) {
+const ChartCard6 = ({
+  title = "Revenue Comparison",
+  description = "Current year vs previous year",
+  className,
+}: ChartCard6Props) => {
   return (
-    <div
-      className={cn(
-        "rounded-lg border border-border bg-background p-4",
-        className,
-      )}
-    >
-      <p className="mb-4 text-sm font-medium">Period comparison</p>
-      <ChartContainer config={chartConfig} className="h-[220px] w-full">
-        <LineChart data={data}>
-          <CartesianGrid
-            strokeDasharray="3 3"
-            className="stroke-muted"
-            vertical={false}
-          />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            axisLine={false}
-            tick={{ fontSize: 12 }}
-          />
-          <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 12 }} />
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <Legend content={<ChartLegendContent />} />
-          <Line
-            type="monotone"
-            dataKey="current"
-            stroke="var(--brand)"
-            strokeWidth={2}
-            dot={{ r: 3 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="previous"
-            stroke="var(--muted-foreground)"
-            strokeWidth={2}
-            strokeDasharray="4 4"
-            dot={{ r: 3 }}
-          />
-        </LineChart>
-      </ChartContainer>
-    </div>
+    <Card className={cn("max-w-2xl w-full", className)}>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ChartContainer config={chartConfig} className="h-64 w-full">
+          <LineChart
+            data={chartData}
+            margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis
+              dataKey="month"
+              axisLine={false}
+              tickLine={false}
+              tickMargin={8}
+              fontSize={12}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tickMargin={8}
+              fontSize={12}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Line
+              type="monotone"
+              dataKey="current"
+              stroke="var(--color-current)"
+              strokeWidth={2}
+              dot={{ fill: "var(--color-current)", r: 4 }}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="previous"
+              stroke="var(--color-previous)"
+              strokeWidth={2}
+              strokeDasharray="4 4"
+              dot={{ fill: "var(--color-previous)", r: 4 }}
+              activeDot={{ r: 6 }}
+            />
+          </LineChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
   );
-}
+};
+
+export { ChartCard6 };
