@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { z } from "zod";
 import { Pencil, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,23 +15,42 @@ const fields = [
   { key: "bio", label: "Bio", value: "" },
 ];
 
+const fieldSchemas: Record<string, z.ZodType<string>> = {
+  name: z.string().min(1, "Name is required"),
+  username: z.string().min(2, "Username must be at least 2 characters").regex(/^[a-z0-9_-]+$/i, "Username can only contain letters, numbers, underscore and hyphen"),
+  email: z.string().min(1, "Email is required").email("Enter a valid email"),
+  bio: z.string(),
+};
+
 export function SettingsProfile7() {
   const [editKey, setEditKey] = React.useState<string | null>(null);
   const [values, setValues] = React.useState(
     Object.fromEntries(fields.map((f) => [f.key, f.value])),
   );
   const [draft, setDraft] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const startEdit = (key: string, current: string) => {
     setEditKey(key);
     setDraft(current);
+    setError("");
   };
 
   const saveEdit = () => {
-    if (editKey) {
+    if (!editKey) return;
+    const schema = fieldSchemas[editKey];
+    if (schema) {
+      const result = schema.safeParse(draft);
+      if (!result.success) {
+        setError(result.error.issues[0]?.message ?? "Invalid value");
+        return;
+      }
+      setValues((prev) => ({ ...prev, [editKey]: result.data ?? draft }));
+    } else {
       setValues((prev) => ({ ...prev, [editKey]: draft }));
-      setEditKey(null);
     }
+    setEditKey(null);
+    setError("");
   };
 
   const cancelEdit = () => {
@@ -73,15 +93,17 @@ export function SettingsProfile7() {
                   {field.label}
                 </p>
                 {editKey === field.key ? (
-                  <div className="mt-0.5 flex items-center gap-1">
-                    <Input
-                      value={draft}
-                      onChange={(e) => setDraft(e.target.value)}
-                      onBlur={saveEdit}
-                      onKeyDown={(e) => handleKeyDown(e, field.key)}
-                      className="h-8 text-sm"
-                      autoFocus
-                    />
+                  <div className="mt-0.5 space-y-1">
+                    <div className="flex items-center gap-1">
+                      <Input
+                        value={draft}
+                        onChange={(e) => { setDraft(e.target.value); setError(""); }}
+                        onBlur={saveEdit}
+                        onKeyDown={(e) => handleKeyDown(e, field.key)}
+                        className="h-8 text-sm"
+                        autoFocus
+                        aria-invalid={!!error}
+                      />
                     <Button
                       variant="primary"
                       size="sm"
@@ -98,6 +120,8 @@ export function SettingsProfile7() {
                     >
                       <X className="size-4" />
                     </Button>
+                    </div>
+                    {error && <p className="text-xs text-destructive">{error}</p>}
                   </div>
                 ) : (
                   <button
