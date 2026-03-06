@@ -233,7 +233,7 @@ const SubNav = ({
   onSelectItem: (item: NavItem) => void;
 }) => {
   return (
-    <div className="flex h-10 items-center gap-1 border-b bg-muted/30 px-4 lg:px-6">
+    <div className="flex h-10 items-center gap-1 overflow-x-auto border-b bg-muted/30 px-4 lg:px-6">
       {group.items.map((item) => {
         const Icon = item.icon;
         const isActive = activeItem?.label === item.label;
@@ -247,7 +247,7 @@ const SubNav = ({
                   variant="primary"
                   size="sm"
                   className={cn(
-                    "h-7 gap-1.5 text-sm",
+                    "h-7 shrink-0 gap-1.5 text-sm",
                     isActive && "bg-accent text-accent-foreground",
                   )}
                 >
@@ -279,7 +279,7 @@ const SubNav = ({
             variant="primary"
             size="sm"
             className={cn(
-              "h-7 gap-1.5 text-sm",
+              "h-7 shrink-0 gap-1.5 text-sm",
               isActive && "bg-accent text-accent-foreground",
             )}
             onClick={() => onSelectItem(item)}
@@ -461,10 +461,10 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
   );
 
   return (
-    <div className={cn("flex min-h-svh flex-col", className)}>
+    <div className={cn("flex min-h-svh flex-col overflow-hidden", className)}>
       {/* Top navigation bar */}
       <header className="sticky top-0 z-50 bg-background">
-        <div className="flex h-14 items-center gap-4 border-b px-4 lg:px-6">
+        <div className="flex h-14 min-w-0 items-center gap-2 border-b px-4 sm:gap-4 lg:px-6">
           {/* Mobile menu */}
           <MobileNav
             activeGroupIndex={activeGroupIndex}
@@ -472,7 +472,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
           />
 
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <a href="#" className="flex shrink-0 items-center gap-2">
             <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
               <img
                 src={sidebarData.logo.src}
@@ -480,7 +480,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
                 className="size-6 text-primary-foreground invert dark:invert-0"
               />
             </div>
-            <span className="font-semibold">{sidebarData.logo.title}</span>
+            <span className="hidden font-semibold sm:inline">{sidebarData.logo.title}</span>
           </a>
 
           {/* Desktop navigation - group tabs */}
@@ -496,7 +496,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
           </nav>
 
           {/* Right side */}
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex shrink-0 items-center gap-2">
             <div className="relative hidden md:block">
               <Search className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
