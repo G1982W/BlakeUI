@@ -124,7 +124,7 @@ export function ComponentPreview({
 
       {expanded && (
         <div
-          className="fixed inset-0 z-200 flex h-screen max-h-screen flex-col overflow-hidden bg-background"
+          className="fixed bg-white inset-0 z-200 flex h-screen max-h-screen flex-col overflow-hidden bg-background"
           role="dialog"
           aria-modal="true"
           aria-label="Component preview full screen"
