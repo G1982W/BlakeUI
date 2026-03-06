@@ -1,111 +1,164 @@
 "use client";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import type { ChartConfig } from "@/components/ui/chart";
+import { Line, LineChart, CartesianGrid, XAxis, YAxis } from "recharts";
+
+import { cn } from "@/lib/utils";
+
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  type ChartConfig,
   ChartContainer,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
 } from "@/components/ui/chart";
 
-const data = [
-  { month: "Jan", current: 4200, previous: 3800 },
-  { month: "Feb", current: 4500, previous: 4100 },
-  { month: "Mar", current: 4100, previous: 4400 },
-  { month: "Apr", current: 4800, previous: 4300 },
-  { month: "May", current: 5200, previous: 4600 },
-  { month: "Jun", current: 4900, previous: 4800 },
+interface ChartGroup5Props {
+  className?: string;
+}
+
+const currentData = [
+  { month: "Jan", value: 18600 },
+  { month: "Feb", value: 30500 },
+  { month: "Mar", value: 23700 },
+  { month: "Apr", value: 27300 },
+  { month: "May", value: 20900 },
+  { month: "Jun", value: 31400 },
 ];
 
+const previousData = [
+  { month: "Jan", value: 15200 },
+  { month: "Feb", value: 24800 },
+  { month: "Mar", value: 21100 },
+  { month: "Apr", value: 22500 },
+  { month: "May", value: 19400 },
+  { month: "Jun", value: 26200 },
+];
+
+const combinedData = currentData.map((item, index) => ({
+  month: item.month,
+  current: item.value,
+  previous: previousData[index].value,
+}));
+
 const chartConfig = {
-  current: { label: "Current year", color: "var(--brand)" },
-  previous: { label: "Previous year", color: "var(--muted-foreground)" },
+  current: { label: "This Year", color: "var(--chart-1)" },
+  previous: { label: "Last Year", color: "var(--chart-4)" },
 } satisfies ChartConfig;
 
-const currentTotal = data.reduce((s, d) => s + d.current, 0);
-const previousTotal = data.reduce((s, d) => s + d.previous, 0);
-const growth =
-  previousTotal > 0
-    ? (((currentTotal - previousTotal) / previousTotal) * 100).toFixed(1)
-    : "0";
+const ChartGroup5 = ({ className }: ChartGroup5Props) => {
+  const currentTotal = currentData.reduce((sum, item) => sum + item.value, 0);
+  const previousTotal = previousData.reduce((sum, item) => sum + item.value, 0);
+  const growth = (
+    ((currentTotal - previousTotal) / previousTotal) *
+    100
+  ).toFixed(1);
 
-export function ChartGroup5() {
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
-          <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Year over year</p>
+    <section className={cn("py-32", className)}>
+      <div className="container mx-auto grid gap-4 md:grid-cols-3">
+        <Card className="md:col-span-2">
+          <CardHeader>
+            <CardTitle>Year over Year Comparison</CardTitle>
+            <CardDescription>Revenue performance vs last year</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig} className="h-[240px] w-full">
-              <LineChart data={data}>
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  vertical={false}
-                  className="stroke-muted"
-                />
+            <ChartContainer config={chartConfig} className="h-64 w-full">
+              <LineChart
+                data={combinedData}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis
                   dataKey="month"
-                  tickLine={false}
                   axisLine={false}
-                  tick={{ fontSize: 12 }}
+                  tickLine={false}
+                  tickMargin={8}
+                  fontSize={12}
                 />
                 <YAxis
-                  tickLine={false}
                   axisLine={false}
-                  tick={{ fontSize: 12 }}
+                  tickLine={false}
+                  tickMargin={8}
+                  fontSize={12}
+                  tickFormatter={(v) => `$${v / 1000}k`}
                 />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend content={<ChartLegendContent />} />
+                <ChartLegend content={<ChartLegendContent />} />
                 <Line
                   type="monotone"
                   dataKey="current"
-                  stroke="var(--brand)"
+                  stroke="var(--color-current)"
                   strokeWidth={2}
-                  dot={{ r: 3 }}
+                  dot={{ fill: "var(--color-current)", r: 4 }}
                 />
                 <Line
                   type="monotone"
                   dataKey="previous"
-                  stroke="var(--muted-foreground)"
+                  stroke="var(--color-previous)"
                   strokeWidth={2}
                   strokeDasharray="4 4"
-                  dot={{ r: 3 }}
+                  dot={{ fill: "var(--color-previous)", r: 4 }}
                 />
               </LineChart>
             </ChartContainer>
           </CardContent>
         </Card>
+
         <Card>
-          <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Summary</p>
+          <CardHeader className="pb-3">
+            <CardTitle>Summary</CardTitle>
+            <CardDescription>Period comparison</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-1">
-              <p className="text-xs text-muted-foreground">Current period</p>
-              <p className="text-xl font-semibold">
+          <CardContent className="space-y-3 font-mono text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">This Year</span>
+              <span className="font-semibold">
                 ${currentTotal.toLocaleString()}
-              </p>
+              </span>
             </div>
-            <div className="border-t border-border pt-3">
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">Previous period</p>
-                <p className="text-lg font-medium">
-                  ${previousTotal.toLocaleString()}
-                </p>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Last Year</span>
+              <span className="text-muted-foreground">
+                ${previousTotal.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Difference</span>
+              <span className="text-green-500">
+                +${(currentTotal - previousTotal).toLocaleString()}
+              </span>
+            </div>
+            <div className="border-t pt-3">
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Growth</span>
+                <span className="font-semibold text-green-500">+{growth}%</span>
               </div>
             </div>
-            <div className="border-t border-border pt-3">
-              <p className="text-xs text-muted-foreground">Growth</p>
-              <p className="text-lg font-semibold text-chart-2">+{growth}%</p>
+            <div className="border-t pt-3 text-xs">
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Avg/Month (This)</span>
+                <span>${Math.round(currentTotal / 6).toLocaleString()}</span>
+              </div>
+              <div className="mt-1 flex items-center justify-between">
+                <span className="text-muted-foreground">Avg/Month (Last)</span>
+                <span className="text-muted-foreground">
+                  ${Math.round(previousTotal / 6).toLocaleString()}
+                </span>
+              </div>
             </div>
           </CardContent>
         </Card>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export { ChartGroup5 };

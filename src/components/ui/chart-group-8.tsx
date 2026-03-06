@@ -1,208 +1,238 @@
 "use client";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { CartesianGrid, XAxis, YAxis, Line, LineChart } from "recharts";
+import { TrendingUp, TrendingDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
 import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Legend,
-} from "recharts";
-import type { ChartConfig } from "@/components/ui/chart";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
+  type ChartConfig,
   ChartContainer,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const areaData = [
-  { month: "Jan", value: 3200 },
-  { month: "Feb", value: 3800 },
-  { month: "Mar", value: 3500 },
-  { month: "Apr", value: 4200 },
-  { month: "May", value: 4800 },
+interface ChartGroup8Props {
+  className?: string;
+}
+
+const weeklyData = [
+  { day: "Mon", current: 420, previous: 380 },
+  { day: "Tue", current: 510, previous: 450 },
+  { day: "Wed", current: 480, previous: 420 },
+  { day: "Thu", current: 620, previous: 550 },
+  { day: "Fri", current: 710, previous: 620 },
+  { day: "Sat", current: 540, previous: 480 },
+  { day: "Sun", current: 410, previous: 390 },
 ];
 
-const donutData = [
-  { name: "A", value: 40, fill: "var(--chart-1)" },
-  { name: "B", value: 35, fill: "var(--chart-2)" },
-  { name: "C", value: 25, fill: "var(--chart-3)" },
+const performanceData = [
+  { metric: "Sales", value: 87, target: 100, fill: "var(--chart-1)" },
+  { metric: "Leads", value: 65, target: 100, fill: "var(--chart-2)" },
+  { metric: "Conversion", value: 42, target: 100, fill: "var(--chart-3)" },
+  { metric: "Retention", value: 91, target: 100, fill: "var(--chart-4)" },
 ];
 
-const horizontalBarData = [
-  { name: "Q1", value: 420 },
-  { name: "Q2", value: 380 },
-  { name: "Q3", value: 510 },
-  { name: "Q4", value: 290 },
-];
-
-const verticalBarData = [
-  { x: "Mon", value: 120 },
-  { x: "Tue", value: 95 },
-  { x: "Wed", value: 140 },
-  { x: "Thu", value: 88 },
-  { x: "Fri", value: 165 },
-];
-
-const areaConfig = {
-  value: { label: "Value", color: "var(--chart-1)" },
-} satisfies ChartConfig;
-const barConfig = {
-  value: { label: "Value", color: "var(--chart-2)" },
+const weeklyConfig = {
+  current: { label: "This Week", color: "var(--chart-1)" },
+  previous: { label: "Last Week", color: "var(--chart-4)" },
 } satisfies ChartConfig;
 
-export function ChartGroup8() {
+const ChartGroup8 = ({ className }: ChartGroup8Props) => {
+  const currentTotal = weeklyData.reduce((sum, d) => sum + d.current, 0);
+  const previousTotal = weeklyData.reduce((sum, d) => sum + d.previous, 0);
+  const change = (
+    ((currentTotal - previousTotal) / previousTotal) *
+    100
+  ).toFixed(1);
+  const isPositive = Number(change) >= 0;
+
   return (
-    <div className="space-y-4 w-full rounded-lg border border-border bg-background p-4">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <section className={cn("", className)}>
+      <div className="container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {/* Weekly Comparison - spans 2 cols */}
         <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Area chart</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-base">Weekly Comparison</CardTitle>
+                <CardDescription>This week vs last week</CardDescription>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold">
+                  {currentTotal.toLocaleString()}
+                </p>
+                <div className="flex items-center justify-end gap-1 text-sm">
+                  {isPositive ? (
+                    <TrendingUp className="size-4 text-green-500" />
+                  ) : (
+                    <TrendingDown className="size-4 text-red-500" />
+                  )}
+                  <span
+                    className={isPositive ? "text-green-500" : "text-red-500"}
+                  >
+                    {isPositive ? "+" : ""}
+                    {change}%
+                  </span>
+                </div>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={areaConfig} className="h-[200px] w-full">
-              <AreaChart data={areaData}>
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  vertical={false}
-                  className="stroke-muted"
-                />
-                <XAxis
-                  dataKey="month"
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 11 }}
-                />
-                <YAxis
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 11 }}
-                />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Area
-                  type="monotone"
-                  dataKey="value"
-                  stroke="var(--chart-1)"
-                  fill="var(--chart-1)"
-                  fillOpacity={0.4}
-                />
-              </AreaChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Donut</p>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer
-              config={{}}
-              className="mx-auto h-[180px] w-full max-w-[160px]"
-            >
-              <PieChart>
-                <Pie
-                  data={donutData}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={45}
-                  outerRadius={65}
-                  paddingAngle={2}
-                >
-                  {donutData.map((_, i) => (
-                    <Cell key={i} fill={donutData[i].fill} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend content={<ChartLegendContent />} />
-              </PieChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-        <Card className="lg:col-span-2">
-          <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Horizontal bars</p>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={barConfig} className="h-[180px] w-full">
-              <BarChart
-                data={horizontalBarData}
-                layout="vertical"
-                margin={{ left: 0 }}
+            <ChartContainer config={weeklyConfig} className="h-52 w-full">
+              <LineChart
+                data={weeklyData}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
               >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  horizontal={false}
-                  className="stroke-muted"
-                />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis
-                  type="number"
-                  tickLine={false}
+                  dataKey="day"
                   axisLine={false}
-                  tick={{ fontSize: 11 }}
+                  tickLine={false}
+                  tickMargin={8}
+                  fontSize={12}
                 />
                 <YAxis
-                  type="category"
-                  dataKey="name"
-                  tickLine={false}
                   axisLine={false}
-                  width={32}
-                  tick={{ fontSize: 11 }}
+                  tickLine={false}
+                  tickMargin={8}
+                  fontSize={12}
                 />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar
-                  dataKey="value"
-                  fill="var(--chart-2)"
-                  radius={[0, 4, 4, 0]}
+                <Line
+                  type="monotone"
+                  dataKey="current"
+                  stroke="var(--color-current)"
+                  strokeWidth={2}
+                  dot={{ fill: "var(--color-current)", r: 4 }}
                 />
-              </BarChart>
+                <Line
+                  type="monotone"
+                  dataKey="previous"
+                  stroke="var(--color-previous)"
+                  strokeWidth={2}
+                  strokeDasharray="4 4"
+                  dot={{ fill: "var(--color-previous)", r: 3 }}
+                />
+              </LineChart>
             </ChartContainer>
           </CardContent>
         </Card>
+
+        {/* Monthly Goal Progress */}
         <Card>
           <CardHeader className="pb-2">
-            <p className="text-sm font-medium">Vertical bars</p>
+            <CardTitle className="text-base">Monthly Goal</CardTitle>
+            <CardDescription>Revenue target progress</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center justify-center">
+            <div className="relative flex size-36 items-center justify-center">
+              <svg className="size-full -rotate-90" viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="none"
+                  className="stroke-muted"
+                  strokeWidth="8"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="none"
+                  className="stroke-chart-1"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeDasharray={`${73 * 2.51} ${100 * 2.51}`}
+                />
+              </svg>
+              <div className="absolute flex flex-col items-center">
+                <span className="text-2xl font-bold">73%</span>
+                <span className="text-xs text-muted-foreground">of goal</span>
+              </div>
+            </div>
+            <p className="mt-2 text-center text-sm text-muted-foreground">
+              $36,500 / $50,000
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Quick Stats */}
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">Quick Stats</CardTitle>
+            <CardDescription>Key metrics overview</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              { label: "Avg. Order", value: "$142", change: 8.5 },
+              { label: "New Customers", value: "284", change: 12.3 },
+              { label: "Repeat Rate", value: "34%", change: -2.1 },
+            ].map((stat, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  {stat.label}
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold">{stat.value}</span>
+                  <span
+                    className={cn(
+                      "text-xs",
+                      stat.change >= 0 ? "text-green-500" : "text-red-500",
+                    )}
+                  >
+                    {stat.change >= 0 ? "+" : ""}
+                    {stat.change}%
+                  </span>
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Performance Metrics - spans full width */}
+        <Card className="lg:col-span-4">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">Performance Metrics</CardTitle>
+            <CardDescription>
+              Progress towards quarterly targets
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={barConfig} className="h-[180px] w-full">
-              <BarChart data={verticalBarData}>
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  vertical={false}
-                  className="stroke-muted"
-                />
-                <XAxis
-                  dataKey="x"
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 11 }}
-                />
-                <YAxis
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 11 }}
-                />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar
-                  dataKey="value"
-                  fill="var(--chart-3)"
-                  radius={[4, 4, 0, 0]}
-                />
-              </BarChart>
-            </ChartContainer>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {performanceData.map((item, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium">{item.metric}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {item.value}%
+                    </span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-muted">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${item.value}%`,
+                        backgroundColor: item.fill,
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export { ChartGroup8 };

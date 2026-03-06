@@ -395,6 +395,46 @@
       "required": false
     }
   ],
+  "ChartGroup12": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup14": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup15": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup5": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup8": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "ChartContainer": [
     {
       "name": "config",
@@ -4528,6 +4568,14 @@
       "required": false
     }
   ],
+  "Progress": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
   "RadioGroup": [
     {
       "name": "asChild",
@@ -4589,6 +4637,135 @@
     }
   ],
   "ScrollBar": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Select": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectItem": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectScrollDownButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectScrollUpButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectValue": [
+    {
+      "name": "placeholder",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
     {
       "name": "asChild",
       "type": "boolean",
