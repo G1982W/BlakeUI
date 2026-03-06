@@ -17,7 +17,13 @@ const fields = [
 
 const fieldSchemas: Record<string, z.ZodType<string>> = {
   name: z.string().min(1, "Name is required"),
-  username: z.string().min(2, "Username must be at least 2 characters").regex(/^[a-z0-9_-]+$/i, "Username can only contain letters, numbers, underscore and hyphen"),
+  username: z
+    .string()
+    .min(2, "Username must be at least 2 characters")
+    .regex(
+      /^[a-z0-9_-]+$/i,
+      "Username can only contain letters, numbers, underscore and hyphen",
+    ),
   email: z.string().min(1, "Email is required").email("Enter a valid email"),
   bio: z.string(),
 };
@@ -67,13 +73,13 @@ export function SettingsProfile7() {
     <div className="mx-auto max-w-md rounded-lg border border-border bg-background p-4 shadow-sm">
       <div className="flex gap-4">
         <div className="relative shrink-0">
-          <Avatar className="size-14">
+          <Avatar className="size-14 my-4">
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
           <Button
             variant="primary"
             size="sm"
-            className="absolute bottom-0 right-0 size-6 rounded-full p-0"
+            className="absolute top-0 right-0 size-6 rounded-full p-0"
             aria-label="Edit photo"
           >
             <Pencil className="size-3" />
@@ -97,39 +103,50 @@ export function SettingsProfile7() {
                     <div className="flex items-center gap-1">
                       <Input
                         value={draft}
-                        onChange={(e) => { setDraft(e.target.value); setError(""); }}
+                        onChange={(e) => {
+                          setDraft(e.target.value);
+                          setError("");
+                        }}
                         onBlur={saveEdit}
                         onKeyDown={(e) => handleKeyDown(e, field.key)}
                         className="h-8 text-sm"
                         autoFocus
                         aria-invalid={!!error}
                       />
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      className="size-8 p-0"
-                      onClick={saveEdit}
-                    >
-                      <Check className="size-4" />
-                    </Button>
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      className="size-8 bg-transparent p-0 hover:bg-accent"
-                      onClick={cancelEdit}
-                    >
-                      <X className="size-4" />
-                    </Button>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        className="size-8 p-0"
+                        onClick={saveEdit}
+                      >
+                        <Check className="size-4" />
+                      </Button>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        className="size-8 bg-transparent p-0 hover:bg-accent"
+                        onClick={cancelEdit}
+                      >
+                        <X className="size-4" />
+                      </Button>
                     </div>
-                    {error && <p className="text-xs text-destructive">{error}</p>}
+                    {error && (
+                      <p className="text-xs text-destructive">{error}</p>
+                    )}
                   </div>
                 ) : (
                   <button
                     type="button"
-                    onClick={() => startEdit(field.key, values[field.key] ?? "")}
+                    onClick={() =>
+                      startEdit(field.key, values[field.key] ?? "")
+                    }
                     className="group mt-0.5 flex w-full items-center gap-2 text-left text-sm font-medium"
                   >
-                    <span className={cn(!values[field.key] && "text-muted-foreground")}>
+                    <span
+                      className={cn(
+                        !values[field.key] && "text-muted-foreground",
+                      )}
+                    >
                       {values[field.key] || "Not set"}
                     </span>
                     <Pencil className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
