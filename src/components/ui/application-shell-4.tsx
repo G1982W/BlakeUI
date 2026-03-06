@@ -461,7 +461,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
   );
 
   return (
-    <div className={cn("flex min-h-svh flex-col overflow-hidden", className)}>
+    <div className={cn("flex min-h-[520px] flex-col overflow-auto", className)}>
       {/* Top navigation bar */}
       <header className="sticky top-0 z-50 bg-background">
         <div className="flex h-14 min-w-0 items-center gap-2 border-b px-4 sm:gap-4 lg:px-6">
@@ -473,14 +473,14 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
 
           {/* Logo */}
           <a href="#" className="flex shrink-0 items-center gap-2">
-            <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
-              <img
-                src={sidebarData.logo.src}
-                alt={sidebarData.logo.alt}
-                className="size-6 text-primary-foreground invert dark:invert-0"
-              />
-            </div>
-            <span className="hidden font-semibold sm:inline">{sidebarData.logo.title}</span>
+            <img
+              src={sidebarData.logo.src}
+              alt={sidebarData.logo.alt}
+              className="size-8 rounded-sm"
+            />
+            <span className="hidden font-semibold sm:inline">
+              {sidebarData.logo.title}
+            </span>
           </a>
 
           {/* Desktop navigation - group tabs */}
@@ -522,7 +522,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
 
       {/* Main content */}
       <main className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
-        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        <div className="h-[200px] flex-1 rounded-xl bg-muted/50 " />
       </main>
     </div>
   );
