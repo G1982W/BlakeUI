@@ -392,78 +392,94 @@ h4 {
     background: var(--background);
 }
 
-#nd-sidebar p {
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
+/* Top-level sidebar sections: vertical spacing between the 3 groups */
+#nd-sidebar {
+
+
+
+    div[data-state="closed"]:has(> button) {
+        button {
+            color: #A3ACBA;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+
+    div[data-state="open"]:has(> button) {
+
+        /* margin-block: 30px; */
+        button {
+            text-transform: uppercase;
+            color: var(--foreground);
+            cursor: pointer;
+        }
+    }
+
+
+    a {
+        color: #6A7383;
+
+        &:hover {
+            color: var(--background);
+            background-color: var(--color-brand);
+        }
+
+        /* Active link: primary left bar, light background, bold */
+        &[data-active="true"] {
+            color: #30313D;
+            font-weight: 600;
+            background: color-mix(in oklab, var(--color-brand) 12%, transparent);
+            /* background-color: magenta; */
+
+            &::before {
+                display: block;
+                content: "";
+                position: absolute;
+                left: calc(var(--spacing) * 2.5);
+                top: 50%;
+                transform: translateY(-50%);
+                width: 3px;
+                height: 60%;
+                min-height: 16px;
+                border-radius: 999px;
+                background: var(--color-brand);
+                /* border-radius: 0.5rem; */
+                /* display: none; */
+            }
+        }
+    }
+
+    /* Collapsible folder content: remove left border, add bottom padding */
+    [class*="before:inset-y-1"]::before {
+        display: none;
+    }
+
+    [class*="before:inset-y-1"] {
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Sidebar group headings (Navbars, App Shells, etc.) */
+    [class*="inline-flex items-center gap-2 mb-1.5 px-2 mt-6 empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0"] {
+        margin-top: 14px;
+        padding-left: 12px !important;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+    }
+
 }
 
-#nd-sidebar a[data-active] {
-    position: relative;
-    padding-inline-start: calc(var(--spacing) * 6) !important;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background-color: transparent;
-}
+#nd-toc {
+    a[data-active="true"] {
+        color: var(--color-brand);
+    }
 
-#nd-sidebar a:hover {
-    color: var(--accent-foreground);
-}
-
-#nd-sidebar a[data-active]::before {
-    content: "";
-    position: absolute;
-    left: calc(var(--spacing) * 3);
-    top: 0;
-    width: 2px;
-    height: 100%;
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
-
-    /* &:hover { */
-    /* background: color-mix(in oklab, var(--color-brand) 35%, transparent); */
-    /* background: color-mix(in oklab, var(--muted-foreground) 35%, transparent); */
-    /* } */
-}
-
-#nd-sidebar a[data-active]::before:hover {
-    background: red;
-}
-
-#nd-sidebar a[data-active="true"] {
-    color: var(--color-brand);
-}
-
-#nd-sidebar a[data-active="true"]::before {
-    background: var(--color-brand);
-}
-
-/* Collapsible folder content: remove left border, add bottom padding */
-#nd-sidebar [class*="before:inset-y-1"]::before {
-    display: none;
-}
-
-#nd-sidebar [class*="before:inset-y-1"] {
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-}
-
-/* Sidebar group headings */
-#nd-sidebar [class*="inline-flex items-center gap-2 mb-1.5 px-2 mt-6 empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0"] {
-    margin-top: 14px;
-    padding-left: 12px !important;
-}
-
-#nd-toc a[data-active="true"] {
-    color: var(--color-brand);
-}
-
-#nd-toc .bg-fd-primary {
-    background: var(--color-brand);
+    .bg-fd-primary {
+        background: var(--color-brand);
+    }
 }
 
 figure>pre {
