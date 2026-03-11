@@ -3355,15 +3355,6 @@
     }
   ],
   "getOrderStatusMeta": [],
-  "DataTable26": [
-    {
-      "name": "data",
-      "type": "TransactionRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    date: \"2024-01-15\",\n    description: \"Payment received\",\n    amount: \"$1,200.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n  {\n    id: \"2\",\n    date: \"2024-01-14\",\n    description: \"Office supplies\",\n    amount: \"-$89.50\",\n    status: \"Pending\",\n    category: \"Expense\",\n  },\n  {\n    id: \"3\",\n    date: \"2024-01-13\",\n    description: \"Subscription\",\n    amount: \"-$29.99\",\n    status: \"Completed\",\n    category: \"Expense\",\n  },\n  {\n    id: \"4\",\n    date: \"2024-01-12\",\n    description: \"Invoice #1024\",\n    amount: \"$450.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n  {\n    id: \"5\",\n    date: \"2024-01-11\",\n    description: \"Refund\",\n    amount: \"$50.00\",\n    status: \"Completed\",\n    category: \"Income\",\n  },\n]",
-      "description": "",
-      "required": false
-    }
-  ],
   "DataTable27": [
     {
       "name": "data",
