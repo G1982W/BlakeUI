@@ -329,7 +329,16 @@ function GitSidebar() {
 
 type MobileDrawer = "search" | "explorer" | "git" | "chat" | null;
 
-export function ApplicationShell9() {
+interface ApplicationShell9Props {
+  /** When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a full viewport app shell. */
+  preview?: boolean;
+  className?: string;
+}
+
+export function ApplicationShell9({
+  preview,
+  className,
+}: ApplicationShell9Props) {
   const [activeModule, setActiveModule] = React.useState("explorer");
   const [isChatOpen, setIsChatOpen] = React.useState(false);
   const [mobileDrawer, setMobileDrawer] = React.useState<MobileDrawer>(null);
@@ -351,8 +360,13 @@ export function ApplicationShell9() {
     }
   };
 
-  return (
-    <SidebarProvider contained className="h-svh overflow-auto w-full">
+  const content = (
+    <SidebarProvider
+      className={cn(
+        preview ? "h-full w-full" : "h-svh overflow-auto w-full",
+        className,
+      )}
+    >
       <div className="flex h-full w-full flex-col md:hidden">
         <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-3">
           <div className="flex items-center gap-2">
@@ -630,7 +644,7 @@ export function ApplicationShell9() {
                   )}
                 >
                   {!isChatOpen ? (
-                    <div className="flex flex-col items-center gap-4 text-center">
+                    <div className="flex flex-col px-2 items-center gap-4 text-center">
                       <Logo className="size-16 opacity-30" />
                       <div className="space-y-2">
                         <h3 className="text-lg font-medium">Start building</h3>
@@ -696,4 +710,17 @@ export function ApplicationShell9() {
       </div>
     </SidebarProvider>
   );
+
+  if (preview) {
+    return (
+      <div
+        className="flex h-full min-h-[600px] w-full max-w-full overflow-auto rounded-lg border border-border bg-background"
+        style={{ transform: "translateZ(0)" }}
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return content;
 }
