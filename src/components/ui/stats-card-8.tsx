@@ -1,33 +1,70 @@
-"use client";
+import { AlertCircle, CheckCircle, XCircle } from "lucide-react";
 
-import * as React from "react";
-import { Check, AlertTriangle, X } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-type Status = "healthy" | "warning" | "critical";
+type StatusType = "healthy" | "warning" | "critical";
 
-const statusConfig: Record<Status, { label: string; icon: React.ElementType; className: string }> = {
-  healthy: { label: "Healthy", icon: Check, className: "bg-badge-positive/20 text-badge-positive-foreground" },
-  warning: { label: "Warning", icon: AlertTriangle, className: "bg-badge-warning/20 text-badge-warning-foreground" },
-  critical: { label: "Critical", icon: X, className: "bg-badge-negative/20 text-badge-negative-foreground" },
+interface StatsCard8Props {
+  title?: string;
+  value?: string;
+  status?: StatusType;
+  statusLabel?: string;
+  className?: string;
+}
+
+const statusConfig = {
+  healthy: {
+    icon: CheckCircle,
+    color: "text-green-500",
+    bgColor: "bg-green-500/10",
+    label: "Healthy",
+  },
+  warning: {
+    icon: AlertCircle,
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-500/10",
+    label: "Warning",
+  },
+  critical: {
+    icon: XCircle,
+    color: "text-red-500",
+    bgColor: "bg-red-500/10",
+    label: "Critical",
+  },
 };
 
-export function StatsCard8({ status = "healthy" }: { status?: Status }) {
+const StatsCard8 = ({
+  title = "System Status",
+  value = "99.9%",
+  status = "healthy",
+  statusLabel,
+  className,
+}: StatsCard8Props) => {
   const config = statusConfig[status];
   const Icon = config.icon;
+  const displayLabel = statusLabel || config.label;
+
   return (
-    <Card>
+    <Card className={cn("w-full max-w-xs", className)}>
       <CardHeader className="pb-2">
-        <p className="text-sm font-medium text-muted-foreground">Uptime</p>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2">
-        <p className="text-2xl font-bold">99.97%</p>
-        <div className={cn("inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium", config.className)}>
-          <Icon className="size-3.5" />
-          {config.label}
+      <CardContent>
+        <div className="text-3xl font-bold">{value}</div>
+        <div className="mt-3 flex items-center gap-2">
+          <div className={cn("rounded-full p-1", config.bgColor)}>
+            <Icon className={cn("size-4", config.color)} />
+          </div>
+          <span className={cn("text-sm font-medium", config.color)}>
+            {displayLabel}
+          </span>
         </div>
       </CardContent>
     </Card>
   );
-}
+};
+
+export { StatsCard8 };

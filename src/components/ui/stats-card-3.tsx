@@ -1,40 +1,51 @@
-"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-
-export function StatsCard3({
-  title = "Revenue target",
-  value = "$18,240",
-  target = "$25,000",
-  percent: percentProp,
-}: {
+interface StatsCard3Props {
   title?: string;
-  value?: string;
-  target?: string;
-  percent?: number;
-}) {
-  const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10) || 18240;
-  const numericTarget = parseInt(target.replace(/[^0-9]/g, ""), 10) || 25000;
-  const percent = percentProp ?? Math.min(100, Math.round((numericValue / numericTarget) * 100));
+  value?: number;
+  target?: number;
+  unit?: string;
+  className?: string;
+}
+
+const StatsCard3 = ({
+  title = "Monthly Goal",
+  value = 7500,
+  target = 10000,
+  unit = "$",
+  className,
+}: StatsCard3Props) => {
+  const percentage = Math.min(Math.round((value / target) * 100), 100);
+  const formattedValue = value.toLocaleString();
+  const formattedTarget = target.toLocaleString();
+
   return (
-    <Card>
+    <Card className={cn("w-full max-w-xs", className)}>
       <CardHeader className="pb-2">
-        <p className="text-sm font-medium text-muted-foreground">{title}</p>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3">
-        <p className="text-2xl font-bold">{value}</p>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-          <div
-            className="h-full rounded-full bg-brand transition-all"
-            style={{ width: `${percent}%` }}
-          />
+      <CardContent>
+        <div className="text-3xl font-bold">
+          {unit}
+          {formattedValue}
         </div>
-        <div className="flex justify-between text-xs text-muted-foreground">
-          <span>{percent}% complete</span>
-          <span>Target: {target}</span>
+        <div className="mt-3 space-y-2">
+          <Progress value={percentage} className="h-2" />
+          <div className="flex justify-between text-sm text-muted-foreground">
+            <span>{percentage}% complete</span>
+            <span>
+              Target: {unit}
+              {formattedTarget}
+            </span>
+          </div>
         </div>
       </CardContent>
     </Card>
   );
-}
+};
+
+export { StatsCard3 };

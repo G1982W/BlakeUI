@@ -1,45 +1,71 @@
 "use client";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { PieChart, Pie, Cell } from "recharts";
-import { ChartContainer } from "@/components/ui/chart";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-export function StatsCard7({ value = "3.2 GB", percent = 72, label = "Storage used" }: { value?: string; percent?: number; label?: string }) {
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+interface StatsCard7Props {
+  title?: string;
+  value?: string;
+  percentage?: number;
+  label?: string;
+  className?: string;
+}
+
+const StatsCard7 = ({
+  title = "Storage Used",
+  value = "75 GB",
+  percentage = 75,
+  label = "of 100 GB",
+  className,
+}: StatsCard7Props) => {
   const data = [
-    { name: "used", value: percent, fill: "var(--chart-1)" },
-    { name: "free", value: 100 - percent, fill: "var(--muted)" },
+    { name: "used", value: percentage },
+    { name: "remaining", value: 100 - percentage },
   ];
+
   return (
-    <Card>
+    <Card className={cn("w-full max-w-xs", className)}>
       <CardHeader className="pb-2">
-        <p className="text-sm font-medium text-muted-foreground">{label}</p>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center gap-4">
-        <ChartContainer config={{}} className="size-16 shrink-0">
-          <PieChart>
-            <Pie
-              data={data}
-              dataKey="value"
-              cx="50%"
-              cy="50%"
-              innerRadius={22}
-              outerRadius={28}
-              startAngle={90}
-              endAngle={-270}
-              strokeWidth={0}
-            >
-              {data.map((entry, i) => (
-                <Cell key={i} fill={entry.fill} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ChartContainer>
-        <div className="min-w-0">
-          <p className="text-2xl font-bold">{value}</p>
-          <p className="text-xs text-muted-foreground">{percent}% of quota</p>
+      <CardContent>
+        <div className="flex items-center gap-4">
+          <div className="relative size-20">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={28}
+                  outerRadius={38}
+                  paddingAngle={0}
+                  dataKey="value"
+                  startAngle={90}
+                  endAngle={-270}
+                  strokeWidth={0}
+                >
+                  <Cell fill="var(--chart-1)" />
+                  <Cell fill="var(--muted)" />
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-sm font-semibold">{percentage}%</span>
+            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold">{value}</div>
+            <div className="text-sm text-muted-foreground">{label}</div>
+          </div>
         </div>
       </CardContent>
     </Card>
   );
-}
+};
+
+export { StatsCard7 };

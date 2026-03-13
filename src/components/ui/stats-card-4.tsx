@@ -1,38 +1,46 @@
-"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-
-export function StatsCard4({
-  title = "Revenue",
-  current = "$24,800",
-  previous = "$22,100",
-  currentLabel = "This month",
-  previousLabel = "Last month",
-}: {
+interface StatsCard4Props {
   title?: string;
-  current?: string;
-  previous?: string;
+  currentValue?: string;
   currentLabel?: string;
+  previousValue?: string;
   previousLabel?: string;
-}) {
+  className?: string;
+}
+
+const StatsCard4 = ({
+  title = "Revenue",
+  currentValue = "$12,450",
+  currentLabel = "This month",
+  previousValue = "$10,230",
+  previousLabel = "Last month",
+  className,
+}: StatsCard4Props) => {
   return (
-    <Card>
+    <Card className={cn("w-full max-w-xs", className)}>
       <CardHeader className="pb-2">
-        <p className="text-sm font-medium text-muted-foreground">{title}</p>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 gap-4 border-t border-border pt-3">
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xl font-bold">{current}</p>
-            <p className="text-xs text-muted-foreground">{currentLabel}</p>
+            <div className="text-2xl font-bold">{currentValue}</div>
+            <div className="text-sm text-muted-foreground">{currentLabel}</div>
           </div>
-          <div className="border-l border-border pl-4">
-            <p className="text-xl font-medium text-muted-foreground">{previous}</p>
-            <p className="text-xs text-muted-foreground">{previousLabel}</p>
+          <div className="border-l pl-4">
+            <div className="text-2xl font-bold text-muted-foreground">
+              {previousValue}
+            </div>
+            <div className="text-sm text-muted-foreground">{previousLabel}</div>
           </div>
         </div>
       </CardContent>
     </Card>
   );
-}
+};
+
+export { StatsCard4 };

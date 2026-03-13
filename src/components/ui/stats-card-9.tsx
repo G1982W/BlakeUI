@@ -1,30 +1,60 @@
 "use client";
 
-import * as React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
-export function StatsCard9() {
-  const [view, setView] = React.useState<"mrr" | "arr">("mrr");
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
+
+interface StatsCard9Props {
+  title?: string;
+  monthlyValue?: string;
+  annualValue?: string;
+  monthlyLabel?: string;
+  annualLabel?: string;
+  className?: string;
+}
+
+const StatsCard9 = ({
+  title = "MRR",
+  monthlyValue = "$12,450",
+  annualValue = "$149,400",
+  monthlyLabel = "Monthly recurring",
+  annualLabel = "Annual recurring",
+  className,
+}: StatsCard9Props) => {
+  const [period, setPeriod] = useState<"monthly" | "annual">("monthly");
+
   return (
-    <Card>
+    <Card className={cn("w-full max-w-xs", className)}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <p className="text-sm font-medium text-muted-foreground">Recurring revenue</p>
-        <Tabs value={view} onValueChange={(v) => setView(v as "mrr" | "arr")} className="w-auto">
-          <TabsList className="h-7 gap-0 p-0.5 text-xs">
-            <TabsTrigger value="mrr" className="px-2 py-1 text-xs">MRR</TabsTrigger>
-            <TabsTrigger value="arr" className="px-2 py-1 text-xs">ARR</TabsTrigger>
+        <CardTitle className="text-sm font-medium text-muted-foreground">
+          {title}
+        </CardTitle>
+        <Tabs
+          value={period}
+          onValueChange={(v) => setPeriod(v as "monthly" | "annual")}
+        >
+          <TabsList className="h-7">
+            <TabsTrigger value="monthly" className="px-2 text-xs">
+              MRR
+            </TabsTrigger>
+            <TabsTrigger value="annual" className="px-2 text-xs">
+              ARR
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-bold">
-          {view === "mrr" ? "$12,400" : "$148,800"}
-        </p>
-        <p className="text-xs text-muted-foreground">
-          {view === "mrr" ? "Monthly recurring revenue" : "Annual recurring revenue"}
+        <div className="text-3xl font-bold">
+          {period === "monthly" ? monthlyValue : annualValue}
+        </div>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {period === "monthly" ? monthlyLabel : annualLabel}
         </p>
       </CardContent>
     </Card>
   );
-}
+};
+
+export { StatsCard9 };
