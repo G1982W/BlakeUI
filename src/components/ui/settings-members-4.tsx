@@ -1,123 +1,283 @@
 "use client";
 
-import * as React from "react";
-import { MoreHorizontal, UserPlus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Trash2, UserPlus } from "lucide-react";
+import { useMemo, useState } from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
-import { NativeSelect } from "@/components/ui/native-select";
-const byRole = {
-  Admin: [
-    { id: "1", name: "Alex Chen", email: "alex@example.com" },
-  ],
-  Member: [
-    { id: "2", name: "Sam Wilson", email: "sam@example.com" },
-    { id: "3", name: "Jordan Lee", email: "jordan@example.com" },
-  ],
-  Viewer: [
-    { id: "4", name: "Casey Kim", email: "casey@example.com" },
-  ],
-};
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-const roleVariant: Record<string, "destructive" | "default" | "outline"> = {
-  Admin: "destructive",
-  Member: "default",
-  Viewer: "outline",
-};
+interface Member {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatar?: string;
+  status: "active" | "pending";
+}
 
-export function SettingsMembers4() {
+interface SettingsMembers4Props {
+  heading?: string;
+  description?: string;
+  members?: Member[];
+  className?: string;
+}
+
+const SettingsMembers4 = ({
+  heading = "Organization Members",
+  description = "Manage who has access to this organization.",
+  members = [
+    {
+      id: "1",
+      name: "Nina Kowalski",
+      email: "nina.k@startup.co",
+      role: "Owner",
+      avatar:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+      status: "active",
+    },
+    {
+      id: "2",
+      name: "James Liu",
+      email: "james.l@startup.co",
+      role: "Admin",
+      avatar:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg",
+      status: "active",
+    },
+    {
+      id: "3",
+      name: "Rachel Green",
+      email: "rachel.g@startup.co",
+      role: "Developer",
+      avatar:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar9.jpg",
+      status: "active",
+    },
+    {
+      id: "4",
+      name: "Omar Hassan",
+      email: "omar.h@startup.co",
+      role: "Developer",
+      status: "pending",
+    },
+    {
+      id: "5",
+      name: "Lisa Wang",
+      email: "lisa.w@startup.co",
+      role: "Designer",
+      avatar:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar10.jpg",
+      status: "active",
+    },
+  ],
+  className,
+}: SettingsMembers4Props) => {
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [isInviteOpen, setIsInviteOpen] = useState(false);
+
+  const allSelected = selectedIds.length === members.length;
+  const someSelected = selectedIds.length > 0 && !allSelected;
+
+  const toggleAll = () => {
+    if (allSelected) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(members.map((m) => m.id));
+    }
+  };
+
+  const toggleMember = (id: string) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
+    );
+  };
+
+  const selectedCount = selectedIds.length;
+
+  const roleStats = useMemo(() => {
+    const stats: Record<string, number> = {};
+    members.forEach((m) => {
+      stats[m.role] = (stats[m.role] || 0) + 1;
+    });
+    return stats;
+  }, [members]);
+
   return (
-    <div className="rounded-lg border border-border bg-background p-6">
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Members by role</h2>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="secondary" size="sm" className="gap-2">
-              <UserPlus className="size-4" />
-              Invite
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Invite member</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div>
-                <label className="mb-1 block text-sm font-medium">Email</label>
-                <Input type="email" placeholder="colleague@example.com" />
+    <section className="">
+      <div className="container max-w-3xl mx-auto">
+        <div className={cn("space-y-6", className)}>
+          <div className="space-y-1">
+            <h2 className="text-2xl font-semibold tracking-tight">{heading}</h2>
+            <p className="text-sm text-muted-foreground">{description}</p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {Object.entries(roleStats).map(([role, count]) => (
+              <Badge key={role} variant="outline" className="font-normal">
+                {role}: {count}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="rounded-lg border">
+            <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
+              <div className="flex items-center gap-3">
+                <Checkbox
+                  checked={allSelected}
+                  onCheckedChange={toggleAll}
+                  aria-label="Select all"
+                  {...(someSelected && { "data-state": "indeterminate" })}
+                />
+                <span className="text-sm font-medium">
+                  {selectedCount > 0
+                    ? `${selectedCount} selected`
+                    : `${members.length} members`}
+                </span>
               </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium">Role</label>
-                <NativeSelect>
-                  <option>Admin</option>
-                  <option>Member</option>
-                  <option>Viewer</option>
-                </NativeSelect>
+              <div className="flex items-center gap-2">
+                {selectedCount > 0 && (
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="text-destructive hover:bg-destructive/10"
+                    onClick={() => setSelectedIds([])}
+                  >
+                    <Trash2 className="size-4" />
+                    Remove
+                  </Button>
+                )}
+                <Dialog open={isInviteOpen} onOpenChange={setIsInviteOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="sm">
+                      <UserPlus className="size-4" />
+                      Invite
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Invite Member</DialogTitle>
+                      <DialogDescription>
+                        Add a new member to your organization.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setIsInviteOpen(false);
+                      }}
+                      className="space-y-4"
+                    >
+                      <div className="space-y-2">
+                        <Label htmlFor="invite-email">Email</Label>
+                        <Input
+                          id="invite-email"
+                          type="email"
+                          placeholder="name@company.com"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="invite-role">Role</Label>
+                        <Select defaultValue="developer">
+                          <SelectTrigger id="invite-role">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="admin">Admin</SelectItem>
+                            <SelectItem value="developer">Developer</SelectItem>
+                            <SelectItem value="designer">Designer</SelectItem>
+                            <SelectItem value="viewer">Viewer</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <DialogFooter>
+                        <Button
+                          type="button"
+                          variant="primary"
+                          onClick={() => setIsInviteOpen(false)}
+                        >
+                          Cancel
+                        </Button>
+                        <Button type="submit">Send Invite</Button>
+                      </DialogFooter>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
-            <DialogFooter>
-              <Button variant="secondary" size="sm">Send invite</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </div>
-      <div className="space-y-6">
-        {Object.entries(byRole).map(([role, list]) => (
-          <div key={role}>
-            <div className="mb-2 flex items-center gap-2">
-              <Badge variant={roleVariant[role] ?? "outline"}>{role}</Badge>
-              <span className="text-xs text-muted-foreground">{list.length} member{list.length !== 1 ? "s" : ""}</span>
-            </div>
-            <ul className="space-y-1 rounded-md border border-border">
-              {list.map((member) => (
+
+            <ul className="divide-y">
+              {members.map((member) => (
                 <li
                   key={member.id}
-                  className="flex items-center justify-between gap-2 px-4 py-3"
+                  className={cn(
+                    "flex items-center gap-4 px-4 py-3 transition-colors",
+                    selectedIds.includes(member.id) && "bg-muted/30",
+                  )}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <Avatar className="size-8 shrink-0">
-                      <AvatarFallback>
-                        {member.name.split(" ").map((n) => n[0]).join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-medium">{member.name}</p>
-                      <p className="truncate text-xs text-muted-foreground">{member.email}</p>
+                  <Checkbox
+                    checked={selectedIds.includes(member.id)}
+                    onCheckedChange={() => toggleMember(member.id)}
+                    aria-label={`Select ${member.name}`}
+                  />
+                  <Avatar className="size-9">
+                    <AvatarImage src={member.avatar} alt={member.name} />
+                    <AvatarFallback className="text-xs">
+                      {member.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <p className="truncate text-sm font-medium">
+                        {member.name}
+                      </p>
+                      {member.status === "pending" && (
+                        <Badge
+                          variant="secondary"
+                          className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                        >
+                          Pending
+                        </Badge>
+                      )}
                     </div>
+                    <p className="truncate text-xs text-muted-foreground">
+                      {member.email}
+                    </p>
                   </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="primary" size="sm" className="size-8 shrink-0 p-0">
-                        <MoreHorizontal className="size-4" />
-                        <span className="sr-only">Menu</span>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Change role</DropdownMenuItem>
-                      <DropdownMenuItem variant="destructive">Remove</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <Badge variant="outline" className="shrink-0 font-normal">
+                    {member.role}
+                  </Badge>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export { SettingsMembers4 };

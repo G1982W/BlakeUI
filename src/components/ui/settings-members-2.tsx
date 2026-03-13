@@ -1,124 +1,272 @@
 "use client";
 
-import * as React from "react";
-import { MoreHorizontal, UserPlus } from "lucide-react";
+import { CornerDownLeft, MoreHorizontalIcon, Search } from "lucide-react";
+import { useMemo, useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { NativeSelect } from "@/components/ui/native-select";
-const members = [
-  { id: "1", name: "Alex Chen", email: "alex@example.com", role: "Admin" },
-  { id: "2", name: "Sam Wilson", email: "sam@example.com", role: "Member" },
-  { id: "3", name: "Jordan Lee", email: "jordan@example.com", role: "Viewer" },
-];
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-const roleVariant: Record<string, "destructive" | "default" | "outline"> = {
-  Admin: "destructive",
-  Member: "default",
-  Viewer: "outline",
-};
+interface User {
+  name: string;
+  email: string;
+  accessLevel: string;
+  status?: string;
+  image?: string;
+}
 
-export function SettingsMembers2() {
-  const [search, setSearch] = React.useState("");
+interface Cta {
+  title: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+interface SettingsMembers2Props {
+  heading?: string;
+  subHeading?: Cta;
+  users?: User[];
+  className?: string;
+}
+
+const SettingsMembers2 = ({
+  heading = "Workspace Members",
+  subHeading = {
+    title:
+      "Add teammates to collaborate on projects together. Control permissions and manage access levels for each member.",
+    ctaText: "View member permissions guide",
+    ctaLink: "#",
+  },
+  users = [
+    {
+      name: "Sofia Martinez",
+      email: "sofia.m@example.com",
+      accessLevel: "Owner",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+    },
+    {
+      name: "Alex Chen",
+      email: "alex.c@example.com",
+      accessLevel: "Editor",
+      status: "Invite pending",
+    },
+    {
+      name: "Jordan Blake",
+      email: "jordan.b@example.com",
+      accessLevel: "Viewer",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
+    },
+    {
+      name: "Morgan Reid",
+      email: "morgan.r@example.com",
+      accessLevel: "Editor",
+      status: "Invite pending",
+    },
+  ],
+  className = "",
+}: SettingsMembers2Props) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) => {
+      return (
+        user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    });
+  }, [users, searchValue]);
 
   return (
-    <div className="rounded-lg border border-border bg-background p-6">
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold">Members</h2>
-        <p className="text-sm text-muted-foreground">
-          Manage who has access.{" "}
-          <a href="#" className="text-brand hover:underline">Learn more</a>
-        </p>
+    <section className="">
+      <div className="container max-w-3xl mx-auto">
+        <div className={cn("space-y-6", className)}>
+          <div className="space-y-4">
+            <h3 className="text-2xl font-semibold tracking-tight">{heading}</h3>
+            <CtaText cta={subHeading} />
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between gap-3">
+              <div className="relative w-full max-w-56 min-w-20">
+                <Search className="absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="Search"
+                  className="pl-7"
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+              </div>
+              <InviteUserForm />
+            </div>
+
+            <p className="text-xs font-semibold text-muted-foreground">
+              {filteredUsers.length} members
+            </p>
+
+            <UsersList users={filteredUsers} />
+          </div>
+        </div>
       </div>
-      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <Input
-          type="search"
-          placeholder="Search members..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="max-w-xs"
-        />
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="secondary" size="sm" className="gap-2">
-              <UserPlus className="size-4" />
-              Invite
+    </section>
+  );
+};
+
+export { SettingsMembers2 };
+
+const InviteUserForm = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Invite Member</Button>
+      </DialogTrigger>
+      <DialogContent className="gap-0 overflow-hidden p-0">
+        <DialogTitle className="flex items-center gap-2 border-b p-4 text-sm font-medium">
+          Invite Team Member
+        </DialogTitle>
+        <form
+          autoComplete="off"
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col gap-4 bg-muted pt-4"
+        >
+          <div className="flex flex-col gap-4 px-4">
+            <div className="space-y-1">
+              <Label className="text-xs">Email address</Label>
+              <Input
+                placeholder="name@yourcompany.com"
+                className="bg-background"
+              />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs">Select role</Label>
+              <Select defaultValue="editor">
+                <SelectTrigger className="w-full bg-background">
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="owner">Owner</SelectItem>
+                  <SelectItem value="editor">Editor</SelectItem>
+                  <SelectItem value="viewer">Viewer</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <DialogFooter className="border-t bg-background px-4 py-3">
+            <Button size="sm" type="submit">
+              Send Invitation <CornerDownLeft />
             </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Invite member</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div>
-                <label className="mb-1 block text-sm font-medium">Email</label>
-                <Input type="email" placeholder="colleague@example.com" />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium">Role</label>
-                <NativeSelect>
-                  <option>Admin</option>
-                  <option>Member</option>
-                  <option>Viewer</option>
-                </NativeSelect>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button variant="secondary" size="sm">Send invite</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+interface CtaTextProps {
+  cta: Cta;
+}
+
+const CtaText = ({ cta }: CtaTextProps) => {
+  return (
+    <p className="text-xs text-muted-foreground sm:text-sm">
+      {cta.title}{" "}
+      <a href={cta.ctaLink} className="whitespace-nowrap underline">
+        {cta.ctaText}
+      </a>
+    </p>
+  );
+};
+
+interface UserCardProps {
+  user: User;
+}
+
+const UserCard = ({ user }: UserCardProps) => {
+  return (
+    <div className="flex w-full items-center justify-between">
+      <div className="flex items-center gap-2 sm:flex-2/3">
+        <div className="flex size-10 items-center justify-center overflow-hidden rounded-full bg-muted">
+          {user.image ? (
+            <img
+              src={user.image}
+              alt={user.name}
+              className="size-full object-cover"
+            />
+          ) : (
+            <span className="text-sm font-medium">{user.name.charAt(0)}</span>
+          )}
+        </div>
+        <div className="text-sm font-medium">
+          <p>{user.name}</p>
+          <p className="text-xs text-muted-foreground">{user.email}</p>
+        </div>
       </div>
-      <ul className="divide-y divide-border rounded-md border border-border">
-        {members.map((member) => (
-          <li
-            key={member.id}
-            className="flex items-center justify-between gap-4 px-4 py-3"
-          >
-            <div className="flex min-w-0 flex-1 items-center gap-4">
-              <Avatar className="size-10 shrink-0">
-                <AvatarFallback>
-                  {member.name.split(" ").map((n) => n[0]).join("")}
-                </AvatarFallback>
-              </Avatar>
-              <div className="min-w-0">
-                <p className="font-medium text-sm">{member.name}</p>
-                <p className="text-xs text-muted-foreground">{member.email}</p>
-              </div>
-              <Badge variant={roleVariant[member.role] ?? "outline"} className="shrink-0">
-                {member.role}
-              </Badge>
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="primary" size="sm" className="size-8 shrink-0 p-0">
-                  <MoreHorizontal className="size-4" />
-                  <span className="sr-only">Menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Change role</DropdownMenuItem>
-                <DropdownMenuItem variant="destructive">Remove</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </li>
-        ))}
-      </ul>
+
+      <div className="flex items-center justify-between gap-3 sm:flex-1/3">
+        <Select defaultValue={user.accessLevel}>
+          <SelectTrigger className="min-w-24">
+            <SelectValue placeholder="Select a role" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Owner">Owner</SelectItem>
+            <SelectItem value="Editor">Editor</SelectItem>
+            <SelectItem value="Viewer">Viewer</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="primary" aria-label="Open menu" size="sm">
+              <MoreHorizontalIcon />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-fit max-w-56" align="end">
+            <DropdownMenuItem>Transfer ownership</DropdownMenuItem>
+            <DropdownMenuItem>Remove from team</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </div>
   );
+};
+
+interface UsersListProps {
+  users: User[];
 }
+
+const UsersList = ({ users }: UsersListProps) => {
+  return (
+    <ul className="overflow-x-auto">
+      {users.map((user, i) => {
+        return (
+          <li
+            key={`user-card-${i}`}
+            className="w-full min-w-80 shrink-0 border-b py-3 first:pt-0"
+          >
+            <UserCard user={user} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};

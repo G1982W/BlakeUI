@@ -1,26 +1,37 @@
 "use client";
 
-import * as React from "react";
-import { Filter, UserPlus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  CornerDownLeft,
+  Search,
+  SlidersHorizontal,
+  UserRoundPlus,
+} from "lucide-react";
+import { useMemo, useState } from "react";
+
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { NativeSelect } from "@/components/ui/native-select";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -29,122 +40,227 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-const members = [
-  { id: "1", name: "Alex Chen", email: "alex@example.com", role: "Admin", status: "Active" },
-  { id: "2", name: "Sam Wilson", email: "sam@example.com", role: "Editor", status: "Active" },
-  { id: "3", name: "Jordan Lee", email: "jordan@example.com", role: "Viewer", status: "Pending" },
-];
+import { cn } from "@/lib/utils";
 
-const roles = ["Admin", "Editor", "Viewer"];
+interface User {
+  name?: string;
+  email: string;
+  accessLevel: string;
+  status?: string;
+}
 
-export function SettingsMembers1() {
-  const [search, setSearch] = React.useState("");
-  const [roleFilter, setRoleFilter] = React.useState<Record<string, boolean>>({
-    Admin: true,
-    Editor: true,
-    Viewer: true,
-  });
+interface UsersTableProps {
+  users: User[];
+}
+
+const UsersTable = ({ users }: UsersTableProps) => {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>User</TableHead>
+          <TableHead>Role</TableHead>
+          <TableHead></TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {users.map((user) => (
+          <TableRow key={user.email}>
+            <TableCell className="flex max-w-56 items-center gap-2 font-medium">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary text-background">
+                {user.name ? user.name.charAt(0) : "?"}
+              </span>
+              {user.name}
+              <span className="text-muted-foreground">{user.email}</span>
+            </TableCell>
+            <TableCell>
+              <Badge variant="secondary">{user.accessLevel}</Badge>
+            </TableCell>
+            <TableCell>
+              {user.status === "Invite pending" && (
+                <Badge className="bg-blue-100 text-blue-800">
+                  {user.status}
+                </Badge>
+              )}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+const InviteUserForm = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <UserRoundPlus /> Add Member
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="gap-0 overflow-hidden p-0">
+        <DialogTitle className="flex items-center gap-2 border-b p-4 text-sm font-medium">
+          <UserRoundPlus className="size-4" />
+          Add New Member
+        </DialogTitle>
+        <form
+          autoComplete="off"
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col gap-4 bg-muted pt-4"
+        >
+          <div className="flex flex-col gap-4 px-4">
+            <div className="space-y-1">
+              <Label className="text-xs">Email address</Label>
+              <Input
+                placeholder="colleague@company.com"
+                className="bg-background"
+              />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs">Assign role</Label>
+              <Select defaultValue="editor">
+                <SelectTrigger className="w-full bg-background">
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="owner">Owner</SelectItem>
+                  <SelectItem value="editor">Editor</SelectItem>
+                  <SelectItem value="viewer">Viewer</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <DialogFooter className="border-t bg-background px-4 py-3">
+            <Button size="sm" type="submit">
+              Send Invite <CornerDownLeft />
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+interface SettingsMembers1Props {
+  heading?: string;
+  subHeading?: string;
+  className?: string;
+  users?: User[];
+}
+
+const SettingsMembers1 = ({
+  heading = "Team Members",
+  subHeading = "View and manage your team members. Control permissions and roles for each user in your organization.",
+  users = [
+    {
+      name: "Emily Watson",
+      email: "emily.w@acme.io",
+      accessLevel: "Owner",
+    },
+    {
+      email: "john.d@acme.io",
+      accessLevel: "Editor",
+      status: "Invite pending",
+    },
+    {
+      name: "Michael Park",
+      email: "michael.p@acme.io",
+      accessLevel: "Viewer",
+    },
+    {
+      email: "lisa.t@acme.io",
+      accessLevel: "Editor",
+      status: "Invite pending",
+    },
+  ],
+  className,
+}: SettingsMembers1Props) => {
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedAccessLevels, setSelectedAccessLevels] = useState<string[]>(
+    [],
+  );
+
+  const accessLevels = useMemo(() => {
+    return Array.from(new Set(users.map((user) => user.accessLevel)));
+  }, [users]);
+
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) => {
+      const isAccessLevelSelected =
+        selectedAccessLevels.length === 0 ||
+        selectedAccessLevels.includes(user.accessLevel);
+      const isSearchMatch =
+        user.name?.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchValue.toLowerCase());
+      return isAccessLevelSelected && isSearchMatch;
+    });
+  }, [users, selectedAccessLevels, searchValue]);
+
+  const toggleAccessLevel = (accessLevel: string) => {
+    setSelectedAccessLevels((prev) => {
+      if (prev.includes(accessLevel)) {
+        return prev.filter((level) => level !== accessLevel);
+      }
+      return [...prev, accessLevel];
+    });
+  };
 
   return (
-    <div className="rounded-lg border border-border bg-background p-6">
-      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-1 flex-wrap items-center gap-2">
-          <Input
-            type="search"
-            placeholder="Search members..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="max-w-xs"
-          />
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="primary" size="sm" className="gap-2">
-                <Filter className="size-4" />
-                Role
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-56 p-3" align="start">
-              <p className="mb-2 text-sm font-medium">Filter by role</p>
-              <div className="space-y-2">
-                {roles.map((role) => (
-                  <label
-                    key={role}
-                    className="flex cursor-pointer items-center gap-2 text-sm"
-                  >
-                    <Checkbox
-                      checked={roleFilter[role] ?? false}
-                      onCheckedChange={(checked) =>
-                        setRoleFilter((prev) => ({ ...prev, [role]: !!checked }))
-                      }
-                    />
-                    {role}
-                  </label>
-                ))}
-              </div>
-            </PopoverContent>
-          </Popover>
-        </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="secondary" size="sm" className="gap-2">
-              <UserPlus className="size-4" />
-              Invite
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Invite members</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div>
-                <label className="mb-1 block text-sm font-medium">Email addresses</label>
-                <Textarea
-                  placeholder="one@example.com, two@example.com"
-                  className="min-h-20"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium">Role</label>
-                <NativeSelect>
-                  <option>Admin</option>
-                  <option>Editor</option>
-                  <option>Viewer</option>
-                </NativeSelect>
-              </div>
+    <section className="">
+      <div className="container max-w-4xl mx-auto">
+        <div className={cn("flex flex-col gap-8", className)}>
+          <div className="space-y-3 border-b pb-8">
+            <h3 className="text-2xl font-semibold tracking-tight">{heading}</h3>
+            <p className="text-sm font-medium text-muted-foreground">
+              {subHeading}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap">
+            <div className="relative w-full min-w-20">
+              <Search className="absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search"
+                className="pl-7"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
             </div>
-            <DialogFooter>
-              <Button variant="secondary" size="sm">Send invites</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="primary">
+                  <SlidersHorizontal />
+                  Filter
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-56">
+                <div className="space-y-3">
+                  <p className="text-sm font-medium">Role</p>
+                  <div className="space-y-2">
+                    {accessLevels.map((accessLevel) => (
+                      <Label
+                        key={accessLevel}
+                        className="cursor-pointer font-normal"
+                      >
+                        <Checkbox
+                          checked={selectedAccessLevels.includes(accessLevel)}
+                          onCheckedChange={() => toggleAccessLevel(accessLevel)}
+                        />
+                        <span className="text-sm">{accessLevel}</span>
+                      </Label>
+                    ))}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+            <InviteUserForm />
+          </div>
+
+          <UsersTable users={filteredUsers} />
+        </div>
       </div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Status</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {members.map((member) => (
-            <TableRow key={member.id}>
-              <TableCell className="font-medium">{member.name}</TableCell>
-              <TableCell className="text-muted-foreground">{member.email}</TableCell>
-              <TableCell>{member.role}</TableCell>
-              <TableCell>
-                <Badge
-                  variant={member.status === "Active" ? "positive" : "warning"}
-                  className="text-xs"
-                >
-                  {member.status}
-                </Badge>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+    </section>
   );
-}
+};
+
+export { SettingsMembers1 };
