@@ -4011,6 +4011,285 @@
       "required": false
     }
   ],
+  "FileUpload": [
+    {
+      "name": "value",
+      "type": "File[]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "File[]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((files: File[]) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAccept",
+      "type": "((files: File[]) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileAccept",
+      "type": "((file: File) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileReject",
+      "type": "((file: File, message: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileValidate",
+      "type": "((file: File) => string | null)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onUpload",
+      "type": "((files: File[], options: { onProgress: (file: File, progress: number) => void; onSuccess: (file: File) => void; onError: (file: File, error: Error) => void; }) => void | Promise<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "accept",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "maxFiles",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "maxSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "dir",
+      "type": "\"ltr\" | \"rtl\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadDropzone": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadList": [
+    {
+      "name": "orientation",
+      "type": "\"horizontal\" | \"vertical\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItem": [
+    {
+      "name": "value",
+      "type": "File",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemPreview": [
+    {
+      "name": "render",
+      "type": "((file: File, fallback: () => ReactNode) => ReactNode)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemMetadata": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemProgress": [
+    {
+      "name": "variant",
+      "type": "\"fill\" | \"linear\" | \"circular\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemDelete": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadClear": [
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "useStore": [],
   "FormItem": [],
   "FormLabel": [],
   "FormControl": [],
@@ -4857,6 +5136,21 @@
       "required": false
     }
   ],
+  "SettingsProfile7": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n    role: \"Product Designer\",\n    location: \"San Francisco, CA\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Sheet": [],
   "SheetTrigger": [
     {
@@ -4935,6 +5229,48 @@
       "name": "asChild",
       "type": "boolean",
       "description": "",
+      "required": false
+    }
+  ],
+  "Sidebar10": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar11": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar20": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
       "required": false
     }
   ],
