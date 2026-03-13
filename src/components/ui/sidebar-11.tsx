@@ -1,9 +1,43 @@
 "use client";
 
+import {
+  BadgeCheck,
+  BarChart3,
+  Briefcase,
+  Check,
+  ChevronRight,
+  ChevronsUpDown,
+  ClipboardList,
+  Clock3,
+  FileText,
+  Folder,
+  Globe2,
+  HelpCircle,
+  LayoutDashboard,
+  LogOut,
+  Search,
+  Settings,
+  Sparkles,
+  Star,
+  User,
+  Users,
+} from "lucide-react";
 import * as React from "react";
-import { ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,106 +46,484 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
-const navGroups = [
-  {
-    label: "Main",
-    defaultOpen: true,
+// Base nav item - used by simple sidebars
+type NavItem = {
+  label: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  href: string;
+  isActive?: boolean;
+  // Optional children for submenus (Sidebar3+)
+  children?: NavItem[];
+};
+
+// Nav group with optional collapsible state
+type NavGroup = {
+  title: string;
+  items: NavItem[];
+  // Optional: default collapsed state (Sidebar2+)
+  defaultOpen?: boolean;
+};
+
+// User data for footer (Sidebar6+)
+type UserData = {
+  name: string;
+  email: string;
+  avatar: string;
+};
+
+// Workspace data for switcher (Sidebar7+)
+type Workspace = {
+  id: string;
+  name: string;
+  logo: string;
+  plan: string;
+};
+
+// Complete sidebar data structure
+type SidebarData = {
+  // Logo/branding (all sidebars)
+  logo: {
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+  };
+  // Main navigation groups (all sidebars)
+  navGroups: NavGroup[];
+  // Footer navigation group (all sidebars)
+  footerGroup: NavGroup;
+  // User data for user footer (Sidebar6+)
+  user?: UserData;
+  // Workspaces for switcher (Sidebar7+)
+  workspaces?: Workspace[];
+  // Currently active workspace (Sidebar7+)
+  activeWorkspace?: string;
+};
+
+// Shared sidebar data - works with all sidebar variations
+const sidebarData: SidebarData = {
+  logo: {
+    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+    alt: "Shadcnblocks",
+    title: "Shadcnblocks",
+    description: "Build your app",
+  },
+  navGroups: [
+    {
+      title: "Overview",
+      defaultOpen: true,
+      items: [
+        {
+          label: "Dashboard",
+          icon: LayoutDashboard,
+          href: "#",
+          isActive: true,
+        },
+        { label: "Tasks", icon: ClipboardList, href: "#" },
+        { label: "Roadmap", icon: BarChart3, href: "#" },
+      ],
+    },
+    {
+      title: "Projects",
+      defaultOpen: true,
+      items: [
+        {
+          label: "Active Projects",
+          icon: Briefcase,
+          href: "#",
+          children: [
+            { label: "Project Alpha", icon: FileText, href: "#" },
+            { label: "Project Beta", icon: FileText, href: "#" },
+            { label: "Project Gamma", icon: FileText, href: "#" },
+          ],
+        },
+        {
+          label: "Archived",
+          icon: Folder,
+          href: "#",
+          children: [
+            { label: "2024 Archive", icon: FileText, href: "#" },
+            { label: "2023 Archive", icon: FileText, href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Team",
+      defaultOpen: false,
+      items: [
+        { label: "Members", icon: Users, href: "#" },
+        { label: "Sprints", icon: Clock3, href: "#" },
+        { label: "Approvals", icon: BadgeCheck, href: "#" },
+        { label: "Reviews", icon: Star, href: "#" },
+      ],
+    },
+    {
+      title: "Workspace",
+      defaultOpen: false,
+      items: [
+        { label: "Integrations", icon: Globe2, href: "#" },
+        { label: "Automations", icon: Sparkles, href: "#" },
+      ],
+    },
+  ],
+  footerGroup: {
+    title: "Support",
     items: [
-      { label: "Dashboard", href: "#" },
-      { label: "Projects", href: "#" },
-      { label: "Team", href: "#" },
+      { label: "Help Center", icon: HelpCircle, href: "#" },
+      { label: "Settings", icon: Settings, href: "#" },
     ],
   },
-];
+  user: {
+    name: "John Doe",
+    email: "john@example.com",
+    avatar:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp",
+  },
+  workspaces: [
+    {
+      id: "1",
+      name: "Shadcnblocks",
+      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      plan: "Enterprise",
+    },
+    {
+      id: "2",
+      name: "Shadcn Templates",
+      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      plan: "Startup",
+    },
+    {
+      id: "3",
+      name: "Shadcn Components",
+      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      plan: "Free",
+    },
+  ],
+  activeWorkspace: "1",
+};
 
-export function Sidebar11() {
-  const [mainOpen, setMainOpen] = React.useState(true);
+// Helper to get active workspace
+const getActiveWorkspace = (data: SidebarData): Workspace | undefined => {
+  return data.workspaces?.find((w) => w.id === data.activeWorkspace);
+};
+
+const WorkspaceSwitcher = ({
+  workspaces,
+  activeWorkspace,
+}: {
+  workspaces: Workspace[];
+  activeWorkspace: Workspace;
+}) => {
+  const [selected, setSelected] = React.useState(activeWorkspace);
 
   return (
-    <div className="flex h-[480px] w-full overflow-hidden rounded-lg border border-border bg-background">
-      <aside className="flex w-60 shrink-0 flex-col border-r border-border bg-muted/30">
-        <div className="flex h-14 items-center border-b border-border px-4">
-          <span className="text-sm font-semibold">App</span>
-        </div>
-        <div className="flex-1 overflow-auto py-4">
-          <Collapsible open={mainOpen} onOpenChange={setMainOpen}>
-            <CollapsibleTrigger asChild>
-              <button
-                type="button"
-                className="flex w-full items-center justify-between px-4 py-2 text-left text-sm font-medium hover:bg-accent"
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
+                <img
+                  src={selected.logo}
+                  alt={selected.name}
+                  className="size-6 text-primary-foreground invert dark:invert-0"
+                />
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">{selected.name}</span>
+                <span className="truncate text-xs text-muted-foreground">
+                  {selected.plan}
+                </span>
+              </div>
+              <ChevronsUpDown className="ml-auto size-4" />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            align="start"
+            sideOffset={4}
+          >
+            <DropdownMenuLabel className="text-xs text-muted-foreground">
+              Workspaces
+            </DropdownMenuLabel>
+            {workspaces.map((workspace) => (
+              <DropdownMenuItem
+                key={workspace.id}
+                onClick={() => setSelected(workspace)}
+                className="gap-2 p-2"
               >
-                <span>Navigation</span>
-                {mainOpen ? (
-                  <ChevronDown className="size-4" />
-                ) : (
-                  <ChevronRight className="size-4" />
+                <div className="flex size-6 items-center justify-center rounded-sm bg-primary">
+                  <img
+                    src={workspace.logo}
+                    alt={workspace.name}
+                    className="size-4 text-primary-foreground invert dark:invert-0"
+                  />
+                </div>
+                <span>{workspace.name}</span>
+                {workspace.id === selected.id && (
+                  <Check className="ml-auto size-4" />
                 )}
-              </button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <nav className="flex flex-col gap-0.5 pb-2">
-                {navGroups[0].items.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-3 px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </CollapsibleContent>
-          </Collapsible>
-        </div>
-        <div className="border-t border-border p-3">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="primary"
-                size="sm"
-                className="w-full justify-start gap-3 rounded-md px-3 py-2"
-              >
-                <Avatar className="size-8">
-                  <AvatarFallback>JD</AvatarFallback>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
+  );
+};
+
+const SearchForm = () => {
+  return (
+    <form>
+      <SidebarGroup className="py-0">
+        <SidebarGroupContent className="relative">
+          <Label htmlFor="search" className="sr-only">
+            Search
+          </Label>
+          <SidebarInput id="search" placeholder="Search..." className="pl-8" />
+          <Search className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none" />
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </form>
+  );
+};
+
+const NavMenuItem = ({ item }: { item: NavItem }) => {
+  const Icon = item.icon;
+  const hasChildren = item.children && item.children.length > 0;
+
+  if (!hasChildren) {
+    return (
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild isActive={item.isActive}>
+          <a href={item.href}>
+            <Icon className="size-4" />
+            <span>{item.label}</span>
+          </a>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    );
+  }
+
+  return (
+    <Collapsible
+      asChild
+      defaultOpen={item.isActive}
+      className="group/collapsible"
+    >
+      <SidebarMenuItem>
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton isActive={item.isActive}>
+            <Icon className="size-4" />
+            <span>{item.label}</span>
+            <ChevronRight className="ml-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub>
+            {item.children!.map((child) => (
+              <SidebarMenuSubItem key={child.label}>
+                <SidebarMenuSubButton asChild isActive={child.isActive}>
+                  <a href={child.href}>{child.label}</a>
+                </SidebarMenuSubButton>
+              </SidebarMenuSubItem>
+            ))}
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
+  );
+};
+
+const NavUser = ({ user }: { user: UserData }) => {
+  return (
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <Avatar className="size-8 rounded-lg">
+                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback className="rounded-lg">
+                  {user.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">{user.name}</span>
+                <span className="truncate text-xs text-muted-foreground">
+                  {user.email}
+                </span>
+              </div>
+              <ChevronsUpDown className="ml-auto size-4" />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            side="top"
+            align="end"
+            sideOffset={4}
+          >
+            <DropdownMenuLabel className="p-0 font-normal">
+              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                <Avatar className="size-8 rounded-lg">
+                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarFallback className="rounded-lg">
+                    {user.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </AvatarFallback>
                 </Avatar>
-                <div className="flex flex-1 flex-col items-start text-left text-sm">
-                  <span className="font-medium">John Doe</span>
-                  <span className="text-xs text-muted-foreground">
-                    john@example.com
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">{user.name}</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {user.email}
                   </span>
                 </div>
-                <ChevronUp className="size-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="top" className="w-56">
-              <DropdownMenuLabel>My account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Log out</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </aside>
-      <main className="min-w-0 flex-1 overflow-auto p-4">
-        <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground">
-            Home
-          </a>
-          <span>/</span>
-          <span className="text-foreground">Dashboard</span>
-        </div>
-        <div className="rounded-md border border-dashed border-border bg-muted/30 p-6 text-center text-sm text-muted-foreground">
-          Main content. Sidebar with user dropdown and collapsible nav.
-        </div>
-      </main>
-    </div>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <User className="mr-2 size-4" />
+              Account
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LogOut className="mr-2 size-4" />
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
   );
+};
+
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  /** When true, sidebar height is constrained to container (e.g. preview) so header/footer stick and middle scrolls. */
+  preview?: boolean;
 }
+
+const AppSidebar = ({ preview, className, ...props }: AppSidebarProps) => {
+  const activeWorkspace = getActiveWorkspace(sidebarData);
+
+  return (
+    <Sidebar
+      side="right"
+      className={cn(preview && "h-full!", className)}
+      {...props}
+    >
+      <SidebarHeader className="shrink-0">
+        {sidebarData.workspaces && activeWorkspace && (
+          <WorkspaceSwitcher
+            workspaces={sidebarData.workspaces}
+            activeWorkspace={activeWorkspace}
+          />
+        )}
+        <SearchForm />
+      </SidebarHeader>
+      <SidebarContent className="min-h-0 flex-1 overflow-y-auto">
+        <ScrollArea className="min-h-0 flex-1">
+          {sidebarData.navGroups.map((group) => (
+            <SidebarGroup key={group.title}>
+              <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {group.items.map((item) => (
+                    <NavMenuItem key={item.label} item={item} />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          ))}
+        </ScrollArea>
+      </SidebarContent>
+      <SidebarFooter className="mt-auto shrink-0">
+        {sidebarData.user && <NavUser user={sidebarData.user} />}
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
+  );
+};
+
+interface Sidebar11Props {
+  className?: string;
+  /** When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar. */
+  preview?: boolean;
+}
+
+const Sidebar11 = ({ className, preview }: Sidebar11Props) => {
+  const content = (
+    <SidebarProvider className={cn(className, preview && "min-h-0 h-full")}>
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="#">Overview</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Dashboard</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <SidebarTrigger className="-mr-1 ml-auto rotate-180" />
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4">
+          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        </div>
+      </SidebarInset>
+      <AppSidebar preview={preview} />
+    </SidebarProvider>
+  );
+
+  if (preview) {
+    return (
+      <div
+        className="flex h-[600px] w-full max-w-full overflow-hidden rounded-lg border border-border bg-background"
+        style={{ transform: "translateZ(0)" }}
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return content;
+};
+
+export { Sidebar11 };
