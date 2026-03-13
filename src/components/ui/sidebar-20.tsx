@@ -1,123 +1,351 @@
 "use client";
 
-import * as React from "react";
 import {
+  Book,
   ChevronRight,
-  ChevronDown,
-  FolderOpen,
-  File,
-  LayoutDashboard,
-  Settings,
+  ExternalLink,
+  FileText,
+  Search,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import * as React from "react";
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-export function Sidebar20() {
-  const [dashboardOpen, setDashboardOpen] = React.useState(true);
-  const [docsOpen, setDocsOpen] = React.useState(false);
+// Documentation structure
+const docsNav = [
+  {
+    title: "Getting Started",
+    defaultOpen: true,
+    items: [
+      { title: "Introduction", href: "#", isActive: true },
+      { title: "Installation", href: "#" },
+      { title: "Project Structure", href: "#" },
+      { title: "Configuration", href: "#" },
+    ],
+  },
+  {
+    title: "Core Concepts",
+    defaultOpen: true,
+    items: [
+      { title: "Components", href: "#" },
+      { title: "Styling", href: "#" },
+      { title: "Theming", href: "#" },
+      { title: "Dark Mode", href: "#" },
+      { title: "Typography", href: "#" },
+    ],
+  },
+  {
+    title: "Components",
+    defaultOpen: false,
+    items: [
+      { title: "Accordion", href: "#" },
+      { title: "Alert", href: "#" },
+      { title: "Avatar", href: "#" },
+      { title: "Badge", href: "#" },
+      { title: "Button", href: "#" },
+      { title: "Card", href: "#" },
+      { title: "Checkbox", href: "#" },
+      { title: "Dialog", href: "#" },
+      { title: "Dropdown Menu", href: "#" },
+      { title: "Input", href: "#" },
+      { title: "Select", href: "#" },
+      { title: "Sidebar", href: "#" },
+      { title: "Table", href: "#" },
+      { title: "Tabs", href: "#" },
+      { title: "Toast", href: "#" },
+    ],
+  },
+  {
+    title: "Guides",
+    defaultOpen: false,
+    items: [
+      { title: "Authentication", href: "#" },
+      { title: "Forms", href: "#" },
+      { title: "Data Fetching", href: "#" },
+      { title: "State Management", href: "#" },
+      { title: "Testing", href: "#" },
+      { title: "Deployment", href: "#" },
+    ],
+  },
+  {
+    title: "API Reference",
+    defaultOpen: false,
+    items: [
+      { title: "CLI", href: "#" },
+      { title: "Config", href: "#" },
+      { title: "Utilities", href: "#" },
+    ],
+  },
+];
+
+// On this page - table of contents
+const tableOfContents = [
+  { title: "Overview", href: "#overview", level: 1 },
+  { title: "Prerequisites", href: "#prerequisites", level: 2 },
+  { title: "Quick Start", href: "#quick-start", level: 1 },
+  { title: "Using the CLI", href: "#using-the-cli", level: 2 },
+  { title: "Manual Setup", href: "#manual-setup", level: 2 },
+  { title: "Configuration", href: "#configuration", level: 1 },
+  { title: "Basic Options", href: "#basic-options", level: 2 },
+  { title: "Advanced Options", href: "#advanced-options", level: 2 },
+  { title: "Next Steps", href: "#next-steps", level: 1 },
+];
+
+const SearchForm = () => {
+  return (
+    <form>
+      <SidebarGroup className="py-0">
+        <SidebarGroupContent className="relative">
+          <Label htmlFor="search" className="sr-only">
+            Search
+          </Label>
+          <SidebarInput
+            id="search"
+            placeholder="Search documentation..."
+            className="pl-8"
+          />
+          <Search className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none" />
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </form>
+  );
+};
+
+const DocSection = ({ section }: { section: (typeof docsNav)[0] }) => {
+  const [isOpen, setIsOpen] = React.useState(section.defaultOpen);
 
   return (
-    <div className="flex h-[480px] w-full overflow-hidden rounded-lg border border-border bg-background">
-      <aside className="flex w-56 shrink-0 flex-col border-r border-border bg-muted/30">
-        <div className="flex h-12 items-center border-b border-border px-4">
-          <span className="text-sm font-semibold">Project</span>
-        </div>
-        <div className="flex-1 overflow-auto py-2">
-          <Collapsible open={dashboardOpen} onOpenChange={setDashboardOpen}>
-            <CollapsibleTrigger asChild>
-              <button
-                type="button"
-                className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-medium hover:bg-accent"
-              >
-                {dashboardOpen ? (
-                  <ChevronDown className="size-4" />
-                ) : (
-                  <ChevronRight className="size-4" />
-                )}
-                <LayoutDashboard className="size-4" />
-                Dashboard
-              </button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <a
-                href="#"
-                className="ml-6 flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-foreground"
-              >
-                Overview
-              </a>
-              <a
-                href="#"
-                className="ml-6 flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-foreground"
-              >
-                Analytics
-              </a>
-            </CollapsibleContent>
-          </Collapsible>
-          <Collapsible open={docsOpen} onOpenChange={setDocsOpen}>
-            <CollapsibleTrigger asChild>
-              <button
-                type="button"
-                className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-medium hover:bg-accent"
-              >
-                {docsOpen ? (
-                  <ChevronDown className="size-4" />
-                ) : (
-                  <ChevronRight className="size-4" />
-                )}
-                <FolderOpen className="size-4" />
-                Docs
-              </button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <a
-                href="#"
-                className="ml-6 flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-foreground"
-              >
-                <File className="size-3.5" />
-                Getting started
-              </a>
-              <a
-                href="#"
-                className="ml-6 flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-foreground"
-              >
-                <File className="size-3.5" />
-                API
-              </a>
-            </CollapsibleContent>
-          </Collapsible>
-          <div className="my-2 border-t border-border" />
-          <a
-            href="#"
-            className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
-          >
-            <Settings className="size-4" />
-            Settings
-          </a>
-        </div>
-      </aside>
-      <main className="min-w-0 flex-1 flex-col overflow-auto">
-        <div className="flex h-10 items-center gap-2 border-b border-border px-4 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground">
-            Home
-          </a>
-          <span>/</span>
-          <a href="#" className="hover:text-foreground">
-            Dashboard
-          </a>
-          <span>/</span>
-          <span className="text-foreground">Overview</span>
-        </div>
-        <div className="p-4">
-          <div className="rounded-md border border-dashed border-border bg-muted/30 p-6 text-center text-sm text-muted-foreground">
-            Main content. Collapsible sidebar sections with breadcrumb.
-          </div>
-        </div>
-      </main>
-    </div>
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <SidebarGroup className="py-0">
+        <SidebarGroupLabel asChild className="group/label">
+          <CollapsibleTrigger className="flex w-full items-center">
+            <ChevronRight className="mr-1 size-3.5 transition-transform group-data-[state=open]/label:rotate-90" />
+            <span>{section.title}</span>
+          </CollapsibleTrigger>
+        </SidebarGroupLabel>
+        <CollapsibleContent>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {section.items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={item.isActive}>
+                    <a href={item.href}>
+                      <FileText className="size-4" />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </CollapsibleContent>
+      </SidebarGroup>
+    </Collapsible>
   );
+};
+
+interface SidebarLeftProps extends React.ComponentProps<typeof Sidebar> {
+  /** When true, constrain height to the preview container instead of viewport. */
+  preview?: boolean;
 }
+
+const SidebarLeft = ({ preview, className, ...props }: SidebarLeftProps) => {
+  return (
+    <Sidebar className={cn(preview && "h-full!", className)} {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <a href="#">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
+                  <Book className="size-5 text-primary-foreground" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">Documentation</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    v2.0.0
+                  </span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+        <SearchForm />
+      </SidebarHeader>
+      <SidebarContent className="overflow-hidden">
+        <ScrollArea className="min-h-0 flex-1">
+          {docsNav.map((section) => (
+            <DocSection key={section.title} section={section} />
+          ))}
+
+          {/* External links */}
+          <SidebarGroup className="mt-auto">
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="size-4" />
+                      <span>GitHub</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="size-4" />
+                      <span>Discord</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </ScrollArea>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
+
+interface SidebarRightProps extends React.ComponentProps<typeof Sidebar> {
+  /** When true, constrain height to the preview container instead of viewport. */
+  preview?: boolean;
+}
+
+const SidebarRight = ({ preview, className, ...props }: SidebarRightProps) => {
+  const [activeSection, setActiveSection] = React.useState("#overview");
+
+  return (
+    <Sidebar
+      side="right"
+      collapsible="none"
+      className={cn(
+        preview
+          ? "hidden h-full w-56 border-l lg:flex"
+          : "sticky top-0 hidden h-svh w-56 border-l lg:flex",
+        className,
+      )}
+      {...props}
+    >
+      <SidebarHeader className="h-16 justify-center border-b">
+        <div className="px-2">
+          <span className="text-sm font-medium">On this page</span>
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="overflow-hidden">
+        <ScrollArea className="min-h-0 flex-1">
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <nav className="flex flex-col gap-1">
+                {tableOfContents.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setActiveSection(item.href)}
+                    className={cn(
+                      "block rounded-md px-2 py-1 text-sm transition-colors hover:text-foreground",
+                      item.level === 2 && "pl-4",
+                      activeSection === item.href
+                        ? "font-medium text-foreground"
+                        : "text-muted-foreground",
+                    )}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </nav>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </ScrollArea>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
+
+interface Sidebar20Props {
+  className?: string;
+  /** When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar. */
+  preview?: boolean;
+}
+
+const Sidebar20 = ({ className, preview }: Sidebar20Props) => {
+  const content = (
+    <SidebarProvider className={cn(className, preview && "min-h-0 h-full")}>
+      <SidebarLeft preview={preview} />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+          <SidebarTrigger className="-ml-1" />
+          <Separator
+            orientation="vertical"
+            className="mr-2 data-[orientation=vertical]:h-4"
+          />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="#">Docs</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="#">Getting Started</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Introduction</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4">
+          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        </div>
+      </SidebarInset>
+      <SidebarRight preview={preview} />
+    </SidebarProvider>
+  );
+
+  if (preview) {
+    return (
+      <div
+        className="flex h-[600px] w-full max-w-full overflow-hidden rounded-lg border border-border bg-background"
+        style={{ transform: "translateZ(0)" }}
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return content;
+};
+
+export { Sidebar20 };
