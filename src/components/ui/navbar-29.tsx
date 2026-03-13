@@ -1,227 +1,190 @@
 "use client";
 
-import * as React from "react";
-import { Menu } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerBody,
-} from "@/components/ui/drawer";
-export function Navbar29() {
-  return (
-    <nav className="sticky top-0 z-40 flex h-14 items-center border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
-        <a href="#" className="text-lg font-semibold">
-          Company
-        </a>
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import React, { useState } from "react";
 
-        <div className="hidden md:flex md:items-center md:gap-1">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="primary"
-                size="sm"
-                className="gap-2 bg-transparent hover:bg-accent hover:text-accent-foreground"
-              >
-                Products
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              sideOffset={4}
-              className="w-[560px] p-0"
-            >
-              <div className="grid grid-cols-3 gap-6 p-6">
-                <div>
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Platform
-                  </p>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Overview
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Features
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Pricing
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Resources
-                  </p>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Documentation
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Support
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Company
-                  </p>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Contact
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block text-sm font-medium hover:text-brand"
-                      >
-                        Careers
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="border-t border-border bg-muted/30 px-6 py-4">
-                <p className="text-xs font-medium text-muted-foreground">
-                  Need help? Contact us at{" "}
-                  <a
-                    href="mailto:support@example.com"
-                    className="font-medium text-foreground underline-offset-4 hover:underline"
-                  >
-                    support@example.com
-                  </a>
-                </p>
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <a
-            href="#"
-            className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-          >
-            Solutions
-          </a>
-          <a
-            href="#"
-            className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-          >
-            Pricing
-          </a>
-        </div>
+import { cn } from "@/lib/utils";
 
-        <div className="flex items-center gap-2">
-          <Button variant="secondary" size="sm" className="hidden sm:inline-flex">
-            Sign in
-          </Button>
+const NAV_ITEMS = [
+  { label: "Home", href: "#" },
+  { label: "Blocks", href: "#" },
+  { label: "Changelog", href: "#" },
+  { label: "Contact", href: "#" },
+];
 
-          <Drawer direction="left">
-            <DrawerTrigger asChild>
-              <Button variant="primary" size="sm" className="md:hidden">
-                <Menu className="size-4" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="h-full max-h-none w-[85vw] max-w-sm border-r rounded-none data-[vaul-drawer-direction=left]:rounded-r-lg">
-              <DrawerHeader className="flex flex-row items-center justify-between border-b">
-                <DrawerTitle>Menu</DrawerTitle>
-                <DrawerClose />
-              </DrawerHeader>
-              <DrawerBody className="flex flex-col gap-0 p-0">
-                <div className="flex flex-col border-b">
-                  <a
-                    href="#"
-                    className="px-4 py-3 text-sm font-medium hover:bg-accent"
-                  >
-                    Products
-                  </a>
-                  <a
-                    href="#"
-                    className="px-4 py-3 text-sm font-medium hover:bg-accent"
-                  >
-                    Solutions
-                  </a>
-                  <a
-                    href="#"
-                    className="px-4 py-3 text-sm font-medium hover:bg-accent"
-                  >
-                    Pricing
-                  </a>
-                </div>
-                <div className="mt-auto border-t p-4">
-                  <p className="text-xs text-muted-foreground">
-                    Contact:{" "}
-                    <a
-                      href="mailto:support@example.com"
-                      className="font-medium text-foreground underline-offset-4 hover:underline"
-                    >
-                      support@example.com
-                    </a>
-                  </p>
-                </div>
-                <div className="border-t p-4">
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Sign in
-                  </Button>
-                </div>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </div>
-      </div>
-    </nav>
-  );
+const MEGA_MENU_ITEMS = [
+  [
+    { label: "Home", href: "#" },
+    { label: "About", href: "#" },
+    { label: "Services", href: "#" },
+    { label: "Portfolio", href: "#" },
+    { label: "Blog", href: "#" },
+    { label: "Contact", href: "#" },
+  ],
+  [
+    { label: "Feature", href: "#" },
+    { label: "Components", href: "#" },
+    { label: "Templates", href: "#" },
+    { label: "Examples", href: "#" },
+    { label: "Resources", href: "#" },
+    { label: "Support", href: "#" },
+  ],
+  [
+    { label: "Pricing", href: "#" },
+    { label: "Enterprise", href: "#" },
+    { label: "Partnerships", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Press", href: "#" },
+    { label: "Legal", href: "#" },
+  ],
+  [
+    { label: "Twitter", href: "#" },
+    { label: "GitHub", href: "#" },
+    { label: "Discord", href: "#" },
+    { label: "LinkedIn", href: "#" },
+    { label: "YouTube", href: "#" },
+    { label: "Newsletter", href: "#" },
+  ],
+];
+
+const MOBILE_NAV_ITEMS = [
+  { label: "Home", href: "#" },
+  { label: "About", href: "#" },
+  { label: "Services", href: "#" },
+  { label: "Portfolio", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Contact", href: "#" },
+  { label: "Sign In", href: "#" },
+  { label: "Pricing", href: "#" },
+  { label: "Contact", href: "#" },
+];
+
+const FOOTER_LINKS = [
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms of Service", href: "#" },
+];
+
+const COMPANY_LINKS = [
+  { label: "+1 (234) 234-00000", href: "#" },
+  { label: "2026© blakeui.com", href: "#" },
+];
+
+interface Navbar29Props {
+  className?: string;
 }
+
+const Navbar29 = ({ className }: Navbar29Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <section className={cn("", className)}>
+      <nav className="relative">
+        <ul className="relative z-1 flex w-full list-none items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
+          <li className="w-35">BlakeUI</li>
+          {NAV_ITEMS.map((item, index) => (
+            <li key={index} className="hidden w-32 lg:block">
+              <a
+                href={item.href}
+                className="no-underline transition-colors hover:text-foreground/70"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li className="lg:w-14 ">
+            <Menu setIsOpen={setIsOpen} isOpen={isOpen} />
+          </li>
+        </ul>
+
+        <AnimatePresence mode="popLayout">
+          {isOpen && (
+            <motion.div
+              className="absolute top-0 w-full bg-muted px-6 pt-30 pb-10"
+              initial={{ clipPath: "inset(0 0 100% 0)" }}
+              animate={{ clipPath: "inset(0% 0 0 0)" }}
+              exit={{ clipPath: "inset(0 0 100% 0)" }}
+              transition={{
+                duration: 0.35,
+                ease: [0.4, 0.0, 0.2, 1],
+              }}
+            >
+              <div className="flex lg:hidden">
+                <ul className="flex flex-col gap-5 text-2xl font-semibold tracking-tight">
+                  {MOBILE_NAV_ITEMS.map((item, index) => (
+                    <li key={index}>{item.label}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="hidden w-full items-center justify-between gap-4 lg:flex">
+                <div className="w-35 opacity-0">BlakeUI</div>
+                {MEGA_MENU_ITEMS.map((section, sectionIndex) => (
+                  <ul key={sectionIndex} className="space-y-5">
+                    {section.map((item, itemIndex) => (
+                      <li key={itemIndex} className="w-32 list-none">
+                        <a
+                          href={item.href}
+                          className="group/menu-item flex w-full items-center gap-1 text-foreground/40 no-underline hover:text-foreground"
+                        >
+                          <span>{item.label}</span>
+                          <ArrowUpRight
+                            aria-hidden
+                            className="size-4 shrink-0 translate-y-0.5 opacity-0 transition-all ease-out group-hover/menu-item:translate-y-0 group-hover/menu-item:opacity-100"
+                          />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+                <div className="w-14" />
+              </div>
+              <div className="mt-40 flex w-full flex-col items-center justify-between gap-2 text-sm lg:flex-row lg:gap-4 lg:text-base">
+                <div className="flex items-center gap-4 lg:gap-10">
+                  {COMPANY_LINKS.map((item, index) => (
+                    <p key={index}>{item.label}</p>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 lg:gap-10">
+                  {FOOTER_LINKS.map((item, index) => (
+                    <p key={index}>{item.label}</p>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </section>
+  );
+};
+
+export { Navbar29 };
+
+const Menu = ({
+  className,
+  setIsOpen,
+  isOpen,
+}: {
+  className?: string;
+  setIsOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  isOpen: boolean;
+}) => {
+  return (
+    <button
+      className={cn(
+        "relative flex h-2 w-8 flex-col items-center justify-center gap-2 after:absolute after:h-12 after:w-full lg:w-14",
+        className,
+      )}
+      onClick={() => setIsOpen((x: boolean) => !x)}
+    >
+      <motion.div
+        animate={{ y: isOpen ? 0 : 5, rotate: isOpen ? 45 : 0 }}
+        className="absolute h-0.5 w-full bg-foreground"
+      />
+      <motion.div
+        animate={{ y: isOpen ? 0 : -5, rotate: isOpen ? -45 : 0 }}
+        className="absolute h-0.5 w-full bg-foreground"
+      />
+    </button>
+  );
+};

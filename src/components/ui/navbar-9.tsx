@@ -1,7 +1,27 @@
 "use client";
 
-import * as React from "react";
-import { Menu, ChevronRight, Star } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  Bell,
+  Book,
+  ChevronRight,
+  FileText,
+  Globe,
+  Grid,
+  HelpCircle,
+  Info,
+  Menu,
+  X,
+} from "lucide-react";
+import { Fragment, useEffect, useState } from "react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,151 +29,409 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerBody,
-} from "@/components/ui/drawer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { AppLink } from "./link";
+import { BlakeLogoIcon } from "../blake-logo-icon";
 
-export function Navbar9() {
-  return (
-    <nav className="sticky top-0 z-40 flex h-14 items-center border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
-        <a href="#" className="flex shrink-0 items-center gap-2 text-lg font-semibold">
-          Logo
-        </a>
-
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList className="gap-1">
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-2 p-4 w-[240px]">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-2.5 text-sm leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        Overview
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-2.5 text-sm leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        Changelog
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href="#"
-                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-              >
-                Docs
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href="#"
-                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-              >
-                Blog
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <div className="flex items-center gap-2">
-          <a
-            href="#"
-            className="hidden items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-xs font-medium hover:bg-accent sm:inline-flex"
-          >
-            <Star className="size-3.5" />
-            <span>12.5k</span>
-          </a>
-          <Button variant="secondary" size="sm">
-            Get started
-          </Button>
-
-          <Drawer direction="left">
-            <DrawerTrigger asChild>
-              <Button variant="primary" size="sm" className="md:hidden">
-                <Menu className="size-4" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="h-full max-h-none w-[85vw] max-w-sm border-r rounded-none data-[vaul-drawer-direction=left]:rounded-r-lg">
-              <DrawerHeader className="flex flex-row items-center justify-between border-b">
-                <DrawerTitle>Menu</DrawerTitle>
-                <DrawerClose />
-              </DrawerHeader>
-              <DrawerBody className="p-0">
-                <Accordion type="multiple" className="w-full">
-                  <AccordionItem value="features" className="border-b">
-                    <AccordionTrigger className="px-4 py-3">
-                      Features
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex flex-col gap-1 px-4 pb-3">
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          Overview
-                          <ChevronRight className="size-4" />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          Changelog
-                          <ChevronRight className="size-4" />
-                        </a>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <a
-                    href="#"
-                    className="block border-b px-4 py-3 text-sm hover:bg-accent"
-                  >
-                    Docs
-                  </a>
-                  <a
-                    href="#"
-                    className="block border-b px-4 py-3 text-sm hover:bg-accent"
-                  >
-                    Blog
-                  </a>
-                </Accordion>
-                <div className="flex items-center gap-1.5 border-t p-4">
-                  <Star className="size-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">12.5k stars</span>
-                </div>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </div>
-      </div>
-    </nav>
-  );
+interface MenuLink {
+  label: string;
+  description?: string;
+  url?: string;
+  icon?: {
+    component: LucideIcon;
+    color: string;
+  };
 }
+interface MenuItem {
+  title: string;
+  url?: string;
+  links?: MenuLink[];
+}
+
+interface DesktopMenuItemProps {
+  item: MenuItem;
+  index: number;
+}
+
+interface MobileNavigationMenuProps {
+  open: boolean;
+}
+
+interface MenuSubLinkProps {
+  link: MenuLink;
+}
+
+const NAVIGATION: MenuItem[] = [
+  {
+    title: "Products",
+    links: [
+      {
+        label: "Company Blog",
+        description: "Insights & updates",
+        url: "#",
+        icon: {
+          component: FileText,
+          color: "#10b981",
+        },
+      },
+      {
+        label: "Our Platform",
+        description: "Empower your work",
+        url: "#",
+        icon: {
+          component: Grid,
+          color: "#6366f1",
+        },
+      },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      {
+        label: "About Our Team",
+        url: "#",
+        description: "Our mission & values",
+        icon: {
+          component: Info,
+          color: "#f59e0b",
+        },
+      },
+      {
+        label: "Help & Support Center",
+        url: "#",
+        description: "Get quick help",
+        icon: {
+          component: HelpCircle,
+          color: "#3b82f6",
+        },
+      },
+      {
+        label: "Latest News",
+        url: "#",
+        description: "Product updates",
+        icon: {
+          component: Bell,
+          color: "#f97316",
+        },
+      },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      {
+        label: "Documentation",
+        url: "#",
+        description: "Guides & references",
+        icon: {
+          component: Book,
+          color: "#8b5cf6",
+        },
+      },
+      {
+        label: "API Reference",
+        url: "#",
+        description: "Explore our API",
+        icon: {
+          component: Globe,
+          color: "#ef4444",
+        },
+      },
+    ],
+  },
+  {
+    title: "Pricing",
+    url: "#",
+  },
+  {
+    title: "Contact",
+    url: "#",
+  },
+];
+
+const PRIMARY_BUTTON = {
+  label: "Sign up",
+  url: "#",
+};
+
+const MOBILE_BREAKPOINT = 1024;
+
+interface Navbar9Props {
+  className?: string;
+}
+
+const Navbar9 = ({ className }: Navbar9Props) => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        setOpen(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
+
+  const handleMobileMenu = () => {
+    const nextOpen = !open;
+    setOpen(nextOpen);
+  };
+
+  return (
+    <Fragment>
+      <section
+        className={cn("pointer-events-auto relative bg-brand", className)}
+      >
+        <div className="container mx-auto h-16 px-2">
+          <div className="flex h-full items-center justify-between">
+            <a
+              href="#"
+              className="flex max-h-8 items-center gap-2 text-lg font-semibold tracking-tighter no-underline"
+            >
+              <BlakeLogoIcon className="size-8" />
+              <span className="hidden text-background md:inline-block">
+                BlakeUI
+              </span>
+            </a>
+            <NavigationMenu className="hidden lg:flex" viewport={false}>
+              <NavigationMenuList className="">
+                {NAVIGATION.map((item, index) => (
+                  <DesktopMenuItem
+                    key={`desktop-link-${index}`}
+                    item={item}
+                    index={index}
+                  />
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+            <div className="flex items-center gap-4">
+              <GithubStars repoUrl="https://github.com/shadcn/ui" />
+              <Button asChild>
+                <AppLink href={PRIMARY_BUTTON.url}>
+                  {PRIMARY_BUTTON.label}
+                </AppLink>
+              </Button>
+              <div className="lg:hidden">
+                <Button variant="primary" size="sm" onClick={handleMobileMenu}>
+                  {open ? (
+                    <X className="size-5.5 stroke-foreground" />
+                  ) : (
+                    <Menu className="size-5.5 stroke-foreground" />
+                  )}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <MobileNavigationMenu open={open} />
+    </Fragment>
+  );
+};
+
+const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
+  if (item.links) {
+    return (
+      <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
+        <NavigationMenuTrigger className="h-fit bg-transparent font-normal text-background no-underline focus:bg-transparent! data-[active=true]:bg-transparent!">
+          {item.title}
+        </NavigationMenuTrigger>
+        <NavigationMenuContent className="rounded-xl! p-0!">
+          <ul className="w-[20rem] p-2.5">
+            {item.links.map((link, index) => (
+              <li key={`desktop-nav-sublink-${index}`}>
+                <MenuSubLink link={link} />
+              </li>
+            ))}
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    );
+  }
+
+  return (
+    <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
+      <NavigationMenuLink
+        href={item.url}
+        className={`${navigationMenuTriggerStyle()} h-fit bg-transparent font-normal text-background no-underline`}
+      >
+        {item.title}
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+};
+
+const MenuSubLink = ({ link }: MenuSubLinkProps) => {
+  return (
+    <a
+      href={link.url}
+      className="flex items-center gap-4 rounded-lg p-2 no-underline hover:bg-muted"
+    >
+      <div className="flex w-full items-center justify-between">
+        <div className="flex gap-2.5">
+          {link.icon && (
+            <link.icon.component
+              className="size-5"
+              style={{ stroke: link.icon.color }}
+            />
+          )}
+          <div className="flex flex-col gap-1.5">
+            <h3 className="text-sm leading-none text-background">
+              {link.label}
+            </h3>
+            <p className="text-sm leading-[1.2] text-background/80">
+              {link.description}
+            </p>
+          </div>
+        </div>
+        <ChevronRight className="size-3.5 stroke-muted-foreground opacity-100" />
+      </div>
+    </a>
+  );
+};
+
+const MobileNavigationMenu = ({ open }: MobileNavigationMenuProps) => {
+  return (
+    <Sheet open={open}>
+      <SheetContent
+        aria-describedby={undefined}
+        side="top"
+        className="inset-0 z-998 h-dvh w-full bg-brand pt-16 [&>button]:hidden"
+      >
+        <div className="flex-1 overflow-y-auto">
+          <div className="container pb-12">
+            <div className="absolute -m-px h-px w-px overflow-hidden border-0 mask-clip-border p-0 text-nowrap whitespace-nowrap">
+              <SheetTitle className="text-primary">
+                Mobile Navigation
+              </SheetTitle>
+            </div>
+            <div className="flex h-full flex-col justify-between gap-20">
+              <Accordion type="multiple" className="w-full">
+                {NAVIGATION.map((item, index) =>
+                  renderMobileMenuItem(item, index),
+                )}
+              </Accordion>
+              <div className="pb-20">
+                <Button asChild className="w-full">
+                  <a href={PRIMARY_BUTTON.url} className="no-underline">
+                    {PRIMARY_BUTTON.label}
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+const renderMobileMenuItem = (item: MenuItem, index: number) => {
+  if (item.links) {
+    return (
+      <AccordionItem key={item.title} value={`nav-${index}`}>
+        <AccordionTrigger className="h-15 items-center p-0 text-base leading-[3.75] font-normal text-background hover:no-underline">
+          {item.title}
+        </AccordionTrigger>
+        <AccordionContent>
+          {item.links.map((subItem) => (
+            <MenuSubLink key={subItem.label} link={subItem} />
+          ))}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  }
+
+  return (
+    <a
+      key={item.title}
+      href={item.url}
+      className="flex h-15 items-center border-b p-0 text-left text-base leading-[3.75] font-normal text-background ring-ring/10 outline-ring/50 transition-all no-underline focus-visible:ring-4 focus-visible:outline-1 nth-last-1:border-0"
+    >
+      {item.title}
+    </a>
+  );
+};
+
+interface GithubStarsProps {
+  repoUrl: string;
+}
+
+const GithubStars = ({ repoUrl }: GithubStarsProps) => {
+  const [stargazersCount, setStargazersCount] = useState<string>("");
+
+  const [owner, repo] = repoUrl.split("github.com/")[1].split("/");
+  const githubApiEndpoint = `https://api.github.com/repos/${owner}/${repo}`;
+
+  const formatStargazers = (count: number | ""): string => {
+    if (count === "") return "";
+    if (count < 1000) return count.toString();
+    return `${Math.round(count / 1000)}k`;
+  };
+
+  useEffect(() => {
+    const getStars = async () => {
+      try {
+        const response = await fetch(githubApiEndpoint);
+        const json = await response.json();
+        const formattedCount = formatStargazers(json.stargazers_count);
+        setStargazersCount(formattedCount);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error(error.message);
+        }
+      }
+    };
+
+    getStars();
+  }, [githubApiEndpoint]);
+
+  return (
+    <Button
+      variant="secondary"
+      asChild
+      className="flex items-center gap-1.5 border border-border bg-background text-foreground hover:bg-background/90"
+    >
+      <a href={repoUrl} className="no-underline">
+        <svg width="800px" height="800px" viewBox="0 0 20 20">
+          <g
+            id="Page-1"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
+          >
+            <g
+              transform="translate(-140.000000, -7559.000000)"
+              fill="currentColor"
+            >
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path
+                  d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
+                  id="github-[#142]"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <span>{stargazersCount}</span>
+      </a>
+    </Button>
+  );
+};
+
+export { Navbar9 };

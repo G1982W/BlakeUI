@@ -34,10 +34,22 @@ import {
 import { cn } from "@/lib/utils";
 
 const mainNav = [
-  { id: "overview", label: "Overview", items: ["Dashboard", "Analytics", "Reports"] },
-  { id: "projects", label: "Projects", items: ["All projects", "Active", "Archived"] },
+  {
+    id: "overview",
+    label: "Overview",
+    items: ["Dashboard", "Analytics", "Reports"],
+  },
+  {
+    id: "projects",
+    label: "Projects",
+    items: ["All projects", "Active", "Archived"],
+  },
   { id: "team", label: "Team", items: ["Members", "Invitations", "Roles"] },
-  { id: "workspace", label: "Workspace", items: ["Settings", "Billing", "Integrations"] },
+  {
+    id: "workspace",
+    label: "Workspace",
+    items: ["Settings", "Billing", "Integrations"],
+  },
 ];
 
 const bottomNavItems = [
@@ -96,11 +108,7 @@ export function ApplicationShell13() {
         <div className="hidden flex-1 justify-center md:flex">
           <div className="relative w-full max-w-md">
             <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="pl-9"
-            />
+            <Input type="search" placeholder="Search..." className="pl-9" />
           </div>
         </div>
 
@@ -141,7 +149,11 @@ export function ApplicationShell13() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="primary" size="sm" className="hidden gap-1 sm:flex">
+              <Button
+                variant="primary"
+                size="sm"
+                className="hidden gap-1 sm:flex"
+              >
                 Acme Inc
                 <ChevronDown className="size-4" />
               </Button>
@@ -181,11 +193,7 @@ export function ApplicationShell13() {
 
       {/* Main content */}
       <main className="min-h-0 flex-1 overflow-auto p-6">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-md border border-dashed border-border bg-muted/30 p-8 text-center text-sm text-muted-foreground">
-            Main content area. Centered max-width container.
-          </div>
-        </div>
+        <div className="mx-auto max-w-4xl"></div>
       </main>
 
       {/* Mobile bottom nav */}

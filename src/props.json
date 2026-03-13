@@ -4447,6 +4447,14 @@
       "required": false
     }
   ],
+  "Navbar29": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "navigationMenuTriggerStyle": [],
   "NavigationMenu": [
     {

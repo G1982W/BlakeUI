@@ -1,7 +1,14 @@
 "use client";
 
-import * as React from "react";
-import { Menu, ChevronRight } from "lucide-react";
+import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,200 +17,295 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
 import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerBody,
-} from "@/components/ui/drawer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { BlakeLogoIcon } from "../blake-logo-icon";
+import { AppLink } from "@/components/ui/link";
+interface MenuItem {
+  title: string;
+  url: string;
+  description?: string;
+  icon?: React.ReactNode;
+  items?: MenuItem[];
+}
 
-export function Navbar1({ className }: { className?: string }) {
+interface Navbar1Props {
+  className?: string;
+  logo?: {
+    url: string;
+    src: string;
+    alt: string;
+    title: string;
+    className?: string;
+  };
+  menu?: MenuItem[];
+  auth?: {
+    login: {
+      title: string;
+      url: string;
+    };
+    signup: {
+      title: string;
+      url: string;
+    };
+  };
+}
+
+const Navbar1 = ({
+  // logo = {
+  //   url: "https://www.blakeui.com",
+  //   src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
+  //   alt: "logo",
+  //   title: "Shadcnblocks.com",
+  // },
+  menu = [
+    { title: "Home", url: "#" },
+    {
+      title: "Products",
+      url: "#",
+      items: [
+        {
+          title: "Blog",
+          description: "The latest industry news, updates, and info",
+          icon: <Book className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Company",
+          description: "Our mission is to innovate and empower the world",
+          icon: <Trees className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Careers",
+          description: "Browse job listing and discover our workspace",
+          icon: <Sunset className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Support",
+          description:
+            "Get in touch with our support team or visit our community forums",
+          icon: <Zap className="size-5 shrink-0" />,
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Resources",
+      url: "#",
+      items: [
+        {
+          title: "Help Center",
+          description: "Get all the answers you need right here",
+          icon: <Zap className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Contact Us",
+          description: "We are here to help you with any questions you have",
+          icon: <Sunset className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Status",
+          description: "Check the current status of our services and APIs",
+          icon: <Trees className="size-5 shrink-0" />,
+          url: "#",
+        },
+        {
+          title: "Terms of Service",
+          description: "Our terms and conditions for using our services",
+          icon: <Book className="size-5 shrink-0" />,
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Pricing",
+      url: "#",
+    },
+    {
+      title: "Blog",
+      url: "#",
+    },
+  ],
+  auth = {
+    login: { title: "Login", url: "#" },
+    signup: { title: "Sign up", url: "#" },
+  },
+  className,
+}: Navbar1Props) => {
   return (
-    <nav
-      className={cn(
-        "sticky top-0 z-40 flex h-14 items-center border-b border-border bg-background/95 backdrop-blur",
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          "mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6",
-        )}
-      >
-        <a href="#" className="text-lg font-semibold">
-          Brand
-        </a>
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList className="gap-1">
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid  gap-3 p-4 w-[280px] ">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <div className="text-sm font-medium">Overview</div>
-                        <p className="text-muted-foreground text-xs">
-                          Product overview and features.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <div className="text-sm font-medium">Pricing</div>
-                        <p className="text-muted-foreground text-xs">
-                          Plans and pricing.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 w-[280px]">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        Getting started
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href="#"
-                        className="block select-none rounded-md p-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground"
-                      >
-                        API reference
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                href="#"
-                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-              >
-                About
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-        <div className="flex items-center gap-2">
-          <Button variant="primary" size="sm" className="hidden sm:inline-flex">
-            Log in
-          </Button>
-          <Button variant="secondary" size="sm">
-            Sign up
-          </Button>
+    <section className={cn("py-4", className)}>
+      <div className="container mx-auto">
+        {/* Desktop Menu */}
+        <nav className="hidden items-center justify-between lg:flex">
+          <div className="flex items-center gap-6">
+            {/* Logo */}
+            <AppLink href="#" className="flex items-center gap-2 no-underline">
+              <BlakeLogoIcon className="size-8" />
+              <span className="text-lg font-semibold tracking-tighter">
+                BlakeUI
+              </span>
+            </AppLink>
+            <div className="flex items-center">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {menu.map((item) => renderMenuItem(item))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button asChild variant="primary" size="sm">
+              <AppLink href={auth.login.url}>{auth.login.title}</AppLink>
+            </Button>
+            <Button asChild size="sm">
+              <AppLink href={auth.signup.url}>{auth.signup.title}</AppLink>
+            </Button>
+          </div>
+        </nav>
 
-          <Drawer direction="left">
-            <DrawerTrigger asChild>
-              <Button variant="primary" size="sm" className="md:hidden">
-                <Menu className="size-4" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="h-full max-h-none w-[85vw] max-w-sm border-r rounded-none data-[vaul-drawer-direction=left]:rounded-r-lg">
-              <DrawerHeader className="flex flex-row items-center justify-between border-b">
-                <DrawerTitle>Menu</DrawerTitle>
-                <DrawerClose />
-              </DrawerHeader>
-              <DrawerBody className="p-0">
-                <Accordion type="multiple" className="w-full">
-                  <AccordionItem value="products" className="border-b">
-                    <AccordionTrigger className="px-4 py-3">
-                      Products
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex flex-col gap-1 px-4 pb-3">
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          Overview
-                          <ChevronRight className="size-4" />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          Pricing
-                          <ChevronRight className="size-4" />
-                        </a>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="docs" className="border-b">
-                    <AccordionTrigger className="px-4 py-3">
-                      Docs
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex flex-col gap-1 px-4 pb-3">
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          Getting started
-                          <ChevronRight className="size-4" />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent"
-                        >
-                          API reference
-                          <ChevronRight className="size-4" />
-                        </a>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-                <a
-                  href="#"
-                  className="block border-t px-4 py-3 text-sm hover:bg-accent"
-                >
-                  About
-                </a>
-                <div className="mt-4 flex flex-col gap-2 border-t p-4">
-                  <Button variant="primary" size="sm" className="w-full">
-                    Log in
-                  </Button>
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Sign up
-                  </Button>
+        {/* Mobile Menu */}
+        <div className="block lg:hidden">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <AppLink href="#" className="flex items-center gap-2">
+              <BlakeLogoIcon className="size-8" />
+              <span className="text-lg font-semibold tracking-tighter">
+                BlakeUI
+              </span>
+            </AppLink>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="primary" size="sm">
+                  <Menu className="size-4" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle>
+                    <AppLink
+                      href="#"
+                      className="flex items-center gap-2 no-underline"
+                    >
+                      <BlakeLogoIcon className="size-8" />
+                      <span className="text-lg font-semibold tracking-tighter">
+                        BlakeUI
+                      </span>
+                    </AppLink>
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 p-4">
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="flex w-full flex-col gap-4"
+                  >
+                    {menu.map((item) => renderMobileMenuItem(item))}
+                  </Accordion>
+
+                  <div className="flex flex-col gap-3">
+                    <Button asChild variant="primary">
+                      <AppLink href={auth.login.url}>
+                        {auth.login.title}
+                      </AppLink>
+                    </Button>
+                    <Button asChild>
+                      <AppLink href={auth.signup.url}>
+                        {auth.signup.title}
+                      </AppLink>
+                    </Button>
+                  </div>
                 </div>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
-    </nav>
+    </section>
   );
-}
+};
+
+const renderMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <NavigationMenuItem key={item.title}>
+        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+        <NavigationMenuContent className="bg-popover text-popover-foreground">
+          {item.items.map((subItem) => (
+            <NavigationMenuLink asChild key={subItem.title} className="w-80">
+              <SubMenuLink item={subItem} />
+            </NavigationMenuLink>
+          ))}
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    );
+  }
+
+  return (
+    <NavigationMenuItem key={item.title}>
+      <NavigationMenuLink
+        href={item.url}
+        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium no-underline transition-colors hover:bg-muted hover:text-accent-foreground"
+      >
+        {item.title}
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+};
+
+const renderMobileMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <AccordionItem key={item.title} value={item.title} className="border-b-0">
+        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
+          {item.title}
+        </AccordionTrigger>
+        <AccordionContent className="mt-2">
+          {item.items.map((subItem) => (
+            <SubMenuLink key={subItem.title} item={subItem} />
+          ))}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  }
+
+  return (
+    <AppLink
+      key={item.title}
+      href={item.url}
+      className="text-md font-semibold no-underline"
+    >
+      {item.title}
+    </AppLink>
+  );
+};
+
+const SubMenuLink = ({ item }: { item: MenuItem }) => {
+  return (
+    <AppLink
+      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
+      href={item.url}
+    >
+      <div className="text-foreground">{item.icon}</div>
+      <div>
+        <div className="text-sm font-semibold">{item.title}</div>
+        {item.description && (
+          <p className="text-sm leading-snug text-muted-foreground">
+            {item.description}
+          </p>
+        )}
+      </div>
+    </AppLink>
+  );
+};
+
+export { Navbar1 };
