@@ -107,6 +107,20 @@
       "required": false
     }
   ],
+  "ApplicationShell9": [
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a full viewport app shell.",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Avatar": [
     {
       "name": "asChild",
