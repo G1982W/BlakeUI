@@ -1,219 +1,252 @@
 "use client";
 
-import * as React from "react";
-import { z } from "zod";
-import { Camera, Globe, Twitter, Linkedin, Github } from "lucide-react";
+import { Camera, Github, Globe, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
+
+import { FileUpload, FileUploadTrigger } from "@/components/ui/file-upload";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
-const profileSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  username: z.string().min(2, "Username must be at least 2 characters").regex(/^[a-z0-9_-]+$/i, "Username can only contain letters, numbers, underscore and hyphen"),
-  bio: z.string().optional(),
-  jobTitle: z.string().min(1, "Job title is required"),
-  company: z.string().min(1, "Company is required"),
-  location: z.string().optional(),
-  website: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  twitter: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  linkedin: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  github: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-});
-
-export function SettingsProfile2() {
-  const [data, setData] = React.useState({
-    name: "",
-    username: "",
-    bio: "",
-    jobTitle: "",
-    company: "",
-    location: "",
-    website: "",
-    twitter: "",
-    linkedin: "",
-    github: "",
-  });
-  const [errors, setErrors] = React.useState<Record<string, string>>({});
-
-  const handleSave = () => {
-    const result = profileSchema.safeParse(data);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.issues.forEach((issue) => {
-        const path = String(issue.path[0]);
-        if (path && !fieldErrors[path]) fieldErrors[path] = issue.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-    setErrors({});
-    // Save logic here
+interface ProfileFormData {
+  name: string;
+  email: string;
+  username: string;
+  avatar?: string;
+  bio?: string;
+  jobTitle?: string;
+  company?: string;
+  location?: string;
+  website?: string;
+  socialLinks?: {
+    twitter?: string;
+    linkedin?: string;
+    github?: string;
   };
+}
+
+interface SettingsProfile2Props {
+  defaultValues?: Partial<ProfileFormData>;
+  onSave?: (data: ProfileFormData) => void;
+  className?: string;
+}
+
+const SettingsProfile2 = ({
+  defaultValues = {
+    name: "Jordan Chen",
+    email: "jordan.chen@email.com",
+    username: "jordanchen",
+    avatar:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
+    bio: "Full-stack developer passionate about building products that make a difference. Open source contributor and occasional tech blogger.",
+    jobTitle: "Senior Software Engineer",
+    company: "Acme Inc",
+    location: "Seattle, WA",
+    website: "https://jordanchen.dev",
+    socialLinks: {
+      twitter: "jordanchen",
+      linkedin: "jordanchen",
+      github: "jordanchen",
+    },
+  },
+  className,
+}: SettingsProfile2Props) => {
+  const [avatarFiles, setAvatarFiles] = useState<File[]>([]);
+
+  const initials = defaultValues.name
+    ?.split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+
+  const avatarPreview =
+    avatarFiles.length > 0
+      ? URL.createObjectURL(avatarFiles[0])
+      : defaultValues.avatar;
 
   return (
-    <div className="mx-auto max-w-xl rounded-lg border border-border bg-background p-6">
-      <div className="flex flex-col items-center gap-4 border-b border-border pb-6">
-        <div className="relative">
-          <Avatar className="size-24">
-            <AvatarFallback>JD</AvatarFallback>
-          </Avatar>
-          <Button
-            variant="primary"
-            size="sm"
-            className="absolute bottom-0 right-0 size-8 rounded-full p-0"
-            aria-label="Upload photo"
-          >
-            <Camera className="size-4" />
-          </Button>
-        </div>
-        <p className="text-xs text-muted-foreground">Click to change photo</p>
-      </div>
-
-      <div className="border-b border-border py-6">
-        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Personal Information
-        </h3>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-1">
-            <Input
-              heading="Name"
-              placeholder="Your name"
-              value={data.name}
-              onChange={(e) => { setData((d) => ({ ...d, name: e.target.value })); setErrors((e) => ({ ...e, name: "" })); }}
-              aria-invalid={!!errors.name}
-            />
-            {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
-          </div>
-          <div className="space-y-1">
-            <label className="mb-1 block text-sm font-medium">Username</label>
-            <div className="flex rounded-md border border-input">
-              <span className="flex items-center border-r border-input bg-muted/50 px-3 text-sm text-muted-foreground">
-                @
-              </span>
-              <input
-                className="h-9 min-w-0 flex-1 rounded-r-md border-0 bg-transparent px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                placeholder="username"
-                value={data.username}
-                onChange={(e) => { setData((d) => ({ ...d, username: e.target.value })); setErrors((e) => ({ ...e, username: "" })); }}
-                aria-invalid={!!errors.username}
-              />
+    <Card className={cn("w-full max-w-2xl", className)}>
+      <CardHeader>
+        <CardTitle>Edit Profile</CardTitle>
+        <CardDescription>
+          Manage your public profile information
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-8">
+        {/* Avatar Section */}
+        <FileUpload
+          value={avatarFiles}
+          onValueChange={setAvatarFiles}
+          accept="image/*"
+          maxFiles={1}
+          maxSize={2 * 1024 * 1024}
+        >
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+            <div className="relative">
+              <Avatar className="size-24">
+                <AvatarImage
+                  src={avatarPreview}
+                  alt={defaultValues.name}
+                  className="object-cover"
+                />
+                <AvatarFallback className="text-2xl font-semibold">
+                  {initials}
+                </AvatarFallback>
+              </Avatar>
+              <FileUploadTrigger asChild>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  className="absolute -right-1 -bottom-1 size-8 rounded-full shadow-md"
+                >
+                  <Camera className="size-4" />
+                </Button>
+              </FileUploadTrigger>
             </div>
-            {errors.username && <p className="text-xs text-destructive">{errors.username}</p>}
+            <div className="space-y-1 text-center sm:text-left">
+              <p className="text-sm font-medium">Profile Photo</p>
+              <p className="text-xs text-muted-foreground">
+                Click the camera icon to upload a new photo.
+                <br />
+                Recommended: Square image, at least 400x400px.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="mt-4 space-y-1">
-          <label className="mb-1 block text-sm font-medium">Bio</label>
-          <Textarea
-            className="min-h-20"
-            placeholder="Tell us about yourself"
-            value={data.bio}
-            onChange={(e) => setData((d) => ({ ...d, bio: e.target.value }))}
-          />
-        </div>
-      </div>
+        </FileUpload>
 
-      <div className="border-b border-border py-6">
-        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Work
-        </h3>
+        <Separator />
+
+        {/* Personal Information */}
         <div className="space-y-4">
-          <div className="space-y-1">
-            <Input
-              heading="Job title"
-              placeholder="e.g. Designer"
-              value={data.jobTitle}
-              onChange={(e) => { setData((d) => ({ ...d, jobTitle: e.target.value })); setErrors((e) => ({ ...e, jobTitle: "" })); }}
-              aria-invalid={!!errors.jobTitle}
-            />
-            {errors.jobTitle && <p className="text-xs text-destructive">{errors.jobTitle}</p>}
+          <h3 className="text-sm font-medium">Personal Information</h3>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input id="name" defaultValue={defaultValues.name} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <div className="flex">
+                <span className="inline-flex items-center rounded-l-md border border-r-0 bg-muted px-3 text-sm text-muted-foreground">
+                  @
+                </span>
+                <Input
+                  id="username"
+                  className="rounded-l-none"
+                  defaultValue={defaultValues.username}
+                />
+              </div>
+            </div>
           </div>
-          <div className="space-y-1">
-            <Input
-              heading="Company"
-              placeholder="Company name"
-              value={data.company}
-              onChange={(e) => { setData((d) => ({ ...d, company: e.target.value })); setErrors((e) => ({ ...e, company: "" })); }}
-              aria-invalid={!!errors.company}
+          <div className="space-y-2">
+            <Label htmlFor="bio">Bio</Label>
+            <Textarea
+              id="bio"
+              rows={3}
+              defaultValue={defaultValues.bio}
+              placeholder="Write a short bio about yourself"
             />
-            {errors.company && <p className="text-xs text-destructive">{errors.company}</p>}
           </div>
-          <div className="space-y-1">
+        </div>
+
+        <Separator />
+
+        {/* Work Information */}
+        <div className="space-y-4">
+          <h3 className="text-sm font-medium">Work</h3>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="jobTitle">Job Title</Label>
+              <Input id="jobTitle" defaultValue={defaultValues.jobTitle} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="company">Company</Label>
+              <Input id="company" defaultValue={defaultValues.company} />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="location">Location</Label>
             <Input
-              heading="Location"
+              id="location"
+              defaultValue={defaultValues.location}
               placeholder="City, Country"
-              value={data.location}
-              onChange={(e) => setData((d) => ({ ...d, location: e.target.value }))}
             />
           </div>
         </div>
-      </div>
 
-      <div className="py-6">
-        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Social Links
-        </h3>
+        <Separator />
+
+        {/* Social Links */}
         <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Globe className="size-4 shrink-0 text-muted-foreground" />
-            <div className="min-w-0 flex-1 space-y-1">
+          <h3 className="text-sm font-medium">Social Links</h3>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <Globe className="size-5 shrink-0 text-muted-foreground" />
               <Input
-                className="flex-1"
                 placeholder="https://yourwebsite.com"
-                value={data.website}
-                onChange={(e) => { setData((d) => ({ ...d, website: e.target.value })); setErrors((e) => ({ ...e, website: "" })); }}
-                aria-invalid={!!errors.website}
+                defaultValue={defaultValues.website}
               />
-              {errors.website && <p className="text-xs text-destructive">{errors.website}</p>}
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Twitter className="size-4 shrink-0 text-muted-foreground" />
-            <div className="min-w-0 flex-1 space-y-1">
-              <Input
-                className="flex-1"
-                placeholder="https://twitter.com/username"
-                value={data.twitter}
-                onChange={(e) => { setData((d) => ({ ...d, twitter: e.target.value })); setErrors((e) => ({ ...e, twitter: "" })); }}
-                aria-invalid={!!errors.twitter}
-              />
-              {errors.twitter && <p className="text-xs text-destructive">{errors.twitter}</p>}
+            <div className="flex items-center gap-3">
+              <Twitter className="size-5 shrink-0 text-muted-foreground" />
+              <div className="flex flex-1">
+                <span className="inline-flex items-center rounded-l-md border border-r-0 bg-muted px-3 text-sm text-muted-foreground">
+                  x.com/
+                </span>
+                <Input
+                  className="rounded-l-none"
+                  placeholder="username"
+                  defaultValue={defaultValues.socialLinks?.twitter}
+                />
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Linkedin className="size-4 shrink-0 text-muted-foreground" />
-            <div className="min-w-0 flex-1 space-y-1">
-              <Input
-                className="flex-1"
-                placeholder="https://linkedin.com/in/username"
-                value={data.linkedin}
-                onChange={(e) => { setData((d) => ({ ...d, linkedin: e.target.value })); setErrors((e) => ({ ...e, linkedin: "" })); }}
-                aria-invalid={!!errors.linkedin}
-              />
-              {errors.linkedin && <p className="text-xs text-destructive">{errors.linkedin}</p>}
+            <div className="flex items-center gap-3">
+              <Linkedin className="size-5 shrink-0 text-muted-foreground" />
+              <div className="flex flex-1">
+                <span className="inline-flex items-center rounded-l-md border border-r-0 bg-muted px-3 text-sm text-muted-foreground">
+                  linkedin.com/in/
+                </span>
+                <Input
+                  className="rounded-l-none"
+                  placeholder="username"
+                  defaultValue={defaultValues.socialLinks?.linkedin}
+                />
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Github className="size-4 shrink-0 text-muted-foreground" />
-            <div className="min-w-0 flex-1 space-y-1">
-              <Input
-                className="flex-1"
-                placeholder="https://github.com/username"
-                value={data.github}
-                onChange={(e) => { setData((d) => ({ ...d, github: e.target.value })); setErrors((e) => ({ ...e, github: "" })); }}
-                aria-invalid={!!errors.github}
-              />
-              {errors.github && <p className="text-xs text-destructive">{errors.github}</p>}
+            <div className="flex items-center gap-3">
+              <Github className="size-5 shrink-0 text-muted-foreground" />
+              <div className="flex flex-1">
+                <span className="inline-flex items-center rounded-l-md border border-r-0 bg-muted px-3 text-sm text-muted-foreground">
+                  github.com/
+                </span>
+                <Input
+                  className="rounded-l-none"
+                  placeholder="username"
+                  defaultValue={defaultValues.socialLinks?.github}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex justify-end gap-2 pt-4">
-        <Button variant="primary" size="sm">Cancel</Button>
-        <Button variant="secondary" size="sm" onClick={handleSave}>Save changes</Button>
-      </div>
-    </div>
+        <div className="flex justify-end gap-2 pt-4">
+          <Button variant="primary">Cancel</Button>
+          <Button>Save Changes</Button>
+        </div>
+      </CardContent>
+    </Card>
   );
-}
+};
+
+export { SettingsProfile2 };
