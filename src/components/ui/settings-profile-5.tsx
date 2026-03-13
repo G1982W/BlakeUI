@@ -1,230 +1,352 @@
 "use client";
 
-import * as React from "react";
-import { z } from "zod";
-import { Globe, Twitter, Linkedin, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Camera, Github, Globe, Linkedin, MapPin, Twitter } from "lucide-react";
+import { useState } from "react";
+
+import { FileUpload, FileUploadTrigger } from "@/components/ui/file-upload";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
-const profileSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  username: z.string().min(2, "Username must be at least 2 characters").regex(/^[a-z0-9_-]+$/i, "Username can only contain letters, numbers, underscore and hyphen"),
-  role: z.string().min(1, "Role is required"),
-  bio: z.string().optional(),
-  location: z.string().optional(),
-  website: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  twitter: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  linkedin: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-  github: z.union([z.string().url("Enter a valid URL"), z.literal("")]).optional(),
-});
+interface ProfileData {
+  name: string;
+  username: string;
+  email: string;
+  avatar?: string;
+  bio?: string;
+  role?: string;
+  location?: string;
+  website?: string;
+  twitter?: string;
+  linkedin?: string;
+  github?: string;
+}
 
-export function SettingsProfile5() {
-  const [name, setName] = React.useState("Jane Doe");
-  const [username, setUsername] = React.useState("jane");
-  const [role, setRole] = React.useState("Designer");
-  const [bio, setBio] = React.useState("Building things on the web.");
-  const [location, setLocation] = React.useState("San Francisco");
-  const [website, setWebsite] = React.useState("");
-  const [twitter, setTwitter] = React.useState("");
-  const [linkedin, setLinkedin] = React.useState("");
-  const [github, setGithub] = React.useState("");
-  const [errors, setErrors] = React.useState<Record<string, string>>({});
+interface SettingsProfile5Props {
+  defaultValues?: Partial<ProfileData>;
+  className?: string;
+}
 
-  const handleSave = () => {
-    const result = profileSchema.safeParse({
-      name,
-      username,
-      role,
-      bio,
-      location,
-      website,
-      twitter,
-      linkedin,
-      github,
-    });
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.issues.forEach((issue) => {
-        const path = String(issue.path[0]);
-        if (path && !fieldErrors[path]) fieldErrors[path] = issue.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-    setErrors({});
-    // Save logic here
+const SettingsProfile5 = ({
+  defaultValues = {
+    name: "Jordan Chen",
+    username: "jordanchen",
+    email: "jordan.chen@email.com",
+    avatar:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
+    bio: "Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.",
+    role: "Senior Software Engineer",
+    location: "Seattle, WA",
+    website: "https://jordanchen.dev",
+    twitter: "jordanchen",
+    linkedin: "jordanchen",
+    github: "jordanchen",
+  },
+  className,
+}: SettingsProfile5Props) => {
+  const [formData, setFormData] = useState(defaultValues);
+  const [avatarFiles, setAvatarFiles] = useState<File[]>([]);
+
+  const updateField = (field: keyof ProfileData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const avatarPreview =
+    avatarFiles.length > 0
+      ? URL.createObjectURL(avatarFiles[0])
+      : formData.avatar;
+
+  const initials = formData.name
+    ?.split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+
   return (
-    <div className="flex min-h-[420px] w-full gap-6 overflow-auto rounded-lg border border-border bg-background p-6">
-      <div className="min-w-0 flex-1 space-y-6">
-        <div className="rounded-lg border border-border p-4">
-          <h3 className="mb-4 text-sm font-semibold">Basic Information</h3>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-            <Avatar className="size-16 shrink-0">
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div className="min-w-0 flex-1 space-y-4">
-              <div className="space-y-1">
-                <Input
-                  heading="Name"
-                  value={name}
-                  onChange={(e) => { setName(e.target.value); setErrors((e) => ({ ...e, name: "" })); }}
-                  aria-invalid={!!errors.name}
-                />
-                {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
-              </div>
-              <div className="space-y-1">
-                <Input
-                  heading="Username"
-                  value={username}
-                  onChange={(e) => { setUsername(e.target.value); setErrors((e) => ({ ...e, username: "" })); }}
-                  aria-invalid={!!errors.username}
-                />
-                {errors.username && <p className="text-xs text-destructive">{errors.username}</p>}
-              </div>
-              <div className="space-y-1">
-                <Input
-                  heading="Role"
-                  value={role}
-                  onChange={(e) => { setRole(e.target.value); setErrors((e) => ({ ...e, role: "" })); }}
-                  aria-invalid={!!errors.role}
-                />
-                {errors.role && <p className="text-xs text-destructive">{errors.role}</p>}
-              </div>
-              <div className="space-y-1">
-                <Textarea
-                  heading="Bio"
-                  description="A short bio about yourself."
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  className="min-h-16"
-                />
-              </div>
-              <div className="space-y-1">
-                <Input
-                  heading="Location"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
+    <section className={cn("py-16", className)}>
+      <div className="container mx-auto">
+        <div className="mb-8">
+          <h1 className="text-2xl font-semibold">Edit Profile</h1>
+          <p className="text-muted-foreground">
+            Update your profile information. Changes will be reflected in the
+            preview.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-5">
+          {/* Edit Form - Takes more space */}
+          <div className="space-y-6 lg:col-span-3">
+            <Card>
+              <CardHeader>
+                <CardTitle>Basic Information</CardTitle>
+                <CardDescription>
+                  Your public profile information
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <FileUpload
+                  value={avatarFiles}
+                  onValueChange={setAvatarFiles}
+                  accept="image/*"
+                  maxFiles={1}
+                  maxSize={2 * 1024 * 1024}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      <Avatar className="size-16">
+                        <AvatarImage
+                          src={avatarPreview}
+                          alt={formData.name}
+                          className="object-cover"
+                        />
+                        <AvatarFallback>{initials}</AvatarFallback>
+                      </Avatar>
+                      <FileUploadTrigger asChild>
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          className="absolute -right-1 -bottom-1 size-6 rounded-full shadow-sm"
+                        >
+                          <Camera className="size-3" />
+                        </Button>
+                      </FileUploadTrigger>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium">Profile Photo</p>
+                      <p className="text-xs text-muted-foreground">
+                        JPG, PNG or GIF. Max 2MB.
+                      </p>
+                    </div>
+                  </div>
+                </FileUpload>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => updateField("name", e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="username">Username</Label>
+                    <Input
+                      id="username"
+                      value={formData.username}
+                      onChange={(e) => updateField("username", e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="role">Role / Title</Label>
+                  <Input
+                    id="role"
+                    value={formData.role}
+                    onChange={(e) => updateField("role", e.target.value)}
+                    placeholder="What do you do?"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="bio">Bio</Label>
+                  <Textarea
+                    id="bio"
+                    rows={3}
+                    value={formData.bio}
+                    onChange={(e) => updateField("bio", e.target.value)}
+                    placeholder="Tell others about yourself"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location</Label>
+                  <Input
+                    id="location"
+                    value={formData.location}
+                    onChange={(e) => updateField("location", e.target.value)}
+                    placeholder="City, Country"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Links</CardTitle>
+                <CardDescription>Your website and social links</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="website">Website</Label>
+                  <Input
+                    id="website"
+                    type="url"
+                    value={formData.website}
+                    onChange={(e) => updateField("website", e.target.value)}
+                    placeholder="https://yourwebsite.com"
+                  />
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="space-y-2">
+                    <Label htmlFor="twitter">Twitter</Label>
+                    <Input
+                      id="twitter"
+                      value={formData.twitter}
+                      onChange={(e) => updateField("twitter", e.target.value)}
+                      placeholder="username"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="linkedin">LinkedIn</Label>
+                    <Input
+                      id="linkedin"
+                      value={formData.linkedin}
+                      onChange={(e) => updateField("linkedin", e.target.value)}
+                      placeholder="username"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="github">GitHub</Label>
+                    <Input
+                      id="github"
+                      value={formData.github}
+                      onChange={(e) => updateField("github", e.target.value)}
+                      placeholder="username"
+                    />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="flex justify-end gap-3">
+              <Button variant="primary">Cancel</Button>
+              <Button>Save changes</Button>
+            </div>
+          </div>
+
+          {/* Live Preview */}
+          <div className="lg:col-span-2">
+            <div className="sticky top-8">
+              <div className="rounded-xl bg-muted/50 p-6">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-sm font-medium">Live Preview</p>
+                  <Badge variant="secondary" className="text-xs">
+                    Public view
+                  </Badge>
+                </div>
+
+                <Card className="!shadow-none">
+                  <CardContent className="pt-6">
+                    <div className="flex flex-col items-center text-center">
+                      <Avatar className="size-20 ring-2 ring-background">
+                        <AvatarImage
+                          src={avatarPreview}
+                          alt={formData.name}
+                          className="object-cover"
+                        />
+                        <AvatarFallback className="text-xl">
+                          {initials}
+                        </AvatarFallback>
+                      </Avatar>
+
+                      <h3 className="mt-4 text-lg font-semibold">
+                        {formData.name || "Your Name"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        @{formData.username || "username"}
+                      </p>
+
+                      {formData.role && (
+                        <p className="mt-1 text-sm">{formData.role}</p>
+                      )}
+
+                      {formData.location && (
+                        <div className="mt-2 flex items-center gap-1 text-sm text-muted-foreground">
+                          <MapPin className="size-3.5" />
+                          <span>{formData.location}</span>
+                        </div>
+                      )}
+
+                      {formData.bio && (
+                        <>
+                          <Separator className="my-4" />
+                          <p className="text-sm text-muted-foreground">
+                            {formData.bio}
+                          </p>
+                        </>
+                      )}
+
+                      {(formData.website ||
+                        formData.twitter ||
+                        formData.linkedin ||
+                        formData.github) && (
+                        <>
+                          <Separator className="my-4" />
+                          <div className="flex gap-3">
+                            {formData.website && (
+                              <a
+                                href={formData.website}
+                                className="text-muted-foreground hover:text-foreground"
+                              >
+                                <Globe className="size-5" />
+                              </a>
+                            )}
+                            {formData.twitter && (
+                              <a
+                                href={`https://x.com/${formData.twitter}`}
+                                className="text-muted-foreground hover:text-foreground"
+                              >
+                                <Twitter className="size-5" />
+                              </a>
+                            )}
+                            {formData.linkedin && (
+                              <a
+                                href={`https://linkedin.com/in/${formData.linkedin}`}
+                                className="text-muted-foreground hover:text-foreground"
+                              >
+                                <Linkedin className="size-5" />
+                              </a>
+                            )}
+                            {formData.github && (
+                              <a
+                                href={`https://github.com/${formData.github}`}
+                                className="text-muted-foreground hover:text-foreground"
+                              >
+                                <Github className="size-5" />
+                              </a>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                  This is how your profile appears to others
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg border border-border p-4">
-          <h3 className="mb-4 text-sm font-semibold">Links</h3>
-          <div className="space-y-4">
-            <div className="space-y-1">
-              <Input
-                heading="Website"
-                placeholder="https://"
-                value={website}
-                onChange={(e) => { setWebsite(e.target.value); setErrors((e) => ({ ...e, website: "" })); }}
-                aria-invalid={!!errors.website}
-              />
-              {errors.website && <p className="text-xs text-destructive">{errors.website}</p>}
-            </div>
-            <div className="space-y-1">
-              <Input
-                heading="Twitter"
-                placeholder="https://twitter.com/..."
-                value={twitter}
-                onChange={(e) => { setTwitter(e.target.value); setErrors((e) => ({ ...e, twitter: "" })); }}
-                aria-invalid={!!errors.twitter}
-              />
-              {errors.twitter && <p className="text-xs text-destructive">{errors.twitter}</p>}
-            </div>
-            <div className="space-y-1">
-              <Input
-                heading="LinkedIn"
-                placeholder="https://linkedin.com/..."
-                value={linkedin}
-                onChange={(e) => { setLinkedin(e.target.value); setErrors((e) => ({ ...e, linkedin: "" })); }}
-                aria-invalid={!!errors.linkedin}
-              />
-              {errors.linkedin && <p className="text-xs text-destructive">{errors.linkedin}</p>}
-            </div>
-            <div className="space-y-1">
-              <Input
-                heading="GitHub"
-                placeholder="https://github.com/..."
-                value={github}
-                onChange={(e) => { setGithub(e.target.value); setErrors((e) => ({ ...e, github: "" })); }}
-                aria-invalid={!!errors.github}
-              />
-              {errors.github && <p className="text-xs text-destructive">{errors.github}</p>}
-            </div>
-          </div>
-        </div>
       </div>
-      <div className="hidden shrink-0 lg:block">
-        <div className="sticky top-6 w-64 rounded-lg border border-border bg-muted/30 p-4">
-          <Badge variant="secondary" className="mb-3">
-            Public view
-          </Badge>
-          <div className="flex flex-col items-center text-center">
-            <Avatar className="size-16">
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <p className="mt-2 font-medium">{name || "Name"}</p>
-            <p className="text-xs text-muted-foreground">
-              @{username || "username"}
-            </p>
-            {role && <p className="text-xs text-muted-foreground">{role}</p>}
-            {location && (
-              <p className="text-xs text-muted-foreground">{location}</p>
-            )}
-            {bio && <p className="mt-2 text-xs text-muted-foreground">{bio}</p>}
-            <div className="mt-3 flex gap-2">
-              {website && (
-                <a
-                  href={website}
-                  className="rounded p-1 hover:bg-accent"
-                  aria-label="Website"
-                >
-                  <Globe className="size-4" />
-                </a>
-              )}
-              {twitter && (
-                <a
-                  href={twitter}
-                  className="rounded p-1 hover:bg-accent"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="size-4" />
-                </a>
-              )}
-              {linkedin && (
-                <a
-                  href={linkedin}
-                  className="rounded p-1 hover:bg-accent"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="size-4" />
-                </a>
-              )}
-              {github && (
-                <a
-                  href={github}
-                  className="rounded p-1 hover:bg-accent"
-                  aria-label="GitHub"
-                >
-                  <Github className="size-4" />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-6 flex justify-end">
-        <Button variant="secondary" size="sm" onClick={handleSave}>
-          Save changes
-        </Button>
-      </div>
-    </div>
+    </section>
   );
-}
+};
+
+export { SettingsProfile5 };
