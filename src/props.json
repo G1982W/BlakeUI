@@ -192,6 +192,33 @@
     }
   ],
   "banner": [],
+  "Breadcrumb": [],
+  "BreadcrumbList": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "BreadcrumbItem": [],
+  "BreadcrumbLink": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "BreadcrumbPage": [],
+  "BreadcrumbSeparator": [],
+  "BreadcrumbEllipsis": [],
   "Button": [
     {
       "name": "disabled",
@@ -4094,6 +4121,14 @@
       "required": false
     }
   ],
+  "Label": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
   "AppLink": [
     {
       "name": "disabled",
@@ -4445,6 +4480,26 @@
       "type": "string",
       "description": "",
       "required": false
+    },
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title: string; className?: string; }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "menu",
+      "type": "MenuItem[]",
+      "defaultValue": "[\n    { title: \"Home\", url: \"#\" },\n    {\n      title: \"Products\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Blog\",\n          description: \"The latest industry news, updates, and info\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Company\",\n          description: \"Our mission is to innovate and empower the world\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Careers\",\n          description: \"Browse job listing and discover our workspace\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Support\",\n          description:\n            \"Get in touch with our support team or visit our community forums\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Resources\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Help Center\",\n          description: \"Get all the answers you need right here\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Contact Us\",\n          description: \"We are here to help you with any questions you have\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Status\",\n          description: \"Check the current status of our services and APIs\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Terms of Service\",\n          description: \"Our terms and conditions for using our services\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Pricing\",\n      url: \"#\",\n    },\n    {\n      title: \"Blog\",\n      url: \"#\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "auth",
+      "type": "{ login: { title: string; url: string; }; signup: { title: string; url: string; }; }",
+      "defaultValue": "{\n    login: { title: \"Login\", url: \"#\" },\n    signup: { title: \"Sign up\", url: \"#\" },\n  }",
+      "description": "",
+      "required": false
     }
   ],
   "Navbar29": [
@@ -4455,11 +4510,25 @@
       "required": false
     }
   ],
-  "navigationMenuTriggerStyle": [],
+  "Navbar9": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "NavigationMenu": [
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "viewport",
+      "type": "boolean",
+      "defaultValue": "true",
       "description": "",
       "required": false
     }
@@ -4518,6 +4587,14 @@
     {
       "name": "type",
       "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuIndicator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
       "description": "",
       "required": false
     }
