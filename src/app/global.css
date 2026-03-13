@@ -502,4 +502,10 @@ figure>pre {
     color: var(--background);
 }
 
+/* Override prose image margins inside buttons so they don't add extra spacing */
+.prose :where(button img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 @source "../components/**/*.{ts,tsx}";

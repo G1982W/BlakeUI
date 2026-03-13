@@ -1,190 +1,118 @@
-"use client";
-
-import * as React from "react";
-import { Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-export function Login4({
-  logo,
-  title = "Log in",
-  onGoogle,
-  onFacebook,
-  onGitHub,
-  onSubmit,
-  rememberMeDefault = false,
-  signUpHref = "#",
-  forgotPasswordHref = "#",
-  className,
-}: {
-  logo?: React.ReactNode;
-  title?: string;
-  onGoogle?: () => void;
-  onFacebook?: () => void;
-  onGitHub?: () => void;
-  onSubmit?: (email: string, password: string, rememberMe: boolean) => void;
-  rememberMeDefault?: boolean;
-  signUpHref?: string;
-  forgotPasswordHref?: string;
-  className?: string;
-}) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [rememberMe, setRememberMe] = React.useState(rememberMeDefault);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit?.(email, password, rememberMe);
+interface Login4Props {
+  heading?: string;
+  logo: {
+    url: string;
+    src: string;
+    alt: string;
+    title?: string;
+    className?: string;
   };
-
-  const hasSocial = onGoogle || onFacebook || onGitHub;
-
-  return (
-    <div
-      className={cn(
-        "flex w-full max-w-sm flex-col gap-6 rounded-lg border border-border bg-background p-6",
-        className,
-      )}
-    >
-      {logo && <div className="flex justify-center">{logo}</div>}
-      <div className="space-y-1 text-center">
-        <h2 className="text-xl font-semibold">{title}</h2>
-        <p className="text-sm text-muted-foreground">
-          Enter your credentials or use a provider.
-        </p>
-      </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <label
-            htmlFor="login4-email"
-            className="text-sm font-medium leading-none"
-          >
-            Email
-          </label>
-          <Input
-            id="login4-email"
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full"
-          />
-        </div>
-        <div className="space-y-2">
-          <label
-            htmlFor="login4-password"
-            className="text-sm font-medium leading-none"
-          >
-            Password
-          </label>
-          <Input
-            id="login4-password"
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full"
-          />
-        </div>
-        <div className="flex items-center justify-between gap-2">
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
-            <Checkbox
-              checked={rememberMe}
-              onCheckedChange={(v) => setRememberMe(v === true)}
-              aria-label="Remember me"
-            />
-            Remember me
-          </label>
-          <a
-            href={forgotPasswordHref}
-            className="text-sm text-muted-foreground underline underline-offset-2 hover:text-foreground"
-          >
-            Forgot password?
-          </a>
-        </div>
-        <Button type="submit" className="w-full">
-          Log in
-        </Button>
-      </form>
-      {hasSocial && (
-        <>
-          <div className="flex items-center gap-3">
-            <span className="h-px flex-1 bg-border" />
-            <span className="text-xs text-muted-foreground">OR</span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <div className="flex flex-col gap-2">
-            {onGoogle && (
-              <Button
-                type="button"
-                variant="primary"
-                className="w-full gap-2"
-                onClick={onGoogle}
-              >
-                <svg className="size-4" viewBox="0 0 24 24" aria-hidden>
-                  <path
-                    fill="currentColor"
-                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  />
-                </svg>
-                Google
-              </Button>
-            )}
-            {onFacebook && (
-              <Button
-                type="button"
-                variant="primary"
-                className="w-full gap-2"
-                onClick={onFacebook}
-              >
-                <svg
-                  className="size-4"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-                Facebook
-              </Button>
-            )}
-            {onGitHub && (
-              <Button
-                type="button"
-                variant="primary"
-                className="w-full gap-2"
-                onClick={onGitHub}
-              >
-                <Github className="size-4" />
-                GitHub
-              </Button>
-            )}
-          </div>
-        </>
-      )}
-      <p className="text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{" "}
-        <a
-          href={signUpHref}
-          className="underline underline-offset-2 hover:text-foreground"
-        >
-          Sign up
-        </a>
-      </p>
-    </div>
-  );
+  buttonText?: string;
+  googleText?: string;
+  githubText?: string;
+  facebookText?: string;
+  signupText?: string;
+  signupUrl?: string;
+  className?: string;
 }
+
+const Login4 = ({
+  heading = "Login",
+  logo = {
+    url: "https://www.blakeui.com",
+    src: "/blake-logo-icon.svg",
+    alt: "blakeUI logo",
+    title: "blakeUI.com",
+  },
+  buttonText = "Login",
+  facebookText = "Facebook",
+  googleText = "Google",
+  githubText = "GitHub",
+  signupText = "Need an account?",
+  signupUrl = "https://shadcnblocks.com",
+  className,
+}: Login4Props) => {
+  return (
+    <section className={cn("bg-background", className)}>
+      <div className="flex h-full items-center justify-center">
+        <div className="flex flex-col items-center gap-6 lg:justify-start">
+          <div className="flex w-full max-w-sm min-w-sm flex-col items-center gap-y-4 px-6 py-12">
+            {/* Logo */}
+            <a href={logo.url}>
+              <img
+                src={logo.src || "/blake-logo-icon.svg"}
+                alt={logo.alt}
+                title={logo.title}
+                className="h-10 dark:invert"
+              />
+            </a>
+            {heading && <h1 className="text-2xl font-semibold">{heading}</h1>}
+            <div className="flex w-full flex-col gap-2">
+              <Label>Email</Label>
+              <Input
+                type="email"
+                placeholder="Email"
+                className="text-sm"
+                required
+              />
+            </div>
+            <div className="flex w-full flex-col gap-2">
+              <Label>Password</Label>
+              <Input
+                type="password"
+                placeholder="Password"
+                className="text-sm"
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              {buttonText}
+            </Button>
+            <div className="flex w-full flex-col gap-2">
+              <Button type="submit" className="w-full" variant="primary">
+                <img
+                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                  className="size-5"
+                  alt="Google"
+                />
+                {googleText}
+              </Button>
+              <Button type="submit" className="w-full" variant="primary">
+                <img
+                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg"
+                  className="size-5"
+                  alt="Facebook"
+                />
+                {facebookText}
+              </Button>
+              <Button type="submit" className="w-full" variant="primary">
+                <img
+                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/github-icon.svg"
+                  className="size-5"
+                  alt="GitHub"
+                />
+                {githubText}
+              </Button>
+            </div>
+            <div className="flex justify-center gap-1 text-sm text-muted-foreground">
+              <p>{signupText}</p>
+              <a
+                href={signupUrl}
+                className="font-medium text-primary hover:underline"
+              >
+                Sign up
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { Login4 };

@@ -4563,60 +4563,58 @@
   "ListView": [],
   "Login4": [
     {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Login",
+      "description": "",
+      "required": false
+    },
+    {
       "name": "logo",
-      "type": "ReactNode",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
     {
-      "name": "title",
+      "name": "buttonText",
       "type": "string",
-      "defaultValue": "Log in",
+      "defaultValue": "Login",
       "description": "",
       "required": false
     },
     {
-      "name": "onGoogle",
-      "type": "(() => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onFacebook",
-      "type": "(() => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGitHub",
-      "type": "(() => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmit",
-      "type": "((email: string, password: string, rememberMe: boolean) => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "rememberMeDefault",
-      "type": "boolean",
-      "defaultValue": "false",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "signUpHref",
+      "name": "googleText",
       "type": "string",
-      "defaultValue": "#",
+      "defaultValue": "Google",
       "description": "",
       "required": false
     },
     {
-      "name": "forgotPasswordHref",
+      "name": "githubText",
       "type": "string",
-      "defaultValue": "#",
+      "defaultValue": "GitHub",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "facebookText",
+      "type": "string",
+      "defaultValue": "Facebook",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "Need an account?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "https://shadcnblocks.com",
       "description": "",
       "required": false
     },
@@ -4630,33 +4628,36 @@
   "Login6": [
     {
       "name": "logo",
-      "type": "ReactNode",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
     {
-      "name": "onGoogle",
-      "type": "(() => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmit",
-      "type": "((email: string, password: string) => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "signUpHref",
+      "name": "buttonText",
       "type": "string",
-      "defaultValue": "#",
+      "defaultValue": "Login",
       "description": "",
       "required": false
     },
     {
-      "name": "forgotPasswordHref",
+      "name": "googleText",
       "type": "string",
-      "defaultValue": "#",
+      "defaultValue": "Login with Google",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "Need an account?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "https://shadcnblocks.com",
       "description": "",
       "required": false
     },
@@ -4669,24 +4670,6 @@
   ],
   "Login7": [
     {
-      "name": "logo",
-      "type": "ReactNode",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGoogle",
-      "type": "(() => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmit",
-      "type": "((email: string, password: string) => void)",
-      "description": "",
-      "required": false
-    },
-    {
       "name": "className",
       "type": "string",
       "description": "",
@@ -4695,37 +4678,56 @@
   ],
   "Login9": [
     {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Log In",
+      "description": "",
+      "required": false
+    },
+    {
       "name": "logo",
-      "type": "ReactNode",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
     {
-      "name": "onGoogle",
-      "type": "(() => void)",
+      "name": "googleText",
+      "type": "string",
+      "defaultValue": "Continue with Google",
       "description": "",
       "required": false
     },
     {
-      "name": "onGitHub",
-      "type": "(() => void)",
+      "name": "githubText",
+      "type": "string",
+      "defaultValue": "Continue with GitHub",
       "description": "",
       "required": false
     },
     {
-      "name": "onLinkedIn",
-      "type": "(() => void)",
+      "name": "linkedInText",
+      "type": "string",
+      "defaultValue": "Continue with LinkedIn",
       "description": "",
       "required": false
     },
     {
-      "name": "onEmailSubmit",
-      "type": "((email: string) => void)",
+      "name": "emailText",
+      "type": "string",
+      "defaultValue": "Continue with email",
       "description": "",
       "required": false
     },
     {
-      "name": "signUpHref",
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "New to shadcnblocks?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
       "type": "string",
       "defaultValue": "#",
       "description": "",
@@ -5132,6 +5134,189 @@
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers1": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Team Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "subHeading",
+      "type": "string",
+      "defaultValue": "View and manage your team members. Control permissions and roles for each user in your organization.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "users",
+      "type": "User[]",
+      "defaultValue": "[\n    {\n      name: \"Emily Watson\",\n      email: \"emily.w@acme.io\",\n      accessLevel: \"Owner\",\n    },\n    {\n      email: \"john.d@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Michael Park\",\n      email: \"michael.p@acme.io\",\n      accessLevel: \"Viewer\",\n    },\n    {\n      email: \"lisa.t@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers2": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Workspace Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "subHeading",
+      "type": "Cta",
+      "defaultValue": "{\n    title:\n      \"Add teammates to collaborate on projects together. Control permissions and manage access levels for each member.\",\n    ctaText: \"View member permissions guide\",\n    ctaLink: \"#\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "users",
+      "type": "User[]",
+      "defaultValue": "[\n    {\n      name: \"Sofia Martinez\",\n      email: \"sofia.m@example.com\",\n      accessLevel: \"Owner\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg\",\n    },\n    {\n      name: \"Alex Chen\",\n      email: \"alex.c@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Jordan Blake\",\n      email: \"jordan.b@example.com\",\n      accessLevel: \"Viewer\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    },\n    {\n      name: \"Morgan Reid\",\n      email: \"morgan.r@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers3": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Team Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Manage your team members and their access permissions.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "members",
+      "type": "Member[]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Sarah Chen\",\n      email: \"sarah.chen@company.io\",\n      role: \"admin\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar2.jpg\",\n      joinedAt: \"Jan 2024\",\n    },\n    {\n      id: \"2\",\n      name: \"Marcus Johnson\",\n      email: \"marcus.j@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar5.jpg\",\n      joinedAt: \"Mar 2024\",\n    },\n    {\n      id: \"3\",\n      name: \"Elena Rodriguez\",\n      email: \"elena.r@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar4.jpg\",\n      joinedAt: \"Apr 2024\",\n    },\n    {\n      id: \"4\",\n      name: \"David Park\",\n      email: \"david.p@company.io\",\n      role: \"viewer\",\n      joinedAt: \"Jun 2024\",\n    },\n    {\n      id: \"5\",\n      name: \"Aisha Patel\",\n      email: \"aisha.p@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar6.jpg\",\n      joinedAt: \"Aug 2024\",\n    },\n    {\n      id: \"6\",\n      name: \"Thomas Wright\",\n      email: \"thomas.w@company.io\",\n      role: \"viewer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar7.jpg\",\n      joinedAt: \"Oct 2024\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers4": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Organization Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Manage who has access to this organization.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "members",
+      "type": "Member[]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Nina Kowalski\",\n      email: \"nina.k@startup.co\",\n      role: \"Owner\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"2\",\n      name: \"James Liu\",\n      email: \"james.l@startup.co\",\n      role: \"Admin\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"3\",\n      name: \"Rachel Green\",\n      email: \"rachel.g@startup.co\",\n      role: \"Developer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar9.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"4\",\n      name: \"Omar Hassan\",\n      email: \"omar.h@startup.co\",\n      role: \"Developer\",\n      status: \"pending\",\n    },\n    {\n      id: \"5\",\n      name: \"Lisa Wang\",\n      email: \"lisa.w@startup.co\",\n      role: \"Designer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar10.jpg\",\n      status: \"active\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile2": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileFormData>",
+      "defaultValue": "{\n    name: \"Jordan Chen\",\n    email: \"jordan.chen@email.com\",\n    username: \"jordanchen\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    bio: \"Full-stack developer passionate about building products that make a difference. Open source contributor and occasional tech blogger.\",\n    jobTitle: \"Senior Software Engineer\",\n    company: \"Acme Inc\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    socialLinks: {\n      twitter: \"jordanchen\",\n      linkedin: \"jordanchen\",\n      github: \"jordanchen\",\n    },\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSave",
+      "type": "((data: ProfileFormData) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile4": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    username: \"alexmorgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\n    phone: \"+1 (555) 123-4567\",\n    location: \"San Francisco, CA\",\n    website: \"https://alexmorgan.design\",\n    twitter: \"alexmorgan\",\n    linkedin: \"alexmorgan\",\n    github: \"alexmorgan\",\n    timezone: \"America/Los_Angeles\",\n    language: \"en\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile5": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Jordan Chen\",\n    username: \"jordanchen\",\n    email: \"jordan.chen@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\n    role: \"Senior Software Engineer\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    twitter: \"jordanchen\",\n    linkedin: \"jordanchen\",\n    github: \"jordanchen\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile6": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"\",\n    username: \"\",\n    avatar: \"\",\n    bio: \"\",\n    email: \"\",\n    phone: \"\",\n    location: \"\",\n    website: \"\",\n    twitter: \"\",\n    linkedin: \"\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -5593,27 +5778,34 @@
     {
       "name": "title",
       "type": "string",
-      "defaultValue": "Revenue target",
+      "defaultValue": "Monthly Goal",
       "description": "",
       "required": false
     },
     {
       "name": "value",
-      "type": "string",
-      "defaultValue": "$18,240",
+      "type": "number",
+      "defaultValue": "7500",
       "description": "",
       "required": false
     },
     {
       "name": "target",
-      "type": "string",
-      "defaultValue": "$25,000",
+      "type": "number",
+      "defaultValue": "10000",
       "description": "",
       "required": false
     },
     {
-      "name": "percent",
-      "type": "number",
+      "name": "unit",
+      "type": "string",
+      "defaultValue": "$",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -5627,16 +5819,9 @@
       "required": false
     },
     {
-      "name": "current",
+      "name": "currentValue",
       "type": "string",
-      "defaultValue": "$24,800",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "previous",
-      "type": "string",
-      "defaultValue": "$22,100",
+      "defaultValue": "$12,450",
       "description": "",
       "required": false
     },
@@ -5648,9 +5833,22 @@
       "required": false
     },
     {
+      "name": "previousValue",
+      "type": "string",
+      "defaultValue": "$10,230",
+      "description": "",
+      "required": false
+    },
+    {
       "name": "previousLabel",
       "type": "string",
       "defaultValue": "Last month",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -5659,53 +5857,141 @@
     {
       "name": "title",
       "type": "string",
-      "defaultValue": "Revenue",
+      "defaultValue": "Revenue by Device",
       "description": "",
       "required": false
     },
     {
-      "name": "total",
+      "name": "totalValue",
       "type": "string",
-      "defaultValue": "$24,800",
+      "defaultValue": "$50,000",
       "description": "",
       "required": false
     },
     {
-      "name": "items",
+      "name": "breakdown",
       "type": "BreakdownItem[]",
-      "defaultValue": "[\n    { label: \"Subscription\", value: \"$18,200\", percent: 73 },\n    { label: \"One-time\", value: \"$4,200\", percent: 17 },\n    { label: \"Add-ons\", value: \"$2,400\", percent: 10 },\n  ]",
+      "defaultValue": "[\n  { label: \"Desktop\", value: \"$32,450\", percentage: 65 },\n  { label: \"Mobile\", value: \"$12,300\", percentage: 25 },\n  { label: \"Tablet\", value: \"$5,250\", percentage: 10 },\n]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
   "StatsCard7": [
     {
-      "name": "value",
+      "name": "title",
       "type": "string",
-      "defaultValue": "3.2 GB",
+      "defaultValue": "Storage Used",
       "description": "",
       "required": false
     },
     {
-      "name": "percent",
+      "name": "value",
+      "type": "string",
+      "defaultValue": "75 GB",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "percentage",
       "type": "number",
-      "defaultValue": "72",
+      "defaultValue": "75",
       "description": "",
       "required": false
     },
     {
       "name": "label",
       "type": "string",
-      "defaultValue": "Storage used",
+      "defaultValue": "of 100 GB",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
   "StatsCard8": [
     {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "System Status",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "99.9%",
+      "description": "",
+      "required": false
+    },
+    {
       "name": "status",
       "type": "\"warning\" | \"critical\" | \"healthy\"",
       "defaultValue": "healthy",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "statusLabel",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard9": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "MRR",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "monthlyValue",
+      "type": "string",
+      "defaultValue": "$12,450",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "annualValue",
+      "type": "string",
+      "defaultValue": "$149,400",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "monthlyLabel",
+      "type": "string",
+      "defaultValue": "Monthly recurring",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "annualLabel",
+      "type": "string",
+      "defaultValue": "Annual recurring",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }

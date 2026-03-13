@@ -12,7 +12,7 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="login-9" premium>
-  <Login9 logo={<span className="text-xl font-bold">Logo</span>} />
+  <Login9 />
 </ComponentPreview>
 
 ## Introduction
@@ -47,13 +47,12 @@ Requires Button and Input.
 import { Login9 } from "@/components/ui/login-9";
 
 <Login9
-  logo={<YourLogo />}
   onGoogle={() => {}}
   onGitHub={() => {}}
   onLinkedIn={() => {}}
   onEmailSubmit={(email) => {}}
   signUpHref="/signup"
-/>
+/>;
 ```
 
 Wire the callbacks to your auth provider (e.g. OAuth or magic link).
