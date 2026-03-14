@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -20,6 +20,20 @@ import { AppLink } from "@/components/ui/link";
 import { LogIn, LogOut, User as UserIcon } from "lucide-react";
 import TwitterIcon from "@/components/icons/twitter";
 import { SidebarTrigger } from "fumadocs-ui/components/sidebar/base";
+
+/** Only render sidebar trigger on docs routes where SidebarContext exists */
+function DocsSidebarTrigger() {
+  const pathname = usePathname();
+  if (pathname == null || !pathname.startsWith("/docs")) return null;
+  return (
+    <SidebarTrigger
+      className="md:hidden -ml-1 flex size-10 shrink-0 items-center justify-center rounded-md border-0 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground"
+      aria-label="Open sidebar"
+    >
+      <Menu className="size-5" />
+    </SidebarTrigger>
+  );
+}
 
 function DocsSearchButton({ className }: { className?: string }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
@@ -128,9 +142,7 @@ export function DocsNavbar() {
     <header className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur [grid-area:header]">
       <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
         <div className="flex items-center gap-3">
-          <SidebarTrigger className="md:hidden -ml-1 flex size-10 shrink-0 items-center justify-center rounded-md border-0 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground" aria-label="Open sidebar">
-            <Menu className="size-5" />
-          </SidebarTrigger>
+          <DocsSidebarTrigger />
           <DocsSearchButton className="hidden min-w-[350px] sm:inline-flex" />
         </div>
         <div className="flex items-center gap-2">
