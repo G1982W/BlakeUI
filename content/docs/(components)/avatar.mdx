@@ -1,0 +1,138 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+base: base
+component: true
+---
+
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarImage,
+} from "@/components/ui/avatar";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="avatar">
+  <div className="flex items-center gap-4">
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>AB</AvatarFallback>
+    </Avatar>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.avatar.source}
+  fileName="/components/ui/avatar.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+```
+
+```tsx
+<Avatar>
+  <AvatarImage src="/path/to/image.jpg" alt="User" />
+  <AvatarFallback>U</AvatarFallback>
+</Avatar>
+```
+
+## Examples
+
+### With image
+
+Use `AvatarImage` for the photo and `AvatarFallback` for when the image fails to load or is missing.
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+  </div>
+</Preview>
+
+### Fallback only
+
+When you don't have an image, use only `AvatarFallback` to show initials or an icon.
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <Avatar>
+      <AvatarFallback>AB</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+  </div>
+</Preview>
+
+### Sizes
+
+The avatar supports three sizes: `sm`, `default`, and `lg`.
+
+<Preview>
+  <div className="flex items-center gap-6">
+    <Avatar size="sm">
+      <AvatarFallback>S</AvatarFallback>
+    </Avatar>
+    <Avatar size="default">
+      <AvatarFallback>M</AvatarFallback>
+    </Avatar>
+    <Avatar size="lg">
+      <AvatarFallback>L</AvatarFallback>
+    </Avatar>
+  </div>
+</Preview>
+
+### With badge
+
+Use `AvatarBadge` to show status (e.g. online indicator) or a count.
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+      <AvatarFallback>CN</AvatarFallback>
+      <AvatarBadge />
+    </Avatar>
+  </div>
+</Preview>
+
+### Group
+
+Use `AvatarGroup` to stack avatars with overlap. Use `AvatarGroupCount` for a "+N" overflow indicator.
+
+<Preview>
+  <AvatarGroup className="flex">
+    <Avatar size="sm">
+      <AvatarFallback>A</AvatarFallback>
+    </Avatar>
+    <Avatar size="sm">
+      <AvatarFallback>B</AvatarFallback>
+    </Avatar>
+    <Avatar size="sm">
+      <AvatarFallback>C</AvatarFallback>
+    </Avatar>
+    <AvatarGroupCount>+2</AvatarGroupCount>
+  </AvatarGroup>
+</Preview>
+
+## API Reference
+
+<PropsTable component="Avatar" />
