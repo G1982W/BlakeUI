@@ -332,6 +332,18 @@ h4 {
     max-width: var(--fd-layout-width);
     margin: 0 auto;
 
+    /* Mobile: single-column width, no zoomed-out desktop layout */
+    @media (width < 48rem) {
+        --fd-sidebar-width: 0 !important;
+        --fd-toc-width: 0 !important;
+        --fd-layout-width: 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        grid-template-columns: 0 1fr 0 !important;
+        overflow-x: hidden !important;
+    }
+
     @media (width >= 48rem) {
         --fd-sidebar-width: 280px;
         grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
@@ -340,6 +352,15 @@ h4 {
 
 #nd-page {
     max-width: none !important;
+}
+
+@media (width < 48rem) {
+    #nd-page {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
 }
 
 /* Fumadocs prose: use exact --foreground (overrides oklab color-mix) */
@@ -380,7 +401,7 @@ h4 {
     grid-column: 1 / -1;
     grid-row: 1;
 
-    @media (width >= 48rem) {
+    @media (width >=48rem) {
         grid-column: 2 / -1;
     }
 }
@@ -398,6 +419,23 @@ h4 {
 
 #nd-docs-layout main {
     background: var(--background);
+    min-width: 0;
+}
+
+/* Mobile: hide right aside (TOC), constrain main to viewport, prevent zoomed-out layout */
+@media (width < 48rem) {
+    body {
+        overflow-x: hidden;
+    }
+    #nd-toc {
+        display: none !important;
+    }
+    #nd-docs-layout main {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
 }
 
 /* Top-level sidebar sections: vertical spacing between the 3 groups */
