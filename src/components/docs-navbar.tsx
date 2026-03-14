@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Laptop, Moon, Search, Sun } from "lucide-react";
+import { Github, Laptop, Menu, Moon, Search, Sun } from "lucide-react";
 import { useI18n } from "fumadocs-ui/contexts/i18n";
 import { useSearchContext } from "fumadocs-ui/contexts/search";
 import { useTheme } from "next-themes";
@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/link";
 import { LogIn, LogOut, User as UserIcon } from "lucide-react";
 import TwitterIcon from "@/components/icons/twitter";
+import { SidebarTrigger } from "fumadocs-ui/components/sidebar/base";
 
 function DocsSearchButton({ className }: { className?: string }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
@@ -124,9 +125,12 @@ export function DocsNavbar() {
     router.push("/login");
   }
   return (
-    <div className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur [grid-area:header]">
       <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
         <div className="flex items-center gap-3">
+          <SidebarTrigger className="md:hidden -ml-1 flex size-10 shrink-0 items-center justify-center rounded-md border-0 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground" aria-label="Open sidebar">
+            <Menu className="size-5" />
+          </SidebarTrigger>
           <DocsSearchButton className="hidden min-w-[350px] sm:inline-flex" />
         </div>
         <div className="flex items-center gap-2">
@@ -164,6 +168,6 @@ export function DocsNavbar() {
           )}
         </div>
       </div>
-    </div>
+    </header>
   );
 }

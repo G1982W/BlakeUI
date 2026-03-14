@@ -297,7 +297,6 @@
 
 :root {
     --fd-nav-height: 56px;
-    --fd-sidebar-width: 280px;
     --fd-toc-width: 240px;
     --fd-layout-width: 102rem;
 
@@ -332,7 +331,11 @@ h4 {
     background: var(--background);
     max-width: var(--fd-layout-width);
     margin: 0 auto;
-    grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
+
+    @media (width >= 48rem) {
+        --fd-sidebar-width: 280px;
+        grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
+    }
 }
 
 #nd-page {
@@ -372,10 +375,14 @@ h4 {
     color: var(--foreground) !important;
 }
 
-/* Navbar (first child: header or custom nav component) spans from after sidebar to right edge */
+/* Navbar spans full width on mobile, after sidebar to right edge on desktop */
 #nd-docs-layout>*:first-child {
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
     grid-row: 1;
+
+    @media (width >= 48rem) {
+        grid-column: 2 / -1;
+    }
 }
 
 #nd-docs-layout header {
