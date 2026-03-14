@@ -299,7 +299,8 @@
     --fd-nav-height: 56px;
     --fd-sidebar-width: 280px;
     --fd-toc-width: 240px;
-    --fd-layout-width: 92rem;
+    --fd-layout-width: 102rem;
+
     /* Fumadocs: use project background/foreground for UI and text */
     --color-fd-foreground: var(--foreground);
     --color-fd-muted-foreground: var(--foreground);
