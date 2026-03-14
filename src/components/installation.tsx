@@ -7,7 +7,7 @@ import {
   CodeBlockTabsTrigger,
 } from "fumadocs-ui/components/codeblock";
 import { cn } from "@/lib/utils";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
 type InstallationProps = {
@@ -81,7 +81,7 @@ export default function Installation({
             </CodeBlockTabsList>
             <div className="p-3">
               <CodeBlockTab value="npm">
-                <DynamicCodeBlock
+                <CachedDynamicCodeBlock
                   lang="bash"
                   code={commands.npm}
                   codeblock={{
@@ -92,7 +92,7 @@ export default function Installation({
                 />
               </CodeBlockTab>
               <CodeBlockTab value="pnpm">
-                <DynamicCodeBlock
+                <CachedDynamicCodeBlock
                   lang="bash"
                   code={commands.pnpm}
                   codeblock={{
@@ -103,7 +103,7 @@ export default function Installation({
                 />
               </CodeBlockTab>
               <CodeBlockTab value="yarn">
-                <DynamicCodeBlock
+                <CachedDynamicCodeBlock
                   lang="bash"
                   code={commands.yarn}
                   codeblock={{
@@ -125,7 +125,7 @@ export default function Installation({
         file and paste the following code into it.
       </h3>
 
-      <DynamicCodeBlock
+      <CachedDynamicCodeBlock
         lang="tsx"
         code={code}
         codeblock={{

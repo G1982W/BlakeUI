@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import registry from "@/registry.json";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
 import { Lock, Maximize2, X } from "lucide-react";
 import Link from "next/link";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
@@ -180,7 +180,7 @@ export function ComponentPreview({
                   "pointer-events-none select-none opacity-30",
               )}
             >
-              <DynamicCodeBlock
+              <CachedDynamicCodeBlock
                 lang="tsx"
                 code={code}
                 codeblock={{
