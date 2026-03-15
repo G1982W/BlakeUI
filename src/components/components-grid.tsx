@@ -314,7 +314,7 @@ function ComponentCard({
             Explore →
           </span>
         </div>
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <p className="text-sm text-muted-foreground my-0!">{description}</p>
       </div>
     </Link>
   );

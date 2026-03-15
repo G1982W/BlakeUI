@@ -10,6 +10,8 @@
 
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+    --color-secondary: var(--foreground-secondary);
+    --color-disabled: var(--disabled);
 
     --color-surface: var(--surface);
     --color-brand: var(--brand);
@@ -95,10 +97,13 @@
 :root {
     /* --color-fd-foreground: #3c303d; */
     /* --foreground: #0f172a; */
-    --foreground: #3c303d;
+    --foreground: #30313D;
+    --secondary: #6A7383;
+    --disabled: #A3ACBA;
     --background: #faf9f6;
+    --surface: #FFFFFF;
     --radius: 0.75rem;
-    --sidebar: #faf9f6;
+    --sidebar: #ffff;
     /* --background: #f8fafc; */
     --code-background: #ffffff;
     --button-background: rgb(243, 240, 240);
@@ -188,6 +193,7 @@
     /* --color-fd-foreground: #ffffff; */
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
+    --surface: #000000;
     --code-background: oklch(0.205 0 0);
     --button-background: oklch(0.269 0 0);
     --link-secondary: oklch(0.708 0 0);
@@ -235,7 +241,7 @@
     --destructive-foreground: oklch(0.985 0 0);
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
-
+    --border-neutral: #34342f;
     /* --destructive: #C00000;
     --destructive-foreground: #ffffff;
     --warning: #E58A00;
@@ -270,7 +276,7 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-surface text-foreground;
         /* letter-spacing: 0.1em; */
     }
 }
@@ -344,7 +350,7 @@ h4 {
         overflow-x: hidden !important;
     }
 
-    @media (width >= 48rem) {
+    @media (width >=48rem) {
         --fd-sidebar-width: 280px;
         grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
     }
@@ -407,7 +413,7 @@ h4 {
 }
 
 #nd-docs-layout header {
-    background: rgba(248, 250, 252, 0.9);
+    background: var(--surface);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
@@ -427,9 +433,11 @@ h4 {
     body {
         overflow-x: hidden;
     }
+
     #nd-toc {
         display: none !important;
     }
+
     #nd-docs-layout main {
         width: 100% !important;
         min-width: 0 !important;
@@ -467,7 +475,8 @@ h4 {
 
 
     a[data-active] {
-        color: #6A7383;
+        /* color: #6A7383; */
+        color: var(--foreground);
         font-size: 14px;
         font-weight: 400;
         padding: 8px 0px;
