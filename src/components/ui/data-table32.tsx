@@ -192,7 +192,7 @@ export function DataTable32({ data = defaultData }: { data?: MultiSortRow[] }) {
           </PopoverContent>
         </Popover>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border">
+      <div className="overflow-x-auto rounded-md">
         <Table>
           <TableHeader>
             {table

@@ -15,6 +15,7 @@
         "calendar",
         "combobox",
         "input",
+        "file-upload",
         "textarea",
         "native-select",
         "checkbox",

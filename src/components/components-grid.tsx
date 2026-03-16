@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Terminal } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,23 +32,15 @@ import { Switch } from "@/components/ui/switch";
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-
-const chartPreview = (
-  <div className="flex h-12 items-end gap-1.5">
-    <div
-      className="w-6 rounded-sm bg-muted-foreground/70"
-      style={{ height: 24 }}
-    />
-    <div
-      className="w-6 rounded-sm bg-muted-foreground/70"
-      style={{ height: 36 }}
-    />
-    <div
-      className="w-6 rounded-sm bg-muted-foreground/70"
-      style={{ height: 18 }}
-    />
-  </div>
-);
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import FileUploadPreviewIcon from "./icons/file-upload-preview";
 
 export interface ComponentCardItem {
   title: string;
@@ -63,6 +55,23 @@ export interface DataDisplayRow {
   description: string;
   url: string;
 }
+
+const TRAFFIC_CHART_DATA = [
+  { day: "Mon", visitors: 125 },
+  { day: "Tue", visitors: 168 },
+  { day: "Wed", visitors: 182 },
+  { day: "Thu", visitors: 165 },
+  { day: "Fri", visitors: 198 },
+  { day: "Sat", visitors: 228 },
+  { day: "Sun", visitors: 255 },
+];
+
+const trafficChartConfig = {
+  visitors: {
+    label: "Visitors",
+    color: "hsl(var(--foreground))",
+  },
+} satisfies ChartConfig;
 
 const NEW_AND_UPDATED_CARDS: ComponentCardItem[] = [
   {
@@ -81,27 +90,46 @@ const NEW_AND_UPDATED_CARDS: ComponentCardItem[] = [
     description:
       "Beautiful data visualization components built on top of Recharts.",
     url: "/docs/chart",
-    preview: chartPreview,
+    preview: (
+      <ChartContainer
+        config={trafficChartConfig}
+        className="h-16 w-full rounded-lg border bg-card px-2"
+      >
+        <AreaChart
+          data={TRAFFIC_CHART_DATA}
+          margin={{ top: 6, right: 4, left: 0, bottom: 0 }}
+        >
+          <defs>
+            <linearGradient id="trafficPreviewFill" x1="0" y1="0" x2="0" y2="1">
+              <stop
+                offset="0%"
+                stopColor="var(--color-visitors)"
+                stopOpacity={0.3}
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--color-visitors)"
+                stopOpacity={0.05}
+              />
+            </linearGradient>
+          </defs>
+          <Area
+            type="monotone"
+            dataKey="visitors"
+            stroke="var(--color-visitors)"
+            strokeWidth={1.5}
+            fill="url(#trafficPreviewFill)"
+          />
+        </AreaChart>
+      </ChartContainer>
+    ),
   },
   {
-    title: "Dialog",
+    title: "File Upload",
     description:
-      "A window overlaid on either the primary window or another dialog window.",
-    url: "/docs/dialog",
-    preview: (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="primary" size="sm">
-            Open
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="max-w-xs">
-          <DialogHeader>
-            <DialogTitle className="text-sm">Dialog</DialogTitle>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-    ),
+      "Upload files with a dropzone, previews, progress indicators, and a customizable list UI.",
+    url: "/docs/file-upload",
+    preview: <FileUploadPreviewIcon />,
   },
 ];
 
@@ -215,23 +243,6 @@ const DATA_DISPLAY_ROWS: DataDisplayRow[] = [
   },
 ];
 
-const TRAFFIC_CHART_DATA = [
-  { day: "Mon", visitors: 125 },
-  { day: "Tue", visitors: 168 },
-  { day: "Wed", visitors: 182 },
-  { day: "Thu", visitors: 165 },
-  { day: "Fri", visitors: 198 },
-  { day: "Sat", visitors: 228 },
-  { day: "Sun", visitors: 255 },
-];
-
-const trafficChartConfig = {
-  visitors: {
-    label: "Visitors",
-    color: "hsl(var(--foreground))",
-  },
-} satisfies ChartConfig;
-
 function TrafficOverviewChart() {
   return (
     <ChartContainer config={trafficChartConfig} className="h-[260px] w-full">
@@ -282,6 +293,18 @@ function TrafficOverviewChart() {
           strokeWidth={2}
           fill="url(#trafficFill)"
         />
+        <Tooltip
+          cursor={{ stroke: "var(--border)", strokeWidth: 1 }}
+          contentStyle={{
+            background: "hsl(var(--background))",
+            border: "1px solid hsl(var(--border))",
+            borderRadius: 8,
+            padding: "6px 10px",
+            fontSize: 12,
+          }}
+          formatter={(value: number) => [`${value} visitors`, ""]}
+          labelFormatter={(label) => `Day: ${label}`}
+        />
       </AreaChart>
     </ChartContainer>
   );
@@ -295,10 +318,7 @@ function ComponentCard({
   baseLabel,
 }: ComponentCardItem) {
   return (
-    <Link
-      href={url}
-      className="group rounded-2xl p-1 flex h-full flex-col border bg-card no-underline transition duration-200 hover:border-foreground/20 hover:shadow-lg"
-    >
+    <div className="group rounded-2xl p-1 flex h-full flex-col border bg-card no-underline transition duration-200 hover:border-foreground/20 hover:shadow-lg">
       <div className="flex rounded-xl bg-background h-36 w-full shrink-0 items-center justify-center border border-border p-6">
         {preview}
       </div>
@@ -310,13 +330,16 @@ function ComponentCard({
         ) : null}
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-sm font-semibold">{title}</h3>
-          <span className="text-xs text-muted-foreground group-hover:text-foreground">
+          <Link
+            href={url}
+            className="text-xs text-muted-foreground group-hover:text-foreground"
+          >
             Explore →
-          </span>
+          </Link>
         </div>
         <p className="text-sm text-muted-foreground my-0!">{description}</p>
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -355,38 +378,41 @@ export function ComponentsGrid() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border bg-card p-1 lg:col-span-3">
             <div className="rounded-xl border border-border bg-background overflow-hidden">
-              <table className="w-full text-left text-sm">
-                <thead>
-                  <tr className="border-b border-border bg-muted/50">
-                    <th className="px-4 py-3 font-semibold">Component</th>
-                    <th className="px-4 py-3 font-semibold">Description</th>
-                    <th className="w-[100px] px-4 py-3 font-semibold text-right">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-muted/50">
+                    <TableHead className="px-4 py-3 font-semibold">
+                      Component
+                    </TableHead>
+                    <TableHead className="px-4 py-3 font-semibold">
+                      Description
+                    </TableHead>
+                    <TableHead className="w-[100px] px-4 py-3 font-semibold text-right">
                       Link
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {DATA_DISPLAY_ROWS.map((row) => (
-                    <tr
-                      key={row.url}
-                      className="border-b border-border last:border-0 transition-colors hover:bg-muted/30"
-                    >
-                      <td className="px-4 py-3 font-medium">{row.title}</td>
-                      <td className="px-4 py-3 text-muted-foreground">
+                    <TableRow key={row.url}>
+                      <TableCell className="px-4 py-3 font-medium">
+                        {row.title}
+                      </TableCell>
+                      <TableCell className="px-4 py-3 text-muted-foreground">
                         {row.description}
-                      </td>
-                      <td className="px-4 py-3 text-right">
+                      </TableCell>
+                      <TableCell className="px-4 py-3 text-right">
                         <Link
                           href={row.url}
                           className="text-primary hover:underline font-medium"
                         >
                           View →
                         </Link>
-                      </td>
-                    </tr>
+                      </TableCell>
+                    </TableRow>
                   ))}
-                </tbody>
-              </table>
+                </TableBody>
+              </Table>
             </div>
           </div>
         </div>

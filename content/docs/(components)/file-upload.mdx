@@ -1,0 +1,63 @@
+---
+title: File Upload
+description: Upload files with a dropzone, previews, progress indicators, and a customizable list UI.
+base: base
+component: true
+---
+
+import { FileUploadDemo } from "@/components/file-upload-demo";
+import { Preview } from "@/components/preview";
+import { PropsTable } from "@/components/props-table";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="file-upload">
+  <FileUploadDemo />
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry["file-upload"].source}
+  fileName="/components/ui/file-upload.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  FileUpload,
+  FileUploadDropzone,
+  FileUploadList,
+  FileUploadItem,
+  FileUploadItemPreview,
+  FileUploadItemMetadata,
+  FileUploadItemProgress,
+  FileUploadItemDelete,
+  FileUploadClear,
+  FileUploadTrigger,
+} from "@/components/ui/file-upload";
+```
+
+```tsx
+<FileUpload multiple accept="image/*">
+  <FileUploadDropzone />
+  <FileUploadList>{/* render items for selected files */}</FileUploadList>
+</FileUpload>
+```
+
+## Examples
+
+### With list rendering
+
+<Preview>
+  <FileUploadDemo />
+</Preview>
+
+## API Reference
+
+### FileUpload
+
+<PropsTable component="FileUpload" />

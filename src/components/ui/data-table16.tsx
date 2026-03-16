@@ -191,7 +191,7 @@ export function DataTable16({ data = defaultData }: { data?: OrderRow[] }) {
           Expand a row to see shipping and assignment details.
         </p>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border">
+      <div className="overflow-x-auto rounded-md">
         <Table>
           <TableHeader>
             {table

@@ -173,7 +173,7 @@ export function DataTable21({
           Use header menus to sort and hide columns.
         </p>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border">
+      <div className="overflow-x-auto rounded-md">
         <Table>
           <TableHeader>
             {table

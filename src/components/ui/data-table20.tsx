@@ -146,7 +146,7 @@ export function DataTable20({ data = defaultData }: { data?: ResizeRow[] }) {
           Drag the handle on the right of a header to resize.
         </p>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border">
+      <div className="overflow-x-auto rounded-md">
         <Table>
           <TableHeader>
             {table

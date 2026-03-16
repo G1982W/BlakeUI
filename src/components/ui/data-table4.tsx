@@ -155,7 +155,7 @@ export function DataTable4({ data = defaultData }: { data?: InventoryRow[] }) {
           Scrollable table with sortable columns.
         </p>
       </div>
-      <div className="overflow-x-auto rounded-md border border-border">
+      <div className="overflow-x-auto rounded-md">
         <Table>
           <TableHeader>
             {table

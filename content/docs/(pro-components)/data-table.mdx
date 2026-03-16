@@ -100,7 +100,7 @@ const columns: ColumnDef<Payment>[] = [
 ```tsx
 import { DataTable } from "@/components/ui/data-table";
 
-<DataTable columns={columns} data={data} />
+<DataTable columns={columns} data={data} />;
 ```
 
 The `DataTable` component accepts:
@@ -113,7 +113,7 @@ The `DataTable` component accepts:
 A minimal table only needs column definitions and data. Use `accessorKey` to bind a column to a field and optional `header` and `cell` for custom rendering.
 
 <Preview>
-  <div className="overflow-hidden rounded-md border border-border-neutral max-w-lg">
+  <div className="overflow-hidden rounded-md max-w-lg">
     <Table>
       <TableHeader>
         <TableRow>

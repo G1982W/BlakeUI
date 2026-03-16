@@ -1,5 +1,5 @@
 {
-  "title": "Premium Components",
+  "title": "Pro Components",
   "collapsible": true,
   "defaultOpen": true,
   "pages": [
@@ -57,6 +57,7 @@
     "login-6",
     "login-4",
     "---Data Tables---",
+    "data-table",
     "data-table5",
     "data-table4",
     "data-table32",
@@ -67,7 +68,6 @@
     "data-table20",
     "data-table16",
     "data-table14",
-    "data-table",
     "data-table22"
   ]
 }
