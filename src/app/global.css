@@ -494,8 +494,8 @@ h4 {
             /* background-color: magenta; */
 
             &::before {
-                display: block;
-                content: "";
+                display: none;
+                /* content: "";
                 position: absolute;
                 left: calc(var(--spacing) * 2.5);
                 top: 50%;
@@ -504,7 +504,7 @@ h4 {
                 height: 60%;
                 min-height: 16px;
                 border-radius: 999px;
-                background: #30313D;
+                background: #30313D; */
                 /* border-radius: 0.5rem; */
                 /* display: none; */
             }
