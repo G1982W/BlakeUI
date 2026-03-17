@@ -12,7 +12,7 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="data-table16" premium>
-  <DataTable16 />
+  <DataTable16 className="w-full" />
 </ComponentPreview>
 
 ## Introduction
@@ -45,7 +45,7 @@ Requires Table, Button, Checkbox, DropdownMenu, Badge, and @tanstack/react-table
 ```tsx
 import { DataTable16 } from "@/components/ui/data-table16";
 
-<DataTable16 data={orderRows} />
+<DataTable16 data={orderRows} />;
 ```
 
 Ensure each row has optional fields (e.g. shipping, tracking, warehouse, assigned) for the expanded content.

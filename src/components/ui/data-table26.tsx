@@ -21,8 +21,6 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -33,6 +31,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 type TransactionStatus =
   | "posted"
@@ -476,7 +475,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: () => <span className="sr-only">Actions</span>,
     cell: () => (
       <div className="flex items-center justify-center">
-        <Button variant="primary" size="sm" className="h-8 w-8">
+        <Button variant="ghost" size="sm" className="h-8 w-8">
           <MoreHorizontal className="h-4 w-4" />
           <span className="sr-only">Open menu</span>
         </Button>
@@ -488,9 +487,9 @@ const columns: ColumnDef<Transaction>[] = [
       width: 48,
       minWidth: 48,
       headerClassName:
-        "!px-0 sticky right-0 z-20 bg-[var(--dt-header-bg)] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
+        "!px-0 md:sticky md:right-0 z-20 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
       cellClassName:
-        "!px-0 sticky right-0 z-20 bg-[var(--dt-row-bg)] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
+        "!px-0 md:sticky md:right-0 z-20 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
     } satisfies ColumnMeta,
   },
 ];
@@ -536,25 +535,22 @@ function useStickyColumns<TData>({ table }: UseStickyColumnsOptions<TData>) {
   );
 
   const getStickyClassName = React.useCallback(
-    (columnId: string, baseClassName?: string, _isHeader = false) => {
-      return baseClassName ?? "";
+    (columnId: string, baseClassName?: string, isHeader = false) => {
+      const stickyColumns = ["select", "date", "description"];
+      const isSticky = stickyColumns.includes(columnId);
+      return cn(
+        baseClassName,
+        isSticky && "md:sticky md:left-[var(--stick-left)]",
+        isSticky && "isolate",
+        isSticky && (isHeader ? "z-30" : "z-20"),
+      );
     },
     [],
   );
 
-  const isLeftStickyColumn = React.useCallback((columnId: string) => {
-    return ["select", "date", "description"].includes(columnId);
-  }, []);
-
-  const isRightStickyColumn = React.useCallback((columnId: string) => {
-    return columnId === "actions";
-  }, []);
-
   return {
     getStickyStyle,
     getStickyClassName,
-    isLeftStickyColumn,
-    isRightStickyColumn,
   };
 }
 
@@ -948,7 +944,7 @@ const DataTableColumnHeader = <TData, TValue>({
         "flex w-full items-center justify-between gap-1.5",
         "py-2 text-[0.8125rem]",
         "text-muted-foreground hover:text-foreground",
-        "cursor-pointer outline-none transition-colors",
+        "cursor-pointer transition-colors outline-none",
       )}
       onClick={() => column.toggleSorting(sorted === "asc")}
     >
@@ -966,7 +962,7 @@ const DataTableColumnHeader = <TData, TValue>({
   );
 };
 
-export const DataTable26 = () => {
+export const DataTable26 = ({ className }: { className?: string }) => {
   const [sorting, setSorting] = React.useState<SortingState>([
     { id: "date", desc: true },
   ]);
@@ -986,12 +982,7 @@ export const DataTable26 = () => {
     getRowId: (row) => row.id,
   });
 
-  const {
-    getStickyStyle,
-    getStickyClassName,
-    isLeftStickyColumn,
-    isRightStickyColumn,
-  } = useStickyColumns({ table });
+  const { getStickyStyle, getStickyClassName } = useStickyColumns({ table });
 
   const tableScroll = useTableScroll({
     useColumnWidths: true,
@@ -1007,19 +998,29 @@ export const DataTable26 = () => {
     actionsColumnIndex > 0 ? visibleColumnIds[actionsColumnIndex - 1] : null;
 
   return (
-    <section className="min-w-0 overflow-x-hidden">
-      <div className="container mx-auto min-w-0 max-w-full">
-        <div className="max-w-full min-w-0 overflow-hidden rounded-lg border border-border/60 bg-card [--dt-cell-bg:var(--background)] [--dt-header-bg:var(--muted)] [--dt-row-hover-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-hover-bg:color-mix(in_oklab,var(--background)_96%,var(--foreground)_4%)] dark:[--dt-header-bg:var(--card)] dark:[--dt-row-hover-bg:var(--muted)] dark:[--dt-row-selected-bg:var(--muted)] dark:[--dt-row-selected-hover-bg:color-mix(in_oklab,var(--muted)_80%,var(--foreground)_20%)]">
+    <section className={cn("", className)}>
+      <div className="container mx-auto">
+        <div className="mb-8 text-left">
+          <h2 className="text-2xl font-bold tracking-tight">
+            Transactions table with horizontal controls
+          </h2>
+          <p className="mt-2 max-w-2xl text-muted-foreground">
+            Sticky primary columns, keyboard-friendly scroll controls, and a
+            responsive actions rail keep dense financial data easy to scan.
+          </p>
+        </div>
+
+        <div className="overflow-hidden rounded-lg border border-border/60 bg-card [--dt-cell-bg:var(--background)] [--dt-header-bg:var(--muted)] [--dt-row-hover-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-hover-bg:color-mix(in_oklab,var(--background)_96%,var(--foreground)_4%)] dark:[--dt-header-bg:var(--card)] dark:[--dt-row-hover-bg:var(--muted)] dark:[--dt-row-selected-bg:var(--muted)] dark:[--dt-row-selected-hover-bg:color-mix(in_oklab,var(--muted)_80%,var(--foreground)_20%)]">
           <div
             ref={tableScroll.containerRef}
-            className="relative w-full min-w-0 overflow-x-auto overscroll-x-none"
+            className="overflow-x-auto overscroll-x-none"
           >
-            <table className="w-full mt-0 mb-0 min-w-[1200px] caption-bottom text-[0.8125rem]">
+            <table className="w-full min-w-[1200px] caption-bottom text-[0.8125rem]">
               <TableHeader className="sticky top-0 z-10 border-b-[0.5px] border-border/60 bg-[var(--dt-header-bg)]">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow
                     key={headerGroup.id}
-                    className="border-0! hover:bg-transparent"
+                    className="!border-0 hover:bg-transparent"
                   >
                     {headerGroup.headers.map((header) => {
                       const meta =
@@ -1054,31 +1055,6 @@ export const DataTable26 = () => {
                         header.column.id === "actions"
                           ? undefined
                           : getStickyStyle(header.column.id);
-                      const isLeftSticky = isLeftStickyColumn(header.column.id);
-                      const isRightSticky = isRightStickyColumn(
-                        header.column.id,
-                      );
-                      const headerContent = header.isPlaceholder ? null : header
-                          .column.id === "description" ? (
-                        <div className="flex items-center justify-between gap-2">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                          <HorizontalPagination
-                            canScrollLeft={tableScroll.canScrollLeft}
-                            canScrollRight={tableScroll.canScrollRight}
-                            onScrollLeft={tableScroll.scrollLeft}
-                            onScrollRight={tableScroll.scrollRight}
-                            className="hidden md:flex"
-                          />
-                        </div>
-                      ) : (
-                        flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )
-                      );
 
                       return (
                         <TableHead
@@ -1091,27 +1067,26 @@ export const DataTable26 = () => {
                           )}
                           style={{ ...sizeStyle, ...(stickyStyle ?? {}) }}
                         >
-                          {isLeftSticky || isRightSticky ? (
-                            <div
-                              className={cn(
-                                "sticky top-0 flex h-full min-h-11 items-center bg-[var(--dt-header-bg)] px-3",
-                                isLeftSticky &&
-                                  "left-[var(--stick-left)] z-30 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] dark:shadow-[2px_0_4px_-2px_rgba(0,0,0,0.3)]",
-                                isRightSticky &&
-                                  "right-0 z-30 shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.1)] dark:shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.3)]",
+                          {header.isPlaceholder ? null : header.column.id ===
+                            "description" ? (
+                            <div className="flex items-center justify-between gap-2">
+                              {flexRender(
+                                header.column.columnDef.header,
+                                header.getContext(),
                               )}
-                              style={
-                                isLeftSticky && stickyStyle
-                                  ? { ...stickyStyle, ...sizeStyle }
-                                  : isRightSticky
-                                    ? { ...sizeStyle }
-                                    : undefined
-                              }
-                            >
-                              {headerContent}
+                              <HorizontalPagination
+                                canScrollLeft={tableScroll.canScrollLeft}
+                                canScrollRight={tableScroll.canScrollRight}
+                                onScrollLeft={tableScroll.scrollLeft}
+                                onScrollRight={tableScroll.scrollRight}
+                                className="hidden md:flex"
+                              />
                             </div>
                           ) : (
-                            headerContent
+                            flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )
                           )}
                         </TableHead>
                       );
@@ -1125,7 +1100,7 @@ export const DataTable26 = () => {
                     <TableRow
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
-                      className="group h-11 !border-b-[0.5px] border-border/60 bg-[var(--dt-row-bg)] [--dt-row-bg:var(--dt-cell-bg)] transition-colors hover:[--dt-row-bg:var(--dt-row-hover-bg)] data-[state=selected]:[--dt-row-bg:var(--dt-row-selected-bg)] data-[state=selected]:hover:[--dt-row-bg:var(--dt-row-selected-hover-bg)] last:border-b-0"
+                      className="group h-11 !border-b-[0.5px] border-border/60 bg-[var(--dt-row-bg)] transition-colors [--dt-row-bg:var(--dt-cell-bg)] last:border-b-0 hover:[--dt-row-bg:var(--dt-row-hover-bg)] data-[state=selected]:[--dt-row-bg:var(--dt-row-selected-bg)] data-[state=selected]:hover:[--dt-row-bg:var(--dt-row-selected-hover-bg)]"
                     >
                       {row.getVisibleCells().map((cell) => {
                         const meta =
@@ -1160,14 +1135,6 @@ export const DataTable26 = () => {
                           cell.column.id === "actions"
                             ? undefined
                             : getStickyStyle(cell.column.id);
-                        const isLeftSticky = isLeftStickyColumn(cell.column.id);
-                        const isRightSticky = isRightStickyColumn(
-                          cell.column.id,
-                        );
-                        const cellContent = flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        );
 
                         return (
                           <TableCell
@@ -1179,27 +1146,9 @@ export const DataTable26 = () => {
                             )}
                             style={{ ...sizeStyle, ...(stickyStyle ?? {}) }}
                           >
-                            {isLeftSticky || isRightSticky ? (
-                              <div
-                                className={cn(
-                                  "sticky flex h-full min-h-[2.25rem] items-center bg-[var(--dt-row-bg)] px-3",
-                                  isLeftSticky &&
-                                    "left-[var(--stick-left)] z-20 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] dark:shadow-[2px_0_4px_-2px_rgba(0,0,0,0.3)]",
-                                  isRightSticky &&
-                                    "right-0 z-20 shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.1)] dark:shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.3)]",
-                                )}
-                                style={
-                                  isLeftSticky && stickyStyle
-                                    ? { ...stickyStyle, ...sizeStyle }
-                                    : isRightSticky
-                                      ? { ...sizeStyle }
-                                      : undefined
-                                }
-                              >
-                                {cellContent}
-                              </div>
-                            ) : (
-                              cellContent
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext(),
                             )}
                           </TableCell>
                         );

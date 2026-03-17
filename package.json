@@ -17,6 +17,7 @@
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.97.0",
     "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.23",
     "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.36.0",

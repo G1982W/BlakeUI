@@ -12,6 +12,7 @@ const buttonVariants = cva(
         primary: "bg-surface text-surface-foreground  border-border-neutral",
         secondary: "bg-brand text-white border-brand",
         destructive: "bg-destructive text-white border-destructive",
+        ghost: "bg-transparent text-foreground border-transparent hover:bg-accent hover:text-accent-foreground",
       },
       size: {
         sm: "px-2 py-1 gap-1.5 px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",

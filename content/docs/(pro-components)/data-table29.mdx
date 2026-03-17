@@ -12,7 +12,7 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="data-table29" premium>
-  <DataTable29 />
+  <DataTable29 className="w-full" />
 </ComponentPreview>
 
 ## Introduction
@@ -44,7 +44,7 @@ Requires Table, Button, Input, DropdownMenu, and @tanstack/react-table.
 ```tsx
 import { DataTable29 } from "@/components/ui/data-table29";
 
-<DataTable29 data={editableRows} />
+<DataTable29 data={editableRows} />;
 ```
 
 Use controlled data and an `onChange` callback if you need to persist edits to a server.

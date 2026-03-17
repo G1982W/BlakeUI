@@ -255,7 +255,7 @@
     },
     {
       "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
       "defaultValue": "primary",
       "description": "",
       "required": false
@@ -3274,42 +3274,6 @@
       "required": true
     }
   ],
-  "DataTable14": [
-    {
-      "name": "data",
-      "type": "OrderFilterRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    orderId: \"ORD-101\",\n    customer: \"Alice\",\n    orderStatus: \"Processing\",\n    paymentStatus: \"Paid\",\n    total: \"$120\",\n  },\n  {\n    id: \"2\",\n    orderId: \"ORD-102\",\n    customer: \"Bob\",\n    orderStatus: \"Shipped\",\n    paymentStatus: \"Paid\",\n    total: \"$85\",\n  },\n  {\n    id: \"3\",\n    orderId: \"ORD-103\",\n    customer: \"Carol\",\n    orderStatus: \"Pending\",\n    paymentStatus: \"Pending\",\n    total: \"$200\",\n  },\n  {\n    id: \"4\",\n    orderId: \"ORD-104\",\n    customer: \"Dave\",\n    orderStatus: \"Delivered\",\n    paymentStatus: \"Paid\",\n    total: \"$56\",\n  },\n  {\n    id: \"5\",\n    orderId: \"ORD-105\",\n    customer: \"Eve\",\n    orderStatus: \"Processing\",\n    paymentStatus: \"Failed\",\n    total: \"$340\",\n  },\n]",
-      "description": "",
-      "required": false
-    }
-  ],
-  "DataTable16": [
-    {
-      "name": "data",
-      "type": "OrderRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    orderId: \"ORD-001\",\n    customer: \"Acme Corp\",\n    total: \"$384.92\",\n    status: \"Processing\",\n    shipping: \"Express\",\n    tracking: \"1Z999AA10123456784\",\n    warehouse: \"WH-North\",\n    assigned: \"Jane\",\n  },\n  {\n    id: \"2\",\n    orderId: \"ORD-002\",\n    customer: \"Beta Inc\",\n    total: \"$156.00\",\n    status: \"Shipped\",\n    shipping: \"Standard\",\n    tracking: \"1Z999AA10987654321\",\n    warehouse: \"WH-South\",\n    assigned: \"John\",\n  },\n  {\n    id: \"3\",\n    orderId: \"ORD-003\",\n    customer: \"Gamma LLC\",\n    total: \"$892.50\",\n    status: \"Pending\",\n    shipping: \"Express\",\n    tracking: \"-\",\n    warehouse: \"WH-North\",\n    assigned: \"Jane\",\n  },\n]",
-      "description": "",
-      "required": false
-    }
-  ],
-  "DataTable20": [
-    {
-      "name": "data",
-      "type": "ResizeRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n]",
-      "description": "",
-      "required": false
-    }
-  ],
-  "DataTable21": [
-    {
-      "name": "data",
-      "type": "ColumnManageRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    availability: \"Available\",\n  },\n]",
-      "description": "",
-      "required": false
-    }
-  ],
   "useDataTable": [
     {
       "name": "data",
@@ -3334,22 +3298,93 @@
       "type": "SortingState",
       "description": "",
       "required": false
+    }
+  ],
+  "DataTableButtonFilter": [
+    {
+      "name": "column",
+      "type": "Column<TData, TValue>",
+      "description": "",
+      "required": false
     },
     {
-      "name": "initialGlobalFilter",
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Filter",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "DataTableButtonFilterOption[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "align",
+      "type": "\"center\" | \"start\" | \"end\"",
+      "defaultValue": "end",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableTabbar": [
+    {
+      "name": "_table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "search",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "filter",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableColumnHeader": [
+    {
+      "name": "column",
+      "type": "Column<TData, TValue>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "title",
       "type": "string",
       "description": "",
-      "required": false
+      "required": true
+    }
+  ],
+  "DataTablePagination": [
+    {
+      "name": "table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
     },
     {
-      "name": "initialSelection",
-      "type": "RowSelectionState",
+      "name": "pageSizeOptions",
+      "type": "number[]",
+      "defaultValue": "[10, 20, 30, 40, 50]",
       "description": "",
       "required": false
-    },
+    }
+  ],
+  "getOrderStatusMeta": [],
+  "getPaymentStatusMeta": [],
+  "getStatusVariant": [],
+  "getPaymentVariant": [],
+  "DataTable14": [
     {
-      "name": "enableRowSelection",
-      "type": "boolean",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -3381,62 +3416,90 @@
       "required": false
     }
   ],
-  "DataTableColumnHeader": [
+  "DataTable16": [
     {
-      "name": "column",
-      "type": "Column<TData, TValue>",
-      "description": "",
-      "required": true
-    },
-    {
-      "name": "title",
+      "name": "className",
       "type": "string",
       "description": "",
-      "required": true
+      "required": false
     }
   ],
-  "getOrderStatusMeta": [],
+  "DataTable20": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable21": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable22": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable26": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "DataTable27": [
     {
-      "name": "data",
-      "type": "VirtualRow[]",
-      "defaultValue": "Array.from({ length: 20 }, (_, i) => ({\n  id: String(i + 1),\n  name: `Record ${i + 1}`,\n  status: i % 3 === 0 ? \"Active\" : i % 3 === 1 ? \"Pending\" : \"Completed\",\n  role: i % 2 === 0 ? \"Admin\" : \"User\",\n  amount: `$${(i + 1) * 100}`,\n}))",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
   "DataTable29": [
     {
-      "name": "data",
-      "type": "EditableRow[]",
-      "defaultValue": "[\n  { id: \"1\", name: \"Item A\", quantity: 10, status: \"Active\" },\n  { id: \"2\", name: \"Item B\", quantity: 25, status: \"Pending\" },\n  { id: \"3\", name: \"Item C\", quantity: 5, status: \"Active\" },\n]",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
+  "DataTableSortMenu": [
+    {
+      "name": "table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
+    }
+  ],
   "DataTable32": [
     {
-      "name": "data",
-      "type": "MultiSortRow[]",
-      "defaultValue": "[\n  { id: \"1\", name: \"Alice\", status: \"Active\", role: \"Admin\", value: \"100\" },\n  { id: \"2\", name: \"Bob\", status: \"Pending\", role: \"User\", value: \"200\" },\n  { id: \"3\", name: \"Carol\", status: \"Active\", role: \"Editor\", value: \"150\" },\n  { id: \"4\", name: \"Dave\", status: \"Inactive\", role: \"User\", value: \"80\" },\n  { id: \"5\", name: \"Eve\", status: \"Active\", role: \"Admin\", value: \"300\" },\n]",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
   "DataTable4": [
     {
-      "name": "data",
-      "type": "InventoryRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    price: \"$29.99\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    price: \"$49.99\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    price: \"$99.00\",\n    availability: \"Available\",\n  },\n  {\n    id: \"4\",\n    sku: \"SKU-004\",\n    name: \"Gadget X\",\n    type: \"Product\",\n    stock: \"Out\",\n    price: \"$19.99\",\n    availability: \"Unavailable\",\n  },\n  {\n    id: \"5\",\n    sku: \"SKU-005\",\n    name: \"Bundle Y\",\n    type: \"Bundle\",\n    stock: \"In stock\",\n    price: \"$149.00\",\n    availability: \"Available\",\n  },\n]",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
   ],
   "DataTable5": [
     {
-      "name": "data",
-      "type": "InventoryRow[]",
-      "defaultValue": "[\n  {\n    id: \"1\",\n    sku: \"SKU-001\",\n    name: \"Widget A\",\n    type: \"Product\",\n    stock: \"In stock\",\n    price: \"$29.99\",\n    availability: \"Available\",\n  },\n  {\n    id: \"2\",\n    sku: \"SKU-002\",\n    name: \"Widget B\",\n    type: \"Product\",\n    stock: \"Low\",\n    price: \"$49.99\",\n    availability: \"Limited\",\n  },\n  {\n    id: \"3\",\n    sku: \"SKU-003\",\n    name: \"Service Pack\",\n    type: \"Service\",\n    stock: \"In stock\",\n    price: \"$99.00\",\n    availability: \"Available\",\n  },\n  {\n    id: \"4\",\n    sku: \"SKU-004\",\n    name: \"Gadget X\",\n    type: \"Product\",\n    stock: \"Out\",\n    price: \"$19.99\",\n    availability: \"Unavailable\",\n  },\n  {\n    id: \"5\",\n    sku: \"SKU-005\",\n    name: \"Bundle Y\",\n    type: \"Bundle\",\n    stock: \"In stock\",\n    price: \"$149.00\",\n    availability: \"Available\",\n  },\n]",
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -5775,7 +5838,7 @@
     },
     {
       "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
       "description": "",
       "required": false
     },

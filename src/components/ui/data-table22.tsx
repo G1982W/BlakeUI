@@ -1,16 +1,18 @@
 "use client";
 
-import {
+import type {
   Column,
   ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
   PaginationState,
   Row,
   RowSelectionState,
   SortingState,
+} from "@tanstack/react-table";
+import {
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import {
@@ -28,8 +30,6 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import { z } from "zod";
-
-import { cn } from "@/lib/utils";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -50,6 +50,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 type UseDataTableOptions<TData> = {
   data: Array<TData>;
@@ -129,7 +130,7 @@ export const DataTableColumnHeader = <TData, TValue>({
 
   return (
     <Button
-      variant="primary"
+      variant="ghost"
       size="sm"
       className="flex h-8 items-center gap-2 px-0 text-sm font-medium text-foreground"
       onClick={() => column.toggleSorting(sorted === "asc")}
@@ -166,7 +167,7 @@ export function DataTableRowActions<TData>({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="secondary"
+          variant="ghost"
           size="sm"
           className="size-8 data-[state=open]:bg-muted"
         >
@@ -1054,23 +1055,27 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
 });
 
 const statusBadgeClassMap: Record<StatusVariant, string> = {
-  info: "border-sky-200 bg-sky-50 text-sky-700",
-  primary: "border-violet-200 bg-violet-50 text-violet-700",
-  success: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  warning: "border-amber-200 bg-amber-50 text-amber-700",
-  destructive: "border-rose-200 bg-rose-50 text-rose-700",
+  info: "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-500/40 dark:bg-sky-500/10 dark:text-sky-400",
+  primary:
+    "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-500/40 dark:bg-violet-500/10 dark:text-violet-400",
+  success:
+    "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-400",
+  warning:
+    "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-400",
+  destructive:
+    "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-500/40 dark:bg-rose-500/10 dark:text-rose-400",
 };
 
 const getStatusBadgeClasses = (variant: StatusVariant) =>
   statusBadgeClassMap[variant] ?? statusBadgeClassMap.info;
 
 const avatarColorClasses = [
-  "bg-slate-100 text-slate-700",
-  "bg-emerald-100 text-emerald-700",
-  "bg-indigo-100 text-indigo-700",
-  "bg-amber-100 text-amber-700",
-  "bg-rose-100 text-rose-700",
-  "bg-sky-100 text-sky-700",
+  "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+  "bg-emerald-100 text-emerald-700 dark:bg-emerald-800 dark:text-emerald-300",
+  "bg-indigo-100 text-indigo-700 dark:bg-indigo-800 dark:text-indigo-300",
+  "bg-amber-100 text-amber-700 dark:bg-amber-800 dark:text-amber-300",
+  "bg-rose-100 text-rose-700 dark:bg-rose-800 dark:text-rose-300",
+  "bg-sky-100 text-sky-700 dark:bg-sky-800 dark:text-sky-300",
 ];
 
 const getAvatarColor = (value: string) => {
@@ -1288,7 +1293,7 @@ export const columns: ColumnDef<CustomerRecord>[] = [
       return (
         <div className="flex justify-center">
           <Button
-            variant="primary"
+            variant="ghost"
             size="sm"
             data-state={row.getIsExpanded() ? "open" : "closed"}
             onClick={toggleExpand}
@@ -1380,7 +1385,7 @@ export const columns: ColumnDef<CustomerRecord>[] = [
   },
 ];
 
-export function DataTable22() {
+export function DataTable22({ className }: { className?: string }) {
   const { table } = useDataTable({
     data: validatedData,
     columns,
@@ -1388,8 +1393,8 @@ export function DataTable22() {
   });
 
   return (
-    <section className="py-2">
-      <div className="container">
+    <section className={cn("", className)}>
+      <div className="container mx-auto">
         <div className="w-full">
           <div className="mb-8 text-left">
             <h2 className="text-2xl font-bold tracking-tight">
