@@ -103,7 +103,7 @@ export function ComponentPreview({
             <button
               type="button"
               onClick={() => setExpanded(true)}
-              className="flex h-8 items-center justify-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95"
+              className="flex h-8 items-center bg-surface justify-center gap-1.5 rounded-md border px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95"
               title="Expand to full screen"
               aria-label="Expand to full screen"
             >
@@ -115,7 +115,7 @@ export function ComponentPreview({
             onClick={copyToClipboard}
             disabled={disableCopy}
             className={cn(
-              "flex h-8 items-center justify-center rounded-md border bg-background px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+              "flex h-8 items-center justify-center rounded-md border bg-surface px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95 disabled:pointer-events-none disabled:opacity-50",
               disableCopy && "opacity-60",
             )}
           >
