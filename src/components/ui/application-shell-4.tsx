@@ -175,26 +175,25 @@ const sidebarData: SidebarData = {
   user: {
     name: "John Doe",
     email: "john@example.com",
-    avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp",
+    avatar: "/avatar-1.webp",
   },
   workspaces: [
     {
       id: "1",
-      name: "Shadcnblocks",
-      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      name: "BlakeUI",
+      logo: "/blake-logo-icon.svg",
       plan: "Enterprise",
     },
     {
       id: "2",
-      name: "Shadcn Templates",
-      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      name: "BlakeUI Templates",
+      logo: "/blake-logo-icon.svg",
       plan: "Startup",
     },
     {
       id: "3",
-      name: "Shadcn Components",
-      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+      name: "BlakeUI Components",
+      logo: "/blake-logo-icon.svg",
       plan: "Free",
     },
   ],

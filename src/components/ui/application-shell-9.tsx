@@ -154,7 +154,7 @@ export function AppSidebar({
                   <BlakeLogoIcon className="w-full h-full" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Shadcnblocks</span>
+                  <span className="truncate font-medium">BlakeUI</span>
                   <span className="truncate text-xs">my-project</span>
                 </div>
               </a>
@@ -372,8 +372,8 @@ export function ApplicationShell9({
           <div className="flex items-center gap-2">
             <div className="flex aspect-square size-7 items-center justify-center rounded-sm bg-primary">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg"
-                alt="Shadcnblocks"
+                src="/blake-logo-icon.svg"
+                alt="BlakeUI"
                 className="size-4 invert dark:invert-0"
               />
             </div>
@@ -571,8 +571,8 @@ export function ApplicationShell9({
               <ScrollArea className="flex-1 p-4">
                 <div className="flex justify-end">
                   <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                    Build me a landing page for shadcnblocks with a hero
-                    section, features grid, and pricing table
+                    Build me a landing page for blakeui with a hero section,
+                    features grid, and pricing table
                   </div>
                 </div>
               </ScrollArea>
@@ -607,7 +607,7 @@ export function ApplicationShell9({
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-4">
             <nav className="flex items-center gap-1 text-sm">
-              <span className="font-medium">Shadcnblocks</span>
+              <span className="font-medium">BlakeUI</span>
               <ChevronRight className="size-4 text-muted-foreground" />
               <span className="text-muted-foreground">my-project</span>
             </nav>
@@ -677,7 +677,7 @@ export function ApplicationShell9({
                     <ScrollArea className="flex-1 p-4">
                       <div className="flex justify-end">
                         <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                          Build me a landing page for shadcnblocks with a hero
+                          Build me a landing page for blakeui with a hero
                           section, features grid, and pricing table
                         </div>
                       </div>

@@ -15,17 +15,14 @@ const Login7 = ({ className }: Login7Props) => {
         <div className="flex flex-col items-center gap-4">
           <Card className="mx-auto w-full max-w-[380px]">
             <CardHeader className="items-center justify-center">
-              <a
-                href="https://www.shadcnblocks.com"
-                className="flex items-center gap-2"
-              >
+              <a href="#" className="flex items-center gap-2">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+                  src="/blake-logo-icon.svg"
                   className="max-h-8"
-                  alt="Shadcn UI Navbar"
+                  alt="BlakeUI"
                 />
                 <span className="text-lg font-semibold tracking-tighter">
-                  Shadcnblocks.com
+                  BlakeUI
                 </span>
               </a>
             </CardHeader>

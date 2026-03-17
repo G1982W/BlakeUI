@@ -74,9 +74,9 @@ type SidebarData = {
 
 const sidebarData: SidebarData = {
   logo: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
-    alt: "Shadcnblocks",
-    title: "Shadcnblocks",
+    src: "/blake-logo-icon.svg",
+    alt: "BlakeUI",
+    title: "BlakeUI",
     description: "Build your app",
   },
   navGroups: [
