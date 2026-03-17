@@ -143,7 +143,7 @@ export function DocsNavbar() {
     router.push("/signup");
   }
   return (
-    <header className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/90 backdrop-blur [grid-area:header]">
+    <header className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/50! backdrop-blur [grid-area:header]">
       <div className="mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 md:px-6">
         <div className="flex items-center gap-3">
           <DocsSidebarTrigger />
