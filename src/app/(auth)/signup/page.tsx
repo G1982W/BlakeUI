@@ -90,8 +90,8 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-[80vh] items-center justify-center p-4">
-      <div className="w-full max-w-sm space-y-6 rounded-xl border bg-card p-6 shadow-sm">
+    <div className="flex max-w-md w-full min-h-[80vh] items-center justify-center p-4">
+      <div className="w-full space-y-6 rounded-xl border bg-card p-6 shadow-sm">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-bold tracking-tight">Sign up</h1>
           <p className="text-muted-foreground text-sm">
