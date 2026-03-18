@@ -572,7 +572,7 @@ export function DataTable21({ className }: { className?: string }) {
               pinning, moving, and visibility management
             </p>
           </div>
-          <div className="overflow-hidden rounded-lg border-2">
+          <div className="overflow-hidden rounded-lg">
             <Table className="border-separate border-spacing-0 [&_td]:border-border [&_tfoot_td]:border-t [&_th]:border-b [&_th]:border-border [&_tr]:border-none [&_tr:hover_td[data-pinned]]:bg-muted/50 [&_tr:not(:last-child)_td]:border-b [&_tr[data-state=selected]_td[data-pinned]]:bg-muted [&_tr[data-state=selected]:hover_td[data-pinned]]:bg-muted">
               <TableHeader className="bg-muted/50">
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -632,9 +632,7 @@ export function DataTable21({ className }: { className?: string }) {
                           colSpan={header.colSpan}
                           style={pinnedStyle}
                           className={cn(
-                            "relative h-11 truncate border-r px-3 text-sm font-medium last:border-r-0 data-[pinned]:bg-muted/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                            header.column.id === rightStickyDividerTargetId &&
-                              "!border-r-0",
+                            "relative h-11 truncate px-3 text-sm font-medium data-pinned:bg-muted/90 data-pinned:backdrop-blur-xs",
                           )}
                           data-pinned={pinned || undefined}
                           data-last-col={lastPinned || undefined}
@@ -724,9 +722,7 @@ export function DataTable21({ className }: { className?: string }) {
                             key={cell.id}
                             style={pinnedStyle}
                             className={cn(
-                              "truncate border-r p-3 py-2 text-sm last:border-r-0 data-[pinned]:bg-background/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                              cell.column.id === rightStickyDividerTargetId &&
-                                "!border-r-0",
+                              "truncate p-3 py-2 text-sm data-pinned:bg-background/90 data-pinned:backdrop-blur-xs",
                             )}
                             data-pinned={pinned || undefined}
                             data-last-col={lastPinned || undefined}

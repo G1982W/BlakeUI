@@ -120,7 +120,7 @@ const statusStyles: Record<TransactionStatus, string> = {
 const transactions: Transaction[] = [
   {
     id: "txn-2082",
-    date: "2024-05-14",
+    date: "2026-05-14",
     name: "Stripe payout",
     description: "Subscription revenue for April cycle",
     amount: 14825.32,
@@ -135,7 +135,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2081",
-    date: "2024-05-13",
+    date: "2026-05-13",
     name: "Linear",
     description: "Workspace subscription for product team",
     amount: -320,
@@ -150,7 +150,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2080",
-    date: "2024-05-12",
+    date: "2026-05-12",
     name: "Mercury FX",
     description: "USD → EUR conversion for Berlin invoices",
     amount: -184.35,
@@ -165,7 +165,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2079",
-    date: "2024-05-10",
+    date: "2026-05-10",
     name: "Gusto Payroll",
     description: "Cycle #42 · engineering + marketing",
     amount: -48600,
@@ -180,7 +180,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2078",
-    date: "2024-05-09",
+    date: "2026-05-09",
     name: "AWS",
     description: "April usage across edge + inference clusters",
     amount: -9832.11,
@@ -195,7 +195,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2077",
-    date: "2024-05-08",
+    date: "2026-05-08",
     name: "Ramp",
     description: "Team offsite flights + hotels",
     amount: -6120.88,
@@ -210,7 +210,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2076",
-    date: "2024-05-07",
+    date: "2026-05-07",
     name: "Notion",
     description: "Enterprise plan for GTM org",
     amount: -850,
@@ -225,7 +225,7 @@ const transactions: Transaction[] = [
   },
   {
     id: "txn-2075",
-    date: "2024-05-06",
+    date: "2026-05-06",
     name: "Manual adjustment",
     description: "Reconciled hardware swap",
     amount: 0,
@@ -269,8 +269,8 @@ const columns: ColumnDef<Transaction>[] = [
     meta: {
       width: 48,
       minWidth: 48,
-      headerClassName: "!px-0 !border-r-0",
-      cellClassName: "!px-0 !border-r-0",
+      headerClassName: "!px-0 ",
+      cellClassName: "!px-0 ",
     } satisfies ColumnMeta,
   },
   {
@@ -289,10 +289,8 @@ const columns: ColumnDef<Transaction>[] = [
     meta: {
       width: 140,
       minWidth: 140,
-      headerClassName:
-        "!border-r-0 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
-      cellClassName:
-        "!border-r-0 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
+      headerClassName: "",
+      cellClassName: "",
     } satisfies ColumnMeta,
   },
   {
@@ -311,10 +309,8 @@ const columns: ColumnDef<Transaction>[] = [
     meta: {
       width: 320,
       minWidth: 320,
-      headerClassName:
-        "!border-r-0 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60 after:absolute after:right-0 after:top-0 after:bottom-0 after:w-[0.5px] after:bg-border/60",
-      cellClassName:
-        "!border-r-0 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60 after:absolute after:right-0 after:top-0 after:bottom-0 after:w-[0.5px] after:bg-border/60",
+      headerClassName: "",
+      cellClassName: "",
     } satisfies ColumnMeta,
   },
   {
@@ -486,10 +482,8 @@ const columns: ColumnDef<Transaction>[] = [
     meta: {
       width: 48,
       minWidth: 48,
-      headerClassName:
-        "!px-0 md:sticky md:right-0 z-20 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
-      cellClassName:
-        "!px-0 md:sticky md:right-0 z-20 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[0.5px] before:bg-border/60",
+      headerClassName: "!px-0 md:sticky md:right-0 z-20",
+      cellClassName: "!px-0 md:sticky md:right-0 z-20",
     } satisfies ColumnMeta,
   },
 ];
@@ -1010,13 +1004,13 @@ export const DataTable26 = ({ className }: { className?: string }) => {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-border/60 bg-card [--dt-cell-bg:var(--background)] [--dt-header-bg:var(--muted)] [--dt-row-hover-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-hover-bg:color-mix(in_oklab,var(--background)_96%,var(--foreground)_4%)] dark:[--dt-header-bg:var(--card)] dark:[--dt-row-hover-bg:var(--muted)] dark:[--dt-row-selected-bg:var(--muted)] dark:[--dt-row-selected-hover-bg:color-mix(in_oklab,var(--muted)_80%,var(--foreground)_20%)]">
+        <div className="overflow-hidden rounded-lg bg-card [--dt-cell-bg:var(--surface)] [--dt-header-bg:var(--muted)] [--dt-row-hover-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-bg:color-mix(in_oklab,var(--background)_98%,var(--foreground)_2%)] [--dt-row-selected-hover-bg:color-mix(in_oklab,var(--background)_96%,var(--foreground)_4%)] dark:[--dt-header-bg:var(--card)] dark:[--dt-row-hover-bg:var(--muted)] dark:[--dt-row-selected-bg:var(--muted)] dark:[--dt-row-selected-hover-bg:color-mix(in_oklab,var(--muted)_80%,var(--foreground)_20%)]">
           <div
             ref={tableScroll.containerRef}
             className="overflow-x-auto overscroll-x-none"
           >
             <table className="w-full min-w-[1200px] caption-bottom text-[0.8125rem]">
-              <TableHeader className="sticky top-0 z-10 border-b-[0.5px] border-border/60 bg-[var(--dt-header-bg)]">
+              <TableHeader className="sticky top-0 z-10 border-b-[0.5px] border-border/60 bg-(--dt-header-bg)">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow
                     key={headerGroup.id}
@@ -1045,9 +1039,7 @@ export const DataTable26 = ({ className }: { className?: string }) => {
                             : meta.maxWidth;
                       }
                       const baseClassName = cn(
-                        "relative !h-11 border-r-[0.5px] border-border/60 bg-[var(--dt-header-bg)] !px-3 text-left align-middle !text-[0.8125rem] font-medium !text-muted-foreground whitespace-nowrap last:border-r-0",
-                        header.column.id === rightStickyDividerTargetId &&
-                          "!border-r-0",
+                        "relative !h-11 bg-[var(--dt-header-bg)] !px-3 text-left align-middle !text-[0.8125rem] font-medium !text-muted-foreground whitespace-nowrap",
                         meta.headerClassName,
                       );
 
@@ -1125,9 +1117,7 @@ export const DataTable26 = ({ className }: { className?: string }) => {
                               : meta.maxWidth;
                         }
                         const baseClassName = cn(
-                          "relative h-11 border-r-[0.5px] border-border/60 bg-[var(--dt-row-bg)] !px-3 !py-2 align-middle !text-[0.8125rem] text-foreground whitespace-nowrap last:border-r-0",
-                          cell.column.id === rightStickyDividerTargetId &&
-                            "!border-r-0",
+                          "relative h-11 bg-[var(--dt-row-bg)] !px-3 !py-2 align-middle !text-[0.8125rem] text-foreground whitespace-nowrap",
                           meta.cellClassName,
                         );
 

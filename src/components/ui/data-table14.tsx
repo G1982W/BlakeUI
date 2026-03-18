@@ -1087,9 +1087,9 @@ export const DataTable14 = ({ className }: { className?: string }) => {
             </p>
           </div>
           {Toolbar}
-          <div className="overflow-hidden rounded-md border">
+          <div className="overflow-hidden rounded-md">
             <Table>
-              <TableHeader>
+              <TableHeader className="bg-muted/50">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>
                     {headerGroup.headers.map((header) => {

@@ -331,7 +331,7 @@ export const DataTable5 = ({ className }: { className?: string }) => {
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="relative h-12 border-y border-border bg-muted/50 px-4 text-left text-sm font-medium select-none first:rounded-l-lg first:border-l first:pl-5 last:rounded-r-lg last:border-r last:pr-5"
+                          className="relative h-12 bg-muted/50 px-4 text-left text-sm font-medium select-none first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5"
                         >
                           {header.isPlaceholder
                             ? null

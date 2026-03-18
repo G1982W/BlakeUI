@@ -334,7 +334,7 @@ export const DataTable20 = ({ className }: { className?: string }) => {
               expandable columns width
             </p>
           </div>
-          <div className="overflow-hidden rounded-md border">
+          <div className="overflow-hidden rounded-md">
             <div className="overflow-x-auto">
               <Table
                 className="relative w-full table-fixed"
@@ -372,7 +372,7 @@ export const DataTable20 = ({ className }: { className?: string }) => {
                                 onDoubleClick={() => header.column.resetSize()}
                                 onMouseDown={header.getResizeHandler()}
                                 onTouchStart={header.getResizeHandler()}
-                                className="group/resize absolute top-0 -right-2 z-10 flex h-full w-4 cursor-col-resize touch-none justify-center select-none before:absolute before:inset-y-0 before:w-px before:bg-border before:transition-colors hover:before:bg-primary active:before:bg-primary"
+                                className="group/resize absolute top-0 -right-2 z-10 flex h-full w-4 cursor-col-resize touch-none justify-center select-none hover:before:bg-primary active:before:bg-primary"
                                 role="separator"
                                 aria-label="Resize column"
                               />

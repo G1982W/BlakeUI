@@ -346,7 +346,7 @@ export const DataTable4 = ({ className }: { className?: string }) => {
                           <TableHead
                             key={header.id}
                             colSpan={header.colSpan}
-                            className="relative h-12 border-y border-border bg-muted/50 px-3 text-left text-xs font-medium select-none first:rounded-l-lg first:border-l first:pl-3 last:rounded-r-lg last:border-r last:pr-3 sm:px-4 sm:text-sm sm:first:pl-5 sm:last:pr-5"
+                            className="relative h-12 bg-muted/50 px-3 text-left text-xs font-medium select-none first:rounded-l-lg first:pl-3 last:rounded-r-lg last:pr-3 sm:px-4 sm:text-sm sm:first:pl-5 sm:last:pr-5"
                           >
                             {header.isPlaceholder
                               ? null

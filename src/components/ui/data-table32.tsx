@@ -845,7 +845,7 @@ export const DataTable32 = ({ className }: { className?: string }) => {
       <div className="mb-4 flex items-center justify-end">
         <DataTableSortMenu table={table} />
       </div>
-      <div className="overflow-hidden rounded-lg border-2">
+      <div className="overflow-hidden rounded-lg">
         <div
           ref={tableContainerRef}
           className="relative max-h-[600px] overflow-auto"
@@ -885,9 +885,7 @@ export const DataTable32 = ({ className }: { className?: string }) => {
                         colSpan={header.colSpan}
                         style={{ ...baseStyle, ...pinnedStyle }}
                         className={cn(
-                          "relative h-11 truncate border-r px-3 text-sm font-medium last:border-r-0 data-[pinned]:bg-muted/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                          header.column.id === rightStickyDividerTargetId &&
-                            "!border-r-0",
+                          "relative h-11 truncate px-3 text-sm font-medium data-pinned:bg-muted/90 data-pinned:backdrop-blur-xs",
                           meta.className,
                           meta.headerClassName,
                           alignClass,
@@ -979,9 +977,7 @@ export const DataTable32 = ({ className }: { className?: string }) => {
                               key={cell.id}
                               style={{ ...baseStyle, ...pinnedStyle }}
                               className={cn(
-                                "truncate border-r p-3 py-2 text-sm last:border-r-0 data-[pinned]:bg-background/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                                cell.column.id === rightStickyDividerTargetId &&
-                                  "!border-r-0",
+                                "truncate p-3 py-2 text-sm data-pinned:bg-background/20 data-pinned:backdrop-blur-xs",
                                 meta.className,
                                 meta.cellClassName,
                                 alignClass,

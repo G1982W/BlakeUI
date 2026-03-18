@@ -1416,7 +1416,7 @@ export const DataTable29 = ({ className }: { className?: string }) => {
               Press Escape to cancel editing, Enter to save.
             </p>
           </div>
-          <div className="overflow-hidden rounded-lg border">
+          <div className="overflow-hidden rounded-lg">
             <div
               ref={tableContainerRef}
               className="relative max-h-[600px] overflow-auto"
@@ -1460,9 +1460,7 @@ export const DataTable29 = ({ className }: { className?: string }) => {
                             colSpan={header.colSpan}
                             style={columnStyle}
                             className={cn(
-                              "relative h-11 truncate border-r px-3 text-sm font-medium last:border-r-0 data-[pinned]:bg-muted/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                              header.column.id === rightStickyDividerTargetId &&
-                                "!border-r-0",
+                              "relative h-11 truncate  px-3 text-sm font-medium last:border-r-0 data-pinned:bg-muted/90 data-pinned:backdrop-blur-xs",
                               meta.className,
                               meta.headerClassName,
                               alignClass,
@@ -1563,10 +1561,7 @@ export const DataTable29 = ({ className }: { className?: string }) => {
                                   key={cell.id}
                                   style={columnStyle}
                                   className={cn(
-                                    "border-r p-3 py-2 text-sm last:border-r-0 data-[pinned]:bg-background/90 data-[pinned]:backdrop-blur-xs [&[data-pinned=left][data-last-col=left]]:border-r [&[data-pinned=right][data-last-col=right]]:border-l",
-                                    cell.column.id ===
-                                      rightStickyDividerTargetId &&
-                                      "!border-r-0",
+                                    "p-3 py-2 text-sm data-pinned:bg-background/20 data-pinned:backdrop-blur-xs",
                                     meta.className,
                                     meta.cellClassName,
                                     alignClass,

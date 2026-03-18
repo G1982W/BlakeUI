@@ -1205,7 +1205,7 @@ function OrderItemsSubTable({ items }: { items: OrderItem[] }) {
           {items.length} {items.length === 1 ? "item" : "items"}
         </Badge>
       </div>
-      <div className="rounded-md border bg-background">
+      <div className="rounded-md border bg-surface">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -1407,7 +1407,7 @@ export function DataTable22({ className }: { className?: string }) {
               complete with a detailed line-item breakdown on expand. */}
             </p>
           </div>
-          <div className="overflow-hidden rounded-md border">
+          <div className="overflow-hidden rounded-md">
             <Table>
               <TableHeader>
                 {table.getHeaderGroups().map((headerGroup) => (
