@@ -177,7 +177,7 @@ export function DocsNavbar() {
               </AppLink>
               <Button
                 variant="primary"
-                size="sm"
+                size="md"
                 onClick={handleLogout}
                 className="gap-1.5"
               >
@@ -189,7 +189,7 @@ export function DocsNavbar() {
             <>
               <Button
                 variant="primary"
-                size="sm"
+                size="md"
                 onClick={handleLogin}
                 className="gap-1.5"
               >
@@ -197,7 +197,7 @@ export function DocsNavbar() {
               </Button>
               <Button
                 variant="secondary"
-                size="sm"
+                size="md"
                 onClick={handleSignup}
                 className="gap-1.5"
               >

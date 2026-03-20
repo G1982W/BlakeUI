@@ -436,6 +436,7 @@ h4 {
 @media (width < 48rem) {
     body {
         overflow-x: hidden;
+        overscroll-behavior: none;
     }
 
     #nd-toc {
