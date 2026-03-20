@@ -32,7 +32,7 @@ const Login6 = ({
   className,
 }: Login6Props) => {
   return (
-    <section className={cn("bg-background", className)}>
+    <section className={cn("bg-surface", className)}>
       <div className="flex h-full items-center justify-center">
         <div className="flex flex-col items-center gap-6 lg:justify-start">
           {/* Logo */}
@@ -66,7 +66,7 @@ const Login6 = ({
               <Input
                 type="email"
                 placeholder="Email"
-                className="bg-background text-sm"
+                className="text-sm"
                 required
               />
             </div>
@@ -75,7 +75,7 @@ const Login6 = ({
               <Input
                 type="password"
                 placeholder="Password"
-                className="bg-background text-sm"
+                className="text-sm"
                 required
               />
             </div>
