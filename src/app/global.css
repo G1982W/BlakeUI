@@ -321,6 +321,11 @@
     --sidebar-border: var(--border-neutral);
 }
 
+html,
+body {
+    overscroll-behavior: none !important;
+}
+
 h1,
 h2,
 h3,
@@ -331,6 +336,7 @@ h4 {
 #nd-toc {
     /* margin-top: 24px; */
     top: calc(var(--fd-docs-row-1) + var(--fd-nav-height));
+    overscroll-behavior: none !important;
 }
 
 #nd-docs-layout {
@@ -362,6 +368,7 @@ h4 {
     max-width: var(--fd-layout-width) !important;
     margin-left: auto;
     margin-right: auto;
+    overscroll-behavior: none !important;
 }
 
 @media (width < 48rem) {
@@ -430,6 +437,7 @@ h4 {
 #nd-docs-layout main {
     background: var(--background);
     min-width: 0;
+    overscroll-behavior: none !important;
 }
 
 /* Mobile: hide right aside (TOC), constrain main to viewport, prevent zoomed-out layout */
