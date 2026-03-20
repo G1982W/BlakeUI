@@ -335,8 +335,9 @@ h4 {
 
 #nd-docs-layout {
     background: var(--background);
-    max-width: var(--fd-layout-width);
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
 
     /* Mobile: single-column width, no zoomed-out desktop layout */
     @media (width < 48rem) {
@@ -353,11 +354,14 @@ h4 {
     @media (width >=48rem) {
         --fd-sidebar-width: 280px;
         grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
+        --fd-layout-width: 80% !important;
     }
 }
 
 #nd-page {
-    max-width: none !important;
+    max-width: var(--fd-layout-width) !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (width < 48rem) {

@@ -125,12 +125,12 @@ export function DrawerDemo() {
               </span>
             </TopBarLeft>
             <TopBarRight>
-              <Button size="sm" variant="primary" className="size-8">
+              <Button size="sm" variant="ghost" className="size-8">
                 <MoreHorizontal className="size-4" />
                 <span className="sr-only">More options</span>
               </Button>
               <DrawerClose asChild>
-                <Button size="sm" variant="primary" className="size-8">
+                <Button size="sm" variant="ghost" className="size-8">
                   <X className="size-4" />
                   <span className="sr-only">Close</span>
                 </Button>
