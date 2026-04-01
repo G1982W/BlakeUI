@@ -30,11 +30,19 @@ function buildCommands(packages: string[]) {
     };
   }
 
-  const list = packages.join(" ");
+  if (packages.length === 1) {
+    const pkg = packages[0];
+    return {
+      npm: `npm install ${pkg}`,
+      pnpm: `pnpm add ${pkg}`,
+      yarn: `yarn add ${pkg}`,
+    };
+  }
+
   return {
-    npm: `npm install ${list}`,
-    pnpm: `pnpm add ${list}`,
-    yarn: `yarn add ${list}`,
+    npm: packages.map((pkg) => `npm install ${pkg}`).join("\n"),
+    pnpm: packages.map((pkg) => `pnpm add ${pkg}`).join("\n"),
+    yarn: packages.map((pkg) => `yarn add ${pkg}`).join("\n"),
   };
 }
 

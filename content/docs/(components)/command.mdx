@@ -7,7 +7,6 @@ component: true
 
 import {
   Command,
-  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -15,31 +14,42 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { Button } from "@/components/ui/button";
 import { Preview } from "@/components/preview";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
+import {
+  CommandBasicDemo,
+  CommandGroupsDemo,
+  CommandRtlDemo,
+  CommandScrollableDemo,
+  CommandShortcutsDemo,
+} from "@/components/ui/command-demo";
 
 ## Example
 
 <ComponentPreview name="command">
-  <Command className="rounded-lg border shadow-md">
+  <Command className="max-w-sm rounded-lg border shadow-md">
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup heading="Suggestions">
         <CommandItem>Calendar</CommandItem>
-        <CommandItem>Search</CommandItem>
-        <CommandItem>Settings</CommandItem>
+        <CommandItem>Search Emoji</CommandItem>
+        <CommandItem>Calculator</CommandItem>
       </CommandGroup>
       <CommandSeparator />
       <CommandGroup heading="Settings">
         <CommandItem>Profile</CommandItem>
-        <CommandItem>Log out</CommandItem>
+        <CommandItem>Billing</CommandItem>
+        <CommandItem>Settings</CommandItem>
       </CommandGroup>
     </CommandList>
   </Command>
 </ComponentPreview>
+
+## About
+
+The `Command` component is built on [cmdk](https://cmdk.pacocoursey.com/) by Dip. Use it for searchable menus and command palettes (inline or inside `CommandDialog`).
 
 ## Installation
 
@@ -53,83 +63,86 @@ Command uses the Dialog component. Add both `dialog.tsx` and `command.tsx`.
 
 ## Usage
 
-**Inline command (e.g. in a popover or sidebar):**
-
 ```tsx
 import {
   Command,
-  CommandInput,
-  CommandList,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
+  CommandList,
   CommandSeparator,
+  CommandShortcut,
 } from "@/components/ui/command";
+```
 
-<Command>
+**Inline command (popover, card, or sidebar):**
+
+```tsx
+<Command className="max-w-sm rounded-lg border">
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
     <CommandGroup heading="Suggestions">
       <CommandItem>Calendar</CommandItem>
-      <CommandItem>Search</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
     </CommandGroup>
     <CommandSeparator />
     <CommandGroup heading="Settings">
       <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
     </CommandGroup>
   </CommandList>
 </Command>
 ```
 
-**Command dialog (palette opened by shortcut):**
-
-```tsx
-import { CommandDialog } from "@/components/ui/command";
-
-const [open, setOpen] = React.useState(false);
-
-React.useEffect(() => {
-  const down = (e: KeyboardEvent) => {
-    if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      setOpen((o) => !o);
-    }
-  };
-  document.addEventListener("keydown", down);
-  return () => document.removeEventListener("keydown", down);
-}, []);
-
-<CommandDialog open={open} onOpenChange={setOpen}>
-  <CommandInput placeholder="Type a command or search..." />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
-      <CommandItem>Calendar</CommandItem>
-      <CommandItem>Search</CommandItem>
-    </CommandGroup>
-  </CommandList>
-</CommandDialog>
-```
+**Command dialog (palette):** wrap the same structure in `CommandDialog` and control `open` / `onOpenChange`. You can still use the `⌘K` (or `Ctrl+K`) listener pattern from the [Radix Command docs](https://ui.shadcn.com/docs/components/radix/command) to open the palette globally.
 
 ## Examples
 
 ### Basic
 
+A simple command menu in a dialog ([shadcn Command](https://ui.shadcn.com/docs/components/radix/command) pattern).
+
 <Preview>
-  <Command className="rounded-lg border shadow-md max-w-md">
-    <CommandInput placeholder="Type a command or search..." />
-    <CommandList>
-      <CommandEmpty>No results found.</CommandEmpty>
-      <CommandGroup heading="Frameworks">
-        <CommandItem>Next.js</CommandItem>
-        <CommandItem>Remix</CommandItem>
-        <CommandItem>Astro</CommandItem>
-      </CommandGroup>
-    </CommandList>
-  </Command>
+  <CommandBasicDemo />
+</Preview>
+
+### Shortcuts
+
+Items with `CommandShortcut` for keyboard hints.
+
+<Preview>
+  <CommandShortcutsDemo />
+</Preview>
+
+### Groups
+
+Groups with icons and separators between sections.
+
+<Preview>
+  <CommandGroupsDemo />
+</Preview>
+
+### Scrollable
+
+Scrollable list when there are many items.
+
+<Preview>
+  <CommandScrollableDemo />
+</Preview>
+
+### RTL
+
+Right-to-left layout with translated labels.
+
+<Preview>
+  <CommandRtlDemo />
 </Preview>
 
 ## API Reference
 
-The Command component is built on [cmdk](https://cmdk.pacocoursey.com/). It composes `Command`, `CommandInput`, `CommandList`, `CommandEmpty`, `CommandGroup`, `CommandItem`, `CommandSeparator`, and `CommandDialog` (dialog variant). See the cmdk docs for full behavior and keyboard shortcuts.
+The Command component composes `Command`, `CommandInput`, `CommandList`, `CommandEmpty`, `CommandGroup`, `CommandItem`, `CommandSeparator`, `CommandShortcut`, and `CommandDialog`. See the [cmdk documentation](https://cmdk.pacocoursey.com/) for filtering, value, and keyboard behavior.
