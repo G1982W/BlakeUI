@@ -17,6 +17,10 @@ export function extractCode(children: React.ReactNode): string {
 
         if (React.isValidElement(child)) {
             const type = child.type as any;
+            const inlineSource = type?.source;
+            if (typeof inlineSource === "string" && inlineSource.trim().length > 0) {
+                return inlineSource;
+            }
             const name = type.displayName || type.name || (typeof type === 'string' ? type : 'Component');
             const props = child.props as any;
 

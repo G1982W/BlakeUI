@@ -2780,108 +2780,355 @@
       "required": false
     }
   ],
-  "Combobox": [
-    {
-      "name": "items",
-      "type": "string[] | ComboboxOption[]",
-      "description": "",
-      "required": true
-    },
-    {
-      "name": "value",
-      "type": "string",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onValueChange",
-      "type": "((value: string) => void)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "placeholder",
-      "type": "string",
-      "defaultValue": "Select...",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "emptyText",
-      "type": "string",
-      "defaultValue": "No results found.",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "description": "",
-      "required": false
-    },
+  "ComboboxRoot": [
     {
       "name": "disabled",
       "type": "boolean",
-      "description": "",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether multiple items can be selected.",
+      "required": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "description": "Provides a hint to the browser for autofill.\n@see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete",
+      "required": false
+    },
+    {
+      "name": "autoHighlight",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the first matching item is highlighted automatically while filtering.",
+      "required": false
+    },
+    {
+      "name": "highlightItemOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether moving the pointer over items should highlight them.\nDisabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.",
+      "required": false
+    },
+    {
+      "name": "itemToStringLabel",
+      "type": "((itemValue: Value) => string)",
+      "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for display in the input.\nIf the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.",
       "required": false
     },
     {
       "name": "itemToStringValue",
-      "type": "((item: string | ComboboxOption) => string)",
-      "description": "",
+      "type": "((itemValue: Value) => string)",
+      "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for form submission.\nIf the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop.",
+      "required": false
+    },
+    {
+      "name": "isItemEqualToValue",
+      "type": "((itemValue: Value, value: Value) => boolean)",
+      "description": "Custom comparison logic used to determine if a combobox item value matches the current selected value. Useful when item values are objects without matching referentially.\nDefaults to `Object.is` comparison.",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "ComboboxValueType<Value, Multiple> | null",
+      "description": "The uncontrolled selected value of the combobox when it's initially rendered.\n\nTo render a controlled combobox, use the `value` prop instead.",
+      "required": false
+    },
+    {
+      "name": "actionsRef",
+      "type": "RefObject<Actions | null>",
+      "description": "A ref to imperative actions.\n- `unmount`: When specified, the combobox will not be unmounted when closed.\nInstead, the `unmount` function must be called to unmount the combobox manually.\nUseful when the combobox's animation is controlled by an external library.",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean, eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the popup is opened or closed.",
+      "required": false
+    },
+    {
+      "name": "onInputValueChange",
+      "type": "((inputValue: string, eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the input value changes.",
+      "required": false
+    },
+    {
+      "name": "onItemHighlighted",
+      "type": "((highlightedValue: Value, eventDetails: HighlightEventDetails) => void)",
+      "description": "Callback fired when an item is highlighted or unhighlighted.\nReceives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.\nThe `reason` can be:\n- `'keyboard'`: the highlight changed due to keyboard navigation.\n- `'pointer'`: the highlight changed due to pointer hovering.\n- `'none'`: the highlight changed programmatically.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "ComboboxValueType<Value, Multiple> | null",
+      "description": "The selected value of the combobox. Use when controlled.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: ComboboxValueType<Value, Multiple> | (Multiple extends true ? never : null), eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the selected value of the combobox changes.",
       "required": false
     }
   ],
   "ComboboxInput": [
     {
-      "name": "items",
-      "type": "string[] | ComboboxOption[]",
-      "description": "",
-      "required": true
-    },
-    {
-      "name": "value",
-      "type": "string",
-      "defaultValue": "",
-      "description": "",
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
       "required": false
     },
     {
-      "name": "onValueChange",
-      "type": "((value: string) => void)",
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
       "description": "",
       "required": false
     },
     {
       "name": "placeholder",
       "type": "string",
-      "defaultValue": "Search...",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "emptyText",
-      "type": "string",
-      "defaultValue": "No results found.",
       "description": "",
       "required": false
     },
     {
       "name": "className",
+      "type": "string | ((state: ComboboxInputState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "showTrigger",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showClear",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxContent": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxPopupState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxPopupState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxList": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxListState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxListState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxItem": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxItemState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxItemState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxGroup": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxGroupState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxLabel": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxGroupLabelState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupLabelState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxCollection": [],
+  "ComboboxEmpty": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxEmptyState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxEmptyState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxSeparator": [
+    {
+      "name": "className",
+      "type": "string | ((state: SeparatorState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxChips": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxChipsState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipsState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxChip": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxChipState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "showRemove",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxChipsInput": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
       "type": "string",
       "description": "",
       "required": false
     },
     {
+      "name": "className",
+      "type": "string | ((state: ComboboxInputState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxTrigger": [
+    {
       "name": "disabled",
       "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
       "description": "",
       "required": false
     },
     {
-      "name": "itemToStringValue",
-      "type": "((item: string | ComboboxOption) => string)",
-      "description": "",
+      "name": "className",
+      "type": "string | ((state: ComboboxTriggerState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxTriggerState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxValue": [
+    {
+      "name": "placeholder",
+      "type": "ReactNode",
+      "description": "The placeholder value to display when no value is selected.\nThis is overridden by `children` if specified, or by a null item's label in `items`.",
       "required": false
     }
   ],
@@ -2911,15 +3158,15 @@
       "required": false
     },
     {
-      "name": "shouldFilter",
-      "type": "boolean",
-      "description": "Optionally set to `false` to turn off the automatic filtering and sorting.\nIf `false`, you must conditionally render valid items based on the search query yourself.",
-      "required": false
-    },
-    {
       "name": "onValueChange",
       "type": "((value: string) => void)",
       "description": "Event handler called when the selected item of the menu changes.",
+      "required": false
+    },
+    {
+      "name": "shouldFilter",
+      "type": "boolean",
+      "description": "Optionally set to `false` to turn off the automatic filtering and sorting.\nIf `false`, you must conditionally render valid items based on the search query yourself.",
       "required": false
     },
     {
@@ -4445,6 +4692,85 @@
       "required": false
     }
   ],
+  "InputGroup": [],
+  "InputGroupAddon": [
+    {
+      "name": "align",
+      "type": "\"inline-end\" | \"inline-start\" | \"block-start\" | \"block-end\" | null",
+      "defaultValue": "inline-start",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroupButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "defaultValue": "ghost",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"xs\" | \"icon-xs\" | \"icon-sm\" | null",
+      "defaultValue": "xs",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroupText": [],
+  "InputGroupInput": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroupTextarea": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Input": [
     {
       "name": "heading",
@@ -4529,6 +4855,12 @@
       "required": false
     },
     {
+      "name": "locale",
+      "type": "string | false",
+      "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
+      "required": false
+    },
+    {
       "name": "as",
       "type": "Url",
       "description": "Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our [previous docs](https://github.com/vercel/next.js/blob/v9.5.2/docs/api-reference/next/link.md#dynamic-routes) to see how it worked. Note: when this path differs from the one provided in `href` the previous `href`/`as` behavior is used as shown in the [previous docs](https://github.com/vercel/next.js/blob/v9.5.2/docs/api-reference/next/link.md#dynamic-routes).",
@@ -4556,12 +4888,6 @@
       "name": "prefetch",
       "type": "boolean | \"auto\" | null",
       "description": "Prefetch the page in the background.\nAny `<Link />` that is in the viewport (initially or through scroll) will be prefetched.\nPrefetch can be disabled by passing `prefetch={false}`. Prefetching is only enabled in production.\n\nIn App Router:\n- \"auto\", null, undefined (default): For statically generated pages, this will prefetch the full React Server Component data. For dynamic pages, this will prefetch up to the nearest route segment with a [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading) file. If there is no loading file, it will not fetch the full tree to avoid fetching too much data.\n- `true`: This will prefetch the full React Server Component data for all route segments, regardless of whether they contain a segment with `loading.js`.\n- `false`: This will not prefetch any data, even on hover.\n\nIn Pages Router:\n- `true` (default): The full route & its data will be prefetched.\n- `false`: Prefetching will not happen when entering the viewport, but will still happen on hover.\n@defaultValue `true` (pages router) or `null` (app router)",
-      "required": false
-    },
-    {
-      "name": "locale",
-      "type": "string | false",
-      "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
       "required": false
     },
     {
