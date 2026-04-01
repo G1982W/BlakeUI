@@ -3780,36 +3780,12 @@
       "required": false
     }
   ],
+  "DialogMinimalDemo": [],
+  "DialogCustomCloseDemo": [],
+  "DialogNoCloseDemo": [],
+  "DialogStickyFooterDemo": [],
+  "DialogScrollableDemo": [],
   "Dialog": [],
-  "DialogPortal": [],
-  "DialogOverlay": [
-    {
-      "name": "asChild",
-      "type": "boolean",
-      "description": "",
-      "required": false
-    }
-  ],
-  "DialogTrigger": [
-    {
-      "name": "asChild",
-      "type": "boolean",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "disabled",
-      "type": "boolean",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "type",
-      "type": "\"button\" | \"submit\" | \"reset\"",
-      "description": "",
-      "required": false
-    }
-  ],
   "DialogClose": [
     {
       "name": "asChild",
@@ -3838,15 +3814,46 @@
       "required": false
     },
     {
-      "name": "showClose",
+      "name": "showCloseButton",
       "type": "boolean",
       "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showClose",
+      "type": "boolean",
+      "description": "When `false`, hides the corner close control (same as `showCloseButton={false}`).",
+      "required": false
+    }
+  ],
+  "DialogDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogFooter": [
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "false",
       "description": "",
       "required": false
     }
   ],
   "DialogHeader": [],
-  "DialogFooter": [],
+  "DialogOverlay": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogPortal": [],
   "DialogTitle": [
     {
       "name": "asChild",
@@ -3855,10 +3862,22 @@
       "required": false
     }
   ],
-  "DialogDescription": [
+  "DialogTrigger": [
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
       "description": "",
       "required": false
     }

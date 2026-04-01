@@ -5,44 +5,23 @@ base: base
 component: true
 ---
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Preview } from "@/components/preview";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
+import {
+  DialogBasicDemo,
+  DialogCustomCloseDemo,
+  DialogMinimalDemo,
+  DialogNoCloseDemo,
+  DialogRtlDemo,
+  DialogScrollableDemo,
+  DialogStickyFooterDemo,
+} from "@/components/ui/dialog-demo";
 
 ## Example
 
 <ComponentPreview name="dialog">
-  <Dialog>
-    <DialogTrigger asChild>
-      <Button variant="primary">Open dialog</Button>
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Edit profile</DialogTitle>
-        <DialogDescription>
-          Make changes to your profile here. Click save when you&apos;re done.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <p className="text-muted-foreground text-sm">
-          Dialog content goes here.
-        </p>
-      </div>
-      <DialogFooter>
-        <Button variant="primary">Save changes</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
+  <DialogBasicDemo />
 </ComponentPreview>
 
 ## Installation
@@ -73,40 +52,68 @@ import { Button } from "@/components/ui/button";
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>Title</DialogTitle>
-      <DialogDescription>Description</DialogDescription>
+      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </DialogDescription>
     </DialogHeader>
-    <div>Content</div>
-    <DialogFooter>
-      <Button>Save</Button>
-    </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
+
+`DialogContent` shows a corner close control by default. Pass **`showCloseButton={false}`** (or **`showClose={false}`**) to hide it and use `DialogClose` with your own button instead.
 
 ## Examples
 
 ### Basic
 
+A minimal dialog with a title, description, and primary action.
+
 <Preview>
-  <Dialog>
-    <DialogTrigger asChild>
-      <Button variant="primary">Open dialog</Button>
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Dialog title</DialogTitle>
-        <DialogDescription>
-          A short description for the dialog.
-        </DialogDescription>
-      </DialogHeader>
-      <DialogFooter>
-        <Button variant="primary">Confirm</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
+  <DialogMinimalDemo />
+</Preview>
+
+### Custom close button
+
+Replace the default corner close control with your own `DialogClose` (for example a **Done** action in the header). Set **`showCloseButton={false}`** on `DialogContent` so the built-in control is not rendered.
+
+<Preview>
+  <DialogCustomCloseDemo />
+</Preview>
+
+### No close button
+
+Use **`showCloseButton={false}`** when you do not want an “X” in the corner—often paired with explicit **Cancel** / **Continue** actions in the footer.
+
+<Preview>
+  <DialogNoCloseDemo />
+</Preview>
+
+### Sticky footer
+
+Keep **header** and **footer** fixed while the **middle** section scrolls. Use a column flex layout on `DialogContent`, `min-h-0 flex-1 overflow-y-auto` on the body, and put actions in `DialogFooter`.
+
+<Preview>
+  <DialogStickyFooterDemo />
+</Preview>
+
+### Scrollable content
+
+Long content can scroll while the **title and description** stay at the top. Constrain `DialogContent` height and make only the main body `overflow-y-auto`.
+
+<Preview>
+  <DialogScrollableDemo />
+</Preview>
+
+### RTL
+
+Right-to-left layouts: wrap the trigger and dialog in a container with **`dir="rtl"`** (or set direction on the document). Mirror spacing in the footer if your design requires it.
+
+<Preview>
+  <DialogRtlDemo />
 </Preview>
 
 ## API Reference
 
-See the [Radix UI Dialog documentation](https://www.radix-ui.com/primitives/docs/components/dialog) for props and behavior.
+BlakeUI `Dialog` wraps Radix Dialog primitives: `Dialog`, `DialogTrigger`, `DialogContent` (supports **`showCloseButton`** and **`showClose`** to toggle the default corner close button), `DialogHeader`, `DialogFooter`, `DialogTitle`, `DialogDescription`, `DialogClose`, `DialogPortal`, and `DialogOverlay`. See the [Radix Dialog documentation](https://www.radix-ui.com/primitives/docs/components/dialog) for focus management and accessibility.

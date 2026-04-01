@@ -365,7 +365,7 @@ const FieldMapping1 = ({ className }: FieldMapping1Props) => {
                   "overflow-hidden p-0 md:!max-w-3xl lg:!max-w-6xl",
                   className,
                 )}
-                showClose={false}
+                showCloseButton={false}
               >
                 <DialogHeader className="sr-only">
                   <DialogTitle>Configure field mapping</DialogTitle>
