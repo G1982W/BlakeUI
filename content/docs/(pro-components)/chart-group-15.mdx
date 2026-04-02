@@ -5,14 +5,14 @@ base: base
 component: true
 ---
 
-import { ChartGroup15 } from "@/components/ui/chart-group-15";
+import { ChartGroup15Demo } from "@/components/chart-group-15-demo";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
 
 ## Example
 
 <ComponentPreview name="chart-group-15" premium>
-  <ChartGroup15 />
+  <ChartGroup15Demo className="w-full" />
 </ComponentPreview>
 
 ## Introduction
@@ -46,7 +46,7 @@ Requires Chart, Card, Tabs, Button, DropdownMenu, Popover, Calendar, and rechart
 ```tsx
 import { ChartGroup15 } from "@/components/ui/chart-group-15";
 
-<ChartGroup15 />
+<ChartGroup15 />;
 ```
 
 Wire the date navigation and compare toggle to your data and date state as needed.

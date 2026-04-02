@@ -152,11 +152,11 @@ const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
     <SidebarMenu>
       <SidebarMenuItem>
         <SidebarMenuButton size="lg">
-          <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
+          <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-white">
             <img
               src={logo.src}
               alt={logo.alt}
-              className="size-6 text-primary-foreground invert dark:invert-0"
+              className="size-6"
             />
           </div>
           <div className="flex flex-col gap-0.5 leading-none">

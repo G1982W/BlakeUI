@@ -279,7 +279,7 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
   return (
     <a
       href={link.url}
-      className="flex items-center gap-4 rounded-lg p-2 no-underline hover:bg-muted"
+      className="flex items-center gap-4 rounded-lg p-2 text-foreground no-underline hover:bg-muted"
     >
       <div className="flex w-full items-center justify-between">
         <div className="flex gap-2.5">
@@ -290,10 +290,10 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
             />
           )}
           <div className="flex flex-col gap-1.5">
-            <h3 className="text-sm leading-none text-background">
+            <h3 className="text-sm leading-none text-foreground">
               {link.label}
             </h3>
-            <p className="text-sm leading-[1.2] text-background/80">
+            <p className="text-sm leading-[1.2] text-muted-foreground">
               {link.description}
             </p>
           </div>

@@ -113,7 +113,7 @@ const InviteUserForm = () => {
               <Label className="text-xs">Email address</Label>
               <Input
                 placeholder="colleague@company.com"
-                className="bg-background"
+                className="bg-surface"
               />
             </div>
             <div className="space-y-1">
@@ -130,8 +130,8 @@ const InviteUserForm = () => {
               </Select>
             </div>
           </div>
-          <DialogFooter className="border-t bg-background px-4 py-3">
-            <Button size="sm" type="submit">
+          <DialogFooter className="border-t bg-surface px-4 py-3">
+            <Button size="sm" type="submit" variant="primary">
               Send Invite <CornerDownLeft />
             </Button>
           </DialogFooter>
@@ -221,7 +221,7 @@ const SettingsMembers1 = ({
               <Search className="absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search"
-                className="pl-7"
+                inputClassName="pl-7"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />

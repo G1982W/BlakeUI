@@ -39,7 +39,7 @@ const Login9 = ({
   className,
 }: Login9Props) => {
   return (
-    <section className={cn("h-screen bg-muted w-full", className)}>
+    <section className={cn("py-10 w-full", className)}>
       <div className="flex h-full flex-col items-center justify-center gap-8">
         {/* Logo */}
         <div className="flex items-center gap-2">

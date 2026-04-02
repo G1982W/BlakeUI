@@ -275,7 +275,7 @@ function SearchSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Search</SidebarGroupLabel>
           <SidebarGroupContent className="px-2">
-            <div className="flex items-center rounded-md border bg-background px-3 py-2">
+            <div className="flex items-center rounded-md border bg-white px-3 py-2">
               <Search className="mr-2 size-4 text-muted-foreground" />
               <input
                 type="text"
@@ -368,7 +368,7 @@ export function ApplicationShell9({
       )}
     >
       <div className="flex h-full w-full flex-col md:hidden">
-        <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-3">
+        <header className="flex h-12 shrink-0 items-center justify-between border-b bg-white px-3">
           <div className="flex items-center gap-2">
             <div className="flex aspect-square size-7 items-center justify-center rounded-sm bg-primary">
               <img
@@ -389,11 +389,11 @@ export function ApplicationShell9({
           </div>
         </header>
 
-        <div className="flex flex-1 items-center justify-center bg-muted/30">
+        <div className="flex flex-1 items-center justify-center bg-white">
           <Logo className="size-16 opacity-30" />
         </div>
 
-        <div className="flex h-14 shrink-0 items-center justify-around border-t bg-background">
+        <div className="flex h-14 shrink-0 items-center justify-around border-t bg-white">
           <button
             type="button"
             onClick={() => setMobileDrawer("search")}
@@ -457,7 +457,7 @@ export function ApplicationShell9({
               <DrawerTitle>Search</DrawerTitle>
             </DrawerHeader>
             <div className="p-4">
-              <div className="flex items-center rounded-md border bg-background px-3 py-2">
+              <div className="flex items-center rounded-md border bg-white px-3 py-2">
                 <Search className="mr-2 size-4 text-muted-foreground" />
                 <input
                   type="text"
@@ -577,7 +577,7 @@ export function ApplicationShell9({
                 </div>
               </ScrollArea>
               <div className="border-t p-3">
-                <div className="rounded-lg border bg-background">
+                <div className="rounded-lg border bg-white">
                   <textarea
                     placeholder="Describe what you want to build..."
                     rows={3}
@@ -605,7 +605,7 @@ export function ApplicationShell9({
           onModuleChange={handleModuleChange}
         />
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
-          <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-4">
+          <header className="flex h-12 shrink-0 items-center justify-between border-b bg-white px-4">
             <nav className="flex items-center gap-1 text-sm">
               <span className="font-medium">BlakeUI</span>
               <ChevronRight className="size-4 text-muted-foreground" />
@@ -625,7 +625,7 @@ export function ApplicationShell9({
               <Button
                 variant="primary"
                 size="sm"
-                className={cn("size-8 p-0", isChatOpen && "bg-muted")}
+                className={cn("size-8 p-0", isChatOpen && "bg-white")}
                 onClick={() => setIsChatOpen(!isChatOpen)}
               >
                 <PanelRight className="size-4" />
@@ -640,7 +640,7 @@ export function ApplicationShell9({
               <div className="flex flex-1 overflow-hidden">
                 <div
                   className={cn(
-                    "flex flex-1 items-center justify-center bg-muted/30",
+                    "flex flex-1 items-center justify-center bg-white",
                   )}
                 >
                   {!isChatOpen ? (
@@ -684,7 +684,7 @@ export function ApplicationShell9({
                     </ScrollArea>
 
                     <div className="border-t p-3">
-                      <div className="rounded-lg border bg-background">
+                      <div className="rounded-lg border bg-white">
                         <textarea
                           placeholder="Describe what you want to build..."
                           rows={3}
@@ -714,7 +714,7 @@ export function ApplicationShell9({
   if (preview) {
     return (
       <div
-        className="flex h-full min-h-[600px] w-full max-w-full overflow-auto rounded-lg border border-border bg-background"
+        className="flex h-full min-h-[600px] w-full max-w-full overflow-auto rounded-lg border border-border bg-white"
         style={{ transform: "translateZ(0)" }}
       >
         {content}

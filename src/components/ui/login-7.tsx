@@ -67,7 +67,7 @@ const Login7 = ({ className }: Login7Props) => {
           <div className="mx-auto flex items-center gap-1 text-sm">
             <p>Don&apos;t have an account yet?</p>
             <a href="#" className="underline">
-              Log in
+              Sign up
             </a>
           </div>
         </div>

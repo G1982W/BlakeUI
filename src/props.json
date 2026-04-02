@@ -61,6 +61,14 @@
       "required": false
     }
   ],
+  "ApplicationShell13": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "ApplicationShell4": [
     {
       "name": "className",
@@ -4396,6 +4404,14 @@
       "required": false
     }
   ],
+  "FieldMerging1": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "FileUpload": [
     {
       "name": "value",
@@ -4862,6 +4878,12 @@
       "type": "string",
       "description": "The placeholder text",
       "required": false
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
+      "required": false
     }
   ],
   "Label": [
@@ -5078,7 +5100,7 @@
     {
       "name": "signupUrl",
       "type": "string",
-      "defaultValue": "https://shadcnblocks.com",
+      "defaultValue": "#",
       "description": "",
       "required": false
     },
@@ -5121,7 +5143,7 @@
     {
       "name": "signupUrl",
       "type": "string",
-      "defaultValue": "https://shadcnblocks.com",
+      "defaultValue": "#",
       "description": "",
       "required": false
     },
@@ -5723,7 +5745,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileFormData>",
-      "defaultValue": "{\n    name: \"Jordan Chen\",\n    email: \"jordan.chen@email.com\",\n    username: \"jordanchen\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    bio: \"Full-stack developer passionate about building products that make a difference. Open source contributor and occasional tech blogger.\",\n    jobTitle: \"Senior Software Engineer\",\n    company: \"Acme Inc\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    socialLinks: {\n      twitter: \"jordanchen\",\n      linkedin: \"jordanchen\",\n      github: \"jordanchen\",\n    },\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@blakeui.com\",\n    username: \"alexmorgan\",\n    avatar: \"/avatar-1.webp\",\n    bio: \"Designer and front-end engineer building polished UIs with BlakeUI. Interested in design systems, accessibility, and shipping fast without sacrificing quality.\",\n    jobTitle: \"Product Designer\",\n    company: \"BlakeUI\",\n    location: \"San Francisco, CA\",\n    website: \"https://blakeui.com\",\n    socialLinks: {\n      twitter: \"blakeui\",\n      linkedin: \"blakeui\",\n      github: \"blakeui\",\n    },\n  }",
       "description": "",
       "required": false
     },
@@ -6038,6 +6060,12 @@
       "name": "placeholder",
       "type": "string",
       "description": "The placeholder text",
+      "required": false
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
       "required": false
     }
   ],

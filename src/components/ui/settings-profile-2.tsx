@@ -44,20 +44,19 @@ interface SettingsProfile2Props {
 
 const SettingsProfile2 = ({
   defaultValues = {
-    name: "Jordan Chen",
-    email: "jordan.chen@email.com",
-    username: "jordanchen",
-    avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
-    bio: "Full-stack developer passionate about building products that make a difference. Open source contributor and occasional tech blogger.",
-    jobTitle: "Senior Software Engineer",
-    company: "Acme Inc",
-    location: "Seattle, WA",
-    website: "https://jordanchen.dev",
+    name: "Alex Morgan",
+    email: "alex.morgan@blakeui.com",
+    username: "alexmorgan",
+    avatar: "/avatar-1.webp",
+    bio: "Designer and front-end engineer building polished UIs with BlakeUI. Interested in design systems, accessibility, and shipping fast without sacrificing quality.",
+    jobTitle: "Product Designer",
+    company: "BlakeUI",
+    location: "San Francisco, CA",
+    website: "https://blakeui.com",
     socialLinks: {
-      twitter: "jordanchen",
-      linkedin: "jordanchen",
-      github: "jordanchen",
+      twitter: "blakeui",
+      linkedin: "blakeui",
+      github: "blakeui",
     },
   },
   className,

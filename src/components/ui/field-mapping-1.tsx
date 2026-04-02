@@ -352,7 +352,7 @@ const FieldMapping1 = ({ className }: FieldMapping1Props) => {
         </Table>
 
         {data.length === 0 && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-background/50 backdrop-blur-[1px]">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface/20 backdrop-blur-[1px]">
             <h3 className="text-center text-lg font-semibold md:text-xl">
               Drop a file here or browse to begin
             </h3>
@@ -362,7 +362,7 @@ const FieldMapping1 = ({ className }: FieldMapping1Props) => {
               </DialogTrigger>
               <DialogContent
                 className={cn(
-                  "overflow-hidden p-0 md:!max-w-3xl lg:!max-w-6xl",
+                  "overflow-hidden p-0 md:max-w-3xl! lg:max-w-6xl!",
                   className,
                 )}
                 showCloseButton={false}

@@ -124,7 +124,7 @@ const SettingsMembers3 = ({
   const [isInviteOpen, setIsInviteOpen] = useState(false);
 
   return (
-    <section className="">
+    <section className={cn("", className)}>
       <div className="container max-w-5xl mx-auto">
         <div className={cn("space-y-8", className)}>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -222,7 +222,7 @@ const SettingsMembers3 = ({
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="primary" size="sm" className="size-8">
+                        <Button variant="ghost" size="sm" className="size-8">
                           <MoreHorizontal className="size-4" />
                           <span className="sr-only">Open menu</span>
                         </Button>

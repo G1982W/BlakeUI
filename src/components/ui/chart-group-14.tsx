@@ -1,52 +1,44 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import {
-  format,
-  subDays,
-  startOfDay,
   addDays,
   differenceInDays,
-  startOfWeek,
-  endOfWeek,
-  startOfMonth,
   endOfMonth,
+  endOfWeek,
+  format,
+  startOfDay,
+  startOfMonth,
+  startOfWeek,
+  subDays,
   subMonths,
 } from "date-fns";
 import {
+  Activity,
+  CalendarIcon,
+  ChevronRight,
+  Globe,
+  TrendingDown,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import { useMemo, useState } from "react";
+import type { DateRange } from "react-day-picker";
+import {
   Area,
   AreaChart,
+  CartesianGrid,
   Pie,
   PieChart,
-  CartesianGrid,
   XAxis,
   YAxis,
 } from "recharts";
-import {
-  CalendarIcon,
-  TrendingUp,
-  TrendingDown,
-  Activity,
-  Users,
-  Zap,
-  Globe,
-  ChevronRight,
-} from "lucide-react";
-import type { DateRange } from "react-day-picker";
-
-import { cn } from "@/lib/utils";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   type ChartConfig,
   ChartContainer,
@@ -58,7 +50,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Progress } from "@/components/ui/progress";
 import {
   Select,
   SelectContent,
@@ -66,6 +57,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 interface ChartGroup14Props {
   className?: string;
@@ -455,32 +447,28 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
                   config={channelConfig}
                   className="relative size-32 shrink-0"
                 >
-                  <>
-                    <PieChart>
-                      <ChartTooltip
-                        content={
-                          <ChartTooltipContent nameKey="name" hideLabel />
-                        }
-                        cursor={false}
-                      />
-                      <Pie
-                        data={channelData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={35}
-                        outerRadius={55}
-                        paddingAngle={2}
-                        dataKey="value"
-                        nameKey="name"
-                        strokeWidth={0}
-                      />
-                    </PieChart>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-bold">
-                        {stats.totalSessions.toLocaleString()}
-                      </span>
-                    </div>
-                  </>
+                  <PieChart>
+                    <ChartTooltip
+                      content={<ChartTooltipContent nameKey="name" hideLabel />}
+                      cursor={false}
+                    />
+                    <Pie
+                      data={channelData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={35}
+                      outerRadius={55}
+                      paddingAngle={2}
+                      dataKey="value"
+                      nameKey="name"
+                      strokeWidth={0}
+                    />
+                  </PieChart>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-lg font-bold">
+                      {stats.totalSessions.toLocaleString()}
+                    </span>
+                  </div>
                 </ChartContainer>
                 <div className="flex-1 space-y-2">
                   {channelData.map((item, index) => (
@@ -509,7 +497,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
           <Card className="md:col-span-2">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-base">Top Pages</CardTitle>
-              <Button variant="primary" size="sm" className="text-xs">
+              <Button variant="ghost" size="sm" className="text-xs">
                 View all <ChevronRight className="ml-1 size-3" />
               </Button>
             </CardHeader>
@@ -550,7 +538,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
           <Card className="md:col-span-2">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-base">Most Active Users</CardTitle>
-              <Button variant="primary" size="sm" className="text-xs">
+              <Button variant="ghost" size="sm" className="text-xs">
                 View all <ChevronRight className="ml-1 size-3" />
               </Button>
             </CardHeader>

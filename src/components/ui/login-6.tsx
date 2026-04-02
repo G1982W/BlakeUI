@@ -28,7 +28,7 @@ const Login6 = ({
   buttonText = "Login",
   googleText = "Login with Google",
   signupText = "Need an account?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
   className,
 }: Login6Props) => {
   return (

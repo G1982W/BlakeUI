@@ -5,14 +5,14 @@ base: base
 component: true
 ---
 
-import { ApplicationShell13 } from "@/components/ui/application-shell-13";
+import { ApplicationShell13Demo } from "@/components/application-shell-13-demo";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
 
 ## Example
 
 <ComponentPreview name="application-shell-13" premium>
-  <ApplicationShell13 />
+  <ApplicationShell13Demo className="w-full" />
 </ComponentPreview>
 
 ## Introduction
@@ -44,7 +44,7 @@ You need the Button, Input, Avatar, Dropdown Menu, and Drawer components in your
 ```tsx
 import { ApplicationShell13 } from "@/components/ui/application-shell-13";
 
-<ApplicationShell13 />
+<ApplicationShell13 />;
 ```
 
 Replace the nav groups, org switcher options, user info, and bottom nav items with your own routes and data. Connect the active bottom nav item to your router or state.

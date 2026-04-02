@@ -77,8 +77,9 @@ const SettingsProfile7 = ({
     const isEditing = editingField === field;
 
     return (
-      <div className="group flex items-center justify-between py-2">
-        <div className="min-w-0 flex-1">
+      <div className="group/field relative flex items-center py-2">
+        {/* Reserve space so the value never sits under the edit control; hover/focus applies to this whole block */}
+        <div className="relative min-w-0 flex-1 pr-10">
           <p className="text-xs text-muted-foreground">{label}</p>
           {isEditing ? (
             <div className="mt-1 flex items-center gap-2">
@@ -94,7 +95,7 @@ const SettingsProfile7 = ({
               />
               <Button
                 size="sm"
-                variant="primary"
+                variant="ghost"
                 className="size-8 shrink-0"
                 onClick={() => saveEdit(field)}
               >
@@ -102,7 +103,7 @@ const SettingsProfile7 = ({
               </Button>
               <Button
                 size="sm"
-                variant="primary"
+                variant="ghost"
                 className="size-8 shrink-0"
                 onClick={cancelEdit}
               >
@@ -114,17 +115,25 @@ const SettingsProfile7 = ({
               {value || <span className="text-muted-foreground">Not set</span>}
             </p>
           )}
+          {!isEditing && (
+            <Button
+              type="button"
+              size="sm"
+              variant="ghost"
+              aria-label={`Edit ${label}`}
+              className={cn(
+                "absolute top-1/2 right-0 size-8 -translate-y-1/2 shrink-0 transition-opacity",
+                "opacity-0 pointer-events-none",
+                "group-hover/field:opacity-100 group-hover/field:pointer-events-auto",
+                "group-focus-within/field:opacity-100 group-focus-within/field:pointer-events-auto",
+                "focus-visible:opacity-100 focus-visible:pointer-events-auto",
+              )}
+              onClick={() => startEdit(field, value || "")}
+            >
+              <Pencil className="size-3.5" />
+            </Button>
+          )}
         </div>
-        {!isEditing && (
-          <Button
-            size="sm"
-            variant="primary"
-            className="size-8 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-            onClick={() => startEdit(field, value || "")}
-          >
-            <Pencil className="size-3.5" />
-          </Button>
-        )}
       </div>
     );
   };

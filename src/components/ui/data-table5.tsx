@@ -305,8 +305,13 @@ export const DataTable5 = ({ className }: { className?: string }) => {
   });
 
   return (
-    <section className={cn("py-24", className)}>
-      <div className="container px-4 sm:px-6 lg:px-8">
+    <section
+      className={cn(
+        "w-full min-w-0 max-w-full overflow-x-hidden py-24",
+        className,
+      )}
+    >
+      <div className="container mx-auto min-w-0 max-w-full px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-left">
           <h2 className="text-2xl font-bold tracking-tight">
             Data Table With Sticky Header
@@ -317,8 +322,8 @@ export const DataTable5 = ({ className }: { className?: string }) => {
             displaying large datasets in limited space.
           </p>
         </div>
-        <div className="relative h-[300px] w-full overflow-hidden sm:h-[420px]">
-          <ScrollArea className="h-full w-full">
+        <div className="relative h-[300px] w-full min-w-0 max-w-full overflow-hidden sm:h-[420px]">
+          <ScrollArea className="h-full w-full min-w-0">
             <table className="w-full min-w-[800px] table-fixed caption-bottom border-separate border-spacing-0 text-sm [&_tr:not(:last-child)_td]:border-b">
               <TableHeader className="sticky top-0 z-20 bg-background">
                 {table.getHeaderGroups().map((headerGroup) => (

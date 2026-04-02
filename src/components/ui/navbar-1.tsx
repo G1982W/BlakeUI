@@ -254,7 +254,7 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
         href={item.url}
-        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium no-underline transition-colors hover:bg-muted hover:text-accent-foreground"
+        className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium no-underline transition-colors hover:text-accent-foreground"
       >
         {item.title}
       </NavigationMenuLink>
@@ -292,7 +292,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   return (
     <AppLink
-      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
+      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:text-accent-foreground"
       href={item.url}
     >
       <div className="text-foreground">{item.icon}</div>

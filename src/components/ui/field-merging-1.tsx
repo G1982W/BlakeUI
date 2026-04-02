@@ -1,20 +1,27 @@
 "use client";
 
-import * as React from "react";
-import { Merge } from "lucide-react";
+import type { ColumnDef, RowSelectionState } from "@tanstack/react-table";
+import {
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { Text } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Table,
   TableBody,
@@ -23,266 +30,347 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
-const users = [
+interface User {
+  firstName?: string;
+  lastName?: string;
+  image?: string;
+  company?: string;
+  jobTitle?: string;
+  email?: string;
+}
+
+const DUMMY_USERS: User[] = [
   {
-    id: "1",
-    name: "Alex Chen",
+    firstName: "Olivia",
+    image:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
     company: "Acme Inc",
-    role: "Admin",
-    email: "alex@example.com",
+    jobTitle: "UX Designer",
+    email: "olivia.brooks@acme.com",
   },
   {
-    id: "2",
-    name: "Alex Chen",
-    company: "Acme Corp",
-    role: "Member",
-    email: "a.chen@acme.com",
+    firstName: "Nathan",
+    lastName: "Park",
+    image:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar2.jpg",
+    jobTitle: "Backend Engineer",
   },
   {
-    id: "3",
-    name: "Sam Wilson",
-    company: "Beta Co",
-    role: "Editor",
-    email: "sam@example.com",
+    firstName: "Maya",
+    lastName: "Torres",
+    jobTitle: "Creative Director",
+    email: "maya@pixelworks.io",
+  },
+  {
+    firstName: "Liam",
+    lastName: "Chen",
+    image:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar4.jpg",
+    company: "Streamline",
+  },
+  {
+    lastName: "Patel",
+    image:
+      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar5.jpg",
+    company: "CloudNest",
+    jobTitle: "Product Manager",
+  },
+  {
+    firstName: "Emma",
+    company: "Vendora",
+    jobTitle: "Frontend Developer",
+    email: "emma.wright@vendora.com",
   },
 ];
 
-const fieldKeys = ["name", "company", "role", "email"] as const;
+interface LetterAvatarProps {
+  children: React.ReactNode;
+}
 
-type User = (typeof users)[number];
-
-export function FieldMerging1() {
-  const [usersList, setUsersList] = React.useState<User[]>(users);
-  const [selected, setSelected] = React.useState<Set<string>>(new Set());
-  const [mergeOpen, setMergeOpen] = React.useState(false);
-  const [mergedField, setMergedField] = React.useState<Record<string, string>>(
-    {},
+const LetterAvatar = ({ children }: LetterAvatarProps) => {
+  return (
+    <span className="flex size-6 items-center justify-center rounded-md border bg-surface text-xs">
+      {children}
+    </span>
   );
+};
 
-  const selectedUsers = usersList.filter((u) => selected.has(u.id));
-  const canMerge = selectedUsers.length >= 2;
+const columns: ColumnDef<User>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+  },
+  {
+    header: "Name",
+    accessorKey: "firstName",
+    cell: ({ row }) => {
+      return (
+        <div className="flex items-center gap-2">
+          {row.original.image ? (
+            <img
+              src={row.original.image}
+              alt={row.original.firstName}
+              className="size-6 rounded-md"
+            />
+          ) : (
+            <LetterAvatar>
+              {row.original.firstName?.charAt(0).toUpperCase()}
+            </LetterAvatar>
+          )}
 
-  const setRowSelected = (id: string, checked: boolean) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (checked) next.add(id);
-      else next.delete(id);
-      return next;
-    });
-  };
-
-  const getMergedValue = (key: string) => {
-    const chosen = mergedField[key];
-    if (chosen) {
-      const user = selectedUsers.find((u) => u.id === chosen);
-      return user ? (user as Record<string, string>)[key] : "";
-    }
-    return selectedUsers[0]
-      ? (selectedUsers[0] as Record<string, string>)[key]
-      : "";
-  };
-
-  React.useEffect(() => {
-    if (!mergeOpen) return;
-    const initialSelected = usersList.filter((u) => selected.has(u.id));
-    if (initialSelected.length >= 2) {
-      setMergedField(
-        Object.fromEntries(fieldKeys.map((k) => [k, initialSelected[0].id])),
+          <span className="font-medium">
+            {row.original.firstName} {row.original.lastName}
+          </span>
+        </div>
       );
-    }
-  }, [mergeOpen, selected, usersList]);
+    },
+  },
+  {
+    header: "Company",
+    cell: ({ row }) =>
+      row.original.company && (
+        <div className="flex items-center gap-2">
+          <LetterAvatar>
+            {row.original.company?.charAt(0).toUpperCase()}
+          </LetterAvatar>
+          <p>{row.original.company}</p>
+        </div>
+      ),
+  },
+  {
+    header: "Role",
+    accessorKey: "jobTitle",
+  },
+  {
+    header: "Email",
+    cell: ({ row }) =>
+      row.original.email && (
+        <Badge variant="outline">{row.original.email}</Badge>
+      ),
+  },
+];
 
-  const handleMergeRecords = () => {
-    if (selectedUsers.length < 2) return;
-    const mergedUser: User = {
-      id: `merged-${Array.from(selected).sort().join("-")}`,
-      name: getMergedValue("name"),
-      company: getMergedValue("company"),
-      role: getMergedValue("role"),
-      email: getMergedValue("email"),
-    };
-    setUsersList((prev) =>
-      prev.filter((u) => !selected.has(u.id)).concat(mergedUser),
-    );
-    setSelected(new Set());
-    setMergeOpen(false);
-  };
+interface UserCardProps {
+  user: User;
+  variant?: "merged" | "selected";
+  onSelect?: (key: string, value: string) => void;
+  mergedUser?: User | null;
+}
+
+const UserCard = ({
+  user,
+  variant = "selected",
+  onSelect,
+  mergedUser,
+}: UserCardProps) => {
+  const mergeableKeys = [
+    "firstName",
+    "lastName",
+    "jobTitle",
+    "email",
+    "company",
+  ];
 
   return (
-    <div className="rounded-lg border border-border bg-background p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Users</h2>
-        <Dialog open={mergeOpen} onOpenChange={setMergeOpen}>
-          <DialogTrigger asChild>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="gap-2"
-              disabled={!canMerge}
-            >
-              <Merge className="size-4" />
-              Merge selected
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-4xl max-h-[90vh] w-[calc(100vw-2rem)] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>Merge duplicate records</DialogTitle>
-            </DialogHeader>
-            <div className="grid min-w-0 gap-6 sm:grid-cols-2">
-              <div className="min-w-0 space-y-4 rounded-lg bg-muted/50 p-4">
-                <p className="text-xs font-medium text-muted-foreground">
-                  Source records
-                </p>
-                {selectedUsers.slice(0, 2).map((u) => (
-                  <div
-                    key={u.id}
-                    className="flex min-w-0 items-center gap-3 rounded-md border border-border bg-background p-3"
-                  >
-                    <Avatar className="size-10 shrink-0">
-                      <AvatarFallback>
-                        {u.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="min-w-0 flex-1 overflow-hidden text-sm">
-                      <p className="truncate font-medium">{u.name}</p>
-                      <p className="truncate text-muted-foreground">
-                        {u.company} · {u.email}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="min-w-0 space-y-4">
-                <p className="text-xs font-medium text-muted-foreground">
-                  Choose value per field
-                </p>
-                <div className="grid min-w-0 gap-3">
-                  {fieldKeys.map((key) => (
-                    <div
-                      key={key}
-                      className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
-                    >
-                      <label className="shrink-0 text-sm font-medium capitalize">
-                        {key}
-                      </label>
-                      <RadioGroup
-                        value={mergedField[key] ?? ""}
-                        onValueChange={(id) =>
-                          setMergedField((prev) => ({ ...prev, [key]: id }))
-                        }
-                        className="flex min-w-0 flex-wrap gap-4"
-                      >
-                        {selectedUsers.slice(0, 2).map((u) => (
-                          <label
-                            key={u.id}
-                            className="flex min-w-0 max-w-full cursor-pointer items-center gap-2 text-sm"
-                          >
-                            <RadioGroupItem value={u.id} className="shrink-0" />
-                            <span className="truncate">
-                              {(u as Record<string, string>)[key]}
-                            </span>
-                          </label>
-                        ))}
-                      </RadioGroup>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="min-w-0 rounded-lg border border-border bg-muted/30 p-4">
-              <p className="mb-2 text-xs font-medium text-muted-foreground">
-                Merged preview
-              </p>
-              <div className="flex min-w-0 items-center gap-3">
-                <Avatar className="size-10 shrink-0">
-                  <AvatarFallback>
-                    {getMergedValue("name")
-                      .split(" ")
-                      .map((n: string) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="min-w-0 flex-1 overflow-hidden text-sm">
-                  <p className="truncate font-medium">
-                    {getMergedValue("name")}
-                  </p>
-                  <p className="truncate text-muted-foreground">
-                    {getMergedValue("company")} · {getMergedValue("email")}
-                  </p>
-                  <Badge variant="secondary" className="mt-1">
-                    {getMergedValue("role")}
-                  </Badge>
-                </div>
-              </div>
-            </div>
-            <DialogFooter>
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => setMergeOpen(false)}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={handleMergeRecords}
-              >
-                Merge records
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+    <div className="w-full border bg-surface">
+      <div className="flex items-center gap-2 border-b p-3">
+        <div
+          className={cn(
+            "flex size-10 items-center justify-center overflow-hidden rounded-full bg-muted",
+            variant === "merged" ? "text-base" : "text-xs",
+          )}
+        >
+          {user.image ? (
+            <img src={user.image} alt={user.firstName} className="size-full" />
+          ) : (
+            <span>{user.firstName?.charAt(0).toUpperCase()}</span>
+          )}
+        </div>
+        <p className="text-sm font-medium">
+          {user.firstName} {user.lastName}
+        </p>
       </div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-10" />
-            <TableHead>Name</TableHead>
-            <TableHead>Company</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Email</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {usersList.map((user) => (
-            <TableRow key={user.id}>
-              <TableCell>
-                <Checkbox
-                  checked={selected.has(user.id)}
-                  onCheckedChange={(checked) =>
-                    setRowSelected(user.id, checked === true)
-                  }
+      <div className="space-y-3 p-3">
+        {mergeableKeys.map((key) => {
+          const value = user[key as keyof User];
+
+          if (!value) return null;
+
+          const id = `${key}-${value}`;
+
+          if (variant === "selected") {
+            return (
+              <RadioGroup key={id} className="flex items-center gap-2">
+                <RadioGroupItem
+                  checked={mergedUser?.[key as keyof User] === value}
+                  onClick={() => onSelect?.(key, value)}
+                  value={id}
+                  id={id}
                 />
-              </TableCell>
-              <TableCell>
-                <div className="flex items-center gap-2">
-                  <Avatar className="size-8">
-                    <AvatarFallback>
-                      {user.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  {user.name}
-                </div>
-              </TableCell>
-              <TableCell>{user.company}</TableCell>
-              <TableCell>
-                <Badge variant="secondary">{user.role}</Badge>
-              </TableCell>
-              <TableCell className="text-muted-foreground">
-                {user.email}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+                <Label htmlFor={id} className="font-normal">
+                  {value}
+                </Label>
+              </RadioGroup>
+            );
+          } else {
+            return (
+              <div key={id} className="flex items-center gap-2 text-sm">
+                <Text className="size-4" />
+                {value}
+              </div>
+            );
+          }
+        })}
+      </div>
     </div>
   );
+};
+
+interface FieldMerging1Props {
+  className?: string;
 }
+
+const FieldMerging1 = ({ className }: FieldMerging1Props) => {
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+  const [mergedUser, setMergedUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (Object.entries(rowSelection).length === 0) {
+      setMergedUser(null);
+    } else {
+      setMergedUser(DUMMY_USERS[Number(Object.keys(rowSelection)[0])]);
+    }
+  }, [rowSelection]);
+
+  const table = useReactTable({
+    data: DUMMY_USERS,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    onRowSelectionChange: setRowSelection,
+    state: {
+      rowSelection,
+    },
+  });
+
+  return (
+    <section className="py-32">
+      <div className={cn("container space-y-6", className)}>
+        <Dialog>
+          <DialogTrigger
+            asChild
+            disabled={Object.entries(rowSelection).length < 2}
+          >
+            <Button>Merge users</Button>
+          </DialogTrigger>
+          <DialogContent
+            showCloseButton={false}
+            className="max-h-[95dvh] overflow-y-auto md:max-w-3xl! lg:max-w-5xl!"
+          >
+            <DialogHeader>
+              <DialogTitle>
+                Combine {Object.entries(rowSelection).length} selected records
+              </DialogTitle>
+              <DialogDescription className="sr-only">
+                Select fields from each record to create a unified entry
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="flex w-full flex-col-reverse items-start lg:flex-row">
+              <div className="grid w-full gap-3 bg-muted p-4 lg:flex-2/3 lg:grid-cols-2">
+                {Object.keys(rowSelection).map((key) => {
+                  const user = DUMMY_USERS[Number(key)];
+
+                  return (
+                    <UserCard
+                      key={`user-${key}`}
+                      user={user}
+                      onSelect={(key, value) =>
+                        setMergedUser((prev) => ({ ...prev, [key]: value }))
+                      }
+                      mergedUser={mergedUser}
+                    />
+                  );
+                })}
+              </div>
+              {mergedUser && (
+                <div className="w-full space-y-1 border p-6 lg:flex-1/3">
+                  <UserCard user={mergedUser} variant="merged" />
+                  <Button className="w-full" variant="secondary">
+                    Merge
+                  </Button>
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No records found.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </section>
+  );
+};
+
+export { FieldMerging1 };

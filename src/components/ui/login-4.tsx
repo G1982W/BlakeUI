@@ -34,7 +34,7 @@ const Login4 = ({
   googleText = "Google",
   githubText = "GitHub",
   signupText = "Need an account?",
-  signupUrl = "https://shadcnblocks.com",
+  signupUrl = "#",
   className,
 }: Login4Props) => {
   return (
@@ -72,7 +72,7 @@ const Login4 = ({
                 required
               />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" variant="secondary" className="w-full">
               {buttonText}
             </Button>
             <div className="flex w-full flex-col gap-2">

@@ -250,11 +250,11 @@ const WorkspaceSwitcher = ({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-white">
                 <img
                   src={selected.logo}
                   alt={selected.name}
-                  className="size-6 text-primary-foreground invert dark:invert-0"
+                  className="size-6"
                 />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -280,11 +280,11 @@ const WorkspaceSwitcher = ({
                 onClick={() => setSelected(workspace)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-sm bg-primary">
+                <div className="flex size-6 items-center justify-center rounded-sm bg-white">
                   <img
                     src={workspace.logo}
                     alt={workspace.name}
-                    className="size-4 text-primary-foreground invert dark:invert-0"
+                    className="size-4"
                   />
                 </div>
                 <span>{workspace.name}</span>

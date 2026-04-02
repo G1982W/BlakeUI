@@ -64,7 +64,13 @@ const ChartContainer = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     config: ChartConfig
-    children: React.ReactElement
+    /**
+     * Recharts `ResponsiveContainer` forwards width/height to each valid child.
+     * Use a single chart root for best results; multiple siblings (e.g. chart + overlay)
+     * are supported, but overlays should not block pointer events (`pointer-events-none`)
+     * if tooltips need the chart surface.
+     */
+    children: React.ReactNode
   }
 >(({ id, className, children, config, ...props }, ref) => {
   const uniqueId = React.useId()
@@ -80,7 +86,8 @@ const ChartContainer = React.forwardRef<
       >
         <ChartStyle id={chartId} config={config} />
         <RechartsPrimitive.ResponsiveContainer width="100%" height="100%">
-          {children}
+          {/* Recharts types only `ReactElement`; runtime supports multiple roots via Children.map */}
+          {children as React.ReactElement}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
     </ChartContext.Provider>

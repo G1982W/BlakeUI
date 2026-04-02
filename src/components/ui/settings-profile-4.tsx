@@ -100,8 +100,8 @@ const SettingsProfile4 = ({
       : defaultValues.avatar;
 
   return (
-    <section className={cn("py-16", className)}>
-      <div className="container">
+    <section className={cn("", className)}>
+      <div className="container mx-auto">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -117,7 +117,7 @@ const SettingsProfile4 = ({
 
         <div className="flex flex-col gap-8 lg:flex-row">
           {/* Sidebar Navigation */}
-          <aside className="lg:w-56 lg:shrink-0">
+          <aside className="lg:w-56 lg:shrink-0 border-0!">
             <nav className="space-y-1">
               {sections.map((section) => {
                 const Icon = section.icon;
@@ -182,7 +182,7 @@ const SettingsProfile4 = ({
                               <p className="text-sm font-medium">
                                 <FileUploadTrigger asChild>
                                   <Button
-                                    variant="primary"
+                                    variant="ghost"
                                     className="h-auto p-0"
                                   >
                                     Click to upload
@@ -214,7 +214,7 @@ const SettingsProfile4 = ({
                                   </div>
                                   <FileUploadItemDelete asChild>
                                     <Button
-                                      variant="primary"
+                                      variant="ghost"
                                       size="sm"
                                       className="size-8 shrink-0"
                                     >
@@ -448,7 +448,7 @@ const SettingsProfile4 = ({
 
               {/* Footer with actions */}
               <div className="flex items-center justify-end gap-3 border-t px-6 py-4">
-                <Button variant="primary">Cancel</Button>
+                <Button variant="ghost">Cancel</Button>
                 <Button>Save changes</Button>
               </div>
             </div>

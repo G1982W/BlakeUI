@@ -46,6 +46,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { BlakeLogoIcon } from "../blake-logo-icon";
 
 // Base nav item - used by simple sidebars
 type NavItem = {
@@ -212,8 +213,8 @@ const NavDropdown = ({
 }) => {
   return (
     <Button
-      variant="secondary"
-      className={cn("gap-1", isActive && "bg-brand/95")}
+      variant="primary"
+      className={cn("gap-1", isActive && "bg-brand/10")}
       onClick={onSelect}
     >
       {group.title}
@@ -311,11 +312,7 @@ const MobileNav = ({
         <SheetHeader className="px-4 pt-4">
           <SheetTitle className="flex items-center gap-2">
             <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
-              <img
-                src={sidebarData.logo.src}
-                alt={sidebarData.logo.alt}
-                className="size-6 text-primary-foreground invert dark:invert-0"
-              />
+              <BlakeLogoIcon className="size-6 invert dark:invert-0" />
             </div>
             {sidebarData.logo.title}
           </SheetTitle>
@@ -473,11 +470,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
 
             {/* Logo */}
             <a href="#" className="flex shrink-0 items-center gap-2">
-              <img
-                src={sidebarData.logo.src}
-                alt={sidebarData.logo.alt}
-                className="size-8 rounded-sm"
-              />
+              <BlakeLogoIcon className="size-8" />
               <span className="hidden font-semibold sm:inline">
                 {sidebarData.logo.title}
               </span>

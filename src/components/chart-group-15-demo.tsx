@@ -66,7 +66,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-interface ChartGroup15Props {
+/** Docs preview: container-query breakpoints track embed width, not the viewport. */
+interface ChartGroup15DemoProps {
   className?: string;
 }
 
@@ -148,7 +149,7 @@ const hourlyConfig = {
   conversions: { label: "Conversions", color: "var(--chart-3)" },
 } satisfies ChartConfig;
 
-const ChartGroup15 = ({ className }: ChartGroup15Props) => {
+const ChartGroup15Demo = ({ className }: ChartGroup15DemoProps) => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: subDays(new Date(), 29),
     to: new Date(),
@@ -215,10 +216,10 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
   };
 
   return (
-    <section className={cn("", className)}>
-      <div className="container mx-auto space-y-6">
+    <section className={cn("@container w-full", className)}>
+      <div className="mx-auto w-full space-y-6">
         {/* Header */}
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 @5xl:flex-row @5xl:items-center @5xl:justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
               Business Analytics
@@ -292,7 +293,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
         </div>
 
         {/* Stats Row */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 @sm:grid-cols-2 @5xl:grid-cols-5">
           {[
             {
               label: "Revenue",
@@ -323,11 +324,11 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
             <Card key={index}>
               <CardContent className="pt-6">
                 <p className="text-sm text-muted-foreground">{stat.label}</p>
-                <div className="flex items-baseline justify-between">
+                <div className="flex items-baseline justify-between gap-2">
                   <p className="text-2xl font-bold">{stat.value}</p>
                   <span
                     className={cn(
-                      "flex items-center text-sm",
+                      "flex shrink-0 items-center text-sm",
                       stat.change >= 0 ? "text-green-600" : "text-red-600",
                     )}
                   >
@@ -345,10 +346,10 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
           ))}
         </div>
 
-        {/* Main Charts Bento */}
-        <div className="grid gap-4 lg:grid-cols-3">
+        {/* Main Charts Bento: stack until @5xl (64rem container); then 3-col bento */}
+        <div className="grid min-w-0 gap-4 @5xl:grid-cols-3">
           {/* Revenue/Profit/Orders Chart - Large */}
-          <Card className="lg:col-span-2">
+          <Card className="min-w-0 @5xl:col-span-2">
             <Tabs
               value={chartView}
               onValueChange={(v) => setChartView(v as typeof chartView)}
@@ -386,7 +387,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
                     >
                       <defs>
                         <linearGradient
-                          id="revGrad15"
+                          id="revGrad15Demo"
                           x1="0"
                           y1="0"
                           x2="0"
@@ -427,7 +428,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
                         dataKey="revenue"
                         stroke="var(--color-revenue)"
                         strokeWidth={2}
-                        fill="url(#revGrad15)"
+                        fill="url(#revGrad15Demo)"
                       />
                       <Line
                         type="monotone"
@@ -514,7 +515,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
           </Card>
 
           {/* Device Breakdown */}
-          <Card>
+          <Card className="min-w-0">
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Device Breakdown</CardTitle>
               <CardDescription>Traffic by device type</CardDescription>
@@ -563,7 +564,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
           </Card>
 
           {/* Customer Types */}
-          <Card>
+          <Card className="min-w-0">
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Customer Types</CardTitle>
               <CardDescription>New vs returning customers</CardDescription>
@@ -607,7 +608,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
           </Card>
 
           {/* Hourly Traffic */}
-          <Card className="lg:col-span-2">
+          <Card className="min-w-0 @5xl:col-span-2">
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Hourly Traffic</CardTitle>
               <CardDescription>
@@ -670,4 +671,4 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
   );
 };
 
-export { ChartGroup15 };
+export { ChartGroup15Demo };

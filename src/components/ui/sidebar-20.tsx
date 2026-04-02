@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Book,
   ChevronRight,
   ExternalLink,
   FileText,
@@ -43,6 +42,13 @@ import {
 import { cn } from "@/lib/utils";
 
 // Documentation structure
+const docsBrand = {
+  src: "/blake-logo-icon.svg",
+  alt: "BlakeUI",
+  title: "Documentation",
+  version: "v2.0.0",
+}
+
 const docsNav = [
   {
     title: "Getting Started",
@@ -188,13 +194,17 @@ const SidebarLeft = ({ preview, className, ...props }: SidebarLeftProps) => {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
-                  <Book className="size-5 text-primary-foreground" />
+                <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
+                  <img
+                    src={docsBrand.src}
+                    alt={docsBrand.alt}
+                    className="size-6"
+                  />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Documentation</span>
+                  <span className="truncate font-semibold">{docsBrand.title}</span>
                   <span className="truncate text-xs text-muted-foreground">
-                    v2.0.0
+                    {docsBrand.version}
                   </span>
                 </div>
               </a>

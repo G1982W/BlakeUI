@@ -254,7 +254,7 @@ export const columns: ColumnDef<z.infer<typeof schema>>[] = [
       const inStock: boolean = row.getValue("stock");
       return (
         <div className="justify-left flex">
-          <span className="inline-flex min-w-[3rem] justify-center rounded-full border px-2 py-1 text-xs font-semibold tracking-wide whitespace-nowrap uppercase">
+          <span className="inline-flex min-w-12 justify-center rounded-full border px-2 py-1 text-xs font-semibold tracking-wide whitespace-nowrap uppercase">
             {inStock ? "Yes" : "No"}
           </span>
         </div>
@@ -318,9 +318,14 @@ export const DataTable4 = ({ className }: { className?: string }) => {
   });
 
   return (
-    <section className={cn("py-24", className)}>
-      <div className="container px-4 sm:px-6 lg:px-8">
-        <div className="w-full overflow-hidden">
+    <section
+      className={cn(
+        "w-full min-w-0 max-w-full overflow-x-hidden py-24",
+        className,
+      )}
+    >
+      <div className="container mx-auto min-w-0 max-w-full px-4 sm:px-6 lg:px-8">
+        <div className="w-full min-w-0 max-w-full overflow-hidden">
           <div className="mb-8 text-left">
             <h2 className="text-2xl font-bold tracking-tight">
               Minimal Responsive Table
@@ -332,8 +337,8 @@ export const DataTable4 = ({ className }: { className?: string }) => {
             </p>
           </div>
           {/* Wrap in ScrollArea for horizontal scroll */}
-          <ScrollArea className="w-full whitespace-nowrap">
-            <div className="min-w-[800px]">
+          <ScrollArea className="w-full min-w-0">
+            <div className="min-w-[800px] max-w-full">
               <Table className="table-fixed border-separate border-spacing-0 [&_tr:not(:last-child)_td]:border-b">
                 <TableHeader>
                   {table.getHeaderGroups().map((headerGroup) => (
