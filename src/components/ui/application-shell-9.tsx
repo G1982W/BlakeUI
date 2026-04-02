@@ -222,7 +222,7 @@ function ExplorerSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="w-full shrink-0 border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
     >
       <SidebarContent>
         <SidebarGroup>
@@ -269,7 +269,7 @@ function SearchSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="w-full shrink-0 border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
     >
       <SidebarContent>
         <SidebarGroup>
@@ -294,7 +294,7 @@ function GitSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="w-full shrink-0 border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
     >
       <SidebarContent>
         <SidebarGroup>
@@ -363,7 +363,8 @@ export function ApplicationShell9({
   const content = (
     <SidebarProvider
       className={cn(
-        preview ? "h-full w-full" : "h-svh overflow-auto w-full",
+        "flex min-h-0 w-full flex-col",
+        preview ? "h-full flex-1" : "h-svh overflow-auto",
         className,
       )}
     >
@@ -599,12 +600,12 @@ export function ApplicationShell9({
         </Drawer>
       </div>
 
-      <div className="hidden md:flex min-w-max h-full flex-1">
+      <div className="hidden min-h-0 h-full w-full min-w-0 flex-1 flex-row items-stretch md:flex">
         <AppSidebar
           activeModule={activeModule}
           onModuleChange={handleModuleChange}
         />
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <header className="flex h-12 shrink-0 items-center justify-between border-b bg-white px-4">
             <nav className="flex items-center gap-1 text-sm">
               <span className="font-medium">BlakeUI</span>
@@ -633,14 +634,14 @@ export function ApplicationShell9({
             </div>
           </header>
 
-          <div className="flex min-h-0 flex-1 overflow-hidden">
+          <div className="flex min-h-0 flex-1 items-stretch overflow-hidden">
             {renderSidebar()}
 
-            <SidebarInset className="min-h-0 flex-col overflow-hidden">
-              <div className="flex flex-1 overflow-hidden">
+            <SidebarInset className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+              <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
                 <div
                   className={cn(
-                    "flex flex-1 items-center justify-center bg-white",
+                    "flex min-h-0 min-w-0 flex-1 items-center justify-center bg-white",
                   )}
                 >
                   {!isChatOpen ? (
@@ -667,7 +668,7 @@ export function ApplicationShell9({
                 </div>
 
                 {isChatOpen && (
-                  <div className="flex w-[400px] shrink-0 flex-col border-l">
+                  <div className="flex min-h-0 w-[400px] shrink-0 flex-col border-l">
                     <div className="flex h-10 items-center justify-between border-b px-4">
                       <div className="flex items-center gap-2">
                         <MessageSquare className="size-4" />
@@ -714,7 +715,7 @@ export function ApplicationShell9({
   if (preview) {
     return (
       <div
-        className="flex h-full min-h-[600px] w-full max-w-full overflow-auto rounded-lg border border-border bg-white"
+        className="flex h-full min-h-[600px] w-full max-w-full flex-col overflow-hidden rounded-lg border border-border bg-white"
         style={{ transform: "translateZ(0)" }}
       >
         {content}
