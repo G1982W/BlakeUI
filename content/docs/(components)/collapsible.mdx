@@ -21,7 +21,7 @@ import { ChevronDown } from "lucide-react";
 <ComponentPreview name="collapsible">
   <Collapsible className="w-full max-w-md">
     <CollapsibleTrigger asChild>
-      <Button variant="primary" className="group w-full justify-between">
+      <Button variant="ghost" className="group w-full justify-between">
         Can I use this in my project?
         <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
       </Button>
@@ -89,7 +89,7 @@ export function Example() {
 <Preview>
   <Collapsible className="w-full max-w-md">
     <CollapsibleTrigger asChild>
-      <Button variant="primary" className="group w-full justify-between">
+      <Button variant="ghost" className="group w-full justify-between">
         Toggle details
         <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
       </Button>
@@ -107,19 +107,23 @@ export function Example() {
 
 <Preview>
   <div className="w-full max-w-md rounded-lg border bg-card p-4">
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">Order #4189</span>
-      <Collapsible>
-        <CollapsibleTrigger asChild>
-          <Button variant="primary" size="sm">Toggle details</Button>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <div className="pt-2 text-sm text-muted-foreground space-y-1">
-            <p><strong>Status</strong> Shipped</p>
-          </div>
-        </CollapsibleContent>
-      </Collapsible>
-    </div>
+    <Collapsible className="w-full">
+      <CollapsibleTrigger asChild>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-sm font-medium">Order #4189</span>
+          <Button variant="ghost" size="sm">
+            Toggle details
+          </Button>
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="text-sm text-muted-foreground space-y-1 py-6">
+          <p>
+            <strong>Status</strong> Shipped
+          </p>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   </div>
 </Preview>
 
