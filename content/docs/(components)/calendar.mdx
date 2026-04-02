@@ -26,7 +26,7 @@ import registry from "@/registry.json";
 ## Installation
 
 <Installation
-  dependencies={["react-day-picker"]}
+  dependencies={["react-day-picker", "date-fns"]}
   code={registry.calendar?.source ?? ""}
   fileName="/components/ui/calendar.tsx"
 />
@@ -234,7 +234,7 @@ import { arSA } from "react-day-picker/locale";
   locale={arSA}
   dir="rtl"
   className="rounded-lg border"
-/>
+/>;
 ```
 
 ## API Reference
