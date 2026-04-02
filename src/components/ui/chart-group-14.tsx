@@ -119,25 +119,25 @@ const topUsers = [
     name: "Sarah Chen",
     email: "sarah@example.com",
     sessions: 47,
-    avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/ui/avatar-1.jpg",
+    avatar: "https://i.pravatar.cc/150?img=11",
   },
   {
     name: "Mike Johnson",
     email: "mike@example.com",
     sessions: 42,
-    avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/ui/avatar-2.jpg",
+    avatar: "https://i.pravatar.cc/150?img=12",
   },
   {
     name: "Emma Wilson",
     email: "emma@example.com",
     sessions: 38,
-    avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/ui/avatar-3.jpg",
+    avatar: "https://i.pravatar.cc/150?img=13",
   },
   {
     name: "James Brown",
     email: "james@example.com",
     sessions: 35,
-    avatar: "https://deifkwefumgah.cloudfront.net/shadcnblocks/ui/avatar-4.jpg",
+    avatar: "https://i.pravatar.cc/150?img=14",
   },
 ];
 

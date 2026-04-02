@@ -1,5 +1,4 @@
 {
-  "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": true,
   "tsx": true,
@@ -19,12 +18,6 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@shadcnblocks": {
-      "url": "https://shadcnblocks.com/r/{name}",
-      "headers": {
-        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
-      }
-    },
     "@diceui": "https://diceui.com/r/{name}.json"
   }
 }

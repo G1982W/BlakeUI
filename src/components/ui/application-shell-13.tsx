@@ -59,19 +59,18 @@ type NavGroup = {
 
 const data = {
   brand: {
-    name: "BlakeUI",
+    name: "Blake UI",
     logo: "/blake-logo-icon.svg",
-    alt: "BlakeUI",
+    alt: "Blake UI",
   },
   user: {
     name: "Joh Doe",
     email: "joh@blakeui.com",
-    avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp",
+    avatar: "https://i.pravatar.cc/150?img=15",
   },
   organization: {
     name: "Acme Inc",
-    logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vercel-icon.svg",
+    logo: "/blake-logo-icon.svg",
   },
 };
 
@@ -145,13 +144,13 @@ function OrganizationSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="gap-2 px-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded bg-primary">
+          <span className="flex size-6 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-background p-0.5">
             <img
               src={data.organization.logo}
-              alt={data.organization.name}
+              alt=""
               width={16}
               height={16}
-              className="size-4 invert dark:invert-0"
+              className="size-full object-contain"
             />
           </span>
           <span className="truncate text-sm font-medium text-foreground">
@@ -165,13 +164,13 @@ function OrganizationSwitcher() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <div className="flex items-center gap-2">
-            <span className="flex size-6 items-center justify-center rounded bg-primary">
+            <span className="flex size-6 items-center justify-center overflow-hidden rounded-md border border-border bg-background p-0.5">
               <img
                 src={data.organization.logo}
-                alt={data.organization.name}
+                alt=""
                 width={16}
                 height={16}
-                className="size-4 invert dark:invert-0"
+                className="size-full object-contain"
               />
             </span>
             <span>{data.organization.name}</span>
@@ -239,13 +238,13 @@ function MobileNav() {
       <SheetContent side="left" className="w-72 p-0">
         <SheetHeader className="px-4 pt-4">
           <SheetTitle className="flex items-center gap-2">
-            <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
+            <div className="flex aspect-square size-8 items-center justify-center overflow-hidden rounded-md">
               <img
                 src={data.brand.logo}
                 alt={data.brand.alt}
                 width={20}
                 height={20}
-                className="size-5 invert dark:invert-0"
+                className="size-full max-h-8 max-w-8 object-contain"
               />
             </div>
             {data.brand.name}
@@ -364,13 +363,13 @@ export function ApplicationShell13({ className }: ApplicationShell13Props) {
           <div className="flex items-center gap-3">
             <MobileNav />
             <a href="#" className="flex items-center gap-2">
-              <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
+              <div className="flex aspect-square size-8 items-center justify-center overflow-hidden rounded-md">
                 <img
                   src={data.brand.logo}
                   alt={data.brand.alt}
                   width={20}
                   height={20}
-                  className="size-5 text-primary-foreground invert dark:invert-0"
+                  className="size-full max-h-8 max-w-8 object-contain"
                 />
               </div>
               <span className="font-semibold">{data.brand.name}</span>

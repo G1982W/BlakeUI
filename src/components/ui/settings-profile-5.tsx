@@ -45,7 +45,7 @@ const SettingsProfile5 = ({
     username: "jordanchen",
     email: "jordan.chen@email.com",
     avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
+      "https://i.pravatar.cc/150?img=3",
     bio: "Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.",
     role: "Senior Software Engineer",
     location: "Seattle, WA",

@@ -72,7 +72,7 @@ const SettingsMembers3 = ({
       email: "sarah.chen@company.io",
       role: "admin",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar2.jpg",
+        "https://i.pravatar.cc/150?img=2",
       joinedAt: "Jan 2024",
     },
     {
@@ -81,7 +81,7 @@ const SettingsMembers3 = ({
       email: "marcus.j@company.io",
       role: "member",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar5.jpg",
+        "https://i.pravatar.cc/150?img=5",
       joinedAt: "Mar 2024",
     },
     {
@@ -90,7 +90,7 @@ const SettingsMembers3 = ({
       email: "elena.r@company.io",
       role: "member",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar4.jpg",
+        "https://i.pravatar.cc/150?img=4",
       joinedAt: "Apr 2024",
     },
     {
@@ -106,7 +106,7 @@ const SettingsMembers3 = ({
       email: "aisha.p@company.io",
       role: "member",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar6.jpg",
+        "https://i.pravatar.cc/150?img=6",
       joinedAt: "Aug 2024",
     },
     {
@@ -115,7 +115,7 @@ const SettingsMembers3 = ({
       email: "thomas.w@company.io",
       role: "viewer",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar7.jpg",
+        "https://i.pravatar.cc/150?img=7",
       joinedAt: "Oct 2024",
     },
   ],

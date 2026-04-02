@@ -78,7 +78,7 @@ const Login4 = ({
             <div className="flex w-full flex-col gap-2">
               <Button type="submit" className="w-full" variant="primary">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg"
                   className="size-5"
                   alt="Google"
                 />
@@ -86,7 +86,7 @@ const Login4 = ({
               </Button>
               <Button type="submit" className="w-full" variant="primary">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg"
                   className="size-5"
                   alt="Facebook"
                 />
@@ -94,7 +94,7 @@ const Login4 = ({
               </Button>
               <Button type="submit" className="w-full" variant="primary">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/github-icon.svg"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg"
                   className="size-5"
                   alt="GitHub"
                 />

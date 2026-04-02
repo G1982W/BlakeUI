@@ -219,7 +219,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center gap-4">
-              <GithubStars repoUrl="https://github.com/shadcn/ui" />
+              <GithubStars repoUrl="https://github.com/blakeui/BlakeUI" />
               <Button asChild>
                 <AppLink href={PRIMARY_BUTTON.url}>
                   {PRIMARY_BUTTON.label}

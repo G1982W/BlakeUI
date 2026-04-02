@@ -30,7 +30,7 @@ const Login7 = ({ className }: Login7Props) => {
               <div className="grid gap-4">
                 <Button variant="primary" className="w-full">
                   <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                    src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg"
                     className="mr-2 size-4"
                     alt="Google"
                   />

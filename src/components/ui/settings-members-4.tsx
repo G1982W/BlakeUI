@@ -53,7 +53,7 @@ const SettingsMembers4 = ({
       email: "nina.k@startup.co",
       role: "Owner",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+        "https://i.pravatar.cc/150?img=1",
       status: "active",
     },
     {
@@ -62,7 +62,7 @@ const SettingsMembers4 = ({
       email: "james.l@startup.co",
       role: "Admin",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg",
+        "https://i.pravatar.cc/150?img=8",
       status: "active",
     },
     {
@@ -71,7 +71,7 @@ const SettingsMembers4 = ({
       email: "rachel.g@startup.co",
       role: "Developer",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar9.jpg",
+        "https://i.pravatar.cc/150?img=9",
       status: "active",
     },
     {
@@ -87,7 +87,7 @@ const SettingsMembers4 = ({
       email: "lisa.w@startup.co",
       role: "Designer",
       avatar:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar10.jpg",
+        "https://i.pravatar.cc/150?img=10",
       status: "active",
     },
   ],

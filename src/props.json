@@ -5208,7 +5208,7 @@
     {
       "name": "signupText",
       "type": "string",
-      "defaultValue": "New to shadcnblocks?",
+      "defaultValue": "New to Blake UI?",
       "description": "",
       "required": false
     },
@@ -5671,7 +5671,7 @@
     {
       "name": "users",
       "type": "User[]",
-      "defaultValue": "[\n    {\n      name: \"Sofia Martinez\",\n      email: \"sofia.m@example.com\",\n      accessLevel: \"Owner\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg\",\n    },\n    {\n      name: \"Alex Chen\",\n      email: \"alex.c@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Jordan Blake\",\n      email: \"jordan.b@example.com\",\n      accessLevel: \"Viewer\",\n      image:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    },\n    {\n      name: \"Morgan Reid\",\n      email: \"morgan.r@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
+      "defaultValue": "[\n    {\n      name: \"Sofia Martinez\",\n      email: \"sofia.m@example.com\",\n      accessLevel: \"Owner\",\n      image:\n        \"https://i.pravatar.cc/150?img=1\",\n    },\n    {\n      name: \"Alex Chen\",\n      email: \"alex.c@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Jordan Blake\",\n      email: \"jordan.b@example.com\",\n      accessLevel: \"Viewer\",\n      image:\n        \"https://i.pravatar.cc/150?img=3\",\n    },\n    {\n      name: \"Morgan Reid\",\n      email: \"morgan.r@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5701,7 +5701,7 @@
     {
       "name": "members",
       "type": "Member[]",
-      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Sarah Chen\",\n      email: \"sarah.chen@company.io\",\n      role: \"admin\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar2.jpg\",\n      joinedAt: \"Jan 2024\",\n    },\n    {\n      id: \"2\",\n      name: \"Marcus Johnson\",\n      email: \"marcus.j@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar5.jpg\",\n      joinedAt: \"Mar 2024\",\n    },\n    {\n      id: \"3\",\n      name: \"Elena Rodriguez\",\n      email: \"elena.r@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar4.jpg\",\n      joinedAt: \"Apr 2024\",\n    },\n    {\n      id: \"4\",\n      name: \"David Park\",\n      email: \"david.p@company.io\",\n      role: \"viewer\",\n      joinedAt: \"Jun 2024\",\n    },\n    {\n      id: \"5\",\n      name: \"Aisha Patel\",\n      email: \"aisha.p@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar6.jpg\",\n      joinedAt: \"Aug 2024\",\n    },\n    {\n      id: \"6\",\n      name: \"Thomas Wright\",\n      email: \"thomas.w@company.io\",\n      role: \"viewer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar7.jpg\",\n      joinedAt: \"Oct 2024\",\n    },\n  ]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Sarah Chen\",\n      email: \"sarah.chen@company.io\",\n      role: \"admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=2\",\n      joinedAt: \"Jan 2024\",\n    },\n    {\n      id: \"2\",\n      name: \"Marcus Johnson\",\n      email: \"marcus.j@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=5\",\n      joinedAt: \"Mar 2024\",\n    },\n    {\n      id: \"3\",\n      name: \"Elena Rodriguez\",\n      email: \"elena.r@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=4\",\n      joinedAt: \"Apr 2024\",\n    },\n    {\n      id: \"4\",\n      name: \"David Park\",\n      email: \"david.p@company.io\",\n      role: \"viewer\",\n      joinedAt: \"Jun 2024\",\n    },\n    {\n      id: \"5\",\n      name: \"Aisha Patel\",\n      email: \"aisha.p@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=6\",\n      joinedAt: \"Aug 2024\",\n    },\n    {\n      id: \"6\",\n      name: \"Thomas Wright\",\n      email: \"thomas.w@company.io\",\n      role: \"viewer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=7\",\n      joinedAt: \"Oct 2024\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5730,7 +5730,7 @@
     {
       "name": "members",
       "type": "Member[]",
-      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Nina Kowalski\",\n      email: \"nina.k@startup.co\",\n      role: \"Owner\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"2\",\n      name: \"James Liu\",\n      email: \"james.l@startup.co\",\n      role: \"Admin\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"3\",\n      name: \"Rachel Green\",\n      email: \"rachel.g@startup.co\",\n      role: \"Developer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar9.jpg\",\n      status: \"active\",\n    },\n    {\n      id: \"4\",\n      name: \"Omar Hassan\",\n      email: \"omar.h@startup.co\",\n      role: \"Developer\",\n      status: \"pending\",\n    },\n    {\n      id: \"5\",\n      name: \"Lisa Wang\",\n      email: \"lisa.w@startup.co\",\n      role: \"Designer\",\n      avatar:\n        \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar10.jpg\",\n      status: \"active\",\n    },\n  ]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Nina Kowalski\",\n      email: \"nina.k@startup.co\",\n      role: \"Owner\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=1\",\n      status: \"active\",\n    },\n    {\n      id: \"2\",\n      name: \"James Liu\",\n      email: \"james.l@startup.co\",\n      role: \"Admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=8\",\n      status: \"active\",\n    },\n    {\n      id: \"3\",\n      name: \"Rachel Green\",\n      email: \"rachel.g@startup.co\",\n      role: \"Developer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=9\",\n      status: \"active\",\n    },\n    {\n      id: \"4\",\n      name: \"Omar Hassan\",\n      email: \"omar.h@startup.co\",\n      role: \"Developer\",\n      status: \"pending\",\n    },\n    {\n      id: \"5\",\n      name: \"Lisa Wang\",\n      email: \"lisa.w@startup.co\",\n      role: \"Designer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=10\",\n      status: \"active\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5766,7 +5766,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\n    name: \"Alex Morgan\",\n    username: \"alexmorgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\n    phone: \"+1 (555) 123-4567\",\n    location: \"San Francisco, CA\",\n    website: \"https://alexmorgan.design\",\n    twitter: \"alexmorgan\",\n    linkedin: \"alexmorgan\",\n    github: \"alexmorgan\",\n    timezone: \"America/Los_Angeles\",\n    language: \"en\",\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    username: \"alexmorgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\n    phone: \"+1 (555) 123-4567\",\n    location: \"San Francisco, CA\",\n    website: \"https://alexmorgan.design\",\n    twitter: \"alexmorgan\",\n    linkedin: \"alexmorgan\",\n    github: \"alexmorgan\",\n    timezone: \"America/Los_Angeles\",\n    language: \"en\",\n  }",
       "description": "",
       "required": false
     },
@@ -5781,7 +5781,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\n    name: \"Jordan Chen\",\n    username: \"jordanchen\",\n    email: \"jordan.chen@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg\",\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\n    role: \"Senior Software Engineer\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    twitter: \"jordanchen\",\n    linkedin: \"jordanchen\",\n    github: \"jordanchen\",\n  }",
+      "defaultValue": "{\n    name: \"Jordan Chen\",\n    username: \"jordanchen\",\n    email: \"jordan.chen@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=3\",\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\n    role: \"Senior Software Engineer\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    twitter: \"jordanchen\",\n    linkedin: \"jordanchen\",\n    github: \"jordanchen\",\n  }",
       "description": "",
       "required": false
     },
@@ -5811,7 +5811,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg\",\n    role: \"Product Designer\",\n    location: \"San Francisco, CA\",\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    role: \"Product Designer\",\n    location: \"San Francisco, CA\",\n  }",
       "description": "",
       "required": false
     },

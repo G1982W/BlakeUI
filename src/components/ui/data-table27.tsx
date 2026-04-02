@@ -60,8 +60,7 @@ import { cn } from "@/lib/utils";
 
 const DEFAULT_ROW_HEIGHT = 56;
 const DEFAULT_OVERSCAN = 8;
-const DATA_URL =
-  "https://raw.githubusercontent.com/zerostaticthemes/shadcnblocks-library-data/refs/heads/main/data/orders-ecommerce-1000.json";
+const DATA_URL = "/data/orders-ecommerce-1000.json";
 
 type UseDataTableOptions<TData> = {
   data: Array<TData>;

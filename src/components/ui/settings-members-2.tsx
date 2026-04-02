@@ -63,7 +63,7 @@ const SettingsMembers2 = ({
       email: "sofia.m@example.com",
       accessLevel: "Owner",
       image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+        "https://i.pravatar.cc/150?img=1",
     },
     {
       name: "Alex Chen",
@@ -76,7 +76,7 @@ const SettingsMembers2 = ({
       email: "jordan.b@example.com",
       accessLevel: "Viewer",
       image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar3.jpg",
+        "https://i.pravatar.cc/150?img=3",
     },
     {
       name: "Morgan Reid",

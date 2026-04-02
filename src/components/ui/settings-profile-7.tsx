@@ -28,7 +28,7 @@ const SettingsProfile7 = ({
     name: "Alex Morgan",
     email: "alex.morgan@email.com",
     avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg",
+      "https://i.pravatar.cc/150?img=8",
     role: "Product Designer",
     location: "San Francisco, CA",
   },

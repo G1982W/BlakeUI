@@ -20,10 +20,10 @@ interface ComponentPreviewProps {
 const PREMIUM_OVERLAY_CONTENT = {
   title: "Get Instant Access to the Code",
   subtitle:
-    "Get instant access to this block and all 1350 other blocks, available to copy/paste or install via the shadcn CLI.",
+    "Get instant access to this block and all 1350 other blocks, available to copy/paste or install via the Blake UI workflow.",
   list: [
-    "1193+ Shadcn blocks",
-    "1189+ Shadcn components",
+    "1193+ Blake UI blocks",
+    "1189+ Blake UI components",
     "12 Next.js, Astro templates (Premium)",
     "Figma UI Kit (Premium)",
     "Lifetime updates & unlimited projects",

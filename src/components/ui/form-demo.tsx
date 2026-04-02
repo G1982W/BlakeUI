@@ -107,7 +107,7 @@ export function FormDemo() {
                                         Required, min 2 characters.
                                     </FormDescription>
                                     <FormControl>
-                                        <Input placeholder="shadcn" {...field} />
+                                        <Input placeholder="username" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

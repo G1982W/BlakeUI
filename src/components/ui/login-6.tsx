@@ -47,7 +47,7 @@ const Login6 = ({
           <div className="flex w-full max-w-sm min-w-sm flex-col items-center gap-y-4 rounded-lg border px-6 py-12">
             <Button className="w-full">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg"
                 className="mr-2 size-4"
                 alt="Google"
               />

@@ -34,7 +34,7 @@ const Login9 = ({
   githubText = "Continue with GitHub",
   linkedInText = "Continue with LinkedIn",
   emailText = "Continue with email",
-  signupText = "New to shadcnblocks?",
+  signupText = "New to Blake UI?",
   signupUrl = "#",
   className,
 }: Login9Props) => {

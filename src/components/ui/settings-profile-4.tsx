@@ -72,7 +72,7 @@ const SettingsProfile4 = ({
     username: "alexmorgan",
     email: "alex.morgan@email.com",
     avatar:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar8.jpg",
+      "https://i.pravatar.cc/150?img=8",
     bio: "Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.",
     phone: "+1 (555) 123-4567",
     location: "San Francisco, CA",

@@ -45,7 +45,7 @@ const DUMMY_USERS: User[] = [
   {
     firstName: "Olivia",
     image:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar1.jpg",
+      "https://i.pravatar.cc/150?img=1",
     company: "Acme Inc",
     jobTitle: "UX Designer",
     email: "olivia.brooks@acme.com",
@@ -54,7 +54,7 @@ const DUMMY_USERS: User[] = [
     firstName: "Nathan",
     lastName: "Park",
     image:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar2.jpg",
+      "https://i.pravatar.cc/150?img=2",
     jobTitle: "Backend Engineer",
   },
   {
@@ -67,13 +67,13 @@ const DUMMY_USERS: User[] = [
     firstName: "Liam",
     lastName: "Chen",
     image:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar4.jpg",
+      "https://i.pravatar.cc/150?img=4",
     company: "Streamline",
   },
   {
     lastName: "Patel",
     image:
-      "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar5.jpg",
+      "https://i.pravatar.cc/150?img=5",
     company: "CloudNest",
     jobTitle: "Product Manager",
   },

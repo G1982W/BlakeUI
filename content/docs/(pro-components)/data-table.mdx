@@ -38,7 +38,7 @@ The Data Table is built with the base [Table](/docs/components/table) component 
 - Row actions (e.g. dropdown menu per row)
 - Optional sorting and filtering (you can extend the example below)
 
-This guide follows the [shadcn/ui Data Table](https://ui.shadcn.com/docs/components/base/data-table) approach: define columns and data, then render with `<DataTable />`.
+This guide follows the Blake UI data table approach: define columns and data, then render with `<DataTable />`.
 
 <PremiumOnly>
 
@@ -168,7 +168,7 @@ Add an `id: "actions"` column with a custom `cell` that renders a dropdown (or b
 
 ## Pagination
 
-The included `DataTable` component uses `getPaginationRowModel()` so rows are paginated (default page size 10). It renders Previous/Next buttons; you can extend it with page size selector and page count (see [shadcn Data Table – Reusable Components](https://ui.shadcn.com/docs/components/base/data-table#reusable-components)).
+The included `DataTable` component uses `getPaginationRowModel()` so rows are paginated (default page size 10). It renders Previous/Next buttons; you can extend it with page size selector and page count using the same TanStack patterns described in this page.
 
 ## Extending
 
@@ -178,7 +178,7 @@ You can add:
 - **Filtering** – `getFilteredRowModel()`, `onColumnFiltersChange`, and an input that calls `table.getColumn("email")?.setFilterValue(value)`
 - **Row selection** – checkbox column and `getFilteredSelectedRowModel()`
 
-See the [TanStack Table docs](https://tanstack.com/table/latest) and the [shadcn Data Table guide](https://ui.shadcn.com/docs/components/base/data-table) for full examples.
+See the [TanStack Table docs](https://tanstack.com/table/latest) for full examples.
 
 ## API Reference
 
