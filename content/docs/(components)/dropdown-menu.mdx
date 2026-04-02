@@ -5,43 +5,29 @@ base: base
 component: true
 ---
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  DropdownMenuGroup,
-  DropdownMenuCheckboxItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { Preview } from "@/components/preview";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
+import {
+  DropdownMenuAvatarDemo,
+  DropdownMenuBasicDemo,
+  DropdownMenuCheckboxDemo,
+  DropdownMenuCheckboxIconsDemo,
+  DropdownMenuComplexDemo,
+  DropdownMenuDestructiveDemo,
+  DropdownMenuIconsDemo,
+  DropdownMenuRadioDemo,
+  DropdownMenuRadioIconsDemo,
+  DropdownMenuRtlDemo,
+  DropdownMenuShortcutsDemo,
+  DropdownMenuSubmenuDemo,
+  DropdownMenuUsageDemo,
+} from "@/components/ui/dropdown-menu-demo";
 
 ## Example
 
 <ComponentPreview name="dropdown-menu">
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="primary">Open menu</Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="end" className="w-56">
-      <DropdownMenuLabel>My account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Settings</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Log out</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+  <DropdownMenuUsageDemo />
 </ComponentPreview>
 
 ## Installation
@@ -55,20 +41,34 @@ import registry from "@/registry.json";
 ## Usage
 
 ```tsx
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+```
 
+```tsx
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button>Open</Button>
+    <Button variant="secondary">Open</Button>
   </DropdownMenuTrigger>
-  <DropdownMenuContent>
-    <DropdownMenuItem>Action</DropdownMenuItem>
+  <DropdownMenuContent className="w-56">
+    <DropdownMenuGroup>
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Billing</DropdownMenuItem>
+    </DropdownMenuGroup>
+    <DropdownMenuSeparator />
+    <DropdownMenuGroup>
+      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem>Subscription</DropdownMenuItem>
+    </DropdownMenuGroup>
   </DropdownMenuContent>
 </DropdownMenu>
 ```
@@ -77,41 +77,100 @@ import { Button } from "@/components/ui/button";
 
 ### Basic
 
+A basic dropdown with labels and separators.
+
 <Preview>
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="primary">Open menu</Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="end">
-      <DropdownMenuItem>Copy</DropdownMenuItem>
-      <DropdownMenuItem>Paste</DropdownMenuItem>
-      <DropdownMenuItem>Cut</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+  <DropdownMenuBasicDemo />
 </Preview>
 
-### With labels and shortcuts
+### Submenu
+
+Use `DropdownMenuSub`, `DropdownMenuSubTrigger`, and `DropdownMenuSubContent` for nested actions.
 
 <Preview>
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="primary">Open</Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="end" className="w-56">
-      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        Copy
-        <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        Paste
-        <DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+  <DropdownMenuSubmenuDemo />
+</Preview>
+
+### Shortcuts
+
+Add `DropdownMenuShortcut` for keyboard hints.
+
+<Preview>
+  <DropdownMenuShortcutsDemo />
+</Preview>
+
+### Icons
+
+Pair icons with labels for faster scanning.
+
+<Preview>
+  <DropdownMenuIconsDemo />
+</Preview>
+
+### Checkboxes
+
+Use `DropdownMenuCheckboxItem` with `checked` and `onCheckedChange` for toggles.
+
+<Preview>
+  <DropdownMenuCheckboxDemo />
+</Preview>
+
+### Checkboxes with icons
+
+Icons work inside checkbox items as well.
+
+<Preview>
+  <DropdownMenuCheckboxIconsDemo />
+</Preview>
+
+### Radio group
+
+Use `DropdownMenuRadioGroup` and `DropdownMenuRadioItem` for a single choice.
+
+<Preview>
+  <DropdownMenuRadioDemo />
+</Preview>
+
+### Radio with icons
+
+Radio items can include leading icons (for example payment methods).
+
+<Preview>
+  <DropdownMenuRadioIconsDemo />
+</Preview>
+
+### Destructive
+
+Use `variant="destructive"` on `DropdownMenuItem` for dangerous actions.
+
+<Preview>
+  <DropdownMenuDestructiveDemo />
+</Preview>
+
+### Avatar trigger
+
+Use a circular avatar (or icon-only button) as the trigger for an account menu.
+
+<Preview>
+  <DropdownMenuAvatarDemo />
+</Preview>
+
+### Complex
+
+Combine groups, icons, a submenu, a checkbox, and a destructive action.
+
+<Preview>
+  <DropdownMenuComplexDemo />
+</Preview>
+
+### RTL
+
+Right-to-left layout: wrap the trigger and menu in a container with `dir="rtl"`.
+
+<Preview>
+  <DropdownMenuRtlDemo />
 </Preview>
 
 ## API Reference
 
-See the [Radix UI Dropdown Menu documentation](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) for full API.
+The dropdown composes Radix primitives: `DropdownMenu`, `DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem`, `DropdownMenuCheckboxItem`, `DropdownMenuRadioGroup`, `DropdownMenuRadioItem`, `DropdownMenuLabel`, `DropdownMenuSeparator`, `DropdownMenuShortcut`, `DropdownMenuGroup`, `DropdownMenuSub`, `DropdownMenuSubTrigger`, and `DropdownMenuSubContent`. See the [Radix Dropdown Menu documentation](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) for behavior and accessibility.
