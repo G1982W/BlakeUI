@@ -446,7 +446,7 @@ export function ComboboxRtlDemo() {
     <div dir="rtl" className="w-[280px]">
       <Combobox items={rtlCategories}>
         <ComboboxInput placeholder="اختر فئة" />
-        <ComboboxContent>
+        <ComboboxContent dir="rtl">
           <ComboboxEmpty>لا توجد نتائج.</ComboboxEmpty>
           <ComboboxList>
             {(item) => (

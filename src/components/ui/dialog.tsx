@@ -53,6 +53,7 @@ export type DialogContentProps = React.ComponentProps<
   showCloseButton?: boolean;
   /** When `false`, hides the corner close control (same as `showCloseButton={false}`). */
   showClose?: boolean;
+  dir?: React.HTMLAttributes<HTMLDivElement>["dir"];
 };
 
 function DialogContent({
@@ -81,7 +82,7 @@ function DialogContent({
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <Button
               variant="ghost"
-              className="absolute top-2 right-2"
+              className="absolute top-2 end-2"
               size="sm"
             >
               <XIcon />

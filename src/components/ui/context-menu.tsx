@@ -96,7 +96,9 @@ function ContextMenuSubContent({
 function ContextMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Content>) {
+}: React.ComponentProps<typeof ContextMenuPrimitive.Content> & {
+  dir?: React.HTMLAttributes<HTMLDivElement>["dir"]
+}) {
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.Content

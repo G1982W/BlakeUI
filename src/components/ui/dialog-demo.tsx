@@ -265,14 +265,14 @@ export function DialogRtlDemo() {
             فتح الحوار
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent dir="rtl">
           <DialogHeader>
             <DialogTitle>تعديل الملف الشخصي</DialogTitle>
             <DialogDescription>
               قم بإجراء التغييرات على ملفك الشخصي هنا. انقر حفظ عند الانتهاء.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter className="gap-2 sm:justify-start">
+          <DialogFooter className="gap-2">
             <Button type="button" variant="primary">
               حفظ التغييرات
             </Button>
@@ -283,5 +283,5 @@ export function DialogRtlDemo() {
   );
 }
 (DialogRtlDemo as { source?: string }).source = String.raw`<div dir="rtl">
-  <Dialog>...</Dialog>
+  <DialogContent dir="rtl">{/* portaled */}</DialogContent>
 </div>`;

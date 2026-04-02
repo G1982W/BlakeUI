@@ -271,7 +271,7 @@ export function ContextMenuRtlDemo() {
         <ContextMenuTrigger className={triggerClassName}>
           انقر بزر الماوس الأيمن هنا
         </ContextMenuTrigger>
-        <ContextMenuContent>
+        <ContextMenuContent dir="rtl">
           <ContextMenuItem>الملف الشخصي</ContextMenuItem>
           <ContextMenuItem>الفوترة</ContextMenuItem>
           <ContextMenuItem>الفريق</ContextMenuItem>
@@ -283,7 +283,6 @@ export function ContextMenuRtlDemo() {
 }
 (ContextMenuRtlDemo as { source?: string }).source = String.raw`<div dir="rtl">
   <ContextMenu>
-    <ContextMenuTrigger>...</ContextMenuTrigger>
-    <ContextMenuContent>...</ContextMenuContent>
+    <ContextMenuContent dir="rtl">{/* portaled */}</ContextMenuContent>
   </ContextMenu>
 </div>`;

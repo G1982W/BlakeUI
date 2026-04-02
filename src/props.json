@@ -3371,6 +3371,12 @@
       "type": "boolean",
       "description": "",
       "required": false
+    },
+    {
+      "name": "dir",
+      "type": "string",
+      "description": "",
+      "required": false
     }
   ],
   "ContextMenuItem": [
@@ -4222,6 +4228,7 @@
   ],
   "TopBarLeft": [],
   "TopBarRight": [],
+  "DropdownMenuUsageDemo": [],
   "DropdownMenu": [],
   "DropdownMenuTrigger": [
     {
@@ -4247,6 +4254,12 @@
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "dir",
+      "type": "string",
       "description": "",
       "required": false
     }

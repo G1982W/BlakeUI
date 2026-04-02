@@ -446,7 +446,11 @@ export function DropdownMenuRtlDemo() {
             افتح القائمة
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className={contentMenu}>
+        <DropdownMenuContent
+          dir="rtl"
+          align="start"
+          className={contentMenu}
+        >
           <DropdownMenuLabel>حسابي</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>الملف الشخصي</DropdownMenuItem>
@@ -459,5 +463,7 @@ export function DropdownMenuRtlDemo() {
   );
 }
 (DropdownMenuRtlDemo as { source?: string }).source = String.raw`<div dir="rtl">
-  <DropdownMenu>...</DropdownMenu>
+  <DropdownMenu>
+    <DropdownMenuContent dir="rtl">{/* portaled: set dir here */}</DropdownMenuContent>
+  </DropdownMenu>
 </div>`;
