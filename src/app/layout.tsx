@@ -1,11 +1,12 @@
 import { RootProvider } from "fumadocs-ui/provider/next";
 import "./global.css";
-import { Outfit } from "next/font/google";
+import { Figtree } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata, Viewport } from "next";
 
-const outfit = Outfit({
+const figtree = Figtree({
   subsets: ["latin"],
+  weight: ["300", "500"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -25,7 +26,7 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={outfit.className} suppressHydrationWarning>
+    <html lang="en" className={figtree.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider>
           {children} <Toaster />
