@@ -282,6 +282,45 @@
       "type": "Matcher | Matcher[]",
       "description": "Apply the `disabled` modifier to the matching days. Disabled days cannot be\nselected when in a selection mode is set.\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled",
       "required": false
+    },
+    {
+      "name": "buttonVariant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "defaultValue": "ghost",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CalendarDayButton": [
+    {
+      "name": "day",
+      "type": "CalendarDay",
+      "description": "The day to render.",
+      "required": true
+    },
+    {
+      "name": "modifiers",
+      "type": "Modifiers",
+      "description": "The modifiers to apply to the day.",
+      "required": true
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "Partial<DayPickerLocale>",
+      "description": "",
+      "required": false
     }
   ],
   "Card": [],
@@ -4902,6 +4941,13 @@
       "required": false
     },
     {
+      "name": "icon",
+      "type": "\"none\" | \"external\" | \"plus\"",
+      "defaultValue": "external",
+      "description": "Hover/focus affordance: trailing `ExternalLink` (default), leading `Plus`, or `none` for custom icons.",
+      "required": false
+    },
+    {
       "name": "onClick",
       "type": "MouseEventHandler<HTMLAnchorElement>",
       "description": "Optional event handler for when Link is clicked.",
@@ -4932,15 +4978,15 @@
       "required": true
     },
     {
-      "name": "replace",
-      "type": "boolean",
-      "description": "Replace the current `history` state instead of adding a new url into the stack.\n@defaultValue `false`",
-      "required": false
-    },
-    {
       "name": "locale",
       "type": "string | false",
       "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
+      "required": false
+    },
+    {
+      "name": "replace",
+      "type": "boolean",
+      "description": "Replace the current `history` state instead of adding a new url into the stack.\n@defaultValue `false`",
       "required": false
     },
     {

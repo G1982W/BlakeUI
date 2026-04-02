@@ -7,6 +7,7 @@ component: true
 
 import { AppLink } from "@/components/ui/link";
 import { Preview } from "@/components/preview";
+import { ArrowRight, Github } from "lucide-react";
 import Installation from "@/components/installation";
 import registry from "@/registry.json";
 
@@ -56,28 +57,43 @@ import { AppLink } from "@/components/ui/link";
   </div>
 </Preview>
 
+### Affordance icon (`icon`)
+
+By default, a trailing `ExternalLink` icon (same as in these docs) fades in on hover and focus. Use `icon="plus"` for a leading `Plus` icon, or `icon="none"` when you supply your own icons.
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-center gap-4">
+      <AppLink href="#default-external">Default</AppLink>
+      <AppLink href="#plus-before" icon="plus">
+        Plus before
+      </AppLink>
+      <AppLink href="#no-built-in" icon="none">
+        No built-in icon
+      </AppLink>
+    </div>
+  </div>
+</Preview>
+
 ### With Icon
 
-You can use Lucide icons with the `AppLink` component.
-
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+Compose your own icons with `icon="none"` so the built-in affordance does not duplicate them.
 
 <Preview>
   <div className="flex flex-col space-y-4">
     <div className="flex items-center space-x-4">
-      <AppLink href="#icon-leading">
+      <AppLink href="#icon-leading" icon="plus">
         <Github className="size-4" />
         GitHub
       </AppLink>
-      <AppLink href="#icon-trailing" variant="secondary">
+      <AppLink href="#icon-trailing" variant="secondary" icon="plus">
         Read More
         <ArrowRight className="size-4" />
       </AppLink>
     </div>
     <div className="flex items-center space-x-4">
-       <AppLink href="https://google.com" target="_blank">
-        External Link
-        <ExternalLink className="size-4" />
+      <AppLink href="https://example.com" target="_blank" rel="noreferrer">
+        External
       </AppLink>
     </div>
   </div>
@@ -87,8 +103,9 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 ### AppLink
 
-| Prop       | Type                       | Description                          |
-| ---------- | -------------------------- | ------------------------------------ |
-| `variant`  | `"primary" \| "secondary"` | Controls underline and color styles. |
-| `disabled` | `boolean`                  | Disables interaction and focus.      |
-| `href`     | `string`                   | Destination URL.                     |
+| Prop       | Type                             | Description                                                                 |
+| ---------- | -------------------------------- | --------------------------------------------------------------------------- |
+| `variant`  | `"primary" \| "secondary"`       | Controls underline and color styles.                                        |
+| `icon`     | `"external" \| "plus" \| "none"` | Hover/focus affordance: trailing external (default), leading plus, or none. |
+| `disabled` | `boolean`                        | Disables interaction and focus.                                             |
+| `href`     | `string`                         | Destination URL.                                                            |

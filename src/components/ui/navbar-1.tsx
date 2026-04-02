@@ -149,7 +149,11 @@ const Navbar1 = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <AppLink href="#" className="flex items-center gap-2 no-underline">
+            <AppLink
+              href="#"
+              icon="none"
+              className="flex items-center gap-2 no-underline"
+            >
               <BlakeLogoIcon className="size-8" />
               <span className="text-lg font-semibold tracking-tighter">
                 BlakeUI
@@ -165,10 +169,14 @@ const Navbar1 = ({
           </div>
           <div className="flex gap-2">
             <Button asChild variant="primary" size="sm">
-              <AppLink href={auth.login.url}>{auth.login.title}</AppLink>
+              <AppLink href={auth.login.url} icon="none">
+                {auth.login.title}
+              </AppLink>
             </Button>
             <Button asChild size="sm">
-              <AppLink href={auth.signup.url}>{auth.signup.title}</AppLink>
+              <AppLink href={auth.signup.url} icon="none">
+                {auth.signup.title}
+              </AppLink>
             </Button>
           </div>
         </nav>
@@ -177,7 +185,7 @@ const Navbar1 = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <AppLink href="#" className="flex items-center gap-2">
+            <AppLink href="#" icon="none" className="flex items-center gap-2">
               <BlakeLogoIcon className="size-8" />
               <span className="text-lg font-semibold tracking-tighter">
                 BlakeUI
@@ -194,6 +202,7 @@ const Navbar1 = ({
                   <SheetTitle>
                     <AppLink
                       href="#"
+                      icon="none"
                       className="flex items-center gap-2 no-underline"
                     >
                       <BlakeLogoIcon className="size-8" />
@@ -214,12 +223,12 @@ const Navbar1 = ({
 
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="primary">
-                      <AppLink href={auth.login.url}>
+                      <AppLink href={auth.login.url} icon="none">
                         {auth.login.title}
                       </AppLink>
                     </Button>
                     <Button asChild>
-                      <AppLink href={auth.signup.url}>
+                      <AppLink href={auth.signup.url} icon="none">
                         {auth.signup.title}
                       </AppLink>
                     </Button>
@@ -294,6 +303,7 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
     <AppLink
       className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:text-accent-foreground"
       href={item.url}
+      icon="none"
     >
       <div className="text-foreground">{item.icon}</div>
       <div>

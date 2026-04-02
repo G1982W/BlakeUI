@@ -221,7 +221,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
             <div className="flex items-center gap-4">
               <GithubStars repoUrl="https://github.com/blakeui/BlakeUI" />
               <Button asChild>
-                <AppLink href={PRIMARY_BUTTON.url}>
+                <AppLink href={PRIMARY_BUTTON.url} icon="none">
                   {PRIMARY_BUTTON.label}
                 </AppLink>
               </Button>

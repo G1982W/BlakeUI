@@ -150,7 +150,7 @@ export function DocsNavbar() {
           <DocsSearchButton className="hidden min-w-[350px] sm:inline-flex" />
         </div>
         <div className="flex items-center gap-2">
-          <AppLink href="https://github.com/blakeui" target="_blank">
+          <AppLink href="https://github.com/blakeui" target="_blank" icon="none">
             <svg
               className="text-foreground"
               width="34"
@@ -170,6 +170,7 @@ export function DocsNavbar() {
             <>
               <AppLink
                 href="/profile"
+                icon="none"
                 className="inline-flex items-center gap-1.5 rounded-button border border-border-neutral bg-surface px-2 py-1 text-sm font-medium text-surface-foreground hover:shadow-[0px_2px_5px_0px_#40445214]"
               >
                 <UserIcon className="size-4" />
