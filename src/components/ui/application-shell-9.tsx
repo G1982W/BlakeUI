@@ -478,7 +478,7 @@ export function ApplicationShell9({
             <DrawerHeader>
               <DrawerTitle>Files</DrawerTitle>
             </DrawerHeader>
-            <ScrollArea className="[&>[data-slot=scroll-area-viewport]>div]:!block h-[60vh]">
+            <ScrollArea className="[&>[data-slot=scroll-area-viewport]>div]:block! h-[60vh]">
               <SidebarContent>
                 <SidebarGroup>
                   <SidebarGroupLabel>Changes</SidebarGroupLabel>
@@ -528,7 +528,7 @@ export function ApplicationShell9({
             <DrawerHeader>
               <DrawerTitle>Source Control</DrawerTitle>
             </DrawerHeader>
-            <ScrollArea className="[&>[data-slot=scroll-area-viewport]>div]:!block h-[60vh]">
+            <ScrollArea className="[&>[data-slot=scroll-area-viewport]>div]:block! h-[60vh]">
               <SidebarContent>
                 <SidebarGroup>
                   <SidebarGroupLabel>Changes</SidebarGroupLabel>
