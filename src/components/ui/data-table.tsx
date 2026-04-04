@@ -40,42 +40,42 @@ export type Payment = {
 };
 
 export const payments: Payment[] = [
-  { id: "728ed52f", amount: 100, status: "pending", email: "m@example.com" },
+  { id: "728ed52f", amount: 100, status: "pending", email: "alex.morgan@blakeui.com" },
   {
     id: "489e1d42",
     amount: 125,
     status: "processing",
-    email: "example@gmail.com",
+    email: "sam.rivera@blakeui.com",
   },
   {
     id: "924ed52f",
     amount: 316,
     status: "success",
-    email: "ken99@example.com",
+    email: "jordan.hale@blakeui.com",
   },
   {
     id: "a1be1d42",
     amount: 242,
     status: "success",
-    email: "Abe45@example.com",
+    email: "casey.moore@blakeui.com",
   },
   {
     id: "b34ed52f",
     amount: 837,
     status: "processing",
-    email: "Monserrat44@example.com",
+    email: "morgan.reid@blakeui.com",
   },
   {
     id: "c4ce1d42",
     amount: 874,
     status: "success",
-    email: "Silas22@example.com",
+    email: "avery.blake@blakeui.com",
   },
   {
     id: "d56ed52f",
     amount: 721,
     status: "failed",
-    email: "carmella@example.com",
+    email: "riley.chen@blakeui.com",
   },
 ];
 

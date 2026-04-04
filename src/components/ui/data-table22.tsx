@@ -251,7 +251,7 @@ const rawOrders: RawOrder[] = [
     id: "1",
     orderNumber: "ORD-2401",
     customer: "Marcus Chen",
-    customerEmail: "marcus.chen@email.com",
+    customerEmail: "marcus.chen@blakeui.com",
     customerAvatar: "1.png",
     total: "$384.92",
     status: {
@@ -314,7 +314,7 @@ const rawOrders: RawOrder[] = [
     id: "2",
     orderNumber: "ORD-2402",
     customer: "Nina Patel",
-    customerEmail: "nina.patel@email.com",
+    customerEmail: "nina.patel@blakeui.com",
     customerAvatar: "2.png",
     total: "$567.45",
     status: {
@@ -384,7 +384,7 @@ const rawOrders: RawOrder[] = [
     id: "3",
     orderNumber: "ORD-2403",
     customer: "Oliver Martinez",
-    customerEmail: "oliver.martinez@email.com",
+    customerEmail: "oliver.martinez@blakeui.com",
     customerAvatar: "3.png",
     total: "$892.34",
     status: {
@@ -468,7 +468,7 @@ const rawOrders: RawOrder[] = [
     id: "4",
     orderNumber: "ORD-2404",
     customer: "Sophia Kim",
-    customerEmail: "sophia.kim@email.com",
+    customerEmail: "sophia.kim@blakeui.com",
     customerAvatar: "4.png",
     total: "$246.78",
     status: {
@@ -524,7 +524,7 @@ const rawOrders: RawOrder[] = [
     id: "5",
     orderNumber: "ORD-2405",
     customer: "Jackson Wu",
-    customerEmail: "jackson.wu@email.com",
+    customerEmail: "jackson.wu@blakeui.com",
     customerAvatar: "5.png",
     total: "$1,234.56",
     status: {
@@ -615,7 +615,7 @@ const rawOrders: RawOrder[] = [
     id: "6",
     orderNumber: "ORD-2406",
     customer: "Emma Thompson",
-    customerEmail: "emma.thompson@email.com",
+    customerEmail: "emma.thompson@blakeui.com",
     customerAvatar: "6.png",
     total: "$678.90",
     status: {
@@ -713,7 +713,7 @@ const rawOrders: RawOrder[] = [
     id: "7",
     orderNumber: "ORD-2407",
     customer: "Lucas Gonzalez",
-    customerEmail: "lucas.gonzalez@email.com",
+    customerEmail: "lucas.gonzalez@blakeui.com",
     customerAvatar: "7.png",
     total: "$423.67",
     status: {
@@ -790,7 +790,7 @@ const rawOrders: RawOrder[] = [
     id: "8",
     orderNumber: "ORD-2408",
     customer: "Ava Robinson",
-    customerEmail: "ava.robinson@email.com",
+    customerEmail: "ava.robinson@blakeui.com",
     customerAvatar: "8.png",
     total: "$789.23",
     status: {
@@ -853,7 +853,7 @@ const rawOrders: RawOrder[] = [
     id: "9",
     orderNumber: "ORD-2409",
     customer: "Ethan Foster",
-    customerEmail: "ethan.foster@email.com",
+    customerEmail: "ethan.foster@blakeui.com",
     customerAvatar: "9.png",
     total: "$534.12",
     status: {
@@ -937,7 +937,7 @@ const rawOrders: RawOrder[] = [
     id: "10",
     orderNumber: "ORD-2410",
     customer: "Isabella Hayes",
-    customerEmail: "isabella.hayes@email.com",
+    customerEmail: "isabella.hayes@blakeui.com",
     customerAvatar: "10.png",
     total: "$312.45",
     status: {
