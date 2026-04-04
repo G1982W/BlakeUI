@@ -15,7 +15,7 @@ const FileUploadPreviewIcon = () => {
           height="80"
           rx="4"
           fill="white"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <rect
           x="2.5"
@@ -24,7 +24,7 @@ const FileUploadPreviewIcon = () => {
           height="79"
           rx="3.5"
           stroke="#E5E7EB"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <rect x="11" y="10" width="64" height="8" rx="4" fill="#E5E7EB" />
         <rect x="11" y="26" width="96" height="8" rx="4" fill="#D7D7D0" />
