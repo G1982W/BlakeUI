@@ -197,7 +197,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
         className={cn("pointer-events-auto relative bg-brand", className)}
       >
         <div className="container mx-auto h-16 px-2">
-          <div className="flex h-full items-center justify-between">
+          <div className="flex h-full items-center gap-4 justify-between">
             <a
               href="#"
               className="flex max-h-8 items-center gap-2 text-lg font-semibold tracking-tighter no-underline"

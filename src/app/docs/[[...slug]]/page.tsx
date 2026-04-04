@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
+import { LLMCopyButton } from '@/components/ai/page-actions';
 import { DocsFooter } from '@/components/docs-footer';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
@@ -19,12 +19,6 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const baseLabel = page.data.base
     ? baseLabelMap[page.data.base] ?? page.data.base
     : null;
-  const gitConfig = {
-    user: 'username',
-    repo: 'repo',
-    branch: 'main',
-  };
-
   return (
     <DocsPage
       toc={page.data.toc}
@@ -42,11 +36,6 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       </DocsDescription>
       <div className="mb-8 flex flex-row items-center gap-2 border-b pb-6">
         <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
-        <ViewOptions
-          markdownUrl={`${page.url}.mdx`}
-          // update it to match your repo
-          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/docs/${page.path}`}
-        />
       </div>
       <DocsBody>
         <MDX
