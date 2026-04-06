@@ -34,8 +34,14 @@ const StatsCard7 = ({
       </CardHeader>
       <CardContent>
         <div className="flex items-center gap-4">
-          <div className="relative size-20">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="relative size-20 min-h-0 min-w-0">
+            <ResponsiveContainer
+              width="100%"
+              height="100%"
+              minWidth={0}
+              minHeight={1}
+              initialDimension={{ width: 1, height: 1 }}
+            >
               <PieChart>
                 <Pie
                   data={data}

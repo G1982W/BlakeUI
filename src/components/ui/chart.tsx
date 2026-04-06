@@ -109,6 +109,7 @@ const ChartContainer = React.forwardRef<
           width="100%"
           height="100%"
           minWidth={0}
+          minHeight={1}
           initialDimension={{ width: 1, height: 1 }}
         >
           {/* Recharts types only `ReactElement`; runtime supports multiple roots via Children.map */}
