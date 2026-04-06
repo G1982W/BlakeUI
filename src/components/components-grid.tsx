@@ -302,7 +302,10 @@ function TrafficOverviewChart() {
             padding: "6px 10px",
             fontSize: 12,
           }}
-          formatter={(value: number) => [`${value} visitors`, ""]}
+          formatter={(value) => [
+            value == null ? "" : `${value} visitors`,
+            "",
+          ]}
           labelFormatter={(label) => `Day: ${label}`}
         />
       </AreaChart>

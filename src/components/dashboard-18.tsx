@@ -33,10 +33,10 @@ import {
   BarChart,
   Customized,
   Tooltip,
-  TooltipProps,
   XAxis,
   YAxis,
 } from "recharts";
+import { usePlotArea } from "recharts/es6/hooks.js";
 
 import { cn } from "@/lib/utils";
 
@@ -84,6 +84,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+import Dashboard18HomepageCalendar from "./dashboard-18-homepage-calendar";
+import Dashboard18HomepageRevenue from "./dashboard-18-homepage-revenue-overview";
+import Dashboard18HomepageTotalRevenue from "./dashboard-18-homepage-total-revenue";
+import Dashboard18HomepageNetRevenue from "./dashboard-18-homepage-net-revenue";
 
 type NavItem = {
   label: string;
@@ -542,10 +547,10 @@ const SALES_TREND_CELL_INSET = 2;
 
 const salesTrendColors = {
   series: {
-    directBookings: palette.primary,
+    directBookings: "var(--foreground)",
     otaBookings: {
-      light: `color-mix(in oklch, var(--primary) 30%, ${mixBase})`,
-      dark: `color-mix(in oklch, var(--primary) 40%, ${mixBase})`,
+      light: "color-mix(in oklch, var(--primary) 20%, transparent)",
+      dark: "color-mix(in oklch, var(--primary) 30%, transparent)",
     },
   },
   gridCell: "color-mix(in oklch, var(--foreground) 7%, var(--background))",
@@ -815,7 +820,7 @@ const DashboardHeader = () => {
           Welcome back to Grandview 👋
         </span>
       </div>
-      <div className="ml-auto flex items-center gap-2">
+      <div className="ml-auto flex flex-wrap items-center gap-2">
         <Button
           variant="primary"
           size="sm"
@@ -1233,9 +1238,14 @@ function SalesTrendCursor({
   );
 }
 
-function SalesTrendTooltip({ active, payload }: TooltipProps<number, string>) {
+type SalesTrendTooltipProps = {
+  active?: boolean;
+  payload?: Array<{ payload?: SalesTrendPoint }>;
+};
+
+function SalesTrendTooltip({ active, payload }: SalesTrendTooltipProps) {
   if (!active || !payload?.length) return null;
-  const row = payload[0]?.payload as SalesTrendPoint | undefined;
+  const row = payload[0]?.payload;
   if (!row) return null;
   return (
     <div
@@ -1277,16 +1287,23 @@ function SalesTrendTooltip({ active, payload }: TooltipProps<number, string>) {
 }
 
 function SalesTrendOffsetSync({
-  offset,
   gridBaseColor,
   gridCellColor,
   onSyncOffset,
 }: {
-  offset?: ChartOffset;
   gridBaseColor: string;
   gridCellColor: string;
   onSyncOffset: (value: ChartOffset) => void;
 }) {
+  const plotArea = usePlotArea();
+  const offset = plotArea
+    ? {
+        left: plotArea.x,
+        top: plotArea.y,
+        width: plotArea.width,
+        height: plotArea.height,
+      }
+    : undefined;
   if (offset) onSyncOffset(offset);
   if (!offset) return null;
   const { cols, rows, gridLeft, gridTop } = getSalesTrendGridMetrics(offset);
@@ -1492,9 +1509,8 @@ const RevenueFlowChart = () => {
             }
           >
             <Customized
-              component={(props: { offset?: ChartOffset }) => (
+              component={() => (
                 <SalesTrendOffsetSync
-                  offset={props.offset}
                   gridBaseColor={salesTrendColors.gridBase}
                   gridCellColor={salesTrendColors.gridCell}
                   onSyncOffset={(value) => {
@@ -1777,6 +1793,10 @@ const DashboardContent = () => {
         <AvailabilityCalendarPanel />
       </div>
       <RecentArrivalsTableCard />
+      <Dashboard18HomepageCalendar />
+      <Dashboard18HomepageRevenue />
+      <Dashboard18HomepageTotalRevenue />
+      <Dashboard18HomepageNetRevenue />
     </main>
   );
 };

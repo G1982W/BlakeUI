@@ -536,120 +536,150 @@
     {
       "name": "content",
       "type": "(ContentType<ValueType, NameType> & string)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "cursor",
-      "type": "boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | SVGProps<SVGElement>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "offset",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "viewBox",
-      "type": "CartesianViewBox",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "active",
-      "type": "boolean",
-      "description": "If true, then Tooltip is always displayed, once an activeIndex is set by mouse over, or programmatically.\nIf false, then Tooltip is never displayed.\nIf active is undefined, Recharts will control when the Tooltip displays. This includes mouse and keyboard controls.",
-      "required": false
-    },
-    {
-      "name": "includeHidden",
-      "type": "boolean",
-      "description": "If true, then Tooltip will information about hidden series (defaults to false). Interacting with the hide property of Area, Bar, Line, Scatter.",
+      "description": "Renders the content of the tooltip.\n\nThis should return HTML elements, not SVG elements.\n\n- If not set, the {@link DefaultTooltipContent } component is used.\n- If set to a React element, this element will be cloned and extra props will be passed in.\n- If set to a function, the function will be called and should return HTML elements.\n@see {@link https://recharts.github.io/en-US/examples/CustomContentOfTooltip/ Example with custom content}",
       "required": false
     },
     {
       "name": "allowEscapeViewBox",
       "type": "AllowInDimension",
-      "description": "",
+      "description": "This option allows the tooltip to extend beyond the viewBox of the chart itself.\n@defaultValue {\"x\":false,\"y\":false}",
       "required": false
     },
     {
       "name": "animationDuration",
       "type": "number",
-      "description": "",
+      "description": "Specifies the duration of animation, the unit of this option is ms.\n@defaultValue 400",
       "required": false
     },
     {
       "name": "animationEasing",
       "type": "\"ease\" | \"ease-in\" | \"ease-out\" | \"ease-in-out\" | \"linear\"",
-      "description": "",
+      "description": "The type of easing function.\n@defaultValue ease",
       "required": false
     },
     {
-      "name": "coordinate",
-      "type": "Partial<Coordinate>",
+      "name": "axisId",
+      "type": "AxisId",
+      "description": "Tooltip always attaches itself to the \"Tooltip\" axis. Which axis is it? Depends on the layout:\n- horizontal layout -> X axis\n- vertical layout -> Y axis\n- radial layout -> radial axis\n- centric layout -> angle axis\n\nTooltip will use the default axis for the layout, unless you specify an axisId.\n@defaultValue 0",
+      "required": false
+    },
+    {
+      "name": "cursor",
+      "type": "CursorDefinition",
+      "description": "If set false, no cursor will be drawn when tooltip is active.\nIf set a object, the option is the configuration of cursor.\nIf set a React element, the option is the custom react element of drawing cursor.\n@defaultValue true",
+      "required": false
+    },
+    {
+      "name": "defaultIndex",
+      "type": "number | TooltipIndex",
       "description": "",
       "required": false
     },
     {
       "name": "filterNull",
       "type": "boolean",
-      "description": "",
+      "description": "When an item of the payload has value null or undefined, this item won't be displayed.\n@defaultValue true",
       "required": false
     },
     {
-      "name": "defaultIndex",
-      "type": "number",
-      "description": "",
+      "name": "includeHidden",
+      "type": "boolean",
+      "description": "If true, the tooltip will display information about hidden series.\nDefaults to false.\nInteracting with the hide property of Area, Bar, Line, Scatter.\n@defaultValue false",
       "required": false
     },
     {
       "name": "isAnimationActive",
-      "type": "boolean",
-      "description": "",
+      "type": "boolean | \"auto\"",
+      "description": "If set false, animation of tooltip will be disabled.\nIf set \"auto\", the animation will be disabled in SSR and will respect the user's prefers-reduced-motion system preference for accessibility.\n@defaultValue auto",
+      "required": false
+    },
+    {
+      "name": "offset",
+      "type": "number | Coordinate",
+      "description": "The offset size between the position of tooltip and the mouse cursor position.\nWhen a number is provided, the same offset is applied to both x and y axes.\n\nWhen a Coordinate object is provided, you can specify different offsets for each axis (x and y as numbers)\n@defaultValue 10",
       "required": false
     },
     {
       "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload<ValueType, NameType>>",
+      "type": "UniqueOption<TooltipPayloadEntry>",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "portal",
+      "type": "HTMLElement | null",
+      "description": "If portal is defined, then Tooltip will use this element as a target\nfor rendering using React Portal: https://react.dev/reference/react-dom/createPortal\n\nIf this is undefined then Tooltip renders inside the recharts-wrapper element.",
       "required": false
     },
     {
       "name": "position",
       "type": "Partial<Coordinate>",
-      "description": "",
+      "description": "If this field is set, the tooltip will be displayed at the specified position\nregardless of the mouse position.\n\nYou can set a single field (x or y) and let the other field be calculated automatically based\non the mouse position.",
       "required": false
     },
     {
       "name": "reverseDirection",
       "type": "AllowInDimension",
-      "description": "",
+      "description": "@defaultValue {\"x\":false,\"y\":false}",
       "required": false
     },
     {
       "name": "shared",
       "type": "boolean",
-      "description": "",
+      "description": "Defines whether the tooltip is reacting to the current data point,\nor to all data points at the current axis coordinate.\n\n- `true`: tooltip will appear on top of all bars on an axis tick.\n- `false`: tooltip will appear on individual bars.\n\nDifferent chart types allow different modes, and have different defaults.\n@see {@link https://github.com/recharts/recharts/wiki/Tooltip-event-type-and-shared-prop Tooltip event type and shared prop wiki page}",
       "required": false
     },
     {
       "name": "trigger",
       "type": "\"hover\" | \"click\"",
-      "description": "",
+      "description": "If `hover` then the Tooltip shows on mouse enter and hides on mouse leave.\n\nIf `click` then the Tooltip shows after clicking and stays active.\n@defaultValue hover",
       "required": false
     },
     {
       "name": "useTranslate3d",
       "type": "boolean",
-      "description": "",
+      "description": "@defaultValue false",
       "required": false
     },
     {
       "name": "wrapperStyle",
       "type": "CSSProperties",
+      "description": "CSS styles to be applied to the wrapper `div` element.",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string | number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "description": "If true, then Tooltip is always displayed, once an activeIndex is set by mouse over, or programmatically.\nIf false, then Tooltip is never displayed.\nIf undefined, Recharts will control when the Tooltip displays. This includes mouse and keyboard controls.",
+      "required": false
+    },
+    {
+      "name": "payload",
+      "type": "TooltipPayload",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "coordinate",
+      "type": "Coordinate",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "accessibilityLayer",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "activeIndex",
+      "type": "TooltipIndex",
       "description": "",
       "required": false
     },
@@ -687,7 +717,7 @@
       "required": false
     }
   ],
-  "Legend": [
+  "ChartLegend": [
     {
       "name": "dangerouslySetInnerHTML",
       "type": "{ __html: string; }",
@@ -1643,1049 +1673,49 @@
       "required": false
     },
     {
-      "name": "wrapperStyle",
-      "type": "CSSProperties",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartWidth",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartHeight",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "margin",
-      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBBoxUpdate",
-      "type": "((box: DOMRect | null) => void)",
-      "description": "",
-      "required": false
-    }
-  ],
-  "componentDidMount": [],
-  "componentDidUpdate": [],
-  "ChartLegendContent": [
-    {
-      "name": "dangerouslySetInnerHTML",
-      "type": "({ __html: string; } & { __html: string | TrustedHTML; })",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCopy",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCopyCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCut",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCutCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPaste",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPasteCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionEnd",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionEndCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionStart",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionStartCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionUpdate",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionUpdateCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onFocus",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onFocusCapture",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBlur",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBlurCapture",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onChange",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onChangeCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBeforeInput",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBeforeInputCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInput",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInputCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onReset",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onResetCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmit",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmitCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInvalid",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInvalidCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoad",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onError",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onErrorCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyDown",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyDownCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyPress",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "@deprecated Use `onKeyUp` or `onKeyDown` instead",
-      "required": false
-    },
-    {
-      "name": "onKeyPressCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "@deprecated Use `onKeyUpCapture` or `onKeyDownCapture` instead",
-      "required": false
-    },
-    {
-      "name": "onKeyUp",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyUpCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAbort",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAbortCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlay",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayThrough",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayThroughCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDurationChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDurationChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEmptied",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEmptiedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEncrypted",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEncryptedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEnded",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEndedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedData",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedDataCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedMetadata",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedMetadataCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadStart",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadStartCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPause",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPauseCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlay",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlayCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlaying",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlayingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onProgress",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onProgressCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onRateChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onRateChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeeked",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeekedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeeking",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeekingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onStalled",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onStalledCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSuspend",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSuspendCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTimeUpdate",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTimeUpdateCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onVolumeChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onVolumeChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWaiting",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWaitingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAuxClick",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAuxClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onContextMenu",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onContextMenuCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDoubleClick",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDoubleClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDrag",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnd",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEndCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnter",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnterCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragExit",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragExitCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragLeave",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragLeaveCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragOver",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragOverCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragStart",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragStartCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDrop",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDropCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseDown",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseDownCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseMove",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseMoveCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOut",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOutCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOver",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOverCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseUp",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseUpCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSelect",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSelectCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchCancel",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchCancelCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchEnd",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchEndCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchMove",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchMoveCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchStart",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchStartCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerDown",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerDownCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerMove",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerMoveCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerUp",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerUpCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerCancel",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerCancelCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerEnter",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerLeave",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOver",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOverCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOut",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOutCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGotPointerCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGotPointerCaptureCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLostPointerCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLostPointerCaptureCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onScroll",
-      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onScrollCapture",
-      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWheel",
-      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWheelCapture",
-      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationStart",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationStartCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationEnd",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationEndCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationIteration",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationIterationCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTransitionEnd",
-      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTransitionEndCapture",
-      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "type",
-      "type": "\"button\" | \"submit\" | \"reset\"",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload>",
-      "description": "",
+      "name": "content",
+      "type": "ContentType",
+      "description": "Renders the content of the legend.\n\nThis should return HTML elements, not SVG elements.\n\n- If not set, the {@link DefaultLegendContent } component is used.\n- If set to a React element, this element will be cloned and extra props will be passed in.\n- If set to a function, the function will be called and should return HTML elements.\n@example <Legend content={CustomizedLegend} />\n@example <Legend content={renderLegend} />",
       "required": false
     },
     {
       "name": "wrapperStyle",
       "type": "CSSProperties",
-      "description": "",
+      "description": "CSS styles to be applied to the wrapper `div` element.",
       "required": false
     },
     {
-      "name": "nameKey",
-      "type": "string",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerEnterCapture",
-      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerLeaveCapture",
-      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartWidth",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartHeight",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "margin",
-      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
+      "name": "payloadUniqBy",
+      "type": "UniqueOption<LegendPayload>",
       "description": "",
       "required": false
     },
     {
       "name": "onBBoxUpdate",
-      "type": "((box: DOMRect | null) => void)",
+      "type": "((box: ElementOffset | null) => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "hideIcon",
-      "type": "boolean",
-      "defaultValue": "false",
-      "description": "",
+      "name": "portal",
+      "type": "HTMLElement | null",
+      "description": "If portal is defined, then Legend will use this element as a target\nfor rendering using React Portal.\n\nIf this is undefined then Legend renders inside the recharts-wrapper element.\n@see {@link https://react.dev/reference/react-dom/createPortal}",
+      "required": false
+    },
+    {
+      "name": "itemSorter",
+      "type": "LegendItemSorter | null",
+      "description": "Sorts Legend items. Defaults to `value` which means it will sort alphabetically\nby the label.\n\nIf `null` is provided then the payload is not sorted. Be aware that without sort,\nthe order of items may change between renders!\n@defaultValue value",
+      "required": false
+    },
+    {
+      "name": "verticalAlign",
+      "type": "\"middle\" | \"top\" | \"bottom\"",
+      "description": "The alignment of the whole Legend container:\n\n- `bottom`: shows the Legend below chart, and chart height reduces automatically to make space for it.\n- `top`: shows the Legend above chart, and chart height reduces automatically.\n- `middle`:  shows the Legend in the middle of chart, covering other content, and chart height remains unchanged.\nThe exact behavior changes depending on `align` prop.\n@defaultValue bottom",
       "required": false
     }
   ],
+  "ChartLegendContent": [],
   "ChartStyle": [
     {
       "name": "id",
