@@ -49,8 +49,8 @@ const chartConfig = {
 
 export function ChartGridDemo() {
   return (
-    <div className="w-full bg-slate-100 p-8 rounded-2xl overflow-x-auto">
-      <div className="min-w-[800px] bg-white rounded-xl border-2 border-dashed border-purple-200 p-12 shadow-sm">
+    <div className="w-full overflow-x-auto rounded-2xl bg-surface">
+      <div className="min-w-[800px] rounded-xl border-2 border-dashed border-border bg-background p-12 shadow-sm">
         <div className="grid grid-cols-[100px_1fr_1fr_1fr] gap-x-8 gap-y-12 items-center">
           {/* Headers */}
           <div />
