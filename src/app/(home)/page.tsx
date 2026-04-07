@@ -36,19 +36,7 @@ export default function HomePage() {
 
           {/* Dashboard Preview */}
           <section className="w-full max-w-7xl px-4 pb-16">
-            <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
-              {/* Browser Chrome */}
-              <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
-                <div className="flex gap-1.5">
-                  <span className="size-3 rounded-full bg-[#EC6A5E]" />
-                  <span className="size-3 rounded-full bg-[#F4BF4F]" />
-                  <span className="size-3 rounded-full bg-[#61C554]" />
-                </div>
-                <div className="mx-auto flex h-6 w-72 items-center justify-center rounded-md border border-border/50 bg-background text-xs text-muted-foreground">
-                  www.blakeui.com
-                </div>
-                <div className="w-[52px]" />
-              </div>
+            <div className="overflow-hidden rounded-2xl bg-background">
               {/* Dashboard Content */}
               <div
                 className="overflow-hidden h-[620px]"

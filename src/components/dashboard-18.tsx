@@ -28,14 +28,7 @@ import {
   Wrench,
 } from "lucide-react";
 import * as React from "react";
-import {
-  Bar,
-  BarChart,
-  Customized,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, Customized, Tooltip, XAxis, YAxis } from "recharts";
 import { usePlotArea } from "recharts/es6/hooks.js";
 
 import { cn } from "@/lib/utils";
@@ -1265,7 +1258,7 @@ function SalesTrendTooltip({ active, payload }: SalesTrendTooltipProps) {
       <div className="space-y-2 text-sm">
         <div className="flex items-center justify-between gap-5">
           <span className="flex items-center gap-2 text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-[var(--color-directBookings)]" />
+            <span className="size-1.5 rounded-full bg-(--color-directBookings)" />
             Direct
           </span>
           <span className="font-semibold text-foreground">
@@ -1274,7 +1267,7 @@ function SalesTrendTooltip({ active, payload }: SalesTrendTooltipProps) {
         </div>
         <div className="flex items-center justify-between gap-5">
           <span className="flex items-center gap-2 text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-[var(--color-otaBookings)]" />
+            <span className="size-1.5 rounded-full bg-(--color-otaBookings)" />
             OTA
           </span>
           <span className="font-semibold text-foreground">
@@ -1468,7 +1461,7 @@ const RevenueFlowChart = () => {
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-[var(--color-directBookings)]" />
+              <span className="size-2 rounded-full bg-(--color-directBookings)" />
               <span className="font-medium text-foreground">Direct</span>
               <span className="tabular-nums">
                 {numberFormatter.format(bookingMix.directBookings)}
@@ -1476,7 +1469,7 @@ const RevenueFlowChart = () => {
               <span>{bookingMix.directShare}%</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-[var(--color-otaBookings)]" />
+              <span className="size-2 rounded-full bg-(--color-otaBookings)" />
               <span className="font-medium text-foreground">OTA</span>
               <span className="tabular-nums">
                 {numberFormatter.format(bookingMix.otaBookings)}
@@ -1803,7 +1796,7 @@ const DashboardContent = () => {
 
 const Dashboard18 = ({ className }: { className?: string }) => {
   return (
-    <SidebarProvider className={cn("bg-sidebar !h-full !min-h-0", className)}>
+    <SidebarProvider className={cn("bg-sidebar h-full! min-h-0!", className)}>
       <a
         href="#dashboard-main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-3 focus:py-2 focus:text-sm focus:text-foreground focus:ring-2 focus:ring-ring"
@@ -1812,7 +1805,7 @@ const Dashboard18 = ({ className }: { className?: string }) => {
       </a>
       <AppSidebar />
       <div className="@container min-h-0 h-full w-full min-w-0 overflow-hidden @lg:p-2">
-        <div className="flex h-full w-full flex-col items-center justify-start overflow-hidden bg-background @lg:rounded-xl @lg:border">
+        <div className="flex h-full w-full flex-col items-center justify-start overflow-hidden bg-background @lg:rounded-xl">
           <DashboardHeader />
           <DashboardContent />
         </div>
