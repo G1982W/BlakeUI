@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +22,7 @@ const NAV_LINKS = [
   { href: "#", label: "Contact" },
 ] as const;
 
-export function HomeNavbar() {
+export function HomeNavbar({ className }: { className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
@@ -69,13 +70,10 @@ export function HomeNavbar() {
     "transition-colors hover:bg-muted active:bg-muted/80",
   );
 
-  const authButtonClass = cn(
-    "rounded-button border border-brand bg-brand px-4 py-1.5 text-sm font-medium text-white",
-    "transition-all hover:shadow-[0px_2px_5px_0px_#40445214]",
-  );
-
   return (
-    <header className="@container flex justify-center px-4 pt-4">
+    <header
+      className={cn("@container flex justify-center px-4 pt-4", className)}
+    >
       <nav
         className={cn(
           "flex w-full max-w-3xl items-center rounded-full border border-border bg-background px-4 py-2.5 shadow-sm",
@@ -109,21 +107,23 @@ export function HomeNavbar() {
         ))}
 
         {user ? (
-          <button
+          <Button
             type="button"
+            variant="secondary"
             onClick={() => router.push("/profile")}
-            className={cn(authButtonClass, "hidden @md:inline-flex")}
+            className={cn("hidden @md:inline-flex")}
           >
             Profile
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             type="button"
+            variant="secondary"
             onClick={() => router.push("/login")}
-            className={cn(authButtonClass, "hidden @md:inline-flex")}
+            className={cn("hidden @md:inline-flex")}
           >
             Log in
-          </button>
+          </Button>
         )}
 
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -166,21 +166,21 @@ export function HomeNavbar() {
             </div>
             <div className="border-t border-border p-4">
               {user ? (
-                <button
+                <Button
                   type="button"
                   onClick={goAuth}
                   className="w-full rounded-button border border-brand bg-brand px-4 py-3 text-sm font-medium text-white transition-all hover:shadow-[0px_2px_5px_0px_#40445214]"
                 >
                   Profile
-                </button>
+                </Button>
               ) : (
-                <button
+                <Button
                   type="button"
                   onClick={goAuth}
                   className="w-full rounded-button border border-brand bg-brand px-4 py-3 text-sm font-medium text-white transition-all hover:shadow-[0px_2px_5px_0px_#40445214]"
                 >
                   Log in
-                </button>
+                </Button>
               )}
             </div>
           </SheetContent>

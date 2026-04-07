@@ -2,111 +2,122 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 import { Dashboard18 } from "@/components/dashboard-18";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center px-4 pt-16 pb-12 text-center">
-        <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          Built for Scale. Designed for Complexity.
-        </h1>
-        <p className="mt-4 max-w-xl text-base text-muted-foreground">
-          BlakeUI is the enterprise UI library built for scale —
-          production-ready components designed for complex, data-heavy
-          applications.
-        </p>
-        <Link
-          href="/docs"
-          className="mt-8 inline-flex items-center gap-2 rounded-button border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-white transition-all hover:shadow-[0px_2px_5px_0px_#40445214]"
+      <div className="w-full lg:p-4 bg-surface">
+        <div
+          className="w-full pt-20 rounded-[36px] flex flex-col items-center"
+          style={{
+            background:
+              "linear-gradient(180deg, #FAF9F6 0%, #FFFFFF 53.5%, #FFFFFF 100%), linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, #FFFFFF 53.5%, #FAF9F6 100%)",
+            backgroundBlendMode: "multiply",
+          }}
         >
-          View Components
-          <ArrowRight className="size-4" />
-        </Link>
-      </section>
+          {/* Hero Section */}
+          <section className="flex flex-col items-center px-4 pt-16 pb-12 text-center">
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+              Built for Scale. Designed for Complexity.
+            </h1>
+            <p className="mt-4 max-w-xl text-base text-muted-foreground">
+              BlakeUI is the enterprise UI library built for scale —
+              production-ready components designed for complex, data-heavy
+              applications.
+            </p>
+            <Button asChild variant="secondary" size="lg" className="mt-8">
+              <Link href="/docs" className="cursor-pointer">
+                View Components
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </section>
 
-      {/* Dashboard Preview */}
-      <section className="w-full max-w-7xl px-4 pb-16">
-        <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
-          {/* Browser Chrome */}
-          <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
-            <div className="flex gap-1.5">
-              <span className="size-3 rounded-full bg-[#EC6A5E]" />
-              <span className="size-3 rounded-full bg-[#F4BF4F]" />
-              <span className="size-3 rounded-full bg-[#61C554]" />
+          {/* Dashboard Preview */}
+          <section className="w-full max-w-7xl px-4 pb-16">
+            <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
+              {/* Browser Chrome */}
+              <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
+                <div className="flex gap-1.5">
+                  <span className="size-3 rounded-full bg-[#EC6A5E]" />
+                  <span className="size-3 rounded-full bg-[#F4BF4F]" />
+                  <span className="size-3 rounded-full bg-[#61C554]" />
+                </div>
+                <div className="mx-auto flex h-6 w-72 items-center justify-center rounded-md border border-border/50 bg-background text-xs text-muted-foreground">
+                  www.blakeui.com
+                </div>
+                <div className="w-[52px]" />
+              </div>
+              {/* Dashboard Content */}
+              <div
+                className="overflow-hidden h-[620px]"
+                style={{ transform: "scale(1)" }}
+              >
+                <Dashboard18 className="min-h-0! h-full!" />
+              </div>
             </div>
-            <div className="mx-auto flex h-6 w-72 items-center justify-center rounded-md border border-border/50 bg-background text-xs text-muted-foreground">
-              www.blakeui.com
-            </div>
-            <div className="w-[52px]" />
-          </div>
-          {/* Dashboard Content */}
-          <div
-            className="overflow-hidden h-[620px]"
-            style={{ transform: "scale(1)" }}
+          </section>
+
+          {/* Pricing Section */}
+          <section
+            id="pricing"
+            className="mx-auto w-full max-w-[1570px] rounded-[36px] px-4 py-24"
           >
-            <Dashboard18 className="min-h-0! h-full!" />
-          </div>
-        </div>
-      </section>
+            <div className="mx-auto max-w-[642px] gap-[18px] text-center">
+              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                Easy, one time pricing
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Get lifetime access to 100+ blakeUI components for a one-time
+                payment.
+              </p>
+            </div>
 
-      {/* Pricing Section */}
-      <section
-        id="pricing"
-        className="mx-auto w-full max-w-[1570px] rounded-[36px] bg-[linear-gradient(180deg,rgba(248,248,248,0)_0%,#FFFFFF_53.5%,#FAF9F6_100%)] px-4 py-24 dark:bg-[linear-gradient(180deg,rgba(10,10,10,0)_0%,#0B0B0D_53.5%,#111216_100%)]"
-      >
-        <div className="mx-auto max-w-[642px] gap-[18px] text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Easy, one time pricing
-          </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Get lifetime access to 100+ blakeUI components for a one-time
-            payment.
-          </p>
-        </div>
+            {/* Pricing Cards */}
+            <div className="mx-auto mt-10 flex md:flex-row flex-col items-start justify-center gap-2.5">
+              {/* Free Plan */}
+              <div className="flex lg:w-[310px] w-full flex-col gap-2.5 rounded-[12px] border border-border bg-background px-6 py-5">
+                <p className="text-xs text-muted-foreground">Free</p>
+                <p className="text-[17px] font-normal leading-[140%] tracking-[-0.01em] text-foreground">
+                  $0
+                </p>
+                <ul className="mt-2 space-y-2">
+                  <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                    <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
+                    50+ customized components
+                  </li>
+                </ul>
+              </div>
 
-        {/* Pricing Cards */}
-        <div className="mx-auto mt-10 flex md:flex-row flex-col items-start justify-center gap-2.5">
-          {/* Free Plan */}
-          <div className="flex lg:w-[310px] w-full flex-col gap-2.5 rounded-[12px] border border-border bg-background px-6 py-5">
-            <p className="text-xs text-muted-foreground">Free</p>
-            <p className="text-[17px] font-normal leading-[140%] tracking-[-0.01em] text-foreground">
-              $0
-            </p>
-            <ul className="mt-2 space-y-2">
-              <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
-                50+ customized components
-              </li>
-            </ul>
-          </div>
-
-          {/* Startup Plan */}
-          <div className="flex lg:w-[310px] w-full flex-col gap-2.5 rounded-[12px] border-2 border-border bg-background px-6 py-5">
-            <p className="text-xs font-medium text-foreground">Startup</p>
-            <p className="text-[17px] font-normal leading-[140%] tracking-[-0.01em] text-foreground">
-              $99
-            </p>
-            <ul className="mt-2 space-y-2">
-              <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
-                100+ components
-              </li>
-              <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
-                One time payment
-              </li>
-              <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
-                Lifetime updates
-              </li>
-            </ul>
-            <button className="mt-3 w-fit rounded-button border border-brand bg-brand px-4 py-1.5 text-xs font-medium text-white">
-              Buy Now
-            </button>
-          </div>
+              {/* Startup Plan */}
+              <div className="flex lg:w-[310px] w-full flex-col gap-2.5 rounded-[12px] border-2 border-border bg-background px-6 py-5">
+                <p className="text-xs font-medium text-foreground">Startup</p>
+                <p className="text-[17px] font-normal leading-[140%] tracking-[-0.01em] text-foreground">
+                  $99
+                </p>
+                <ul className="mt-2 space-y-2">
+                  <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                    <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
+                    100+ components
+                  </li>
+                  <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                    <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
+                    One time payment
+                  </li>
+                  <li className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                    <Check className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
+                    Lifetime updates
+                  </li>
+                </ul>
+                <button className="mt-3 w-fit rounded-button border border-brand bg-brand px-4 py-1.5 text-xs font-medium text-white">
+                  Buy Now
+                </button>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       {/* CTA Section */}
       <section className="relative w-full mx-auto overflow-hidden bg-background px-4 py-[90px]">
@@ -119,13 +130,12 @@ export default function HomePage() {
             <br />
             and building modern software products.
           </p>
-          <Link
-            href="/docs"
-            className="mt-6 inline-flex items-center gap-2 rounded-button border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-white"
-          >
-            View Components
-            <ArrowRight className="size-4" />
-          </Link>
+          <Button asChild variant="secondary" size="lg" className="mt-6">
+            <Link href="/docs">
+              View Components
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
         </div>
       </section>
 
