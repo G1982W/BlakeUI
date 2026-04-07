@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
@@ -48,6 +48,7 @@ function LogoMark() {
 
 export function HomeNavbar() {
   const router = useRouter();
+  const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -65,6 +66,24 @@ export function HomeNavbar() {
   const goAuth = () => {
     setMobileOpen(false);
     router.push(user ? "/profile" : "/login");
+  };
+
+  const handleNavLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    setMobileOpen(false);
+
+    if (href !== "/#pricing" || pathname !== "/") {
+      return;
+    }
+
+    event.preventDefault();
+    const pricingSection = document.getElementById("pricing");
+    if (!pricingSection) return;
+
+    pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", "#pricing");
   };
 
   const linkClass = cn(
@@ -104,6 +123,7 @@ export function HomeNavbar() {
           <Link
             key={href}
             href={href}
+            onClick={(event) => handleNavLinkClick(event, href)}
             className={cn(
               linkClass,
               "hidden text-foreground @md:inline-flex @md:items-center",
@@ -163,7 +183,7 @@ export function HomeNavbar() {
                   key={href}
                   href={href}
                   className={mobileLinkClass}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(event) => handleNavLinkClick(event, href)}
                 >
                   {label}
                 </Link>
