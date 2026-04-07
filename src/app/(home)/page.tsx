@@ -108,7 +108,7 @@ export default function HomePage() {
       </div>
 
       {/* CTA Section */}
-      <section className="relative w-full mx-auto overflow-hidden bg-background px-4 py-[90px]">
+      <section className="relative w-full mx-auto overflow-hidden bg-surface px-4 py-[90px]">
         <div className="relative z-10 flex flex-col items-center gap-2.5 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground">
             Get started today
@@ -128,7 +128,7 @@ export default function HomePage() {
       </section>
 
       {/* Blake/UI Watermark Footer */}
-      <section className="w-full bg-background">
+      <section className="w-full bg-surface">
         <svg
           className="w-full h-auto"
           width="1600"
