@@ -52,6 +52,7 @@ export default function HomePage() {
 
       {/* Pricing Section */}
       <section
+        id="pricing"
         className="mx-auto w-full max-w-[1570px] rounded-[36px] px-4 py-24"
         style={{
           background:

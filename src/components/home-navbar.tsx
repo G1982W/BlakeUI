@@ -16,8 +16,8 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/docs", label: "Components" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "#", label: "Contact" },
 ] as const;
 
 function LogoMark() {
@@ -104,7 +104,10 @@ export function HomeNavbar() {
           <Link
             key={href}
             href={href}
-            className={cn(linkClass, "hidden @md:inline-flex @md:items-center")}
+            className={cn(
+              linkClass,
+              "hidden text-foreground @md:inline-flex @md:items-center",
+            )}
           >
             {label}
           </Link>
