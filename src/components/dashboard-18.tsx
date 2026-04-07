@@ -175,7 +175,7 @@ const palette = {
 
 const sidebarData: SidebarData = {
   logo: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblocks-logo.svg",
+    src: "/blake-logo-icon.svg",
     alt: "Grandview",
     title: "Grandview",
     description: "Hospitality Suite",
@@ -617,13 +617,13 @@ const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
     <SidebarMenu>
       <SidebarMenuItem>
         <SidebarMenuButton size="lg" tooltip={logo.title}>
-          <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-primary">
+          <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
             <img
               src={logo.src}
               alt={logo.alt}
               width={24}
               height={24}
-              className="size-6 text-primary-foreground invert dark:invert-0"
+              className="size-6"
             />
           </div>
           <div className="flex flex-col gap-0.5 leading-none">
