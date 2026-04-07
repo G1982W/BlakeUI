@@ -505,7 +505,7 @@ h6 {
 
         /* Active link: primary left bar, light background, bold */
         &[data-active="true"] {
-            color: #30313D;
+            color: var(--foreground);
             font-weight: 600;
             background: color-mix(in oklab, var(--color-brand) 12%, transparent);
             /* background-color: magenta; */

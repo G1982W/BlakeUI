@@ -29,13 +29,13 @@ export default function HomePage() {
       <section className="w-full max-w-7xl px-4 pb-16">
         <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
           {/* Browser Chrome */}
-          <div className="flex items-center gap-2 border-b border-border bg-[#f8f8f8] px-4 py-3">
+          <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
             <div className="flex gap-1.5">
               <span className="size-3 rounded-full bg-[#EC6A5E]" />
               <span className="size-3 rounded-full bg-[#F4BF4F]" />
               <span className="size-3 rounded-full bg-[#61C554]" />
             </div>
-            <div className="mx-auto flex h-6 w-72 items-center justify-center rounded-md bg-white border border-border/50 text-xs text-muted-foreground">
+            <div className="mx-auto flex h-6 w-72 items-center justify-center rounded-md border border-border/50 bg-background text-xs text-muted-foreground">
               www.blakeui.com
             </div>
             <div className="w-[52px]" />
@@ -53,11 +53,7 @@ export default function HomePage() {
       {/* Pricing Section */}
       <section
         id="pricing"
-        className="mx-auto w-full max-w-[1570px] rounded-[36px] px-4 py-24"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, #FFFFFF 53.5%, #FAF9F6 100%)",
-        }}
+        className="mx-auto w-full max-w-[1570px] rounded-[36px] bg-[linear-gradient(180deg,rgba(248,248,248,0)_0%,#FFFFFF_53.5%,#FAF9F6_100%)] px-4 py-24 dark:bg-[linear-gradient(180deg,rgba(10,10,10,0)_0%,#0B0B0D_53.5%,#111216_100%)]"
       >
         <div className="mx-auto max-w-[642px] gap-[18px] text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
