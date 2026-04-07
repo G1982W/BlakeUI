@@ -69,7 +69,7 @@ const TRAFFIC_CHART_DATA = [
 const trafficChartConfig = {
   visitors: {
     label: "Visitors",
-    color: "hsl(var(--foreground))",
+    color: "var(--foreground)",
   },
 } satisfies ChartConfig;
 
@@ -296,8 +296,8 @@ function TrafficOverviewChart() {
         <Tooltip
           cursor={{ stroke: "var(--border)", strokeWidth: 1 }}
           contentStyle={{
-            background: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
+            background: "var(--background)",
+            border: "1px solid var(--border)",
             borderRadius: 8,
             padding: "6px 10px",
             fontSize: 12,
