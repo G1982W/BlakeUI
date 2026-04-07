@@ -8,15 +8,15 @@ description: Step-by-step configuration for Next.js.
 
 Step-by-step configuration for Next.js.
 
-Kickstart with a Next.js starter. Everything is set up so you can begin building quickly.
+Kickstart with a [Next.js starter](https://nextjs.org/docs/app/getting-started/installation). Everything is set up so you can begin building quickly.
 
 ## Initialize a NextJS Project
 
-If you do not already have a Next.js project, follow the official Next.js setup guide to create one quickly.
+If you do not already have a Next.js project, follow the official [Next.js setup guide](https://nextjs.org/docs/app/getting-started/installation) to create one quickly.
 
 ## Make sure you have Tailwind CSS v4 installed
 
-Follow the Tailwind CSS v4 setup in your Next.js project and ensure you have a global CSS file (for example `app/global.css`).
+Follow the [Tailwind CSS setup for Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs) and ensure you have a global CSS file (for example `app/global.css`).
 
 ## Add styles (Manual)
 
@@ -244,7 +244,7 @@ Add the following to your global CSS file (`app/global.css`). This includes the 
 
 ## Add the required utils
 
-Set up the utility helpers used across the docs/components:
+Set up the utility helpers used across the docs/components. If you are new to utility-first styling, review [Tailwind utility classes](https://tailwindcss.com/docs/utility-first):
 
 1. `cn`
 2. `tv`
@@ -262,12 +262,12 @@ npm install @remixicon/react
 Use `next/font/google` in your app layout:
 
 ```tsx
-import { Outfit as FontSans } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./global.css";
 
-const outfit = FontSans({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["300", "500"],
 });
 
 export default function RootLayout({
@@ -276,7 +276,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={outfit.variable}>
+    <html lang="en" className={figtree.className}>
       <body>{children}</body>
     </html>
   );

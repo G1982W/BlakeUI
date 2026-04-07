@@ -580,4 +580,9 @@ figure>pre {
     margin-bottom: 0;
 }
 
+.bg-fd-secondary {
+    background-color: var(--surface);
+}
+
+
 @source "../components/**/*.{ts,tsx}";
