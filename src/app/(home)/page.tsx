@@ -9,12 +9,7 @@ export default function HomePage() {
     <div className="flex flex-col items-center">
       <div className="w-full lg:p-4 bg-surface">
         <div
-          className="w-full pt-20 rounded-[36px] flex flex-col items-center"
-          style={{
-            background:
-              "linear-gradient(180deg, #FAF9F6 0%, #FFFFFF 53.5%, #FFFFFF 100%), linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, #FFFFFF 53.5%, #FAF9F6 100%)",
-            backgroundBlendMode: "multiply",
-          }}
+          className="w-full pt-20 rounded-[36px] flex flex-col items-center bg-[linear-gradient(180deg,#FAF9F6_0%,#FFFFFF_53.5%,#FFFFFF_100%),linear-gradient(180deg,rgba(248,248,248,0)_0%,#FFFFFF_53.5%,#FAF9F6_100%)] bg-blend-multiply dark:bg-[linear-gradient(180deg,#0F1013_0%,#111216_53.5%,#111216_100%),linear-gradient(180deg,rgba(17,18,22,0)_0%,#111216_53.5%,#0B0C0F_100%)]"
         >
           {/* Hero Section */}
           <section className="flex flex-col items-center px-4 pt-16 pb-12 text-center">
