@@ -478,17 +478,12 @@ const SOURCE_ICONS: Record<
 
 // --- Chart Config ---
 
-function revenueChartConfigForMetric(
-  metric: SalesMetricKey,
-): ChartConfig {
-  return {
-    revenue: {
-      label: "Revenue",
-      color:
-        metric === "netRevenue" ? "var(--brand)" : palette.secondary.light,
-    },
-  };
-}
+const revenueChartConfig = {
+  revenue: {
+    label: "Revenue",
+    color: "var(--brand)",
+  },
+} satisfies ChartConfig;
 
 // --- Sub-components ---
 
@@ -706,29 +701,39 @@ interface CustomReferenceLabelProps {
   value: number;
 }
 
-const CustomReferenceLabel: React.FC<
-  CustomReferenceLabelProps & { variant?: "default" | "brand" }
-> = (props) => {
-  const { viewBox, value, variant = "default" } = props;
+const CustomReferenceLabel: React.FC<CustomReferenceLabelProps> = (props) => {
+  const { viewBox, value } = props;
   const y = viewBox?.y ?? 0;
 
-  const width = React.useMemo(() => {
-    const characterWidth = 8;
-    const padding = 10;
-    return (
-      compactCurrencyFormatter.format(value).length * characterWidth + padding
-    );
-  }, [value]);
-
-  const fill =
-    variant === "brand" ? "var(--brand)" : "var(--secondary-foreground)";
-  const textFill =
-    variant === "brand" ? "var(--brand-foreground)" : "var(--background)";
+  const { width, height, padX, rectTop } = React.useMemo(() => {
+    const characterWidth = 9;
+    const padX = 14;
+    const padY = 4;
+    const height = 18 + padY * 2;
+    const label = compactCurrencyFormatter.format(value);
+    const width = label.length * characterWidth + padX * 2;
+    const rectTop = y - height / 2;
+    return { width, height, padX, rectTop };
+  }, [value, y]);
 
   return (
     <>
-      <rect x={0} y={y - 9} width={width} height={18} fill={fill} rx={0} />
-      <text fontWeight={600} x={6} y={y + 4} fill={textFill}>
+      <rect
+        x={0}
+        y={rectTop}
+        width={width}
+        height={height}
+        fill="var(--brand)"
+        rx={2}
+      />
+      <text
+        fontWeight={600}
+        fontSize={12}
+        x={padX}
+        y={y}
+        dominantBaseline="middle"
+        fill="var(--brand-foreground)"
+      >
         {compactCurrencyFormatter.format(value)}
       </text>
     </>
@@ -740,11 +745,7 @@ function RevenueBarTooltip({
   payload,
   label,
   metricLabel,
-  useBrandAccent,
-}: NumericSeriesTooltipRenderProps & {
-  metricLabel: string;
-  useBrandAccent?: boolean;
-}) {
+}: NumericSeriesTooltipRenderProps & { metricLabel: string }) {
   if (!active || !payload?.length) return null;
 
   const value = payload[0]?.value || 0;
@@ -755,12 +756,7 @@ function RevenueBarTooltip({
         {label}
       </p>
       <div className="flex items-center gap-1.5 sm:gap-2">
-        <div
-          className={cn(
-            "size-2 rounded-full sm:size-2.5",
-            useBrandAccent ? "bg-brand" : "bg-foreground",
-          )}
-        />
+        <div className="size-2 rounded-full bg-brand sm:size-2.5" />
         <span className="text-[10px] text-muted-foreground sm:text-sm">
           {metricLabel}:
         </span>
@@ -779,24 +775,10 @@ const OccupancyChart = () => {
   );
   const selectedMetric = salesMetricData[metric];
   const secondaryBarPatternId = React.useId();
-  const isNetRevenue = metric === "netRevenue";
-  const revenueChartConfig = React.useMemo(
-    () => revenueChartConfigForMetric(metric),
-    [metric],
-  );
-  const barPatternFillStroke = React.useMemo(
-    () =>
-      isNetRevenue
-        ? {
-            fill: "color-mix(in oklch, var(--brand) 14%, var(--background))",
-            stroke: "color-mix(in oklch, var(--brand) 40%, var(--background))",
-          }
-        : {
-            fill: palette.quaternary.light,
-            stroke: palette.tertiary.dark,
-          },
-    [isNetRevenue],
-  );
+  const barPatternFillStroke = {
+    fill: "color-mix(in oklch, var(--brand) 14%, var(--background))",
+    stroke: "color-mix(in oklch, var(--brand) 40%, var(--background))",
+  };
 
   const maxValueData = React.useMemo(() => {
     const metricData = selectedMetric.data;
@@ -937,7 +919,7 @@ const OccupancyChart = () => {
           <ChartContainer config={revenueChartConfig} className="h-full w-full">
             <BarChart
               data={selectedMetric.data}
-              margin={{ top: 6, right: 12, left: 0, bottom: 0 }}
+              margin={{ top: 14, right: 12, left: 0, bottom: 0 }}
               onMouseLeave={() => setActiveIndex(undefined)}
             >
               <defs>
@@ -976,7 +958,6 @@ const OccupancyChart = () => {
                     payload={payload}
                     label={label}
                     metricLabel={selectedMetric.label}
-                    useBrandAccent={isNetRevenue}
                   />
                 )}
                 cursor={{ fillOpacity: 0.05 }}
@@ -989,9 +970,7 @@ const OccupancyChart = () => {
                     opacity={index === maxValueData.index ? 1 : 0.9}
                     fill={
                       index === maxValueData.index
-                        ? isNetRevenue
-                          ? "var(--brand)"
-                          : palette.primary
+                        ? "var(--brand)"
                         : `url(#${secondaryBarPatternId})`
                     }
                     onMouseEnter={() => setActiveIndex(index)}
@@ -999,19 +978,12 @@ const OccupancyChart = () => {
                 ))}
               </Bar>
               <ReferenceLine
-                opacity={isNetRevenue ? 0.55 : 0.4}
+                opacity={0.55}
                 y={springyValue}
-                stroke={
-                  isNetRevenue ? "var(--brand)" : "var(--secondary-foreground)"
-                }
+                stroke="var(--brand)"
                 strokeWidth={1}
                 strokeDasharray="3 3"
-                label={
-                  <CustomReferenceLabel
-                    value={maxValueData.value}
-                    variant={isNetRevenue ? "brand" : "default"}
-                  />
-                }
+                label={<CustomReferenceLabel value={maxValueData.value} />}
               />
             </BarChart>
           </ChartContainer>
