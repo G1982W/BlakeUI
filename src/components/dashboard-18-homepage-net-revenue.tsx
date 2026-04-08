@@ -127,33 +127,36 @@ const KPI_CAPACITY_SEGMENTS = 24;
 
 const roomCapacityStats: RoomCapacityStatItem[] = [
   {
-    title: "Standard Rooms",
+    title: "General Ward",
     occupied: 128,
-    total: 160,
+    total: 180,
     weeklyChange: 2.8,
     tone: {
-      active: palette.primary,
-      soft: `color-mix(in oklch, var(--foreground) 12%, var(--background))`,
+      /** Dark slate / charcoal fill */
+      active: "oklch(0.32 0.028 252)",
+      soft: `color-mix(in oklch, var(--foreground) 10%, var(--background))`,
     },
   },
   {
-    title: "Deluxe Rooms",
+    title: "ICU",
     occupied: 67,
     total: 90,
     weeklyChange: 3.5,
     tone: {
-      active: palette.secondary.light,
-      soft: `color-mix(in oklch, var(--foreground) 18%, var(--background))`,
+      /** Medium blue fill */
+      active: "oklch(0.52 0.12 252)",
+      soft: `color-mix(in oklch, var(--foreground) 10%, var(--background))`,
     },
   },
   {
-    title: "Suites",
+    title: "Private Rooms",
     occupied: 21,
     total: 30,
     weeklyChange: -1.9,
     tone: {
-      active: palette.tertiary.light,
-      soft: `color-mix(in oklch, var(--foreground) 24%, var(--background))`,
+      /** Deep red fill */
+      active: "oklch(0.42 0.16 25)",
+      soft: `color-mix(in oklch, var(--foreground) 10%, var(--background))`,
     },
   },
 ];
@@ -475,12 +478,17 @@ const SOURCE_ICONS: Record<
 
 // --- Chart Config ---
 
-const revenueChartConfig = {
-  revenue: {
-    label: "Revenue",
-    color: palette.secondary.light,
-  },
-} satisfies ChartConfig;
+function revenueChartConfigForMetric(
+  metric: SalesMetricKey,
+): ChartConfig {
+  return {
+    revenue: {
+      label: "Revenue",
+      color:
+        metric === "netRevenue" ? "var(--brand)" : palette.secondary.light,
+    },
+  };
+}
 
 // --- Sub-components ---
 
@@ -643,8 +651,8 @@ const HotelStatsCards = () => (
               className={cn(
                 "rounded-md px-2 py-0.5 text-xs font-medium",
                 isPositive
-                  ? "bg-muted text-foreground"
-                  : "bg-muted/60 text-muted-foreground",
+                  ? "bg-emerald-500/15 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-200"
+                  : "bg-red-500/15 text-red-800 dark:bg-red-500/15 dark:text-red-200",
               )}
             >
               {capacityDeltaFormatter.format(stat.weeklyChange)}%
@@ -656,7 +664,7 @@ const HotelStatsCards = () => (
               {numberFormatter.format(stat.occupied)}
             </p>
             <p className="text-xs text-muted-foreground tabular-nums">
-              / {numberFormatter.format(stat.total)} rooms
+              / {numberFormatter.format(stat.total)} beds
             </p>
           </div>
 
@@ -679,11 +687,9 @@ const HotelStatsCards = () => (
             ))}
           </div>
 
-          <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">
-              {occupancyPercent}% occupied
-            </span>
-            <span className="font-medium text-foreground tabular-nums">
+          <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
+            <span className="tabular-nums">{occupancyPercent}% occupied</span>
+            <span className="tabular-nums">
               {numberFormatter.format(availableRooms)} available
             </span>
           </div>
@@ -700,8 +706,10 @@ interface CustomReferenceLabelProps {
   value: number;
 }
 
-const CustomReferenceLabel: React.FC<CustomReferenceLabelProps> = (props) => {
-  const { viewBox, value } = props;
+const CustomReferenceLabel: React.FC<
+  CustomReferenceLabelProps & { variant?: "default" | "brand" }
+> = (props) => {
+  const { viewBox, value, variant = "default" } = props;
   const y = viewBox?.y ?? 0;
 
   const width = React.useMemo(() => {
@@ -712,17 +720,15 @@ const CustomReferenceLabel: React.FC<CustomReferenceLabelProps> = (props) => {
     );
   }, [value]);
 
+  const fill =
+    variant === "brand" ? "var(--brand)" : "var(--secondary-foreground)";
+  const textFill =
+    variant === "brand" ? "var(--brand-foreground)" : "var(--background)";
+
   return (
     <>
-      <rect
-        x={0}
-        y={y - 9}
-        width={width}
-        height={18}
-        fill="var(--secondary-foreground)"
-        rx={0}
-      />
-      <text fontWeight={600} x={6} y={y + 4} fill="var(--background)">
+      <rect x={0} y={y - 9} width={width} height={18} fill={fill} rx={0} />
+      <text fontWeight={600} x={6} y={y + 4} fill={textFill}>
         {compactCurrencyFormatter.format(value)}
       </text>
     </>
@@ -734,7 +740,11 @@ function RevenueBarTooltip({
   payload,
   label,
   metricLabel,
-}: NumericSeriesTooltipRenderProps & { metricLabel: string }) {
+  useBrandAccent,
+}: NumericSeriesTooltipRenderProps & {
+  metricLabel: string;
+  useBrandAccent?: boolean;
+}) {
   if (!active || !payload?.length) return null;
 
   const value = payload[0]?.value || 0;
@@ -745,7 +755,12 @@ function RevenueBarTooltip({
         {label}
       </p>
       <div className="flex items-center gap-1.5 sm:gap-2">
-        <div className="size-2 rounded-full bg-foreground sm:size-2.5" />
+        <div
+          className={cn(
+            "size-2 rounded-full sm:size-2.5",
+            useBrandAccent ? "bg-brand" : "bg-foreground",
+          )}
+        />
         <span className="text-[10px] text-muted-foreground sm:text-sm">
           {metricLabel}:
         </span>
@@ -764,6 +779,24 @@ const OccupancyChart = () => {
   );
   const selectedMetric = salesMetricData[metric];
   const secondaryBarPatternId = React.useId();
+  const isNetRevenue = metric === "netRevenue";
+  const revenueChartConfig = React.useMemo(
+    () => revenueChartConfigForMetric(metric),
+    [metric],
+  );
+  const barPatternFillStroke = React.useMemo(
+    () =>
+      isNetRevenue
+        ? {
+            fill: "color-mix(in oklch, var(--brand) 14%, var(--background))",
+            stroke: "color-mix(in oklch, var(--brand) 40%, var(--background))",
+          }
+        : {
+            fill: palette.quaternary.light,
+            stroke: palette.tertiary.dark,
+          },
+    [isNetRevenue],
+  );
 
   const maxValueData = React.useMemo(() => {
     const metricData = selectedMetric.data;
@@ -915,13 +948,13 @@ const OccupancyChart = () => {
                   height={8}
                   patternTransform="rotate(35)"
                 >
-                  <rect width={8} height={8} fill={palette.quaternary.light} />
+                  <rect width={8} height={8} fill={barPatternFillStroke.fill} />
                   <line
                     x1={0}
                     y1={0}
                     x2={0}
                     y2={8}
-                    stroke={palette.tertiary.dark}
+                    stroke={barPatternFillStroke.stroke}
                     strokeWidth={2}
                     opacity={0.5}
                   />
@@ -943,6 +976,7 @@ const OccupancyChart = () => {
                     payload={payload}
                     label={label}
                     metricLabel={selectedMetric.label}
+                    useBrandAccent={isNetRevenue}
                   />
                 )}
                 cursor={{ fillOpacity: 0.05 }}
@@ -955,7 +989,9 @@ const OccupancyChart = () => {
                     opacity={index === maxValueData.index ? 1 : 0.9}
                     fill={
                       index === maxValueData.index
-                        ? palette.primary
+                        ? isNetRevenue
+                          ? "var(--brand)"
+                          : palette.primary
                         : `url(#${secondaryBarPatternId})`
                     }
                     onMouseEnter={() => setActiveIndex(index)}
@@ -963,12 +999,19 @@ const OccupancyChart = () => {
                 ))}
               </Bar>
               <ReferenceLine
-                opacity={0.4}
+                opacity={isNetRevenue ? 0.55 : 0.4}
                 y={springyValue}
-                stroke="var(--secondary-foreground)"
+                stroke={
+                  isNetRevenue ? "var(--brand)" : "var(--secondary-foreground)"
+                }
                 strokeWidth={1}
                 strokeDasharray="3 3"
-                label={<CustomReferenceLabel value={maxValueData.value} />}
+                label={
+                  <CustomReferenceLabel
+                    value={maxValueData.value}
+                    variant={isNetRevenue ? "brand" : "default"}
+                  />
+                }
               />
             </BarChart>
           </ChartContainer>

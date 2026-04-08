@@ -186,11 +186,11 @@ const revenueDomainMax =
   ) * 5000;
 
 const scatterChartConfig = {
-  scatter: { label: "Daily Metrics", color: palette.primary },
+  scatter: { label: "Daily Metrics", color: "var(--brand)" },
 } satisfies ChartConfig;
 
 const revenueChartConfig = {
-  thisYear: { label: "This Year", color: palette.primary },
+  thisYear: { label: "This Year", color: "var(--brand)" },
   lastYear: { label: "Last Year", theme: palette.secondary },
 } satisfies ChartConfig;
 
@@ -413,7 +413,7 @@ const RevenueOverviewChart = () => {
         </div>
         <div className="flex items-center gap-3 sm:gap-5">
           {[
-            { label: "This Year", color: palette.primary },
+            { label: "This Year", color: "var(--brand)" },
             { label: "Last Year", color: palette.secondary.light },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-1.5">

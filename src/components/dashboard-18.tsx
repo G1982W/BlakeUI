@@ -1,31 +1,36 @@
 "use client";
 
 import {
+  ArrowLeftRight,
   ArrowUpRight,
   BedDouble,
   Bell,
+  CalendarCheck,
+  CalendarDays,
   CalendarRange,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronsUpDown,
   ClipboardList,
-  CreditCard,
   DoorOpen,
-  Globe,
-  KeyRound,
+  FileStack,
+  FileText,
+  HeartPulse,
+  Landmark,
   LayoutDashboard,
+  LayoutGrid,
   LogOut,
-  MoreHorizontal,
+  Pill,
+  Plus,
   Search,
   Settings,
+  Share2,
+  Shield,
   ShieldCheck,
-  Sparkles,
+  Stethoscope,
   User,
   Users,
-  UtensilsCrossed,
-  Wallet,
-  Wrench,
 } from "lucide-react";
 import * as React from "react";
 import { Bar, BarChart, Customized, Tooltip, XAxis, YAxis } from "recharts";
@@ -105,10 +110,12 @@ type UserData = {
 
 type SidebarData = {
   logo: {
-    src: string;
-    alt: string;
     title: string;
     description: string;
+    alt: string;
+    /** When set, shows this icon in the brand square instead of `src`. */
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    src?: string;
   };
   navGroups: NavGroup[];
   footerGroup: NavGroup;
@@ -120,25 +127,20 @@ type HotelAction = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
-type Guest = {
-  name: string;
-  avatar?: string;
-  initials: string;
-};
-
-type Booking = {
+type Admission = {
   id: string;
-  guestName: string;
-  roomNumber: string;
-  roomType: string;
-  time: string;
-  guests: Guest[];
-  guestCount: number;
-  source: "Direct" | "Booking.com" | "Expedia" | "Walk-in";
+  patientNo: string;
+  patientName: string;
+  initials: string;
+  avatar?: string;
+  ward: string;
+  admissionTime: string;
+  los: number;
+  contacts: string | null;
+  referral: string;
   status: string;
-  statusColor: string;
-  nights: number;
-  specialRequests?: string;
+  statusKey: "critical" | "stable" | "observation";
+  notes: string | null;
 };
 
 type AvailabilityStatus = "available" | "partial" | "full";
@@ -175,14 +177,14 @@ const palette = {
 
 const sidebarData: SidebarData = {
   logo: {
-    src: "/blake-logo-icon.svg",
-    alt: "Grandview",
-    title: "Grandview",
-    description: "Hospitality Suite",
+    alt: "CareFlow",
+    title: "CareFlow",
+    description: "Clinical Suite",
+    icon: Plus,
   },
   navGroups: [
     {
-      title: "Front Office",
+      title: "Clinical Operations",
       defaultOpen: true,
       items: [
         {
@@ -191,55 +193,51 @@ const sidebarData: SidebarData = {
           href: "#",
           isActive: true,
         },
-        { label: "Reservations", icon: CalendarRange, href: "#" },
-        { label: "Check-in / Check-out", icon: DoorOpen, href: "#" },
+        { label: "Appointments", icon: CalendarDays, href: "#" },
+        { label: "Admissions / Discharges", icon: ArrowLeftRight, href: "#" },
         {
-          label: "Guest Profiles",
-          icon: Users,
+          label: "Patient Records",
+          icon: FileStack,
           href: "#",
           children: [
-            { label: "All Guests", icon: Users, href: "#" },
-            { label: "Loyalty Members", icon: Users, href: "#" },
-            { label: "Corporate Accounts", icon: Users, href: "#" },
+            { label: "All Patients", icon: Users, href: "#" },
+            { label: "Care Programs", icon: HeartPulse, href: "#" },
+            { label: "Insurance Groups", icon: Shield, href: "#" },
           ],
         },
       ],
     },
     {
-      title: "Property",
+      title: "Facility",
       defaultOpen: true,
       items: [
         {
-          label: "Rooms & Suites",
+          label: "Wards & Beds",
           icon: BedDouble,
           href: "#",
           children: [
-            { label: "Floor Plan", icon: BedDouble, href: "#" },
-            { label: "Room Types", icon: BedDouble, href: "#" },
-            { label: "Availability", icon: BedDouble, href: "#" },
+            { label: "Floor Plan", icon: LayoutGrid, href: "#" },
+            { label: "Bed Types", icon: BedDouble, href: "#" },
+            { label: "Bed Availability", icon: CalendarCheck, href: "#" },
           ],
         },
-        { label: "Housekeeping", icon: Sparkles, href: "#" },
-        { label: "Dining & Events", icon: UtensilsCrossed, href: "#" },
+        { label: "Clinical Services", icon: Stethoscope, href: "#" },
+        { label: "Pharmacy & Labs", icon: Pill, href: "#" },
       ],
     },
     {
-      title: "Revenue",
+      title: "Financial",
       defaultOpen: false,
       items: [
-        { label: "Rate Manager", icon: CreditCard, href: "#" },
-        { label: "Billing & Invoices", icon: Wallet, href: "#" },
-        { label: "Channel Distribution", icon: Globe, href: "#" },
+        { label: "Insurance & Billing", icon: Landmark, href: "#" },
+        { label: "Claims & Invoices", icon: FileText, href: "#" },
+        { label: "Referral Channels", icon: Share2, href: "#" },
       ],
     },
     {
       title: "Administration",
       defaultOpen: false,
-      items: [
-        { label: "Staff & Roles", icon: ShieldCheck, href: "#" },
-        { label: "Maintenance Logs", icon: Wrench, href: "#" },
-        { label: "Security & Access", icon: KeyRound, href: "#" },
-      ],
+      items: [{ label: "Staff & Roles", icon: ShieldCheck, href: "#" }],
     },
   ],
   footerGroup: {
@@ -247,8 +245,8 @@ const sidebarData: SidebarData = {
     items: [{ label: "Settings", icon: Settings, href: "#" }],
   },
   user: {
-    name: "Robert Austin",
-    email: "robert@grandview.hotel",
+    name: "Sarah Mitchell",
+    email: "sarah.mitchell@careflow.health",
     avatar:
       "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar/avatar22.jpg",
   },
@@ -268,226 +266,126 @@ const operationsMeta = [
   { label: "VIP guests", value: "3 flagged" },
 ];
 
-const RECENT_ARRIVALS_TABLE: Booking[] = [
+const RECENT_ADMISSIONS_TABLE: Admission[] = [
   {
-    id: "arr-1",
-    guestName: "James Brown",
-    roomNumber: "412",
-    roomType: "Suite",
-    time: "2:00 PM Check-in",
-    guests: [
-      {
-        name: "James Brown",
-        avatar: "https://i.pravatar.cc/32?img=12",
-        initials: "JB",
-      },
-      {
-        name: "Maria Brown",
-        avatar: "https://i.pravatar.cc/32?img=25",
-        initials: "MB",
-      },
-    ],
-    guestCount: 4,
-    source: "Direct",
-    status: "VIP",
-    statusColor: "violet",
-    nights: 3,
-    specialRequests: "Late check-out, extra pillows",
+    id: "adm-1",
+    patientNo: "301",
+    patientName: "James Brown",
+    initials: "JB",
+    avatar: "https://i.pravatar.cc/32?img=12",
+    ward: "Cardiology-412",
+    admissionTime: "2:00 PM",
+    los: 5,
+    contacts: null,
+    referral: "Direct Referral",
+    status: "Critical",
+    statusKey: "critical",
+    notes: null,
   },
   {
-    id: "arr-2",
-    guestName: "Sarah & Tom Lee",
-    roomNumber: "215",
-    roomType: "Deluxe",
-    time: "3:00 PM Check-in",
-    guests: [
-      {
-        name: "Sarah Lee",
-        avatar: "https://i.pravatar.cc/32?img=32",
-        initials: "SL",
-      },
-      {
-        name: "Tom Lee",
-        avatar: "https://i.pravatar.cc/32?img=15",
-        initials: "TL",
-      },
-    ],
-    guestCount: 2,
-    source: "Booking.com",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 5,
+    id: "adm-2",
+    patientNo: "302",
+    patientName: "Sarah & Tom Lee",
+    initials: "ST",
+    avatar: "https://i.pravatar.cc/32?img=32",
+    ward: "Orthopedics-215",
+    admissionTime: "3:00 PM",
+    los: 3,
+    contacts: null,
+    referral: "Insurance",
+    status: "Stable",
+    statusKey: "stable",
+    notes: null,
   },
   {
-    id: "arr-3",
-    guestName: "Michael Chen",
-    roomNumber: "108",
-    roomType: "Standard",
-    time: "4:00 PM Check-in",
-    guests: [
-      {
-        name: "Michael Chen",
-        avatar: "https://i.pravatar.cc/32?img=53",
-        initials: "MC",
-      },
-    ],
-    guestCount: 1,
-    source: "Expedia",
-    status: "Pending",
-    statusColor: "amber",
-    nights: 2,
-    specialRequests: "Ground floor preferred",
+    id: "adm-3",
+    patientNo: "303",
+    patientName: "Michael Chen",
+    initials: "MC",
+    avatar: "https://i.pravatar.cc/32?img=53",
+    ward: "General-108",
+    admissionTime: "4:00 PM",
+    los: 2,
+    contacts: null,
+    referral: "Dr. Park",
+    status: "Observation",
+    statusKey: "observation",
+    notes: null,
   },
   {
-    id: "arr-4",
-    guestName: "Emily Davis",
-    roomNumber: "501",
-    roomType: "Penthouse",
-    time: "5:30 PM Check-in",
-    guests: [
-      {
-        name: "Emily Davis",
-        avatar: "https://i.pravatar.cc/32?img=44",
-        initials: "ED",
-      },
-      {
-        name: "Ryan Davis",
-        avatar: "https://i.pravatar.cc/32?img=18",
-        initials: "RD",
-      },
-      { name: "Sophie Davis", initials: "SD" },
-    ],
-    guestCount: 5,
-    source: "Direct",
-    status: "VIP",
-    statusColor: "violet",
-    nights: 7,
-    specialRequests: "Airport transfer, champagne on arrival",
+    id: "adm-4",
+    patientNo: "304",
+    patientName: "Emily Davis",
+    initials: "ED",
+    avatar: "https://i.pravatar.cc/32?img=44",
+    ward: "ICU-501",
+    admissionTime: "5:30 PM",
+    los: 7,
+    contacts: null,
+    referral: "Specialist",
+    status: "Critical",
+    statusKey: "critical",
+    notes: null,
   },
   {
-    id: "arr-5",
-    guestName: "Noah Wilson",
-    roomNumber: "306",
-    roomType: "Deluxe",
-    time: "6:00 PM Check-in",
-    guests: [
-      {
-        name: "Noah Wilson",
-        avatar: "https://i.pravatar.cc/32?img=61",
-        initials: "NW",
-      },
-    ],
-    guestCount: 2,
-    source: "Booking.com",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 4,
-    specialRequests: "High floor",
+    id: "adm-5",
+    patientNo: "305",
+    patientName: "Noah Wilson",
+    initials: "NW",
+    avatar: "https://i.pravatar.cc/32?img=61",
+    ward: "Cardiology-306",
+    admissionTime: "6:00 PM",
+    los: 4,
+    contacts: null,
+    referral: "Dr. Lee",
+    status: "Stable",
+    statusKey: "stable",
+    notes: null,
   },
   {
-    id: "arr-6",
-    guestName: "Olivia Martin",
-    roomNumber: "119",
-    roomType: "Standard",
-    time: "6:30 PM Check-in",
-    guests: [
-      {
-        name: "Olivia Martin",
-        avatar: "https://i.pravatar.cc/32?img=47",
-        initials: "OM",
-      },
-    ],
-    guestCount: 1,
-    source: "Direct",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 2,
-    specialRequests: "Near elevator",
+    id: "adm-6",
+    patientNo: "306",
+    patientName: "Olivia Martin",
+    initials: "OM",
+    avatar: "https://i.pravatar.cc/32?img=47",
+    ward: "General-119",
+    admissionTime: "6:30 PM",
+    los: 2,
+    contacts: null,
+    referral: "Direct",
+    status: "Stable",
+    statusKey: "stable",
+    notes: null,
   },
   {
-    id: "arr-7",
-    guestName: "Liam Thompson",
-    roomNumber: "522",
-    roomType: "Suite",
-    time: "7:00 PM Check-in",
-    guests: [
-      {
-        name: "Liam Thompson",
-        avatar: "https://i.pravatar.cc/32?img=68",
-        initials: "LT",
-      },
-    ],
-    guestCount: 3,
-    source: "Expedia",
-    status: "Pending",
-    statusColor: "amber",
-    nights: 5,
-    specialRequests: "Baby crib",
+    id: "adm-7",
+    patientNo: "307",
+    patientName: "Liam Thompson",
+    initials: "LT",
+    avatar: "https://i.pravatar.cc/32?img=68",
+    ward: "ICU-522",
+    admissionTime: "7:00 PM",
+    los: 5,
+    contacts: null,
+    referral: "Insurance",
+    status: "Observation",
+    statusKey: "observation",
+    notes: null,
   },
   {
-    id: "arr-8",
-    guestName: "Ava Rodriguez",
-    roomNumber: "227",
-    roomType: "Deluxe",
-    time: "7:20 PM Check-in",
-    guests: [
-      {
-        name: "Ava Rodriguez",
-        avatar: "https://i.pravatar.cc/32?img=36",
-        initials: "AR",
-      },
-    ],
-    guestCount: 2,
-    source: "Walk-in",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 1,
-    specialRequests: "Late dinner reservation",
-  },
-  {
-    id: "arr-9",
-    guestName: "Ethan Brooks",
-    roomNumber: "402",
-    roomType: "Suite",
-    time: "8:00 PM Check-in",
-    guests: [
-      {
-        name: "Ethan Brooks",
-        avatar: "https://i.pravatar.cc/32?img=34",
-        initials: "EB",
-      },
-      {
-        name: "Lara Brooks",
-        avatar: "https://i.pravatar.cc/32?img=66",
-        initials: "LB",
-      },
-    ],
-    guestCount: 4,
-    source: "Direct",
-    status: "VIP",
-    statusColor: "violet",
-    nights: 3,
-    specialRequests: "Fruit basket",
-  },
-  {
-    id: "arr-10",
-    guestName: "Mia Sanchez",
-    roomNumber: "143",
-    roomType: "Standard",
-    time: "8:20 PM Check-in",
-    guests: [
-      {
-        name: "Mia Sanchez",
-        avatar: "https://i.pravatar.cc/32?img=57",
-        initials: "MS",
-      },
-    ],
-    guestCount: 1,
-    source: "Booking.com",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 2,
-    specialRequests: "Quiet room",
+    id: "adm-8",
+    patientNo: "308",
+    patientName: "Ava Rodriguez",
+    initials: "AR",
+    avatar: "https://i.pravatar.cc/32?img=36",
+    ward: "Orthopedics-227",
+    admissionTime: "7:20 PM",
+    los: 1,
+    contacts: null,
+    referral: "Walk-in",
+    status: "Stable",
+    statusKey: "stable",
+    notes: null,
   },
 ];
 
@@ -540,10 +438,10 @@ const SALES_TREND_CELL_INSET = 2;
 
 const salesTrendColors = {
   series: {
-    directBookings: "var(--foreground)",
+    directBookings: "var(--brand)",
     otaBookings: {
-      light: "color-mix(in oklch, var(--primary) 20%, transparent)",
-      dark: "color-mix(in oklch, var(--primary) 30%, transparent)",
+      light: "color-mix(in oklch, var(--brand) 26%, transparent)",
+      dark: "color-mix(in oklch, var(--brand) 36%, transparent)",
     },
   },
   gridCell: "color-mix(in oklch, var(--foreground) 7%, var(--background))",
@@ -601,30 +499,41 @@ function createSalesTrendData() {
   );
 }
 
+const APPOINTMENT_SOURCES_SUMMARY = {
+  totalPatients: 3847,
+  referral: { count: 2318, percent: 60 },
+  walkIn: { count: 1529, percent: 40 },
+} as const;
+
 const revenueChartConfig = {
   directBookings: {
-    label: "Direct",
+    label: "Referral",
     color: salesTrendColors.series.directBookings,
   },
   otaBookings: {
-    label: "OTA",
+    label: "Walk-in",
     theme: salesTrendColors.series.otaBookings,
   },
 } satisfies ChartConfig;
 
 const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
+  const LeadingIcon = logo.icon;
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <SidebarMenuButton size="lg" tooltip={logo.title}>
-          <div className="flex aspect-square size-8 items-center justify-center rounded-sm">
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              width={24}
-              height={24}
-              className="size-6"
-            />
+          <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
+            {LeadingIcon ? (
+              <LeadingIcon className="size-4" aria-hidden="true" />
+            ) : logo.src ? (
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                width={24}
+                height={24}
+                className="size-6"
+              />
+            ) : null}
           </div>
           <div className="flex flex-col gap-0.5 leading-none">
             <span className="font-medium">{logo.title}</span>
@@ -760,18 +669,28 @@ const NavUser = ({ user }: { user: UserData }) => {
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
-    <Sidebar variant="inset" collapsible="icon" {...props}>
+    <Sidebar
+      variant="inset"
+      collapsible="icon"
+      innerClassName="bg-transparent"
+      {...props}
+    >
       <SidebarHeader>
         <div className="flex items-center gap-2 group-data-[collapsible=icon]:flex-col">
           <SidebarLogo logo={sidebarData.logo} />
-          <SidebarTrigger className="ml-auto group-data-[collapsible=icon]:ml-0" />
+          <SidebarTrigger
+            variant="ghost"
+            className="ml-auto group-data-[collapsible=icon]:ml-0"
+          />
         </div>
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea className="h-full">
           {sidebarData.navGroups.map((group) => (
             <SidebarGroup key={group.title}>
-              <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
+              <SidebarGroupLabel className="uppercase tracking-wide">
+                {group.title}
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   {group.items.map((item) => (
@@ -798,9 +717,9 @@ const DashboardHeader = () => {
         .split(" ")
         .map((n) => n[0])
         .join("")
-    : "RA";
-  const userFirstName = user?.name.split(" ")[0] ?? "Robert";
-
+    : "SC";
+  const userFirstName = user?.name.split(" ")[0] ?? "Sarah";
+  const userLastName = user?.name.split(" ")[1] ?? "Mitchell";
   return (
     <header className="sticky top-0 z-40 flex w-full shrink-0 items-center gap-3 border-b bg-background px-4 py-4 @sm:px-6 @lg:rounded-t-xl">
       <Avatar className="size-10 rounded-lg">
@@ -808,9 +727,9 @@ const DashboardHeader = () => {
         <AvatarFallback className="rounded-lg">{userInitials}</AvatarFallback>
       </Avatar>
       <div className="flex flex-col">
-        <span className="text-sm font-medium">{`Hello ${userFirstName}`}</span>
+        <span className="text-sm font-medium">{`Hello Dr.${userLastName}`}</span>
         <span className="text-xs text-muted-foreground">
-          Welcome back to Grandview 👋
+          Welcome back to CareFlow 👋
         </span>
       </div>
       <div className="ml-auto flex flex-wrap items-center gap-2">
@@ -978,14 +897,14 @@ const availabilityStatusMeta: Record<
   partial: {
     label: "Partial",
     summary: "Partially filled",
-    swatch: "bg-primary/20",
-    cell: "bg-primary/14 text-foreground",
+    swatch: "bg-brand/30",
+    cell: "bg-brand/12 text-foreground",
   },
   full: {
     label: "Full",
     summary: "Sold out",
-    swatch: "bg-foreground",
-    cell: "bg-foreground text-background",
+    swatch: "bg-brand",
+    cell: "bg-brand text-white",
   },
 };
 
@@ -1089,10 +1008,10 @@ const AvailabilityCalendarPanel = () => {
                         "bg-muted/20 text-muted-foreground/35",
                       cell.isCurrentMonth && statusMeta.cell,
                       cell.isSelected &&
-                        "ring-2 ring-primary/40 ring-offset-1 ring-offset-background",
+                        "ring-2 ring-brand/45 ring-offset-1 ring-offset-background",
                       cell.isToday &&
                         !cell.isSelected &&
-                        "ring-1 ring-primary/30",
+                        "ring-1 ring-brand/35",
                     )}
                   >
                     <span>{cell.date}</span>
@@ -1259,7 +1178,7 @@ function SalesTrendTooltip({ active, payload }: SalesTrendTooltipProps) {
         <div className="flex items-center justify-between gap-5">
           <span className="flex items-center gap-2 text-muted-foreground">
             <span className="size-1.5 rounded-full bg-(--color-directBookings)" />
-            Direct
+            Referral
           </span>
           <span className="font-semibold text-foreground">
             {numberFormatter.format(row.directBookings)}
@@ -1268,7 +1187,7 @@ function SalesTrendTooltip({ active, payload }: SalesTrendTooltipProps) {
         <div className="flex items-center justify-between gap-5">
           <span className="flex items-center gap-2 text-muted-foreground">
             <span className="size-1.5 rounded-full bg-(--color-otaBookings)" />
-            OTA
+            Walk-in
           </span>
           <span className="font-semibold text-foreground">
             {numberFormatter.format(row.otaBookings)}
@@ -1413,25 +1332,6 @@ const RevenueFlowChart = () => {
     setActivePointKey(null);
   }, []);
 
-  const bookingMix = React.useMemo(() => {
-    const totals = chartData.reduce(
-      (acc, p) => {
-        acc.directBookings += p.directBookings;
-        acc.otaBookings += p.otaBookings;
-        return acc;
-      },
-      { directBookings: 0, otaBookings: 0 },
-    );
-    const total = totals.directBookings + totals.otaBookings;
-    return {
-      ...totals,
-      directShare:
-        total > 0 ? Math.round((totals.directBookings / total) * 100) : 0,
-      otaShare: total > 0 ? Math.round((totals.otaBookings / total) * 100) : 0,
-      totalBookings: total,
-    };
-  }, [chartData]);
-
   return (
     <div
       className={cn(
@@ -1448,33 +1348,39 @@ const RevenueFlowChart = () => {
                 salesTrendColors.panelTextMuted,
               )}
             >
-              Booking Sources
+              Appointment Sources
             </p>
             <div className="flex flex-wrap items-end gap-3">
               <span className="text-4xl leading-none font-semibold text-foreground tabular-nums">
-                {numberFormatter.format(bookingMix.totalBookings)}
+                {numberFormatter.format(
+                  APPOINTMENT_SOURCES_SUMMARY.totalPatients,
+                )}
               </span>
               <span className="pb-1 text-sm text-muted-foreground">
-                reservations
+                patients
               </span>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="size-2 rounded-full bg-(--color-directBookings)" />
-              <span className="font-medium text-foreground">Direct</span>
+              <span className="font-medium text-foreground">Referral</span>
               <span className="tabular-nums">
-                {numberFormatter.format(bookingMix.directBookings)}
+                {numberFormatter.format(
+                  APPOINTMENT_SOURCES_SUMMARY.referral.count,
+                )}
               </span>
-              <span>{bookingMix.directShare}%</span>
+              <span>{APPOINTMENT_SOURCES_SUMMARY.referral.percent}%</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="size-2 rounded-full bg-(--color-otaBookings)" />
-              <span className="font-medium text-foreground">OTA</span>
+              <span className="font-medium text-foreground">Walk-in</span>
               <span className="tabular-nums">
-                {numberFormatter.format(bookingMix.otaBookings)}
+                {numberFormatter.format(
+                  APPOINTMENT_SOURCES_SUMMARY.walkIn.count,
+                )}
               </span>
-              <span>{bookingMix.otaShare}%</span>
+              <span>{APPOINTMENT_SOURCES_SUMMARY.walkIn.percent}%</span>
             </div>
           </div>
         </div>
@@ -1567,25 +1473,15 @@ const RevenueFlowChart = () => {
   );
 };
 
-const STATUS_STYLES: Record<string, string> = {
-  violet:
-    "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
-  emerald:
-    "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
-  amber: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
+const ADMISSION_STATUS_STYLES: Record<Admission["statusKey"], string> = {
+  critical: "bg-red-100 text-red-800 dark:bg-red-950/50 dark:text-red-300",
+  stable:
+    "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300",
+  observation:
+    "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
 };
 
-const SOURCE_ICONS: Record<
-  string,
-  React.ComponentType<{ className?: string }>
-> = {
-  Direct: Globe,
-  "Booking.com": Globe,
-  Expedia: Globe,
-  "Walk-in": DoorOpen,
-};
-
-const arrivalsTableHeadClass =
+const admissionsTableHeadClass =
   "h-9 whitespace-nowrap px-3 text-[11px] font-medium text-muted-foreground";
 
 function parseCheckInTimeToMinutes(label: string) {
@@ -1598,177 +1494,153 @@ function parseCheckInTimeToMinutes(label: string) {
   return (isPm ? hour + 12 : hour) * 60 + minute;
 }
 
-const RecentArrivalsTableCard = () => {
-  const arrivals = React.useMemo(
+const RecentAdmissionsTableCard = () => {
+  const admissions = React.useMemo(
     () =>
-      [...RECENT_ARRIVALS_TABLE].sort(
+      [...RECENT_ADMISSIONS_TABLE].sort(
         (a, b) =>
-          parseCheckInTimeToMinutes(a.time) - parseCheckInTimeToMinutes(b.time),
+          parseCheckInTimeToMinutes(a.admissionTime) -
+          parseCheckInTimeToMinutes(b.admissionTime),
       ),
     [],
   );
 
+  const dash = "—";
+
   return (
-    <div className="rounded-xl border bg-card">
+    <div className="min-w-0 w-full rounded-xl border bg-card">
       <div className="flex items-center justify-between gap-3 px-4 pt-4 @sm:px-5">
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-medium text-pretty @sm:text-base">
-            Recent Arrivals
+            Recent Admissions
           </h2>
           <span className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
-            {arrivals.length}
+            {admissions.length}
           </span>
         </div>
         <Button variant="ghost" size="sm" className="h-8 px-3 text-xs">
           View all
         </Button>
       </div>
-      <div className="mt-3 border-t">
-        <ScrollArea className="h-[470px]">
-          <div className="min-w-[940px]">
-            <Table>
-              <TableHeader className="sticky top-0 z-10 bg-muted/40">
-                <TableRow className="border-b hover:bg-muted/40">
-                  <TableHead className={cn(arrivalsTableHeadClass, "w-[76px]")}>
-                    R. No
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[230px]")}
-                  >
-                    Guest
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[160px]")}
-                  >
-                    Room
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[120px]")}
-                  >
-                    Check-in
-                  </TableHead>
-                  <TableHead className={cn(arrivalsTableHeadClass, "w-[80px]")}>
-                    Nights
-                  </TableHead>
-                  <TableHead className={cn(arrivalsTableHeadClass, "w-[80px]")}>
-                    Guests
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[150px]")}
-                  >
-                    Source
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[125px]")}
-                  >
-                    Status
-                  </TableHead>
-                  <TableHead
-                    className={cn(arrivalsTableHeadClass, "w-[220px]")}
-                  >
-                    Special Requests
-                  </TableHead>
-                  <TableHead
-                    className={cn(
-                      arrivalsTableHeadClass,
-                      "w-[72px] text-right",
-                    )}
-                  >
-                    Action
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {arrivals.map((arrival, index) => {
-                  const SourceIcon = SOURCE_ICONS[arrival.source] || Globe;
-                  const leadGuest = arrival.guests[0];
-                  return (
-                    <TableRow
-                      key={arrival.id}
-                      className="h-12 hover:bg-muted/20"
+      <div className="mt-3 min-w-0 border-t">
+        <div className="max-h-[470px] w-full min-w-0 overflow-auto overscroll-x-contain">
+          <Table className="w-max min-w-[1120px]">
+            <TableHeader className="sticky top-0 z-10 bg-muted/40">
+              <TableRow className="border-b hover:bg-muted/40">
+                <TableHead className={cn(admissionsTableHeadClass, "w-[72px]")}>
+                  Pt. No
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[220px]")}
+                >
+                  Patient
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[150px]")}
+                >
+                  Ward
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[100px]")}
+                >
+                  Admission
+                </TableHead>
+                <TableHead className={cn(admissionsTableHeadClass, "w-[56px]")}>
+                  LOS
+                </TableHead>
+                <TableHead className={cn(admissionsTableHeadClass, "w-[88px]")}>
+                  Contacts
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[130px]")}
+                >
+                  Referral
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[110px]")}
+                >
+                  Status
+                </TableHead>
+                <TableHead
+                  className={cn(admissionsTableHeadClass, "w-[100px]")}
+                >
+                  Notes
+                </TableHead>
+                <TableHead
+                  className={cn(
+                    admissionsTableHeadClass,
+                    "w-[84px] text-right",
+                  )}
+                >
+                  Action
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {admissions.map((row) => (
+                <TableRow key={row.id} className="h-12 hover:bg-muted/20">
+                  <TableCell className="px-3 text-sm text-muted-foreground tabular-nums">
+                    #{row.patientNo}
+                  </TableCell>
+                  <TableCell className="px-3">
+                    <div className="flex items-center gap-2">
+                      <Avatar className="size-6">
+                        <AvatarImage src={row.avatar} alt={row.patientName} />
+                        <AvatarFallback className="text-[9px]">
+                          {row.initials}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="max-w-[160px] truncate text-sm font-medium text-foreground">
+                        {row.patientName}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="px-3 text-sm text-muted-foreground">
+                    {row.ward}
+                  </TableCell>
+                  <TableCell className="px-3 text-sm text-muted-foreground">
+                    {row.admissionTime}
+                  </TableCell>
+                  <TableCell className="px-3 text-sm text-muted-foreground tabular-nums">
+                    {row.los}
+                  </TableCell>
+                  <TableCell className="px-3 text-sm text-muted-foreground">
+                    {row.contacts?.trim() || dash}
+                  </TableCell>
+                  <TableCell className="px-3 text-sm text-muted-foreground">
+                    {row.referral}
+                  </TableCell>
+                  <TableCell className="px-3">
+                    <Badge
+                      variant="secondary"
+                      className={cn(
+                        "border-0 px-2 py-0 text-[11px] font-medium",
+                        ADMISSION_STATUS_STYLES[row.statusKey],
+                      )}
                     >
-                      <TableCell className="px-3 text-sm text-muted-foreground tabular-nums">
-                        #{105 + index}
-                      </TableCell>
-                      <TableCell className="px-3">
-                        <div className="flex items-center gap-2">
-                          <Avatar className="size-6">
-                            <AvatarImage
-                              src={leadGuest?.avatar}
-                              alt={arrival.guestName}
-                            />
-                            <AvatarFallback className="text-[9px]">
-                              {leadGuest?.initials ??
-                                arrival.guestName.slice(0, 2).toUpperCase()}
-                            </AvatarFallback>
-                          </Avatar>
-                          <span className="max-w-[170px] truncate text-sm font-medium text-foreground">
-                            {arrival.guestName}
-                          </span>
-                        </div>
-                      </TableCell>
-                      <TableCell className="px-3 text-sm text-muted-foreground">
-                        {arrival.roomType} {arrival.roomNumber}
-                      </TableCell>
-                      <TableCell className="px-3 text-sm text-muted-foreground">
-                        {arrival.time.replace(" Check-in", "")}
-                      </TableCell>
-                      <TableCell className="px-3 text-sm text-muted-foreground tabular-nums">
-                        {arrival.nights}
-                      </TableCell>
-                      <TableCell className="px-3 text-sm text-muted-foreground tabular-nums">
-                        {arrival.guestCount}
-                      </TableCell>
-                      <TableCell className="px-3 text-sm text-muted-foreground">
-                        <span className="inline-flex items-center gap-1.5">
-                          <SourceIcon className="size-3.5" aria-hidden="true" />
-                          {arrival.source}
-                        </span>
-                      </TableCell>
-                      <TableCell className="px-3">
-                        <Badge
-                          variant="secondary"
-                          className={cn(
-                            "border-0 px-2 py-0 text-[11px] font-medium",
-                            STATUS_STYLES[arrival.statusColor] ||
-                              STATUS_STYLES.violet,
-                          )}
-                        >
-                          {arrival.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="max-w-[220px] px-3 text-sm text-muted-foreground">
-                        <span
-                          className="block truncate"
-                          title={
-                            arrival.specialRequests?.trim() ||
-                            "No special requests"
-                          }
-                        >
-                          {arrival.specialRequests?.trim() ||
-                            "No special requests"}
-                        </span>
-                      </TableCell>
-                      <TableCell className="px-3 text-right">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="size-7 p-0"
-                          aria-label={`More actions for ${arrival.guestName}`}
-                        >
-                          <MoreHorizontal
-                            className="size-3.5"
-                            aria-hidden="true"
-                          />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </div>
-        </ScrollArea>
+                      {row.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="max-w-[100px] px-3 text-sm text-muted-foreground">
+                    <span className="block truncate" title={row.notes ?? ""}>
+                      {row.notes?.trim() || dash}
+                    </span>
+                  </TableCell>
+                  <TableCell className="px-3 text-right">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-7 border border-border px-2.5 text-xs shadow-none hover:bg-muted/40 hover:shadow-none"
+                      aria-label={`View admission for ${row.patientName}`}
+                    >
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );
@@ -1785,7 +1657,7 @@ const DashboardContent = () => {
         <RevenueFlowChart />
         <AvailabilityCalendarPanel />
       </div>
-      <RecentArrivalsTableCard />
+      <RecentAdmissionsTableCard />
       <Dashboard18HomepageCalendar />
       <Dashboard18HomepageRevenue />
       <Dashboard18HomepageTotalRevenue />
@@ -1796,7 +1668,10 @@ const DashboardContent = () => {
 
 const Dashboard18 = ({ className }: { className?: string }) => {
   return (
-    <SidebarProvider className={cn("bg-sidebar h-full! min-h-0!", className)}>
+    <SidebarProvider
+      fillInsetArea={false}
+      className={cn("h-full! min-h-0! bg-transparent", className)}
+    >
       <a
         href="#dashboard-main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-3 focus:py-2 focus:text-sm focus:text-foreground focus:ring-2 focus:ring-ring"
@@ -1805,7 +1680,7 @@ const Dashboard18 = ({ className }: { className?: string }) => {
       </a>
       <AppSidebar />
       <div className="@container min-h-0 h-full w-full min-w-0 overflow-hidden @lg:p-2">
-        <div className="flex h-full w-full flex-col items-center justify-start overflow-hidden bg-background @lg:rounded-xl">
+        <div className="flex h-full w-full flex-col items-center justify-start overflow-hidden border border-border bg-background @lg:rounded-2xl">
           <DashboardHeader />
           <DashboardContent />
         </div>

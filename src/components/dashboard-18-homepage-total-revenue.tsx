@@ -88,15 +88,32 @@ const palette = {
   },
 };
 
-const salesCategoryChartConfig = {
-  electronics: { label: "Electronics", color: palette.primary },
-  accessories: { label: "Accessories", theme: palette.secondary },
-  software: { label: "Software", theme: palette.tertiary },
-  other: { label: "Other", theme: palette.quaternary },
+/** Claim status + department revenue (reference: amber / muted blue / forest green / light gray). */
+const clinicalDashboardPalette = {
+  amber: "oklch(0.74 0.14 72)",
+  slateBlue: "oklch(0.52 0.055 252)",
+  forestGreen: "oklch(0.44 0.095 155)",
+  neutralLight: "oklch(0.86 0.018 252)",
+} as const;
+
+const departmentRevenueChartConfig = {
+  cardiology: {
+    label: "Cardiology",
+    color: clinicalDashboardPalette.forestGreen,
+  },
+  orthopedics: {
+    label: "Orthopedics",
+    color: clinicalDashboardPalette.slateBlue,
+  },
+  oncology: { label: "Oncology", color: clinicalDashboardPalette.amber },
+  general: {
+    label: "General",
+    color: clinicalDashboardPalette.neutralLight,
+  },
 } satisfies ChartConfig;
 
 const revenueFlowChartConfig = {
-  thisYear: { label: "This Year", color: palette.primary },
+  thisYear: { label: "This Year", color: "var(--brand)" },
   prevYear: { label: "Previous Year", theme: palette.secondary },
 } satisfies ChartConfig;
 
@@ -125,37 +142,43 @@ function getDataForPeriod(period: TimePeriod) {
   return fullYearData;
 }
 
-const orderStatusData = {
+const claimStatusData = {
   total: 1247,
-  processing: { count: 156, percent: 12.5 },
-  shipped: { count: 423, percent: 33.9 },
-  delivered: { count: 668, percent: 53.6 },
+  pending: { count: 156, percent: 12.5 },
+  submitted: { count: 423, percent: 33.9 },
+  approved: { count: 668, percent: 53.6 },
 };
 
-const salesCategoryData: SalesCategoryItem[] = [
+const claimStatusSegmentColors = {
+  pending: clinicalDashboardPalette.amber,
+  submitted: clinicalDashboardPalette.slateBlue,
+  approved: clinicalDashboardPalette.forestGreen,
+} as const;
+
+const departmentRevenueData: SalesCategoryItem[] = [
   {
-    name: "Electronics",
-    value: 145200,
+    name: "Cardiology",
+    value: 145_000,
     percent: 58,
-    color: palette.primary,
+    color: clinicalDashboardPalette.forestGreen,
   },
   {
-    name: "Accessories",
-    value: 62400,
+    name: "Orthopedics",
+    value: 62_000,
     percent: 25,
-    color: palette.secondary.light,
+    color: clinicalDashboardPalette.slateBlue,
   },
   {
-    name: "Software",
-    value: 32500,
+    name: "Oncology",
+    value: 33_000,
     percent: 13,
-    color: palette.tertiary.light,
+    color: clinicalDashboardPalette.amber,
   },
   {
-    name: "Other",
-    value: 10000,
+    name: "General",
+    value: 10_000,
     percent: 4,
-    color: palette.quaternary.light,
+    color: clinicalDashboardPalette.neutralLight,
   },
 ];
 
@@ -169,27 +192,27 @@ function useHoverHighlight<T extends string | number>() {
   return { active, handleHover };
 }
 
-const OrderStatusChart = () => {
+const ClaimStatusChart = () => {
   const { active: activeSegment, handleHover } = useHoverHighlight<number>();
 
-  const orderStatusItems = [
+  const claimStatusItems = [
     {
-      key: "processing",
-      label: "Processing",
-      ...orderStatusData.processing,
-      color: palette.primary,
+      key: "pending",
+      label: "Pending",
+      ...claimStatusData.pending,
+      color: claimStatusSegmentColors.pending,
     },
     {
-      key: "shipped",
-      label: "Shipped",
-      ...orderStatusData.shipped,
-      color: palette.secondary.light,
+      key: "submitted",
+      label: "Submitted",
+      ...claimStatusData.submitted,
+      color: claimStatusSegmentColors.submitted,
     },
     {
-      key: "delivered",
-      label: "Delivered",
-      ...orderStatusData.delivered,
-      color: palette.tertiary.light,
+      key: "approved",
+      label: "Approved",
+      ...claimStatusData.approved,
+      color: claimStatusSegmentColors.approved,
     },
   ];
 
@@ -201,16 +224,16 @@ const OrderStatusChart = () => {
             variant="ghost"
             size="sm"
             className="size-7 sm:size-8"
-            aria-label="Order status"
+            aria-label="Claim status"
           >
             <ShoppingCart className="size-4 text-muted-foreground sm:size-[18px]" />
           </Button>
           <div>
             <span className="text-sm font-medium sm:text-base">
-              Order Status
+              Claim Status
             </span>
             <p className="text-[10px] text-muted-foreground sm:text-xs">
-              {numberFormatter.format(orderStatusData.total)} Orders This Month
+              {numberFormatter.format(claimStatusData.total)} Claims This Month
             </p>
           </div>
         </div>
@@ -226,7 +249,7 @@ const OrderStatusChart = () => {
 
       <div className="space-y-3">
         <div className="flex h-3 w-full overflow-hidden rounded-full sm:h-4">
-          {orderStatusItems.map((item, index) => (
+          {claimStatusItems.map((item, index) => (
             <ShadTooltipProvider key={item.key}>
               <ShadTooltip>
                 <ShadTooltipTrigger asChild>
@@ -246,7 +269,7 @@ const OrderStatusChart = () => {
                     onPointerLeave={() => handleHover(null)}
                     onFocus={() => handleHover(index)}
                     onBlur={() => handleHover(null)}
-                    aria-label={`${item.label}: ${numberFormatter.format(item.count)} orders (${item.percent}%)`}
+                    aria-label={`${item.label}: ${numberFormatter.format(item.count)} claims (${item.percent}%)`}
                   />
                 </ShadTooltipTrigger>
                 <ShadTooltipContent
@@ -266,7 +289,7 @@ const OrderStatusChart = () => {
                       </span>
                     </div>
                     <span className="text-muted-foreground tabular-nums">
-                      {numberFormatter.format(item.count)} orders
+                      {numberFormatter.format(item.count)} claims
                     </span>
                   </div>
                 </ShadTooltipContent>
@@ -275,24 +298,33 @@ const OrderStatusChart = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-between text-[10px] sm:text-xs">
-          {orderStatusItems.map((item, index) => (
-            <span
-              key={item.key}
-              className={cn(
-                "text-muted-foreground tabular-nums transition-opacity duration-200 motion-reduce:transition-none",
-                activeSegment !== null &&
-                  activeSegment !== index &&
-                  "opacity-40",
-              )}
-            >
-              {item.percent}%
-            </span>
+        <div
+          className="flex flex-wrap items-center justify-center gap-x-1 text-[10px] text-muted-foreground tabular-nums sm:text-xs"
+          aria-label="Claim share breakdown"
+        >
+          {claimStatusItems.map((item, index) => (
+            <React.Fragment key={item.key}>
+              {index > 0 ? (
+                <span className="px-1 text-muted-foreground/50" aria-hidden="true">
+                  —
+                </span>
+              ) : null}
+              <span
+                className={cn(
+                  "transition-opacity duration-200 motion-reduce:transition-none",
+                  activeSegment !== null &&
+                    activeSegment !== index &&
+                    "opacity-40",
+                )}
+              >
+                {item.percent}%
+              </span>
+            </React.Fragment>
           ))}
         </div>
 
         <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-          {orderStatusItems.map((item, index) => (
+          {claimStatusItems.map((item, index) => (
             <ShadTooltipProvider key={item.key}>
               <ShadTooltip>
                 <ShadTooltipTrigger asChild>
@@ -335,7 +367,7 @@ const OrderStatusChart = () => {
                       </span>
                     </div>
                     <span className="text-muted-foreground tabular-nums">
-                      {numberFormatter.format(item.count)} orders
+                      {numberFormatter.format(item.count)} claims
                     </span>
                   </div>
                 </ShadTooltipContent>
@@ -373,10 +405,10 @@ const renderActiveShape = (props: PieSectorDataItem) => {
   );
 };
 
-const SalesByCategoryChart = () => {
+const RevenueByDepartmentChart = () => {
   const { active: activeSlice, handleHover: setHoveredSlice } =
     useHoverHighlight<number>();
-  const totalSales = salesCategoryData.reduce(
+  const totalDepartmentRevenue = departmentRevenueData.reduce(
     (acc, item) => acc + item.value,
     0,
   );
@@ -412,20 +444,26 @@ const SalesByCategoryChart = () => {
             variant="ghost"
             size="sm"
             className="size-7 sm:size-8"
-            aria-label="Sales by category"
+            aria-label="Revenue by department"
           >
             <PieChartIcon className="size-4 text-muted-foreground sm:size-[18px]" />
           </Button>
           <div>
             <span className="text-sm font-medium sm:text-base">
-              Sales by Category
+              Revenue by Department
             </span>
             <p className="flex items-center gap-1 text-[10px] text-muted-foreground sm:text-xs">
               <ArrowUpRight
-                className="size-3 text-foreground"
+                className="size-3 shrink-0"
+                style={{ color: clinicalDashboardPalette.forestGreen }}
                 aria-hidden="true"
               />
-              <span className="font-medium text-foreground">+8.4%</span>
+              <span
+                className="font-medium"
+                style={{ color: clinicalDashboardPalette.forestGreen }}
+              >
+                +8.4%
+              </span>
               <span>vs last month</span>
             </p>
           </div>
@@ -443,12 +481,12 @@ const SalesByCategoryChart = () => {
       <div className="flex flex-1 items-center gap-4 sm:gap-6">
         <div className="relative size-[100px] shrink-0 sm:size-[120px]">
           <ChartContainer
-            config={salesCategoryChartConfig}
+            config={departmentRevenueChartConfig}
             className="h-full w-full"
           >
             <PieChart>
               <Pie
-                data={salesCategoryData}
+                data={departmentRevenueData}
                 cx="50%"
                 cy="50%"
                 innerRadius="55%"
@@ -460,7 +498,7 @@ const SalesByCategoryChart = () => {
                 onMouseEnter={(_data, index) => setHoveredSlice(index)}
                 onMouseLeave={() => setHoveredSlice(null)}
               >
-                {salesCategoryData.map((entry) => (
+                {departmentRevenueData.map((entry) => (
                   <Cell key={entry.name} fill={entry.color} />
                 ))}
               </Pie>
@@ -468,7 +506,7 @@ const SalesByCategoryChart = () => {
           </ChartContainer>
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
             <span className="text-sm font-semibold sm:text-base">
-              {compactCurrencyFormatter.format(totalSales)}
+              {compactCurrencyFormatter.format(totalDepartmentRevenue)}
             </span>
             <span className="text-[8px] text-muted-foreground sm:text-[10px]">
               Total
@@ -477,7 +515,7 @@ const SalesByCategoryChart = () => {
         </div>
 
         <div className="flex flex-1 flex-col gap-2 sm:gap-3">
-          {salesCategoryData.map((item, index) => (
+          {departmentRevenueData.map((item, index) => (
             <div
               key={item.name}
               className={cn(
@@ -584,7 +622,7 @@ const RevenueFlowChart = () => {
   >();
 
   const legendItems = [
-    { key: "thisYear", label: "This Year", color: palette.primary },
+    { key: "thisYear", label: "This Year", color: "var(--brand)" },
     { key: "prevYear", label: "Prev Year", color: palette.secondary.light },
   ] as const;
 
@@ -776,8 +814,8 @@ export default function Dashboard18HomepageTotalRevenue() {
     <div className="flex flex-col gap-4 xl:flex-row xl:gap-6">
       <RevenueFlowChart />
       <div className="flex w-full flex-col gap-4 xl:w-[410px]">
-        <OrderStatusChart />
-        <SalesByCategoryChart />
+        <ClaimStatusChart />
+        <RevenueByDepartmentChart />
       </div>
     </div>
   );

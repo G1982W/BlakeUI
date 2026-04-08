@@ -542,15 +542,15 @@ const CALENDAR_CATEGORY_META: Record<
   }
 > = {
   arrival: {
-    label: "Arrivals",
+    label: "Admissions",
     marker: "dot",
   },
   inHouse: {
-    label: "In-House",
+    label: "In-Patient",
     marker: "ring",
   },
   departure: {
-    label: "Departures",
+    label: "Discharges",
     marker: "dash",
   },
 };
@@ -1018,20 +1018,26 @@ function getCalendarCellStyle(
 }
 
 function getCategoryDotStyle(kind: BookingCalendarKind): React.CSSProperties {
-  const baseColor =
+  const defaultColor =
     "color-mix(in oklch, var(--foreground) 72%, var(--background))";
+  const categoryColor =
+    kind === "arrival"
+      ? "var(--success)"
+      : kind === "departure"
+        ? "var(--destructive)"
+        : defaultColor;
   const marker = CALENDAR_CATEGORY_META[kind].marker;
 
   if (marker === "ring") {
     return {
       backgroundColor: "transparent",
-      boxShadow: `inset 0 0 0 1.5px ${baseColor}`,
+      boxShadow: `inset 0 0 0 1.5px ${categoryColor}`,
     };
   }
 
   if (marker === "dash") {
     return {
-      backgroundColor: baseColor,
+      backgroundColor: categoryColor,
       borderRadius: "999px",
       width: "0.6rem",
       height: "0.16rem",
@@ -1039,9 +1045,20 @@ function getCategoryDotStyle(kind: BookingCalendarKind): React.CSSProperties {
   }
 
   return {
-    backgroundColor: baseColor,
-    boxShadow: `0 0 0 1px color-mix(in oklch, var(--foreground) 12%, transparent)`,
+    backgroundColor: categoryColor,
+    boxShadow:
+      kind === "arrival"
+        ? "0 0 0 1px color-mix(in oklch, var(--success) 30%, transparent)"
+        : kind === "departure"
+          ? "0 0 0 1px color-mix(in oklch, var(--destructive) 30%, transparent)"
+          : "0 0 0 1px color-mix(in oklch, var(--foreground) 12%, transparent)",
   };
+}
+
+function getCategoryLabelClassName(kind: BookingCalendarKind): string {
+  if (kind === "arrival") return "text-[color:var(--success)]";
+  if (kind === "departure") return "text-destructive";
+  return "text-muted-foreground";
 }
 
 // ---------------------------------------------------------------------------
@@ -1063,7 +1080,7 @@ function MonthCalendarHeader({
     <header className="flex flex-col gap-4 pb-3 lg:flex-row lg:items-center lg:justify-between">
       <div>
         <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-          Bookings Calendar
+          Appointments Calendar
         </p>
         <div className="mt-1 text-lg font-semibold text-foreground">
           {monthLabel}
@@ -1163,7 +1180,10 @@ function CalendarMetricRows({ summary }: { summary: CalendarDaySummary }) {
       {rows.map((row) => (
         <div
           key={row.kind}
-          className="flex items-center gap-2 text-[11px] text-foreground/90"
+          className={cn(
+            "flex items-center gap-2 text-[11px]",
+            getCategoryLabelClassName(row.kind),
+          )}
         >
           <span
             className={cn(
@@ -1178,7 +1198,7 @@ function CalendarMetricRows({ summary }: { summary: CalendarDaySummary }) {
           <span className="truncate">
             {CALENDAR_CATEGORY_META[row.kind].label}
           </span>
-          <span className="ml-auto text-muted-foreground">{row.count}</span>
+          <span className="ml-auto tabular-nums">{row.count}</span>
         </div>
       ))}
     </div>
@@ -1337,7 +1357,12 @@ function SummaryMetricInline({
   kind: BookingCalendarKind;
 }) {
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <div
+      className={cn(
+        "flex items-center gap-2 text-sm",
+        getCategoryLabelClassName(kind),
+      )}
+    >
       <span
         className={cn(
           "shrink-0 rounded-full",
@@ -1348,8 +1373,8 @@ function SummaryMetricInline({
         aria-hidden="true"
         style={getCategoryDotStyle(kind)}
       />
-      <span className="text-muted-foreground">{label}</span>
-      <span className="font-semibold text-foreground">{value}</span>
+      <span>{label}</span>
+      <span className="font-semibold tabular-nums">{value}</span>
     </div>
   );
 }
@@ -1365,11 +1390,7 @@ function SelectedDaySummary({ summary }: { summary: CalendarDaySummary }) {
     <section
       aria-live="polite"
       data-testid="selected-day-summary"
-      className="mt-1 rounded-2xl px-4 py-3 sm:px-5"
-      style={{
-        backgroundColor:
-          "color-mix(in oklch, var(--muted) 38%, var(--background))",
-      }}
+      className="mt-1 px-4 py-3 sm:px-5"
     >
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
@@ -1388,17 +1409,17 @@ function SelectedDaySummary({ summary }: { summary: CalendarDaySummary }) {
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <SummaryMetricInline
-            label="Arrivals"
+            label="Admissions"
             value={summary.arrivalsCount}
             kind="arrival"
           />
           <SummaryMetricInline
-            label="In-House"
+            label="In-Patient"
             value={summary.inHouseCount}
             kind="inHouse"
           />
           <SummaryMetricInline
-            label="Departures"
+            label="Discharges"
             value={summary.departuresCount}
             kind="departure"
           />
@@ -1489,7 +1510,10 @@ const Dashboard18HomepageCalendar = () => {
   }, []);
 
   return (
-    <section data-testid="hotel-bookings-calendar" className="w-full">
+    <section
+      data-testid="hotel-bookings-calendar"
+      className="w-full rounded-xl border border-border bg-surface p-4 @sm:p-5 @md:p-6"
+    >
       <MonthCalendarHeader
         monthLabel={getVisibleMonthLabel(visibleMonth)}
         onToday={() => applyVisibleMonth(createVisibleMonth(today))}

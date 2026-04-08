@@ -31,7 +31,7 @@ export default function HomePage() {
 
           {/* Dashboard Preview */}
           <section className="w-full max-w-7xl px-4 pb-16">
-            <div className="overflow-hidden rounded-2xl bg-background">
+            <div className="overflow-hidden rounded-2xl bg-transparent">
               {/* Dashboard Content */}
               <div
                 className="overflow-hidden h-[620px]"
