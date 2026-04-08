@@ -884,27 +884,30 @@ function generateAvailabilityMonthGrid(
   return cells;
 }
 
+const availabilityDayCellBase =
+  "border-0 bg-transparent text-foreground/85 hover:bg-surface/50";
+
 const availabilityStatusMeta: Record<
   AvailabilityStatus,
-  { label: string; summary: string; swatch: string; cell: string }
+  { label: string; summary: string; swatch: string; dot: string }
 > = {
   available: {
     label: "Available",
     summary: "Fully open",
-    swatch: "border border-border/70 bg-background",
-    cell: "border border-border/60 bg-background text-foreground/85",
+    swatch: "border border-border/70 bg-surface",
+    dot: "border border-border/70 bg-surface",
   },
   partial: {
     label: "Partial",
     summary: "Partially filled",
     swatch: "bg-brand/30",
-    cell: "bg-brand/12 text-foreground",
+    dot: "bg-brand/50",
   },
   full: {
     label: "Full",
     summary: "Sold out",
     swatch: "bg-brand",
-    cell: "bg-brand text-white",
+    dot: "bg-brand",
   },
 };
 
@@ -969,7 +972,7 @@ const AvailabilityCalendarPanel = () => {
             type="button"
             onClick={handlePrevMonth}
             aria-label="Previous month"
-            className="flex size-6 items-center justify-center rounded-md border border-border/80 bg-card text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="flex size-6 items-center justify-center rounded-md border border-border/80 bg-surface text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <ChevronLeft className="size-3.5" />
           </button>
@@ -980,7 +983,7 @@ const AvailabilityCalendarPanel = () => {
             type="button"
             onClick={handleNextMonth}
             aria-label="Next month"
-            className="flex size-6 items-center justify-center rounded-md border border-border/80 bg-card text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="flex size-6 items-center justify-center rounded-md border border-border/80 bg-surface text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <ChevronRight className="size-3.5" />
           </button>
@@ -1003,18 +1006,29 @@ const AvailabilityCalendarPanel = () => {
                     type="button"
                     onClick={() => handleDateSelect(cell)}
                     className={cn(
-                      "relative flex aspect-square items-center justify-center rounded-[10px] text-[11px] font-medium transition-colors",
+                      "relative flex aspect-square flex-col items-center justify-center gap-1 rounded-[10px] text-[11px] font-medium transition-colors",
                       !cell.isCurrentMonth &&
-                        "bg-muted/20 text-muted-foreground/35",
-                      cell.isCurrentMonth && statusMeta.cell,
+                        "border-0 bg-transparent text-muted-foreground/35",
+                      cell.isCurrentMonth && availabilityDayCellBase,
                       cell.isSelected &&
-                        "ring-2 ring-brand/45 ring-offset-1 ring-offset-background",
+                        "ring-2 ring-brand/45 ring-offset-1 ring-offset-surface",
                       cell.isToday &&
                         !cell.isSelected &&
                         "ring-1 ring-brand/35",
                     )}
                   >
-                    <span>{cell.date}</span>
+                    <span className="leading-none tabular-nums">{cell.date}</span>
+                    {cell.isCurrentMonth ? (
+                      <span
+                        className={cn(
+                          "size-2 shrink-0 rounded-full",
+                          statusMeta.dot,
+                        )}
+                        aria-hidden
+                      />
+                    ) : (
+                      <span className="size-2 shrink-0" aria-hidden />
+                    )}
                   </button>
                 );
               })}

@@ -345,26 +345,6 @@ const IN_PATIENT: Booking[] = [
     statusColor: "inPatient",
     nights: 6,
   },
-  {
-    id: "inp-3",
-    guestName: "Lisa Park",
-    roomNumber: "207",
-    roomType: "Oncology",
-    time: "Since Apr 3",
-    guests: [
-      {
-        name: "Lisa Park",
-        avatar: "https://i.pravatar.cc/32?img=38",
-        initials: "LP",
-      },
-    ],
-    guestCount: 1,
-    source: "Direct Oncology",
-    attribution: "Direct",
-    status: "In-Patient",
-    statusColor: "inPatient",
-    nights: 3,
-  },
 ];
 
 const DISCHARGES: Booking[] = [
