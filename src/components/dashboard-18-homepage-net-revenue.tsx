@@ -9,7 +9,9 @@ import {
   DoorOpen,
   Globe,
   KeyRound,
+  Landmark,
   Search,
+  UserRound,
 } from "lucide-react";
 import * as React from "react";
 import {
@@ -25,7 +27,6 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -54,7 +55,10 @@ type Booking = {
   time: string;
   guests: Guest[];
   guestCount: number;
-  source: "Direct" | "Booking.com" | "Expedia" | "Walk-in";
+  /** Search keywords (payor, physician, etc.) */
+  source: string;
+  /** Shown below time, e.g. Referral: Dr. Chen or Insurance */
+  attribution: string;
   status: string;
   statusColor: string;
   nights: number;
@@ -217,62 +221,53 @@ const salesMetricData: Record<
   },
 };
 
-const ARRIVALS: Booking[] = [
+const ADMISSIONS: Booking[] = [
   {
-    id: "arr-1",
+    id: "adm-1",
     guestName: "James Brown",
     roomNumber: "412",
-    roomType: "Suite",
-    time: "2:00 PM Check-in",
+    roomType: "Cardiology",
+    time: "2:00 PM Admission",
     guests: [
       {
         name: "James Brown",
         avatar: "https://i.pravatar.cc/32?img=12",
         initials: "JB",
       },
-      {
-        name: "Maria Brown",
-        avatar: "https://i.pravatar.cc/32?img=25",
-        initials: "MB",
-      },
     ],
-    guestCount: 4,
-    source: "Direct",
-    status: "VIP",
-    statusColor: "violet",
-    nights: 3,
-    specialRequests: "Late check-out, extra pillows",
+    guestCount: 1,
+    source: "Referral Dr Chen Cardiology",
+    attribution: "Referral: Dr. Chen",
+    status: "Critical",
+    statusColor: "critical",
+    nights: 1,
   },
   {
-    id: "arr-2",
+    id: "adm-2",
     guestName: "Sarah & Tom Lee",
     roomNumber: "215",
-    roomType: "Deluxe",
-    time: "3:00 PM Check-in",
+    roomType: "Orthopedics",
+    time: "3:00 PM Admission",
     guests: [
       {
-        name: "Sarah Lee",
+        name: "Sarah & Tom Lee",
         avatar: "https://i.pravatar.cc/32?img=32",
-        initials: "SL",
-      },
-      {
-        name: "Tom Lee",
-        avatar: "https://i.pravatar.cc/32?img=15",
-        initials: "TL",
+        initials: "ST",
       },
     ],
     guestCount: 2,
-    source: "Booking.com",
-    status: "Confirmed",
-    statusColor: "emerald",
-    nights: 5,
+    source: "Insurance Orthopedics",
+    attribution: "Insurance",
+    status: "Stable",
+    statusColor: "stable",
+    nights: 2,
   },
   {
-    id: "arr-3",
+    id: "adm-3",
     guestName: "Michael Chen",
     roomNumber: "108",
-    roomType: "Standard",
-    time: "4:00 PM Check-in",
+    roomType: "General",
+    time: "4:00 PM Admission",
     guests: [
       {
         name: "Michael Chen",
@@ -281,47 +276,41 @@ const ARRIVALS: Booking[] = [
       },
     ],
     guestCount: 1,
-    source: "Expedia",
-    status: "Pending",
-    statusColor: "amber",
-    nights: 2,
-    specialRequests: "Ground floor preferred",
+    source: "Referral Dr Park",
+    attribution: "Referral: Dr. Park",
+    status: "Observation",
+    statusColor: "observation",
+    nights: 1,
   },
   {
-    id: "arr-4",
+    id: "adm-4",
     guestName: "Emily Davis",
     roomNumber: "501",
-    roomType: "Penthouse",
-    time: "5:30 PM Check-in",
+    roomType: "ICU",
+    time: "5:30 PM Admission",
     guests: [
       {
         name: "Emily Davis",
         avatar: "https://i.pravatar.cc/32?img=44",
         initials: "ED",
       },
-      {
-        name: "Ryan Davis",
-        avatar: "https://i.pravatar.cc/32?img=18",
-        initials: "RD",
-      },
-      { name: "Sophie Davis", initials: "SD" },
     ],
-    guestCount: 5,
-    source: "Direct",
-    status: "VIP",
-    statusColor: "violet",
-    nights: 7,
-    specialRequests: "Airport transfer, champagne on arrival",
+    guestCount: 1,
+    source: "Direct ICU",
+    attribution: "Direct",
+    status: "Critical",
+    statusColor: "critical",
+    nights: 1,
   },
 ];
 
-const IN_HOUSE: Booking[] = [
+const IN_PATIENT: Booking[] = [
   {
-    id: "inh-1",
+    id: "inp-1",
     guestName: "Robert Garcia",
     roomNumber: "302",
-    roomType: "Deluxe",
-    time: "Since Feb 16",
+    roomType: "Cardiology",
+    time: "Since Apr 5",
     guests: [
       {
         name: "Robert Garcia",
@@ -330,42 +319,38 @@ const IN_HOUSE: Booking[] = [
       },
     ],
     guestCount: 1,
-    source: "Walk-in",
-    status: "Checked In",
-    statusColor: "checkedIn",
+    source: "Walk-in Cardiology",
+    attribution: "Walk-in",
+    status: "In-Patient",
+    statusColor: "inPatient",
     nights: 4,
   },
   {
-    id: "inh-2",
+    id: "inp-2",
     guestName: "Anna & Chris Bell",
     roomNumber: "419",
-    roomType: "Suite",
-    time: "Since Feb 15",
+    roomType: "ICU",
+    time: "Since Apr 4",
     guests: [
       {
-        name: "Anna Bell",
+        name: "Anna & Chris Bell",
         avatar: "https://i.pravatar.cc/32?img=29",
         initials: "AB",
       },
-      {
-        name: "Chris Bell",
-        avatar: "https://i.pravatar.cc/32?img=14",
-        initials: "CB",
-      },
     ],
     guestCount: 2,
-    source: "Booking.com",
-    status: "Checked In",
-    statusColor: "checkedIn",
+    source: "Insurance ICU",
+    attribution: "Insurance",
+    status: "In-Patient",
+    statusColor: "inPatient",
     nights: 6,
-    specialRequests: "Daily housekeeping at 10 AM",
   },
   {
-    id: "inh-3",
+    id: "inp-3",
     guestName: "Lisa Park",
     roomNumber: "207",
-    roomType: "Standard",
-    time: "Since Feb 17",
+    roomType: "Oncology",
+    time: "Since Apr 3",
     guests: [
       {
         name: "Lisa Park",
@@ -374,44 +359,41 @@ const IN_HOUSE: Booking[] = [
       },
     ],
     guestCount: 1,
-    source: "Direct",
-    status: "Checked In",
-    statusColor: "checkedIn",
-    nights: 2,
+    source: "Direct Oncology",
+    attribution: "Direct",
+    status: "In-Patient",
+    statusColor: "inPatient",
+    nights: 3,
   },
 ];
 
-const DEPARTURES: Booking[] = [
+const DISCHARGES: Booking[] = [
   {
-    id: "dep-1",
+    id: "dis-1",
     guestName: "David Kim",
     roomNumber: "315",
-    roomType: "Deluxe",
-    time: "11:00 AM Check-out",
+    roomType: "Orthopedics",
+    time: "11:00 AM Discharge",
     guests: [
       {
         name: "David Kim",
         avatar: "https://i.pravatar.cc/32?img=52",
         initials: "DK",
       },
-      {
-        name: "Jenny Kim",
-        avatar: "https://i.pravatar.cc/32?img=41",
-        initials: "JK",
-      },
     ],
-    guestCount: 2,
-    source: "Expedia",
-    status: "Checking Out",
-    statusColor: "checkingOut",
+    guestCount: 1,
+    source: "Insurance Orthopedics",
+    attribution: "Insurance",
+    status: "Stable",
+    statusColor: "stable",
     nights: 3,
   },
   {
-    id: "dep-2",
+    id: "dis-2",
     guestName: "Rachel Green",
     roomNumber: "104",
-    roomType: "Standard",
-    time: "12:00 PM Check-out",
+    roomType: "General",
+    time: "12:00 PM Discharge",
     guests: [
       {
         name: "Rachel Green",
@@ -420,45 +402,43 @@ const DEPARTURES: Booking[] = [
       },
     ],
     guestCount: 1,
-    source: "Direct",
-    status: "Checking Out",
-    statusColor: "checkingOut",
+    source: "Direct General",
+    attribution: "Direct",
+    status: "Stable",
+    statusColor: "stable",
     nights: 1,
   },
 ];
 
 const STATUS_STYLES: Record<string, string> = {
-  violet:
-    "bg-violet-100 text-violet-800 dark:bg-violet-500/20 dark:text-violet-300",
-  amber:
-    "bg-amber-100 text-amber-900 dark:bg-amber-500/20 dark:text-amber-200",
-  emerald:
+  critical:
+    "bg-red-100 text-red-900 dark:bg-red-500/20 dark:text-red-300",
+  stable:
     "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300",
-  sky: "bg-sky-100 text-sky-900 dark:bg-sky-500/20 dark:text-sky-300",
-  checkedIn:
-    "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300",
-  checkingOut:
-    "bg-amber-100 text-amber-900 dark:bg-amber-500/20 dark:text-amber-200",
+  observation:
+    "bg-sky-100 text-sky-900 dark:bg-sky-500/20 dark:text-sky-300",
+  inPatient:
+    "bg-blue-100 text-blue-900 dark:bg-blue-500/20 dark:text-blue-300",
 };
 
-/** Section header accents for Latest Updates (In-House / Departures). */
+/** Section header accents (Latest Patient Activity). */
 const LATEST_GROUP_HEADER_ACCENTS: Record<
   string,
   { icon: string; count: string; label: string }
 > = {
-  arrivals: {
+  admissions: {
     icon: "bg-violet-500/15 text-violet-700 dark:bg-violet-500/20 dark:text-violet-400",
     count:
       "bg-violet-500/15 text-violet-900 dark:bg-violet-500/25 dark:text-violet-300",
     label: "text-violet-950 dark:text-violet-100",
   },
-  "in-house": {
+  inPatient: {
     icon: "bg-emerald-500/15 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400",
     count:
       "bg-emerald-500/15 text-emerald-800 dark:bg-emerald-500/25 dark:text-emerald-300",
     label: "text-emerald-900 dark:text-emerald-200",
   },
-  departures: {
+  discharges: {
     icon: "bg-amber-500/15 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300",
     count:
       "bg-amber-500/15 text-amber-950 dark:bg-amber-500/25 dark:text-amber-200",
@@ -466,15 +446,13 @@ const LATEST_GROUP_HEADER_ACCENTS: Record<
   },
 };
 
-const SOURCE_ICONS: Record<
-  string,
-  React.ComponentType<{ className?: string }>
-> = {
-  Direct: Globe,
-  "Booking.com": Globe,
-  Expedia: Globe,
-  "Walk-in": DoorOpen,
-};
+function attributionIcon(attribution: string) {
+  const a = attribution.trim();
+  if (a.startsWith("Referral:")) return UserRound;
+  if (a === "Insurance") return Landmark;
+  if (a === "Walk-in") return DoorOpen;
+  return Globe;
+}
 
 // --- Chart Config ---
 
@@ -524,7 +502,7 @@ function AvatarGroup({
 
 function BookingCard({ booking }: { booking: Booking }) {
   const [expanded, setExpanded] = React.useState(false);
-  const SourceIcon = SOURCE_ICONS[booking.source] || Globe;
+  const AttributionIcon = attributionIcon(booking.attribution);
 
   return (
     <div className="rounded-lg border bg-card p-3 transition-colors hover:bg-muted/30">
@@ -532,7 +510,7 @@ function BookingCard({ booking }: { booking: Booking }) {
         <div className="min-w-0 flex-1 space-y-2.5">
           <div>
             <h3 className="truncate text-sm leading-snug font-semibold">
-              {booking.guestName} — {booking.roomType} {booking.roomNumber}
+              {booking.guestName} — {booking.roomType}-{booking.roomNumber}
             </h3>
             <p className="mt-0.5 text-xs text-muted-foreground">
               {booking.time}
@@ -547,17 +525,16 @@ function BookingCard({ booking }: { booking: Booking }) {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <SourceIcon className="size-3.5" />
-              <span>via {booking.source}</span>
+            <div className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
+              <AttributionIcon className="size-3.5 shrink-0" aria-hidden />
+              <span className="truncate">{booking.attribution}</span>
             </div>
             <span className="text-muted-foreground/40">·</span>
             <Badge
               variant="secondary"
               className={cn(
                 "border-0 px-2 py-0 text-[11px] font-medium",
-                STATUS_STYLES[booking.statusColor] ??
-                  STATUS_STYLES.violet,
+                STATUS_STYLES[booking.statusColor] ?? STATUS_STYLES.stable,
               )}
             >
               {booking.status}
@@ -581,11 +558,11 @@ function BookingCard({ booking }: { booking: Booking }) {
       {expanded && (
         <div className="mt-3 space-y-1 border-t pt-3 text-xs text-muted-foreground">
           <p>
-            <span className="font-medium text-foreground">Room Type:</span>{" "}
+            <span className="font-medium text-foreground">Unit:</span>{" "}
             {booking.roomType}
           </p>
           <p>
-            <span className="font-medium text-foreground">Nights:</span>{" "}
+            <span className="font-medium text-foreground">LOS (days):</span>{" "}
             {booking.nights}
           </p>
           {booking.specialRequests && (
@@ -607,7 +584,7 @@ function BookingList({ bookings }: { bookings: Booking[] }) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
         <BedDouble className="mb-2 size-8 opacity-40" />
-        <p className="text-sm">No bookings</p>
+        <p className="text-sm">No patient activity</p>
       </div>
     );
   }
@@ -1008,6 +985,8 @@ const LatestUpdatesPanel = () => {
           booking.roomType,
           booking.roomNumber,
           booking.source,
+          booking.attribution,
+          booking.status,
         ]
           .join(" ")
           .toLowerCase()
@@ -1017,54 +996,52 @@ const LatestUpdatesPanel = () => {
     [query],
   );
 
-  const filteredArrivals = React.useMemo(
-    () => filterBookings(ARRIVALS),
+  const filteredAdmissions = React.useMemo(
+    () => filterBookings(ADMISSIONS),
     [filterBookings],
   );
-  const filteredInHouse = React.useMemo(
-    () => filterBookings(IN_HOUSE),
+  const filteredInPatient = React.useMemo(
+    () => filterBookings(IN_PATIENT),
     [filterBookings],
   );
-  const filteredDepartures = React.useMemo(
-    () => filterBookings(DEPARTURES),
+  const filteredDischarges = React.useMemo(
+    () => filterBookings(DISCHARGES),
     [filterBookings],
   );
   const groupedBookings = React.useMemo(
     () => [
       {
-        key: "arrivals",
-        label: "Arrivals",
+        key: "admissions",
+        label: "Admissions",
         icon: DoorOpen,
-        count: filteredArrivals.length,
-        bookings: filteredArrivals,
+        count: filteredAdmissions.length,
+        bookings: filteredAdmissions,
       },
       {
-        key: "in-house",
-        label: "In-House",
+        key: "inPatient",
+        label: "In-Patient",
         icon: BedDouble,
-        count: filteredInHouse.length,
-        bookings: filteredInHouse,
+        count: filteredInPatient.length,
+        bookings: filteredInPatient,
       },
       {
-        key: "departures",
-        label: "Departures",
+        key: "discharges",
+        label: "Discharges",
         icon: KeyRound,
-        count: filteredDepartures.length,
-        bookings: filteredDepartures,
+        count: filteredDischarges.length,
+        bookings: filteredDischarges,
       },
     ],
-    [filteredArrivals, filteredInHouse, filteredDepartures],
+    [filteredAdmissions, filteredInPatient, filteredDischarges],
   );
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-xl border bg-card p-4 sm:p-5">
-      <div className="flex items-center justify-between gap-2">
+      <div>
         <h2 className="text-sm font-medium text-pretty sm:text-base">
-          Latest Updates
+          Latest Patient Activity
         </h2>
-        <Button variant="ghost" size="sm" className="h-8 px-3 text-xs">
-          Last week
-        </Button>
+        <p className="mt-0.5 text-xs text-muted-foreground">Last 24 hours</p>
       </div>
 
       <div className="mt-3 flex min-h-0 flex-1 flex-col gap-0">
@@ -1076,9 +1053,9 @@ const LatestUpdatesPanel = () => {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search guest, room, or source"
+            placeholder="Search patient, unit, or source"
             className="h-4 w-full border-none bg-transparent text-xs text-foreground outline-none placeholder:text-muted-foreground"
-            aria-label="Search bookings"
+            aria-label="Search patient activity"
           />
         </div>
 
@@ -1125,7 +1102,7 @@ const LatestUpdatesPanel = () => {
                 (group) => group.bookings.length === 0,
               ) && (
                 <div className="rounded-lg border border-dashed border-border bg-muted/30 px-3 py-6 text-center text-xs text-muted-foreground">
-                  No bookings found for this search.
+                  No patient activity found for this search.
                 </div>
               )}
             </div>
