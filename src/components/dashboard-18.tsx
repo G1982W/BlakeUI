@@ -1682,6 +1682,7 @@ const DashboardContent = () => {
 const Dashboard18 = ({ className }: { className?: string }) => {
   return (
     <SidebarProvider
+      defaultOpen={false}
       fillInsetArea={false}
       className={cn("h-full! min-h-0! bg-transparent", className)}
     >
