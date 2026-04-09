@@ -113,6 +113,12 @@
       "type": "\"none\" | \"offcanvas\" | \"icon\"",
       "description": "",
       "required": false
+    },
+    {
+      "name": "innerClassName",
+      "type": "string",
+      "description": "When set, replaces the default `bg-sidebar` on the sidebar surface (avoids conflicting utilities).",
+      "required": false
     }
   ],
   "ApplicationShell9": [
@@ -5070,6 +5076,12 @@
       "defaultValue": "offcanvas",
       "description": "",
       "required": false
+    },
+    {
+      "name": "innerClassName",
+      "type": "string",
+      "description": "When set, replaces the default `bg-sidebar` on the sidebar surface (avoids conflicting utilities).",
+      "required": false
     }
   ],
   "SidebarContent": [],
@@ -5283,6 +5295,13 @@
       "name": "onOpenChange",
       "type": "((open: boolean) => void)",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "fillInsetArea",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When false, the gutter behind inset sidebars stays transparent (no bg-sidebar fill).",
       "required": false
     }
   ],

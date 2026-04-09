@@ -22,7 +22,6 @@ import {
   LayoutGrid,
   LogOut,
   Pill,
-  Plus,
   Search,
   Settings,
   Share2,
@@ -177,10 +176,10 @@ const palette = {
 
 const sidebarData: SidebarData = {
   logo: {
-    alt: "CareFlow",
-    title: "CareFlow",
+    alt: "Blake",
+    title: "Blake",
     description: "Clinical Suite",
-    icon: Plus,
+    src: "/blake-logo-icon.svg",
   },
   navGroups: [
     {
@@ -522,7 +521,7 @@ const SidebarLogo = ({ logo }: { logo: SidebarData["logo"] }) => {
     <SidebarMenu>
       <SidebarMenuItem>
         <SidebarMenuButton size="lg" tooltip={logo.title}>
-          <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
+          <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-md">
             {LeadingIcon ? (
               <LeadingIcon className="size-4" aria-hidden="true" />
             ) : logo.src ? (
