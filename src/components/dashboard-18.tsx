@@ -177,14 +177,14 @@ const palette = {
 const sidebarData: SidebarData = {
   logo: {
     alt: "Blake",
-    title: "Blake",
+    title: "CareFlow",
     description: "Clinical Suite",
     src: "/blake-logo-icon.svg",
   },
   navGroups: [
     {
       title: "Clinical Operations",
-      defaultOpen: true,
+      defaultOpen: false,
       items: [
         {
           label: "Dashboard",
@@ -1016,7 +1016,9 @@ const AvailabilityCalendarPanel = () => {
                         "ring-1 ring-brand/35",
                     )}
                   >
-                    <span className="leading-none tabular-nums">{cell.date}</span>
+                    <span className="leading-none tabular-nums">
+                      {cell.date}
+                    </span>
                     {cell.isCurrentMonth ? (
                       <span
                         className={cn(

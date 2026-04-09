@@ -76,7 +76,7 @@ export function HomeNavbar({ className }: { className?: string }) {
     >
       <nav
         className={cn(
-          "flex w-full max-w-3xl items-center rounded-full border border-border bg-surface px-4 py-2.5 shadow-sm",
+          "flex w-full max-w-3xl items-center rounded-full border border-border bg-surface px-4 py-2.5",
           "justify-between gap-3 @md:inline-flex @md:w-auto @md:max-w-none @md:justify-center @md:gap-6 @md:px-6",
         )}
         aria-label="Main"
