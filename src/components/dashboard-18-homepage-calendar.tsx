@@ -987,7 +987,7 @@ const calendarCellBaseStyle: React.CSSProperties = {
 };
 
 const calendarMutedCellStyle: React.CSSProperties = {
-  backgroundColor: "color-mix(in oklch, var(--muted) 34%, var(--background))",
+  backgroundColor: "var(--background)",
 };
 
 function getCalendarCellStyle(
@@ -1001,8 +1001,7 @@ function getCalendarCellStyle(
   };
 
   if (summary.isSelected) {
-    style.backgroundColor =
-      "color-mix(in oklch, var(--muted) 82%, var(--background))";
+    style.backgroundColor = "var(--background)";
     style.borderColor = "transparent";
     style.boxShadow = "none";
   } else if (summary.isToday) {
@@ -1090,44 +1089,32 @@ function MonthCalendarHeader({
       <div className="flex items-center gap-2">
         <Button
           type="button"
-          variant="ghost"
+          variant="primary"
           size="sm"
-          className="h-9 rounded-md bg-muted/45 px-4 font-medium"
+          className="rounded-md px-4 font-medium"
           onClick={onToday}
-          style={{
-            backgroundColor:
-              "color-mix(in oklch, var(--muted) 72%, var(--background))",
-          }}
         >
           Today
         </Button>
         <div className="h-5 w-px bg-border/55" aria-hidden="true" />
         <Button
           type="button"
-          variant="ghost"
+          variant="primary"
           size="sm"
-          className="h-9 rounded-md bg-muted/45 px-3 font-medium"
+          className="rounded-md px-3 font-medium"
           aria-label="Previous month"
           onClick={onPreviousMonth}
-          style={{
-            backgroundColor:
-              "color-mix(in oklch, var(--muted) 72%, var(--background))",
-          }}
         >
           <ChevronLeft className="mr-1.5 size-4" aria-hidden="true" />
           Prev month
         </Button>
         <Button
           type="button"
-          variant="ghost"
+          variant="primary"
           size="sm"
-          className="h-9 rounded-md bg-muted/45 px-3 font-medium"
+          className="rounded-md px-3 font-medium"
           aria-label="Next month"
           onClick={onNextMonth}
-          style={{
-            backgroundColor:
-              "color-mix(in oklch, var(--muted) 72%, var(--background))",
-          }}
         >
           Next month
           <ChevronRight className="ml-1.5 size-4" aria-hidden="true" />
