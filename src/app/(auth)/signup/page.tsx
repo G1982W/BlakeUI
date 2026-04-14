@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppLink } from "@/components/ui/link";
+import { getBrowserOrigin } from "@/lib/request-origin";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -51,6 +52,7 @@ export default function SignupPage() {
   });
 
   const supabase = createClient();
+  const callbackUrl = `${getBrowserOrigin()}/auth/callback`;
 
   async function onSubmit(values: SignupValues) {
     setIsLoading(true);
@@ -59,7 +61,7 @@ export default function SignupPage() {
       password: values.password,
       options: {
         data: { full_name: values.name },
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
+        emailRedirectTo: callbackUrl,
       },
     });
     setIsLoading(false);
@@ -78,7 +80,7 @@ export default function SignupPage() {
     setOauthLoading(provider);
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: { redirectTo: callbackUrl },
     });
     if (error) {
       toast.error(error.message);

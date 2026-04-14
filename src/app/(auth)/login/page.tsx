@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppLink } from "@/components/ui/link";
+import { getBrowserOrigin } from "@/lib/request-origin";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -56,9 +57,10 @@ export default function LoginPage() {
 
   async function signInWithOAuth(provider: "google" | "github") {
     setOauthLoading(provider);
+    const redirectTo = `${getBrowserOrigin()}/auth/callback`;
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: { redirectTo },
     });
     if (error) {
       toast.error(error.message);

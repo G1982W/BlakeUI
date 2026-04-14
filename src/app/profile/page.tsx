@@ -7,6 +7,7 @@ import {
   ArrowLeft,
   CreditCard,
   History,
+  LogOut,
 } from "lucide-react";
 
 function formatDate(iso: string | null) {
@@ -38,6 +39,14 @@ export default async function ProfilePage() {
     .order("created_at", { ascending: false })
     .limit(20);
 
+  async function signOut() {
+    "use server";
+
+    const supabase = await createClient();
+    await supabase.auth.signOut();
+    redirect("/login");
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 lg:px-8">
@@ -55,6 +64,12 @@ export default async function ProfilePage() {
               Account
             </h1>
             <p className="mt-1 text-muted-foreground">{user.email}</p>
+            <form action={signOut} className="mt-4">
+              <Button type="submit" variant="ghost" size="sm">
+                <LogOut className="size-4" />
+                Log out
+              </Button>
+            </form>
           </div>
 
           <section className="rounded-xl border border-border bg-card p-6 shadow-sm">
