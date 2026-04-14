@@ -183,7 +183,7 @@ export default function LoginPage() {
                       <Input
                         type={showPassword ? "text" : "password"}
                         placeholder="••••••••"
-                        className="pr-10"
+                        className=""
                         {...field}
                       />
                       <button
