@@ -1586,9 +1586,7 @@ const RecentAdmissionsTableCard = () => {
                     admissionsTableHeadClass,
                     "w-[84px] text-right",
                   )}
-                >
-                  Action
-                </TableHead>
+                ></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
