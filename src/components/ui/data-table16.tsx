@@ -841,111 +841,117 @@ export function DataTable16({ className }: { className?: string }) {
                       </TableRow>
                       {row.getIsExpanded() && (
                         <TableRow className="bg-muted/50 transition-colors">
-                          <TableCell className="p-0" colSpan={5} />
-                          <TableCell className="py-4" colSpan={1}>
-                            <div className="rounded-lg border border-border/50 bg-card p-4 shadow-sm">
-                              <div className="grid grid-cols-2 gap-4">
-                                {/* Left Column */}
-                                <div className="space-y-3">
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-primary/10 p-2">
-                                      <Package className="h-4 w-4 text-primary" />
+                          <TableCell
+                            className="p-0 sm:p-4"
+                            colSpan={columns.length}
+                          >
+                            <div className="flex justify-end">
+                              <div className="min-w-0 max-w-fit overflow-x-auto rounded-lg border border-border/50 bg-card p-3 shadow-sm sm:p-4">
+                                <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+                                  {/* Left Column */}
+                                  <div className="min-w-0 space-y-3">
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-primary/10 p-2">
+                                        <Package className="h-4 w-4 text-primary" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Service
+                                        </p>
+                                        <p className="wrap-break-word text-sm font-medium">
+                                          {row.original.shipping.service}
+                                        </p>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Service
-                                      </p>
-                                      <p className="text-sm font-medium">
-                                        {row.original.shipping.service}
-                                      </p>
+
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-muted p-2">
+                                        <MapPin className="h-4 w-4 text-muted-foreground" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Tracking
+                                        </p>
+                                        <p className="break-all rounded bg-muted px-2 py-1 font-mono text-sm font-medium">
+                                          {
+                                            row.original.shipping
+                                              .tracking_number
+                                          }
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-muted p-2">
+                                        <Calendar className="h-4 w-4 text-muted-foreground" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Delivery
+                                        </p>
+                                        <p className="wrap-break-word text-sm font-medium">
+                                          {formatDate(
+                                            row.original.shipping.delivery_eta,
+                                          )}
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
 
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-muted p-2">
-                                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                                  {/* Right Column */}
+                                  <div className="min-w-0 space-y-3">
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-muted p-2">
+                                        <Package className="h-4 w-4 text-muted-foreground" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Warehouse
+                                        </p>
+                                        <p className="wrap-break-word text-sm font-medium">
+                                          {row.original.shipping.warehouse}
+                                        </p>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Tracking
-                                      </p>
-                                      <p className="rounded bg-muted px-2 py-1 font-mono text-sm font-medium">
-                                        {row.original.shipping.tracking_number}
-                                      </p>
-                                    </div>
-                                  </div>
 
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-muted p-2">
-                                      <Calendar className="h-4 w-4 text-muted-foreground" />
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-muted p-2">
+                                        <Package className="h-4 w-4 text-muted-foreground" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Channel
+                                        </p>
+                                        <Badge
+                                          variant="outline"
+                                          className="max-w-full wrap-break-word text-xs"
+                                        >
+                                          {
+                                            row.original.shipping
+                                              .fulfillment_channel
+                                          }
+                                        </Badge>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Delivery
-                                      </p>
-                                      <p className="text-sm font-medium">
-                                        {formatDate(
-                                          row.original.shipping.delivery_eta,
-                                        )}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
 
-                                {/* Right Column */}
-                                <div className="space-y-3">
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-muted p-2">
-                                      <Package className="h-4 w-4 text-muted-foreground" />
-                                    </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Warehouse
-                                      </p>
-                                      <p className="text-sm font-medium">
-                                        {row.original.shipping.warehouse}
-                                      </p>
-                                    </div>
-                                  </div>
-
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-muted p-2">
-                                      <Package className="h-4 w-4 text-muted-foreground" />
-                                    </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Channel
-                                      </p>
-                                      <Badge
-                                        variant="outline"
-                                        className="text-xs"
-                                      >
-                                        {
-                                          row.original.shipping
-                                            .fulfillment_channel
-                                        }
-                                      </Badge>
-                                    </div>
-                                  </div>
-
-                                  <div className="flex items-center gap-3">
-                                    <div className="rounded-md bg-muted p-2">
-                                      <User className="h-4 w-4 text-muted-foreground" />
-                                    </div>
-                                    <div>
-                                      <p className="text-xs text-muted-foreground">
-                                        Assigned To
-                                      </p>
-                                      <p className="text-sm font-medium">
-                                        {row.original.shipping.assigned_to}
-                                      </p>
+                                    <div className="flex min-w-0 items-start gap-3">
+                                      <div className="shrink-0 rounded-md bg-muted p-2">
+                                        <User className="h-4 w-4 text-muted-foreground" />
+                                      </div>
+                                      <div className="min-w-0">
+                                        <p className="text-xs text-muted-foreground">
+                                          Assigned To
+                                        </p>
+                                        <p className="wrap-break-word text-sm font-medium">
+                                          {row.original.shipping.assigned_to}
+                                        </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </TableCell>
-                          <TableCell className="p-0" colSpan={1} />
                         </TableRow>
                       )}
                     </React.Fragment>
