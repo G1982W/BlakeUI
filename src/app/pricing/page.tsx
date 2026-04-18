@@ -10,10 +10,10 @@ import {
 import { CheckoutButton } from "@/components/payment/checkout-button";
 
 const FEATURES = [
-  { icon: Code2, text: "1193+ Blake UI blocks" },
-  { icon: FileCode, text: "1189+ Blake UI components" },
-  { icon: LayoutTemplate, text: "12 Next.js, Astro templates (Premium)" },
-  { icon: Palette, text: "Figma UI Kit (Premium)" },
+  { icon: Code2, text: "50+ Blake UI blocks" },
+  { icon: FileCode, text: "100 Blake UI components" },
+  // { icon: LayoutTemplate, text: "12 Next.js, Astro templates (Premium)" },
+  // { icon: Palette, text: "Figma UI Kit (Premium)" },
   { icon: Sparkles, text: "Lifetime updates & unlimited projects" },
 ];
 

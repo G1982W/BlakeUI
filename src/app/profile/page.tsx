@@ -6,6 +6,7 @@ import { AppLink } from "@/components/ui/link";
 import {
   ArrowLeft,
   CreditCard,
+  ExternalLink,
   History,
   LogOut,
 } from "lucide-react";
@@ -132,7 +133,17 @@ export default async function ProfilePage() {
             )}
             {(!subscription || subscription.status !== "active") && (
               <Button variant="secondary" size="md" className="mt-4" asChild>
-                <AppLink href="/pricing">View plans</AppLink>
+                <AppLink
+                  href="/pricing"
+                  icon="none"
+                  className="gap-2 text-primary-foreground hover:text-primary-foreground focus-visible:text-primary-foreground"
+                >
+                  View plans
+                  <ExternalLink
+                    aria-hidden
+                    className="size-4 shrink-0 text-primary-foreground"
+                  />
+                </AppLink>
               </Button>
             )}
           </section>

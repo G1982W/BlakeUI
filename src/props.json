@@ -3891,21 +3891,39 @@
   "InputGroupText": [],
   "InputGroupInput": [
     {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
       "name": "disabled",
       "type": "boolean",
-      "description": "",
+      "description": "Whether the input is disabled",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"checkbox\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"image\" | \"month\" | \"number\" | \"password\" | \"radio\" | \"range\" | \"reset\" | \"search\" | \"submit\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+      "description": "The type of input",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
       "required": false
     },
     {
       "name": "placeholder",
       "type": "string",
-      "description": "",
+      "description": "The placeholder text",
       "required": false
     },
     {
-      "name": "type",
-      "type": "\"button\" | \"submit\" | \"reset\"",
-      "description": "",
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
       "required": false
     }
   ],
