@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/drawer";
 import { CourseCurriculum } from "./course-curriculum";
 import { CircleProgress } from "./circle-progress";
-import { lessons } from "../data";
+import { lessons } from "./data";
 
 const completedCount = lessons.filter((l) => l.completed).length;
 const progress = Math.round((completedCount / lessons.length) * 100);
@@ -26,7 +26,7 @@ export function CourseHeader() {
           <div className="flex items-center justify-between gap-4">
             {/* Left: back + title */}
             <div className="flex min-w-0 items-center gap-3">
-              <Button variant="outline" size="sm" className="shrink-0 gap-1.5">
+              <Button variant="primary" size="sm" className="shrink-0 gap-1.5">
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span className="hidden sm:inline">Courses</span>
               </Button>
@@ -38,7 +38,7 @@ export function CourseHeader() {
 
             {/* Mobile: curriculum drawer trigger */}
             <Button
-              variant="outline"
+              variant="primary"
               size="sm"
               className="shrink-0 gap-2 lg:hidden"
               onClick={() => setOpen(true)}
