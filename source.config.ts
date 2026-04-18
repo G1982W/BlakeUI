@@ -8,6 +8,11 @@ export const docs = defineDocs({
   docs: {
     schema: frontmatterSchema.extend({
       base: z.string().optional(),
+      /**
+       * Full-width docs page without “On this page” (desktop + mobile TOC).
+       * Use for multi-file “app page” blocks with `AppPagePreview`.
+       */
+      appPage: z.boolean().optional(),
     }),
     postprocess: {
       includeProcessedMarkdown: true,

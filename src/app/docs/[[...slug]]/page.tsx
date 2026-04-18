@@ -19,10 +19,13 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const baseLabel = page.data.base
     ? baseLabelMap[page.data.base] ?? page.data.base
     : null;
+  const appPage = Boolean(page.data.appPage);
   return (
     <DocsPage
       toc={page.data.toc}
-      full={page.data.full}
+      full={appPage || page.data.full}
+      tableOfContent={appPage ? { enabled: false } : undefined}
+      tableOfContentPopover={appPage ? { enabled: false } : undefined}
       footer={{ component: <DocsFooter /> }}
     >
       {baseLabel ? (

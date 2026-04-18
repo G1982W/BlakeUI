@@ -23,6 +23,8 @@ import { ChartGridDemo } from "@/components/ui/chart-demo";
 import { ListViewDemo } from "@/components/list-view-demo";
 import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 import { Login4Demo } from "@/components/login-4-demo";
+import { CourseDetailPageDemo } from "@/components/course-detail-page-demo";
+import { AppPagePreview } from "@/components/app-page-preview";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -30,6 +32,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...components,
     p: (props) => <span {...props} />,
     ComponentPreview,
+    AppPagePreview,
     PremiumOnly,
     ComponentsGrid,
     ToastDemo,
@@ -51,5 +54,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ListViewDemo,
     ButtonVariantShowcase,
     Login4Demo,
+    CourseDetailPageDemo,
   } as MDXComponents;
 }

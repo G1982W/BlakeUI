@@ -1,0 +1,50 @@
+---
+title: Course Detail Page
+description: Course detail page with video player, curriculum, and instructor profile.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="course-detail-page" premium>
+  <CourseDetailPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Course Detail Page** includes:
+
+- **Header**: Back navigation, title, progress, and mobile curriculum drawer.
+- **Video area**: Playback controls and lesson chrome.
+- **Details**: Metadata, description, and tags.
+- **Instructor**: Profile card with stats.
+- **Curriculum**: Sticky sidebar on large screens (drawer on small screens).
+
+Uses Button, Card, Drawer, Progress, ScrollArea, and Avatar.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  files={appPageSources["course-detail-page"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { CourseDetailPage } from "@/components/ui/course-detail-page";
+
+<CourseDetailPage />;
+```

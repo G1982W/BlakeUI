@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import {
   CodeBlockTab,
   CodeBlockTabs,
@@ -10,11 +11,16 @@ import { cn } from "@/lib/utils";
 import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
+type SourceFile = { path: string; code: string };
+
 type InstallationProps = {
   dependencies?: string[];
   useReactSlot?: boolean;
-  code: string;
-  fileName: string;
+  /** Single-file install (default). Ignored when `files` is set. */
+  code?: string;
+  fileName?: string;
+  /** Multi-file install: one tab per file (e.g. app page blocks). */
+  files?: SourceFile[];
   language?: string;
   className?: string;
   /** When true, content is only shown to logged-in users with an active subscription. */
@@ -51,12 +57,21 @@ export default function Installation({
   useReactSlot = false,
   code,
   fileName,
+  files,
   language = "tsx",
   className,
   premium = false,
 }: InstallationProps) {
   const { isLoading: subscriptionLoading, hasActiveSubscription } =
     useSubscriptionStatus();
+
+  const multiFile = Boolean(files && files.length > 0);
+  const [activeFileIndex, setActiveFileIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!multiFile || !files?.length) return;
+    if (activeFileIndex >= files.length) setActiveFileIndex(0);
+  }, [activeFileIndex, files, multiFile]);
 
   if (premium && (subscriptionLoading || !hasActiveSubscription)) {
     return null;
@@ -125,22 +140,76 @@ export default function Installation({
           </CodeBlockTabs>
         </>
       ) : null}
-      <h3 className="relative mt-8 text-sm font-semibold text-foreground">
-        Create a{" "}
-        <code className="mx-1 inline-flex whitespace-nowrap rounded-md bg-muted px-2 py-0.5 font-mono text-xs text-foreground">
-          {fileName.split("/").pop()}
-        </code>{" "}
-        file and paste the following code into it.
-      </h3>
+      {multiFile ? (
+        <>
+          <h3 className="relative mt-8 text-sm font-semibold text-foreground">
+            Create the files below (paths shown on each tab) and paste the
+            matching source into each file.
+          </h3>
+          <div className="mt-4 rounded-lg border border-border bg-muted/20 p-2">
+            <div
+              className="flex gap-1 overflow-x-auto border-b border-border pb-2"
+              role="tablist"
+              aria-label="Installation files"
+            >
+              {files!.map((f, index) => {
+                const short = f.path.split("/").filter(Boolean).pop() ?? f.path;
+                return (
+                  <button
+                    key={f.path}
+                    type="button"
+                    role="tab"
+                    aria-selected={index === activeFileIndex}
+                    onClick={() => setActiveFileIndex(index)}
+                    className={cn(
+                      "shrink-0 rounded-md border px-2.5 py-1.5 text-left font-mono text-[11px] transition-colors",
+                      index === activeFileIndex
+                        ? "border-border bg-surface text-foreground shadow-sm"
+                        : "border-transparent text-muted-foreground hover:bg-background/80 hover:text-foreground",
+                    )}
+                  >
+                    {short}
+                  </button>
+                );
+              })}
+            </div>
+            {files![activeFileIndex] ? (
+              <CachedDynamicCodeBlock
+                lang={
+                  files![activeFileIndex].path.endsWith(".ts") &&
+                  !files![activeFileIndex].path.endsWith(".tsx")
+                    ? "ts"
+                    : language
+                }
+                code={files![activeFileIndex].code}
+                codeblock={{
+                  title: files![activeFileIndex].path,
+                  className: "m-2 rounded-xl border bg-code-background",
+                }}
+              />
+            ) : null}
+          </div>
+        </>
+      ) : (
+        <>
+          <h3 className="relative mt-8 text-sm font-semibold text-foreground">
+            Create a{" "}
+            <code className="mx-1 inline-flex whitespace-nowrap rounded-md bg-muted px-2 py-0.5 font-mono text-xs text-foreground">
+              {(fileName ?? "").split("/").pop()}
+            </code>{" "}
+            file and paste the following code into it.
+          </h3>
 
-      <CachedDynamicCodeBlock
-        lang="tsx"
-        code={code}
-        codeblock={{
-          title: `${fileName} usage`,
-          className: "m-4 rounded-2xl border bg-code-background",
-        }}
-      />
+          <CachedDynamicCodeBlock
+            lang={language}
+            code={code ?? ""}
+            codeblock={{
+              title: `${fileName ?? ""} usage`,
+              className: "m-4 rounded-2xl border bg-code-background",
+            }}
+          />
+        </>
+      )}
       <h3 className="relative mt-8 text-sm font-semibold text-foreground">
         Check the import paths to ensure they match your project setup.
       </h3>

@@ -6,7 +6,7 @@
     "build": "pnpm registry:build && next build",
     "dev": "pnpm registry:build && next dev",
     "start": "next start",
-    "registry:build": "tsx scripts/build-registry.ts && tsx scripts/extract-props.ts",
+    "registry:build": "tsx scripts/build-registry.ts && tsx scripts/extract-props.ts && node scripts/build-app-page-sources.mjs",
     "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
     "postinstall": "fumadocs-mdx"
   },
