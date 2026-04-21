@@ -1982,13 +1982,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxInputState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxInputState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     },
     {
@@ -2010,27 +2016,39 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxPopupState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxPopupState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxPopupState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
   "ComboboxList": [
     {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxListState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "required": false
+    },
+    {
       "name": "className",
       "type": "string | ((state: ComboboxListState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxListState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2043,15 +2061,21 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxItemState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "required": false
+    },
+    {
       "name": "className",
       "type": "string | ((state: ComboboxItemState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxItemState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2059,13 +2083,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxGroupState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxGroupState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
@@ -2073,13 +2103,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxGroupLabelState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupLabelState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxGroupLabelState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
@@ -2088,13 +2124,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxEmptyState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxEmptyState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxEmptyState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
@@ -2102,27 +2144,39 @@
     {
       "name": "className",
       "type": "string | ((state: SeparatorState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: SeparatorState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
   "ComboboxChips": [
     {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxChipsState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "required": false
+    },
+    {
       "name": "className",
       "type": "string | ((state: ComboboxChipsState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipsState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2130,13 +2184,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxChipState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxChipState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     },
     {
@@ -2170,13 +2230,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxInputState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxInputState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
@@ -2197,13 +2263,19 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxTriggerState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxTriggerState>",
-      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties | ((state: ComboboxTriggerState) => CSSProperties)",
+      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
     }
   ],
@@ -2621,6 +2693,14 @@
       "name": "variant",
       "type": "\"full\" | \"withActions\" | \"withLink\" | \"minimal\" | null",
       "defaultValue": "full",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CourseDetailPage": [
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
