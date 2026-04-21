@@ -5,7 +5,10 @@ import { PremiumOnly } from "@/components/premium-only";
 import { ComponentsGrid } from "@/components/components-grid";
 import { ToastDemo, ToastDemoButton } from "@/components/toast-demo";
 import { BannerDemoButtons, BannerDemoInline } from "@/components/banner-demo";
-import { ChipMenuDemo, ChipMenuDemoVariants } from "@/components/chip-menu-demo";
+import {
+  ChipMenuDemo,
+  ChipMenuDemoVariants,
+} from "@/components/chip-menu-demo";
 import {
   BarChartDemo,
   BarChartSingleSeriesDemo,
@@ -24,6 +27,7 @@ import { ListViewDemo } from "@/components/list-view-demo";
 import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 import { Login4Demo } from "@/components/login-4-demo";
 import { CourseDetailPageDemo } from "@/components/course-detail-page-demo";
+import { OnboardingFlowPageDemo } from "@/components/onboardingflow-page-demo";
 import { AppPagePreview } from "@/components/app-page-preview";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -55,5 +59,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ButtonVariantShowcase,
     Login4Demo,
     CourseDetailPageDemo,
+    OnboardingFlowPageDemo,
   } as MDXComponents;
 }

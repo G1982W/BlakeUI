@@ -24,6 +24,13 @@ const BUNDLES = {
     "src/components/app-pages/course-detail page/circle-progress.tsx",
     "src/components/app-pages/course-detail page/data.ts",
   ],
+  "onboardingflow-page": [
+    "src/components/ui/onboardingflow-page.tsx",
+    "src/components/app-pages/onboardingflow-page/onboarding.tsx",
+    "src/components/app-pages/onboardingflow-page/cover-panel.tsx",
+    "src/components/app-pages/onboardingflow-page/step-indicator.tsx",
+    "src/components/app-pages/onboardingflow-page/store.ts",
+  ],
 };
 
 function toDisplayPath(rel) {

@@ -15,7 +15,7 @@ export function StepIndicator({ currentStep }: { currentStep: number }) {
   return (
     <div className="w-full">
       {/* Desktop */}
-      <div className="hidden items-start sm:flex">
+      <div className="hidden items-start @xs/form:flex">
         {STEPS.map((step, index) => (
           <div
             key={step.id}
@@ -56,7 +56,7 @@ export function StepIndicator({ currentStep }: { currentStep: number }) {
       </div>
 
       {/* Mobile */}
-      <div className="sm:hidden">
+      <div className="@xs/form:hidden">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-sm font-semibold">
             {STEPS[currentStep - 1]?.title}

@@ -27,7 +27,7 @@ function DocsSidebarTrigger() {
   if (pathname == null || !pathname.startsWith("/docs")) return null;
   return (
     <SidebarTrigger
-      className="md:hidden -ml-1 flex size-10 shrink-0 items-center justify-center rounded-md border-0 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground"
+      className="min-[787px]:hidden -ml-1 flex size-10 shrink-0 items-center justify-center rounded-md border-0 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground"
       aria-label="Open sidebar"
     >
       <Menu className="size-5" />
