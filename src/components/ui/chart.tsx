@@ -2,8 +2,25 @@
 
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
+import type {
+  DefaultLegendContentProps,
+  LegendPayload,
+  TooltipContentProps,
+  TooltipPayloadEntry,
+} from "@/types/recharts-chart-shim"
 
 import { cn } from "@/lib/utils"
+
+/** Props Recharts passes when `content={<ChartTooltipContent />}` */
+type TooltipPropsInjectedByRecharts = Pick<
+  TooltipContentProps,
+  | "active"
+  | "payload"
+  | "label"
+  | "coordinate"
+  | "accessibilityLayer"
+  | "activeIndex"
+>
 
 const THEMES = { light: "", dark: ".dark" } as const
 
@@ -64,7 +81,13 @@ const ChartContainer = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     config: ChartConfig
-    children: React.ReactElement
+    /**
+     * Recharts `ResponsiveContainer` forwards width/height to each valid child.
+     * Use a single chart root for best results; multiple siblings (e.g. chart + overlay)
+     * are supported, but overlays should not block pointer events (`pointer-events-none`)
+     * if tooltips need the chart surface.
+     */
+    children: React.ReactNode
   }
 >(({ id, className, children, config, ...props }, ref) => {
   const uniqueId = React.useId()
@@ -75,12 +98,22 @@ const ChartContainer = React.forwardRef<
       <div
         ref={ref}
         data-chart={chartId}
-        className={cn("w-full", className)}
+        className={cn(
+          "w-full min-h-0 min-w-0 [&_.recharts-responsive-container]:min-h-0",
+          className,
+        )}
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer width="100%" height="100%">
-          {children}
+        <RechartsPrimitive.ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={0}
+          minHeight={1}
+          initialDimension={{ width: 1, height: 1 }}
+        >
+          {/* Recharts types only `ReactElement`; runtime supports multiple roots via Children.map */}
+          {children as React.ReactElement}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
     </ChartContext.Provider>
@@ -117,8 +150,9 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-    React.ComponentProps<"div"> & {
+  Omit<TooltipContentProps, keyof TooltipPropsInjectedByRecharts> &
+    Partial<TooltipPropsInjectedByRecharts> &
+    React.ComponentPropsWithoutRef<"div"> & {
       hideLabel?: boolean
       hideIndicator?: boolean
       indicator?: "line" | "dot" | "dashed"
@@ -175,16 +209,20 @@ const ChartTooltipContent = React.forwardRef<
         )}
       >
         {!nestLabel ? tooltipLabel : null}
-        {payload.map((item, index) => {
+        {payload.map((item: TooltipPayloadEntry, index: number) => {
           const key = `${nameKey ?? item.name ?? item.dataKey ?? "value"}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
           const indicatorColor =
             color ?? (item.payload as { fill?: string })?.fill ?? item.color
 
+          const rowKey =
+            typeof item.dataKey === "string" || typeof item.dataKey === "number"
+              ? item.dataKey
+              : index
           return (
-            <div key={item.dataKey ?? index} className="flex items-center gap-2">
+            <div key={rowKey} className="flex items-center gap-2">
               {formatter != null && item?.value !== undefined && item.name != null ? (
-                formatter(item.value, item.name, item, index, item.payload)
+                formatter(item.value, item.name, item, index, payload)
               ) : (
                 <>
                   {itemConfig?.icon != null ? (
@@ -228,8 +266,8 @@ const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof RechartsPrimitive.Legend> &
-    React.ComponentProps<"div"> & {
+  DefaultLegendContentProps &
+    React.ComponentPropsWithoutRef<"div"> & {
       hideIcon?: boolean
       nameKey?: string
     }
@@ -245,7 +283,7 @@ const ChartLegendContent = React.forwardRef<
         className
       )}
     >
-      {payload.map((item) => {
+      {payload.map((item: LegendPayload) => {
         const key = `${nameKey ?? item.dataKey ?? "value"}`
         const itemConfig = getPayloadConfigFromPayload(config, item, key)
         return (

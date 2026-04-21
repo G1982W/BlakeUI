@@ -1,0 +1,79 @@
+---
+title: Hover Card
+description: A card that appears on hover to show extra information.
+base: base
+component: true
+---
+
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Button } from "@/components/ui/button";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="hover-card">
+  <HoverCard>
+    <HoverCardTrigger asChild>
+      <Button variant="primary">Hover me</Button>
+    </HoverCardTrigger>
+    <HoverCardContent>
+      <div className="space-y-2">
+        <h4 className="text-sm font-semibold">Hover card</h4>
+        <p className="text-muted-foreground text-sm">
+          Additional information shown on hover.
+        </p>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  dependencies={["radix-ui"]}
+  code={registry["hover-card"]?.source ?? ""}
+  fileName="/components/ui/hover-card.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
+<HoverCard>
+  <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCardContent>
+    <p>Content shown on hover.</p>
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <HoverCard>
+    <HoverCardTrigger asChild>
+      <Button variant="primary">Hover for details</Button>
+    </HoverCardTrigger>
+    <HoverCardContent>
+      <div className="space-y-2">
+        <h4 className="text-sm font-semibold">@username</h4>
+        <p className="text-muted-foreground text-sm">
+          A short bio or description can go here.
+        </p>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</Preview>
+
+## API Reference
+
+See the [Radix UI Hover Card documentation](https://www.radix-ui.com/primitives/docs/components/hover-card) for props and behavior.

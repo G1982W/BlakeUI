@@ -27,6 +27,9 @@ const MAGNIFICATION_DEFAULT = 1.4
 /** How much adjacent items scale (falloff). */
 const MAGNIFICATION_ADJACENT = 0.15
 
+/** Gap between the dock and the viewport edge (px). */
+const DOCK_EDGE_INSET = 24
+
 function getScale(
   index: number,
   hoveredIndex: number | null,
@@ -123,10 +126,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     // When autoHide: container has zero size (doesn't block clicks). Trigger and dock use position:fixed so they're viewport-relative and work on all edges.
     const containerPositionClasses = {
-      top: "inset-x-0 top-0",
-      bottom: "inset-x-0 bottom-0",
-      left: "inset-y-0 left-0",
-      right: "inset-y-0 right-0",
+      top: "inset-x-6 top-6",
+      bottom: "inset-x-6 bottom-6",
+      left: "inset-y-6 left-6",
+      right: "inset-y-6 right-6",
     }
     const dockPositionClasses = {
       top: "flex-row justify-center pt-2",
@@ -149,6 +152,21 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     })()
 
     const dockBarPosition: React.CSSProperties = (() => {
+      const e = DOCK_EDGE_INSET
+      // When auto-hide, the wrapper is 0×0 so the bar is `fixed` and needs viewport inset.
+      // When always visible, the wrapper is already inset (`inset-x-6` etc.); bar is `absolute` at 0/0/0 inside it.
+      if (autoHide) {
+        switch (position) {
+          case "top":
+            return { top: e, left: e, right: e }
+          case "bottom":
+            return { bottom: e, left: e, right: e }
+          case "left":
+            return { left: e, top: e, bottom: e }
+          case "right":
+            return { right: e, top: e, bottom: e }
+        }
+      }
       switch (position) {
         case "top":
           return { top: 0, left: 0, right: 0 }

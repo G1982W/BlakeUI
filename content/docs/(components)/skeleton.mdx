@@ -1,0 +1,75 @@
+---
+title: Skeleton
+description: A placeholder that shows a loading state with a pulse animation.
+base: base
+component: true
+---
+
+import { Skeleton } from "@/components/ui/skeleton";
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="skeleton">
+  <div className="flex flex-col space-y-3">
+    <Skeleton className="h-[125px] w-[200px] rounded-xl" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-4/5" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<Installation
+  code={registry.skeleton?.source ?? ""}
+  fileName="/components/ui/skeleton.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Skeleton } from "@/components/ui/skeleton";
+
+<Skeleton className="h-4 w-full" />;
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Skeleton className="h-12 w-48" />
+</Preview>
+
+### Card placeholder
+
+<Preview>
+  <div className="flex flex-col space-y-3">
+    <Skeleton className="h-[125px] w-[200px] rounded-lg" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-4/5" />
+      <Skeleton className="h-4 w-3/5" />
+    </div>
+  </div>
+</Preview>
+
+### Avatar and text
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Skeleton className="size-12 rounded-full" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-[250px]" />
+      <Skeleton className="h-4 w-[200px]" />
+    </div>
+  </div>
+</Preview>
+
+## API Reference
+
+`Skeleton` is a simple div with `animate-pulse` and `rounded-md`. It accepts all standard HTML div attributes and `className` for sizing and layout.

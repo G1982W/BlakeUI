@@ -1,0 +1,52 @@
+---
+title: Data Table 1
+description: Fixed-height data table with sticky header, vertical and horizontal scrolling, sortable columns, and availability badges.
+base: base
+component: true
+---
+
+import { DataTable5 } from "@/components/ui/data-table5";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table5" premium>
+  <DataTable5 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 1** is a sticky-header data table:
+
+- **Sticky header**: Header row stays pinned while scrolling rows.
+- **Fixed height**: Constrained height with vertical (and horizontal) scroll.
+- **Sortable columns**: Click headers to sort; arrow indicators show direction.
+- **Badges**: Stock and availability shown as pills/badges.
+- **Mobile**: Swipe hint on small screens.
+
+Uses Table, Button, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table5"]?.source ?? ""}
+  fileName="/components/ui/data-table5.tsx"
+/>
+
+Requires Table, Button, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable5 } from "@/components/ui/data-table5";
+
+<DataTable5 data={inventoryRows} />
+```
+
+Pass your own `data` array matching the `InventoryRow` type (sku, name, type, stock, price, availability).

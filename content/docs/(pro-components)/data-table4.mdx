@@ -1,0 +1,49 @@
+---
+title: Data Table 2
+description: Data table with horizontal scrolling, sortable columns, custom cell styling, and mobile swipe hint.
+base: base
+component: true
+---
+
+import { DataTable4 } from "@/components/ui/data-table4";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="data-table4" premium>
+  <DataTable4 />
+</ComponentPreview>
+
+## Introduction
+
+**Data Table 2** is a responsive scrollable table:
+
+- **Horizontal scroll**: Full-width table in a scroll container with visible scrollbar.
+- **Sortable columns**: Header buttons with sort direction arrows.
+- **Cell styling**: SKU monospace, stock/availability badges, tabular price.
+- **Mobile**: Swipe hint below the table on small screens.
+
+Uses Table, Button, Badge, and TanStack Table.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["@tanstack/react-table"]}
+  code={registry["data-table4"]?.source ?? ""}
+  fileName="/components/ui/data-table4.tsx"
+/>
+
+Requires Table, Button, Badge, and @tanstack/react-table.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { DataTable4 } from "@/components/ui/data-table4";
+
+<DataTable4 data={inventoryRows} />
+```

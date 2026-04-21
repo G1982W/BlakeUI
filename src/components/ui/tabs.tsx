@@ -69,7 +69,7 @@ const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-muted w-fit",
+        default: "bg-surface w-fit",
         line: "gap-1 bg-transparent w-fit",
         overflow: "bg-transparent w-full justify-start",
       },

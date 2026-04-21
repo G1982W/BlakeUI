@@ -1,0 +1,54 @@
+---
+title: Stats Card 5
+description: Metric card displaying current and previous period values side by side for comparison.
+base: base
+component: true
+---
+
+import { StatsCard4 } from "@/components/ui/stats-card-4";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-4" premium>
+  <StatsCard4 />
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 5** is a comparison metric card:
+
+- **Two columns**: Current period (bold) and previous period (muted), separated by a vertical border.
+- **Labels**: Period labels below each value (e.g. "This month", "Last month").
+- **Use case**: Month-over-month or week-over-week comparison without percentages.
+
+Uses Card only.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["stats-card-4"]?.source ?? ""}
+  fileName="/components/ui/stats-card-4.tsx"
+/>
+
+Requires Card.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard4 } from "@/components/ui/stats-card-4";
+
+<StatsCard4
+  title="Revenue"
+  current="$24,800"
+  previous="$22,100"
+  currentLabel="This month"
+  previousLabel="Last month"
+/>
+```

@@ -8,7 +8,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from "fumadocs-ui/components/tabs";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
 import { registry } from "./registry";
 
 interface VariantGridProps {
@@ -97,7 +97,7 @@ export function VariantGrid({
       </TabsContent>
 
       <TabsContent value="code" className="m-0">
-        <DynamicCodeBlock
+        <CachedDynamicCodeBlock
           lang="tsx"
           code={codeSnippet}
           codeblock={{

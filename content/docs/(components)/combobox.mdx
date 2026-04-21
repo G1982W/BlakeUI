@@ -1,0 +1,174 @@
+---
+title: Combobox
+description: Autocomplete input with a list of suggestions.
+base: base
+component: true
+---
+
+import { Preview } from "@/components/preview";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+import {
+  ComboboxBasicDemo,
+  ComboboxMultipleDemo,
+  ComboboxClearDemo,
+  ComboboxGroupsDemo,
+  ComboboxCustomItemsDemo,
+  ComboboxInvalidDemo,
+  ComboboxDisabledDemo,
+  ComboboxAutoHighlightDemo,
+  ComboboxPopupDemo,
+  ComboboxInputGroupDemo,
+  ComboboxRtlDemo,
+} from "@/components/ui/combobox-demo";
+
+## Example
+
+<ComponentPreview name="combobox">
+  <ComboboxBasicDemo />
+</ComponentPreview>
+
+## Installation
+
+The Combobox uses the Popover component. Add both `popover.tsx` and `combobox.tsx` to your project.
+
+<Installation
+  dependencies={["radix-ui"]}
+  code={registry.combobox?.source ?? ""}
+  fileName="/components/ui/combobox.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Combobox, ComboboxInput } from "@/components/ui/combobox";
+```
+
+```tsx
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
+
+export function ExampleCombobox() {
+  return (
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Select a framework" />
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+### Basic
+
+A simple combobox with a list of frameworks.
+
+<Preview>
+  <ComboboxBasicDemo />
+</Preview>
+
+### Multiple
+
+A combobox with multiple selection using `multiple` and chips.
+
+<Preview>
+  <ComboboxMultipleDemo />
+</Preview>
+
+### Clear Button
+
+Use the `showClear` prop to show a clear button.
+
+<Preview>
+  <ComboboxClearDemo />
+</Preview>
+
+### Groups
+
+Use `ComboboxGroup` and `ComboboxSeparator` to group items.
+
+<Preview>
+  <ComboboxGroupsDemo />
+</Preview>
+
+### Custom Items
+
+You can render a custom layout inside `ComboboxItem`.
+
+<Preview>
+  <ComboboxCustomItemsDemo />
+</Preview>
+
+### Invalid
+
+Use `aria-invalid` on `ComboboxInput` to indicate an invalid state.
+
+<Preview>
+  <ComboboxInvalidDemo />
+</Preview>
+
+### Disabled
+
+Use the `disabled` prop to disable the combobox.
+
+<Preview>
+  <ComboboxDisabledDemo />
+</Preview>
+
+### Auto Highlight
+
+Use `autoHighlight` to automatically highlight the first item while filtering.
+
+<Preview>
+  <ComboboxAutoHighlightDemo />
+</Preview>
+
+### Popup
+
+Trigger the combobox from a button and place `ComboboxInput` inside the popup.
+
+<Preview>
+  <ComboboxPopupDemo />
+</Preview>
+
+### Input Group
+
+You can add an addon with `InputGroupAddon` inside `ComboboxInput`.
+
+<Preview>
+  <ComboboxInputGroupDemo />
+</Preview>
+
+### RTL
+
+Use `dir="rtl"` to support right-to-left layouts.
+
+<Preview>
+  <ComboboxRtlDemo />
+</Preview>
+
+## API Reference
+
+### Combobox
+
+| Prop                | Type                             | Description                        |
+| ------------------- | -------------------------------- | ---------------------------------- |
+| `items`             | `string[]` or `ComboboxOption[]` | Options to display.                |
+| `value`             | `string`                         | Controlled selected value.         |
+| `onValueChange`     | `(value: string) => void`        | Called when selection changes.     |
+| `placeholder`       | `string`                         | Placeholder when nothing selected. |
+| `emptyText`         | `string`                         | Text when filter has no results.   |
+| `itemToStringValue` | `(item) => string`               | Custom label for object items.     |
+| `disabled`          | `boolean`                        | Disable the trigger.               |
+| `children`          | `ReactNode`                      | Custom trigger (default: Button).  |
+
+### ComboboxInput
+
+Same as Combobox but uses an Input as the trigger and filters as the user types. Use `placeholder` for the input placeholder.

@@ -10,6 +10,8 @@
 
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+    --color-secondary: var(--foreground-secondary);
+    --color-disabled: var(--disabled);
 
     --color-surface: var(--surface);
     --color-brand: var(--brand);
@@ -71,6 +73,14 @@
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
 
+
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+
     --color-sidebar: var(--sidebar);
     --color-sidebar-foreground: var(--sidebar-foreground);
     --color-sidebar-primary: var(--sidebar-primary);
@@ -85,10 +95,15 @@
 }
 
 :root {
-    --color-fd-foreground: #3c303d;
-    --radius: 0.75rem;
+    /* --color-fd-foreground: #3c303d; */
+    /* --foreground: #0f172a; */
+    --foreground: #30313D;
+    --secondary: #6A7383;
+    --disabled: #A3ACBA;
     --background: #faf9f6;
-    --sidebar: #faf9f6;
+    --surface: #FFFFFF;
+    --radius: 0.75rem;
+    --sidebar: #ffff;
     /* --background: #f8fafc; */
     --code-background: #ffffff;
     --button-background: rgb(243, 240, 240);
@@ -119,7 +134,7 @@
     --banner-destructive: #FFF5FA;
     --banner-border: #D7D7D0;
     --banner-text: #6A7383;
-    --foreground: #0f172a;
+
     --card: #ffffff;
     --card-foreground: #0f172a;
     --popover: #ffffff;
@@ -129,31 +144,42 @@
     --surface-foreground: #30313D;
     --brand: #436283;
     --brand-foreground: #FFFFFF;
+
     --critical: #C00000;
     --critical-foreground: #FFFFFF;
 
     --border-neutral: #D7D7D0;
+    --border: #D7D7D0;
+    /* --border: #dc0f0f; */
 
-    --primary: #482B6B;
-    --primary-foreground: #ffffff;
+    /* --primary: #482B6B; */
+    --primary: #436283;
+    --primary-foreground: #FAFAFA;
     --secondary: #ffffff;
     --secondary-foreground: #0f172a;
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
     --accent: #f1f5f9;
     --accent-foreground: #0f172a;
-    --destructive: #dc2626;
+    --destructive: #C00000;
     --destructive-foreground: #ffffff;
+    --warning: #E58A00;
+    --warning-foreground: #ffffff;
+    --success: #228403;
+    --success-foreground: #ffffff;
+    --info: #5690CD;
+    --info-foreground: #ffffff;
+
     --input-heading: #30313D;
     --input-description: #6A7383;
-    --border: #e2e8f0;
+    /* --border: #e2e8f0; */
     --input: #e2e8f0;
-    --ring: #482B6B5C;
-    --chart-1: #482B6B;
-    --chart-2: #013260;
-    --chart-3: #0196ED;
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
+    --ring: #4362835C;
+    --chart-1: #436283;
+    --chart-2: #C00000;
+    --chart-3: #E58A00;
+    --chart-4: #228403;
+    --chart-5: #5690CD;
     --sidebar-foreground: #0f172a;
     --sidebar-primary: #2563eb;
     --sidebar-primary-foreground: #ffffff;
@@ -164,9 +190,10 @@
 }
 
 .dark {
-    --color-fd-foreground: #ffffff;
+    /* --color-fd-foreground: #ffffff; */
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
+    --surface: #000000;
     --code-background: oklch(0.205 0 0);
     --button-background: oklch(0.269 0 0);
     --link-secondary: oklch(0.708 0 0);
@@ -203,7 +230,7 @@
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
     --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
+    --primary-foreground: #FAFAFA;
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: oklch(0.269 0 0);
@@ -214,7 +241,17 @@
     --destructive-foreground: oklch(0.985 0 0);
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
-    --ring: #482B6B5C;
+    --border-neutral: #34342f;
+    /* --destructive: #C00000;
+    --destructive-foreground: #ffffff;
+    --warning: #E58A00;
+    --warning-foreground: #ffffff;
+    --success: #228403;
+    --success-foreground: #ffffff;
+    --info: #5690CD;
+    --info-foreground: #ffffff; */
+
+    --ring: #4362835C;
     --chart-1: #482B6B;
     --chart-2: #013260;
     --chart-3: #0196ED;
@@ -228,6 +265,9 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+
+    --surface: oklch(0.205 0 0);
+    --surface-foreground: oklch(0.985 0 0);
 }
 
 @layer base {
@@ -236,7 +276,9 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-surface text-foreground;
+        /* letter-spacing: 0.1em; */
+        font-weight: 300;
     }
 }
 
@@ -262,54 +304,131 @@
 
 :root {
     --fd-nav-height: 56px;
-    --fd-sidebar-width: 280px;
     --fd-toc-width: 240px;
-    --fd-layout-width: 92rem;
-    --docs-active: #f97316;
-    /* --color-fd-foreground: #30313D; */
-    /* --color-fd-foreground: #3c303d; */
+    --fd-layout-width: 102rem;
 
-    /* generate dark mode color for color-fd-foreground */
-    /* @media (prefers-color-scheme: dark) { */
-    /* --color-fd-foreground: #ffffff; */
-    /* } */
+    /* Fumadocs: use project background/foreground for UI and text */
+    --color-fd-foreground: var(--foreground);
+    --color-fd-muted-foreground: var(--foreground);
+    --color-fd-card-foreground: var(--foreground);
+    --color-fd-popover: var(--background);
+    --color-fd-popover-foreground: var(--foreground);
+    --color-fd-secondary-foreground: var(--foreground);
+    --color-fd-accent: var(--accent);
+    --color-fd-accent-foreground: var(--foreground);
+    /* Fumadocs: use project border */
+    /* --color-fd-border: var(--border-neutral); */
+    /* --color-fd-border: red; */
+    --sidebar-border: var(--border-neutral);
+}
 
-    /* @media (prefers-color-scheme: light) {
-        --color-fd-foreground: #30313D;
-    } */
+html,
+body {
+    overscroll-behavior: none !important;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
     /* color: #D7D7D0; */
+    font-weight: 500 !important;
 }
 
 #nd-toc {
     /* margin-top: 24px; */
     top: calc(var(--fd-docs-row-1) + var(--fd-nav-height));
+    overscroll-behavior: none !important;
 }
 
 #nd-docs-layout {
     background: var(--background);
-    max-width: var(--fd-layout-width);
-    margin: 0 auto;
-    grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    /* Mobile: single-column width, no zoomed-out desktop layout */
+    @media (width < 48rem) {
+        --fd-sidebar-width: 0 !important;
+        --fd-toc-width: 0 !important;
+        --fd-layout-width: 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        grid-template-columns: 0 1fr 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    @media (width >=48rem) {
+        --fd-sidebar-width: 280px;
+        grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
+        --fd-layout-width: 80% !important;
+    }
 }
 
 #nd-page {
-    max-width: none !important;
+    max-width: var(--fd-layout-width) !important;
+    margin-left: auto;
+    margin-right: auto;
+    overscroll-behavior: none !important;
 }
 
-/* Navbar (first child: header or custom nav component) spans from after sidebar to right edge */
+@media (width < 48rem) {
+    #nd-page {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
+}
+
+/* Fumadocs prose: use exact --foreground (overrides oklab color-mix) */
+.prose {
+    --tw-prose-body: var(--foreground);
+    --tw-prose-headings: var(--foreground);
+    --tw-prose-lead: var(--foreground);
+    --tw-prose-links: var(--foreground);
+    --tw-prose-bold: var(--foreground);
+    --tw-prose-counters: var(--foreground);
+    --tw-prose-bullets: var(--foreground);
+    --tw-prose-quotes: var(--foreground);
+    --tw-prose-captions: var(--foreground);
+    --tw-prose-code: var(--foreground);
+    --tw-prose-kbd: var(--foreground);
+}
+
+/* Light/dark mode toggle and any fd popover/modal: force background and foreground */
+[data-theme-toggle] {
+    background: var(--background) !important;
+    border-color: var(--border) !important;
+    color: var(--foreground) !important;
+}
+
+[data-theme-toggle] button,
+[data-theme-toggle] svg,
+[data-theme-toggle] [class*="text-fd"] {
+    color: var(--foreground) !important;
+}
+
+[data-theme-toggle] [class*="bg-fd-accent"] {
+    background: var(--accent) !important;
+    color: var(--foreground) !important;
+}
+
+/* Navbar spans full width on mobile, after sidebar to right edge on desktop */
 #nd-docs-layout>*:first-child {
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
     grid-row: 1;
+
+    @media (width >=48rem) {
+        grid-column: 2 / -1;
+    }
 }
 
 #nd-docs-layout header {
-    background: rgba(248, 250, 252, 0.9);
+    background: var(--surface);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
@@ -321,80 +440,125 @@ h4 {
 
 #nd-docs-layout main {
     background: var(--background);
+    min-width: 0;
+    overscroll-behavior: none !important;
 }
 
-#nd-sidebar p {
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
+/* Mobile: hide right aside (TOC), constrain main to viewport, prevent zoomed-out layout */
+@media (width < 48rem) {
+    body {
+        overflow-x: hidden;
+        overscroll-behavior: none;
+    }
+
+    #nd-toc {
+        display: none !important;
+    }
+
+    #nd-docs-layout main {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
 }
 
-#nd-sidebar a[data-active] {
-    position: relative;
-    padding-inline-start: calc(var(--spacing) * 6) !important;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background-color: transparent;
+/* Top-level sidebar sections: vertical spacing between the 3 groups */
+#nd-sidebar {
+
+
+
+    div[data-state="closed"]:has(> button) {
+        button {
+            color: #A3ACBA;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+    div[data-state="open"]:has(> button) {
+
+        /* margin-block: 30px; */
+        button {
+            text-transform: uppercase;
+            color: var(--foreground);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+
+    a[data-active] {
+        /* color: #6A7383; */
+        color: var(--foreground);
+        font-size: 14px;
+        font-weight: 400;
+        padding: 8px 0px;
+
+        &:hover {
+            color: var(--background);
+            background-color: var(--color-brand);
+        }
+
+        /* Active link: primary left bar, light background, bold */
+        &[data-active="true"] {
+            color: var(--foreground);
+            font-weight: 600;
+            background: color-mix(in oklab, var(--color-brand) 12%, transparent);
+            /* background-color: magenta; */
+
+            &::before {
+                display: none;
+                /* content: "";
+                position: absolute;
+                left: calc(var(--spacing) * 2.5);
+                top: 50%;
+                transform: translateY(-50%);
+                width: 3px;
+                height: 60%;
+                min-height: 16px;
+                border-radius: 999px;
+                background: #30313D; */
+                /* border-radius: 0.5rem; */
+                /* display: none; */
+            }
+        }
+    }
+
+    /* Collapsible folder content: remove left border, add bottom padding */
+    [class*="before:inset-y-1"]::before {
+        display: none;
+    }
+
+    [class*="before:inset-y-1"] {
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Sidebar group headings (Navbars, App Shells, etc.) */
+    [class*="inline-flex items-center gap-2 mb-1.5 px-2 mt-6 empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0"] {
+        margin-top: 14px;
+        padding-left: 12px !important;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+    }
+
 }
 
-#nd-sidebar a:hover {
-    color: var(--accent-foreground);
-}
+#nd-toc {
+    a[data-active="true"] {
+        color: var(--color-brand);
+    }
 
-#nd-sidebar a[data-active]::before {
-    content: "";
-    position: absolute;
-    left: calc(var(--spacing) * 3);
-    top: 0;
-    width: 2px;
-    height: 100%;
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
-
-    /* &:hover { */
-    /* background: color-mix(in oklab, var(--docs-active) 35%, transparent); */
-    /* background: color-mix(in oklab, var(--muted-foreground) 35%, transparent); */
-    /* } */
-}
-
-#nd-sidebar a[data-active]::before:hover {
-    background: red;
-}
-
-#nd-sidebar a[data-active="true"] {
-    color: var(--docs-active);
-}
-
-#nd-sidebar a[data-active="true"]::before {
-    background: var(--docs-active);
-}
-
-/* Collapsible folder content: remove left border, add bottom padding */
-#nd-sidebar [class*="before:inset-y-1"]::before {
-    display: none;
-}
-
-#nd-sidebar [class*="before:inset-y-1"] {
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-}
-
-/* Sidebar group headings */
-#nd-sidebar [class*="inline-flex items-center gap-2 mb-1.5 px-2 mt-6 empty:mb-0 [&_svg]:size-4 [&_svg]:shrink-0"] {
-    margin-top: 14px;
-    padding-left: 12px !important;
-}
-
-#nd-toc a[data-active="true"] {
-    color: var(--docs-active);
-}
-
-#nd-toc .bg-fd-primary {
-    background: var(--docs-active);
+    .bg-fd-primary {
+        background: var(--color-brand);
+    }
 }
 
 figure>pre {
@@ -403,6 +567,21 @@ figure>pre {
 
 .bg-fd-card {
     background-color: var(--code-background);
+}
+
+/* Sonner toast description: use theme foreground */
+.toaster [data-sonner-toast][data-styled] [data-description] {
+    color: var(--background);
+}
+
+/* Override prose image margins inside buttons so they don't add extra spacing */
+.prose :where(button img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bg-fd-secondary {
+    background-color: var(--surface);
 }
 
 

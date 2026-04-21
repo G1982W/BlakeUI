@@ -1,0 +1,53 @@
+---
+title: Login Page 2
+description: Card layout with logo, Sign up with Google, OR divider, email and password fields, and submit button.
+base: base
+component: true
+---
+
+import { Login7 } from "@/components/ui/login-7";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="login-7" premium>
+  <Login7 logo={<span className="text-lg font-semibold">Logo</span>} />
+</ComponentPreview>
+
+## Introduction
+
+**Login Page 2** is a card-based sign-in form:
+
+- **Card**: Wraps all content with header and body.
+- **Logo and title**: Optional logo; “Sign in” heading and short description.
+- **Google**: “Sign up with Google” button, then OR divider.
+- **Email + password**: Labeled inputs and “Sign in” submit.
+
+Uses Card, Button, and Input.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["login-7"]?.source ?? ""}
+  fileName="/components/ui/login-7.tsx"
+/>
+
+Requires Card, Button, and Input.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { Login7 } from "@/components/ui/login-7";
+
+<Login7
+  logo={<YourLogo />}
+  onGoogle={() => {}}
+  onSubmit={(email, password) => {}}
+/>
+```

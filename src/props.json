@@ -61,6 +61,114 @@
       "required": false
     }
   ],
+  "ApplicationShell13": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ApplicationShell4": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AppSidebar": [
+    {
+      "name": "activeModule",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "onModuleChange",
+      "type": "(moduleId: string) => void",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"sidebar\" | \"floating\" | \"inset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "\"none\" | \"offcanvas\" | \"icon\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "innerClassName",
+      "type": "string",
+      "description": "When set, replaces the default `bg-sidebar` on the sidebar surface (avoids conflicting utilities).",
+      "required": false
+    }
+  ],
+  "ApplicationShell9": [
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a full viewport app shell.",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Avatar": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarImage": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarFallback": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "AvatarBadge": [],
+  "AvatarGroup": [],
+  "AvatarGroupCount": [],
   "Badge": [
     {
       "name": "variant",
@@ -112,6 +220,33 @@
     }
   ],
   "banner": [],
+  "Breadcrumb": [],
+  "BreadcrumbList": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "BreadcrumbItem": [],
+  "BreadcrumbLink": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "BreadcrumbPage": [],
+  "BreadcrumbSeparator": [],
+  "BreadcrumbEllipsis": [],
   "Button": [
     {
       "name": "disabled",
@@ -126,16 +261,16 @@
       "required": false
     },
     {
-      "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"primary\" | null",
-      "defaultValue": "primary",
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "defaultValue": "md",
       "description": "",
       "required": false
     },
     {
-      "name": "size",
-      "type": "\"sm\" | \"md\" | \"lg\" | null",
-      "defaultValue": "md",
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "defaultValue": "primary",
       "description": "",
       "required": false
     },
@@ -143,6 +278,253 @@
       "name": "asChild",
       "type": "boolean",
       "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Calendar": [
+    {
+      "name": "disabled",
+      "type": "Matcher | Matcher[]",
+      "description": "Apply the `disabled` modifier to the matching days. Disabled days cannot be\nselected when in a selection mode is set.\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled\n@see https://daypicker.dev/docs/selection-modes#disabled",
+      "required": false
+    },
+    {
+      "name": "buttonVariant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "defaultValue": "ghost",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CalendarDayButton": [
+    {
+      "name": "day",
+      "type": "CalendarDay",
+      "description": "The day to render.",
+      "required": true
+    },
+    {
+      "name": "modifiers",
+      "type": "Modifiers",
+      "description": "The modifiers to apply to the day.",
+      "required": true
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "Partial<DayPickerLocale>",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Card": [],
+  "CardHeader": [],
+  "CardFooter": [],
+  "CardTitle": [],
+  "CardAction": [],
+  "CardDescription": [],
+  "CardContent": [],
+  "ChartCard14": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Response Time Range",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Min, max, and average response times",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard19": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Browser Share",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Traffic by browser type",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard20": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Skill Assessment",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Competency scores across areas",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard26": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue with Target Band",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Monthly revenue within acceptable range",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "number",
+      "defaultValue": "280",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "upperBound",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "lowerBound",
+      "type": "number",
+      "defaultValue": "240",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard6": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue Comparison",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Current year vs previous year",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartCard9": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Traffic Sources",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Visitors by device type over time",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup12": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup14": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup15": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup5": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ChartGroup8": [
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -160,120 +542,150 @@
     {
       "name": "content",
       "type": "(ContentType<ValueType, NameType> & string)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "cursor",
-      "type": "boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | SVGProps<SVGElement>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "offset",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "viewBox",
-      "type": "CartesianViewBox",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "active",
-      "type": "boolean",
-      "description": "If true, then Tooltip is always displayed, once an activeIndex is set by mouse over, or programmatically.\nIf false, then Tooltip is never displayed.\nIf active is undefined, Recharts will control when the Tooltip displays. This includes mouse and keyboard controls.",
-      "required": false
-    },
-    {
-      "name": "includeHidden",
-      "type": "boolean",
-      "description": "If true, then Tooltip will information about hidden series (defaults to false). Interacting with the hide property of Area, Bar, Line, Scatter.",
+      "description": "Renders the content of the tooltip.\n\nThis should return HTML elements, not SVG elements.\n\n- If not set, the {@link DefaultTooltipContent } component is used.\n- If set to a React element, this element will be cloned and extra props will be passed in.\n- If set to a function, the function will be called and should return HTML elements.\n@see {@link https://recharts.github.io/en-US/examples/CustomContentOfTooltip/ Example with custom content}",
       "required": false
     },
     {
       "name": "allowEscapeViewBox",
       "type": "AllowInDimension",
-      "description": "",
+      "description": "This option allows the tooltip to extend beyond the viewBox of the chart itself.\n@defaultValue {\"x\":false,\"y\":false}",
       "required": false
     },
     {
       "name": "animationDuration",
       "type": "number",
-      "description": "",
+      "description": "Specifies the duration of animation, the unit of this option is ms.\n@defaultValue 400",
       "required": false
     },
     {
       "name": "animationEasing",
       "type": "\"ease\" | \"ease-in\" | \"ease-out\" | \"ease-in-out\" | \"linear\"",
-      "description": "",
+      "description": "The type of easing function.\n@defaultValue ease",
       "required": false
     },
     {
-      "name": "coordinate",
-      "type": "Partial<Coordinate>",
+      "name": "axisId",
+      "type": "AxisId",
+      "description": "Tooltip always attaches itself to the \"Tooltip\" axis. Which axis is it? Depends on the layout:\n- horizontal layout -> X axis\n- vertical layout -> Y axis\n- radial layout -> radial axis\n- centric layout -> angle axis\n\nTooltip will use the default axis for the layout, unless you specify an axisId.\n@defaultValue 0",
+      "required": false
+    },
+    {
+      "name": "cursor",
+      "type": "CursorDefinition",
+      "description": "If set false, no cursor will be drawn when tooltip is active.\nIf set a object, the option is the configuration of cursor.\nIf set a React element, the option is the custom react element of drawing cursor.\n@defaultValue true",
+      "required": false
+    },
+    {
+      "name": "defaultIndex",
+      "type": "number | TooltipIndex",
       "description": "",
       "required": false
     },
     {
       "name": "filterNull",
       "type": "boolean",
-      "description": "",
+      "description": "When an item of the payload has value null or undefined, this item won't be displayed.\n@defaultValue true",
       "required": false
     },
     {
-      "name": "defaultIndex",
-      "type": "number",
-      "description": "",
+      "name": "includeHidden",
+      "type": "boolean",
+      "description": "If true, the tooltip will display information about hidden series.\nDefaults to false.\nInteracting with the hide property of Area, Bar, Line, Scatter.\n@defaultValue false",
       "required": false
     },
     {
       "name": "isAnimationActive",
-      "type": "boolean",
-      "description": "",
+      "type": "boolean | \"auto\"",
+      "description": "If set false, animation of tooltip will be disabled.\nIf set \"auto\", the animation will be disabled in SSR and will respect the user's prefers-reduced-motion system preference for accessibility.\n@defaultValue auto",
+      "required": false
+    },
+    {
+      "name": "offset",
+      "type": "number | Coordinate",
+      "description": "The offset size between the position of tooltip and the mouse cursor position.\nWhen a number is provided, the same offset is applied to both x and y axes.\n\nWhen a Coordinate object is provided, you can specify different offsets for each axis (x and y as numbers)\n@defaultValue 10",
       "required": false
     },
     {
       "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload<ValueType, NameType>>",
+      "type": "UniqueOption<TooltipPayloadEntry>",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "portal",
+      "type": "HTMLElement | null",
+      "description": "If portal is defined, then Tooltip will use this element as a target\nfor rendering using React Portal: https://react.dev/reference/react-dom/createPortal\n\nIf this is undefined then Tooltip renders inside the recharts-wrapper element.",
       "required": false
     },
     {
       "name": "position",
       "type": "Partial<Coordinate>",
-      "description": "",
+      "description": "If this field is set, the tooltip will be displayed at the specified position\nregardless of the mouse position.\n\nYou can set a single field (x or y) and let the other field be calculated automatically based\non the mouse position.",
       "required": false
     },
     {
       "name": "reverseDirection",
       "type": "AllowInDimension",
-      "description": "",
+      "description": "@defaultValue {\"x\":false,\"y\":false}",
       "required": false
     },
     {
       "name": "shared",
       "type": "boolean",
-      "description": "",
+      "description": "Defines whether the tooltip is reacting to the current data point,\nor to all data points at the current axis coordinate.\n\n- `true`: tooltip will appear on top of all bars on an axis tick.\n- `false`: tooltip will appear on individual bars.\n\nDifferent chart types allow different modes, and have different defaults.\n@see {@link https://github.com/recharts/recharts/wiki/Tooltip-event-type-and-shared-prop Tooltip event type and shared prop wiki page}",
       "required": false
     },
     {
       "name": "trigger",
       "type": "\"hover\" | \"click\"",
-      "description": "",
+      "description": "If `hover` then the Tooltip shows on mouse enter and hides on mouse leave.\n\nIf `click` then the Tooltip shows after clicking and stays active.\n@defaultValue hover",
       "required": false
     },
     {
       "name": "useTranslate3d",
       "type": "boolean",
-      "description": "",
+      "description": "@defaultValue false",
       "required": false
     },
     {
       "name": "wrapperStyle",
       "type": "CSSProperties",
+      "description": "CSS styles to be applied to the wrapper `div` element.",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string | number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "description": "If true, then Tooltip is always displayed, once an activeIndex is set by mouse over, or programmatically.\nIf false, then Tooltip is never displayed.\nIf undefined, Recharts will control when the Tooltip displays. This includes mouse and keyboard controls.",
+      "required": false
+    },
+    {
+      "name": "payload",
+      "type": "TooltipPayload",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "coordinate",
+      "type": "Coordinate",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "accessibilityLayer",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "activeIndex",
+      "type": "TooltipIndex",
       "description": "",
       "required": false
     },
@@ -311,7 +723,7 @@
       "required": false
     }
   ],
-  "Legend": [
+  "ChartLegend": [
     {
       "name": "dangerouslySetInnerHTML",
       "type": "{ __html: string; }",
@@ -1267,1049 +1679,49 @@
       "required": false
     },
     {
-      "name": "wrapperStyle",
-      "type": "CSSProperties",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartWidth",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartHeight",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "margin",
-      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBBoxUpdate",
-      "type": "((box: DOMRect | null) => void)",
-      "description": "",
-      "required": false
-    }
-  ],
-  "componentDidMount": [],
-  "componentDidUpdate": [],
-  "ChartLegendContent": [
-    {
-      "name": "dangerouslySetInnerHTML",
-      "type": "({ __html: string; } & { __html: string | TrustedHTML; })",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCopy",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCopyCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCut",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCutCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPaste",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPasteCapture",
-      "type": "(AdaptChildClipboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ClipboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionEnd",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionEndCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionStart",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionStartCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionUpdate",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCompositionUpdateCapture",
-      "type": "(AdaptChildCompositionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & CompositionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onFocus",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onFocusCapture",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBlur",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBlurCapture",
-      "type": "(AdaptChildFocusEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & FocusEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onChange",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onChangeCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ChangeEventHandler<HTMLDivElement, Element>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBeforeInput",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onBeforeInputCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInput",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInputCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & InputEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onReset",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onResetCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmit",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSubmitCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & SubmitEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInvalid",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onInvalidCapture",
-      "type": "(AdaptChildFormEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoad",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onError",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onErrorCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyDown",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyDownCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyPress",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "@deprecated Use `onKeyUp` or `onKeyDown` instead",
-      "required": false
-    },
-    {
-      "name": "onKeyPressCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "@deprecated Use `onKeyUpCapture` or `onKeyDownCapture` instead",
-      "required": false
-    },
-    {
-      "name": "onKeyUp",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onKeyUpCapture",
-      "type": "(AdaptChildKeyboardEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & KeyboardEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAbort",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAbortCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlay",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayThrough",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onCanPlayThroughCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDurationChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDurationChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEmptied",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEmptiedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEncrypted",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEncryptedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEnded",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onEndedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedData",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedDataCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedMetadata",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadedMetadataCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadStart",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLoadStartCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPause",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPauseCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlay",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlayCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlaying",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPlayingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onProgress",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onProgressCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onRateChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onRateChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeeked",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeekedCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeeking",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSeekingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onStalled",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onStalledCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSuspend",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSuspendCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTimeUpdate",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTimeUpdateCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onVolumeChange",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onVolumeChangeCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWaiting",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWaitingCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAuxClick",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAuxClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onContextMenu",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onContextMenuCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDoubleClick",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDoubleClickCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDrag",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnd",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEndCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnter",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragEnterCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragExit",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragExitCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragLeave",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragLeaveCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragOver",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragOverCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragStart",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDragStartCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDrop",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onDropCapture",
-      "type": "(AdaptChildDragEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & DragEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseDown",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseDownCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseMove",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseMoveCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOut",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOutCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOver",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseOverCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseUp",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onMouseUpCapture",
-      "type": "(AdaptChildMouseEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & MouseEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSelect",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onSelectCapture",
-      "type": "(AdaptChildReactEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & ReactEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchCancel",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchCancelCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchEnd",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchEndCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchMove",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchMoveCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchStart",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTouchStartCapture",
-      "type": "(AdaptChildTouchEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TouchEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerDown",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerDownCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerMove",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerMoveCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerUp",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerUpCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerCancel",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerCancelCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerEnter",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerLeave",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOver",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOverCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOut",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerOutCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGotPointerCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onGotPointerCaptureCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLostPointerCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onLostPointerCaptureCapture",
-      "type": "(AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & PointerEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onScroll",
-      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onScrollCapture",
-      "type": "(AdaptChildUIEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & UIEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWheel",
-      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onWheelCapture",
-      "type": "(AdaptChildWheelEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & WheelEventHandler<HTMLDivElement>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationStart",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationStartCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationEnd",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationEndCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationIteration",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onAnimationIterationCapture",
-      "type": "(AdaptChildAnimationEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & AnimationEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTransitionEnd",
-      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onTransitionEndCapture",
-      "type": "(AdaptChildTransitionEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>> & TransitionEventHandler<...>)",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "type",
-      "type": "\"button\" | \"submit\" | \"reset\"",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "payloadUniqBy",
-      "type": "UniqueOption<Payload>",
-      "description": "",
+      "name": "content",
+      "type": "ContentType",
+      "description": "Renders the content of the legend.\n\nThis should return HTML elements, not SVG elements.\n\n- If not set, the {@link DefaultLegendContent } component is used.\n- If set to a React element, this element will be cloned and extra props will be passed in.\n- If set to a function, the function will be called and should return HTML elements.\n@example <Legend content={CustomizedLegend} />\n@example <Legend content={renderLegend} />",
       "required": false
     },
     {
       "name": "wrapperStyle",
       "type": "CSSProperties",
-      "description": "",
+      "description": "CSS styles to be applied to the wrapper `div` element.",
       "required": false
     },
     {
-      "name": "nameKey",
-      "type": "string",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerEnterCapture",
-      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "onPointerLeaveCapture",
-      "type": "AdaptChildPointerEventHandler<any, ReactElement<unknown, string | JSXElementConstructor<any>>>",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartWidth",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "chartHeight",
-      "type": "number",
-      "description": "",
-      "required": false
-    },
-    {
-      "name": "margin",
-      "type": "{ top?: number; left?: number; bottom?: number | undefined; right?: number | undefined; } | undefined",
+      "name": "payloadUniqBy",
+      "type": "UniqueOption<LegendPayload>",
       "description": "",
       "required": false
     },
     {
       "name": "onBBoxUpdate",
-      "type": "((box: DOMRect | null) => void)",
+      "type": "((box: ElementOffset | null) => void)",
       "description": "",
       "required": false
     },
     {
-      "name": "hideIcon",
-      "type": "boolean",
-      "defaultValue": "false",
-      "description": "",
+      "name": "portal",
+      "type": "HTMLElement | null",
+      "description": "If portal is defined, then Legend will use this element as a target\nfor rendering using React Portal.\n\nIf this is undefined then Legend renders inside the recharts-wrapper element.\n@see {@link https://react.dev/reference/react-dom/createPortal}",
+      "required": false
+    },
+    {
+      "name": "itemSorter",
+      "type": "LegendItemSorter | null",
+      "description": "Sorts Legend items. Defaults to `value` which means it will sort alphabetically\nby the label.\n\nIf `null` is provided then the payload is not sorted. Be aware that without sort,\nthe order of items may change between renders!\n@defaultValue value",
+      "required": false
+    },
+    {
+      "name": "verticalAlign",
+      "type": "\"middle\" | \"top\" | \"bottom\"",
+      "description": "The alignment of the whole Legend container:\n\n- `bottom`: shows the Legend below chart, and chart height reduces automatically to make space for it.\n- `top`: shows the Legend above chart, and chart height reduces automatically.\n- `middle`:  shows the Legend in the middle of chart, covering other content, and chart height remains unchanged.\nThe exact behavior changes depending on `align` prop.\n@defaultValue bottom",
       "required": false
     }
   ],
+  "ChartLegendContent": [],
   "ChartStyle": [
     {
       "name": "id",
@@ -2409,6 +1821,618 @@
       "required": false
     }
   ],
+  "Collapsible": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CollapsibleTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CollapsibleContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxRoot": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether multiple items can be selected.",
+      "required": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "description": "Provides a hint to the browser for autofill.\n@see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete",
+      "required": false
+    },
+    {
+      "name": "autoHighlight",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the first matching item is highlighted automatically while filtering.",
+      "required": false
+    },
+    {
+      "name": "highlightItemOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether moving the pointer over items should highlight them.\nDisabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.",
+      "required": false
+    },
+    {
+      "name": "itemToStringLabel",
+      "type": "((itemValue: Value) => string)",
+      "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for display in the input.\nIf the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.",
+      "required": false
+    },
+    {
+      "name": "itemToStringValue",
+      "type": "((itemValue: Value) => string)",
+      "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for form submission.\nIf the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop.",
+      "required": false
+    },
+    {
+      "name": "isItemEqualToValue",
+      "type": "((itemValue: Value, value: Value) => boolean)",
+      "description": "Custom comparison logic used to determine if a combobox item value matches the current selected value. Useful when item values are objects without matching referentially.\nDefaults to `Object.is` comparison.",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "ComboboxValueType<Value, Multiple> | null",
+      "description": "The uncontrolled selected value of the combobox when it's initially rendered.\n\nTo render a controlled combobox, use the `value` prop instead.",
+      "required": false
+    },
+    {
+      "name": "actionsRef",
+      "type": "RefObject<Actions | null>",
+      "description": "A ref to imperative actions.\n- `unmount`: When specified, the combobox will not be unmounted when closed.\nInstead, the `unmount` function must be called to unmount the combobox manually.\nUseful when the combobox's animation is controlled by an external library.",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean, eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the popup is opened or closed.",
+      "required": false
+    },
+    {
+      "name": "onInputValueChange",
+      "type": "((inputValue: string, eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the input value changes.",
+      "required": false
+    },
+    {
+      "name": "onItemHighlighted",
+      "type": "((highlightedValue: Value, eventDetails: HighlightEventDetails) => void)",
+      "description": "Callback fired when an item is highlighted or unhighlighted.\nReceives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.\nThe `reason` can be:\n- `'keyboard'`: the highlight changed due to keyboard navigation.\n- `'pointer'`: the highlight changed due to pointer hovering.\n- `'none'`: the highlight changed programmatically.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "ComboboxValueType<Value, Multiple> | null",
+      "description": "The selected value of the combobox. Use when controlled.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: ComboboxValueType<Value, Multiple> | (Multiple extends true ? never : null), eventDetails: ChangeEventDetails) => void)",
+      "description": "Event handler called when the selected value of the combobox changes.",
+      "required": false
+    }
+  ],
+  "ComboboxInput": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxInputState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "showTrigger",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showClear",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxContent": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxPopupState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxPopupState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxList": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxListState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxListState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxItem": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxItemState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxItemState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxGroup": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxGroupState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxLabel": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxGroupLabelState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupLabelState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxCollection": [],
+  "ComboboxEmpty": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxEmptyState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxEmptyState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxSeparator": [
+    {
+      "name": "className",
+      "type": "string | ((state: SeparatorState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxChips": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxChipsState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipsState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxChip": [
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxChipState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    },
+    {
+      "name": "showRemove",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ComboboxChipsInput": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxInputState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxTrigger": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the component should ignore user interaction.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string | ((state: ComboboxTriggerState) => string)",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
+      "required": false
+    },
+    {
+      "name": "render",
+      "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxTriggerState>",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "required": false
+    }
+  ],
+  "ComboboxValue": [
+    {
+      "name": "placeholder",
+      "type": "ReactNode",
+      "description": "The placeholder value to display when no value is selected.\nThis is overridden by `children` if specified, or by a null item's label in `items`.",
+      "required": false
+    }
+  ],
+  "Command": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Accessible label for this command menu. Not shown visibly.",
+      "required": false
+    },
+    {
+      "name": "shouldFilter",
+      "type": "boolean",
+      "description": "Optionally set to `false` to turn off the automatic filtering and sorting.\nIf `false`, you must conditionally render valid items based on the search query yourself.",
+      "required": false
+    },
+    {
+      "name": "filter",
+      "type": "CommandFilter",
+      "description": "Custom filter function for whether each command menu item should matches the given search query.\nIt should return a number between 0 and 1, with 1 being the best match and 0 being hidden entirely.\nBy default, uses the `command-score` library.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Optional controlled state of the selected command menu item.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "Event handler called when the selected item of the menu changes.",
+      "required": false
+    },
+    {
+      "name": "loop",
+      "type": "boolean",
+      "description": "Optionally set to `true` to turn on looping around when using the arrow keys.",
+      "required": false
+    },
+    {
+      "name": "disablePointerSelection",
+      "type": "boolean",
+      "description": "Optionally set to `true` to disable selection via pointer events.",
+      "required": false
+    },
+    {
+      "name": "vimBindings",
+      "type": "boolean",
+      "description": "Set to `false` to disable ctrl+n/j/p/k shortcuts. Defaults to `true`.",
+      "required": false
+    }
+  ],
+  "CommandDialog": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Command Palette",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Search for a command to run...",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CommandInput": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Optional controlled state for the value of the search input.",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((search: string) => void)",
+      "description": "Event handler called when the search value changes.",
+      "required": false
+    }
+  ],
+  "CommandList": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Accessible label for this List of suggestions. Not shown visibly.",
+      "required": false
+    }
+  ],
+  "CommandEmpty": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "CommandGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "heading",
+      "type": "ReactNode",
+      "description": "Optional heading to render for this group.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "If no heading is provided, you must provide a value that is unique for this group.",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "Whether this group is forcibly rendered regardless of filtering.",
+      "required": false
+    }
+  ],
+  "CommandItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether this item is currently disabled.",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "((value: string) => void)",
+      "description": "Event handler for when this item is selected, either via click or keyboard selection.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "A unique value for this item.\nIf no value is provided, it will be inferred from `children` or the rendered `textContent`. If your `textContent` changes between renders, you _must_ provide a stable, unique `value`.",
+      "required": false
+    },
+    {
+      "name": "keywords",
+      "type": "string[]",
+      "description": "Optional keywords to match against when filtering.",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "Whether this item is forcibly rendered regardless of filtering.",
+      "required": false
+    }
+  ],
+  "CommandShortcut": [],
+  "CommandSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "alwaysRender",
+      "type": "boolean",
+      "description": "Whether this separator should always be rendered. Useful if you disable automatic filtering.",
+      "required": false
+    }
+  ],
   "ContextMenu": [],
   "ContextMenuTrigger": [
     {
@@ -2428,6 +2452,12 @@
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "dir",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -2595,6 +2625,352 @@
       "required": false
     }
   ],
+  "DataTable": [
+    {
+      "name": "columns",
+      "type": "ColumnDef<TData, TValue>[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "data",
+      "type": "TData[]",
+      "description": "",
+      "required": true
+    }
+  ],
+  "useDataTable": [
+    {
+      "name": "data",
+      "type": "TData[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "columns",
+      "type": "ColumnDef<TData, unknown>[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "getRowId",
+      "type": "((row: TData) => string)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "initialSorting",
+      "type": "SortingState",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableButtonFilter": [
+    {
+      "name": "column",
+      "type": "Column<TData, TValue>",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Filter",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "DataTableButtonFilterOption[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "align",
+      "type": "\"center\" | \"start\" | \"end\"",
+      "defaultValue": "end",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableTabbar": [
+    {
+      "name": "_table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "search",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "filter",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableColumnHeader": [
+    {
+      "name": "column",
+      "type": "Column<TData, TValue>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "",
+      "required": true
+    }
+  ],
+  "DataTablePagination": [
+    {
+      "name": "table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "pageSizeOptions",
+      "type": "number[]",
+      "defaultValue": "[10, 20, 30, 40, 50]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "getOrderStatusMeta": [],
+  "getPaymentStatusMeta": [],
+  "getStatusVariant": [],
+  "getPaymentVariant": [],
+  "DataTable14": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableRowActions": [
+    {
+      "name": "row",
+      "type": "Row<TData>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "schema",
+      "type": "ZodType<unknown, unknown, $ZodTypeInternals<unknown, unknown>>",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "itemName",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "idField",
+      "type": "string",
+      "defaultValue": "id",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable16": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable20": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable21": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable22": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable26": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable27": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable29": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTableSortMenu": [
+    {
+      "name": "table",
+      "type": "Table<TData>",
+      "description": "",
+      "required": true
+    }
+  ],
+  "DataTable32": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable4": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DataTable5": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogMinimalDemo": [],
+  "DialogCustomCloseDemo": [],
+  "DialogNoCloseDemo": [],
+  "DialogStickyFooterDemo": [],
+  "DialogScrollableDemo": [],
+  "Dialog": [],
+  "DialogClose": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showClose",
+      "type": "boolean",
+      "description": "When `false`, hides the corner close control (same as `showCloseButton={false}`).",
+      "required": false
+    }
+  ],
+  "DialogDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogFooter": [
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogHeader": [],
+  "DialogOverlay": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogPortal": [],
+  "DialogTitle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "DialogTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
   "Dock": [
     {
       "name": "position",
@@ -2652,16 +3028,16 @@
       "required": false
     },
     {
-      "name": "href",
-      "type": "string",
-      "description": "If set, renders as a link.",
-      "required": false
-    },
-    {
       "name": "icon",
       "type": "ReactNode",
       "description": "Icon element (e.g. Lucide icon).",
       "required": true
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "description": "If set, renders as a link.",
+      "required": false
     },
     {
       "name": "badge",
@@ -2935,6 +3311,7 @@
   ],
   "TopBarLeft": [],
   "TopBarRight": [],
+  "DropdownMenuUsageDemo": [],
   "DropdownMenu": [],
   "DropdownMenuTrigger": [
     {
@@ -2960,6 +3337,12 @@
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "dir",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -3088,6 +3471,301 @@
       "required": false
     }
   ],
+  "FieldMapping1": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FieldMerging1": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUpload": [
+    {
+      "name": "value",
+      "type": "File[]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "File[]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((files: File[]) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onAccept",
+      "type": "((files: File[]) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileAccept",
+      "type": "((file: File) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileReject",
+      "type": "((file: File, message: string) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFileValidate",
+      "type": "((file: File) => string | null)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onUpload",
+      "type": "((files: File[], options: { onProgress: (file: File, progress: number) => void; onSuccess: (file: File) => void; onError: (file: File, error: Error) => void; }) => void | Promise<...>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "accept",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "maxFiles",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "maxSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "dir",
+      "type": "\"ltr\" | \"rtl\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadDropzone": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadList": [
+    {
+      "name": "orientation",
+      "type": "\"horizontal\" | \"vertical\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItem": [
+    {
+      "name": "value",
+      "type": "File",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemPreview": [
+    {
+      "name": "render",
+      "type": "((file: File, fallback: () => ReactNode) => ReactNode)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemMetadata": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemProgress": [
+    {
+      "name": "variant",
+      "type": "\"fill\" | \"linear\" | \"circular\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadItemDelete": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "FileUploadClear": [
+    {
+      "name": "forceMount",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "useStore": [],
   "FormItem": [],
   "FormLabel": [],
   "FormControl": [],
@@ -3143,6 +3821,126 @@
       "required": false
     }
   ],
+  "HoverCard": [],
+  "HoverCardTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "HoverCardContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroup": [],
+  "InputGroupAddon": [
+    {
+      "name": "align",
+      "type": "\"inline-end\" | \"inline-start\" | \"block-start\" | \"block-end\" | null",
+      "defaultValue": "inline-start",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroupButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "defaultValue": "ghost",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"xs\" | \"icon-xs\" | \"icon-sm\" | null",
+      "defaultValue": "xs",
+      "description": "",
+      "required": false
+    }
+  ],
+  "InputGroupText": [],
+  "InputGroupInput": [
+    {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the input is disabled",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"checkbox\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"image\" | \"month\" | \"number\" | \"password\" | \"radio\" | \"range\" | \"reset\" | \"search\" | \"submit\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+      "description": "The type of input",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "The placeholder text",
+      "required": false
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
+      "required": false
+    }
+  ],
+  "InputGroupTextarea": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Input": [
     {
       "name": "heading",
@@ -3173,6 +3971,20 @@
       "type": "string",
       "description": "The placeholder text",
       "required": false
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
+      "required": false
+    }
+  ],
+  "Label": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
     }
   ],
   "AppLink": [
@@ -3180,6 +3992,13 @@
       "name": "disabled",
       "type": "boolean",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "\"none\" | \"external\" | \"plus\"",
+      "defaultValue": "external",
+      "description": "Hover/focus affordance: trailing `ExternalLink` (default), leading `Plus`, or `none` for custom icons.",
       "required": false
     },
     {
@@ -3211,6 +4030,12 @@
       "type": "Url",
       "description": "The path or URL to navigate to. It can also be an object.\n@example https://nextjs.org/docs/api-reference/next/link#with-url-object",
       "required": true
+    },
+    {
+      "name": "locale",
+      "type": "string | false",
+      "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
+      "required": false
     },
     {
       "name": "replace",
@@ -3246,12 +4071,6 @@
       "name": "prefetch",
       "type": "boolean | \"auto\" | null",
       "description": "Prefetch the page in the background.\nAny `<Link />` that is in the viewport (initially or through scroll) will be prefetched.\nPrefetch can be disabled by passing `prefetch={false}`. Prefetching is only enabled in production.\n\nIn App Router:\n- \"auto\", null, undefined (default): For statically generated pages, this will prefetch the full React Server Component data. For dynamic pages, this will prefetch up to the nearest route segment with a [`loading.js`](https://nextjs.org/docs/app/api-reference/file-conventions/loading) file. If there is no loading file, it will not fetch the full tree to avoid fetching too much data.\n- `true`: This will prefetch the full React Server Component data for all route segments, regardless of whether they contain a segment with `loading.js`.\n- `false`: This will not prefetch any data, even on hover.\n\nIn Pages Router:\n- `true` (default): The full route & its data will be prefetched.\n- `false`: Prefetching will not happen when entering the viewport, but will still happen on hover.\n@defaultValue `true` (pages router) or `null` (app router)",
-      "required": false
-    },
-    {
-      "name": "locale",
-      "type": "string | false",
-      "description": "The active locale is automatically prepended. `locale` allows for providing a different locale.\nWhen `false` `href` has to include the locale as the default behavior is disabled.\nNote: This is only available in the Pages Router.",
       "required": false
     },
     {
@@ -3328,6 +4147,185 @@
     }
   ],
   "ListView": [],
+  "Login4": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Login",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "buttonText",
+      "type": "string",
+      "defaultValue": "Login",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "googleText",
+      "type": "string",
+      "defaultValue": "Google",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "githubText",
+      "type": "string",
+      "defaultValue": "GitHub",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "facebookText",
+      "type": "string",
+      "defaultValue": "Facebook",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "Need an account?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login6": [
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "buttonText",
+      "type": "string",
+      "defaultValue": "Login",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "googleText",
+      "type": "string",
+      "defaultValue": "Login with Google",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "Need an account?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login7": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Login9": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Log In",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "googleText",
+      "type": "string",
+      "defaultValue": "Continue with Google",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "githubText",
+      "type": "string",
+      "defaultValue": "Continue with GitHub",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "linkedInText",
+      "type": "string",
+      "defaultValue": "Continue with LinkedIn",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "emailText",
+      "type": "string",
+      "defaultValue": "Continue with email",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupText",
+      "type": "string",
+      "defaultValue": "New to Blake UI?",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "signupUrl",
+      "type": "string",
+      "defaultValue": "#",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "NativeSelect": [
     {
       "name": "disabled",
@@ -3339,6 +4337,184 @@
       "name": "size",
       "type": "\"default\" | \"sm\"",
       "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Navbar1": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "logo",
+      "type": "{ url: string; src: string; alt: string; title: string; className?: string; }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "menu",
+      "type": "MenuItem[]",
+      "defaultValue": "[\n    { title: \"Home\", url: \"#\" },\n    {\n      title: \"Products\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Blog\",\n          description: \"The latest industry news, updates, and info\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Company\",\n          description: \"Our mission is to innovate and empower the world\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Careers\",\n          description: \"Browse job listing and discover our workspace\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Support\",\n          description:\n            \"Get in touch with our support team or visit our community forums\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Resources\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Help Center\",\n          description: \"Get all the answers you need right here\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Contact Us\",\n          description: \"We are here to help you with any questions you have\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Status\",\n          description: \"Check the current status of our services and APIs\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Terms of Service\",\n          description: \"Our terms and conditions for using our services\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Pricing\",\n      url: \"#\",\n    },\n    {\n      title: \"Blog\",\n      url: \"#\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "auth",
+      "type": "{ login: { title: string; url: string; }; signup: { title: string; url: string; }; }",
+      "defaultValue": "{\n    login: { title: \"Login\", url: \"#\" },\n    signup: { title: \"Sign up\", url: \"#\" },\n  }",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Navbar29": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Navbar9": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenu": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "viewport",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuList": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuItem": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuLink": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuIndicator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NavigationMenuViewport": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Popover": [],
+  "PopoverTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "PopoverContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "PopoverAnchor": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Progress": [
+    {
+      "name": "asChild",
+      "type": "boolean",
       "description": "",
       "required": false
     }
@@ -3389,7 +4565,1042 @@
       "required": false
     }
   ],
+  "ScrollArea": [
+    {
+      "name": "type",
+      "type": "\"auto\" | \"hover\" | \"always\" | \"scroll\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ScrollBar": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Select": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: string) => void)",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectGroup": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectItem": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectScrollDownButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectScrollUpButton": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\"",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SelectValue": [
+    {
+      "name": "placeholder",
+      "type": "ReactNode",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Separator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers1": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Team Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "subHeading",
+      "type": "string",
+      "defaultValue": "View and manage your team members. Control permissions and roles for each user in your organization.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "users",
+      "type": "User[]",
+      "defaultValue": "[\n    {\n      name: \"Emily Watson\",\n      email: \"emily.w@acme.io\",\n      accessLevel: \"Owner\",\n    },\n    {\n      email: \"john.d@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Michael Park\",\n      email: \"michael.p@acme.io\",\n      accessLevel: \"Viewer\",\n    },\n    {\n      email: \"lisa.t@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers2": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Workspace Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "subHeading",
+      "type": "Cta",
+      "defaultValue": "{\n    title:\n      \"Add teammates to collaborate on projects together. Control permissions and manage access levels for each member.\",\n    ctaText: \"View member permissions guide\",\n    ctaLink: \"#\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "users",
+      "type": "User[]",
+      "defaultValue": "[\n    {\n      name: \"Sofia Martinez\",\n      email: \"sofia.m@example.com\",\n      accessLevel: \"Owner\",\n      image:\n        \"https://i.pravatar.cc/150?img=1\",\n    },\n    {\n      name: \"Alex Chen\",\n      email: \"alex.c@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Jordan Blake\",\n      email: \"jordan.b@example.com\",\n      accessLevel: \"Viewer\",\n      image:\n        \"https://i.pravatar.cc/150?img=3\",\n    },\n    {\n      name: \"Morgan Reid\",\n      email: \"morgan.r@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers3": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Team Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Manage your team members and their access permissions.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "members",
+      "type": "Member[]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Sarah Chen\",\n      email: \"sarah.chen@company.io\",\n      role: \"admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=2\",\n      joinedAt: \"Jan 2024\",\n    },\n    {\n      id: \"2\",\n      name: \"Marcus Johnson\",\n      email: \"marcus.j@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=5\",\n      joinedAt: \"Mar 2024\",\n    },\n    {\n      id: \"3\",\n      name: \"Elena Rodriguez\",\n      email: \"elena.r@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=4\",\n      joinedAt: \"Apr 2024\",\n    },\n    {\n      id: \"4\",\n      name: \"David Park\",\n      email: \"david.p@company.io\",\n      role: \"viewer\",\n      joinedAt: \"Jun 2024\",\n    },\n    {\n      id: \"5\",\n      name: \"Aisha Patel\",\n      email: \"aisha.p@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=6\",\n      joinedAt: \"Aug 2024\",\n    },\n    {\n      id: \"6\",\n      name: \"Thomas Wright\",\n      email: \"thomas.w@company.io\",\n      role: \"viewer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=7\",\n      joinedAt: \"Oct 2024\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsMembers4": [
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "Organization Members",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "defaultValue": "Manage who has access to this organization.",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "members",
+      "type": "Member[]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Nina Kowalski\",\n      email: \"nina.k@startup.co\",\n      role: \"Owner\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=1\",\n      status: \"active\",\n    },\n    {\n      id: \"2\",\n      name: \"James Liu\",\n      email: \"james.l@startup.co\",\n      role: \"Admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=8\",\n      status: \"active\",\n    },\n    {\n      id: \"3\",\n      name: \"Rachel Green\",\n      email: \"rachel.g@startup.co\",\n      role: \"Developer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=9\",\n      status: \"active\",\n    },\n    {\n      id: \"4\",\n      name: \"Omar Hassan\",\n      email: \"omar.h@startup.co\",\n      role: \"Developer\",\n      status: \"pending\",\n    },\n    {\n      id: \"5\",\n      name: \"Lisa Wang\",\n      email: \"lisa.w@startup.co\",\n      role: \"Designer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=10\",\n      status: \"active\",\n    },\n  ]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile2": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileFormData>",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@blakeui.com\",\n    username: \"alexmorgan\",\n    avatar: \"/avatar-1.webp\",\n    bio: \"Designer and front-end engineer building polished UIs with BlakeUI. Interested in design systems, accessibility, and shipping fast without sacrificing quality.\",\n    jobTitle: \"Product Designer\",\n    company: \"BlakeUI\",\n    location: \"San Francisco, CA\",\n    website: \"https://blakeui.com\",\n    socialLinks: {\n      twitter: \"blakeui\",\n      linkedin: \"blakeui\",\n      github: \"blakeui\",\n    },\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onSave",
+      "type": "((data: ProfileFormData) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile4": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    username: \"alexmorgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\n    phone: \"+1 (555) 123-4567\",\n    location: \"San Francisco, CA\",\n    website: \"https://alexmorgan.design\",\n    twitter: \"alexmorgan\",\n    linkedin: \"alexmorgan\",\n    github: \"alexmorgan\",\n    timezone: \"America/Los_Angeles\",\n    language: \"en\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile5": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Jordan Chen\",\n    username: \"jordanchen\",\n    email: \"jordan.chen@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=3\",\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\n    role: \"Senior Software Engineer\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    twitter: \"jordanchen\",\n    linkedin: \"jordanchen\",\n    github: \"jordanchen\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile6": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"\",\n    username: \"\",\n    avatar: \"\",\n    bio: \"\",\n    email: \"\",\n    phone: \"\",\n    location: \"\",\n    website: \"\",\n    twitter: \"\",\n    linkedin: \"\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SettingsProfile7": [
+    {
+      "name": "defaultValues",
+      "type": "Partial<ProfileData>",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    role: \"Product Designer\",\n    location: \"San Francisco, CA\",\n  }",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Sheet": [],
+  "SheetTrigger": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetClose": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetContent": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "defaultValue": "right",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showCloseButton",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetHeader": [],
+  "SheetFooter": [],
+  "SheetTitle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SheetDescription": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Sidebar10": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar11": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar20": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar3": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar9": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "preview",
+      "type": "boolean",
+      "description": "When true, constrains the layout inside a fixed-size container so it renders inside the docs preview instead of as a viewport-fixed sidebar.",
+      "required": false
+    }
+  ],
+  "Sidebar": [
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "defaultValue": "left",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"sidebar\" | \"floating\" | \"inset\"",
+      "defaultValue": "sidebar",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "\"none\" | \"offcanvas\" | \"icon\"",
+      "defaultValue": "offcanvas",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "innerClassName",
+      "type": "string",
+      "description": "When set, replaces the default `bg-sidebar` on the sidebar surface (avoids conflicting utilities).",
+      "required": false
+    }
+  ],
+  "SidebarContent": [],
+  "SidebarFooter": [],
+  "SidebarGroup": [],
+  "SidebarGroupAction": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarGroupContent": [],
+  "SidebarGroupLabel": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarHeader": [],
+  "SidebarInput": [
+    {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the input is disabled",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"checkbox\" | \"color\" | \"date\" | \"datetime-local\" | \"email\" | \"file\" | \"hidden\" | \"image\" | \"month\" | \"number\" | \"password\" | \"radio\" | \"range\" | \"reset\" | \"search\" | \"submit\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+      "description": "The type of input",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "The placeholder text",
+      "required": false
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "description": "The class name for the input",
+      "required": false
+    }
+  ],
+  "SidebarInset": [],
+  "SidebarMenu": [],
+  "SidebarMenuAction": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "showOnHover",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuBadge": [],
+  "SidebarMenuButton": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "tooltip",
+      "type": "string | (TooltipContentProps & RefAttributes<HTMLDivElement>)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\" | null",
+      "defaultValue": "default",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuItem": [],
+  "SidebarMenuSkeleton": [
+    {
+      "name": "showIcon",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuSub": [],
+  "SidebarMenuSubButton": [
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "defaultValue": "md",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarMenuSubItem": [],
+  "SidebarProvider": [
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "fillInsetArea",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When false, the gutter behind inset sidebars stays transparent (no bg-sidebar fill).",
+      "required": false
+    }
+  ],
+  "SidebarRail": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "SidebarTrigger": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Skeleton": [],
   "Toaster": [],
+  "StatsCard3": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Monthly Goal",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "defaultValue": "7500",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "number",
+      "defaultValue": "10000",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "defaultValue": "$",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard4": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "currentValue",
+      "type": "string",
+      "defaultValue": "$12,450",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "currentLabel",
+      "type": "string",
+      "defaultValue": "This month",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "previousValue",
+      "type": "string",
+      "defaultValue": "$10,230",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "previousLabel",
+      "type": "string",
+      "defaultValue": "Last month",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard6": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Revenue by Device",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "totalValue",
+      "type": "string",
+      "defaultValue": "$50,000",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "breakdown",
+      "type": "BreakdownItem[]",
+      "defaultValue": "[\n  { label: \"Desktop\", value: \"$32,450\", percentage: 65 },\n  { label: \"Mobile\", value: \"$12,300\", percentage: 25 },\n  { label: \"Tablet\", value: \"$5,250\", percentage: 10 },\n]",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard7": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "Storage Used",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "75 GB",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "percentage",
+      "type": "number",
+      "defaultValue": "75",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "of 100 GB",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard8": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "System Status",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": "99.9%",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "\"warning\" | \"critical\" | \"healthy\"",
+      "defaultValue": "healthy",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "statusLabel",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "StatsCard9": [
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "MRR",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "monthlyValue",
+      "type": "string",
+      "defaultValue": "$12,450",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "annualValue",
+      "type": "string",
+      "defaultValue": "$149,400",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "monthlyLabel",
+      "type": "string",
+      "defaultValue": "Monthly recurring",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "annualLabel",
+      "type": "string",
+      "defaultValue": "Annual recurring",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Switch": [
     {
       "name": "asChild",
@@ -3424,6 +5635,14 @@
       "required": false
     }
   ],
+  "Table": [],
+  "TableHeader": [],
+  "TableBody": [],
+  "TableFooter": [],
+  "TableHead": [],
+  "TableRow": [],
+  "TableCell": [],
+  "TableCaption": [],
   "Tabs": [
     {
       "name": "asChild",
@@ -3477,9 +5696,21 @@
   ],
   "Textarea": [
     {
+      "name": "heading",
+      "type": "string",
+      "description": "The heading text",
+      "required": false
+    },
+    {
       "name": "disabled",
       "type": "boolean",
       "description": "",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "The description text",
       "required": false
     },
     {

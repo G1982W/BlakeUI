@@ -1,0 +1,50 @@
+---
+title: Stats Card 1
+description: Metric card with MRR/ARR toggle to switch between monthly and annual recurring revenue views.
+base: base
+component: true
+---
+
+import { StatsCard9 } from "@/components/ui/stats-card-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="stats-card-9" premium>
+  <StatsCard9 />
+</ComponentPreview>
+
+## Introduction
+
+**Stats Card 1** is a metric card with a toggle in the header:
+
+- **Toggle**: Switch between two views (e.g. MRR and ARR) with a compact tab switcher.
+- **Value and label**: Update based on the selected toggle state.
+- **Use case**: SaaS revenue metrics where both monthly and annual views are relevant.
+
+Uses Card and Tabs.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  code={registry["stats-card-9"]?.source ?? ""}
+  fileName="/components/ui/stats-card-9.tsx"
+/>
+
+Requires Card and Tabs.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { StatsCard9 } from "@/components/ui/stats-card-9";
+
+<StatsCard9 />
+```
+
+Customize the toggle options and values to match your metrics.

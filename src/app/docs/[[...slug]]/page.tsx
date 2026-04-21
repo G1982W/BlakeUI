@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
+import { LLMCopyButton } from '@/components/ai/page-actions';
+import { DocsFooter } from '@/components/docs-footer';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -18,14 +19,15 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const baseLabel = page.data.base
     ? baseLabelMap[page.data.base] ?? page.data.base
     : null;
-  const gitConfig = {
-    user: 'username',
-    repo: 'repo',
-    branch: 'main',
-  };
-
+  const appPage = Boolean(page.data.appPage);
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={appPage || page.data.full}
+      tableOfContent={appPage ? { enabled: false } : undefined}
+      tableOfContentPopover={appPage ? { enabled: false } : undefined}
+      footer={{ component: <DocsFooter /> }}
+    >
       {baseLabel ? (
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           {baseLabel}
@@ -37,11 +39,6 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       </DocsDescription>
       <div className="mb-8 flex flex-row items-center gap-2 border-b pb-6">
         <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
-        <ViewOptions
-          markdownUrl={`${page.url}.mdx`}
-          // update it to match your repo
-          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/docs/${page.path}`}
-        />
       </div>
       <DocsBody>
         <MDX

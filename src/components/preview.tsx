@@ -26,7 +26,7 @@ export function Preview({ children, className }: PreviewProps) {
         className,
       )}
     >
-      <div className="relative flex w-full items-center justify-center rounded-lg border p-10 ring-offset-background transition-colors">
+      <div className="relative not-prose flex w-full items-center justify-center rounded-lg border p-10 ring-offset-background transition-colors">
         {children}
       </div>
       <div className="flex items-center bg-background justify-end px-4 py-2">

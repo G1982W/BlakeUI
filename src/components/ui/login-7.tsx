@@ -1,0 +1,79 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+
+interface Login7Props {
+  className?: string;
+}
+
+const Login7 = ({ className }: Login7Props) => {
+  return (
+    <section className={cn("w-full", className)}>
+      <div className="container mx-auto">
+        <div className="flex flex-col items-center gap-4">
+          <Card className="mx-auto w-full max-w-[380px]">
+            <CardHeader className="items-center justify-center">
+              <a href="#" className="flex items-center gap-2">
+                <img
+                  src="/blake-logo-icon.svg"
+                  className="max-h-8"
+                  alt="BlakeUI"
+                />
+                <span className="text-lg font-semibold tracking-tighter">
+                  BlakeUI
+                </span>
+              </a>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                <Button variant="primary" className="w-full">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg"
+                    className="mr-2 size-4"
+                    alt="Google"
+                  />
+                  Sign up with Google
+                </Button>
+                <div className="flex items-center gap-4">
+                  <span className="h-px w-full bg-input"></span>
+                  <span className="text-xs text-muted-foreground">OR</span>
+                  <span className="h-px w-full bg-input"></span>
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
+                    required
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+                <Button type="submit" className="w-full">
+                  Log in
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          <div className="mx-auto flex items-center gap-1 text-sm">
+            <p>Don&apos;t have an account yet?</p>
+            <a href="#" className="underline">
+              Sign up
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { Login7 };

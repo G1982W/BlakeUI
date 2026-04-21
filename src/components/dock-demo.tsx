@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   HomeIcon,
   SearchIcon,
   MailIcon,
   SettingsIcon,
   UserIcon,
-} from "lucide-react"
-import { Dock, DockItem } from "@/components/ui/dock"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import { Dock, DockItem } from "@/components/ui/dock";
+import { cn } from "@/lib/utils";
 
-type DockPosition = "top" | "bottom" | "left" | "right"
+type DockPosition = "top" | "bottom" | "left" | "right";
 
 /**
  * Single dock demo with shared state: position (top/bottom/left/right) and
@@ -19,8 +19,8 @@ type DockPosition = "top" | "bottom" | "left" | "right"
  * so the same dock is controlled by the same buttons and toggle.
  */
 export function DockDemo() {
-  const [position, setPosition] = React.useState<DockPosition>("bottom")
-  const [autoHide, setAutoHide] = React.useState(false)
+  const [position, setPosition] = React.useState<DockPosition>("bottom");
+  const [autoHide, setAutoHide] = React.useState(false);
 
   return (
     <div className="flex flex-col gap-4">
@@ -36,8 +36,8 @@ export function DockDemo() {
                 className={cn(
                   "rounded-md border px-3 py-1.5 text-sm capitalize transition-colors",
                   position === p
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background hover:bg-accent border-border"
+                    ? "bg-brand text-primary-foreground border-primary"
+                    : "bg-background hover:bg-accent border-border",
                 )}
               >
                 {p}
@@ -53,13 +53,13 @@ export function DockDemo() {
             onClick={() => setAutoHide((v) => !v)}
             className={cn(
               "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
-              autoHide ? "bg-primary" : "bg-input"
+              autoHide ? "bg-primary" : "bg-input",
             )}
           >
             <span
               className={cn(
                 "pointer-events-none block size-5 rounded-full bg-background shadow-lg ring-0 transition-transform",
-                autoHide ? "translate-x-5" : "translate-x-1"
+                autoHide ? "translate-x-5" : "translate-x-1",
               )}
             />
           </button>
@@ -74,12 +74,19 @@ export function DockDemo() {
         autoHide={autoHide}
         className="pointer-events-auto"
       >
-        <DockItem icon={<HomeIcon />} label="Home" />
-        <DockItem icon={<SearchIcon />} label="Search" />
-        <DockItem icon={<MailIcon />} label="Mail" badge={3} />
-        <DockItem icon={<SettingsIcon />} label="Settings" />
-        <DockItem icon={<UserIcon />} label="Profile" />
+        <DockItem icon={<HomeIcon className="text-brand" />} label="Home" />
+        <DockItem icon={<SearchIcon className="text-brand" />} label="Search" />
+        <DockItem
+          icon={<MailIcon className="text-brand" />}
+          label="Mail"
+          badge={3}
+        />
+        <DockItem
+          icon={<SettingsIcon className="text-brand" />}
+          label="Settings"
+        />
+        <DockItem icon={<UserIcon className="text-brand" />} label="Profile" />
       </Dock>
     </div>
-  )
+  );
 }

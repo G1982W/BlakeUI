@@ -16,7 +16,7 @@ export function ToastDemo({
         <button
           type="button"
           onClick={() => toast("Event has been created.")}
-          className={`${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`}
+          className={`${buttonBase} bg-brand text-primary-foreground hover:bg-brand/95 cursor-pointer`}
         >
           Default toast
         </button>
@@ -34,7 +34,7 @@ export function ToastDemo({
               description: "Your event has been added to the calendar.",
             })
           }
-          className={`${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`}
+          className={`${buttonBase} bg-brand text-primary-foreground hover:bg-brand/95 cursor-pointer`}
         >
           Toast with description
         </button>
@@ -48,7 +48,7 @@ export function ToastDemo({
         <button
           type="button"
           onClick={() => toast.success("Changes saved.")}
-          className={`${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`}
+          className={`${buttonBase} bg-brand text-primary-foreground hover:bg-brand/95 cursor-pointer`}
         >
           Success
         </button>
@@ -100,7 +100,7 @@ export function ToastDemo({
               },
             })
           }
-          className={`${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`}
+          className={`${buttonBase} bg-brand text-primary-foreground hover:bg-brand/95 cursor-pointer`}
         >
           Toast with action
         </button>
@@ -117,7 +117,7 @@ export function ToastDemoButton() {
       <button
         type="button"
         onClick={() => toast("Event has been created.")}
-        className={`${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`}
+        className={`${buttonBase} bg-brand text-primary-foreground hover:bg-brand/95 cursor-pointer`}
       >
         Show toast
       </button>
