@@ -31,6 +31,16 @@ const BUNDLES = {
     "src/components/app-pages/onboardingflow-page/step-indicator.tsx",
     "src/components/app-pages/onboardingflow-page/store.ts",
   ],
+  "multi-step-form": [
+    "src/components/ui/multi-step-form-page.tsx",
+    "src/components/app-pages/multi-step-form/page.tsx",
+    "src/components/app-pages/multi-step-form/components/sidebar.tsx",
+    "src/components/app-pages/multi-step-form/components/step-data-source.tsx",
+    "src/components/app-pages/multi-step-form/components/step-first-flow.tsx",
+    "src/components/app-pages/multi-step-form/components/step-invite-team.tsx",
+    "src/components/app-pages/multi-step-form/components/step-role-use-case.tsx",
+    "src/components/app-pages/multi-step-form/components/step-template.tsx",
+  ],
 };
 
 function toDisplayPath(rel) {
