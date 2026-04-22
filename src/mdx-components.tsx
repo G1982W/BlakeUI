@@ -28,6 +28,8 @@ import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 import { Login4Demo } from "@/components/login-4-demo";
 import { CourseDetailPageDemo } from "@/components/course-detail-page-demo";
 import { OnboardingFlowPageDemo } from "@/components/onboardingflow-page-demo";
+import { NotesPageDemo } from "@/components/notes-page-demo";
+import { ChatAppPageDemo } from "@/components/chat-app-page-demo";
 import { AppPagePreview } from "@/components/app-page-preview";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -60,5 +62,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Login4Demo,
     CourseDetailPageDemo,
     OnboardingFlowPageDemo,
+    NotesPageDemo,
+    ChatAppPageDemo,
   } as MDXComponents;
 }

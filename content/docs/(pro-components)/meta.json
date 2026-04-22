@@ -71,6 +71,8 @@
     "data-table22",
     "---App Pages---",
     "course-detail-page",
-    "onboardingflow-page"
+    "onboardingflow-page",
+    "notes",
+    "chat-app"
   ]
 }

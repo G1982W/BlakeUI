@@ -1,0 +1,50 @@
+---
+title: Chat App
+description: Full-featured chat application UI with contact list, message threads, unread badges, and real-time message input. Includes mobile-friendly drawer navigation for small screens.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="chat-app" premium>
+  <ChatAppPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Chat App** includes:
+
+- **Contact list & search**: Sidebar with threads, unread counts, and status; keyboard-friendly navigation.
+- **Message thread**: Scrollable history with avatars, bubbles, and group chat detail.
+- **Compose**: Textarea and send via input group; desktop and mobile-friendly layout.
+- **Mobile drawer**: `vaul` drawer for the main chat on small viewports; sidebar + panel split on desktop.
+- **State**: Zustand for contacts, messages, and UI (active chat, mobile drawer).
+
+Uses Button, Input, Avatar, Badge, Drawer, and Input group patterns.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["zustand", "vaul"]}
+  files={appPageSources["chat-app"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChatAppPage } from "@/components/ui/chat-app-page";
+
+<ChatAppPage />;
+```
