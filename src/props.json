@@ -4554,6 +4554,14 @@
       "required": false
     }
   ],
+  "OnboardingFlowPage": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "Popover": [],
   "PopoverTrigger": [
     {
@@ -4641,6 +4649,186 @@
     {
       "name": "description",
       "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ResizablePanelGroup": [
+    {
+      "name": "autoSaveId",
+      "type": "string | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "\"horizontal\" | \"vertical\"",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "id",
+      "type": "string | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "keyboardResizeBy",
+      "type": "number | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onLayout",
+      "type": "PanelGroupOnLayout | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "storage",
+      "type": "PanelGroupStorage",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "tagName",
+      "type": "\"object\" | \"map\" | \"a\" | \"button\" | \"div\" | \"form\" | \"h2\" | \"h3\" | \"img\" | \"input\" | \"label\" | \"li\" | \"nav\" | \"ol\" | \"p\" | \"select\" | \"span\" | \"ul\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"h1\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"ins\" | \"kbd\" | \"legend\" | \"link\" | \"main\" | \"mark\" | \"menu\" | \"meta\" | \"meter\" | \"noscript\" | \"optgroup\" | \"option\" | \"output\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"small\" | \"source\" | \"strong\" | \"style\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"var\" | \"video\" | \"wbr\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ResizablePanel": [
+    {
+      "name": "collapsedSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "defaultSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "maxSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "minSize",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onCollapse",
+      "type": "PanelOnCollapse",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onExpand",
+      "type": "PanelOnExpand",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onResize",
+      "type": "PanelOnResize",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "order",
+      "type": "number",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "tagName",
+      "type": "\"object\" | \"map\" | \"a\" | \"button\" | \"div\" | \"form\" | \"h2\" | \"h3\" | \"img\" | \"input\" | \"label\" | \"li\" | \"nav\" | \"ol\" | \"p\" | \"select\" | \"span\" | \"ul\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"h1\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"ins\" | \"kbd\" | \"legend\" | \"link\" | \"main\" | \"mark\" | \"menu\" | \"meta\" | \"meter\" | \"noscript\" | \"optgroup\" | \"option\" | \"output\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"small\" | \"source\" | \"strong\" | \"style\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"var\" | \"video\" | \"wbr\"",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ResizableHandle": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "hitAreaMargins",
+      "type": "PointerHitAreaMargins",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onBlur",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onDragging",
+      "type": "PanelResizeHandleOnDragging",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onFocus",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerDown",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onPointerUp",
+      "type": "(() => void)",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "tagName",
+      "type": "\"object\" | \"map\" | \"a\" | \"button\" | \"div\" | \"form\" | \"h2\" | \"h3\" | \"img\" | \"input\" | \"label\" | \"li\" | \"nav\" | \"ol\" | \"p\" | \"select\" | \"span\" | \"ul\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"h1\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"ins\" | \"kbd\" | \"legend\" | \"link\" | \"main\" | \"mark\" | \"menu\" | \"meta\" | \"meter\" | \"noscript\" | \"optgroup\" | \"option\" | \"output\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"small\" | \"source\" | \"strong\" | \"style\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"var\" | \"video\" | \"wbr\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "withHandle",
+      "type": "boolean",
       "description": "",
       "required": false
     }

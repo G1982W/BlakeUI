@@ -1,0 +1,52 @@
+---
+title: Onboarding Flow Page
+description: Multi-step onboarding flow with account setup, business details, and billing.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="onboardingflow-page" premium>
+  <OnboardingFlowPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Onboarding Flow Page** includes:
+
+- **Cover Panel**: Branded side panel with visual context on large screens.
+- **Step Indicator**: Progress indicator across the onboarding steps.
+- **Account Type**: Choice between personal and corporate accounts.
+- **Account Info**: Team size, team name, and plan selection.
+- **Business Details**: Company name, industry, and website.
+- **Billing Details**: Card details with save-for-future toggle.
+- **Success**: Summary screen with account recap.
+
+Uses Button, Input, Label, RadioGroup, Select, Switch, and Separator.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  files={appPageSources["onboardingflow-page"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { OnboardingFlowPage } from "@/components/ui/onboardingflow-page";
+
+<OnboardingFlowPage />;
+```

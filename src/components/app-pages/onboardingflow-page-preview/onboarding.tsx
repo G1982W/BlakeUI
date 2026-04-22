@@ -106,7 +106,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                 Select the type that best fits your use case.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 @md/form:grid-cols-2">
               {[
                 {
                   value: "personal" as const,
@@ -171,7 +171,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
             </div>
             <div className="space-y-1.5">
               <Label>Team Size</Label>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <div className="grid grid-cols-2 gap-2 @md/form:grid-cols-4">
                 {["1-1", "2-10", "10-50", "50+"].map((size) => (
                   <button
                     key={size}
@@ -348,7 +348,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   <CreditCard className="text-muted-foreground absolute top-1/2 right-3 size-4 -translate-y-1/2" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 @md/form:grid-cols-2">
                 <div className="space-y-1.5">
                   <Label>
                     Expiry Date <span className="text-destructive">*</span>
@@ -497,24 +497,26 @@ export default function OnboardingFlow({ className }: { className?: string }) {
 
   return (
     <ResizablePanelGroup
+      id="onboarding-preview"
       direction="horizontal"
-      className={cn("min-h-screen", className)}
+      className={cn("h-screen", className)}
     >
-      <ResizablePanel defaultSize={85} minSize={40}>
-        <div className="grid h-full min-h-screen md:grid-cols-2">
-          <CoverPanel />
+      <ResizablePanel defaultSize={100} minSize={40}>
+        <div className="@container/outer mx-auto h-full max-w-360">
+          <div className="grid h-full @xl/outer:grid-cols-2">
+            <CoverPanel />
 
           {/* Form side */}
-          <div className="flex flex-col">
+          <div className="@container/form flex h-full flex-col overflow-y-auto">
             {/* Mobile header */}
-            <div className="flex items-center gap-2 border-b px-6 py-4 md:hidden">
+            <div className="flex items-center gap-2 border-b px-6 py-4 @xl/outer:hidden">
               <div className="flex size-7 items-center justify-center rounded-md bg-primary/10">
                 <div className="size-2.5 rounded-sm bg-primary" />
               </div>
               <span className="text-sm font-semibold">Acme Inc.</span>
             </div>
 
-            <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-16">
+            <div className="flex flex-1 flex-col justify-center px-6 py-10 @md/form:px-10 @2xl/form:px-16">
               <div className="mx-auto w-full max-w-md">
                 <StepIndicator currentStep={currentStep} />
 
@@ -546,9 +548,10 @@ export default function OnboardingFlow({ className }: { className?: string }) {
             </div>
           </div>
         </div>
+        </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={15} minSize={0} />
+      <ResizablePanel defaultSize={0} minSize={0} />
     </ResizablePanelGroup>
   );
 }

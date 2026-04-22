@@ -349,8 +349,8 @@ h6 {
     max-width: none;
     margin: 0;
 
-    /* Mobile: single-column width, no zoomed-out desktop layout */
-    @media (width < 48rem) {
+    /* Mobile: single-column width, no zoomed-out desktop layout (≤786px; matches useIsMobile) */
+    @media (max-width: 786px) {
         --fd-sidebar-width: 0 !important;
         --fd-toc-width: 0 !important;
         --fd-layout-width: 100% !important;
@@ -361,7 +361,7 @@ h6 {
         overflow-x: hidden !important;
     }
 
-    @media (width >=48rem) {
+    @media (min-width: 787px) {
         --fd-sidebar-width: 280px;
         grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
         --fd-layout-width: 80% !important;
@@ -375,7 +375,14 @@ h6 {
     overscroll-behavior: none !important;
 }
 
-@media (width < 48rem) {
+@media (width <=64rem) {
+    #nd-page {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 786px) {
     #nd-page {
         width: 100% !important;
         min-width: 0 !important;
@@ -422,7 +429,7 @@ h6 {
     grid-column: 1 / -1;
     grid-row: 1;
 
-    @media (width >=48rem) {
+    @media (min-width: 787px) {
         grid-column: 2 / -1;
     }
 }
@@ -445,7 +452,7 @@ h6 {
 }
 
 /* Mobile: hide right aside (TOC), constrain main to viewport, prevent zoomed-out layout */
-@media (width < 48rem) {
+@media (max-width: 786px) {
     body {
         overflow-x: hidden;
         overscroll-behavior: none;
@@ -460,6 +467,11 @@ h6 {
         min-width: 0 !important;
         max-width: 100% !important;
         overflow-x: auto;
+    }
+
+    /* Fumadocs drawer: closed overlay must not sit above content (Radix Presence exit) */
+    #nd-docs-layout div[data-state="closed"].fixed.inset-0.z-40 {
+        pointer-events: none !important;
     }
 }
 
