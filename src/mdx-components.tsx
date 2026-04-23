@@ -31,6 +31,7 @@ import { OnboardingFlowPageDemo } from "@/components/onboardingflow-page-demo";
 import { MultiStepFormPageDemo } from "@/components/multi-step-form-page-demo";
 import { NotesPageDemo } from "@/components/notes-page-demo";
 import { ChatAppPageDemo } from "@/components/chat-app-page-demo";
+import TodoListAppDemoPage from "@/components/app-pages/todo-list-app-demo-page/todo-list-app-demo-page";
 import { AppPagePreview } from "@/components/app-page-preview";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -66,5 +67,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     MultiStepFormPageDemo,
     NotesPageDemo,
     ChatAppPageDemo,
+    TodoListAppDemoPage,
   } as MDXComponents;
 }

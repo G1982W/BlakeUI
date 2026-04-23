@@ -4367,6 +4367,14 @@
       "required": false
     }
   ],
+  "MultiStepFormPage": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "NativeSelect": [
     {
       "name": "disabled",

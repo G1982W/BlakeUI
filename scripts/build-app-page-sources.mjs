@@ -58,6 +58,28 @@ const BUNDLES = {
     "src/components/app-pages/multi-step-form/components/step-role-use-case.tsx",
     "src/components/app-pages/multi-step-form/components/step-template.tsx",
   ],
+  "todo-list-app": [
+    "src/components/app-pages/todo-list-app-page/page.tsx",
+    "src/components/app-pages/todo-list-app-page/store.ts",
+    "src/components/app-pages/todo-list-app-page/types.ts",
+    "src/components/app-pages/todo-list-app-page/components/todo-app.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-card.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-column.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-item.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-list-view.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-row.tsx",
+    "src/components/app-pages/todo-list-app-page/components/todo-section.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/todo-list-app-demo-page.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/store.ts",
+    "src/components/app-pages/todo-list-app-demo-page/types.ts",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-app.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-card.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-column.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-item.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-list-view.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-row.tsx",
+    "src/components/app-pages/todo-list-app-demo-page/components/todo-section.tsx",
+  ],
 };
 
 function toDisplayPath(rel) {
