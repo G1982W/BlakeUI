@@ -7,12 +7,14 @@ interface TextareaProps extends React.ComponentProps<"textarea"> {
   heading?: string;
   /** The description text */
   description?: string;
+  /** Classes on the outer wrapper around the field (e.g. `min-w-0 flex-1` inside flex rows). */
+  wrapperClassName?: string;
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, heading, description, ...props }, ref) => {
+  ({ className, heading, description, wrapperClassName, ...props }, ref) => {
     return (
-      <div className="flex flex-col gap-1">
+      <div className={cn("flex flex-col gap-1", wrapperClassName)}>
         {heading && (
           <span className="text-input-heading text-sm font-medium leading-none my-0">
             {heading}

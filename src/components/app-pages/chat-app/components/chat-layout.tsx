@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useChatStore } from "./store";
+import { useChatStore } from "../store";
 import { ChatSidebar } from "./chat-sidebar";
 import { ChatMain } from "./chat-main";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
@@ -24,7 +24,8 @@ export function ChatLayout() {
       <Drawer
         open={isMobile && mobileDrawerOpen}
         onOpenChange={setMobileDrawerOpen}
-        direction="bottom">
+        direction="bottom"
+      >
         <DrawerContent className="h-[90vh] max-h-[90vh] flex flex-col p-0">
           <ChatMain />
         </DrawerContent>

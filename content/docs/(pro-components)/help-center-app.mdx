@@ -1,0 +1,58 @@
+---
+title: Help Center App
+description: Searchable help center with topic navigation, article cards, FAQ accordions, and support contact options for self-service support.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="help-center-app" premium>
+  <HelpCenterPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Help Center App** includes:
+
+- **Search**: Filter articles by title, excerpt, or category label.
+- **Categories**: Sidebar on large screens and a compact category select on small screens.
+- **Article grid**: Card layout with read time and “last updated” hints.
+- **FAQ**: Single-expand accordion for common questions.
+- **Support CTAs**: Email, live chat, and priority resources in a three-column row.
+
+Uses Button, Input, Card, Badge, Accordion, Select, and Separator patterns. State for search and active category lives in Zustand (`zustand`).
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["zustand"]}
+  files={appPageSources["help-center-app"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { HelpCenterPage } from "@/components/ui/help-center-page";
+
+<HelpCenterPage />;
+```
+
+Or use the layout directly inside your own shell:
+
+```tsx
+import { HelpCenterLayout } from "@/components/app-pages/help-center/help-center-layout";
+
+<HelpCenterLayout />;
+```
