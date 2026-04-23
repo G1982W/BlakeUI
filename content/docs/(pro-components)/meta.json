@@ -72,6 +72,8 @@
     "---App Pages---",
     "course-detail-page",
     "onboardingflow-page",
+    "notes",
+    "chat-app",
     "multi-step-form"
   ]
 }

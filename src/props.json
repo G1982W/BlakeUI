@@ -247,6 +247,31 @@
   "BreadcrumbPage": [],
   "BreadcrumbSeparator": [],
   "BreadcrumbEllipsis": [],
+  "ButtonGroup": [
+    {
+      "name": "orientation",
+      "type": "\"horizontal\" | \"vertical\" | null",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ButtonGroupSeparator": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "ButtonGroupText": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "",
+      "required": false
+    }
+  ],
   "Button": [
     {
       "name": "disabled",
@@ -262,14 +287,14 @@
     },
     {
       "name": "size",
-      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "type": "\"icon\" | \"sm\" | \"lg\" | \"md\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\" | null",
       "defaultValue": "md",
       "description": "",
       "required": false
     },
     {
       "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"primary\" | null",
       "defaultValue": "primary",
       "description": "",
       "required": false
@@ -291,7 +316,7 @@
     },
     {
       "name": "buttonVariant",
-      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"primary\" | null",
       "defaultValue": "ghost",
       "description": "",
       "required": false
@@ -1734,6 +1759,14 @@
       "type": "ChartConfig",
       "description": "",
       "required": true
+    }
+  ],
+  "ChatAppPage": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
     }
   ],
   "Checkbox": [
@@ -3883,14 +3916,14 @@
     },
     {
       "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"primary\" | null",
       "defaultValue": "ghost",
       "description": "",
       "required": false
     },
     {
       "name": "size",
-      "type": "\"sm\" | \"xs\" | \"icon-xs\" | \"icon-sm\" | null",
+      "type": "\"sm\" | \"icon-xs\" | \"icon-sm\" | \"xs\" | null",
       "defaultValue": "xs",
       "description": "",
       "required": false
@@ -4478,6 +4511,14 @@
     {
       "name": "asChild",
       "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "NotesPage": [
+    {
+      "name": "className",
+      "type": "string",
       "description": "",
       "required": false
     }
@@ -5556,13 +5597,13 @@
     },
     {
       "name": "size",
-      "type": "\"sm\" | \"lg\" | \"md\" | null",
+      "type": "\"icon\" | \"sm\" | \"lg\" | \"md\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\" | null",
       "description": "",
       "required": false
     },
     {
       "name": "variant",
-      "type": "\"secondary\" | \"destructive\" | \"ghost\" | \"primary\" | null",
+      "type": "\"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"primary\" | null",
       "description": "",
       "required": false
     },
@@ -5912,6 +5953,38 @@
     {
       "name": "placeholder",
       "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
+  "Toggle": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\" | null",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\" | null",
       "description": "",
       "required": false
     }

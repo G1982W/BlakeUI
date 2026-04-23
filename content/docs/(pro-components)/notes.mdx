@@ -1,0 +1,56 @@
+---
+title: Notes
+description: Note-taking application with rich text editing, folder organization, tags, and full-text search. Ideal for personal productivity tools and knowledge management platforms.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="notes-page" premium>
+  <NotesPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Notes** includes:
+
+- **Sidebar**: Categories, color filters, and quick navigation on large screens; sheet on mobile.
+- **Search**: Filter notes by title, content, or category.
+- **Pinned notes**: Pin important notes to the top when not filtering.
+- **Grid and list views**: Toggle layout for browsing notes.
+- **Drag and drop**: Reorder notes with `@dnd-kit` (pinned and regular sections).
+
+Uses Button, Input, Sheet, Toggle, and Zustand with persistence for local note storage.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[
+    "@dnd-kit/core",
+    "@dnd-kit/sortable",
+    "@dnd-kit/utilities",
+    "@dnd-kit/modifiers",
+    "zustand",
+  ]}
+  files={appPageSources["notes-page"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { NotesPage } from "@/components/ui/notes-page";
+
+<NotesPage />;
+```

@@ -31,6 +31,23 @@ const BUNDLES = {
     "src/components/app-pages/onboardingflow-page/step-indicator.tsx",
     "src/components/app-pages/onboardingflow-page/store.ts",
   ],
+  "notes-page": [
+    "src/components/ui/notes-page.tsx",
+    "src/components/app-pages/notes/note-app.tsx",
+    "src/components/app-pages/notes/note-card.tsx",
+    "src/components/app-pages/notes/note-form.tsx",
+    "src/components/app-pages/notes/note-sidebar.tsx",
+    "src/components/app-pages/notes/store.ts",
+    "src/components/app-pages/notes/page.tsx",
+  ],
+  "chat-app": [
+    "src/components/ui/chat-app-page.tsx",
+    "src/components/app-pages/chat-app/chat-layout.tsx",
+    "src/components/app-pages/chat-app/chat-main.tsx",
+    "src/components/app-pages/chat-app/chat-sidebar.tsx",
+    "src/components/app-pages/chat-app/store.ts",
+    "src/components/app-pages/chat-app/page.tsx",
+  ],
   "multi-step-form": [
     "src/components/ui/multi-step-form-page.tsx",
     "src/components/app-pages/multi-step-form/page.tsx",
