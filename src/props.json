@@ -2722,6 +2722,14 @@
       "required": false
     }
   ],
+  "CourseDetailPage": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "DataTable": [
     {
       "name": "columns",
