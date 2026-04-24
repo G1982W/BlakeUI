@@ -2650,14 +2650,6 @@
       "required": false
     }
   ],
-  "CourseDetailPage": [
-    {
-      "name": "className",
-      "type": "string",
-      "description": "",
-      "required": false
-    }
-  ],
   "DataTable": [
     {
       "name": "columns",
@@ -5956,6 +5948,12 @@
       "name": "description",
       "type": "string",
       "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "wrapperClassName",
+      "type": "string",
+      "description": "Classes on the outer wrapper around the field (e.g. `min-w-0 flex-1` inside flex rows).",
       "required": false
     },
     {

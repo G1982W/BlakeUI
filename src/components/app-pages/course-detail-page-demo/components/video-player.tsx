@@ -90,7 +90,7 @@ export function VideoPlayer() {
           <div className="flex items-center justify-between text-white">
             <div className="flex items-center gap-2">
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 className="size-7 text-white hover:bg-white/20"
                 onClick={() => setIsPlaying((p) => !p)}
@@ -102,7 +102,7 @@ export function VideoPlayer() {
                 )}
               </Button>
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 className="size-7 text-white hover:bg-white/20"
                 onClick={() => setIsMuted((m) => !m)}
@@ -120,14 +120,14 @@ export function VideoPlayer() {
 
             <div className="flex items-center gap-1">
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 className="size-7 text-white hover:bg-white/20"
               >
                 <Settings className="size-4" />
               </Button>
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 className="size-7 text-white hover:bg-white/20"
               >

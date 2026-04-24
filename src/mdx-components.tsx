@@ -26,7 +26,7 @@ import { ChartGridDemo } from "@/components/ui/chart-demo";
 import { ListViewDemo } from "@/components/list-view-demo";
 import { ButtonVariantShowcase } from "@/components/button-variant-showcase";
 import { Login4Demo } from "@/components/login-4-demo";
-import { CourseDetailPageDemo } from "@/components/course-detail-page-demo";
+import CourseDetailPageDemo from "@/components/app-pages/course-detail-page-demo/course-detail-page-demo";
 import { OnboardingFlowPageDemo } from "@/components/onboardingflow-page-demo";
 import { MultiStepFormPageDemo } from "@/components/multi-step-form-page-demo";
 import { NotesPageDemo } from "@/components/notes-page-demo";

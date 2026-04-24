@@ -15,14 +15,14 @@ const root = path.resolve(__dirname, "..");
 /** @type {Record<string, string[]>} */
 const BUNDLES = {
   "course-detail-page": [
-    "src/components/ui/course-detail-page.tsx",
-    "src/components/app-pages/course-detail page/course-header.tsx",
-    "src/components/app-pages/course-detail page/video-player.tsx",
-    "src/components/app-pages/course-detail page/course-curriculum.tsx",
-    "src/components/app-pages/course-detail page/course-details.tsx",
-    "src/components/app-pages/course-detail page/instructor-profile.tsx",
-    "src/components/app-pages/course-detail page/circle-progress.tsx",
-    "src/components/app-pages/course-detail page/data.ts",
+    "src/components/app-pages/course-detail-page/components/circle-progress.tsx",
+    "src/components/app-pages/course-detail-page/components/course-curriculum.tsx",
+    "src/components/app-pages/course-detail-page/components/course-details.tsx",
+    "src/components/app-pages/course-detail-page/components/course-header.tsx",
+    "src/components/app-pages/course-detail-page/components/instructor-profile.tsx",
+    "src/components/app-pages/course-detail-page/components/video-player.tsx",
+    "src/components/app-pages/course-detail-page/data.ts",
+    "src/components/app-pages/course-detail-page/page.tsx",
   ],
   "onboardingflow-page": [
     "src/components/ui/onboardingflow-page.tsx",

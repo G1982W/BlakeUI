@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/drawer";
 import { CourseCurriculum } from "./course-curriculum";
 import { CircleProgress } from "./circle-progress";
-import { lessons } from "./data";
+import { lessons } from "../data";
 
 const completedCount = lessons.filter((l) => l.completed).length;
 const progress = Math.round((completedCount / lessons.length) * 100);
@@ -26,25 +26,25 @@ export function CourseHeader() {
           <div className="flex items-center justify-between gap-4">
             {/* Left: back + title */}
             <div className="flex min-w-0 items-center gap-3">
-              <Button variant="primary" size="sm" className="shrink-0 gap-1.5">
+              <Button variant="outline" size="sm" className="shrink-0 gap-1.5">
                 <ArrowLeft className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Courses</span>
+                <span className="hidden @sm:inline">Courses</span>
               </Button>
-              <div className="bg-border hidden h-5 w-px sm:block" />
-              <h1 className="text-foreground truncate text-sm font-medium sm:text-base">
+              <div className="bg-border hidden h-5 w-px @sm:block" />
+              <h1 className="text-foreground truncate text-sm font-medium @sm:text-base">
                 The Ultimate Guide to Usability Testing and UX Law
               </h1>
             </div>
 
             {/* Mobile: curriculum drawer trigger */}
             <Button
-              variant="primary"
+              variant="outline"
               size="sm"
-              className="shrink-0 gap-2 lg:hidden"
+              className="shrink-0 gap-2 @lg:hidden"
               onClick={() => setOpen(true)}
             >
               <CircleProgress value={progress} size={22} strokeWidth={2} />
-              <span className="hidden text-sm sm:inline">Curriculum</span>
+              <span className="hidden text-sm @sm:inline">Curriculum</span>
             </Button>
           </div>
         </div>
