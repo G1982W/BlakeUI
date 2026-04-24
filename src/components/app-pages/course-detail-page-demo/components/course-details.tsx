@@ -36,7 +36,7 @@ export function CourseDetails() {
           {stats.map(({ icon: Icon, value, label, color }) => (
             <div
               key={label}
-              className="bg-muted/50 flex items-start gap-2 rounded-lg border px-3 py-3"
+              className="bg-muted/50 flex @lg:flex-row flex-col items-start gap-2 rounded-lg border px-3 py-3"
             >
               <Icon className={`size-4 shrink-0 ${color}`} />
               <div className="space-y-1">

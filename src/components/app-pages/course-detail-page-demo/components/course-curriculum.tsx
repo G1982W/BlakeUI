@@ -47,7 +47,7 @@ export function CourseCurriculum() {
             </Button>
             <Button
               variant="outline"
-              className="w-full gap-2 max-[1040px]:px-3 max-[1040px]:text-xs max-[1040px]:has-[>svg]:px-2.5 max-[1040px]:[&_svg]:size-3.5"
+              className="w-full gap-2 bg-surface max-[1040px]:px-3 max-[1040px]:text-xs max-[1040px]:has-[>svg]:px-2.5 max-[1040px]:[&_svg]:size-3.5"
               onClick={() => setSaved((s) => !s)}
             >
               <Heart

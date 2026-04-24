@@ -206,7 +206,7 @@ export function AppPagePreview({
         {tab === "preview" ? (
           <div
             className={cn(
-              "flex w-full min-w-0 flex-col items-stretch overflow-visible p-4 ring-offset-background transition-colors lg:p-2.5 [&>*]:min-w-0 [&>*]:w-full",
+              "flex w-full min-w-0 flex-col items-stretch overflow-visible p-0 ring-offset-background transition-colors lg:p-2.5 [&>*]:min-w-0 [&>*]:w-full",
               previewClassName,
             )}
           >

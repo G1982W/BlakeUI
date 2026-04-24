@@ -11,17 +11,12 @@ export default function CourseDetailPageDemo({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "@container min-w-0 w-full bg-background",
-        className,
-      )}
-    >
+    <div className={cn("@container min-w-0 w-full bg-background", className)}>
       <CourseHeader />
 
       <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
-        <div className="grid grid-cols-1 gap-6 @lg:grid-cols-3 @lg:gap-8">
-          <div className="min-w-0 space-y-6 @lg:col-span-2">
+        <div className="grid grid-cols-1 gap-2 @lg:grid-cols-3 @2xl:gap-8">
+          <div className="min-w-0 space-y-4 @2xl:space-y-6 @lg:col-span-2">
             <VideoPlayer />
             <CourseDetails />
             <InstructorProfile />

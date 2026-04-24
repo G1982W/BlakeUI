@@ -2007,19 +2007,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxInputState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxInputState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     },
     {
@@ -2041,39 +2035,27 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxPopupState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxPopupState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxPopupState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
   "ComboboxList": [
     {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxListState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
-      "required": false
-    },
-    {
       "name": "className",
       "type": "string | ((state: ComboboxListState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxListState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2086,21 +2068,15 @@
       "required": false
     },
     {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxItemState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
-      "required": false
-    },
-    {
       "name": "className",
       "type": "string | ((state: ComboboxItemState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxItemState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2108,19 +2084,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxGroupState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxGroupState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2128,19 +2098,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxGroupLabelState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupLabelState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxGroupLabelState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2149,19 +2113,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxEmptyState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxEmptyState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxEmptyState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2169,39 +2127,27 @@
     {
       "name": "className",
       "type": "string | ((state: SeparatorState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: SeparatorState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
   "ComboboxChips": [
     {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxChipsState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
-      "required": false
-    },
-    {
       "name": "className",
       "type": "string | ((state: ComboboxChipsState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipsState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2209,19 +2155,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxChipState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxChipState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     },
     {
@@ -2255,19 +2195,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxInputState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxInputState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -2288,19 +2222,13 @@
     {
       "name": "className",
       "type": "string | ((state: ComboboxTriggerState) => string)",
-      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state.",
+      "description": "CSS class applied to the element, or a function that\nreturns a class based on the component’s state.",
       "required": false
     },
     {
       "name": "render",
       "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxTriggerState>",
-      "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
-      "required": false
-    },
-    {
-      "name": "style",
-      "type": "CSSProperties | ((state: ComboboxTriggerState) => CSSProperties)",
-      "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
+      "description": "Allows you to replace the component’s HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render.",
       "required": false
     }
   ],
@@ -4263,7 +4191,7 @@
     {
       "name": "logo",
       "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
-      "defaultValue": "{\r\n    url: \"https://www.blakeui.com\",\r\n    src: \"/blake-logo-icon.svg\",\r\n    alt: \"blakeUI logo\",\r\n    title: \"blakeUI.com\",\r\n  }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
@@ -4320,7 +4248,7 @@
     {
       "name": "logo",
       "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
-      "defaultValue": "{\r\n    url: \"https://www.blakeui.com\",\r\n    src: \"/blake-logo-icon.svg\",\r\n    alt: \"blakeUI logo\",\r\n    title: \"blakeUI.com\",\r\n  }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
@@ -4378,7 +4306,7 @@
     {
       "name": "logo",
       "type": "{ url: string; src: string; alt: string; title?: string; className?: string; }",
-      "defaultValue": "{\r\n    url: \"https://www.blakeui.com\",\r\n    src: \"/blake-logo-icon.svg\",\r\n    alt: \"blakeUI logo\",\r\n    title: \"blakeUI.com\",\r\n  }",
+      "defaultValue": "{\n    url: \"https://www.blakeui.com\",\n    src: \"/blake-logo-icon.svg\",\n    alt: \"blakeUI logo\",\n    title: \"blakeUI.com\",\n  }",
       "description": "",
       "required": false
     },
@@ -4470,14 +4398,14 @@
     {
       "name": "menu",
       "type": "MenuItem[]",
-      "defaultValue": "[\r\n    { title: \"Home\", url: \"#\" },\r\n    {\r\n      title: \"Products\",\r\n      url: \"#\",\r\n      items: [\r\n        {\r\n          title: \"Blog\",\r\n          description: \"The latest industry news, updates, and info\",\r\n          icon: <Book className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Company\",\r\n          description: \"Our mission is to innovate and empower the world\",\r\n          icon: <Trees className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Careers\",\r\n          description: \"Browse job listing and discover our workspace\",\r\n          icon: <Sunset className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Support\",\r\n          description:\r\n            \"Get in touch with our support team or visit our community forums\",\r\n          icon: <Zap className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      title: \"Resources\",\r\n      url: \"#\",\r\n      items: [\r\n        {\r\n          title: \"Help Center\",\r\n          description: \"Get all the answers you need right here\",\r\n          icon: <Zap className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Contact Us\",\r\n          description: \"We are here to help you with any questions you have\",\r\n          icon: <Sunset className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Status\",\r\n          description: \"Check the current status of our services and APIs\",\r\n          icon: <Trees className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n        {\r\n          title: \"Terms of Service\",\r\n          description: \"Our terms and conditions for using our services\",\r\n          icon: <Book className=\"size-5 shrink-0\" />,\r\n          url: \"#\",\r\n        },\r\n      ],\r\n    },\r\n    {\r\n      title: \"Pricing\",\r\n      url: \"#\",\r\n    },\r\n    {\r\n      title: \"Blog\",\r\n      url: \"#\",\r\n    },\r\n  ]",
+      "defaultValue": "[\n    { title: \"Home\", url: \"#\" },\n    {\n      title: \"Products\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Blog\",\n          description: \"The latest industry news, updates, and info\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Company\",\n          description: \"Our mission is to innovate and empower the world\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Careers\",\n          description: \"Browse job listing and discover our workspace\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Support\",\n          description:\n            \"Get in touch with our support team or visit our community forums\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Resources\",\n      url: \"#\",\n      items: [\n        {\n          title: \"Help Center\",\n          description: \"Get all the answers you need right here\",\n          icon: <Zap className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Contact Us\",\n          description: \"We are here to help you with any questions you have\",\n          icon: <Sunset className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Status\",\n          description: \"Check the current status of our services and APIs\",\n          icon: <Trees className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n        {\n          title: \"Terms of Service\",\n          description: \"Our terms and conditions for using our services\",\n          icon: <Book className=\"size-5 shrink-0\" />,\n          url: \"#\",\n        },\n      ],\n    },\n    {\n      title: \"Pricing\",\n      url: \"#\",\n    },\n    {\n      title: \"Blog\",\n      url: \"#\",\n    },\n  ]",
       "description": "",
       "required": false
     },
     {
       "name": "auth",
       "type": "{ login: { title: string; url: string; }; signup: { title: string; url: string; }; }",
-      "defaultValue": "{\r\n    login: { title: \"Login\", url: \"#\" },\r\n    signup: { title: \"Sign up\", url: \"#\" },\r\n  }",
+      "defaultValue": "{\n    login: { title: \"Login\", url: \"#\" },\n    signup: { title: \"Sign up\", url: \"#\" },\n  }",
       "description": "",
       "required": false
     }
@@ -5057,7 +4985,7 @@
     {
       "name": "users",
       "type": "User[]",
-      "defaultValue": "[\r\n    {\r\n      name: \"Emily Watson\",\r\n      email: \"emily.w@acme.io\",\r\n      accessLevel: \"Owner\",\r\n    },\r\n    {\r\n      email: \"john.d@acme.io\",\r\n      accessLevel: \"Editor\",\r\n      status: \"Invite pending\",\r\n    },\r\n    {\r\n      name: \"Michael Park\",\r\n      email: \"michael.p@acme.io\",\r\n      accessLevel: \"Viewer\",\r\n    },\r\n    {\r\n      email: \"lisa.t@acme.io\",\r\n      accessLevel: \"Editor\",\r\n      status: \"Invite pending\",\r\n    },\r\n  ]",
+      "defaultValue": "[\n    {\n      name: \"Emily Watson\",\n      email: \"emily.w@acme.io\",\n      accessLevel: \"Owner\",\n    },\n    {\n      email: \"john.d@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Michael Park\",\n      email: \"michael.p@acme.io\",\n      accessLevel: \"Viewer\",\n    },\n    {\n      email: \"lisa.t@acme.io\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
       "description": "",
       "required": false
     }
@@ -5073,14 +5001,14 @@
     {
       "name": "subHeading",
       "type": "Cta",
-      "defaultValue": "{\r\n    title:\r\n      \"Add teammates to collaborate on projects together. Control permissions and manage access levels for each member.\",\r\n    ctaText: \"View member permissions guide\",\r\n    ctaLink: \"#\",\r\n  }",
+      "defaultValue": "{\n    title:\n      \"Add teammates to collaborate on projects together. Control permissions and manage access levels for each member.\",\n    ctaText: \"View member permissions guide\",\n    ctaLink: \"#\",\n  }",
       "description": "",
       "required": false
     },
     {
       "name": "users",
       "type": "User[]",
-      "defaultValue": "[\r\n    {\r\n      name: \"Sofia Martinez\",\r\n      email: \"sofia.m@example.com\",\r\n      accessLevel: \"Owner\",\r\n      image:\r\n        \"https://i.pravatar.cc/150?img=1\",\r\n    },\r\n    {\r\n      name: \"Alex Chen\",\r\n      email: \"alex.c@example.com\",\r\n      accessLevel: \"Editor\",\r\n      status: \"Invite pending\",\r\n    },\r\n    {\r\n      name: \"Jordan Blake\",\r\n      email: \"jordan.b@example.com\",\r\n      accessLevel: \"Viewer\",\r\n      image:\r\n        \"https://i.pravatar.cc/150?img=3\",\r\n    },\r\n    {\r\n      name: \"Morgan Reid\",\r\n      email: \"morgan.r@example.com\",\r\n      accessLevel: \"Editor\",\r\n      status: \"Invite pending\",\r\n    },\r\n  ]",
+      "defaultValue": "[\n    {\n      name: \"Sofia Martinez\",\n      email: \"sofia.m@example.com\",\n      accessLevel: \"Owner\",\n      image:\n        \"https://i.pravatar.cc/150?img=1\",\n    },\n    {\n      name: \"Alex Chen\",\n      email: \"alex.c@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n    {\n      name: \"Jordan Blake\",\n      email: \"jordan.b@example.com\",\n      accessLevel: \"Viewer\",\n      image:\n        \"https://i.pravatar.cc/150?img=3\",\n    },\n    {\n      name: \"Morgan Reid\",\n      email: \"morgan.r@example.com\",\n      accessLevel: \"Editor\",\n      status: \"Invite pending\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5110,7 +5038,7 @@
     {
       "name": "members",
       "type": "Member[]",
-      "defaultValue": "[\r\n    {\r\n      id: \"1\",\r\n      name: \"Sarah Chen\",\r\n      email: \"sarah.chen@company.io\",\r\n      role: \"admin\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=2\",\r\n      joinedAt: \"Jan 2024\",\r\n    },\r\n    {\r\n      id: \"2\",\r\n      name: \"Marcus Johnson\",\r\n      email: \"marcus.j@company.io\",\r\n      role: \"member\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=5\",\r\n      joinedAt: \"Mar 2024\",\r\n    },\r\n    {\r\n      id: \"3\",\r\n      name: \"Elena Rodriguez\",\r\n      email: \"elena.r@company.io\",\r\n      role: \"member\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=4\",\r\n      joinedAt: \"Apr 2024\",\r\n    },\r\n    {\r\n      id: \"4\",\r\n      name: \"David Park\",\r\n      email: \"david.p@company.io\",\r\n      role: \"viewer\",\r\n      joinedAt: \"Jun 2024\",\r\n    },\r\n    {\r\n      id: \"5\",\r\n      name: \"Aisha Patel\",\r\n      email: \"aisha.p@company.io\",\r\n      role: \"member\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=6\",\r\n      joinedAt: \"Aug 2024\",\r\n    },\r\n    {\r\n      id: \"6\",\r\n      name: \"Thomas Wright\",\r\n      email: \"thomas.w@company.io\",\r\n      role: \"viewer\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=7\",\r\n      joinedAt: \"Oct 2024\",\r\n    },\r\n  ]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Sarah Chen\",\n      email: \"sarah.chen@company.io\",\n      role: \"admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=2\",\n      joinedAt: \"Jan 2024\",\n    },\n    {\n      id: \"2\",\n      name: \"Marcus Johnson\",\n      email: \"marcus.j@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=5\",\n      joinedAt: \"Mar 2024\",\n    },\n    {\n      id: \"3\",\n      name: \"Elena Rodriguez\",\n      email: \"elena.r@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=4\",\n      joinedAt: \"Apr 2024\",\n    },\n    {\n      id: \"4\",\n      name: \"David Park\",\n      email: \"david.p@company.io\",\n      role: \"viewer\",\n      joinedAt: \"Jun 2024\",\n    },\n    {\n      id: \"5\",\n      name: \"Aisha Patel\",\n      email: \"aisha.p@company.io\",\n      role: \"member\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=6\",\n      joinedAt: \"Aug 2024\",\n    },\n    {\n      id: \"6\",\n      name: \"Thomas Wright\",\n      email: \"thomas.w@company.io\",\n      role: \"viewer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=7\",\n      joinedAt: \"Oct 2024\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5139,7 +5067,7 @@
     {
       "name": "members",
       "type": "Member[]",
-      "defaultValue": "[\r\n    {\r\n      id: \"1\",\r\n      name: \"Nina Kowalski\",\r\n      email: \"nina.k@startup.co\",\r\n      role: \"Owner\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=1\",\r\n      status: \"active\",\r\n    },\r\n    {\r\n      id: \"2\",\r\n      name: \"James Liu\",\r\n      email: \"james.l@startup.co\",\r\n      role: \"Admin\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=8\",\r\n      status: \"active\",\r\n    },\r\n    {\r\n      id: \"3\",\r\n      name: \"Rachel Green\",\r\n      email: \"rachel.g@startup.co\",\r\n      role: \"Developer\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=9\",\r\n      status: \"active\",\r\n    },\r\n    {\r\n      id: \"4\",\r\n      name: \"Omar Hassan\",\r\n      email: \"omar.h@startup.co\",\r\n      role: \"Developer\",\r\n      status: \"pending\",\r\n    },\r\n    {\r\n      id: \"5\",\r\n      name: \"Lisa Wang\",\r\n      email: \"lisa.w@startup.co\",\r\n      role: \"Designer\",\r\n      avatar:\r\n        \"https://i.pravatar.cc/150?img=10\",\r\n      status: \"active\",\r\n    },\r\n  ]",
+      "defaultValue": "[\n    {\n      id: \"1\",\n      name: \"Nina Kowalski\",\n      email: \"nina.k@startup.co\",\n      role: \"Owner\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=1\",\n      status: \"active\",\n    },\n    {\n      id: \"2\",\n      name: \"James Liu\",\n      email: \"james.l@startup.co\",\n      role: \"Admin\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=8\",\n      status: \"active\",\n    },\n    {\n      id: \"3\",\n      name: \"Rachel Green\",\n      email: \"rachel.g@startup.co\",\n      role: \"Developer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=9\",\n      status: \"active\",\n    },\n    {\n      id: \"4\",\n      name: \"Omar Hassan\",\n      email: \"omar.h@startup.co\",\n      role: \"Developer\",\n      status: \"pending\",\n    },\n    {\n      id: \"5\",\n      name: \"Lisa Wang\",\n      email: \"lisa.w@startup.co\",\n      role: \"Designer\",\n      avatar:\n        \"https://i.pravatar.cc/150?img=10\",\n      status: \"active\",\n    },\n  ]",
       "description": "",
       "required": false
     },
@@ -5154,7 +5082,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileFormData>",
-      "defaultValue": "{\r\n    name: \"Alex Morgan\",\r\n    email: \"alex.morgan@blakeui.com\",\r\n    username: \"alexmorgan\",\r\n    avatar: \"/avatar-1.webp\",\r\n    bio: \"Designer and front-end engineer building polished UIs with BlakeUI. Interested in design systems, accessibility, and shipping fast without sacrificing quality.\",\r\n    jobTitle: \"Product Designer\",\r\n    company: \"BlakeUI\",\r\n    location: \"San Francisco, CA\",\r\n    website: \"https://blakeui.com\",\r\n    socialLinks: {\r\n      twitter: \"blakeui\",\r\n      linkedin: \"blakeui\",\r\n      github: \"blakeui\",\r\n    },\r\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@blakeui.com\",\n    username: \"alexmorgan\",\n    avatar: \"/avatar-1.webp\",\n    bio: \"Designer and front-end engineer building polished UIs with BlakeUI. Interested in design systems, accessibility, and shipping fast without sacrificing quality.\",\n    jobTitle: \"Product Designer\",\n    company: \"BlakeUI\",\n    location: \"San Francisco, CA\",\n    website: \"https://blakeui.com\",\n    socialLinks: {\n      twitter: \"blakeui\",\n      linkedin: \"blakeui\",\n      github: \"blakeui\",\n    },\n  }",
       "description": "",
       "required": false
     },
@@ -5175,7 +5103,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\r\n    name: \"Alex Morgan\",\r\n    username: \"alexmorgan\",\r\n    email: \"alex.morgan@email.com\",\r\n    avatar:\r\n      \"https://i.pravatar.cc/150?img=8\",\r\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\r\n    phone: \"+1 (555) 123-4567\",\r\n    location: \"San Francisco, CA\",\r\n    website: \"https://alexmorgan.design\",\r\n    twitter: \"alexmorgan\",\r\n    linkedin: \"alexmorgan\",\r\n    github: \"alexmorgan\",\r\n    timezone: \"America/Los_Angeles\",\r\n    language: \"en\",\r\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    username: \"alexmorgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\n    phone: \"+1 (555) 123-4567\",\n    location: \"San Francisco, CA\",\n    website: \"https://alexmorgan.design\",\n    twitter: \"alexmorgan\",\n    linkedin: \"alexmorgan\",\n    github: \"alexmorgan\",\n    timezone: \"America/Los_Angeles\",\n    language: \"en\",\n  }",
       "description": "",
       "required": false
     },
@@ -5190,7 +5118,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\r\n    name: \"Jordan Chen\",\r\n    username: \"jordanchen\",\r\n    email: \"jordan.chen@email.com\",\r\n    avatar:\r\n      \"https://i.pravatar.cc/150?img=3\",\r\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\r\n    role: \"Senior Software Engineer\",\r\n    location: \"Seattle, WA\",\r\n    website: \"https://jordanchen.dev\",\r\n    twitter: \"jordanchen\",\r\n    linkedin: \"jordanchen\",\r\n    github: \"jordanchen\",\r\n  }",
+      "defaultValue": "{\n    name: \"Jordan Chen\",\n    username: \"jordanchen\",\n    email: \"jordan.chen@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=3\",\n    bio: \"Full-stack developer building tools for the modern web. Open source enthusiast and occasional writer about software architecture.\",\n    role: \"Senior Software Engineer\",\n    location: \"Seattle, WA\",\n    website: \"https://jordanchen.dev\",\n    twitter: \"jordanchen\",\n    linkedin: \"jordanchen\",\n    github: \"jordanchen\",\n  }",
       "description": "",
       "required": false
     },
@@ -5205,7 +5133,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\r\n    name: \"\",\r\n    username: \"\",\r\n    avatar: \"\",\r\n    bio: \"\",\r\n    email: \"\",\r\n    phone: \"\",\r\n    location: \"\",\r\n    website: \"\",\r\n    twitter: \"\",\r\n    linkedin: \"\",\r\n  }",
+      "defaultValue": "{\n    name: \"\",\n    username: \"\",\n    avatar: \"\",\n    bio: \"\",\n    email: \"\",\n    phone: \"\",\n    location: \"\",\n    website: \"\",\n    twitter: \"\",\n    linkedin: \"\",\n  }",
       "description": "",
       "required": false
     },
@@ -5220,7 +5148,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\r\n    name: \"Alex Morgan\",\r\n    email: \"alex.morgan@email.com\",\r\n    avatar:\r\n      \"https://i.pravatar.cc/150?img=8\",\r\n    role: \"Product Designer\",\r\n    location: \"San Francisco, CA\",\r\n  }",
+      "defaultValue": "{\n    name: \"Alex Morgan\",\n    email: \"alex.morgan@email.com\",\n    avatar:\n      \"https://i.pravatar.cc/150?img=8\",\n    role: \"Product Designer\",\n    location: \"San Francisco, CA\",\n  }",
       "description": "",
       "required": false
     },
@@ -5785,7 +5713,7 @@
     {
       "name": "breakdown",
       "type": "BreakdownItem[]",
-      "defaultValue": "[\r\n  { label: \"Desktop\", value: \"$32,450\", percentage: 65 },\r\n  { label: \"Mobile\", value: \"$12,300\", percentage: 25 },\r\n  { label: \"Tablet\", value: \"$5,250\", percentage: 10 },\r\n]",
+      "defaultValue": "[\n  { label: \"Desktop\", value: \"$32,450\", percentage: 65 },\n  { label: \"Mobile\", value: \"$12,300\", percentage: 25 },\n  { label: \"Tablet\", value: \"$5,250\", percentage: 10 },\n]",
       "description": "",
       "required": false
     },
