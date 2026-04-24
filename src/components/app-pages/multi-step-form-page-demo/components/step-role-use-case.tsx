@@ -41,7 +41,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
   };
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16 max-[1300px]:!p-[30px]">
       <div className="w-full max-w-xl">
         <div className="mb-10 @lg:mb-16">
           <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
@@ -57,7 +57,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
           <h4 className="text-foreground mb-4 text-lg @lg:mb-8 @lg:text-xl">
             What best describes your role?
           </h4>
-          <div className="grid grid-cols-2 gap-2 @sm:gap-3 @lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2 @sm:gap-3 min-[1440px]:grid-cols-3">
             {roles.map((role) => (
               <button
                 key={role.id}
@@ -69,12 +69,15 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                     : "border-border text-foreground hover:border-primary/40",
                 )}
               >
-                <div className="flex items-center gap-2 @sm:gap-3">
-                  <div
+                <div className="flex min-w-0 items-center gap-2 @sm:gap-3">
+                  <span
                     className={cn(
-                      "size-2 rounded-full",
-                      selectedRole === role.id ? "bg-primary" : "bg-border",
+                      "inline-block size-2.5 shrink-0 rounded-full",
+                      selectedRole === role.id
+                        ? "bg-primary"
+                        : "bg-muted-foreground/50",
                     )}
+                    aria-hidden
                   />
                   {role.label}
                 </div>
@@ -99,17 +102,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                     : "border-border text-foreground hover:border-primary/40",
                 )}
               >
-                <div className="flex items-center gap-2 @sm:gap-3">
-                  <div
-                    className={cn(
-                      "size-2 rounded-full",
-                      selectedAutomation.includes(option.id)
-                        ? "bg-primary"
-                        : "bg-border",
-                    )}
-                  />
-                  {option.label}
-                </div>
+                {option.label}
               </button>
             ))}
           </div>

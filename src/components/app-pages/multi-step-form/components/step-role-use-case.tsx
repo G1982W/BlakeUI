@@ -69,12 +69,15 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                     : "border-border text-foreground hover:border-primary/40",
                 )}
               >
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div
+                <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                  <span
                     className={cn(
-                      "size-2 rounded-full",
-                      selectedRole === role.id ? "bg-primary" : "bg-border",
+                      "inline-block size-2.5 shrink-0 rounded-full",
+                      selectedRole === role.id
+                        ? "bg-primary"
+                        : "bg-muted-foreground/50",
                     )}
+                    aria-hidden
                   />
                   {role.label}
                 </div>
@@ -99,17 +102,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                     : "border-border text-foreground hover:border-primary/40",
                 )}
               >
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div
-                    className={cn(
-                      "size-2 rounded-full",
-                      selectedAutomation.includes(option.id)
-                        ? "bg-primary"
-                        : "bg-border",
-                    )}
-                  />
-                  {option.label}
-                </div>
+                {option.label}
               </button>
             ))}
           </div>
