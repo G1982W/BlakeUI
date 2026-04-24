@@ -1,7 +1,16 @@
 "use client";
 
-import { MultiStepFormPage } from "@/components/ui/multi-step-form-page";
+import { cn } from "@/lib/utils";
+import Page from "@/components/app-pages/multi-step-form-page-demo/page";
 
 export function MultiStepFormPageDemo({ className }: { className?: string }) {
-  return <MultiStepFormPage className={className} />;
+  return (
+    <div
+      className={cn(
+        "@container min-h-0 w-full overflow-hidden bg-background",
+        className,
+      )}>
+      <Page />
+    </div>
+  );
 }

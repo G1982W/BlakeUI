@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Sidebar } from "@/components/app-pages/multi-step-form/components/sidebar";
-import { StepRoleUseCase } from "@/components/app-pages/multi-step-form/components/step-role-use-case";
-import { StepTemplate } from "@/components/app-pages/multi-step-form/components/step-template";
-import { StepDataSource } from "@/components/app-pages/multi-step-form/components/step-data-source";
-import { StepFirstFlow } from "@/components/app-pages/multi-step-form/components/step-first-flow";
-import { StepInviteTeam } from "@/components/app-pages/multi-step-form/components/step-invite-team";
+import { Sidebar } from "./components/sidebar";
+import { StepRoleUseCase } from "./components/step-role-use-case";
+import { StepTemplate } from "./components/step-template";
+import { StepDataSource } from "./components/step-data-source";
+import { StepFirstFlow } from "./components/step-first-flow";
+import { StepInviteTeam } from "./components/step-invite-team";
 
 export interface OnboardingStep {
   id: string;
@@ -93,14 +93,14 @@ export default function Page() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row">
+    <div className="flex min-h-screen w-full min-w-0 flex-col @lg:flex-row">
       <Sidebar steps={steps} currentStep={currentStep} onStepClick={goToStep} />
 
-      <main className="flex-1 overflow-y-auto pb-20 lg:pb-0">
+      <main className="flex-1 overflow-y-auto pb-20 @lg:pb-0">
         {stepComponents[currentStep]}
       </main>
 
-      <div className="bg-background fixed right-0 bottom-0 left-0 border-t p-4 lg:hidden">
+      <div className="bg-background fixed right-0 bottom-0 left-0 border-t p-4 @lg:hidden">
         <div className="flex items-center justify-center gap-2">
           {steps.map((step) => (
             <div

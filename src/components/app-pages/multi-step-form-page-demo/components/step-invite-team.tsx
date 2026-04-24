@@ -26,11 +26,11 @@ export const StepInviteTeam = ({ onBack }: StepInviteTeamProps) => {
   };
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 sm:p-8 lg:p-16">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16">
       <div className="w-full max-w-xl">
-        <div className="mb-10 lg:mb-16">
+        <div className="mb-10 @lg:mb-16">
           <div className="mb-3 flex items-center gap-2">
-            <h1 className="text-foreground text-2xl leading-tight font-semibold sm:text-3xl lg:text-4xl">
+            <h1 className="text-foreground text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
               Invite your team
             </h1>
             <Badge variant="secondary">Optional</Badge>
@@ -69,7 +69,7 @@ export const StepInviteTeam = ({ onBack }: StepInviteTeamProps) => {
         </div>
 
         {invites.length > 0 && (
-          <div className="mb-10 flex flex-wrap gap-2 lg:mb-16">
+          <div className="mb-10 flex flex-wrap gap-2 @lg:mb-16">
             {invites.map((inv) => (
               <Badge key={inv} variant="secondary" className="gap-1 pr-1">
                 {inv}

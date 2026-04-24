@@ -60,10 +60,10 @@ export const StepTemplate = ({ onContinue, onBack }: StepTemplateProps) => {
   const [selected, setSelected] = useState("blank");
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 sm:p-8 lg:p-16">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16">
       <div className="w-full max-w-xl">
-        <div className="mb-10 lg:mb-16">
-          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold sm:text-3xl lg:text-4xl">
+        <div className="mb-10 @lg:mb-16">
+          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
             Choose a starting point
           </h1>
           <p className="text-muted-foreground leading-relaxed">
@@ -71,7 +71,7 @@ export const StepTemplate = ({ onContinue, onBack }: StepTemplateProps) => {
           </p>
         </div>
 
-        <div className="mb-10 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:mb-16">
+        <div className="mb-10 grid grid-cols-1 gap-2 @sm:grid-cols-2 @sm:gap-3 @lg:mb-16">
           {templates.map((t) => {
             const Icon = t.icon;
             return (

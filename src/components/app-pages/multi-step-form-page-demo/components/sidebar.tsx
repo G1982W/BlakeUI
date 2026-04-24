@@ -10,7 +10,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ steps, currentStep, onStepClick }: SidebarProps) => {
   return (
-    <div className="hidden w-80 flex-col bg-gradient-to-b from-black to-indigo-700 p-6 text-white lg:flex">
+    <div className="hidden w-80 flex-col bg-gradient-to-b from-black to-indigo-700 p-6 text-white @lg:flex">
       <div className="mb-12 flex items-center gap-3 pt-4">
         <BoxIcon className="size-6" />
       </div>

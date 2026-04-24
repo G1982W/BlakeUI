@@ -3918,14 +3918,6 @@
       "required": false
     }
   ],
-  "HelpCenterPage": [
-    {
-      "name": "className",
-      "type": "string",
-      "description": "",
-      "required": false
-    }
-  ],
   "HoverCard": [],
   "HoverCardTrigger": [
     {
