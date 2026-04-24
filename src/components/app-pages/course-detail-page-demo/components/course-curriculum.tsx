@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { lessons } from "../data";
 
@@ -39,17 +38,23 @@ export function CourseCurriculum() {
           </div>
 
           <div className="space-y-2">
-            <Button className="w-full gap-2" size="lg">
+            <Button
+              className="w-full gap-2 max-[1040px]:px-3 max-[1040px]:text-[10px] max-[1040px]:leading-tight max-[1040px]:has-[>svg]:px-2.5 max-[1040px]:[&_svg]:size-3.5"
+              size="lg"
+            >
               <Play />
               Continue Learning
             </Button>
             <Button
               variant="outline"
-              className="w-full gap-2"
+              className="w-full gap-2 max-[1040px]:px-3 max-[1040px]:text-xs max-[1040px]:has-[>svg]:px-2.5 max-[1040px]:[&_svg]:size-3.5"
               onClick={() => setSaved((s) => !s)}
             >
               <Heart
-                className={cn("size-4", saved && "fill-current text-rose-500")}
+                className={cn(
+                  "size-4 max-[1040px]:size-3.5",
+                  saved && "fill-current text-rose-500",
+                )}
               />
               {saved ? "Saved" : "Save for Later"}
             </Button>
@@ -71,8 +76,8 @@ export function CourseCurriculum() {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          <ScrollArea className="@lg:h-[420px]">
-            <div className="pb-2">
+          <div className="@lg:max-h-[420px] min-h-0 overflow-y-auto max-[1040px]:overflow-x-auto min-[1041px]:overflow-x-hidden">
+            <div className="pb-2 max-[1040px]:inline-block max-[1040px]:min-w-full max-[1040px]:align-top">
               {lessons.map((lesson) => {
                 const isActive = lesson.id === activeId;
                 return (
@@ -100,10 +105,10 @@ export function CourseCurriculum() {
                     </div>
 
                     {/* Title + duration */}
-                    <div className="min-w-0 flex-1">
+                    <div className="min-w-0 flex-1 max-[1040px]:min-w-max max-[1040px]:flex-none">
                       <p
                         className={cn(
-                          "truncate text-sm",
+                          "text-sm max-[1040px]:whitespace-nowrap min-[1041px]:truncate",
                           isActive
                             ? "text-primary font-medium"
                             : lesson.completed
@@ -122,7 +127,7 @@ export function CourseCurriculum() {
                 );
               })}
             </div>
-          </ScrollArea>
+          </div>
         </CardContent>
       </Card>
     </div>

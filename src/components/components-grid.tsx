@@ -379,18 +379,18 @@ export function ComponentsGrid() {
           Data Display
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border bg-card p-1 lg:col-span-3">
-            <div className="rounded-xl border border-border bg-background overflow-hidden">
-              <Table>
+          <div className="col-span-full min-w-0 w-full rounded-2xl border bg-card p-1">
+            <div className="@container w-full max-w-full min-w-0 rounded-xl border border-border bg-background overflow-hidden">
+              <Table className="w-full min-w-0 max-w-full table-auto @min-[1000px]:table-fixed">
                 <TableHeader>
                   <TableRow className="bg-muted/50">
-                    <TableHead className="px-4 py-3 font-semibold">
+                    <TableHead className="min-w-0 px-4 py-3 font-semibold align-top @max-[999px]:w-[34%] @min-[1000px]:w-[30%]">
                       Component
                     </TableHead>
-                    <TableHead className="px-4 py-3 font-semibold">
+                    <TableHead className="min-w-0 px-4 py-3 font-semibold align-top">
                       Description
                     </TableHead>
-                    <TableHead className="w-[100px] px-4 py-3 font-semibold text-right">
+                    <TableHead className="hidden w-[100px] px-4 py-3 text-right font-semibold @min-[1000px]:table-cell">
                       Link
                     </TableHead>
                   </TableRow>
@@ -398,16 +398,16 @@ export function ComponentsGrid() {
                 <TableBody>
                   {DATA_DISPLAY_ROWS.map((row) => (
                     <TableRow key={row.url}>
-                      <TableCell className="px-4 py-3 font-medium">
+                      <TableCell className="px-4 py-3 align-top font-medium">
                         {row.title}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-muted-foreground">
+                      <TableCell className="min-w-0 whitespace-normal px-4 py-3 align-top text-muted-foreground">
                         {row.description}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-right">
+                      <TableCell className="hidden px-4 py-3 text-right @min-[1000px]:table-cell">
                         <Link
                           href={row.url}
-                          className="text-primary hover:underline font-medium"
+                          className="text-primary font-medium hover:underline"
                         >
                           View →
                         </Link>

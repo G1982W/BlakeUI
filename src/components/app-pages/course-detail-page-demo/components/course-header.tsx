@@ -22,16 +22,16 @@ export function CourseHeader() {
   return (
     <>
       <header className="bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-3">
+        <div className="mx-auto w-full max-w-7xl px-4 py-3 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             {/* Left: back + title */}
-            <div className="flex min-w-0 items-center gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
               <Button variant="outline" size="sm" className="shrink-0 gap-1.5">
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span className="hidden @sm:inline">Courses</span>
               </Button>
               <div className="bg-border hidden h-5 w-px @sm:block" />
-              <h1 className="text-foreground truncate text-sm font-medium @sm:text-base">
+              <h1 className="text-foreground min-w-0 flex-1 truncate text-sm font-medium @sm:text-base">
                 The Ultimate Guide to Usability Testing and UX Law
               </h1>
             </div>
