@@ -14,12 +14,13 @@ import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import type { User } from "@supabase/supabase-js";
+import type { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ui/link";
 import { LogIn, LogOut, User as UserIcon } from "lucide-react";
 import TwitterIcon from "@/components/icons/twitter";
 import { SidebarTrigger } from "fumadocs-ui/components/sidebar/base";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 
 /** Only render sidebar trigger on docs routes where SidebarContext exists */
 function DocsSidebarTrigger() {
@@ -117,13 +118,19 @@ export function DocsNavbar() {
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
+    supabase.auth
+      .getUser()
+      .then(({ data: { user } }: { data: { user: User | null } }) =>
+        setUser(user),
+      );
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user ?? null);
+      },
+    );
 
     return () => subscription.unsubscribe();
   }, []);
@@ -132,14 +139,17 @@ export function DocsNavbar() {
     const supabase = createClient();
     await supabase.auth.signOut();
     router.refresh();
+    startNavigationProgress();
     router.push("/");
   }
   async function handleLogin() {
     // redirect to /login
+    startNavigationProgress();
     router.push("/login");
   }
   async function handleSignup() {
     // redirect to /signup
+    startNavigationProgress();
     router.push("/signup");
   }
   return (

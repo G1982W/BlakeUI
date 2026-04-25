@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import type { User } from "@supabase/supabase-js";
+import type { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
 import {
   Sheet,
   SheetContent,
@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 import { cn } from "@/lib/utils";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 
 const NAV_LINKS = [
   { href: "/docs", label: "Components" },
@@ -30,17 +31,24 @@ export function HomeNavbar({ className }: { className?: string }) {
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
+    supabase.auth
+      .getUser()
+      .then(({ data: { user } }: { data: { user: User | null } }) =>
+        setUser(user),
+      );
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user ?? null);
+      },
+    );
     return () => subscription.unsubscribe();
   }, []);
 
   const goAuth = () => {
     setMobileOpen(false);
+    startNavigationProgress();
     router.push(user ? "/profile" : "/login");
   };
 
@@ -110,7 +118,10 @@ export function HomeNavbar({ className }: { className?: string }) {
           <Button
             type="button"
             variant="secondary"
-            onClick={() => router.push("/profile")}
+            onClick={() => {
+              startNavigationProgress();
+              router.push("/profile");
+            }}
             className={cn("hidden @md:inline-flex")}
           >
             Profile
@@ -119,7 +130,10 @@ export function HomeNavbar({ className }: { className?: string }) {
           <Button
             type="button"
             variant="secondary"
-            onClick={() => router.push("/login")}
+            onClick={() => {
+              startNavigationProgress();
+              router.push("/login");
+            }}
             className={cn("hidden @md:inline-flex")}
           >
             Log in

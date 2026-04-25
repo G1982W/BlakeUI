@@ -2,7 +2,9 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import "./global.css";
 import { Figtree } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { GlobalNavigationProgress } from "@/components/global-navigation-progress";
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -29,7 +31,11 @@ export default function Layout({ children }: LayoutProps<"/">) {
     <html lang="en" className={figtree.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider>
-          {children} <Toaster />
+          <Suspense fallback={null}>
+            <GlobalNavigationProgress />
+          </Suspense>
+          {children}
+          <Toaster />
         </RootProvider>
       </body>
     </html>

@@ -7,6 +7,7 @@ import * as z from "zod";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppLink } from "@/components/ui/link";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -47,14 +49,18 @@ export default function ResetPasswordPage() {
   const supabase = createClient();
 
   React.useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setHasSession(!!session);
-    });
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }: { data: { session: Session | null } }) => {
+        setHasSession(!!session);
+      });
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setHasSession(!!session);
-    });
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setHasSession(!!session);
+      },
+    );
     return () => subscription.unsubscribe();
   }, []);
 
@@ -68,6 +74,7 @@ export default function ResetPasswordPage() {
     }
     toast.success("Password updated. You can now log in.");
     await supabase.auth.signOut();
+    startNavigationProgress();
     router.push("/login");
     router.refresh();
   }
