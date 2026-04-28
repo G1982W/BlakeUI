@@ -51,7 +51,7 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
                   "flex flex-col items-center gap-2 rounded-lg border p-4 transition-all @sm:p-6",
                   selected === s.id
                     ? "border-primary bg-primary/5"
-                    : "border-border hover:border-primary/40",
+                    : "border-border bg-white hover:border-primary/40",
                 )}
               >
                 <Icon
@@ -79,6 +79,7 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
             placeholder="https://api.example.com/v1"
             value={connectionUrl}
             onChange={(e) => setConnectionUrl(e.target.value)}
+            className="bg-white"
           />
           <p className="text-muted-foreground mt-2 text-xs">
             Enter the endpoint or connection string for your data source.

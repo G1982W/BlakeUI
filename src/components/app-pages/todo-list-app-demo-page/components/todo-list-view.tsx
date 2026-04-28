@@ -19,7 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Section, Priority } from "../types";
 import { useTodoStore } from "../store";
-import { TodoRow } from "@/components/app-pages/todo-list-app-page/components/todo-row";
+import { TodoRow } from "./todo-row";
 
 const COLOR_DOT: Record<Section["color"], string> = {
   violet: "bg-violet-500",

@@ -50,6 +50,7 @@ export const StepInviteTeam = ({ onBack }: StepInviteTeamProps) => {
               placeholder="colleague@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="bg-white"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();

@@ -328,7 +328,7 @@ export const useChatStore = create<ChatStore>((set) => ({
     set((state) => {
       const contacts = state.contacts.map((c) => (c.id === id ? { ...c, unread: 0 } : c));
       const groups = state.groups.map((g) => (g.id === id ? { ...g, unread: 0 } : g));
-      return { activeChatId: id, contacts, groups, mobileDrawerOpen: true };
+      return { activeChatId: id, contacts, groups };
     });
   },
 

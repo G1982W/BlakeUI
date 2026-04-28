@@ -82,7 +82,7 @@ export const StepTemplate = ({ onContinue, onBack }: StepTemplateProps) => {
                   "flex items-start gap-3 rounded-lg border p-4 text-left transition-all",
                   selected === t.id
                     ? "border-primary bg-primary/5"
-                    : "border-border hover:border-primary/40",
+                    : "border-border bg-white hover:border-primary/40",
                 )}
               >
                 <Icon

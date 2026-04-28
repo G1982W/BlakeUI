@@ -21,7 +21,7 @@ export function CourseHeader() {
 
   return (
     <>
-      <header className="bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
+      <header className="bg-background sticky top-0 z-30 border-b">
         <div className="mx-auto w-full max-w-7xl px-4 py-3 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             {/* Left: back + title */}

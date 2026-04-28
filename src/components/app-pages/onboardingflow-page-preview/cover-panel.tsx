@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CoverPanel() {
   return (
-    <div className="@container/cover relative hidden h-full w-full overflow-hidden @xl/outer:block">
+    <div className="@container/cover relative hidden h-full min-h-0 w-full overflow-hidden @xl/outer:block">
       <Image
         src="/authentication-bg.webp"
         alt="Cover"

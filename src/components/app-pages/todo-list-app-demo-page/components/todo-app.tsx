@@ -17,10 +17,10 @@ import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { CheckSquare2, LayoutGrid, List } from "lucide-react";
 import { Toggle } from "@/components/ui/toggle";
 import { useTodoStore } from "../store";
-import { TodoColumn } from "@/components/app-pages/todo-list-app-page/components/todo-column";
-import { TodoListView } from "@/components/app-pages/todo-list-app-page/components/todo-list-view";
-import { TodoCardContent } from "@/components/app-pages/todo-list-app-page/components/todo-card";
-import { TodoRowContent } from "@/components/app-pages/todo-list-app-page/components/todo-row";
+import { TodoColumn } from "./todo-column";
+import { TodoListView } from "./todo-list-view";
+import { TodoCardContent } from "./todo-card";
+import { TodoRowContent } from "./todo-row";
 import { Section, Todo } from "../types";
 
 export function TodoApp() {
@@ -132,7 +132,7 @@ export function TodoApp() {
   const activeTodo = getActiveTodo();
 
   return (
-    <div className="bg-background flex h-screen flex-col overflow-hidden">
+    <div className="bg-background flex h-screen min-h-0 min-[1441px]:h-full min-[1441px]:max-h-full flex-col overflow-hidden">
       {/* Header */}
       <header className="shrink-0 border-b px-5 py-4">
         <div className="flex items-center justify-between">
@@ -192,7 +192,7 @@ export function TodoApp() {
       </header>
 
       {/* Board */}
-      <div className="flex-1 overflow-auto p-4 lg:p-5">
+      <div className="flex-1 overflow-auto bg-white p-4 lg:p-5">
         <DndContext
           sensors={sensors}
           collisionDetection={closestCorners}

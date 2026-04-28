@@ -38,6 +38,7 @@ export const StepFirstFlow = ({ onContinue, onBack }: StepFirstFlowProps) => {
             placeholder="e.g., Weekly Report Generator"
             value={flowName}
             onChange={(e) => setFlowName(e.target.value)}
+            className="bg-white"
           />
         </div>
 
@@ -49,6 +50,7 @@ export const StepFirstFlow = ({ onContinue, onBack }: StepFirstFlowProps) => {
             rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            className="bg-white"
           />
         </div>
 

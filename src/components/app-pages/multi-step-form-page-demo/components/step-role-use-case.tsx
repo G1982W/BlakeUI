@@ -66,7 +66,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                   "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm:p-4",
                   selectedRole === role.id
                     ? "border-primary bg-primary/5"
-                    : "border-border text-foreground hover:border-primary/40",
+                    : "border-border bg-white text-foreground hover:border-primary/40",
                 )}
               >
                 <div className="flex min-w-0 items-center gap-2 @sm:gap-3">
@@ -99,7 +99,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
                   "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm:p-4",
                   selectedAutomation.includes(option.id)
                     ? "border-primary bg-primary/5"
-                    : "border-border text-foreground hover:border-primary/40",
+                    : "border-border bg-white text-foreground hover:border-primary/40",
                 )}
               >
                 {option.label}

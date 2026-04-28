@@ -8,12 +8,17 @@ appPage: true
 
 import Installation from "@/components/installation";
 import appPageSources from "@/generated/app-page-sources.json";
+import { DemoAppPagePreview } from "@/components/demo-app-page-preview";
 
 ## Example
 
-<AppPagePreview bundleId="notes-page" premium>
+<DemoAppPagePreview
+  bundleId="notes-page"
+  premium
+  previewClassName="min-[1441px]:h-[986px] min-[1441px]:max-h-[986px] min-[1441px]:overflow-hidden min-[1441px]:[&>*]:min-h-0"
+>
   <NotesPageDemo className="w-full" />
-</AppPagePreview>
+</DemoAppPagePreview>
 
 ## Introduction
 

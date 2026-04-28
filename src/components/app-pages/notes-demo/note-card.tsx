@@ -107,7 +107,7 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
         ref={setNodeRef}
         style={style}
         className={cn(
-          "group flex items-start gap-3 rounded-xl border px-4 py-3 transition-all",
+          "@container/note-card group flex items-start gap-3 rounded-xl border px-4 py-3 transition-all",
           colors.bg,
           colors.border,
           isDragging && "opacity-40 scale-[0.98] z-50"
@@ -117,7 +117,7 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
               {note.pinned && <Pin className="size-3 text-muted-foreground shrink-0" />}
-              <p className="truncate text-sm font-semibold">{note.title}</p>
+              <p className="truncate text-sm font-semibold @xs/note-card:text-[13px]">{note.title}</p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <Badge variant="secondary" className="text-[11px] h-5">{note.category}</Badge>
@@ -126,7 +126,7 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
             </div>
           </div>
           {note.content && (
-            <p className="text-muted-foreground mt-0.5 truncate text-xs">{note.content}</p>
+            <p className="text-muted-foreground mt-0.5 truncate text-xs @xs/note-card:text-[11px]">{note.content}</p>
           )}
         </div>
       </div>
@@ -138,7 +138,7 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
       ref={setNodeRef}
       style={style}
       className={cn(
-        "group flex flex-col rounded-xl border p-4 transition-all",
+        "@container/note-card group flex flex-col rounded-xl border p-4 transition-all",
         colors.bg,
         colors.border,
         isDragging && "opacity-40 scale-[0.98] z-50"
@@ -147,13 +147,13 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
         <div className="flex items-center gap-1.5 min-w-0">
           {note.pinned && <Pin className="size-3 text-muted-foreground shrink-0" />}
           {gripHandle}
-          <p className="truncate text-sm font-semibold">{note.title}</p>
+          <p className="truncate text-sm font-semibold @xs/note-card:text-[13px]">{note.title}</p>
         </div>
         {actions}
       </div>
 
       {note.content && (
-        <p className="text-muted-foreground mb-3 line-clamp-4 flex-1 text-xs leading-relaxed whitespace-pre-line">
+        <p className="text-muted-foreground mb-3 line-clamp-4 flex-1 text-xs leading-relaxed whitespace-pre-line @xs/note-card:text-[11px] @xs/note-card:line-clamp-5">
           {note.content}
         </p>
       )}

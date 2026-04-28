@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatStore, type Message } from "./store";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 function MessageBubble({
   message,
@@ -80,9 +79,9 @@ export function ChatMain() {
     groups,
     messages,
     sendMessage,
+    mobileDrawerOpen,
     setMobileDrawerOpen,
   } = useChatStore();
-  const isMobile = useIsMobile();
   const [input, setInput] = useState("");
   const messagesRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -203,7 +202,7 @@ export function ChatMain() {
           >
             <MoreHorizontal className="size-4" />
           </Button>
-          {isMobile && (
+          {mobileDrawerOpen && (
             <Button
               variant="ghost"
               size="icon"
@@ -245,7 +244,7 @@ export function ChatMain() {
       </div>
 
       <div className="border-t px-4 py-3">
-        <InputGroup className="bg-muted/50 h-auto min-h-0 rounded-xl py-2 pr-2 pl-2">
+        <InputGroup className="bg-muted/50 h-auto min-h-0 !items-center has-data-[slot=textarea]:!items-center rounded-xl py-2 pr-2 pl-2">
           <InputGroupTextarea
             ref={textareaRef}
             value={input}
@@ -257,7 +256,7 @@ export function ChatMain() {
           />
           <InputGroupAddon
             align="inline-end"
-            className="shrink-0 self-end py-0 pr-0 has-[>button]:mr-0"
+            className="shrink-0 self-center py-0 pr-0 has-[>button]:mr-0"
           >
             <InputGroupButton
               id="new-message"

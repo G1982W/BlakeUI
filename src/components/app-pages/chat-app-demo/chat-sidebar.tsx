@@ -2,14 +2,13 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Search, SquarePen, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatStore, type Contact } from "./store";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const STATUS_COLOR: Record<string, string> = {
   online: "bg-emerald-500",
@@ -17,8 +16,8 @@ const STATUS_COLOR: Record<string, string> = {
   offline: "bg-muted-foreground/40"
 };
 
-function ContactItem({ contact }: { contact: Contact }) {
-  const { activeChatId, setActiveChatId } = useChatStore();
+function ContactItem({ contact, openInDrawer }: { contact: Contact; openInDrawer: boolean }) {
+  const { activeChatId, setActiveChatId, setMobileDrawerOpen } = useChatStore();
   const isActive = contact.id === activeChatId;
 
   return (
@@ -27,7 +26,10 @@ function ContactItem({ contact }: { contact: Contact }) {
         "hover:bg-muted/60 flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
         isActive && "bg-muted"
       )}
-      onClick={() => setActiveChatId(contact.id)}>
+      onClick={() => {
+        setActiveChatId(contact.id);
+        if (openInDrawer) setMobileDrawerOpen(true);
+      }}>
       <div className="relative shrink-0">
         <Avatar className="size-10">
           {contact.avatar ? <AvatarImage src={contact.avatar} alt={contact.name} /> : null}
@@ -72,10 +74,9 @@ function ContactItem({ contact }: { contact: Contact }) {
   );
 }
 
-export function ChatSidebar() {
+export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }) {
   const { contacts, groups, activeTab, setActiveTab } = useChatStore();
   const [search, setSearch] = useState("");
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const filteredContacts = contacts.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
@@ -93,24 +94,17 @@ export function ChatSidebar() {
         </Button>
       </div>
 
-      <ButtonGroup className="w-full">
-        <Input
-          ref={searchInputRef}
-          placeholder="Search..."
+      <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white">
+        <div className="flex items-center justify-center px-3">
+          <Search className="text-muted-foreground/80 size-3.5" />
+        </div>
+        <input
+          placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-8 min-w-0 text-sm shadow-none"
+          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none"
         />
-        <Button
-          type="button"
-          variant="outline"
-          size="icon-sm"
-          className="shrink-0 border shadow-none"
-          aria-label="Search"
-          onClick={() => searchInputRef.current?.focus()}>
-          <Search className="size-4" />
-        </Button>
-      </ButtonGroup>
+      </div>
 
       <Tabs
         value={activeTab}
@@ -119,18 +113,28 @@ export function ChatSidebar() {
         <ButtonGroup className="mb-2 w-full">
           <Button
             type="button"
-            variant={activeTab === "personal" ? "secondary" : "outline"}
+            variant="outline"
             size="sm"
-            className="flex-1 border shadow-none"
+            className={cn(
+              "flex-1 border shadow-none",
+              activeTab === "personal"
+                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6]"
+                : "!bg-white text-muted-foreground hover:!bg-white"
+            )}
             aria-pressed={activeTab === "personal"}
             onClick={() => setActiveTab("personal")}>
             Personal
           </Button>
           <Button
             type="button"
-            variant={activeTab === "groups" ? "secondary" : "outline"}
+            variant="outline"
             size="sm"
-            className="flex-1 border shadow-none"
+            className={cn(
+              "flex-1 border shadow-none",
+              activeTab === "groups"
+                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6]"
+                : "!bg-white text-muted-foreground hover:!bg-white"
+            )}
             aria-pressed={activeTab === "groups"}
             onClick={() => setActiveTab("groups")}>
             Groups
@@ -145,7 +149,7 @@ export function ChatSidebar() {
         <TabsContent value="personal" className="mt-0 flex-1 overflow-y-auto">
           <div className="space-y-0.5">
             {filteredContacts.length > 0 ? (
-              filteredContacts.map((c) => <ContactItem key={c.id} contact={c} />)
+              filteredContacts.map((c) => <ContactItem key={c.id} contact={c} openInDrawer={openInDrawer} />)
             ) : (
               <p className="text-muted-foreground py-6 text-center text-sm">No contacts found</p>
             )}
@@ -155,7 +159,7 @@ export function ChatSidebar() {
         <TabsContent value="groups" className="mt-0 flex-1 overflow-y-auto">
           <div className="space-y-0.5">
             {filteredGroups.length > 0 ? (
-              filteredGroups.map((g) => <ContactItem key={g.id} contact={g} />)
+              filteredGroups.map((g) => <ContactItem key={g.id} contact={g} openInDrawer={openInDrawer} />)
             ) : (
               <p className="text-muted-foreground py-6 text-center text-sm">No groups found</p>
             )}
