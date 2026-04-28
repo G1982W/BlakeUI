@@ -140,7 +140,7 @@ export function NoteApp() {
             </Button>
 
             <div className="relative max-w-sm flex-1">
-            <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white">
+            <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white dark:bg-transparent">
         <div className="flex items-center justify-center px-3">
           <Search className="text-muted-foreground/80 size-3.5" />
         </div>
@@ -148,7 +148,7 @@ export function NoteApp() {
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none"
+          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none dark:bg-transparent"
         />
       </div>
               {search && (

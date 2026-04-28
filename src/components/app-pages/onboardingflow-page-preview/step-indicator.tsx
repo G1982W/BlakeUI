@@ -36,7 +36,7 @@ export function StepIndicator({ currentStep }: { currentStep: number }) {
                   ? "bg-primary text-primary-foreground"
                   : currentStep === step.id
                     ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
-                    : "border border-border bg-white text-muted-foreground",
+                    : "border border-border bg-background text-muted-foreground",
               )}
             >
               {currentStep > step.id ? <Check className="size-4" /> : step.id}

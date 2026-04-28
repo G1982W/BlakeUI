@@ -83,7 +83,7 @@ export function TodoColumn({ section }: TodoColumnProps) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className={cn("size-2.5 rounded-full", colors.accent)} />
-          <h2 className="text-sm font-semibold">{section.title}</h2>
+          <h2 className="text-foreground text-sm font-semibold">{section.title}</h2>
           <span
             className={cn(
               "inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium",

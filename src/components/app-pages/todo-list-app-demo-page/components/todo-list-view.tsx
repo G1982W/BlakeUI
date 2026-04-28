@@ -79,7 +79,7 @@ function ListSection({ section }: { section: Section }) {
               COLOR_DOT[section.color],
             )}
           />
-          <span className="text-sm font-semibold">{section.title}</span>
+          <span className="text-foreground text-sm font-semibold">{section.title}</span>
           <span className="text-muted-foreground ml-1 text-xs">
             {completedCount}/{section.todos.length}
           </span>

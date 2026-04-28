@@ -3382,6 +3382,12 @@
       "type": "boolean",
       "description": "",
       "required": false
+    },
+    {
+      "name": "previewDesktopNarrow",
+      "type": "boolean",
+      "description": "Desktop viewport + narrow preview host: fill host height, drop side borders, let body scroll inside. Real mobile keeps default drawer.",
+      "required": false
     }
   ],
   "DrawerHeader": [],

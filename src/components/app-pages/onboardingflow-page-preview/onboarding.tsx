@@ -128,7 +128,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                     "flex flex-col items-start gap-3 rounded-xl border p-5 text-left transition-all",
                     formData.accountType === value
                       ? "border-primary bg-primary/5 ring-2 ring-primary"
-                      : "border-border bg-white hover:border-primary/50 hover:bg-muted/50",
+                      : "border-border bg-white hover:border-primary/50 hover:bg-muted/50 dark:bg-transparent",
                   )}
                 >
                   <div
@@ -136,7 +136,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       "flex size-10 shrink-0 items-center justify-center rounded-lg",
                       formData.accountType === value
                         ? "bg-primary/10"
-                        : "bg-white",
+                        : "bg-white dark:bg-transparent",
                     )}
                   >
                     <Icon
@@ -180,7 +180,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       "rounded-lg border py-3 text-sm font-medium transition-all",
                       formData.teamSize === size
                         ? "border-primary bg-primary/5 text-primary ring-2 ring-primary"
-                        : "border-border bg-white text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                        : "border-border bg-white text-muted-foreground hover:border-primary/50 hover:text-foreground dark:bg-transparent",
                     )}
                   >
                     {size}
@@ -197,7 +197,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                 placeholder="e.g. Acme Corp"
                 value={formData.teamName}
                 onChange={(e) => handleUpdate("teamName", e.target.value)}
-                className="bg-white"
+                className="bg-white dark:bg-transparent"
               />
             </div>
             <div className="space-y-1.5">
@@ -234,7 +234,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       "flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-all",
                       formData.accountPlan === value
                         ? "border-primary bg-primary/5"
-                        : "border-border bg-white hover:bg-muted/50",
+                        : "border-border bg-white hover:bg-muted/50 dark:bg-transparent",
                     )}
                   >
                     <Icon className="text-muted-foreground size-5 shrink-0" />
@@ -271,7 +271,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   placeholder="Acme Inc."
                   value={formData.companyName}
                   onChange={(e) => handleUpdate("companyName", e.target.value)}
-                  className="bg-white"
+                  className="bg-white dark:bg-transparent"
                 />
               </div>
               <div className="space-y-1.5">
@@ -282,7 +282,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   value={formData.industry}
                   onValueChange={(v) => handleUpdate("industry", v)}
                 >
-                  <SelectTrigger className="bg-white">
+                  <SelectTrigger className="bg-white dark:bg-transparent">
                     <SelectValue placeholder="Select your industry" />
                   </SelectTrigger>
                   <SelectContent>
@@ -302,7 +302,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   placeholder="https://yourcompany.com"
                   value={formData.website}
                   onChange={(e) => handleUpdate("website", e.target.value)}
-                  className="bg-white"
+                  className="bg-white dark:bg-transparent"
                 />
               </div>
             </div>
@@ -328,7 +328,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   placeholder="John Doe"
                   value={formData.nameOnCard}
                   onChange={(e) => handleUpdate("nameOnCard", e.target.value)}
-                  className="bg-white"
+                  className="bg-white dark:bg-transparent"
                 />
               </div>
               <div className="space-y-1.5">
@@ -347,7 +347,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       )
                     }
                     inputMode="numeric"
-                    className="bg-white pr-10"
+                    className="bg-white pr-10 dark:bg-transparent"
                   />
                   <CreditCard className="text-muted-foreground absolute top-1/2 right-3 size-4 -translate-y-1/2" />
                 </div>
@@ -362,7 +362,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       value={formData.expirationMonth || undefined}
                       onValueChange={(v) => handleUpdate("expirationMonth", v)}
                     >
-                      <SelectTrigger className="bg-white">
+                      <SelectTrigger className="bg-white dark:bg-transparent">
                         <SelectValue placeholder="MM" />
                       </SelectTrigger>
                       <SelectContent>
@@ -380,7 +380,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       value={formData.expirationYear || undefined}
                       onValueChange={(v) => handleUpdate("expirationYear", v)}
                     >
-                      <SelectTrigger className="bg-white">
+                      <SelectTrigger className="bg-white dark:bg-transparent">
                         <SelectValue placeholder="YYYY" />
                       </SelectTrigger>
                       <SelectContent>
@@ -409,7 +409,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       )
                     }
                     inputMode="numeric"
-                    className="bg-white"
+                    className="bg-white dark:bg-transparent"
                   />
                 </div>
               </div>

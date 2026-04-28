@@ -53,7 +53,7 @@ export function TodoRowContent({ todo, overlay }: TodoRowContentProps) {
 
       <p
         className={cn(
-          "flex-1 text-sm",
+          "flex-1 text-sm text-foreground",
           todo.completed && "text-muted-foreground line-through",
         )}
       >

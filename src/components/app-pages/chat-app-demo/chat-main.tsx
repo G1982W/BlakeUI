@@ -131,6 +131,9 @@ export function ChatMain() {
 
   if (!activeContact) return null;
 
+  const headerActionIconClass =
+    "size-8 rounded-md border border-border bg-white text-muted-foreground shadow-none hover:!bg-[#faf9f6] dark:border-transparent dark:bg-transparent dark:hover:!bg-muted/50";
+
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
       {/* Header */}
@@ -170,43 +173,27 @@ export function ChatMain() {
         <div className="flex items-center gap-1">
           {!activeContact.isGroup && (
             <>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-muted-foreground size-8"
-              >
+              <Button variant="ghost" size="icon" className={headerActionIconClass}>
                 <Phone className="size-4" />
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-muted-foreground size-8"
-              >
+              <Button variant="ghost" size="icon" className={headerActionIconClass}>
                 <Video className="size-4" />
               </Button>
             </>
           )}
           {activeContact.isGroup && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-muted-foreground size-8"
-            >
+            <Button variant="ghost" size="icon" className={headerActionIconClass}>
               <Users className="size-4" />
             </Button>
           )}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-muted-foreground size-8"
-          >
+          <Button variant="ghost" size="icon" className={headerActionIconClass}>
             <MoreHorizontal className="size-4" />
           </Button>
           {mobileDrawerOpen && (
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground size-8"
+              className={headerActionIconClass}
               onClick={() => setMobileDrawerOpen(false)}
             >
               <ChevronDown className="size-4" />

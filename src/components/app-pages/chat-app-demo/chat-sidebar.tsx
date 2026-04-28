@@ -23,8 +23,10 @@ function ContactItem({ contact, openInDrawer }: { contact: Contact; openInDrawer
   return (
     <button
       className={cn(
-        "hover:bg-muted/60 flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
-        isActive && "bg-muted"
+        "flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
+        isActive
+          ? "bg-[#faf9f6] hover:bg-[#faf9f6] dark:bg-muted/50 dark:hover:bg-muted/50"
+          : "hover:bg-muted/60"
       )}
       onClick={() => {
         setActiveChatId(contact.id);
@@ -74,7 +76,14 @@ function ContactItem({ contact, openInDrawer }: { contact: Contact; openInDrawer
   );
 }
 
-export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }) {
+export function ChatSidebar({
+  openInDrawer = false,
+  hideSidebarRightBorder = false,
+}: {
+  openInDrawer?: boolean;
+  /** When chat layout width is exactly 425px, drop the sidebar divider so the drawer panel has no seam. */
+  hideSidebarRightBorder?: boolean;
+}) {
   const { contacts, groups, activeTab, setActiveTab } = useChatStore();
   const [search, setSearch] = useState("");
 
@@ -84,7 +93,12 @@ export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }
   const filteredGroups = groups.filter((g) => g.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className="flex w-full shrink-0 flex-col space-y-4 border-r p-4 @md:w-72">
+    <div
+      className={cn(
+        "flex w-full shrink-0 flex-col space-y-4 border-r p-4 @md:w-72",
+        hideSidebarRightBorder && "border-r-0",
+      )}
+    >
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-semibold">Messages</h1>
@@ -94,7 +108,7 @@ export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }
         </Button>
       </div>
 
-      <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white">
+      <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white dark:bg-transparent">
         <div className="flex items-center justify-center px-3">
           <Search className="text-muted-foreground/80 size-3.5" />
         </div>
@@ -102,7 +116,7 @@ export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none"
+          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none dark:bg-transparent"
         />
       </div>
 
@@ -118,8 +132,8 @@ export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }
             className={cn(
               "flex-1 border shadow-none",
               activeTab === "personal"
-                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6]"
-                : "!bg-white text-muted-foreground hover:!bg-white"
+                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6] dark:!bg-muted/50 dark:text-foreground dark:hover:!bg-muted/50"
+                : "!bg-white text-muted-foreground hover:!bg-white dark:!bg-transparent dark:text-muted-foreground dark:hover:!bg-transparent"
             )}
             aria-pressed={activeTab === "personal"}
             onClick={() => setActiveTab("personal")}>
@@ -132,8 +146,8 @@ export function ChatSidebar({ openInDrawer = false }: { openInDrawer?: boolean }
             className={cn(
               "flex-1 border shadow-none",
               activeTab === "groups"
-                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6]"
-                : "!bg-white text-muted-foreground hover:!bg-white"
+                ? "!bg-[#faf9f6] text-foreground hover:!bg-[#faf9f6] dark:!bg-muted/50 dark:text-foreground dark:hover:!bg-muted/50"
+                : "!bg-white text-muted-foreground hover:!bg-white dark:!bg-transparent dark:text-muted-foreground dark:hover:!bg-transparent"
             )}
             aria-pressed={activeTab === "groups"}
             onClick={() => setActiveTab("groups")}>

@@ -192,7 +192,7 @@ export function TodoApp() {
       </header>
 
       {/* Board */}
-      <div className="flex-1 overflow-auto bg-white p-4 lg:p-5">
+      <div className="flex-1 overflow-auto bg-white p-4 dark:bg-transparent lg:p-5">
         <DndContext
           sensors={sensors}
           collisionDetection={closestCorners}

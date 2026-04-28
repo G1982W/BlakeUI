@@ -44,7 +44,7 @@ export function TodoCardContent({
   return (
     <div
       className={cn(
-        "group bg-card border-border/60 flex items-start gap-3 rounded-xl border p-3.5 shadow-xs transition-shadow hover:shadow-sm",
+        "group bg-card text-card-foreground border-border/60 flex items-start gap-3 rounded-xl border p-3.5 shadow-xs transition-shadow hover:shadow-sm",
         overlay && "shadow-lg rotate-1 ring-2 ring-primary/20",
         className,
       )}
@@ -60,7 +60,7 @@ export function TodoCardContent({
       <div className="min-w-0 flex-1">
         <p
           className={cn(
-            "text-sm leading-relaxed",
+            "text-sm leading-relaxed text-foreground",
             todo.completed && "text-muted-foreground line-through",
           )}
         >

@@ -93,14 +93,14 @@ export default function Page() {
   ];
 
   return (
-    <div className="flex min-h-0 w-full min-w-0 flex-col @lg:flex-row max-[1440px]:min-h-screen min-[1441px]:h-full min-[1441px]:min-h-0">
+    <div className="flex min-h-0 w-full min-w-0 flex-col @lg/msf:flex-row max-[1440px]:min-h-screen min-[1441px]:h-full min-[1441px]:min-h-0">
       <Sidebar steps={steps} currentStep={currentStep} onStepClick={goToStep} />
 
-      <main className="min-h-0 flex-1 overflow-y-auto pb-20 @lg:pb-0">
+      <main className="min-h-0 flex-1 overflow-y-auto pb-20 @lg/msf:pb-0">
         {stepComponents[currentStep]}
       </main>
 
-      <div className="bg-background fixed right-0 bottom-0 left-0 border-t p-4 @lg:hidden">
+      <div className="bg-background fixed right-0 bottom-0 left-0 border-t p-4 @lg/msf:hidden">
         <div className="flex items-center justify-center gap-2">
           {steps.map((step) => (
             <div

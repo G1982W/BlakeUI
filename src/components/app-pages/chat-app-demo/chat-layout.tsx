@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useChatStore } from "./store";
 import { ChatSidebar } from "./chat-sidebar";
@@ -11,9 +11,15 @@ import { cn } from "@/lib/utils";
 export function ChatLayout({ className }: { className?: string }) {
   const isMobile = useIsMobile();
   const { mobileDrawerOpen, setMobileDrawerOpen } = useChatStore();
-  const layoutRef = useRef<HTMLDivElement>(null);
-  const [isCompactPreview, setIsCompactPreview] = useState(false);
-  const [layoutBounds, setLayoutBounds] = useState<{ left: number; width: number } | null>(null);
+  const layoutRef = useRef<HTMLDivElement | null>(null);
+  const [drawerPortalHost, setDrawerPortalHost] = useState<HTMLDivElement | null>(null);
+  const [layoutWidth, setLayoutWidth] = useState<number | null>(null);
+
+  const setLayoutNode = useCallback((node: HTMLDivElement | null) => {
+    layoutRef.current = node;
+    setDrawerPortalHost(node);
+    setLayoutWidth(node ? node.getBoundingClientRect().width : null);
+  }, []);
 
   useEffect(() => {
     const el = layoutRef.current;
@@ -22,28 +28,34 @@ export function ChatLayout({ className }: { className?: string }) {
     const observer = new ResizeObserver((entries) => {
       const entry = entries[0];
       if (!entry) return;
-      setIsCompactPreview(entry.contentRect.width <= 425);
-      const rect = el.getBoundingClientRect();
-      setLayoutBounds({ left: rect.left, width: rect.width });
+      setLayoutWidth(entry.contentRect.width);
     });
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const shouldUseDrawer = isMobile || isCompactPreview;
-  const fitToContainerInDesktopCompact = isCompactPreview && !isMobile;
+  const shouldUseDrawer =
+    isMobile || (layoutWidth !== null && layoutWidth <= 425);
+  /** Embedded preview tweaks only below 425px; at exactly 425px use default drawer classes. */
+  const applyDesktopEmbedOverrides =
+    !isMobile && layoutWidth !== null && layoutWidth < 425;
+  const isLayoutWidth425 =
+    layoutWidth !== null && Math.round(layoutWidth) === 425;
 
   return (
     <div
-      ref={layoutRef}
+      ref={setLayoutNode}
       className={cn(
-        "flex w-full max-w-full min-w-0 max-[1440px]:h-screen min-[1441px]:h-full min-[1441px]:min-h-0 overflow-hidden @container",
+        "relative isolate flex w-full max-w-full min-w-0 max-[1440px]:h-screen min-[1441px]:h-full min-[1441px]:min-h-0 overflow-hidden [transform:translateZ(0)] @container",
         className,
       )}
     >
       {/* Sidebar: full width on mobile, fixed on desktop */}
-      <ChatSidebar openInDrawer={shouldUseDrawer} />
+      <ChatSidebar
+        openInDrawer={shouldUseDrawer}
+        hideSidebarRightBorder={isLayoutWidth425}
+      />
 
       {/* Desktop: chat panel */}
       <div className="hidden flex-1 overflow-hidden @md:flex">
@@ -52,21 +64,23 @@ export function ChatLayout({ className }: { className?: string }) {
 
       {/* Mobile: chat drawer */}
       <Drawer
+        container={isMobile ? undefined : drawerPortalHost ?? undefined}
         open={shouldUseDrawer && mobileDrawerOpen}
         onOpenChange={setMobileDrawerOpen}
         direction="bottom"
       >
         <DrawerContent
+          previewDesktopNarrow={applyDesktopEmbedOverrides}
           className={cn(
-            "h-[90vh] max-h-[90vh] flex flex-col p-0",
-            fitToContainerInDesktopCompact &&
-              "data-[vaul-drawer-direction=bottom]:!inset-x-auto data-[vaul-drawer-direction=bottom]:!mt-0 data-[vaul-drawer-direction=bottom]:rounded-t-none data-[vaul-drawer-direction=bottom]:border-x"
+            "flex flex-col p-0",
+            isMobile &&
+              "min-h-0 h-[100dvh] max-h-[100dvh] data-[vaul-drawer-direction=bottom]:!mt-0 data-[vaul-drawer-direction=bottom]:!h-[100dvh] data-[vaul-drawer-direction=bottom]:!max-h-[100dvh] data-[vaul-drawer-direction=bottom]:rounded-none [&>*:last-child]:flex [&>*:last-child]:min-h-0 [&>*:last-child]:flex-1 [&>*:last-child]:flex-col",
+            !isMobile &&
+              !applyDesktopEmbedOverrides &&
+              "h-[90vh] max-h-[90vh]",
+            applyDesktopEmbedOverrides &&
+              "data-[vaul-drawer-direction=bottom]:!inset-x-auto data-[vaul-drawer-direction=bottom]:!right-auto data-[vaul-drawer-direction=bottom]:!left-1/2 data-[vaul-drawer-direction=bottom]:!-translate-x-1/2 data-[vaul-drawer-direction=bottom]:!w-[min(425px,100%)] data-[vaul-drawer-direction=bottom]:!max-w-full",
           )}
-          style={
-            fitToContainerInDesktopCompact && layoutBounds
-              ? { left: layoutBounds.left, width: layoutBounds.width }
-              : undefined
-          }
         >
           <ChatMain />
         </DrawerContent>
