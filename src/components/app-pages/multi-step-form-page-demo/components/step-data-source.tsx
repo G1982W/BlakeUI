@@ -29,10 +29,10 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
   const [connectionUrl, setConnectionUrl] = useState("");
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm/msf:p-8 @lg/msf:p-16">
       <div className="w-full max-w-xl">
-        <div className="mb-10 @lg:mb-16">
-          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
+        <div className="mb-10 @lg/msf:mb-16">
+          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm/msf:text-3xl @lg/msf:text-4xl">
             Connect your data source
           </h1>
           <p className="text-muted-foreground leading-relaxed">
@@ -40,7 +40,7 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
           </p>
         </div>
 
-        <div className="mb-8 grid grid-cols-2 gap-2 @sm:gap-3">
+        <div className="mb-8 grid grid-cols-2 gap-2 @sm/msf:gap-3">
           {sources.map((s) => {
             const Icon = s.icon;
             return (
@@ -48,10 +48,10 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
                 key={s.id}
                 onClick={() => setSelected(s.id)}
                 className={cn(
-                  "flex flex-col items-center gap-2 rounded-lg border p-4 transition-all @sm:p-6",
+                  "flex flex-col items-center gap-2 rounded-lg border p-4 transition-all @sm/msf:p-6",
                   selected === s.id
                     ? "border-primary bg-primary/5"
-                    : "border-border hover:border-primary/40",
+                    : "border-border bg-white hover:border-primary/40 dark:bg-transparent",
                 )}
               >
                 <Icon
@@ -70,7 +70,7 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
           })}
         </div>
 
-        <div className="mb-10 @lg:mb-16">
+        <div className="mb-10 @lg/msf:mb-16">
           <Label htmlFor="connection-url" className="mb-2">
             Connection URL
           </Label>
@@ -79,6 +79,7 @@ export const StepDataSource = ({ onContinue, onBack }: StepDataSourceProps) => {
             placeholder="https://api.example.com/v1"
             value={connectionUrl}
             onChange={(e) => setConnectionUrl(e.target.value)}
+            className="bg-white dark:bg-transparent"
           />
           <p className="text-muted-foreground mt-2 text-xs">
             Enter the endpoint or connection string for your data source.

@@ -41,10 +41,10 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
   };
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16 max-[1300px]:!p-[30px]">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm/msf:p-8 @lg/msf:p-16 @max-[50rem]/msf:!p-[30px]">
       <div className="w-full max-w-xl">
-        <div className="mb-10 @lg:mb-16">
-          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
+        <div className="mb-10 @lg/msf:mb-16">
+          <h1 className="text-foreground mb-3 text-2xl leading-tight font-semibold @sm/msf:text-3xl @lg/msf:text-4xl">
             Let&#39;s personalize your experience
           </h1>
           <p className="text-muted-foreground leading-relaxed">
@@ -53,23 +53,23 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
           </p>
         </div>
 
-        <div className="mb-10 @lg:mb-12">
-          <h4 className="text-foreground mb-4 text-lg @lg:mb-8 @lg:text-xl">
+        <div className="mb-10 @lg/msf:mb-12">
+          <h4 className="text-foreground mb-4 text-lg @lg/msf:mb-8 @lg/msf:text-xl">
             What best describes your role?
           </h4>
-          <div className="grid grid-cols-2 gap-2 @sm:gap-3 min-[1440px]:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2 @sm/msf:gap-3 @xl/msf:grid-cols-3">
             {roles.map((role) => (
               <button
                 key={role.id}
                 onClick={() => setSelectedRole(role.id)}
                 className={cn(
-                  "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm:p-4",
+                  "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm/msf:p-4",
                   selectedRole === role.id
                     ? "border-primary bg-primary/5"
-                    : "border-border text-foreground hover:border-primary/40",
+                    : "border-border bg-white text-foreground hover:border-primary/40 dark:bg-transparent",
                 )}
               >
-                <div className="flex min-w-0 items-center gap-2 @sm:gap-3">
+                <div className="flex min-w-0 items-center gap-2 @sm/msf:gap-3">
                   <span
                     className={cn(
                       "inline-block size-2.5 shrink-0 rounded-full",
@@ -86,20 +86,20 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
           </div>
         </div>
 
-        <div className="mb-10 @lg:mb-16">
-          <h4 className="text-foreground mb-4 text-lg @lg:mb-8 @lg:text-xl">
+        <div className="mb-10 @lg/msf:mb-16">
+          <h4 className="text-foreground mb-4 text-lg @lg/msf:mb-8 @lg/msf:text-xl">
             What do you want to automate first?
           </h4>
-          <div className="grid grid-cols-1 gap-2 @sm:grid-cols-2 @sm:gap-3">
+          <div className="grid grid-cols-1 gap-2 @sm/msf:grid-cols-2 @sm/msf:gap-3">
             {automationOptions.map((option) => (
               <button
                 key={option.id}
                 onClick={() => toggleAutomation(option.id)}
                 className={cn(
-                  "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm:p-4",
+                  "rounded-lg border p-3 text-left text-sm font-medium transition-all @sm/msf:p-4",
                   selectedAutomation.includes(option.id)
                     ? "border-primary bg-primary/5"
-                    : "border-border text-foreground hover:border-primary/40",
+                    : "border-border bg-white text-foreground hover:border-primary/40 dark:bg-transparent",
                 )}
               >
                 {option.label}

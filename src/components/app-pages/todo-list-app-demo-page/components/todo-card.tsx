@@ -11,15 +11,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Todo, Priority } from "../types";
 import { useTodoStore } from "../store";
 
-const PRIORITY_STYLES: Record<Priority, string> = {
-  high: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
-  medium:
-    "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-  low: "bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-400",
+const PRIORITY_VARIANT: Record<Priority, "urgent" | "warning" | "info"> = {
+  high: "urgent",
+  medium: "warning",
+  low: "info",
 };
 
 const PRIORITY_LABELS: Record<Priority, string> = {
@@ -44,7 +44,7 @@ export function TodoCardContent({
   return (
     <div
       className={cn(
-        "group bg-card border-border/60 flex items-start gap-3 rounded-xl border p-3.5 shadow-xs transition-shadow hover:shadow-sm",
+        "group bg-card text-card-foreground border-border/60 flex items-start gap-3 rounded-xl border p-3.5 shadow-xs transition-shadow hover:shadow-sm",
         overlay && "shadow-lg rotate-1 ring-2 ring-primary/20",
         className,
       )}
@@ -60,7 +60,7 @@ export function TodoCardContent({
       <div className="min-w-0 flex-1">
         <p
           className={cn(
-            "text-sm leading-relaxed",
+            "text-sm leading-relaxed text-foreground",
             todo.completed && "text-muted-foreground line-through",
           )}
         >
@@ -70,14 +70,11 @@ export function TodoCardContent({
         <div className="mt-2 flex items-center gap-1.5">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button
-                className={cn(
-                  "inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium transition-opacity",
-                  PRIORITY_STYLES[todo.priority],
-                )}
-              >
-                {PRIORITY_LABELS[todo.priority]}
-              </button>
+              <Badge asChild variant={PRIORITY_VARIANT[todo.priority]}>
+                <button type="button" className="cursor-pointer">
+                  {PRIORITY_LABELS[todo.priority]}
+                </button>
+              </Badge>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-32">
               {(["high", "medium", "low"] as Priority[]).map((p) => (

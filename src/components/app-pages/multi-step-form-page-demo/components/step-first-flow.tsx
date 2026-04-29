@@ -16,11 +16,11 @@ export const StepFirstFlow = ({ onContinue, onBack }: StepFirstFlowProps) => {
   const [description, setDescription] = useState("");
 
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm:p-8 @lg:p-16">
+    <div className="flex min-h-full flex-1 items-start justify-center p-6 @sm/msf:p-8 @lg/msf:p-16">
       <div className="w-full max-w-xl">
-        <div className="mb-10 @lg:mb-16">
+        <div className="mb-10 @lg/msf:mb-16">
           <div className="mb-3 flex items-center gap-2">
-            <h1 className="text-foreground text-2xl leading-tight font-semibold @sm:text-3xl @lg:text-4xl">
+            <h1 className="text-foreground text-2xl leading-tight font-semibold @sm/msf:text-3xl @lg/msf:text-4xl">
               Build your first flow
             </h1>
             <Badge variant="secondary">Optional</Badge>
@@ -38,10 +38,11 @@ export const StepFirstFlow = ({ onContinue, onBack }: StepFirstFlowProps) => {
             placeholder="e.g., Weekly Report Generator"
             value={flowName}
             onChange={(e) => setFlowName(e.target.value)}
+            className="bg-white dark:bg-transparent"
           />
         </div>
 
-        <div className="mb-10 space-y-2 @lg:mb-16">
+        <div className="mb-10 space-y-2 @lg/msf:mb-16">
           <Label htmlFor="flow-description">Description</Label>
           <Textarea
             id="flow-description"
@@ -49,6 +50,7 @@ export const StepFirstFlow = ({ onContinue, onBack }: StepFirstFlowProps) => {
             rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            className="bg-white dark:bg-transparent"
           />
         </div>
 

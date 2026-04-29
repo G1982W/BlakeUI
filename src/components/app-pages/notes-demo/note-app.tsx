@@ -74,7 +74,7 @@ export function NoteApp() {
 
   const gridClass =
     viewMode === "grid"
-      ? "grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 @xl:grid-cols-4 gap-3"
+      ? "grid grid-cols-1 @sm/cards:grid-cols-2 @lg/cards:grid-cols-3 @xl/cards:grid-cols-4 gap-3"
       : "flex flex-col gap-2";
 
   const strategy = viewMode === "grid" ? rectSortingStrategy : verticalListSortingStrategy;
@@ -95,18 +95,18 @@ export function NoteApp() {
       collisionDetection={closestCenter}
       modifiers={[restrictToWindowEdges]}
       onDragEnd={handleDragEnd}>
-      <div className="bg-background flex h-screen overflow-hidden @container w-full">
+      <div className="bg-background flex w-full overflow-hidden @container max-[1440px]:h-screen min-[1441px]:h-full min-[1441px]:min-h-0">
         {/* Desktop Sidebar */}
-        <aside className="hidden w-52 shrink-0 border-r @lg:flex @lg:flex-col">
-          <div className="flex items-center gap-2 border-b px-4 py-4">
+        <aside className="hidden w-52 shrink-0 !border-r-0 @lg:flex @lg:flex-col">
+          <div className="flex items-center gap-2 px-4 py-4">
             <StickyNote className="text-primary size-5" />
             <span className="font-semibold">Notes</span>
           </div>
+          <div className="flex shrink-0 items-center justify-center border-b border-t px-3 py-3">
+            <NoteForm onSubmit={addNote} />
+          </div>
           <div className="flex-1 overflow-y-auto">
             <NoteSidebar />
-          </div>
-          <div className="border-t p-3">
-            <NoteForm onSubmit={addNote} />
           </div>
         </aside>
 
@@ -114,9 +114,12 @@ export function NoteApp() {
         <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
           <SheetContent side="left" className="w-64 p-0">
             <SheetTitle className="sr-only">Filters</SheetTitle>
-            <div className="flex items-center gap-2 border-b px-4 py-4">
+            <div className="flex items-center gap-2 px-4 py-4">
               <StickyNote className="text-primary size-5" />
               <span className="font-semibold">Notes</span>
+            </div>
+            <div className="flex shrink-0 items-center justify-center border-b px-3 py-3">
+              <NoteForm onSubmit={addNote} />
             </div>
             <div className="flex-1 overflow-y-auto">
               <NoteSidebar />
@@ -137,13 +140,17 @@ export function NoteApp() {
             </Button>
 
             <div className="relative max-w-sm flex-1">
-              <Search className="text-muted-foreground absolute top-1/2 left-3 size-3.5 -translate-y-1/2" />
-              <Input
-                placeholder="Search notes..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="h-9 pl-8"
-              />
+            <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white dark:bg-transparent">
+        <div className="flex items-center justify-center px-3">
+          <Search className="text-muted-foreground/80 size-3.5" />
+        </div>
+        <input
+          placeholder="Search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none dark:bg-transparent"
+        />
+      </div>
               {search && (
                 <Button
                   variant="ghost"
@@ -155,7 +162,7 @@ export function NoteApp() {
               )}
             </div>
 
-            <div className="ml-auto flex items-center gap-1">
+            <div className="ml-auto flex items-center gap-2">
               {isFiltered && (
                 <Button
                   variant="ghost"
@@ -166,19 +173,21 @@ export function NoteApp() {
                   Clear filters
                 </Button>
               )}
-              <div className="flex rounded-@lg border p-0.5">
+              <div className="flex items-center gap-1 rounded-md border border-border bg-code-background p-1 text-xs text-foreground">
                 <Toggle
                   pressed={viewMode === "grid"}
                   onPressedChange={() => setViewMode("grid")}
-                  size="sm"
-                  className="data-[state=on]:bg-muted size-7 rounded-md">
+                  size="xs"
+                  aria-label="Grid view"
+                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm">
                   <LayoutGrid className="size-3.5" />
                 </Toggle>
                 <Toggle
                   pressed={viewMode === "list"}
                   onPressedChange={() => setViewMode("list")}
-                  size="sm"
-                  className="data-[state=on]:bg-muted size-7 rounded-md">
+                  size="xs"
+                  aria-label="List view"
+                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm">
                   <List className="size-3.5" />
                 </Toggle>
               </div>
@@ -197,7 +206,7 @@ export function NoteApp() {
           </header>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-4 @lg:p-5">
+          <div className="@container/cards flex-1 overflow-y-auto p-4 @lg:p-5">
             {filtered.length === 0 ? (
               <div className="flex h-full items-center justify-center">
                 <div className="text-center">

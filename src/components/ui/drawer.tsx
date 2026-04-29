@@ -50,8 +50,12 @@ function DrawerOverlay({
 function DrawerContent({
   className,
   children,
+  previewDesktopNarrow,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & {
+  /** Desktop viewport + narrow preview host: fill host height, drop side borders, let body scroll inside. Real mobile keeps default drawer. */
+  previewDesktopNarrow?: boolean;
+}) {
   return (
     <DrawerPortal data-slot="drawer-portal">
       <DrawerOverlay />
@@ -63,6 +67,8 @@ function DrawerContent({
           "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
           "data-[vaul-drawer-direction=right]:top-6 data-[vaul-drawer-direction=right]:bottom-6 data-[vaul-drawer-direction=right]:right-6 data-[vaul-drawer-direction=right]:h-auto data-[vaul-drawer-direction=right]:min-w-[340px] data-[vaul-drawer-direction=right]:max-w-[calc(100vw-3rem)] data-[vaul-drawer-direction=right]:rounded-lg data-[vaul-drawer-direction=right]:shadow-[-4px_0_24px_rgba(0,0,0,0.08)]",
           "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
+          previewDesktopNarrow &&
+            "data-[vaul-drawer-direction=bottom]:!top-0 data-[vaul-drawer-direction=bottom]:!mt-0 data-[vaul-drawer-direction=bottom]:!h-full data-[vaul-drawer-direction=bottom]:!max-h-full data-[vaul-drawer-direction=bottom]:rounded-none data-[vaul-drawer-direction=bottom]:border-l-0 data-[vaul-drawer-direction=bottom]:border-r-0 min-h-0 [&>*:first-child]:hidden [&>*:last-child]:flex [&>*:last-child]:min-h-0 [&>*:last-child]:flex-1 [&>*:last-child]:flex-col",
           className,
         )}
         {...props}
