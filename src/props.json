@@ -1761,14 +1761,6 @@
       "required": true
     }
   ],
-  "ChatAppPage": [
-    {
-      "name": "className",
-      "type": "string",
-      "description": "",
-      "required": false
-    }
-  ],
   "Checkbox": [
     {
       "name": "label",
@@ -4367,6 +4359,14 @@
       "required": false
     }
   ],
+  "MultiStepFormPage": [
+    {
+      "name": "className",
+      "type": "string",
+      "description": "",
+      "required": false
+    }
+  ],
   "NativeSelect": [
     {
       "name": "disabled",
@@ -5948,6 +5948,12 @@
       "name": "description",
       "type": "string",
       "description": "The description text",
+      "required": false
+    },
+    {
+      "name": "wrapperClassName",
+      "type": "string",
+      "description": "Classes on the outer wrapper around the field (e.g. `min-w-0 flex-1` inside flex rows).",
       "required": false
     },
     {

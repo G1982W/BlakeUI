@@ -24,7 +24,8 @@ export function ChatLayout() {
       <Drawer
         open={isMobile && mobileDrawerOpen}
         onOpenChange={setMobileDrawerOpen}
-        direction="bottom">
+        direction="bottom"
+      >
         <DrawerContent className="h-[90vh] max-h-[90vh] flex flex-col p-0">
           <ChatMain />
         </DrawerContent>

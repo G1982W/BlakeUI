@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { lessons } from "./data";
+import { lessons } from "../data";
 
 const completedCount = lessons.filter((l) => l.completed).length;
 const progressPercent =
@@ -44,7 +44,7 @@ export function CourseCurriculum() {
               Continue Learning
             </Button>
             <Button
-              variant="primary"
+              variant="outline"
               className="w-full gap-2"
               onClick={() => setSaved((s) => !s)}
             >

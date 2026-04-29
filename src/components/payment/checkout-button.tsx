@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 
 interface CheckoutButtonProps {
   children?: React.ReactNode;
@@ -22,6 +23,7 @@ export function CheckoutButton({
     } = await supabase.auth.getUser();
 
     if (!user) {
+      startNavigationProgress();
       router.push(`/login`);
       return;
     }
@@ -38,6 +40,7 @@ export function CheckoutButton({
     const data = await res.json();
     if (!res.ok) {
       if (res.status === 401) {
+        startNavigationProgress();
         router.push(`/login`);
         return;
       }

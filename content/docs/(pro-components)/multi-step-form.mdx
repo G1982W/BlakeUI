@@ -1,0 +1,49 @@
+---
+title: Multi-Step Form Page
+description: Full-page guided setup with sidebar progress, step panels, and mobile step dots.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="multi-step-form" premium>
+  <MultiStepFormPageDemo className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Multi-Step Form Page** includes:
+
+- **Sidebar (large screens)**: Gradient rail with step list and completion state.
+- **Step flow**: Role & use case, template, data source, first flow, and invite team.
+- **Navigation**: Continue / back between steps; optional steps marked in the list.
+- **Mobile chrome**: Bottom step dots and “Step X of Y” when the sidebar is hidden.
+
+Uses Button, Input, Label, Textarea, Badge, and layout primitives.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  files={appPageSources["multi-step-form"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { MultiStepFormPage } from "@/components/ui/multi-step-form-page";
+
+<MultiStepFormPage />;
+```

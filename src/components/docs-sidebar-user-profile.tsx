@@ -1,12 +1,13 @@
 "use client";
 
-import type { User } from "@supabase/supabase-js";
+import type { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
 import { LogIn, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -97,7 +98,7 @@ export function SidebarUserProfile({
               )}
             </div>
           </div>
-          {/* <Button
+          <Button
             variant="primary"
             size="sm"
             className="h-8 w-full justify-start gap-2 border-transparent bg-transparent px-2 text-muted-foreground shadow-none hover:bg-sidebar-accent/50 hover:text-foreground"
@@ -105,7 +106,7 @@ export function SidebarUserProfile({
           >
             <LogOut className="size-4" />
             <span>Log out</span>
-          </Button> */}
+          </Button>
         </div>
       ) : (
         <div className="flex flex-col gap-2 px-1">
@@ -140,13 +141,19 @@ export function DocsSidebarUserProfileWithSupabase({
   React.useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data: { user: u } }) => setUser(u));
+    supabase.auth
+      .getUser()
+      .then(({ data: { user: authUser } }: { data: { user: User | null } }) =>
+        setUser(authUser),
+      );
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user ?? null);
+      },
+    );
 
     return () => subscription.unsubscribe();
   }, []);
@@ -155,10 +162,12 @@ export function DocsSidebarUserProfileWithSupabase({
     const supabase = createClient();
     await supabase.auth.signOut();
     router.refresh();
+    startNavigationProgress();
     router.push("/");
   }, [router]);
 
   const handleLogin = React.useCallback(() => {
+    startNavigationProgress();
     router.push("/login");
   }, [router]);
 

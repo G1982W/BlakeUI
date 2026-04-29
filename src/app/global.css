@@ -229,8 +229,9 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: #FAFAFA;
+    /* Match light theme brand: light “primary” + white foreground was unreadable (e.g. chat bubbles). */
+    --primary: #436283;
+    --primary-foreground: #fafafa;
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: oklch(0.269 0 0);
@@ -348,23 +349,48 @@ h6 {
     width: 100%;
     max-width: none;
     margin: 0;
+}
 
-    /* Mobile: single-column width, no zoomed-out desktop layout (≤786px; matches useIsMobile) */
-    @media (max-width: 786px) {
+/*
+ * Fumadocs LayoutBody sets inline grid-template with column 1 =
+ * minmax(var(--fd-sidebar-col), 1fr). When collapsed, --fd-sidebar-col is 0px but the max
+ * stays 1fr, so the "sidebar" track still grows and steals width from [grid-area:main].
+ * Override the full shorthand (same areas/rows as upstream) so side tracks stay 0-wide.
+ */
+@media (max-width: 786px) {
+    #nd-docs-layout {
         --fd-sidebar-width: 0 !important;
         --fd-toc-width: 0 !important;
         --fd-layout-width: 100% !important;
+        --fd-sidebar-col: 0px !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        grid-template-columns: 0 1fr 0 !important;
-        overflow-x: hidden !important;
+        grid-template:
+            "sidebar header toc" auto
+            "sidebar toc-popover toc" auto
+            "sidebar main toc" 1fr
+            / minmax(0px, 0px) minmax(0, 1fr) minmax(0px, 0px) !important;
+        overflow: visible !important;
     }
 
-    @media (min-width: 787px) {
+    #nd-docs-layout > * {
+        min-width: 0;
+    }
+}
+
+@media (min-width: 787px) {
+    #nd-docs-layout {
         --fd-sidebar-width: 280px;
+        --fd-layout-width: 90% !important;
         grid-template-columns: var(--fd-sidebar-width) minmax(0, 1fr) var(--fd-toc-width) !important;
-        --fd-layout-width: 80% !important;
+    }
+}
+
+/* Backup: hide desktop sidebar shell whenever mobile docs rules apply (see postinstall patch). */
+@media (max-width: 786px) {
+    #nd-docs-layout [data-sidebar-placeholder] {
+        display: none !important;
     }
 }
 
@@ -372,6 +398,8 @@ h6 {
     max-width: var(--fd-layout-width) !important;
     margin-left: auto;
     margin-right: auto;
+    /* Do not set overflow-x: auto/hidden here — pairs overflow-y to auto and
+       traps vertical scroll on mobile. Wide blocks use .prose / pre overflow locally. */
     overscroll-behavior: none !important;
 }
 
@@ -387,8 +415,15 @@ h6 {
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
-        overflow-x: auto;
+        overflow: visible !important;
     }
+}
+
+/* Wide code/tables: scroll inside the block, not the whole article (keeps page scroll on mobile) */
+#nd-page .prose pre,
+#nd-page .prose table {
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* Fumadocs prose: use exact --foreground (overrides oklab color-mix) */
@@ -453,20 +488,18 @@ h6 {
 
 /* Mobile: hide right aside (TOC), constrain main to viewport, prevent zoomed-out layout */
 @media (max-width: 786px) {
+    /*
+     * Do not set overflow-x: hidden on body: paired with overflow-y: visible it
+     * forces overflow-y to compute to auto (CSS overflow pairing), which makes
+     * body the scrollport on some mobile browsers and breaks normal document
+     * scrolling for /docs. Horizontal clipping stays on #nd-docs-layout / #nd-page.
+     */
     body {
-        overflow-x: hidden;
         overscroll-behavior: none;
     }
 
     #nd-toc {
         display: none !important;
-    }
-
-    #nd-docs-layout main {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        overflow-x: auto;
     }
 
     /* Fumadocs drawer: closed overlay must not sit above content (Radix Presence exit) */

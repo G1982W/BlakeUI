@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppLink } from "@/components/ui/link";
+import { startNavigationProgress } from "@/lib/navigation-progress";
 import { getBrowserOrigin } from "@/lib/request-origin";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
@@ -54,6 +55,7 @@ export default function LoginPage() {
     }
     toast.success("Welcome back!");
     router.refresh();
+    startNavigationProgress();
     router.push("/");
   }
 

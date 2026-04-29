@@ -1,0 +1,46 @@
+---
+title: Todo List App Page
+description: A full-page todo list app with drag-and-drop functionality and kanban view.
+base: base
+component: true
+appPage: true
+---
+
+import Installation from "@/components/installation";
+import appPageSources from "@/generated/app-page-sources.json";
+
+## Example
+
+<AppPagePreview bundleId="todo-list-app" premium>
+  <TodoListAppDemoPage className="w-full" />
+</AppPagePreview>
+
+## Introduction
+
+**Todo List App Page** includes:
+
+- **Drag-and-drop functionality**: Drag and drop todos between sections and within sections.
+- **Kanban view**: View todos in a kanban board.
+- **List view**: View todos in a list.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={[]}
+  files={appPageSources["todo-list-app"].files.map((f) => ({
+    path: f.path,
+    code: f.content,
+  }))}
+/>
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import Page from "@/components/app-pages/todo-list-app-page/page";
+
+<Page />;
+```
