@@ -1,7 +1,14 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 import TwitterIcon from "@/components/icons/twitter";
 import { Github } from "lucide-react";
+import {
+  PrivacyPolicyDialogue,
+  type PrivacyPolicyDialogueProps,
+} from "@/components/privacy-policy-dialogue";
 
 const productLinks = [
   { label: "Components", href: "#" },
@@ -17,10 +24,13 @@ const resourceLinks = [
   { label: "Help Center", href: "#" },
 ];
 
-const legalLinks = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Cookie Policy", href: "#" },
+const legalLinks: {
+  label: string;
+  tab: PrivacyPolicyDialogueProps["defaultTab"];
+}[] = [
+  { label: "Privacy Policy", tab: "privacy" },
+  { label: "Terms of Service", tab: "terms" },
+  { label: "Cookie Policy", tab: "cookies" },
 ];
 
 function LinkColumn({
@@ -50,6 +60,9 @@ function LinkColumn({
 }
 
 export function DocsFooter() {
+  const [dialogTab, setDialogTab] =
+    React.useState<PrivacyPolicyDialogueProps["defaultTab"]>(undefined);
+
   return (
     <footer className="mt-16 w-full border-t border-border bg-background">
       <div className="mx-auto max-w-368 px-4 py-12 md:px-6">
@@ -58,26 +71,25 @@ export function DocsFooter() {
             <div className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} BlakeUI. All rights reserved.
             </div>
-            <div className="flex justify-center gap-2 items-center">
-              {/* <LinkColumn title="Legal" links={legalLinks} /> */}
+            <div className="flex flex-wrap justify-center gap-2 items-center">
               {legalLinks.map((link) => (
-                <Link
+                <button
                   key={link.label}
-                  href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setDialogTab(link.tab)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 >
                   {link.label}
-                </Link>
+                </button>
               ))}
             </div>
-            {/* <span
-              className="inline-block size-2 shrink-0 rounded-full bg-emerald-500"
-              aria-hidden
-            />
-            All systems operational */}
           </div>
         </div>
       </div>
+      <PrivacyPolicyDialogue
+        open={dialogTab !== undefined}
+        onOpenChange={(open) => !open && setDialogTab(undefined)}
+        defaultTab={dialogTab}
+      />
     </footer>
   );
 }
