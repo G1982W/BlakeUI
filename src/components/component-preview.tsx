@@ -20,12 +20,10 @@ interface ComponentPreviewProps {
 const PREMIUM_OVERLAY_CONTENT = {
   title: "Get Instant Access to the Code",
   subtitle:
-    "Get instant access to this block and all 1350 other blocks, available to copy/paste or install via the Blake UI workflow.",
+    "Get instant access to this block and all 50+ other blocks and components.",
   list: [
-    "1193+ Blake UI blocks",
-    "1189+ Blake UI components",
-    "12 Next.js, Astro templates (Premium)",
-    "Figma UI Kit (Premium)",
+    "50+ Blake UI blocks",
+    "100 Blake UI components",
     "Lifetime updates & unlimited projects",
   ],
   ctaLabel: "Get access",

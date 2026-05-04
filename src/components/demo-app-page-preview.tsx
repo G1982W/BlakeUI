@@ -6,14 +6,7 @@ import rawBundles from "@/generated/app-page-sources.json";
 import { cn } from "@/lib/utils";
 import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
-import {
-  Lock,
-  Maximize2,
-  Monitor,
-  Smartphone,
-  Tablet,
-  X,
-} from "lucide-react";
+import { Lock, Maximize2, Monitor, Smartphone, Tablet, X } from "lucide-react";
 
 type AppPageSourceFile = { path: string; content: string };
 type Bundles = Record<string, { files: AppPageSourceFile[] }>;
@@ -43,12 +36,10 @@ export interface DemoAppPagePreviewProps {
 const PREMIUM_OVERLAY_CONTENT = {
   title: "Get Instant Access to the Code",
   subtitle:
-    "Get instant access to this block and all 1350 other blocks, available to copy/paste or install via the Blake UI workflow.",
+    "Get instant access to this block and all 50+ other blocks and components.",
   list: [
-    "1193+ Blake UI blocks",
-    "1189+ Blake UI components",
-    "12 Next.js, Astro templates (Premium)",
-    "Figma UI Kit (Premium)",
+    "50+ Blake UI blocks",
+    "100 Blake UI components",
     "Lifetime updates & unlimited projects",
   ],
   ctaLabel: "Get access",
@@ -66,7 +57,8 @@ export function DemoAppPagePreview({
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
   const [expanded, setExpanded] = React.useState(false);
-  const [previewWidth, setPreviewWidth] = React.useState<PreviewWidth>("desktop");
+  const [previewWidth, setPreviewWidth] =
+    React.useState<PreviewWidth>("desktop");
   const { isLoading: subscriptionLoading, hasActiveSubscription } =
     useSubscriptionStatus();
 
@@ -111,7 +103,9 @@ export function DemoAppPagePreview({
       <div className="not-prose my-4 rounded-lg border border-destructive/50 bg-destructive/5 p-4 text-sm text-destructive">
         No source bundle found for <code className="font-mono">{bundleId}</code>
         . Run{" "}
-        <code className="font-mono">node scripts/build-app-page-sources.mjs</code>{" "}
+        <code className="font-mono">
+          node scripts/build-app-page-sources.mjs
+        </code>{" "}
         after updating bundles.
       </div>
     );
@@ -154,7 +148,8 @@ export function DemoAppPagePreview({
                   aria-label="Mobile preview width"
                   className={cn(
                     "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
-                    previewWidth === "mobile" && "bg-background text-foreground shadow-sm",
+                    previewWidth === "mobile" &&
+                      "bg-background text-foreground shadow-sm",
                   )}
                 >
                   <Smartphone className="size-3.5" />
@@ -165,7 +160,8 @@ export function DemoAppPagePreview({
                   aria-label="Tablet preview width"
                   className={cn(
                     "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
-                    previewWidth === "tablet" && "bg-background text-foreground shadow-sm",
+                    previewWidth === "tablet" &&
+                      "bg-background text-foreground shadow-sm",
                   )}
                 >
                   <Tablet className="size-3.5" />
@@ -176,7 +172,8 @@ export function DemoAppPagePreview({
                   aria-label="Desktop preview width"
                   className={cn(
                     "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
-                    previewWidth === "desktop" && "bg-background text-foreground shadow-sm",
+                    previewWidth === "desktop" &&
+                      "bg-background text-foreground shadow-sm",
                   )}
                 >
                   <Monitor className="size-3.5" />
@@ -290,7 +287,8 @@ export function DemoAppPagePreview({
             <div
               className={cn(
                 "transition-opacity",
-                showPremiumOverlay && "pointer-events-none select-none opacity-30",
+                showPremiumOverlay &&
+                  "pointer-events-none select-none opacity-30",
               )}
             >
               {activeFile ? (
