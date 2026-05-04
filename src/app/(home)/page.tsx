@@ -91,9 +91,12 @@ export default function HomePage() {
                     Lifetime updates
                   </li>
                 </ul>
-                <button className="mt-3 w-fit rounded-button border border-brand bg-brand px-4 py-1.5 text-xs font-medium text-white">
+                <Link
+                  href="/pricing"
+                  className="mt-3 inline-flex w-fit items-center justify-center rounded-button border border-brand bg-brand px-4 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
+                >
                   Buy Now
-                </button>
+                </Link>
               </div>
             </div>
           </section>
