@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-
-const ACTIVE_STATUSES = ["active", "trialing"];
+import { isActiveSubscriptionStatus } from "@/lib/subscription-status";
 
 export function useSubscriptionStatus() {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +28,7 @@ export function useSubscriptionStatus() {
       if (error || !data) {
         setHasActiveSubscription(false);
       } else {
-        setHasActiveSubscription(
-          ACTIVE_STATUSES.includes(data.status?.toLowerCase() ?? "")
-        );
+        setHasActiveSubscription(isActiveSubscriptionStatus(data.status));
       }
       setIsLoading(false);
     }

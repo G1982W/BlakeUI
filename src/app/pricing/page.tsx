@@ -1,27 +1,64 @@
 import Link from "next/link";
-import {
-  Check,
-  Code2,
-  FileCode,
-  LayoutTemplate,
-  Palette,
-  Sparkles,
-} from "lucide-react";
+import { Check, Code2, FileCode, Sparkles } from "lucide-react";
 import { CheckoutButton } from "@/components/payment/checkout-button";
+import { createClient } from "@/lib/supabase/server";
+import { isActiveSubscriptionStatus } from "@/lib/subscription-status";
+import { Button } from "@/components/ui/button";
 
 const FEATURES = [
   { icon: Code2, text: "50+ Blake UI blocks" },
   { icon: FileCode, text: "100 Blake UI components" },
-  // { icon: LayoutTemplate, text: "12 Next.js, Astro templates (Premium)" },
-  // { icon: Palette, text: "Figma UI Kit (Premium)" },
   { icon: Sparkles, text: "Lifetime updates & unlimited projects" },
 ];
 
-export default function PricingPage() {
+async function userHasActiveSubscription(): Promise<boolean> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user?.id) return false;
+
+  const { data, error } = await supabase
+    .from("subscriptions")
+    .select("status")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (error || !data) return false;
+  return isActiveSubscriptionStatus(data.status);
+}
+
+export default async function PricingPage() {
+  const hasSubscription = await userHasActiveSubscription();
+
+  if (hasSubscription) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="mx-auto max-w-lg px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="rounded-xl border border-border bg-card p-8 text-center shadow-sm">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+              You already have access
+            </h1>
+            <p className="mt-3 text-muted-foreground">
+              You have a lifetime license. You do not need to purchase again.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <Button variant="secondary" size="lg" asChild>
+                <Link href="/docs">Browse docs</Link>
+              </Button>
+              <Button variant="primary" size="lg" asChild>
+                <Link href="/profile">View account</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        {/* Header */}
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Get instant access to the code
@@ -32,7 +69,6 @@ export default function PricingPage() {
           </p>
         </div>
 
-        {/* Feature list */}
         <ul className="mt-12 space-y-4 sm:mt-16">
           {FEATURES.map(({ icon: Icon, text }) => (
             <li
@@ -48,7 +84,6 @@ export default function PricingPage() {
           ))}
         </ul>
 
-        {/* Pricing card */}
         <div className="mt-12 sm:mt-16">
           <div className="overflow-hidden rounded-xl border border-border-neutral bg-card shadow-sm">
             <div className="p-6 sm:p-8">
@@ -81,7 +116,6 @@ export default function PricingPage() {
           </div>
         </div>
 
-        {/* Footer note */}
         <p className="mt-8 text-center text-xs text-muted-foreground">
           Secure checkout via Stripe. You’ll get immediate access after payment.
         </p>
