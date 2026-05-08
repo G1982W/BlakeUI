@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import registry from "@/registry.json";
 import { CachedDynamicCodeBlock } from "@/components/cached-dynamic-codeblock";
-import { Lock, Maximize2, X } from "lucide-react";
+import { Lock, Maximize2, Monitor, Smartphone, Tablet, X } from "lucide-react";
 import Link from "next/link";
 import { useSubscriptionStatus } from "@/hooks/use-subscription-status";
 
@@ -15,8 +15,9 @@ interface ComponentPreviewProps {
   /** When true, the Code tab shows a buy overlay unless the user has an active subscription. */
   premium?: boolean;
   previewClassName?: string;
+  showDevicePreview?: boolean;
 }
-
+type PreviewWidth = "mobile" | "tablet" | "desktop";
 const PREMIUM_OVERLAY_CONTENT = {
   title: "Get Instant Access to the Code",
   subtitle:
@@ -36,13 +37,15 @@ export function ComponentPreview({
   className,
   previewClassName,
   premium = false,
+  showDevicePreview = false,
 }: ComponentPreviewProps) {
   const [tab, setTab] = React.useState<"preview" | "code">("preview");
   const [copied, setCopied] = React.useState(false);
   const [expanded, setExpanded] = React.useState(false);
   const { isLoading: subscriptionLoading, hasActiveSubscription } =
     useSubscriptionStatus();
-
+  const [previewWidth, setPreviewWidth] =
+    React.useState<PreviewWidth>("desktop");
   React.useEffect(() => {
     if (!expanded) return;
     const handleEscape = (e: KeyboardEvent) => {
@@ -98,16 +101,59 @@ export function ComponentPreview({
         </div>
         <div className="flex items-center gap-2">
           {tab === "preview" && (
-            <button
-              type="button"
-              onClick={() => setExpanded(true)}
-              className="flex h-8 items-center bg-surface justify-center gap-1.5 rounded-md border px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95"
-              title="Expand to full screen"
-              aria-label="Expand to full screen"
-            >
-              <Maximize2 className="size-3.5" />
-              Expand
-            </button>
+            <>
+              {showDevicePreview && (
+                <div className="hidden items-center gap-1 rounded-md border border-border bg-code-background p-1 text-xs text-foreground min-[769px]:flex">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewWidth("mobile")}
+                    aria-label="Mobile preview width"
+                    className={cn(
+                      "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
+                      previewWidth === "mobile" &&
+                        "bg-background text-foreground shadow-sm",
+                    )}
+                  >
+                    <Smartphone className="size-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewWidth("tablet")}
+                    aria-label="Tablet preview width"
+                    className={cn(
+                      "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
+                      previewWidth === "tablet" &&
+                        "bg-background text-foreground shadow-sm",
+                    )}
+                  >
+                    <Tablet className="size-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewWidth("desktop")}
+                    aria-label="Desktop preview width"
+                    className={cn(
+                      "cursor-pointer rounded-sm px-3 py-1 font-medium text-muted-foreground transition-all hover:bg-background hover:text-foreground",
+                      previewWidth === "desktop" &&
+                        "bg-background text-foreground shadow-sm",
+                    )}
+                  >
+                    <Monitor className="size-3.5" />
+                  </button>
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                className="flex h-8 items-center bg-surface justify-center gap-1.5 rounded-md border px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground active:scale-95"
+                title="Expand to full screen"
+                aria-label="Expand to full screen"
+              >
+                <Maximize2 className="size-3.5" />
+                Expand
+              </button>
+            </>
           )}
           <button
             onClick={copyToClipboard}
@@ -143,13 +189,18 @@ export function ComponentPreview({
               <X className="size-5" />
             </button>
           </div>
-          <div
-            className={cn(
-              "h-[calc(100vh-3.5rem)] max-h-[calc(100vh-3.5rem)] overflow-auto p-6",
-              previewClassName,
-            )}
-          >
-            {children}
+          <div className="flex h-[calc(100vh-3.5rem)] max-h-[calc(100vh-3.5rem)] w-full justify-center overflow-auto p-6">
+            <div
+              className={cn(
+                "w-full transition-[max-width] duration-300",
+                previewClassName,
+                previewWidth === "mobile" && "max-w-[425px]",
+                previewWidth === "tablet" && "max-w-[768px]",
+                previewWidth === "desktop" && "max-w-none",
+              )}
+            >
+              {children}
+            </div>
           </div>
         </div>
       )}
@@ -161,13 +212,18 @@ export function ComponentPreview({
         )}
       >
         {tab === "preview" ? (
-          <div
-            className={cn(
-              "flex w-full min-w-0 justify-center overflow-visible p-10 ring-offset-background transition-colors",
-              previewClassName,
-            )}
-          >
-            {children}
+          <div className="flex w-full min-w-0 justify-center overflow-visible p-10 ring-offset-background transition-colors">
+            <div
+              className={cn(
+                "w-full transition-[max-width] duration-300",
+                previewClassName,
+                previewWidth === "mobile" && "max-w-[425px]",
+                previewWidth === "tablet" && "max-w-[768px]",
+                previewWidth === "desktop" && "max-w-none",
+              )}
+            >
+              {children}
+            </div>
           </div>
         ) : (
           <div

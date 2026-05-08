@@ -3,7 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { BlakeLogoIcon } from "@/components/blake-logo-icon";
 import { Dashboard18 } from "@/components/dashboard-18";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
@@ -104,22 +104,50 @@ export default function HomePage() {
       </div>
 
       {/* CTA Section */}
-      <section className="relative w-full mx-auto overflow-hidden bg-surface px-4 py-[90px]">
-        <div className="relative z-10 flex flex-col items-center gap-2.5 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-            Get started today
+      <section className="relative mx-auto w-full overflow-hidden bg-surface px-4 py-22.5">
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-4xl font-normal tracking-tight text-foreground sm:text-5xl">
+            Try our other products
           </h2>
-          <p className="mt-3 max-w-[474px] text-[21px] font-normal leading-[115%] tracking-[0.01em] text-muted-foreground">
-            Mainline is the fit-for-purpose tool for planning
-            <br />
-            and building modern software products.
-          </p>
-          <Button asChild variant="secondary" size="lg" className="mt-6">
-            <Link href="/docs">
-              View Components
-              <ArrowRight className="size-4" />
+
+          {/* blakebill & askblake */}
+          <div className="mt-12 flex items-center justify-center gap-4 sm:gap-12">
+            <Link
+              href="https://blakebill.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-2"
+            >
+              <Image
+                src="/blakebill-logo.svg"
+                alt=".blakebill"
+                width={125}
+                height={25}
+              />
+              <span className="text-[16px] text-muted-foreground">
+                Transfer up to 3GB files
+              </span>
             </Link>
-          </Button>
+
+            <div aria-hidden="true" className="h-7.5 w-0.5 bg-foreground" />
+
+            <Link
+              href="https://askblake.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-2"
+            >
+              <Image
+                src="/askblake-logo.svg"
+                alt="askblake"
+                width={168}
+                height={25}
+              />
+              <span className="text-[16px] text-muted-foreground">
+                AI component generator
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 

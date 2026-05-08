@@ -188,6 +188,7 @@ export function useDataTable<TData>(options: UseDataTableOptions<TData>) {
   } = options;
 
   const [sorting, setSorting] = React.useState<SortingState>(initialSorting);
+  const [columnOrder, setColumnOrder] = React.useState<string[]>([]);
 
   const [rowSelection, setRowSelection] =
     React.useState<RowSelectionState>(initialSelection);
@@ -206,6 +207,7 @@ export function useDataTable<TData>(options: UseDataTableOptions<TData>) {
       sorting,
       columnPinning,
       rowSelection,
+      columnOrder,
     },
     onSortingChange: setSorting,
     onRowSelectionChange: setRowSelection,
@@ -215,6 +217,7 @@ export function useDataTable<TData>(options: UseDataTableOptions<TData>) {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     onColumnPinningChange: setColumnPinning,
+    onColumnOrderChange: setColumnOrder,
     enableRowSelection,
   });
 
@@ -805,6 +808,41 @@ export const DataTable32 = ({ className }: { className?: string }) => {
     getRowId: (row) => row.id.toString(),
     initialColumnPinning: { left: ["select"], right: ["actions"] },
   });
+
+  const sortingState = table.getState().sorting;
+  const originalColumnOrderRef = React.useRef<string[]>([]);
+
+  React.useEffect(() => {
+    // Capture original order once, on first run when columns are available
+    if (originalColumnOrderRef.current.length === 0) {
+      originalColumnOrderRef.current = table
+        .getAllLeafColumns()
+        .map((c) => c.id);
+    }
+
+    const columnPinning = table.getState().columnPinning;
+    const leftPinned = columnPinning.left ?? [];
+    const rightPinned = columnPinning.right ?? [];
+    const pinnedSet = new Set([...leftPinned, ...rightPinned]);
+
+    const sortedIds = sortingState
+      .map((s) => s.id)
+      .filter((id) => !pinnedSet.has(id));
+    const sortedSet = new Set(sortedIds);
+
+    // Build "remaining" from the captured original order, not the current order
+    const remaining = originalColumnOrderRef.current.filter(
+      (id) => !pinnedSet.has(id) && !sortedSet.has(id),
+    );
+
+    table.setColumnOrder([
+      ...leftPinned,
+      ...sortedIds,
+      ...remaining,
+      ...rightPinned,
+    ]);
+  }, [table, sortingState]);
+
   const visibleColumns = table.getVisibleLeafColumns();
   const visibleColumnCount = Math.max(visibleColumns.length, 1);
   const visibleColumnIds = visibleColumns.map((column) => column.id);

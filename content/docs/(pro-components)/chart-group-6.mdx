@@ -1,0 +1,52 @@
+---
+title: Charts Group 6
+description: Revenue overview comparison plus an AOV vs order volume scatter, paired in a responsive two-column layout.
+base: base
+component: true
+---
+
+import { ChartGroup6 } from "@/components/ui/chart-group-6";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-6" premium>
+  <ChartGroup6 />
+</ComponentPreview>
+
+## Introduction
+
+Charts Group 6 includes:
+
+- **Revenue overview**: Diverging stacked bar chart comparing this year vs last year by quarter, with a transparent gap band separating the positive and negative stacks.
+- **AOV scatter**: Daily orders vs average order value scatter with a third dimension (revenue) encoded by point size.
+- **Summary stats**: Each card surfaces top-line metrics — total revenue with year-over-year delta on the left, average AOV / total orders / total revenue on the right.
+- **Custom tooltips**: Both charts ship hover panels styled with popover surfaces, gap series filtered out of the revenue tooltip.
+- **Responsive layout**: Single column on small screens, 3fr/2fr two-column grid from `lg` upward.
+
+Uses Button, Chart, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-group-6"]?.source ?? ""}
+  fileName="/components/ui/chart-group-6.tsx"
+/>
+
+Requires Button, Chart, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup6 } from "@/components/ui/chart-group-6";
+
+<ChartGroup6 />;
+```
+
+Replace `fullYearData` to drive the revenue bars and `dailyMetrics` to drive the scatter; `revenueDomainMax` and `GAP_OFFSET` control the bar Y-axis range and the visual gap between positive/negative stacks.

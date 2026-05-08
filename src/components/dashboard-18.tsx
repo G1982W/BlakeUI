@@ -86,6 +86,7 @@ import Dashboard18HomepageCalendar from "./dashboard-18-homepage-calendar";
 import Dashboard18HomepageRevenue from "./dashboard-18-homepage-revenue-overview";
 import Dashboard18HomepageTotalRevenue from "./dashboard-18-homepage-total-revenue";
 import Dashboard18HomepageNetRevenue from "./dashboard-18-homepage-net-revenue";
+import { RevenueFlowChart } from "./ui/revenue-flow-chart";
 
 type NavItem = {
   label: string;
@@ -1330,7 +1331,7 @@ function SalesTrendSquareBar({
   return <g>{squares}</g>;
 }
 
-const RevenueFlowChart = () => {
+const RevenueFlowChart1 = () => {
   const [activePointKey, setActivePointKey] = React.useState<string | null>(
     null,
   );
