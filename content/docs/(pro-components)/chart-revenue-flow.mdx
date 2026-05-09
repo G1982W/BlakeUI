@@ -1,0 +1,52 @@
+---
+title: Revenue Flow Chart
+description: Appointment sources panel with a pixel-grid bar chart that splits referral and walk-in patients across the year.
+base: base
+component: true
+---
+
+import { RevenueFlowChart } from "@/components/ui/revenue-flow-chart";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="revenue-flow-chart" premium>
+  <RevenueFlowChart className="w-full" />
+</ComponentPreview>
+
+## Introduction
+
+**Revenue Flow Chart** is an appointment-sources analytics card:
+
+- **Header**: Total patients with breakdown legend for Referral and Walk-in counts and percentages.
+- **Pixel grid**: Plot area is tiled with rounded square cells that act as the chart's background.
+- **Stacked bars**: Each column fills cells from the bottom up, splitting Referral (solid brand) and Walk-in (tinted brand) by share of total.
+- **Custom tooltip**: Floating panel showing the month, Referral, and Walk-in counts on hover.
+- **Cursor marker**: Dashed vertical line plus a circular marker that snaps to the active column's top filled cell.
+
+Uses Chart, Recharts (`BarChart`, `Bar`, `Customized`, `Tooltip`, `XAxis`, `YAxis`), and the `usePlotArea` hook to align custom SVG with the plot area.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["revenue-flow-chart"]?.source ?? ""}
+  fileName="/components/ui/revenue-flow-chart.tsx"
+/>
+
+Requires Chart and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { RevenueFlowChart } from "@/components/ui/revenue-flow-chart";
+
+<RevenueFlowChart />;
+```
+
+Swap the `directBookingPeaks`, `otaBookingPeaks`, and `APPOINTMENT_SOURCES_SUMMARY` constants to bind the chart to your own data, and adjust `SALES_TREND_MAX` if your domain exceeds 200.

@@ -307,6 +307,33 @@
       "required": false
     }
   ],
+  "buildCalendarDaySummaries": [
+    {
+      "name": "visibleMonth",
+      "type": "VisibleMonth",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "bookings",
+      "type": "CalendarBooking[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "selectedDate",
+      "type": "Date",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "today",
+      "type": "Date",
+      "description": "",
+      "required": true
+    }
+  ],
+  "getCalendarCountsByDate": [],
   "Calendar": [
     {
       "name": "disabled",

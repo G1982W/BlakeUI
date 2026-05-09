@@ -1,0 +1,54 @@
+---
+title: Appointment Calendar
+description: Full-month appointments calendar with admission, in-patient, and discharge markers, a selected-day summary, and responsive desktop/mobile grids.
+base: base
+component: true
+---
+
+import CalendarAppointment from "@/components/ui/calendar-appointment";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="calendar-appointment" premium>
+  <CalendarAppointment />
+</ComponentPreview>
+
+## Introduction
+
+Calendar Appointment includes:
+
+- **Header**: Title, current month label, and Today / Prev / Next month controls.
+- **Selected day summary**: Live region with the selected date, total occupancy, and per-category counts.
+- **Month grid**: Responsive 7×6 calendar — desktop cells show inline metric rows, mobile cells show compact dot markers.
+- **Category markers**: Solid dot for Admissions, ring for In-Patient, dash for Discharges.
+- **Day cells**: Click any day to select it; selecting a day in another month auto-navigates the visible month.
+
+You need the [Button](/docs/button) in your project.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["lucide-react"]}
+  code={registry["calendar-appointment"]?.source ?? ""}
+  fileName="/components/ui/calendar-appointment.tsx"
+/>
+
+You need the Button component plus `lucide-react` and the `cn` utility from `@/lib/utils`. The component reads `--card`, `--background`, `--primary`, `--success`, `--destructive`, `--border`, `--foreground`, and `--ring` CSS variables from your theme.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import CalendarAppointment from "@/components/ui/calendar-appointment";
+
+<CalendarAppointment />;
+```
+
+The component is self-contained and ships its own demo dataset. To bind to real bookings, replace the `ARRIVALS`, `IN_HOUSE`, and `DEPARTURES` seed arrays (or the `remapBookingsForVisibleMonth` helper) with data fetched for the visible month, and rename the category labels in `CALENDAR_CATEGORY_META` if your domain uses different terminology (e.g. Check-in / Stay / Check-out).
+
+The exported helpers `buildCalendarDaySummaries`, `getCalendarCountsByDate`, and `resolveDefaultCalendarSelectedDate` (plus the `CalendarDaySummary` and `CalendarBooking` types) can be reused if you want to drive the same grid from your own data layer.

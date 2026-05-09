@@ -289,7 +289,7 @@ const AOVScatterChart = () => {
             </p>
           </div>
         </div>
-        <div className="h-[240px] w-full min-w-0 sm:h-[280px]">
+        <div className="h-60 w-full min-w-0 sm:h-70">
           <ChartContainer
             config={scatterChartConfig}
             className="aspect-auto h-full w-full"
@@ -443,7 +443,7 @@ const RevenueOverviewChart = () => {
             {Math.abs(changePercent).toFixed(1)}% vs last year
           </p>
         </div>
-        <div className="h-[240px] w-full min-w-0 sm:h-[280px]">
+        <div className="h-60 w-full min-w-0 sm:h-70">
           <ChartContainer config={revenueChartConfig} className="h-full w-full">
             <BarChart data={fullYearData} stackOffset="sign">
               <CartesianGrid vertical={false} strokeDasharray="0" />
@@ -513,11 +513,13 @@ const RevenueOverviewChart = () => {
   );
 };
 
-export default function Dashboard18HomepageRevenueOverview() {
+function RevenueOverviewCharts() {
   return (
-    <div className="grid gap-4 sm:gap-6 lg:grid-cols-[3fr_2fr]">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1">
       <RevenueOverviewChart />
       <AOVScatterChart />
     </div>
   );
 }
+
+export { RevenueOverviewCharts as ChartGroup6 };

@@ -1,0 +1,52 @@
+---
+title: Charts Group 7
+description: Three-panel revenue analytics group — area chart with period switcher, segmented claim-status bar, and a department revenue donut.
+base: base
+component: true
+---
+
+import { ChartGroup7 } from "@/components/ui/chart-group-7";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-7" premium>
+  <ChartGroup7 />
+</ComponentPreview>
+
+## Introduction
+
+Charts Group 7 includes:
+
+- **Revenue flow**: Stacked area chart comparing this year vs previous year with a `Last 6 Months` / `Last Year` period switcher driven by a dropdown menu (state synced to the URL via `?period=`).
+- **Claim status bar**: Segmented horizontal stat bar split across Pending, Submitted, and Approved with hover-synced opacity, a percentage strip, and a tooltip-driven legend.
+- **Revenue by department**: Donut chart with active-sector highlight, total in the donut center, and a side list whose rows highlight in sync with the slice on hover.
+- **Custom tooltip**: Area chart's tooltip computes the year-over-year delta (`+%` vs last year) inline.
+- **Responsive layout**: Single column on smaller screens; from `xl` upward the area chart expands and the two right-side panels stack in a fixed-width column.
+
+Uses Button, Chart, DropdownMenu, Tooltip, and Recharts.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts"]}
+  code={registry["chart-group-7"]?.source ?? ""}
+  fileName="/components/ui/chart-group-7.tsx"
+/>
+
+Requires Button, Chart, DropdownMenu, Tooltip, and recharts.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup7 } from "@/components/ui/chart-group-7";
+
+<ChartGroup7 />;
+```
+
+Replace `fullYearData` to drive the area chart, `claimStatusData` for the segmented bar, and `departmentRevenueData` for the donut. The period switcher reads from and writes to the `period` URL search param so the selected range survives a refresh.

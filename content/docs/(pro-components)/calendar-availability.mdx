@@ -1,0 +1,52 @@
+---
+title: Availability Calendar
+description: Month-grid calendar that surfaces per-day availability with status dots, weekend weighting, and a selected-day summary.
+base: base
+component: true
+---
+
+import { AvailabilityCalendarPanel } from "@/components/ui/calendar-availability";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="calendar-availability" premium>
+  <AvailabilityCalendarPanel />
+</ComponentPreview>
+
+## Introduction
+
+Availability Calendar includes:
+
+- **Header**: Centered month/year label flanked by previous and next month controls.
+- **Month grid**: Auto-sized 5 or 6 row grid with leading/trailing days from adjacent months muted.
+- **Status dots**: Per-day marker for `available`, `partial`, or `full` capacity.
+- **Selection state**: Active day shows a brand ring; today carries a lighter ring when not selected.
+- **Legend + summary**: Footer legend for the three statuses plus a short summary of the selected day.
+
+Standalone component with no other component dependencies.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["lucide-react"]}
+  code={registry["calendar-availability"]?.source ?? ""}
+  fileName="/components/ui/calendar-availability.tsx"
+/>
+
+Requires `lucide-react` and the `cn` utility from `@/lib/utils`.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { AvailabilityCalendarPanel } from "@/components/ui/calendar-availability";
+
+<AvailabilityCalendarPanel />;
+```
+
+Replace `getAvailabilityStatus` with a real lookup against your bookings/inventory store, and adjust the `availabilityStatusMeta` map to rename the statuses or restyle the swatches and dots.

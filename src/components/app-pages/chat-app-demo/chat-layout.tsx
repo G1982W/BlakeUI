@@ -37,9 +37,11 @@ export function ChatLayout({ className }: { className?: string }) {
 
   const shouldUseDrawer =
     isMobile || (layoutWidth !== null && layoutWidth <= 425);
-  /** Embedded preview tweaks only below 425px; at exactly 425px use default drawer classes. */
-  const applyDesktopEmbedOverrides =
-    !isMobile && layoutWidth !== null && layoutWidth < 425;
+  /**
+   * Docs “mobile” preview (or any narrow host): drawer must size to the preview host, not `vh`,
+   * otherwise the sheet overflows the preview frame (e.g. at exactly 425px width).
+   */
+  const isEmbeddedMobilePreview = !isMobile && shouldUseDrawer;
   const isLayoutWidth425 =
     layoutWidth !== null && Math.round(layoutWidth) === 425;
 
@@ -70,15 +72,12 @@ export function ChatLayout({ className }: { className?: string }) {
         direction="bottom"
       >
         <DrawerContent
-          previewDesktopNarrow={applyDesktopEmbedOverrides}
+          previewDesktopNarrow={isEmbeddedMobilePreview}
           className={cn(
             "flex flex-col p-0",
             isMobile &&
               "min-h-0 h-[100dvh] max-h-[100dvh] data-[vaul-drawer-direction=bottom]:!mt-0 data-[vaul-drawer-direction=bottom]:!h-[100dvh] data-[vaul-drawer-direction=bottom]:!max-h-[100dvh] data-[vaul-drawer-direction=bottom]:rounded-none [&>*:last-child]:flex [&>*:last-child]:min-h-0 [&>*:last-child]:flex-1 [&>*:last-child]:flex-col",
-            !isMobile &&
-              !applyDesktopEmbedOverrides &&
-              "h-[90vh] max-h-[90vh]",
-            applyDesktopEmbedOverrides &&
+            isEmbeddedMobilePreview &&
               "data-[vaul-drawer-direction=bottom]:!inset-x-auto data-[vaul-drawer-direction=bottom]:!right-auto data-[vaul-drawer-direction=bottom]:!left-1/2 data-[vaul-drawer-direction=bottom]:!-translate-x-1/2 data-[vaul-drawer-direction=bottom]:!w-[min(425px,100%)] data-[vaul-drawer-direction=bottom]:!max-w-full",
           )}
         >

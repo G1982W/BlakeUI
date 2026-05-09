@@ -1,0 +1,51 @@
+---
+title: Charts Group 8
+description: Three-panel revenue dashboard — occupancy KPI cards, a metric-switching bar chart, and a searchable patient activity feed.
+base: base
+component: true
+---
+
+import { ChartGroup9 } from "@/components/ui/chart-group-9";
+import Installation from "@/components/installation";
+import registry from "@/registry.json";
+
+## Example
+
+<ComponentPreview name="chart-group-9" premium>
+  <ChartGroup9 />
+</ComponentPreview>
+
+## Introduction
+
+Charts Group 8 includes:
+
+- **KPI cards**: Three occupancy tiles with delta badge, capacity bar, and available-room counts.
+- **Revenue chart**: Bar chart with a metric switcher, animated headline value, and peak / average / YTD readouts.
+- **Activity panel**: Searchable patient feed grouped by Admissions, In-Patient, and Discharges with avatars and status badges.
+- **Responsive layout**: Two-column on wide containers, stacked on narrow ones.
+
+Uses Avatar, Badge, Card, Chart, ScrollArea, and Select.
+
+<PremiumOnly>
+
+## Installation
+
+<Installation
+  dependencies={["recharts", "framer-motion"]}
+  code={registry["chart-group-9"]?.source ?? ""}
+  fileName="/components/ui/chart-group-9.tsx"
+/>
+
+Requires Avatar, Badge, Card, Chart, ScrollArea, Select, recharts, and framer-motion.
+
+</PremiumOnly>
+
+## Usage
+
+```tsx
+import { ChartGroup9 } from "@/components/ui/chart-group-9";
+
+<ChartGroup9 />;
+```
+
+Replace `roomCapacityStats` to drive the KPI cards, `salesMetricData` (keyed by `netRevenue` / `roomRevenue` / `platformRevenue`) to drive the bar chart, and `ADMISSIONS` / `IN_PATIENT` / `DISCHARGES` to populate the activity feed. The feed search filters across guest name, room, source, attribution, and status.
