@@ -119,10 +119,18 @@ export default function HomePage() {
               className="flex flex-col items-center gap-2"
             >
               <Image
+                src="/Blakebill-light.svg"
+                alt=".blakebill"
+                width={125}
+                height={25}
+                className="hidden dark:block"
+              />
+              <Image
                 src="/blakebill-logo.svg"
                 alt=".blakebill"
                 width={125}
                 height={25}
+                className="block dark:hidden"
               />
               <span className="text-[16px] text-muted-foreground">
                 Transfer up to 3GB files
@@ -138,10 +146,18 @@ export default function HomePage() {
               className="flex flex-col items-center gap-2"
             >
               <Image
+                src="/askblake-light.svg"
+                alt="askblake"
+                width={168}
+                height={25}
+                className="hidden dark:block"
+              />
+              <Image
                 src="/askblake-logo.svg"
                 alt="askblake"
                 width={168}
                 height={25}
+                className="block dark:hidden"
               />
               <span className="text-[16px] text-muted-foreground">
                 AI component generator
