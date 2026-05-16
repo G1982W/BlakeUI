@@ -15,6 +15,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
+  ComboboxLabel,
   ComboboxSeparator,
   ComboboxTrigger,
   ComboboxValue,
@@ -158,16 +159,26 @@ export function ComboboxGroupsDemo() {
       <ComboboxInput placeholder="Select a library" />
       <ComboboxContent>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxGroup>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={`${item.group}-${item.label}`} value={item}>
-                {item.label}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxGroup>
-        <ComboboxSeparator />
+        {(["Frameworks", "Libraries"] as const).map((group, i) => (
+          <React.Fragment key={group}>
+            {i > 0 && <ComboboxSeparator />}
+            <ComboboxGroup>
+              <ComboboxLabel>{group}</ComboboxLabel>
+              <ComboboxList>
+                {(item) =>
+                  item.group === group ? (
+                    <ComboboxItem
+                      key={`${item.group}-${item.label}`}
+                      value={item}
+                    >
+                      {item.label}
+                    </ComboboxItem>
+                  ) : null
+                }
+              </ComboboxList>
+            </ComboboxGroup>
+          </React.Fragment>
+        ))}
       </ComboboxContent>
     </Combobox>
   );
@@ -185,15 +196,26 @@ export function ComboboxGroupsDemo() {
   <ComboboxContent>
     <ComboboxEmpty>No items found.</ComboboxEmpty>
     <ComboboxGroup>
+      <ComboboxLabel>Frameworks</ComboboxLabel>
       <ComboboxList>
-        {(item) => (
+        {(item) => item.group === "Frameworks" ? (
           <ComboboxItem key={\`\${item.group}-\${item.label}\`} value={item}>
             {item.label}
           </ComboboxItem>
-        )}
+        ) : null}
       </ComboboxList>
     </ComboboxGroup>
     <ComboboxSeparator />
+    <ComboboxGroup>
+      <ComboboxLabel>Libraries</ComboboxLabel>
+      <ComboboxList>
+        {(item) => item.group === "Libraries" ? (
+          <ComboboxItem key={\`\${item.group}-\${item.label}\`} value={item}>
+            {item.label}
+          </ComboboxItem>
+        ) : null}
+      </ComboboxList>
+    </ComboboxGroup>
   </ComboboxContent>
 </Combobox>`;
 
@@ -361,7 +383,7 @@ export function ComboboxPopupDemo() {
           <Button variant="primary" className="w-[220px] justify-between" />
         }
       >
-        Select country
+        <ComboboxValue placeholder="Select country" />
       </ComboboxTrigger>
       <ComboboxContent className="w-[220px]">
         <ComboboxInput placeholder="Search country..." showTrigger={false} />

@@ -542,7 +542,7 @@ function PrivacyPolicyDialogue({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className="flex flex-col gap-0 sm:max-w-3xl h-[85dvh] sm:h-[80dvh] p-0"
+        className="flex flex-col gap-0 sm:max-w-2xl h-[85dvh] sm:h-[80dvh] p-0"
         data-slot="privacy-policy-dialogue"
       >
         <DialogHeader className="shrink-0 px-5 pt-5 pb-4 border-b border-border">

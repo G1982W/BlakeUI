@@ -79,7 +79,8 @@ export function ContextMenuSubmenuDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuSubmenuDemo as { source?: string }).source = String.raw`<ContextMenuSub>
+(ContextMenuSubmenuDemo as { source?: string }).source =
+  String.raw`<ContextMenuSub>
   <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
   <ContextMenuSubContent>
     <ContextMenuItem>Save Page As…</ContextMenuItem>
@@ -114,7 +115,8 @@ export function ContextMenuShortcutsDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuShortcutsDemo as { source?: string }).source = String.raw`<ContextMenuItem>
+(ContextMenuShortcutsDemo as { source?: string }).source =
+  String.raw`<ContextMenuItem>
   Back <ContextMenuShortcut>⌘[</ContextMenuShortcut>
 </ContextMenuItem>`;
 
@@ -139,7 +141,8 @@ export function ContextMenuGroupsDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuGroupsDemo as { source?: string }).source = String.raw`<ContextMenuGroup>
+(ContextMenuGroupsDemo as { source?: string }).source =
+  String.raw`<ContextMenuGroup>
   <ContextMenuItem>Profile</ContextMenuItem>
   ...
 </ContextMenuGroup>
@@ -169,7 +172,8 @@ export function ContextMenuIconsDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuIconsDemo as { source?: string }).source = String.raw`<ContextMenuItem>
+(ContextMenuIconsDemo as { source?: string }).source =
+  String.raw`<ContextMenuItem>
   <CopyIcon />
   Copy
 </ContextMenuItem>`;
@@ -200,7 +204,8 @@ export function ContextMenuCheckboxDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuCheckboxDemo as { source?: string }).source = String.raw`const [showBookmarks, setShowBookmarks] = React.useState(true);
+(ContextMenuCheckboxDemo as { source?: string }).source =
+  String.raw`const [showBookmarks, setShowBookmarks] = React.useState(true);
 
 <ContextMenuCheckboxItem
   checked={showBookmarks}
@@ -228,7 +233,8 @@ export function ContextMenuRadioDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuRadioDemo as { source?: string }).source = String.raw`const [view, setView] = React.useState("grid");
+(ContextMenuRadioDemo as { source?: string }).source =
+  String.raw`const [view, setView] = React.useState("grid");
 
 <ContextMenuRadioGroup value={view} onValueChange={setView}>
   <ContextMenuRadioItem value="grid">Grid</ContextMenuRadioItem>
@@ -259,14 +265,15 @@ export function ContextMenuDestructiveDemo() {
     </ContextMenu>
   );
 }
-(ContextMenuDestructiveDemo as { source?: string }).source = String.raw`<ContextMenuItem variant="destructive">
+(ContextMenuDestructiveDemo as { source?: string }).source =
+  String.raw`<ContextMenuItem variant="destructive">
   <TrashIcon />
   Delete
 </ContextMenuItem>`;
 
 export function ContextMenuRtlDemo() {
   return (
-    <div dir="rtl" className="flex justify-center">
+    <div dir="rtl" className="relative w-full flex justify-center">
       <ContextMenu>
         <ContextMenuTrigger className={triggerClassName}>
           انقر بزر الماوس الأيمن هنا

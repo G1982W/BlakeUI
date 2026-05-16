@@ -23,17 +23,19 @@ function FileUploadItems() {
     <>
       {files.map((file) => (
         <FileUploadItem key={`${file.name}-${file.size}`} value={file}>
-          <FileUploadItemPreview />
-          <FileUploadItemMetadata />
-          <div className="ms-auto flex items-center gap-2">
-            <div className="w-28">
-              <FileUploadItemProgress />
+          <div className="relative">
+            <FileUploadItemPreview />
+            <FileUploadItemMetadata />
+            <div className="ms-auto flex items-center gap-2">
+              <div className="w-28">
+                <FileUploadItemProgress />
+              </div>
+              <FileUploadItemDelete asChild>
+                <Button size="sm" variant="secondary">
+                  Remove
+                </Button>
+              </FileUploadItemDelete>
             </div>
-            <FileUploadItemDelete asChild>
-              <Button size="sm" variant="secondary">
-                Remove
-              </Button>
-            </FileUploadItemDelete>
           </div>
         </FileUploadItem>
       ))}
@@ -88,5 +90,3 @@ export function FileUploadDemo({ className }: { className?: string }) {
     </FileUpload>
   );
 }
-
-

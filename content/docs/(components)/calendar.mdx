@@ -100,7 +100,7 @@ export function CalendarWithTimezone() {
 
 **Note:** If the selected date appears offset (e.g. selecting the 20th highlights the 19th), set the `timeZone` prop to the user's local timezone.
 
-**Why client-side?** Timezone is detected with `Intl.DateTimeFormat().resolvedOptions().timeZone` inside `useEffect` to avoid hydration mismatches when server and client timezones differ.
+**Why client-side?** Timezone is detected with <span className="break-all">`Intl.DateTimeFormat().resolvedOptions().timeZone`</span> inside `useEffect` to avoid hydration mismatches when server and client timezones differ.
 
 ## Examples
 

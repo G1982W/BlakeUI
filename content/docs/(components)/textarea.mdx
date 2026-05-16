@@ -41,7 +41,7 @@ The Textarea accepts all native `<textarea>` props, including `placeholder`, `di
 ### Default
 
 <Preview>
-  <Textarea placeholder="Type your message here." />
+  <Textarea className="break-all" placeholder="Type your message here." />
 </Preview>
 
 ### With label
@@ -51,7 +51,11 @@ The Textarea accepts all native `<textarea>` props, including `placeholder`, `di
     <label htmlFor="message" className="text-sm font-medium leading-none">
       Message
     </label>
-    <Textarea id="message" placeholder="Type your message here." />
+    <Textarea
+      className="break-all"
+      id="message"
+      placeholder="Type your message here."
+    />
   </div>
 </Preview>
 
@@ -66,7 +70,11 @@ The Textarea accepts all native `<textarea>` props, including `placeholder`, `di
 Use the `rows` prop to control the initial height.
 
 <Preview>
-  <Textarea placeholder="Brief description..." rows={3} className="max-w-sm" />
+  <Textarea
+    placeholder="Brief description..."
+    rows={3}
+    className="break-all max-w-sm"
+  />
 </Preview>
 
 ## API Reference

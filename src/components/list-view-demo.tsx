@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { FileText } from "lucide-react"
-import { List, ListItem } from "@/components/ui/list-view"
+import { FileText } from "lucide-react";
+import { List, ListItem } from "@/components/ui/list-view";
 
 const shared = {
   icon: <FileText />,
   title: "Title",
   secondary: "Secondary info",
   value: "Value",
-}
+};
 
 export function ListViewDemo() {
   return (
-    <div className="grid w-full max-w-2xl grid-cols-2 gap-8">
+    <div className="grid w-full max-w-2xl sm:grid-cols-2 gap-8">
       <List header="Variants">
         <ListItem
           variant="iconTitleSecondaryValue"
@@ -33,7 +33,11 @@ export function ListViewDemo() {
           title={shared.title}
           value={shared.value}
         />
-        <ListItem variant="titleValue" title={shared.title} value={shared.value} />
+        <ListItem
+          variant="titleValue"
+          title={shared.title}
+          value={shared.value}
+        />
         <ListItem variant="valueOnly" value={shared.value} />
       </List>
       <List header="With background">
@@ -68,5 +72,5 @@ export function ListViewDemo() {
         <ListItem variant="valueOnly" withBackground value={shared.value} />
       </List>
     </div>
-  )
+  );
 }
