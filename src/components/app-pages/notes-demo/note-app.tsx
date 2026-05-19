@@ -1,19 +1,27 @@
 "use client";
 
 import { useMemo } from "react";
-import { Search, LayoutGrid, List, SlidersHorizontal, StickyNote, X, Pin } from "lucide-react";
+import {
+  Search,
+  LayoutGrid,
+  List,
+  SlidersHorizontal,
+  StickyNote,
+  X,
+  Pin,
+} from "lucide-react";
 import {
   DndContext,
   closestCenter,
   PointerSensor,
   useSensor,
   useSensors,
-  type DragEndEvent
+  type DragEndEvent,
 } from "@dnd-kit/core";
 import {
   SortableContext,
   rectSortingStrategy,
-  verticalListSortingStrategy
+  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { Button } from "@/components/ui/button";
@@ -26,8 +34,17 @@ import { NoteForm } from "./note-form";
 import { NoteSidebar } from "./note-sidebar";
 
 export function NoteApp() {
-  const { notes, viewMode, setViewMode, addNote, reorderNotes } = useNoteStore();
-  const { search, activeCategory, activeColor, sidebarOpen, setSearch, setSidebarOpen, clearFilters } = useUIStore();
+  const { notes, viewMode, setViewMode, addNote, reorderNotes } =
+    useNoteStore();
+  const {
+    search,
+    activeCategory,
+    activeColor,
+    sidebarOpen,
+    setSearch,
+    setSidebarOpen,
+    clearFilters,
+  } = useUIStore();
 
   const isFiltered = !!(search || activeCategory || activeColor);
 
@@ -40,15 +57,17 @@ export function NoteApp() {
         (n) =>
           n.title.toLowerCase().includes(q) ||
           n.content.toLowerCase().includes(q) ||
-          n.category.toLowerCase().includes(q)
+          n.category.toLowerCase().includes(q),
       );
     }
-    if (activeCategory) result = result.filter((n) => n.category === activeCategory);
+    if (activeCategory)
+      result = result.filter((n) => n.category === activeCategory);
     if (activeColor) result = result.filter((n) => n.color === activeColor);
 
     if (isFiltered) {
       return result.sort(
-        (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
       );
     }
 
@@ -59,10 +78,12 @@ export function NoteApp() {
   }, [notes, search, activeCategory, activeColor, isFiltered]);
 
   const pinnedNotes = !isFiltered ? filtered.filter((n) => n.pinned) : [];
-  const regularNotes = !isFiltered ? filtered.filter((n) => !n.pinned) : filtered;
+  const regularNotes = !isFiltered
+    ? filtered.filter((n) => !n.pinned)
+    : filtered;
 
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
   );
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -77,13 +98,19 @@ export function NoteApp() {
       ? "grid grid-cols-1 @sm/cards:grid-cols-2 @lg/cards:grid-cols-3 @xl/cards:grid-cols-4 gap-3"
       : "flex flex-col gap-2";
 
-  const strategy = viewMode === "grid" ? rectSortingStrategy : verticalListSortingStrategy;
+  const strategy =
+    viewMode === "grid" ? rectSortingStrategy : verticalListSortingStrategy;
 
   const renderSection = (sectionNotes: typeof filtered) => (
     <SortableContext items={sectionNotes.map((n) => n.id)} strategy={strategy}>
       <div className={gridClass}>
         {sectionNotes.map((note) => (
-          <NoteCard key={note.id} note={note} viewMode={viewMode} canDrag={!isFiltered} />
+          <NoteCard
+            key={note.id}
+            note={note}
+            viewMode={viewMode}
+            canDrag={!isFiltered}
+          />
         ))}
       </div>
     </SortableContext>
@@ -94,7 +121,8 @@ export function NoteApp() {
       sensors={sensors}
       collisionDetection={closestCenter}
       modifiers={[restrictToWindowEdges]}
-      onDragEnd={handleDragEnd}>
+      onDragEnd={handleDragEnd}
+    >
       <div className="bg-background flex w-full overflow-hidden @container max-[1440px]:h-screen min-[1441px]:h-full min-[1441px]:min-h-0">
         {/* Desktop Sidebar */}
         <aside className="hidden w-52 shrink-0 !border-r-0 @lg:flex @lg:flex-col">
@@ -130,33 +158,35 @@ export function NoteApp() {
         {/* Main */}
         <div className="flex min-w-0 flex-1 flex-col">
           {/* Header */}
-          <header className="flex shrink-0 items-center gap-2 border-b px-4 py-3">
+          <header className="flex flex-wrap shrink-0 items-center gap-2 border-b px-4 py-3">
             <Button
               variant="ghost"
               size="icon"
               className="@lg:hidden"
-              onClick={() => setSidebarOpen(true)}>
+              onClick={() => setSidebarOpen(true)}
+            >
               <SlidersHorizontal className="size-4" />
             </Button>
 
             <div className="relative max-w-sm flex-1">
-            <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white dark:bg-transparent">
-        <div className="flex items-center justify-center px-3">
-          <Search className="text-muted-foreground/80 size-3.5" />
-        </div>
-        <input
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none dark:bg-transparent"
-        />
-      </div>
+              <div className="flex h-9 w-full items-stretch overflow-hidden rounded-md border border-border bg-white dark:bg-transparent">
+                <div className="flex items-center justify-center px-3">
+                  <Search className="text-muted-foreground/80 size-3.5" />
+                </div>
+                <input
+                  placeholder="Search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="h-full min-w-0 border-0 bg-white text-sm shadow-none ring-0 outline-none focus:ring-0 focus:outline-none dark:bg-transparent"
+                />
+              </div>
               {search && (
                 <Button
                   variant="ghost"
                   size="icon"
                   className="absolute top-1/2 right-1 size-7 -translate-y-1/2"
-                  onClick={() => setSearch("")}>
+                  onClick={() => setSearch("")}
+                >
                   <X className="size-3.5" />
                 </Button>
               )}
@@ -168,7 +198,8 @@ export function NoteApp() {
                   variant="ghost"
                   size="sm"
                   className="text-muted-foreground h-8 gap-1 text-xs"
-                  onClick={clearFilters}>
+                  onClick={clearFilters}
+                >
                   <X className="size-3" />
                   Clear filters
                 </Button>
@@ -179,7 +210,8 @@ export function NoteApp() {
                   onPressedChange={() => setViewMode("grid")}
                   size="xs"
                   aria-label="Grid view"
-                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm">
+                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm"
+                >
                   <LayoutGrid className="size-3.5" />
                 </Toggle>
                 <Toggle
@@ -187,7 +219,8 @@ export function NoteApp() {
                   onPressedChange={() => setViewMode("list")}
                   size="xs"
                   aria-label="List view"
-                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm">
+                  className="cursor-pointer rounded-sm px-2 py-1 text-muted-foreground transition-all hover:bg-background hover:text-foreground data-[state=on]:bg-background data-[state=on]:text-foreground data-[state=on]:shadow-sm"
+                >
                   <List className="size-3.5" />
                 </Toggle>
               </div>
@@ -211,9 +244,13 @@ export function NoteApp() {
               <div className="flex h-full items-center justify-center">
                 <div className="text-center">
                   <StickyNote className="text-muted-foreground/30 mx-auto mb-3 size-12" />
-                  <p className="text-muted-foreground text-sm font-medium">No notes found</p>
+                  <p className="text-muted-foreground text-sm font-medium">
+                    No notes found
+                  </p>
                   <p className="text-muted-foreground mt-1 text-xs">
-                    {isFiltered ? "Try adjusting your filters" : "Create your first note"}
+                    {isFiltered
+                      ? "Try adjusting your filters"
+                      : "Create your first note"}
                   </p>
                 </div>
               </div>
@@ -236,7 +273,9 @@ export function NoteApp() {
                     {pinnedNotes.length > 0 && (
                       <div className="mb-3 flex items-center gap-1.5">
                         <span className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                          {isFiltered ? `${regularNotes.length} results` : "Notes"}
+                          {isFiltered
+                            ? `${regularNotes.length} results`
+                            : "Notes"}
                         </span>
                       </div>
                     )}

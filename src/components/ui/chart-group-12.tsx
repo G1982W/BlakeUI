@@ -143,17 +143,17 @@ const ChartGroup12 = ({ className }: ChartGroup12Props) => {
   };
 
   return (
-    <section className={cn("", className)}>
+    <section className={cn("@container", className)}>
       <div className="container mx-auto space-y-4">
         {/* Header with Date Picker */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 @xl:flex-row @xl:items-center @xl:justify-between">
           <div>
             <h2 className="text-2xl font-bold">Dashboard Overview</h2>
             <p className="text-muted-foreground">
               Track your business performance
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {presets.map((preset) => (
               <Button
                 key={preset.days}

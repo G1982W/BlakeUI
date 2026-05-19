@@ -354,8 +354,8 @@ const ChartGroup15Demo = ({ className }: ChartGroup15DemoProps) => {
               value={chartView}
               onValueChange={(v) => setChartView(v as typeof chartView)}
             >
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <div>
+              <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2 pb-2">
+                <div className="min-w-0">
                   <CardTitle className="text-base">
                     Performance Overview
                   </CardTitle>
@@ -363,7 +363,7 @@ const ChartGroup15Demo = ({ className }: ChartGroup15DemoProps) => {
                     Revenue, cost, and profit trends
                   </CardDescription>
                 </div>
-                <TabsList className="h-8">
+                <TabsList className="h-8 shrink-0">
                   <TabsTrigger value="revenue" className="text-xs">
                     Revenue
                   </TabsTrigger>

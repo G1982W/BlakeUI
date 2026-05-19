@@ -124,10 +124,10 @@ const SettingsMembers3 = ({
   const [isInviteOpen, setIsInviteOpen] = useState(false);
 
   return (
-    <section className={cn("", className)}>
+    <section className={cn("@container", className)}>
       <div className="container max-w-5xl mx-auto">
         <div className={cn("space-y-8", className)}>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 @sm:flex-row @sm:items-center @sm:justify-between">
             <div className="space-y-1">
               <h2 className="text-2xl font-semibold tracking-tight">
                 {heading}
@@ -191,7 +191,7 @@ const SettingsMembers3 = ({
             </Dialog>
           </div>
 
-          <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
+          <div className="grid gap-4 @md:grid-cols-2 @xl:grid-cols-3">
             {members.map((member) => (
               <Card key={member.id}>
                 <CardHeader className="pb-3">

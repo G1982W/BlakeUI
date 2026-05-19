@@ -261,7 +261,7 @@ const AOVScatterChart = () => {
       </div>
 
       <div className="flex flex-col gap-4 p-4 sm:gap-5 sm:p-5">
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6">
           <div className="flex flex-col gap-1">
             <p className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
               {currencyFormatter.format(avgAOV)}

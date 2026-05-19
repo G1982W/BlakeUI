@@ -52,8 +52,7 @@ const SettingsMembers4 = ({
       name: "Nina Kowalski",
       email: "nina.k@startup.co",
       role: "Owner",
-      avatar:
-        "https://i.pravatar.cc/150?img=1",
+      avatar: "https://i.pravatar.cc/150?img=1",
       status: "active",
     },
     {
@@ -61,8 +60,7 @@ const SettingsMembers4 = ({
       name: "James Liu",
       email: "james.l@startup.co",
       role: "Admin",
-      avatar:
-        "https://i.pravatar.cc/150?img=8",
+      avatar: "https://i.pravatar.cc/150?img=8",
       status: "active",
     },
     {
@@ -70,8 +68,7 @@ const SettingsMembers4 = ({
       name: "Rachel Green",
       email: "rachel.g@startup.co",
       role: "Developer",
-      avatar:
-        "https://i.pravatar.cc/150?img=9",
+      avatar: "https://i.pravatar.cc/150?img=9",
       status: "active",
     },
     {
@@ -86,8 +83,7 @@ const SettingsMembers4 = ({
       name: "Lisa Wang",
       email: "lisa.w@startup.co",
       role: "Designer",
-      avatar:
-        "https://i.pravatar.cc/150?img=10",
+      avatar: "https://i.pravatar.cc/150?img=10",
       status: "active",
     },
   ],
@@ -141,7 +137,7 @@ const SettingsMembers4 = ({
           </div>
 
           <div className="rounded-lg border">
-            <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
+            <div className="flex flex-wrap items-center gap-2 border-b bg-muted/50 px-4 py-3">
               <div className="flex items-center gap-3">
                 <Checkbox
                   checked={allSelected}
@@ -155,7 +151,7 @@ const SettingsMembers4 = ({
                     : `${members.length} members`}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="ml-auto flex items-center gap-2">
                 {selectedCount > 0 && (
                   <Button
                     variant="primary"

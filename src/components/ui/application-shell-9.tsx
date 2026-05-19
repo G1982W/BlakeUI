@@ -222,7 +222,7 @@ function ExplorerSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:flex-1"
     >
       <SidebarContent>
         <SidebarGroup>
@@ -269,13 +269,13 @@ function SearchSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:flex-1"
     >
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Search</SidebarGroupLabel>
           <SidebarGroupContent className="px-2">
-            <div className="flex items-center rounded-md border bg-white px-3 py-2">
+            <div className="flex items-center rounded-md border bg-background px-3 py-2">
               <Search className="mr-2 size-4 text-muted-foreground" />
               <input
                 type="text"
@@ -294,7 +294,7 @@ function GitSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:w-[280px]"
+      className="h-full min-h-0 w-full shrink-0 self-stretch border-r md:flex md:flex-1"
     >
       <SidebarContent>
         <SidebarGroup>
@@ -340,7 +340,7 @@ export function ApplicationShell9({
   className,
 }: ApplicationShell9Props) {
   const [activeModule, setActiveModule] = React.useState("explorer");
-  const [isChatOpen, setIsChatOpen] = React.useState(false);
+  const [isChatOpen, setIsChatOpen] = React.useState(true);
   const [mobileDrawer, setMobileDrawer] = React.useState<MobileDrawer>(null);
 
   const handleModuleChange = (moduleId: string) => {
@@ -369,7 +369,7 @@ export function ApplicationShell9({
       )}
     >
       <div className="flex h-full w-full flex-col md:hidden">
-        <header className="flex h-12 shrink-0 items-center justify-between border-b bg-white px-3">
+        <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-3">
           <div className="flex items-center gap-2">
             <div className="flex aspect-square size-7 items-center justify-center rounded-sm bg-primary">
               <img
@@ -390,11 +390,11 @@ export function ApplicationShell9({
           </div>
         </header>
 
-        <div className="flex flex-1 items-center justify-center bg-white">
+        <div className="flex flex-1 items-center justify-center bg-background">
           <Logo className="size-16 opacity-30" />
         </div>
 
-        <div className="flex h-14 shrink-0 items-center justify-around border-t bg-white">
+        <div className="flex h-14 shrink-0 items-center justify-around border-t bg-background">
           <button
             type="button"
             onClick={() => setMobileDrawer("search")}
@@ -458,7 +458,7 @@ export function ApplicationShell9({
               <DrawerTitle>Search</DrawerTitle>
             </DrawerHeader>
             <div className="p-4">
-              <div className="flex items-center rounded-md border bg-white px-3 py-2">
+              <div className="flex items-center rounded-md border bg-background px-3 py-2">
                 <Search className="mr-2 size-4 text-muted-foreground" />
                 <input
                   type="text"
@@ -578,7 +578,7 @@ export function ApplicationShell9({
                 </div>
               </ScrollArea>
               <div className="border-t p-3">
-                <div className="rounded-lg border bg-white">
+                <div className="rounded-lg border bg-background">
                   <textarea
                     placeholder="Describe what you want to build..."
                     rows={3}
@@ -600,13 +600,13 @@ export function ApplicationShell9({
         </Drawer>
       </div>
 
-      <div className="hidden min-h-0 h-full w-full min-w-0 flex-1 flex-row items-stretch md:flex">
+      <div className="@container hidden min-h-0 h-full w-full min-w-0 flex-1 flex-row items-stretch md:flex">
         <AppSidebar
           activeModule={activeModule}
           onModuleChange={handleModuleChange}
         />
         <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-          <header className="flex h-12 shrink-0 items-center justify-between border-b bg-white px-4">
+          <header className="flex h-12 shrink-0 items-center justify-between border-b bg-background px-4">
             <nav className="flex items-center gap-1 text-sm">
               <span className="font-medium">BlakeUI</span>
               <ChevronRight className="size-4 text-muted-foreground" />
@@ -626,7 +626,7 @@ export function ApplicationShell9({
               <Button
                 variant="primary"
                 size="sm"
-                className={cn("size-8 p-0", isChatOpen && "bg-white")}
+                className={cn("size-8 p-0", isChatOpen && "bg-accent")}
                 onClick={() => setIsChatOpen(!isChatOpen)}
               >
                 <PanelRight className="size-4" />
@@ -637,75 +637,84 @@ export function ApplicationShell9({
           <div className="flex min-h-0 flex-1 items-stretch overflow-hidden">
             {renderSidebar()}
 
-            <SidebarInset className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-              <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
-                <div
-                  className={cn(
-                    "flex min-h-0 min-w-0 flex-1 items-center justify-center bg-white",
-                  )}
-                >
-                  {!isChatOpen ? (
-                    <div className="flex flex-col px-2 items-center gap-4 text-center">
-                      <Logo className="size-16 opacity-30" />
-                      <div className="space-y-2">
-                        <h3 className="text-lg font-medium">Start building</h3>
-                        <p className="max-w-sm text-sm text-muted-foreground">
-                          Describe what you want to create and let AI help you
-                          build it
-                        </p>
+            <div
+              className={cn(
+                "flex min-h-0 min-w-0 flex-1 @4xl:hidden",
+                isChatOpen && "hidden",
+              )}
+            >
+              <SidebarInset className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+                <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
+                  <div
+                    className={cn(
+                      "flex min-h-0 min-w-0 flex-1 items-center justify-center bg-background",
+                    )}
+                  >
+                    {!isChatOpen ? (
+                      <div className="flex flex-col px-2 items-center gap-4 text-center">
+                        <Logo className="size-16 opacity-30" />
+                        <div className="space-y-2">
+                          <h3 className="text-lg font-medium">
+                            Start building
+                          </h3>
+                          <p className="max-w-sm text-sm text-muted-foreground">
+                            Describe what you want to create and let AI help you
+                            build it
+                          </p>
+                        </div>
+                        <Button
+                          onClick={() => setIsChatOpen(true)}
+                          className="gap-2"
+                        >
+                          <MessageSquare className="size-4" />
+                          Open Chat
+                        </Button>
                       </div>
-                      <Button
-                        onClick={() => setIsChatOpen(true)}
-                        className="gap-2"
-                      >
-                        <MessageSquare className="size-4" />
-                        Open Chat
-                      </Button>
+                    ) : (
+                      <Logo className="size-16 opacity-30 @4xl:hidden" />
+                    )}
+                  </div>
+
+                  {isChatOpen && (
+                    <div className="flex min-h-0 flex-1 flex-col border-l">
+                      <div className="flex h-10 items-center justify-between border-b px-4">
+                        <div className="flex items-center gap-2">
+                          <MessageSquare className="size-4" />
+                          <span className="text-sm font-medium">Chat</span>
+                        </div>
+                      </div>
+                      <ScrollArea className="flex-1 p-4">
+                        <div className="flex justify-end">
+                          <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
+                            Build me a landing page for blakeui with a hero
+                            section, features grid, and pricing table
+                          </div>
+                        </div>
+                      </ScrollArea>
+
+                      <div className="border-t p-3">
+                        <div className="rounded-lg border bg-background">
+                          <textarea
+                            placeholder="Describe what you want to build..."
+                            rows={3}
+                            className="w-full resize-none bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
+                          />
+                          <div className="flex items-center justify-between border-t px-3 py-2">
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <span>Press Enter to send</span>
+                            </div>
+                            <Button size="sm" className="h-7 gap-1.5 px-3">
+                              <span>Send</span>
+                              <ChevronRight className="size-3" />
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  ) : (
-                    <Logo className="size-16 opacity-30" />
                   )}
                 </div>
-
-                {isChatOpen && (
-                  <div className="flex min-h-0 w-[400px] shrink-0 flex-col border-l">
-                    <div className="flex h-10 items-center justify-between border-b px-4">
-                      <div className="flex items-center gap-2">
-                        <MessageSquare className="size-4" />
-                        <span className="text-sm font-medium">Chat</span>
-                      </div>
-                    </div>
-                    <ScrollArea className="flex-1 p-4">
-                      <div className="flex justify-end">
-                        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                          Build me a landing page for blakeui with a hero
-                          section, features grid, and pricing table
-                        </div>
-                      </div>
-                    </ScrollArea>
-
-                    <div className="border-t p-3">
-                      <div className="rounded-lg border bg-white">
-                        <textarea
-                          placeholder="Describe what you want to build..."
-                          rows={3}
-                          className="w-full resize-none bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
-                        />
-                        <div className="flex items-center justify-between border-t px-3 py-2">
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <span>Press Enter to send</span>
-                          </div>
-                          <Button size="sm" className="h-7 gap-1.5 px-3">
-                            <span>Send</span>
-                            <ChevronRight className="size-3" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </SidebarInset>
+              </SidebarInset>
+            </div>
           </div>
         </div>
       </div>

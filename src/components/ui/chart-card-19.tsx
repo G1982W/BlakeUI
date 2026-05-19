@@ -52,7 +52,7 @@ const ChartCard19 = ({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-6">
           <ChartContainer config={chartConfig} className="aspect-square h-48">
             <RadialBarChart
               data={chartData}

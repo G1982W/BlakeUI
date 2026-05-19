@@ -248,7 +248,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               Real-time insights into your business
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="@container flex flex-wrap items-center gap-2">
             <Select value={selectedPreset} onValueChange={handlePresetChange}>
               <SelectTrigger className="w-[140px]">
                 <SelectValue />
@@ -292,10 +292,9 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               </PopoverContent>
             </Popover>
           </div>
-        </div>
 
-        {/* Main Bento Grid */}
-        <div className="grid gap-4 @3xl:grid-cols-2 @5xl:grid-cols-4">
+          {/* Main Bento Grid */}
+
           {/* Stats Cards - Top Row */}
           <Card>
             <CardContent className="pt-6">
@@ -442,7 +441,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               <CardTitle className="text-base">Traffic Channels</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-wrap items-center gap-6">
                 <ChartContainer
                   config={channelConfig}
                   className="relative size-32 shrink-0"
@@ -547,7 +546,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
                 {topUsers.map((user, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between"
+                    className="flex flex-wrap items-center justify-between"
                   >
                     <div className="flex items-center gap-3">
                       <Avatar className="size-8">

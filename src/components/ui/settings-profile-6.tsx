@@ -98,13 +98,13 @@ const SettingsProfile6 = ({
 
         {/* Progress Steps */}
         <div className="mb-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-start">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center">
-                <div className="flex flex-col items-center">
+              <div key={step.id} className="flex flex-1 items-start">
+                <div className="flex flex-1 flex-col items-center">
                   <div
                     className={cn(
-                      "flex size-10 items-center justify-center rounded-full border-2 text-sm font-medium transition-colors",
+                      "flex size-9 items-center justify-center rounded-full border-2 text-sm font-medium transition-colors",
                       currentStep > step.id
                         ? "border-primary bg-primary text-primary-foreground"
                         : currentStep === step.id
@@ -113,15 +113,15 @@ const SettingsProfile6 = ({
                     )}
                   >
                     {currentStep > step.id ? (
-                      <Check className="size-5" />
+                      <Check className="size-4" />
                     ) : (
                       step.id
                     )}
                   </div>
-                  <div className="mt-2 text-center">
+                  <div className="mt-2 px-1 text-center">
                     <p
                       className={cn(
-                        "text-sm font-medium",
+                        "text-xs font-medium sm:text-sm",
                         currentStep >= step.id
                           ? "text-foreground"
                           : "text-muted-foreground",
@@ -137,7 +137,7 @@ const SettingsProfile6 = ({
                 {index < steps.length - 1 && (
                   <div
                     className={cn(
-                      "mx-2 h-0.5 w-12 sm:w-20",
+                      "mt-4 h-0.5 flex-1",
                       currentStep > step.id ? "bg-primary" : "bg-muted",
                     )}
                   />

@@ -391,14 +391,11 @@ const DISCHARGES: Booking[] = [
 ];
 
 const STATUS_STYLES: Record<string, string> = {
-  critical:
-    "bg-red-100 text-red-900 dark:bg-red-500/20 dark:text-red-300",
+  critical: "bg-red-100 text-red-900 dark:bg-red-500/20 dark:text-red-300",
   stable:
     "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300",
-  observation:
-    "bg-sky-100 text-sky-900 dark:bg-sky-500/20 dark:text-sky-300",
-  inPatient:
-    "bg-blue-100 text-blue-900 dark:bg-blue-500/20 dark:text-blue-300",
+  observation: "bg-sky-100 text-sky-900 dark:bg-sky-500/20 dark:text-sky-300",
+  inPatient: "bg-blue-100 text-blue-900 dark:bg-blue-500/20 dark:text-blue-300",
 };
 
 /** Section header accents (Latest Patient Activity). */
@@ -485,35 +482,41 @@ function BookingCard({ booking }: { booking: Booking }) {
   const AttributionIcon = attributionIcon(booking.attribution);
 
   return (
-    <div className="rounded-lg border bg-card p-3 transition-colors hover:bg-muted/30">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1 space-y-2.5">
+    <div className="rounded-lg border bg-card p-2 sm:p-3 transition-colors hover:bg-muted/30">
+      <div className="flex items-start justify-between gap-2 sm:gap-3">
+        <div className="min-w-0 flex-1 space-y-1.5 sm:space-y-2.5">
           <div>
-            <h3 className="truncate text-sm leading-snug font-semibold">
-              {booking.guestName} — {booking.roomType}-{booking.roomNumber}
+            <h3 className="truncate text-xs sm:text-sm leading-snug font-semibold break-words">
+              {booking.guestName}
             </h3>
+            <p className="truncate text-xs text-muted-foreground">
+              {booking.roomType}-{booking.roomNumber}
+            </p>
             <p className="mt-0.5 text-xs text-muted-foreground">
               {booking.time}
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <AvatarGroup
               guests={booking.guests}
               guestCount={booking.guestCount}
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-1 sm:gap-2">
             <div className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
-              <AttributionIcon className="size-3.5 shrink-0" aria-hidden />
-              <span className="truncate">{booking.attribution}</span>
+              <AttributionIcon
+                className="size-3 sm:size-3.5 shrink-0"
+                aria-hidden
+              />
+              <span className="truncate text-xs">{booking.attribution}</span>
             </div>
-            <span className="text-muted-foreground/40">·</span>
+            <span className="hidden sm:inline text-muted-foreground/40">·</span>
             <Badge
               variant="secondary"
               className={cn(
-                "border-0 px-2 py-0 text-[11px] font-medium",
+                "border-0 px-2 py-0 text-[10px] sm:text-[11px] font-medium whitespace-nowrap",
                 STATUS_STYLES[booking.statusColor] ?? STATUS_STYLES.stable,
               )}
             >
@@ -524,11 +527,11 @@ function BookingCard({ booking }: { booking: Booking }) {
 
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-1 flex size-7 shrink-0 items-center justify-center rounded-md transition-colors hover:bg-muted"
+          className="mt-1 flex size-6 sm:size-7 shrink-0 items-center justify-center rounded-md transition-colors hover:bg-muted"
         >
           <ChevronDown
             className={cn(
-              "size-4 text-muted-foreground transition-transform",
+              "size-3 sm:size-4 text-muted-foreground transition-transform",
               expanded && "rotate-180",
             )}
           />
@@ -536,7 +539,7 @@ function BookingCard({ booking }: { booking: Booking }) {
       </div>
 
       {expanded && (
-        <div className="mt-3 space-y-1 border-t pt-3 text-xs text-muted-foreground">
+        <div className="mt-2 sm:mt-3 space-y-1 border-t pt-2 sm:pt-3 text-xs text-muted-foreground">
           <p>
             <span className="font-medium text-foreground">Unit:</span>{" "}
             {booking.roomType}
@@ -581,7 +584,7 @@ function BookingList({ bookings }: { bookings: Booking[] }) {
 // --- Hotel Stats Cards ---
 
 const HotelStatsCards = () => (
-  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid gap-3 @md:grid-cols-2 @4xl:grid-cols-3">
     {roomCapacityStats.map((stat) => {
       const isPositive = stat.weeklyChange >= 0;
       const occupancyRatio = stat.occupied / stat.total;
@@ -615,16 +618,16 @@ const HotelStatsCards = () => (
             <p className="text-3xl leading-none font-semibold tracking-tight tabular-nums">
               {numberFormatter.format(stat.occupied)}
             </p>
-            <p className="text-xs text-muted-foreground tabular-nums">
+            <p className="shrink-0 text-xs text-muted-foreground tabular-nums">
               / {numberFormatter.format(stat.total)} beds
             </p>
           </div>
 
-          <div className="mt-3 flex items-end gap-1 overflow-hidden">
+          <div className="mt-3 flex items-end gap-0.5 sm:gap-1">
             {Array.from({ length: KPI_CAPACITY_SEGMENTS }).map((_, index) => (
               <span
                 key={`${stat.title}-${index}`}
-                className="h-6 w-1.5 shrink-0 rounded-[3px]"
+                className="h-5 sm:h-6 flex-1 rounded-[2px] sm:rounded-[3px]"
                 style={{
                   backgroundColor:
                     index < filledSegments ? stat.tone.active : stat.tone.soft,
@@ -641,7 +644,7 @@ const HotelStatsCards = () => (
 
           <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
             <span className="tabular-nums">{occupancyPercent}% occupied</span>
-            <span className="tabular-nums">
+            <span className="shrink-0 tabular-nums">
               {numberFormatter.format(availableRooms)} available
             </span>
           </div>
@@ -792,82 +795,78 @@ const OccupancyChart = () => {
   );
 
   return (
-    <div className="w-full rounded-xl border bg-card lg:flex lg:h-117.5 lg:flex-col">
-      <div className="px-4 pt-4 sm:px-5 sm:pt-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="space-y-1">
-            <h2 className="text-sm font-medium text-pretty sm:text-base">
-              {selectedMetric.label}
-            </h2>
-            <div className="flex items-end gap-3">
-              <p className="text-xl leading-tight font-semibold text-foreground sm:text-2xl">
-                {currencyFormatter.format(maxValueData.value)}
-              </p>
-              <div className="mb-0.5 flex shrink-0 items-center gap-1 text-xs whitespace-nowrap">
-                {isPositive ? (
-                  <ArrowUpRight
-                    className="size-3 text-foreground"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <ArrowDownRight
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                )}
-                <span
-                  className={
-                    isPositive ? "text-foreground" : "text-muted-foreground"
-                  }
-                >
-                  {isPositive ? "+" : ""}
-                  {selectedMetric.changePercent}%
-                </span>
-                <span className="text-muted-foreground">vs last month</span>
-              </div>
+    <div className="w-full rounded-xl border bg-card px-3 py-3 sm:px-4 sm:py-4 lg:flex lg:h-117.5 lg:flex-col">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="space-y-1">
+          <h2 className="text-sm font-medium text-pretty sm:text-base">
+            {selectedMetric.label}
+          </h2>
+          <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+            <p className="text-xl leading-tight font-semibold text-foreground sm:text-2xl">
+              {currencyFormatter.format(maxValueData.value)}
+            </p>
+            <div className="mb-0.5 flex shrink-0 items-center gap-1 text-xs">
+              {isPositive ? (
+                <ArrowUpRight
+                  className="size-3 text-foreground"
+                  aria-hidden="true"
+                />
+              ) : (
+                <ArrowDownRight
+                  className="size-3 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              )}
+              <span
+                className={
+                  isPositive ? "text-foreground" : "text-muted-foreground"
+                }
+              >
+                {isPositive ? "+" : ""}
+                {selectedMetric.changePercent}%
+              </span>
+              <span className="text-muted-foreground">vs last month</span>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-2">
-            <Select
-              value={metric}
-              onValueChange={(value) => setMetric(value as SalesMetricKey)}
-            >
-              <SelectTrigger className="h-9 w-40 rounded-lg text-[11px] sm:text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="netRevenue">Net Revenue</SelectItem>
-                <SelectItem value="roomRevenue">Room Revenue</SelectItem>
-                <SelectItem value="platformRevenue">
-                  Platform Revenue
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </div>
+        <div className="flex flex-col items-end gap-2">
+          <Select
+            value={metric}
+            onValueChange={(value) => setMetric(value as SalesMetricKey)}
+          >
+            <SelectTrigger className="h-9 w-40 rounded-lg text-[11px] sm:text-xs">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="netRevenue">Net Revenue</SelectItem>
+              <SelectItem value="roomRevenue">Room Revenue</SelectItem>
+              <SelectItem value="platformRevenue">Platform Revenue</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
-          <div className="rounded-lg bg-muted/35 px-3 py-2">
-            <p className="text-[11px] text-muted-foreground">Peak Month</p>
-            <p className="text-sm font-medium text-foreground">
-              {peakData.month}{" "}
-              <span className="text-muted-foreground">
-                {compactCurrencyFormatter.format(peakData.value)}
-              </span>
-            </p>
-          </div>
-          <div className="rounded-lg bg-muted/35 px-3 py-2">
-            <p className="text-[11px] text-muted-foreground">Monthly Avg</p>
-            <p className="text-sm font-medium text-foreground">
-              {compactCurrencyFormatter.format(averageValue)}
-            </p>
-          </div>
-          <div className="rounded-lg bg-muted/35 px-3 py-2">
-            <p className="text-[11px] text-muted-foreground">YTD Revenue</p>
-            <p className="text-sm font-medium text-foreground">
-              {compactCurrencyFormatter.format(ytdValue)}
-            </p>
-          </div>
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 @sm:grid-cols-3">
+        <div className="rounded-lg bg-muted/35 px-3 py-2">
+          <p className="text-[11px] text-muted-foreground">Peak Month</p>
+          <p className="text-sm font-medium text-foreground">
+            {peakData.month}{" "}
+            <span className="text-muted-foreground">
+              {compactCurrencyFormatter.format(peakData.value)}
+            </span>
+          </p>
+        </div>
+        <div className="rounded-lg bg-muted/35 px-3 py-2">
+          <p className="text-[11px] text-muted-foreground">Monthly Avg</p>
+          <p className="text-sm font-medium text-foreground">
+            {compactCurrencyFormatter.format(averageValue)}
+          </p>
+        </div>
+        <div className="rounded-lg bg-muted/35 px-3 py-2">
+          <p className="text-[11px] text-muted-foreground">YTD Revenue</p>
+          <p className="text-sm font-medium text-foreground">
+            {compactCurrencyFormatter.format(ytdValue)}
+          </p>
         </div>
       </div>
 
@@ -905,7 +904,7 @@ const OccupancyChart = () => {
                 tickLine={false}
                 tick={{ fontSize: 10 }}
                 tickMargin={10}
-                interval={0}
+                interval="preserveStartEnd"
               />
               <YAxis hide />
               <Tooltip
@@ -1098,12 +1097,12 @@ const LatestUpdatesPanel = () => {
 function NetRevenueCharts() {
   return (
     <div className="@container">
-      <div className="grid min-w-0 gap-4 overflow-hidden sm:gap-6 @5xl:grid-cols-[7fr_3fr]">
-        <div className="flex min-w-0 flex-col gap-4 overflow-hidden sm:gap-6">
+      <div className="grid min-w-0 gap-3 sm:gap-4 md:gap-6 overflow-hidden grid-cols-1 @5xl:grid-cols-[7fr_3fr]">
+        <div className="flex min-w-0 flex-col gap-3 sm:gap-4 md:gap-6 overflow-hidden">
           <HotelStatsCards />
           <OccupancyChart />
         </div>
-        <div className="h-125 sm:h-137.5 @5xl:h-full @5xl:max-h-160">
+        <div className="h-[480px] sm:h-137.5 @5xl:h-full @5xl:max-h-160">
           <LatestUpdatesPanel />
         </div>
       </div>
@@ -1111,5 +1110,4 @@ function NetRevenueCharts() {
   );
 }
 
-
-export { NetRevenueCharts as ChartGroup9};
+export { NetRevenueCharts as ChartGroup9 };

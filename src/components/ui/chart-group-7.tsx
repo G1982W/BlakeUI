@@ -442,17 +442,17 @@ const RevenueByDepartmentChart = () => {
   return (
     <div className="flex flex-1 flex-col gap-4 rounded-xl border bg-card p-4 sm:p-5">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-2.5">
           <Button
             variant="ghost"
             size="sm"
-            className="size-7 sm:size-8"
+            className="shrink-0 size-7 sm:size-8"
             aria-label="Revenue by department"
           >
             <PieChartIcon className="size-4 text-muted-foreground sm:size-4.5" />
           </Button>
-          <div>
-            <span className="text-sm font-medium sm:text-base">
+          <div className="min-w-0">
+            <span className="block truncate text-sm font-medium sm:text-base">
               Revenue by Department
             </span>
             <p className="flex items-center gap-1 text-[10px] text-muted-foreground sm:text-xs">
@@ -481,8 +481,8 @@ const RevenueByDepartmentChart = () => {
         </Button>
       </div>
 
-      <div className="flex flex-1 items-center gap-4 sm:gap-6">
-        <div className="relative size-25 shrink-0 sm:size-30">
+      <div className="flex flex-1 flex-col items-center gap-4 sm:flex-row sm:gap-6">
+        <div className="relative size-28 shrink-0 sm:size-30">
           <ChartContainer
             config={departmentRevenueChartConfig}
             className="h-full w-full"
@@ -817,14 +817,11 @@ function TotalRevenueCharts() {
     <div className="@container">
       <div className="flex flex-col gap-4 @5xl:flex-row @5xl:gap-6">
         <RevenueFlowChart />
-        <div className="grid w-full gap-4 @2xl:grid-cols-2 @5xl:w-102.5 @5xl:grid-cols-1">
-          <ClaimStatusChart />
-          <RevenueByDepartmentChart />
-        </div>
+        <ClaimStatusChart />
+        <RevenueByDepartmentChart />
       </div>
     </div>
   );
 }
-
 
 export { TotalRevenueCharts as ChartGroup7 };

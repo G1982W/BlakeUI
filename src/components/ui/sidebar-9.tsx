@@ -249,7 +249,7 @@ const WorkspaceSwitcher = ({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-white">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-sm bg-background">
                 <img
                   src={selected.logo}
                   alt={selected.name}
@@ -279,7 +279,7 @@ const WorkspaceSwitcher = ({
                 onClick={() => setSelected(workspace)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-sm bg-white">
+                <div className="flex size-6 items-center justify-center rounded-sm bg-background">
                   <img
                     src={workspace.logo}
                     alt={workspace.name}
@@ -445,7 +445,7 @@ const AppSidebar = ({ preview, className, ...props }: AppSidebarProps) => {
   return (
     <Sidebar
       variant="floating"
-      className={cn("bg-white", preview && "h-full!", className)}
+      className={cn(preview && "h-full!", className)}
       {...props}
     >
       <SidebarHeader className="shrink-0">

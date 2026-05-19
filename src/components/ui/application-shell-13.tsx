@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -359,8 +360,8 @@ export function ApplicationShell13({ className }: ApplicationShell13Props) {
   return (
     <div className={cn("flex min-h-svh flex-col bg-muted/50", className)}>
       <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
-        <div className="mx-auto grid h-14 w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 lg:px-6">
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex h-14 w-full items-center gap-3 px-4 lg:px-6">
+          <div className="flex items-center gap-2">
             <MobileNav />
             <a href="#" className="flex items-center gap-2">
               <div className="flex aspect-square size-8 items-center justify-center overflow-hidden rounded-md">
@@ -372,13 +373,14 @@ export function ApplicationShell13({ className }: ApplicationShell13Props) {
                   className="size-full max-h-8 max-w-8 object-contain"
                 />
               </div>
-              <span className="font-semibold">{data.brand.name}</span>
+              <span className="hidden font-semibold sm:inline">{data.brand.name}</span>
             </a>
           </div>
-          <div className="hidden w-full justify-self-center md:block md:max-w-md">
+          <div className="hidden w-full max-w-md md:block">
             <SearchField />
           </div>
-          <div className="flex items-center gap-2 justify-self-end">
+          <div className="ml-auto flex items-center gap-1">
+            <Separator orientation="vertical" className="mx-2 h-5 md:hidden" />
             <Button variant="ghost" size="sm" aria-label="Notifications">
               <Bell className="size-4" />
             </Button>

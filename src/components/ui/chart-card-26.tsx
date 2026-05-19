@@ -143,7 +143,7 @@ const ChartCard26 = ({
           </AreaChart>
         </ChartContainer>
         {/* Legend */}
-        <div className="mt-4 flex items-center justify-center gap-6 text-sm">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-6 text-sm">
           <div className="flex items-center gap-2">
             <div className="h-0.5 w-4 bg-chart-1" />
             <span className="text-muted-foreground">Revenue</span>

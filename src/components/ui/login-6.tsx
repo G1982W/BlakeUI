@@ -34,7 +34,7 @@ const Login6 = ({
   return (
     <section className={cn("bg-surface", className)}>
       <div className="flex h-full items-center justify-center">
-        <div className="flex flex-col items-center gap-6 lg:justify-start">
+        <div className="relative flex flex-col items-center gap-6 lg:justify-start">
           {/* Logo */}
           <a href={logo.url}>
             <img
@@ -44,7 +44,7 @@ const Login6 = ({
               className="h-10 dark:invert"
             />
           </a>
-          <div className="flex w-full max-w-sm min-w-sm flex-col items-center gap-y-4 rounded-lg border px-6 py-12">
+          <div className="flex w-full max-w-sm md:min-w-sm flex-col items-center gap-y-4 rounded-lg border px-6 py-12">
             <Button className="w-full">
               <img
                 src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg"

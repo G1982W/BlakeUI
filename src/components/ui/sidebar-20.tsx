@@ -314,27 +314,17 @@ const Sidebar20 = ({ className, preview }: Sidebar20Props) => {
     <SidebarProvider className={cn(className, preview && "min-h-0 h-full")}>
       <SidebarLeft preview={preview} />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator
-            orientation="vertical"
-            className="mr-2 data-[orientation=vertical]:h-4"
-          />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Docs</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Getting Started</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Introduction</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+        <header className="flex h-16 min-w-0 shrink-0 items-center gap-3 overflow-hidden border-b px-4">
+          <SidebarTrigger className="-ml-1 shrink-0" />
+          <Separator orientation="vertical" className="shrink-0 data-[orientation=vertical]:h-4" />
+          <div className="flex min-w-0 flex-col justify-center">
+            <p className="hidden truncate text-xs text-muted-foreground lg:block">
+              Docs · Getting Started
+            </p>
+            <p className="truncate text-sm font-medium text-foreground">
+              Introduction
+            </p>
+          </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />

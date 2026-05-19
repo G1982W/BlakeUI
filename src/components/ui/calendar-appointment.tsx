@@ -1096,29 +1096,31 @@ function MonthCalendarHeader({
         >
           Today
         </Button>
-        <div className="h-5 w-px bg-border/55" aria-hidden="true" />
-        <Button
-          type="button"
-          variant="primary"
-          size="sm"
-          className="rounded-md px-3 font-medium"
-          aria-label="Previous month"
-          onClick={onPreviousMonth}
-        >
-          <ChevronLeft className="mr-1.5 size-4" aria-hidden="true" />
-          Prev month
-        </Button>
-        <Button
-          type="button"
-          variant="primary"
-          size="sm"
-          className="rounded-md px-3 font-medium"
-          aria-label="Next month"
-          onClick={onNextMonth}
-        >
-          Next month
-          <ChevronRight className="ml-1.5 size-4" aria-hidden="true" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-px bg-border/55" aria-hidden="true" />
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            className="rounded-md font-medium"
+            aria-label="Previous month"
+            onClick={onPreviousMonth}
+          >
+            <ChevronLeft className="size-4" aria-hidden="true" />
+            <span className="hidden sm:inline">Prev month</span>
+          </Button>
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            className="rounded-md font-medium"
+            aria-label="Next month"
+            onClick={onNextMonth}
+          >
+            <span className="hidden sm:inline">Next month</span>
+            <ChevronRight className="size-4" aria-hidden="true" />
+          </Button>
+        </div>
       </div>
     </header>
   );
@@ -1379,7 +1381,7 @@ function SelectedDaySummary({ summary }: { summary: CalendarDaySummary }) {
       data-testid="selected-day-summary"
       className="mt-1 px-4 py-3 sm:px-5"
     >
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-wrap flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <p className="text-[11px] tracking-[0.08em] text-muted-foreground uppercase">
             Selected day

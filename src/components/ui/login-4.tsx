@@ -43,7 +43,7 @@ const Login4 = ({
     >
       <div className="flex h-full items-center justify-center">
         <div className="flex flex-col items-center gap-6 lg:justify-start">
-          <div className="flex w-full max-w-sm min-w-sm flex-col items-center gap-y-4 px-6 py-12">
+          <div className="flex w-full max-w-sm md:min-w-sm flex-col items-center gap-y-4 px-6 py-12">
             {/* Logo */}
             <a href={logo.url}>
               <img

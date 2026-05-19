@@ -1024,20 +1024,16 @@ export const DataTable14 = ({ className }: { className?: string }) => {
   );
 
   const Toolbar = (
-    <DataTableTabbar
-      _table={table}
-      search={Search}
-      filter={PaymentStatusFilter}
-      className="flex-wrap gap-y-2"
-    >
+    <div className="flex flex-col gap-2 py-4">
+      {/* Row 1: status tabs */}
       {orderStatusColumn && (
+        <div className="overflow-x-auto">
         <Tabs
           value={orderStatusTab}
           onValueChange={handleStatusTabChange}
-          className="w-full min-w-[260px] sm:w-auto"
         >
           <TabsList
-            className="flex w-full flex-wrap justify-start gap-1"
+            className="flex w-max justify-start gap-1"
             role="tablist"
             aria-label="Filter orders by status"
           >
@@ -1068,8 +1064,14 @@ export const DataTable14 = ({ className }: { className?: string }) => {
             })}
           </TabsList>
         </Tabs>
+        </div>
       )}
-    </DataTableTabbar>
+      {/* Row 2: search + filter */}
+      <div className="flex items-center gap-2">
+        {Search}
+        {PaymentStatusFilter}
+      </div>
+    </div>
   );
 
   return (

@@ -53,7 +53,7 @@ const Login9 = ({
           </a>
         </div>
 
-        <div className="flex w-full max-w-sm flex-col items-start gap-y-6 rounded-md border border-muted border-muted-foreground/20 bg-white p-6">
+        <div className="flex w-full max-w-sm flex-col items-start gap-y-6 rounded-md border border-muted border-muted-foreground/20 bg-background p-4">
           <div className="flex flex-col items-start gap-y-2">
             {heading && <h1 className="text-xl font-semibold">{heading}</h1>}
             {/* Signup Link */}
@@ -93,7 +93,9 @@ const Login9 = ({
                 <span className="w-full border-t border-muted-foreground/20" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-muted-foreground">OR</span>
+                <span className="bg-background px-2 text-muted-foreground">
+                  OR
+                </span>
               </div>
             </div>
 

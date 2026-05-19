@@ -392,28 +392,27 @@ const FieldMapping1 = ({ className }: FieldMapping1Props) => {
                     </div>
                   </div>
                   <div className="grid gap-4 md:grid-cols-9">
-                    <div className="col-span-5 space-y-4 p-6">
+                    <div className="col-span-5 space-y-4 p-3 sm:p-6">
                       <p className="text-sm font-semibold md:text-base">
                         Match source columns to target fields
                       </p>
 
                       <div className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4 text-xs font-semibold text-muted-foreground uppercase">
+                        <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-muted-foreground uppercase sm:gap-4">
                           <p>Source Columns</p>
                           <p>Target Fields</p>
                         </div>
 
-                        <ul className="space-y-6">
+                        <ul className="space-y-4 sm:space-y-6">
                           {Object.keys(DUMMY_INPUT_DATA[0]).map((key) => {
                             return (
                               <li
                                 key={`incoming-field-${key}`}
-                                className="grid grid-cols-2 gap-4"
+                                className="grid grid-cols-2 gap-2 sm:gap-4"
                               >
-                                <div className="flex items-center justify-between">
-                                  <Badge variant="default">{key}</Badge>
-
-                                  <ChevronRight className="size-4 text-muted-foreground" />
+                                <div className="flex min-w-0 items-center gap-1">
+                                  <Badge variant="default" className="min-w-0 truncate">{key}</Badge>
+                                  <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
                                 </div>
                                 <FieldCombobox
                                   columns={columns}

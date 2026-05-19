@@ -19,7 +19,7 @@ const StatsCard4 = ({
   className,
 }: StatsCard4Props) => {
   return (
-    <Card className={cn("w-full max-w-xs", className)}>
+    <Card className={cn("w-full max-w-xs overflow-hidden", className)}>
       <CardHeader className="pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}
@@ -27,15 +27,15 @@ const StatsCard4 = ({
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-4">
-          <div>
-            <div className="text-2xl font-bold">{currentValue}</div>
-            <div className="text-sm text-muted-foreground">{currentLabel}</div>
+          <div className="min-w-0">
+            <div className="truncate text-2xl font-bold">{currentValue}</div>
+            <div className="truncate text-sm text-muted-foreground">{currentLabel}</div>
           </div>
-          <div className="border-l pl-4">
-            <div className="text-2xl font-bold text-muted-foreground">
+          <div className="min-w-0 border-l pl-4">
+            <div className="truncate text-2xl font-bold text-muted-foreground">
               {previousValue}
             </div>
-            <div className="text-sm text-muted-foreground">{previousLabel}</div>
+            <div className="truncate text-sm text-muted-foreground">{previousLabel}</div>
           </div>
         </div>
       </CardContent>
