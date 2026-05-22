@@ -22,7 +22,7 @@ export function DialogBasicDemo() {
           Open dialog
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="z-[10000]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
