@@ -22,7 +22,7 @@ import registry from "@/registry.json";
 - **Header**: “Members by role” and Invite button (dialog with email and role).
 - **Sections**: One block per role (Admin, Member, Viewer) with a role badge and count. Under each, a list of members (avatar, name, email) with a three-dot menu (Change role, Remove).
 
-Uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Badge](/docs/components/badge), [Dropdown Menu](/docs/components/dropdown-menu), [Dialog](/docs/components/dialog), and [Native Select](/docs/components/native-select). Good when you want to browse or manage members by access level.
+Uses [Button](/docs/button), [Input](/docs/input), [Avatar](/docs/avatar), [Badge](/docs/badge), [Dropdown Menu](/docs/dropdown-menu), [Dialog](/docs/dialog), and [Native Select](/docs/native-select). Good when you want to browse or manage members by access level.
 
 <PremiumOnly>
 
@@ -43,7 +43,7 @@ You need the Button, Input, Avatar, Badge, Dropdown Menu, Dialog, and Native Sel
 ```tsx
 import { SettingsMembers4 } from "@/components/ui/settings-members-4";
 
-<SettingsMembers4 />
+<SettingsMembers4 />;
 ```
 
 Feed the component from your API grouped by role and connect invite and actions to your backend.

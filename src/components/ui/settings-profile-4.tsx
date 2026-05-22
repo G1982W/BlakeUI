@@ -71,8 +71,7 @@ const SettingsProfile4 = ({
     name: "Alex Morgan",
     username: "alexmorgan",
     email: "alex.morgan@email.com",
-    avatar:
-      "https://i.pravatar.cc/150?img=8",
+    avatar: "https://i.pravatar.cc/150?img=8",
     bio: "Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.",
     phone: "+1 (555) 123-4567",
     location: "San Francisco, CA",
@@ -162,7 +161,7 @@ const SettingsProfile4 = ({
                       maxFiles={1}
                       maxSize={2 * 1024 * 1024}
                     >
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                      <div className="flex flex-col items-center gap-4">
                         <Avatar className="size-24 shrink-0">
                           <AvatarImage
                             src={avatarPreview}
@@ -173,17 +172,17 @@ const SettingsProfile4 = ({
                             {initials}
                           </AvatarFallback>
                         </Avatar>
-                        <div className="flex-1 space-y-3">
+                        <div className="w-full min-w-0 space-y-3">
                           <FileUploadDropzone className="flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-6 text-center transition-colors hover:border-primary/50 hover:bg-muted/50">
                             <div className="flex size-10 items-center justify-center rounded-full bg-muted">
                               <Camera className="size-5 text-muted-foreground" />
                             </div>
-                            <div className="space-y-1">
-                              <p className="text-sm font-medium">
+                            <div className="w-full space-y-1">
+                              <p className="wrap-break-word text-sm font-medium">
                                 <FileUploadTrigger asChild>
                                   <Button
                                     variant="ghost"
-                                    className="h-auto p-0"
+                                    className="wrap-break-word h-auto p-0"
                                   >
                                     Click to upload
                                   </Button>
@@ -196,12 +195,12 @@ const SettingsProfile4 = ({
                             </div>
                           </FileUploadDropzone>
                           {avatarFiles.length > 0 && (
-                            <FileUploadList>
+                            <FileUploadList className="w-full overflow-hidden">
                               {avatarFiles.map((file, index) => (
                                 <FileUploadItem
                                   key={index}
                                   value={file}
-                                  className="flex items-center gap-3 rounded-lg border bg-muted/30 p-3"
+                                  className="flex w-full min-w-0 items-center gap-3 overflow-hidden rounded-lg border bg-muted/30 p-3"
                                 >
                                   <FileUploadItemPreview className="size-10 shrink-0 rounded-md" />
                                   <div className="min-w-0 flex-1">

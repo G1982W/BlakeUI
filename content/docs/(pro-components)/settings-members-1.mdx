@@ -23,7 +23,7 @@ import registry from "@/registry.json";
 - **Invite dialog**: Textarea for bulk email addresses and role selector.
 - **Table**: Columns for Name, Email, Role, and Status. Status uses badges (e.g. Active, Pending).
 
-Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), [Badge](/docs/components/badge), [Checkbox](/docs/components/checkbox), [Popover](/docs/components/popover), [Dialog](/docs/components/dialog), [Native Select](/docs/components/native-select), and [Table](/docs/components/table). Suited to settings pages that need search, filtering, and bulk invite.
+Uses [Button](/docs/button), [Input](/docs/input), [Textarea](/docs/textarea), [Badge](/docs/badge), [Checkbox](/docs/checkbox), [Popover](/docs/popover), [Dialog](/docs/dialog), [Native Select](/docs/native-select), and [Table](/docs/table). Suited to settings pages that need search, filtering, and bulk invite.
 
 <PremiumOnly>
 
@@ -44,7 +44,7 @@ You need the Button, Input, Textarea, Badge, Checkbox, Popover, Dialog, Native S
 ```tsx
 import { SettingsMembers1 } from "@/components/ui/settings-members-1";
 
-<SettingsMembers1 />
+<SettingsMembers1 />;
 ```
 
 Connect search and role filters to table data and wire the invite dialog (e.g. bulk invite API) and status to your backend.

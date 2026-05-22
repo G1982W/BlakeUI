@@ -22,7 +22,7 @@ import registry from "@/registry.json";
 - **Empty state**: Table with a “No data imported” message and an overlay with a “Browse files” button that opens the mapping dialog.
 - **Mapping dialog**: Source columns listed as badges on the left; each maps to a target field via a combobox. A preview panel shows sample values for the selected/focused column. Header includes Exit and Save.
 
-Uses [Button](/docs/components/button), [Badge](/docs/components/badge), [Combobox](/docs/components/combobox), [Dialog](/docs/components/dialog), and [Table](/docs/components/table). Suited to ETL, CRM imports, or spreadsheet integrations where users map file columns to app fields.
+Uses [Button](/docs/button), [Badge](/docs/badge), [Combobox](/docs/combobox), [Dialog](/docs/dialog), and [Table](/docs/table). Suited to ETL, CRM imports, or spreadsheet integrations where users map file columns to app fields.
 
 <PremiumOnly>
 
@@ -43,7 +43,7 @@ You need the Button, Badge, Combobox, Dialog, and Table components in your proje
 ```tsx
 import { FieldMapping1 } from "@/components/ui/field-mapping-1";
 
-<FieldMapping1 />
+<FieldMapping1 />;
 ```
 
 Wire “Browse files” to your file input and parser, and feed source columns and target field options from your schema. Connect Save to your import API. You can also copy the component source from this page into your project using the Blake UI file layout.

@@ -85,10 +85,10 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
     <div className="@container w-full min-w-0">
       <section className={cn("", className)}>
         <nav className="relative">
-          <ul className="relative z-1 flex w-full list-none items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
+          <ul className="relative z-51 flex w-full list-none items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
             <li className="w-35">BlakeUI</li>
             {NAV_ITEMS.map((item, index) => (
-              <li key={index} className="hidden w-32 @lg:block">
+              <li key={index} className="hidden w-32 @md:block">
                 <a
                   href={item.href}
                   className="no-underline transition-colors hover:text-foreground/70"
@@ -97,7 +97,7 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
                 </a>
               </li>
             ))}
-            <li className="@lg:w-14">
+            <li className="@md:w-14">
               <Menu setIsOpen={setIsOpen} isOpen={isOpen} />
             </li>
           </ul>
@@ -105,7 +105,7 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
           <AnimatePresence mode="popLayout">
             {isOpen && (
               <motion.div
-                className="absolute top-0 w-full bg-muted px-6 pt-30 pb-10"
+                className="absolute top-0 z-50 w-full bg-muted px-6 pt-30 pb-10"
                 initial={{ clipPath: "inset(0 0 100% 0)" }}
                 animate={{ clipPath: "inset(0% 0 0 0)" }}
                 exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -114,14 +114,14 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
                   ease: [0.4, 0.0, 0.2, 1],
                 }}
               >
-                <div className="flex @lg:hidden">
+                <div className="flex @md:hidden">
                   <ul className="flex flex-col gap-5 text-2xl font-semibold tracking-tight">
                     {MOBILE_NAV_ITEMS.map((item, index) => (
                       <li key={index}>{item.label}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="hidden w-full items-center justify-between gap-4 @lg:flex">
+                <div className="hidden w-full items-center justify-between gap-4 @md:flex">
                   <div className="w-35 opacity-0">BlakeUI</div>
                   {MEGA_MENU_ITEMS.map((section, sectionIndex) => (
                     <ul key={sectionIndex} className="space-y-5">
@@ -143,13 +143,13 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
                   ))}
                   <div className="w-14" />
                 </div>
-                <div className="mt-40 flex w-full flex-col items-center justify-between gap-2 text-sm @lg:flex-row @lg:gap-4 @lg:text-base">
-                  <div className="flex items-center gap-4 @lg:gap-10">
+                <div className="mt-40 flex w-full flex-col items-center justify-between gap-2 text-sm @md:flex-row @md:gap-4 @md:text-base">
+                  <div className="flex items-center gap-4 @md:gap-10">
                     {COMPANY_LINKS.map((item, index) => (
                       <p key={index}>{item.label}</p>
                     ))}
                   </div>
-                  <div className="flex items-center gap-4 @lg:gap-10">
+                  <div className="flex items-center gap-4 @md:gap-10">
                     {FOOTER_LINKS.map((item, index) => (
                       <p key={index}>{item.label}</p>
                     ))}
@@ -178,7 +178,7 @@ const Menu = ({
   return (
     <button
       className={cn(
-        "relative flex h-2 w-8 flex-col items-center justify-center gap-2 after:absolute after:h-12 after:w-full @lg:w-14",
+        "relative flex h-2 w-8 flex-col items-center justify-center gap-2 after:absolute after:h-12 after:w-full @md:w-14",
         className,
       )}
       onClick={() => setIsOpen((x: boolean) => !x)}

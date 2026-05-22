@@ -5208,7 +5208,7 @@
     {
       "name": "defaultValues",
       "type": "Partial<ProfileData>",
-      "defaultValue": "{\r\n    name: \"Alex Morgan\",\r\n    username: \"alexmorgan\",\r\n    email: \"alex.morgan@email.com\",\r\n    avatar:\r\n      \"https://i.pravatar.cc/150?img=8\",\r\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\r\n    phone: \"+1 (555) 123-4567\",\r\n    location: \"San Francisco, CA\",\r\n    website: \"https://alexmorgan.design\",\r\n    twitter: \"alexmorgan\",\r\n    linkedin: \"alexmorgan\",\r\n    github: \"alexmorgan\",\r\n    timezone: \"America/Los_Angeles\",\r\n    language: \"en\",\r\n  }",
+      "defaultValue": "{\r\n    name: \"Alex Morgan\",\r\n    username: \"alexmorgan\",\r\n    email: \"alex.morgan@email.com\",\r\n    avatar: \"https://i.pravatar.cc/150?img=8\",\r\n    bio: \"Product designer with 8+ years of experience crafting intuitive digital experiences. Passionate about accessibility and design systems.\",\r\n    phone: \"+1 (555) 123-4567\",\r\n    location: \"San Francisco, CA\",\r\n    website: \"https://alexmorgan.design\",\r\n    twitter: \"alexmorgan\",\r\n    linkedin: \"alexmorgan\",\r\n    github: \"alexmorgan\",\r\n    timezone: \"America/Los_Angeles\",\r\n    language: \"en\",\r\n  }",
       "description": "",
       "required": false
     },

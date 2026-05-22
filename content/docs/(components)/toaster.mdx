@@ -88,13 +88,13 @@ The Toaster is configured with icons for success, error, warning, info, and load
 
 ### Toaster
 
-The Toaster component wraps Sonner and applies theme-aware styles and custom icons. It should be rendered once in your root layout. It accepts all [Sonner Toaster props](https://sonner.emilkowal.ski/docs/toaster).
+The Toaster component wraps Sonner and applies theme-aware styles and custom icons. It should be rendered once in your root layout. It accepts all [Sonner Toaster props](https://sonner.emilkowal.ski/toast).
 
 <PropsTable component="Toaster" />
 
 ### toast()
 
-Use `toast` from `"sonner"` to show notifications. See [Sonner's toast API](https://sonner.emilkowal.ski/docs/toast) for options such as `description`, `action`, `type`, `duration`, and `id`.
+Use `toast` from `"sonner"` to show notifications. See [Sonner's toast API](https://sonner.emilkowal.ski/toast) for options such as `description`, `action`, `type`, `duration`, and `id`.
 
 ```tsx
 import { toast } from "sonner";
@@ -105,5 +105,8 @@ toast.error("Error message");
 toast.warning("Warning message");
 toast.info("Info message");
 toast.loading("Loading...");
-toast("With options", { description: "...", action: { label: "Undo", onClick: () => {} } });
+toast("With options", {
+  description: "...",
+  action: { label: "Undo", onClick: () => {} },
+});
 ```

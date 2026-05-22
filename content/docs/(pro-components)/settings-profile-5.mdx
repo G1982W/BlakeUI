@@ -22,7 +22,7 @@ import registry from "@/registry.json";
 - **Left column**: Two cards—Basic Information (avatar, name, username, role, bio, location) and Links (website, Twitter, LinkedIn, GitHub).
 - **Right column**: Sticky “Public view” preview that updates as the user types. Shows avatar, name, @username, role, location, bio, and social icon links.
 
-Uses [Button](/docs/components/button), [Input](/docs/components/input), [Textarea](/docs/components/textarea), [Avatar](/docs/components/avatar), and [Badge](/docs/components/badge). Ideal when users need immediate feedback on how their profile will look to others.
+Uses [Button](/docs/button), [Input](/docs/input), [Textarea](/docs/textarea), [Avatar](/docs/avatar), and [Badge](/docs/badge). Ideal when users need immediate feedback on how their profile will look to others.
 
 <PremiumOnly>
 
@@ -43,7 +43,7 @@ You need the Button, Input, Textarea, Avatar, and Badge components in your proje
 ```tsx
 import { SettingsProfile5 } from "@/components/ui/settings-profile-5";
 
-<SettingsProfile5 />
+<SettingsProfile5 />;
 ```
 
 Hook the form state to your profile API and use the same data to render the live preview and save endpoint.

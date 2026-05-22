@@ -22,7 +22,7 @@ import registry from "@/registry.json";
 - **Header**: Logo, horizontal tab-style nav links (Dashboard, Projects, Team) with active state, search input, and user avatar dropdown (name, email, profile, settings, log out).
 - **Mobile**: Hamburger opens a left-side drawer with the same nav links and user info.
 
-It uses [Button](/docs/components/button), [Input](/docs/components/input), [Avatar](/docs/components/avatar), [Dropdown Menu](/docs/components/dropdown-menu), and [Drawer](/docs/components/drawer). Suited to apps with a flat navigation structure and clear tab-style feedback.
+It uses [Button](/docs/button), [Input](/docs/input), [Avatar](/docs/avatar), [Dropdown Menu](/docs/dropdown-menu), and [Drawer](/docs/drawer). Suited to apps with a flat navigation structure and clear tab-style feedback.
 
 <PremiumOnly>
 
@@ -43,7 +43,7 @@ You need the Button, Input, Avatar, Dropdown Menu, and Drawer components in your
 ```tsx
 import { ApplicationShell4 } from "@/components/ui/application-shell-4";
 
-<ApplicationShell4 />
+<ApplicationShell4 />;
 ```
 
 Replace the logo, tab labels, search behavior, and user dropdown content with your own routes and data. Wire the active tab to your router or state as needed.

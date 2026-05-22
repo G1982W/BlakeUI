@@ -23,7 +23,7 @@ import registry from "@/registry.json";
 - **File explorer sidebar**: Collapsible folder tree (e.g. `src`, `public`) with file items and optional count badges, plus a “New file” button.
 - **Main area**: Header with title and a panel toggle; content area and an optional bottom panel for output or tools.
 
-It uses the [Button](/docs/components/button) and [Collapsible](/docs/components/collapsible) components. Ideal for file managers, dev tools, or any app that needs a VS Code–like layout.
+It uses the [Button](/docs/button) and [Collapsible](/docs/collapsible) components. Ideal for file managers, dev tools, or any app that needs a VS Code–like layout.
 
 <PremiumOnly>
 
@@ -44,7 +44,7 @@ You need the Button and Collapsible components in your project.
 ```tsx
 import { ApplicationShell9 } from "@/components/ui/application-shell-9";
 
-<ApplicationShell9 />
+<ApplicationShell9 />;
 ```
 
 Replace the placeholder file tree, labels, and main content with your own data and views. The shell is self-contained; extend it with props or by editing the component to wire up routing and real file data.

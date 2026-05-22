@@ -239,7 +239,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
     <section className={cn("@container w-full", className)}>
       <div className="mx-auto w-full space-y-6">
         {/* Header */}
-        <div className="flex flex-col gap-4 @sm:flex-row @sm:items-center @sm:justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
               Analytics Dashboard
@@ -248,7 +248,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               Real-time insights into your business
             </p>
           </div>
-          <div className="@container flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Select value={selectedPreset} onValueChange={handlePresetChange}>
               <SelectTrigger className="w-[140px]">
                 <SelectValue />
@@ -292,9 +292,10 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               </PopoverContent>
             </Popover>
           </div>
+        </div>
 
-          {/* Main Bento Grid */}
-
+        {/* Stat Cards */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-4">
           {/* Stats Cards - Top Row */}
           <Card>
             <CardContent className="pt-6">
@@ -381,8 +382,12 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
             </CardContent>
           </Card>
 
-          {/* Revenue Chart - Spans 2 columns */}
-          <Card className="@3xl:col-span-2">
+        </div>
+
+        {/* Chart Cards */}
+        <div className="grid gap-4 md:grid-cols-2">
+          {/* Revenue Chart */}
+          <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Revenue Trend</CardTitle>
             </CardHeader>
@@ -436,7 +441,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
           </Card>
 
           {/* Traffic Channels - Donut */}
-          <Card className="@3xl:col-span-2">
+          <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Traffic Channels</CardTitle>
             </CardHeader>
@@ -493,7 +498,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
           </Card>
 
           {/* Top Pages */}
-          <Card className="@3xl:col-span-2">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-base">Top Pages</CardTitle>
               <Button variant="ghost" size="sm" className="text-xs">
@@ -534,7 +539,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
           </Card>
 
           {/* Active Users */}
-          <Card className="@3xl:col-span-2">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-base">Most Active Users</CardTitle>
               <Button variant="ghost" size="sm" className="text-xs">

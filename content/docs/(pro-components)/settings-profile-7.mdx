@@ -23,7 +23,7 @@ import registry from "@/registry.json";
 - **Fields** (Name, Username, Email, Bio) stacked with labels and current values. Empty values show “Not set.”
 - **Inline edit**: Hover to show a pencil icon; click to turn the value into an input. Use the check button or Enter to save, X or Escape to cancel. Only one field is editable at a time.
 
-Uses [Button](/docs/components/button), [Input](/docs/components/input), and [Avatar](/docs/components/avatar). Suited to dashboards or sidebars where users need quick profile edits without a full form.
+Uses [Button](/docs/button), [Input](/docs/input), and [Avatar](/docs/avatar). Suited to dashboards or sidebars where users need quick profile edits without a full form.
 
 <PremiumOnly>
 
@@ -44,7 +44,7 @@ You need the Button, Input, and Avatar components in your project.
 ```tsx
 import { SettingsProfile7 } from "@/components/ui/settings-profile-7";
 
-<SettingsProfile7 />
+<SettingsProfile7 />;
 ```
 
 Wire the component to your profile data and save API; the block keeps local state for the demo.
