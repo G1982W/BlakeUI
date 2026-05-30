@@ -64,7 +64,7 @@ export function NoteCard({ note, viewMode, canDrag }: NoteCardProps) {
           <MoreHorizontal className="size-3.5" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
+      <DropdownMenuContent align="end" className="z-10000 w-40">
         <NoteForm
           defaultValues={note}
           trigger={

@@ -39,7 +39,7 @@ function DrawerOverlay({
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-10000 bg-black/50",
         className,
       )}
       {...props}
@@ -62,7 +62,7 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer-content bg-code-background fixed z-50 flex h-full flex-col overflow-hidden",
+          "group/drawer-content bg-code-background fixed z-10001 flex h-full flex-col overflow-hidden",
           "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
           "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
           "data-[vaul-drawer-direction=right]:top-6 data-[vaul-drawer-direction=right]:bottom-6 data-[vaul-drawer-direction=right]:right-6 data-[vaul-drawer-direction=right]:h-auto data-[vaul-drawer-direction=right]:w-[340px] data-[vaul-drawer-direction=right]:max-w-[calc(100vw-3rem)] data-[vaul-drawer-direction=right]:rounded-lg data-[vaul-drawer-direction=right]:shadow-[-4px_0_24px_rgba(0,0,0,0.08)]",

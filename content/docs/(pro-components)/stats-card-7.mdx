@@ -12,7 +12,9 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="stats-card-7" premium>
-  <StatsCard7 />
+  <div className="flex justify-center">
+    <StatsCard7 />
+  </div>
 </ComponentPreview>
 
 ## Introduction
@@ -44,5 +46,5 @@ Requires Card, Chart component, and recharts.
 ```tsx
 import { StatsCard7 } from "@/components/ui/stats-card-7";
 
-<StatsCard7 value="3.2 GB" percent={72} label="Storage used" />
+<StatsCard7 value="3.2 GB" percent={72} label="Storage used" />;
 ```

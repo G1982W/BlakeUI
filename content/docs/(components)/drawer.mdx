@@ -5,7 +5,23 @@ base: base
 component: true
 ---
 
-import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose, DrawerBar, DrawerTitleBlock, DrawerBody, TopBar, TopBarLeft, TopBarRight, ContextView } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+  DrawerBar,
+  DrawerTitleBlock,
+  DrawerBody,
+  TopBar,
+  TopBarLeft,
+  TopBarRight,
+  ContextView,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Preview } from "@/components/preview";
 import { PropsTable } from "@/components/props-table";
@@ -17,7 +33,9 @@ import registry from "@/registry.json";
 The demo shows an app-style drawer fixed to the **right** (300px wide) with **TopBar** (app branding variants) and **ContextView** (full, with actions, with link, or minimal). Pick top bar and context view variants, then click **Open drawer**; use the close icon or click outside to dismiss.
 
 <ComponentPreview name="drawer">
-  <DrawerDemo />
+  <div className="flex justify-center">
+    <DrawerDemo />
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -62,7 +80,7 @@ import { Button } from "@/components/ui/button";
       <Button>Submit</Button>
     </DrawerFooter>
   </DrawerContent>
-</Drawer>
+</Drawer>;
 ```
 
 ### Direction and app-drawer layout
@@ -71,13 +89,20 @@ Set `direction` on the root (e.g. `"right"` for a 300px right-side panel with sh
 
 ```tsx
 <Drawer direction="right">
-  <DrawerTrigger asChild><Button>Open drawer</Button></DrawerTrigger>
+  <DrawerTrigger asChild>
+    <Button>Open drawer</Button>
+  </DrawerTrigger>
   <DrawerContent>
     <TopBar variant="default">
-      <TopBarLeft><Icon /><span>App Name</span></TopBarLeft>
+      <TopBarLeft>
+        <Icon />
+        <span>App Name</span>
+      </TopBarLeft>
       <TopBarRight>
         <Button size="icon">⋯</Button>
-        <DrawerClose asChild><Button size="icon">×</Button></DrawerClose>
+        <DrawerClose asChild>
+          <Button size="icon">×</Button>
+        </DrawerClose>
       </TopBarRight>
     </TopBar>
     <ContextView
@@ -86,7 +111,11 @@ Set `direction` on the root (e.g. `"right"` for a 300px right-side panel with sh
       description="Secondary information"
       link={<a href="#">Optional link</a>}
       primaryAction={<Button className="w-full">Primary action</Button>}
-      secondaryAction={<Button variant="outline" className="w-full">Secondary action</Button>}
+      secondaryAction={
+        <Button variant="outline" className="w-full">
+          Secondary action
+        </Button>
+      }
     />
     <DrawerBody>Main content</DrawerBody>
   </DrawerContent>
@@ -109,11 +138,11 @@ Right-side drawer (300px) with **TopBar** app-branding variants and **ContextVie
 
 <PropsTable component="Drawer" />
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `open` | `boolean` | Controlled open state. |
-| `onOpenChange` | `(open: boolean) => void` | Called when open state changes. |
-| `direction` | `"top" \| "bottom" \| "left" \| "right"` | Slide direction. Default: `"bottom"`. |
+| Prop           | Type                                     | Description                           |
+| -------------- | ---------------------------------------- | ------------------------------------- |
+| `open`         | `boolean`                                | Controlled open state.                |
+| `onOpenChange` | `(open: boolean) => void`                | Called when open state changes.       |
+| `direction`    | `"top" \| "bottom" \| "left" \| "right"` | Slide direction. Default: `"bottom"`. |
 
 ### DrawerTrigger, DrawerContent, DrawerClose
 

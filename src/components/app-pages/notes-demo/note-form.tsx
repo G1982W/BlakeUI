@@ -74,7 +74,7 @@ export function NoteForm({ defaultValues, trigger, onSubmit }: NoteFormProps) {
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="z-10000 sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{defaultValues ? "Edit Note" : "New Note"}</DialogTitle>
         </DialogHeader>
@@ -110,7 +110,7 @@ export function NoteForm({ defaultValues, trigger, onSubmit }: NoteFormProps) {
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-10001">
                   {CATEGORIES.map((c) => (
                     <SelectItem key={c} value={c}>
                       {c}

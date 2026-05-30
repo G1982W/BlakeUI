@@ -68,7 +68,7 @@ export function TodoRowContent({ todo, overlay }: TodoRowContentProps) {
             </button>
           </Badge>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-32">
+        <DropdownMenuContent align="end" className="z-10000 w-32">
           {(["high", "medium", "low"] as Priority[]).map((p) => (
             <DropdownMenuItem
               key={p}

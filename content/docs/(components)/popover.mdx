@@ -18,14 +18,16 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="popover">
-  <Popover>
-    <PopoverTrigger asChild>
-      <Button variant="outline">Open popover</Button>
-    </PopoverTrigger>
-    <PopoverContent className="z-[10000]">
-      <p className="text-sm">This is a popover.</p>
-    </PopoverContent>
-  </Popover>
+  <div className="flex justify-center">
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline">Open popover</Button>
+      </PopoverTrigger>
+      <PopoverContent className="z-[10000]">
+        <p className="text-sm">This is a popover.</p>
+      </PopoverContent>
+    </Popover>
+  </div>
 </ComponentPreview>
 
 ## Installation

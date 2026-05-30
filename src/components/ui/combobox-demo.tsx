@@ -28,7 +28,7 @@ export function ComboboxBasicDemo() {
   return (
     <Combobox items={frameworks}>
       <ComboboxInput placeholder="Select a framework" />
-      <ComboboxContent>
+      <ComboboxContent positionerClassName="z-[10000]">
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
           {(item) => (
@@ -95,7 +95,7 @@ export function ComboboxMultipleDemo() {
     </ComboboxValue>
     <ComboboxChipsInput placeholder="Add framework" />
   </ComboboxChips>
-  <ComboboxContent>
+  <ComboboxContent positionerClassName="z-[10000]">
     <ComboboxEmpty>No items found.</ComboboxEmpty>
     <ComboboxList>
       {(item) => (

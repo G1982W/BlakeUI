@@ -65,14 +65,19 @@ function ChipMenu({
           className={cn(
             "py-[4px] cursor-pointer gap-1 pr-1 transition-opacity hover:opacity-90 data-[state=open]:opacity-90",
             !selected && "text-muted-foreground",
-            className
+            className,
           )}
         >
           <span
             className="px-[2px] text-chip-menu-placeholder"
             onClick={handleReset}
           >
-            <PlusCircleIcon className={cn("size-3 opacity-70 transition-transform", label && "rotate-45")} />{" "}
+            <PlusCircleIcon
+              className={cn(
+                "size-3 opacity-70 transition-transform",
+                label && "rotate-45",
+              )}
+            />{" "}
           </span>
           {placeholder && (
             <span className="text-chip-menu-placeholder">{placeholder}</span>
@@ -96,7 +101,7 @@ function ChipMenu({
             className={cn(
               "py-[4px] cursor-pointer gap-1 pr-1 transition-opacity hover:opacity-90 data-[state=open]:opacity-90",
               !selected && "text-muted-foreground",
-              className
+              className,
             )}
           >
             <span className="px-[2px] text-chip-menu-placeholder">
@@ -110,7 +115,10 @@ function ChipMenu({
           </Badge>
         </DropdownMenuTrigger>
       )}
-      <DropdownMenuContent className={contentClassName} align="start">
+      <DropdownMenuContent
+        className={cn("z-[10000]", contentClassName)}
+        align="start"
+      >
         {options.map((opt) => (
           <DropdownMenuItem
             key={opt.value}

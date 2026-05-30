@@ -627,7 +627,7 @@ export function DataTableRowActions<TData extends Record<string, unknown>>({
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
+      <DropdownMenuContent align="end" className="z-10000 w-[160px]">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuItem disabled={!idText} onClick={handleCopy}>
           Copy {itemName} ID
@@ -1160,7 +1160,7 @@ const CellEditor = React.memo(function CellEditor({
         >
           <SelectValue placeholder={editor.placeholder ?? "Select..."} />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="z-10000">
           {editor.options.map((option) => (
             <SelectItem key={option.value} value={option.value}>
               {option.label}
@@ -1637,7 +1637,7 @@ export const DataTable29 = ({ className }: { className?: string }) => {
       </div>
       {contextMenu.open && contextMenu.cell ? (
         <div
-          className="fixed z-50 min-w-[180px] animate-in overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md fade-in-0 zoom-in-95"
+          className="fixed z-10000 min-w-[180px] animate-in overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md fade-in-0 zoom-in-95"
           ref={contextMenuRef}
           style={{ top: contextMenu.y, left: contextMenu.x }}
         >

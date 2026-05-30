@@ -16,7 +16,9 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="badge">
-  <Badge>Badge</Badge>
+  <div className="flex justify-center">
+    <Badge>Badge</Badge>
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -49,14 +51,7 @@ Use the `variant` prop to change the badge style.
 <VariantGrid
   component="Badge"
   variants={{
-    variant: [
-      "default",
-      "info",
-      "positive",
-      "negative",
-      "warning",
-      "urgent",
-    ],
+    variant: ["default", "info", "positive", "negative", "warning", "urgent"],
   }}
 />
 
@@ -83,7 +78,10 @@ Use `asChild` to render a badge as a link.
 
 <Preview>
   <Badge asChild>
-    <a href="#link" className="inline-flex items-center gap-1 hover:cursor-pointer">
+    <a
+      href="#link"
+      className="inline-flex items-center gap-1 hover:cursor-pointer"
+    >
       Open Link <ArrowUpRight />
     </a>
   </Badge>

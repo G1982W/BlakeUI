@@ -141,7 +141,7 @@ const SettingsMembers3 = ({
                   Invite Member
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="z-10000">
                 <DialogHeader>
                   <DialogTitle>Invite Team Member</DialogTitle>
                   <DialogDescription>
@@ -169,7 +169,7 @@ const SettingsMembers3 = ({
                       <SelectTrigger id="role">
                         <SelectValue placeholder="Select role" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="z-10001">
                         <SelectItem value="admin">Admin</SelectItem>
                         <SelectItem value="member">Member</SelectItem>
                         <SelectItem value="viewer">Viewer</SelectItem>
@@ -227,7 +227,7 @@ const SettingsMembers3 = ({
                           <span className="sr-only">Open menu</span>
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
+                      <DropdownMenuContent align="end" className="z-10000">
                         <DropdownMenuItem>Change role</DropdownMenuItem>
                         <DropdownMenuItem>View activity</DropdownMenuItem>
                         <DropdownMenuSeparator />

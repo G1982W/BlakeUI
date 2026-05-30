@@ -85,7 +85,7 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
     <div className="@container w-full min-w-0">
       <section className={cn("", className)}>
         <nav className="relative">
-          <ul className="relative z-51 flex w-full list-none items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
+          <ul className="relative z-21 flex w-full list-none items-center justify-between gap-4 p-6 text-lg font-semibold tracking-tight">
             <li className="w-35">BlakeUI</li>
             {NAV_ITEMS.map((item, index) => (
               <li key={index} className="hidden w-32 @md:block">
@@ -105,7 +105,7 @@ const Navbar29DocsPreview = ({ className }: Navbar29DocsPreviewProps) => {
           <AnimatePresence mode="popLayout">
             {isOpen && (
               <motion.div
-                className="absolute top-0 z-50 w-full bg-muted px-6 pt-30 pb-10"
+                className="absolute top-0 z-20 w-full bg-muted px-6 pt-30 pb-10"
                 initial={{ clipPath: "inset(0 0 100% 0)" }}
                 animate={{ clipPath: "inset(0% 0 0 0)" }}
                 exit={{ clipPath: "inset(0 0 100% 0)" }}

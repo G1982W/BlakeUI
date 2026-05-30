@@ -14,9 +14,12 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="switch">
-  <div className="flex items-center gap-2">
+  <div className="flex justify-center gap-2">
     <Switch id="airplane-mode" />
-    <label htmlFor="airplane-mode" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <label
+      htmlFor="airplane-mode"
+      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+    >
       Airplane mode
     </label>
   </div>
@@ -48,7 +51,10 @@ The Switch forwards all props to Radix UI's Switch.Root, including `checked`, `d
 <Preview>
   <div className="flex items-center gap-2">
     <Switch id="default-switch" />
-    <label htmlFor="default-switch" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <label
+      htmlFor="default-switch"
+      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+    >
       Default switch
     </label>
   </div>
@@ -61,7 +67,10 @@ Associate the label with the switch using `htmlFor` and a matching `id`. The `pe
 <Preview>
   <div className="flex items-center gap-2">
     <Switch id="notifications" defaultChecked />
-    <label htmlFor="notifications" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <label
+      htmlFor="notifications"
+      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+    >
       Enable notifications
     </label>
   </div>
@@ -75,7 +84,10 @@ Use the `size` prop to switch between default and small.
   <div className="flex flex-col gap-4">
     <div className="flex items-center gap-2">
       <Switch id="size-default" size="default" />
-      <label htmlFor="size-default" className="text-sm font-medium leading-none">
+      <label
+        htmlFor="size-default"
+        className="text-sm font-medium leading-none"
+      >
         Default size
       </label>
     </div>
@@ -93,7 +105,10 @@ Use the `size` prop to switch between default and small.
 <Preview>
   <div className="flex items-center gap-2">
     <Switch id="disabled-switch" disabled />
-    <label htmlFor="disabled-switch" className="text-sm font-medium leading-none text-muted-foreground">
+    <label
+      htmlFor="disabled-switch"
+      className="text-sm font-medium leading-none text-muted-foreground"
+    >
       Disabled switch
     </label>
   </div>
@@ -105,11 +120,11 @@ Control the checked state with `checked` and `onCheckedChange`.
 
 ```tsx
 const [checked, setChecked] = React.useState(false);
-<Switch checked={checked} onCheckedChange={setChecked} />
+<Switch checked={checked} onCheckedChange={setChecked} />;
 ```
 
 <Preview>
-  <div className="flex items-center gap-2">
+  <div className="flex justify-center gap-2">
     <Switch id="controlled" defaultChecked />
     <label htmlFor="controlled" className="text-sm font-medium leading-none">
       Checked by default (defaultChecked)

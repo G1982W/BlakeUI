@@ -170,7 +170,7 @@ const SettingsMembers4 = ({
                       Invite
                     </Button>
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="z-10000">
                     <DialogHeader>
                       <DialogTitle>Invite Member</DialogTitle>
                       <DialogDescription>
@@ -198,7 +198,7 @@ const SettingsMembers4 = ({
                           <SelectTrigger id="invite-role">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="z-10001">
                             <SelectItem value="admin">Admin</SelectItem>
                             <SelectItem value="developer">Developer</SelectItem>
                             <SelectItem value="designer">Designer</SelectItem>

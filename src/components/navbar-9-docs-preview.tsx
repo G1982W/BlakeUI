@@ -327,7 +327,7 @@ const MobileNavigationMenu = ({
         aria-describedby={undefined}
         side="top"
         showCloseButton={false}
-        className="inset-0 z-998 h-dvh w-full bg-brand px-4 pt-16"
+        className="inset-0 z-10001 h-dvh w-full bg-brand px-4 pt-16"
       >
         <SheetClose
           className="absolute top-4 right-4 z-10 inline-flex size-10 items-center justify-center rounded-md text-background ring-offset-background transition-opacity hover:opacity-80 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden focus-visible:opacity-100"

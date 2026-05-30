@@ -256,7 +256,7 @@ const SubNav = ({
                   <ChevronDown className="size-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
+              <DropdownMenuContent align="start" className="z-10000">
                 {item.children!.map((child) => {
                   const ChildIcon = child.icon;
                   return (
@@ -417,7 +417,7 @@ const NavUser = ({ user }: { user: UserData }) => {
           <ChevronsUpDown className="hidden size-4 md:block" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuContent align="end" className="z-10000 w-56">
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium">{user.name}</p>
@@ -460,7 +460,7 @@ export function ApplicationShell4({ className }: ApplicationShell4Props) {
     <div className={cn("flex min-h-[520px] flex-col overflow-auto", className)}>
       <div className="flex min-w-fit flex-1 flex-col">
         {/* Top navigation bar */}
-        <header className="sticky top-0 z-50 bg-background">
+        <header className="sticky top-0 z-10 bg-background">
           <div className="flex h-14 items-center gap-2 border-b px-4 sm:gap-4 lg:px-6">
             {/* Mobile menu */}
             <MobileNav

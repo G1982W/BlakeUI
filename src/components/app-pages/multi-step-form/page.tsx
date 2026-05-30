@@ -96,7 +96,7 @@ export default function Page() {
     <div className="flex min-h-screen flex-col lg:flex-row">
       <Sidebar steps={steps} currentStep={currentStep} onStepClick={goToStep} />
 
-      <main className="flex-1 overflow-y-auto pb-20 lg:pb-0">
+      <main className="flex-1 pb-20 lg:pb-0">
         {stepComponents[currentStep]}
       </main>
 

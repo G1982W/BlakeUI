@@ -2082,6 +2082,12 @@
       "type": "CSSProperties | ((state: ComboboxPopupState) => CSSProperties)",
       "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state.",
       "required": false
+    },
+    {
+      "name": "positionerClassName",
+      "type": "string",
+      "description": "",
+      "required": false
     }
   ],
   "ComboboxList": [

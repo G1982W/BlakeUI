@@ -252,7 +252,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
                     - {dateRange?.to ? format(dateRange.to, "MMM d") : "End"}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="center">
+                <PopoverContent className="z-10000 w-auto p-0" align="center">
                   <Calendar
                     mode="range"
                     numberOfMonths={2}
@@ -276,7 +276,7 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
                   <MoreHorizontal className="size-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="z-10000">
                 <DropdownMenuItem>
                   <Download className="mr-2 size-4" /> Export CSV
                 </DropdownMenuItem>
@@ -627,7 +627,8 @@ const ChartGroup15 = ({ className }: ChartGroup15Props) => {
                     tickLine={false}
                     tickMargin={8}
                     fontSize={10}
-                    interval={2}
+                    interval="preserveStartEnd"
+                    minTickGap={24}
                   />
                   <YAxis
                     yAxisId="left"

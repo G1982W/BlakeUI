@@ -76,7 +76,7 @@ export function TodoCardContent({
                 </button>
               </Badge>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-32">
+            <DropdownMenuContent align="start" className="z-10000 w-32">
               {(["high", "medium", "low"] as Priority[]).map((p) => (
                 <DropdownMenuItem
                   key={p}

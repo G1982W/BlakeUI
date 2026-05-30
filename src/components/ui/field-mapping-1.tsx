@@ -168,7 +168,7 @@ const FieldCombobox = ({
           <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="p-0">
+      <PopoverContent className="z-10001 p-0">
         <Command>
           <CommandInput
             placeholder="Find or add field..."
@@ -362,7 +362,7 @@ const FieldMapping1 = ({ className }: FieldMapping1Props) => {
               </DialogTrigger>
               <DialogContent
                 className={cn(
-                  "overflow-hidden p-0 md:max-w-3xl! lg:max-w-6xl!",
+                  "z-10000 overflow-hidden p-0 md:max-w-3xl! lg:max-w-6xl!",
                   className,
                 )}
                 showCloseButton={false}

@@ -403,7 +403,7 @@ const SettingsProfile4 = ({
                         <SelectTrigger id="language">
                           <SelectValue placeholder="Select language" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="z-10000">
                           <SelectItem value="en">English</SelectItem>
                           <SelectItem value="es">Español</SelectItem>
                           <SelectItem value="fr">Français</SelectItem>
@@ -419,7 +419,7 @@ const SettingsProfile4 = ({
                         <SelectTrigger id="timezone">
                           <SelectValue placeholder="Select timezone" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="z-10000">
                           <SelectItem value="America/New_York">
                             Eastern Time (ET)
                           </SelectItem>

@@ -98,7 +98,7 @@ const InviteUserForm = () => {
           <UserRoundPlus /> Add Member
         </Button>
       </DialogTrigger>
-      <DialogContent className="gap-0 overflow-hidden p-0">
+      <DialogContent className="z-10000 gap-0 overflow-hidden p-0">
         <DialogTitle className="flex items-center gap-2 border-b p-4 text-sm font-medium">
           <UserRoundPlus className="size-4" />
           Add New Member
@@ -122,7 +122,7 @@ const InviteUserForm = () => {
                 <SelectTrigger className="w-full bg-background">
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-10001">
                   <SelectItem value="owner">Owner</SelectItem>
                   <SelectItem value="editor">Editor</SelectItem>
                   <SelectItem value="viewer">Viewer</SelectItem>
@@ -233,7 +233,7 @@ const SettingsMembers1 = ({
                   Filter
                 </Button>
               </PopoverTrigger>
-              <PopoverContent align="end" className="w-56">
+              <PopoverContent align="end" className="z-10000 w-56">
                 <div className="space-y-3">
                   <p className="text-sm font-medium">Role</p>
                   <div className="space-y-2">

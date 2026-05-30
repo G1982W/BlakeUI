@@ -253,7 +253,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
               <SelectTrigger className="w-[140px]">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-10000">
                 {presetRanges.map((preset) => (
                   <SelectItem key={preset.label} value={preset.label}>
                     {preset.label}
@@ -279,7 +279,7 @@ const ChartGroup14 = ({ className }: ChartGroup14Props) => {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="end">
+              <PopoverContent className="z-10000 w-auto p-0" align="end">
                 <Calendar
                   mode="range"
                   numberOfMonths={2}

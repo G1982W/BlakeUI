@@ -160,7 +160,7 @@ function OrganizationSwitcher() {
           <ChevronDown className="ml-auto size-4 text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuContent align="end" className="z-10000 w-56">
         <DropdownMenuLabel>Organizations</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
@@ -193,7 +193,7 @@ const NavDropdown = ({ group }: { group: NavGroup }) => {
           <ChevronDown className="size-3" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-48">
+      <DropdownMenuContent align="start" className="z-10000 w-48">
         {group.items.map((item) => {
           const Icon = item.icon;
           return (
@@ -330,7 +330,7 @@ function NavUser() {
           <ChevronsUpDown className="hidden size-4 md:block" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuContent align="end" className="z-10000 w-56">
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium">{data.user.name}</p>

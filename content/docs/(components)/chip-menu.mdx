@@ -16,7 +16,9 @@ import registry from "@/registry.json";
 The chip menu shows the current selection (or a placeholder) in a Badge and opens a dropdown when clicked.
 
 <ComponentPreview name="chip-menu">
-  <ChipMenuDemo />
+  <div className="flex justify-center">
+    <ChipMenuDemo />
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -48,7 +50,7 @@ const [status, setStatus] = useState<string | null>(null);
   ]}
   placeholder="Status"
   variant="default"
-/>
+/>;
 ```
 
 ## Examples
@@ -75,13 +77,13 @@ Use the `variant` prop to match Badge variants (default, secondary, outline, etc
 
 <PropsTable component="ChipMenu" />
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `value` | `string \| null` | Currently selected option value. |
-| `onValueChange` | `(value: string) => void` | Called when the user picks an option. |
-| `options` | `ChipMenuOption[]` | `{ value, label, disabled? }[]`. |
-| `placeholder` | `string` | Shown when no value is selected. Default: `"Select…"`. |
-| `variant` | Badge variant | Badge style. Default: `"default"`. |
-| `className` | `string` | Optional class for the trigger badge. |
-| `contentClassName` | `string` | Optional class for the dropdown content. |
-| `disabled` | `boolean` | Disables the chip and menu. |
+| Prop               | Type                      | Description                                            |
+| ------------------ | ------------------------- | ------------------------------------------------------ |
+| `value`            | `string \| null`          | Currently selected option value.                       |
+| `onValueChange`    | `(value: string) => void` | Called when the user picks an option.                  |
+| `options`          | `ChipMenuOption[]`        | `{ value, label, disabled? }[]`.                       |
+| `placeholder`      | `string`                  | Shown when no value is selected. Default: `"Select…"`. |
+| `variant`          | Badge variant             | Badge style. Default: `"default"`.                     |
+| `className`        | `string`                  | Optional class for the trigger badge.                  |
+| `contentClassName` | `string`                  | Optional class for the dropdown content.               |
+| `disabled`         | `boolean`                 | Disables the chip and menu.                            |

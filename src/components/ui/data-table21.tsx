@@ -152,7 +152,7 @@ export const DataTableColumnHeader = <TData, TValue>({
             <ChevronDown className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-48">
+        <DropdownMenuContent align="start" className="z-10000 w-48">
           {canSort && (
             <>
               <DropdownMenuItem
@@ -235,7 +235,7 @@ export const DataTableColumnHeader = <TData, TValue>({
               <Columns3 className="h-4 w-4" />
               <span>Columns</span>
             </DropdownMenuSubTrigger>
-            <DropdownMenuSubContent className="w-48">
+            <DropdownMenuSubContent className="z-10001 w-48">
               {allColumns
                 .filter((col) => col.getCanHide())
                 .map((col) => {

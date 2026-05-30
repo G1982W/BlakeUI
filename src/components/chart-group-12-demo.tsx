@@ -177,7 +177,7 @@ const ChartGroup12 = ({ className }: ChartGroup12Props) => {
                   Custom
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="end">
+              <PopoverContent className="z-10000 w-auto p-0" align="end">
                 <Calendar
                   mode="range"
                   numberOfMonths={2}

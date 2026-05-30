@@ -15,15 +15,21 @@ import registry from "@/registry.json";
 
 <ComponentPreview name="radio-group">
   <RadioGroup defaultValue="option-one">
-    <div className="flex items-center gap-2">
+    <div className="flex justify-center gap-2">
       <RadioGroupItem value="option-one" id="option-one" />
-      <label htmlFor="option-one" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="option-one"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Option One
       </label>
     </div>
-    <div className="flex items-center gap-2">
+    <div className="flex justify-center gap-2">
       <RadioGroupItem value="option-two" id="option-two" />
-      <label htmlFor="option-two" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="option-two"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Option Two
       </label>
     </div>
@@ -66,19 +72,28 @@ The RadioGroup manages the selected value. Use `value` and `onValueChange` for c
   <RadioGroup defaultValue="default">
     <div className="flex items-center gap-2">
       <RadioGroupItem value="default" id="r1-default" />
-      <label htmlFor="r1-default" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="r1-default"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Default
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="comfortable" id="r1-comfortable" />
-      <label htmlFor="r1-comfortable" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="r1-comfortable"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Comfortable
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="compact" id="r1-compact" />
-      <label htmlFor="r1-compact" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="r1-compact"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Compact
       </label>
     </div>
@@ -93,19 +108,28 @@ Associate each option with a label using `htmlFor` and a matching `id` on the Ra
   <RadioGroup defaultValue="card">
     <div className="flex items-center gap-2">
       <RadioGroupItem value="card" id="payment-card" />
-      <label htmlFor="payment-card" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="payment-card"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Credit card
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="paypal" id="payment-paypal" />
-      <label htmlFor="payment-paypal" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="payment-paypal"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         PayPal
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="bank" id="payment-bank" />
-      <label htmlFor="payment-bank" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="payment-bank"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Bank transfer
       </label>
     </div>
@@ -120,13 +144,19 @@ Disable the entire group with `disabled` on RadioGroup, or disable a single opti
   <RadioGroup defaultValue="yes" disabled>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="yes" id="disabled-yes" />
-      <label htmlFor="disabled-yes" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+      <label
+        htmlFor="disabled-yes"
+        className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed"
+      >
         Yes (group disabled)
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="no" id="disabled-no" />
-      <label htmlFor="disabled-no" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+      <label
+        htmlFor="disabled-no"
+        className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed"
+      >
         No
       </label>
     </div>
@@ -137,13 +167,19 @@ Disable the entire group with `disabled` on RadioGroup, or disable a single opti
   <RadioGroup defaultValue="active">
     <div className="flex items-center gap-2">
       <RadioGroupItem value="active" id="item-active" />
-      <label htmlFor="item-active" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="item-active"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Active
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="disabled-option" id="item-disabled" disabled />
-      <label htmlFor="item-disabled" className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed">
+      <label
+        htmlFor="item-disabled"
+        className="text-sm font-medium leading-none text-muted-foreground cursor-not-allowed"
+      >
         Disabled option
       </label>
     </div>
@@ -159,26 +195,35 @@ const [value, setValue] = React.useState("one");
 <RadioGroup value={value} onValueChange={setValue}>
   <RadioGroupItem value="one" id="one" />
   <RadioGroupItem value="two" id="two" />
-</RadioGroup>
+</RadioGroup>;
 ```
 
 <Preview>
   <RadioGroup defaultValue="small">
     <div className="flex items-center gap-2">
       <RadioGroupItem value="small" id="size-small" />
-      <label htmlFor="size-small" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="size-small"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Small (defaultValue)
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="medium" id="size-medium" />
-      <label htmlFor="size-medium" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="size-medium"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Medium
       </label>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="large" id="size-large" />
-      <label htmlFor="size-large" className="text-sm font-medium leading-none cursor-pointer">
+      <label
+        htmlFor="size-large"
+        className="text-sm font-medium leading-none cursor-pointer"
+      >
         Large
       </label>
     </div>

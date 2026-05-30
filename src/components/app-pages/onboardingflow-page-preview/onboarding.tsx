@@ -285,7 +285,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                   <SelectTrigger className="bg-white dark:bg-transparent">
                     <SelectValue placeholder="Select your industry" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="z-10000">
                     <SelectItem value="technology">Technology</SelectItem>
                     <SelectItem value="finance">Finance</SelectItem>
                     <SelectItem value="healthcare">Healthcare</SelectItem>
@@ -365,7 +365,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       <SelectTrigger className="bg-white dark:bg-transparent">
                         <SelectValue placeholder="MM" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="z-10000">
                         {Array.from({ length: 12 }, (_, i) => (
                           <SelectItem
                             key={i + 1}
@@ -383,7 +383,7 @@ export default function OnboardingFlow({ className }: { className?: string }) {
                       <SelectTrigger className="bg-white dark:bg-transparent">
                         <SelectValue placeholder="YYYY" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="z-10000">
                         {Array.from({ length: 10 }, (_, i) => (
                           <SelectItem key={2025 + i} value={String(2025 + i)}>
                             {2025 + i}

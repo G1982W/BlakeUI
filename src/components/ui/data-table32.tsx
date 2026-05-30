@@ -409,7 +409,7 @@ export function DataTableSortMenu<TData>({
           ) : null}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[440px] max-w-[calc(100vw-2rem)] space-y-3">
+      <PopoverContent className="z-10000 w-[440px] max-w-[calc(100vw-2rem)] space-y-3">
         <div className="space-y-2">
           {sorting.length === 0 ? (
             <p className="text-sm text-muted-foreground">No sorting applied.</p>
@@ -438,7 +438,7 @@ export function DataTableSortMenu<TData>({
                     <SelectTrigger className="min-w-[180px] flex-1">
                       <SelectValue placeholder="Column" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="z-10001">
                       {columnOptions.map((column) => (
                         <SelectItem key={column.id} value={column.id}>
                           {getColumnLabel(column.id)}
@@ -455,7 +455,7 @@ export function DataTableSortMenu<TData>({
                     <SelectTrigger className="w-[136px] min-w-[120px]">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="z-10001">
                       {SORT_DIRECTIONS.map((direction) => (
                         <SelectItem
                           key={direction.value}
@@ -574,7 +574,7 @@ export function DataTableRowActions<TData>({
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
+      <DropdownMenuContent align="end" className="z-10000 w-[160px]">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuItem onClick={handleCopy}>
           Copy {itemName} ID

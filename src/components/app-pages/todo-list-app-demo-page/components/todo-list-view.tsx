@@ -139,7 +139,7 @@ function ListSection({ section }: { section: Section }) {
                 <SelectTrigger className="h-7 w-28 shrink-0 text-xs">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-10000">
                   <SelectItem value="high">High</SelectItem>
                   <SelectItem value="medium">Medium</SelectItem>
                   <SelectItem value="low">Low</SelectItem>

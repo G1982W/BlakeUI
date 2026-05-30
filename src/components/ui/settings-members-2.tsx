@@ -140,7 +140,7 @@ const InviteUserForm = () => {
       <DialogTrigger asChild>
         <Button>Invite Member</Button>
       </DialogTrigger>
-      <DialogContent className="gap-0 overflow-hidden p-0">
+      <DialogContent className="z-10000 gap-0 overflow-hidden p-0">
         <DialogTitle className="flex items-center gap-2 border-b p-4 text-sm font-medium">
           Invite Team Member
         </DialogTitle>
@@ -163,7 +163,7 @@ const InviteUserForm = () => {
                 <SelectTrigger className="w-full bg-surface">
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-10001">
                   <SelectItem value="owner">Owner</SelectItem>
                   <SelectItem value="editor">Editor</SelectItem>
                   <SelectItem value="viewer">Viewer</SelectItem>
@@ -227,7 +227,7 @@ const UserCard = ({ user }: UserCardProps) => {
           <SelectTrigger className="min-w-24">
             <SelectValue placeholder="Select a role" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="z-10000">
             <SelectItem value="Owner">Owner</SelectItem>
             <SelectItem value="Editor">Editor</SelectItem>
             <SelectItem value="Viewer">Viewer</SelectItem>
@@ -240,7 +240,7 @@ const UserCard = ({ user }: UserCardProps) => {
               <MoreHorizontalIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-fit max-w-56" align="end">
+          <DropdownMenuContent className="z-10000 w-fit max-w-56" align="end">
             <DropdownMenuItem>Transfer ownership</DropdownMenuItem>
             <DropdownMenuItem>Remove from team</DropdownMenuItem>
           </DropdownMenuContent>

@@ -21,7 +21,9 @@ import {
 ## Example
 
 <ComponentPreview name="dialog">
-  <DialogBasicDemo />
+  <div className="flex justify-center">
+    <DialogBasicDemo />
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -59,7 +61,7 @@ import { Button } from "@/components/ui/button";
       </DialogDescription>
     </DialogHeader>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 `DialogContent` shows a corner close control by default. Pass **`showCloseButton={false}`** (or **`showClose={false}`**) to hide it and use `DialogClose` with your own button instead.

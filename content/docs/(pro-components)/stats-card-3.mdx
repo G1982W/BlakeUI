@@ -12,7 +12,9 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="stats-card-3" premium>
-  <StatsCard3 />
+  <div className="flex justify-center">
+    <StatsCard3 />
+  </div>
 </ComponentPreview>
 
 ## Introduction
@@ -45,11 +47,7 @@ Requires Card.
 ```tsx
 import { StatsCard3 } from "@/components/ui/stats-card-3";
 
-<StatsCard3
-  title="Revenue target"
-  value="$18,240"
-  target="$25,000"
-/>
+<StatsCard3 title="Revenue target" value="$18,240" target="$25,000" />;
 ```
 
 For custom percentage (e.g. when value/target are not easily parsed), pass `percent={73}`.

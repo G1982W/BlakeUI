@@ -5,12 +5,7 @@ base: base
 component: true
 ---
 
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Preview } from "@/components/preview";
 import { PropsTable } from "@/components/props-table";
 import Installation from "@/components/installation";
@@ -19,7 +14,7 @@ import registry from "@/registry.json";
 ## Example
 
 <ComponentPreview name="tabs">
-  <Tabs defaultValue="account" className="w-full max-w-md">
+  <Tabs defaultValue="account" className="w-full max-w-md mx-auto">
     <TabsList>
       <TabsTrigger value="account">Account</TabsTrigger>
       <TabsTrigger value="password">Password</TabsTrigger>
@@ -48,12 +43,7 @@ import registry from "@/registry.json";
 ## Usage
 
 ```tsx
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 ```
 
 ```tsx
@@ -120,7 +110,11 @@ Use `variant="line"` on TabsList for an underline-style tab list.
 Set `orientation="vertical"` on Tabs to stack the list and content side by side.
 
 <Preview>
-  <Tabs defaultValue="general" orientation="vertical" className="w-full max-w-md">
+  <Tabs
+    defaultValue="general"
+    orientation="vertical"
+    className="w-full max-w-md"
+  >
     <TabsList>
       <TabsTrigger value="general">General</TabsTrigger>
       <TabsTrigger value="security">Security</TabsTrigger>
@@ -146,7 +140,9 @@ Disable a single tab with the `disabled` prop on TabsTrigger.
   <Tabs defaultValue="active" className="w-full max-w-md">
     <TabsList>
       <TabsTrigger value="active">Active</TabsTrigger>
-      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>
+        Disabled
+      </TabsTrigger>
     </TabsList>
     <TabsContent value="active">
       <p className="text-sm text-muted-foreground">This tab is active.</p>
@@ -170,16 +166,24 @@ The `overflow` variant transforms the tab list into a dropdown menu. This is use
       <TabsTrigger value="settings">Settings</TabsTrigger>
     </TabsList>
     <TabsContent value="overview">
-      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Overview content.</p>
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">
+        Overview content.
+      </p>
     </TabsContent>
     <TabsContent value="analytics">
-      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Analytics content.</p>
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">
+        Analytics content.
+      </p>
     </TabsContent>
     <TabsContent value="reports">
-      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Reports content.</p>
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">
+        Reports content.
+      </p>
     </TabsContent>
     <TabsContent value="settings">
-      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">Settings content.</p>
+      <p className="border bg-background p-4 rounded-lg text-sm text-muted-foreground mt-4">
+        Settings content.
+      </p>
     </TabsContent>
   </Tabs>
 </Preview>
@@ -192,7 +196,7 @@ Control the active tab with `value` and `onValueChange` on Tabs.
 const [value, setValue] = React.useState("tab1");
 <Tabs value={value} onValueChange={setValue}>
   ...
-</Tabs>
+</Tabs>;
 ```
 
 ## API Reference
