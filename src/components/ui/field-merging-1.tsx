@@ -44,8 +44,7 @@ interface User {
 const DUMMY_USERS: User[] = [
   {
     firstName: "Olivia",
-    image:
-      "https://i.pravatar.cc/150?img=1",
+    image: "https://i.pravatar.cc/150?img=1",
     company: "Acme Inc",
     jobTitle: "UX Designer",
     email: "olivia.brooks@acme.com",
@@ -53,8 +52,7 @@ const DUMMY_USERS: User[] = [
   {
     firstName: "Nathan",
     lastName: "Park",
-    image:
-      "https://i.pravatar.cc/150?img=2",
+    image: "https://i.pravatar.cc/150?img=2",
     jobTitle: "Backend Engineer",
   },
   {
@@ -66,14 +64,12 @@ const DUMMY_USERS: User[] = [
   {
     firstName: "Liam",
     lastName: "Chen",
-    image:
-      "https://i.pravatar.cc/150?img=4",
+    image: "https://i.pravatar.cc/150?img=4",
     company: "Streamline",
   },
   {
     lastName: "Patel",
-    image:
-      "https://i.pravatar.cc/150?img=5",
+    image: "https://i.pravatar.cc/150?img=5",
     company: "CloudNest",
     jobTitle: "Product Manager",
   },
@@ -282,7 +278,7 @@ const FieldMerging1 = ({ className }: FieldMerging1Props) => {
           </DialogTrigger>
           <DialogContent
             showCloseButton={false}
-            className="max-h-[95dvh] overflow-y-auto md:max-w-3xl! lg:max-w-5xl!"
+            className="z-10000 max-h-[95dvh] overflow-y-auto md:max-w-3xl! lg:max-w-5xl!"
           >
             <DialogHeader>
               <DialogTitle>

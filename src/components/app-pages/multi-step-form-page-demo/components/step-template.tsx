@@ -71,7 +71,7 @@ export const StepTemplate = ({ onContinue, onBack }: StepTemplateProps) => {
           </p>
         </div>
 
-        <div className="mb-10 grid grid-cols-1 gap-2 @sm/msf:grid-cols-2 @sm/msf:gap-3 @lg/msf:mb-16">
+        <div className="mb-10 grid grid-cols-1 gap-2 @3xl/msf:grid-cols-2 @sm/msf:gap-3 @lg/msf:mb-16">
           {templates.map((t) => {
             const Icon = t.icon;
             return (

@@ -837,7 +837,7 @@ const OccupancyChart = () => {
             <SelectTrigger className="h-9 w-40 rounded-lg text-[11px] sm:text-xs">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="z-10000">
               <SelectItem value="netRevenue">Net Revenue</SelectItem>
               <SelectItem value="roomRevenue">Room Revenue</SelectItem>
               <SelectItem value="platformRevenue">Platform Revenue</SelectItem>

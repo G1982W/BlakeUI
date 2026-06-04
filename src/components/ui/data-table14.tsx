@@ -393,7 +393,7 @@ export function DataTableButtonFilter<TData, TValue>({
       </PopoverTrigger>
       <PopoverContent
         align={align}
-        className="w-auto min-w-36 space-y-3"
+        className="z-10000 w-auto min-w-36 space-y-3"
         sideOffset={8}
       >
         <div className="space-y-3">
@@ -1028,42 +1028,39 @@ export const DataTable14 = ({ className }: { className?: string }) => {
       {/* Row 1: status tabs */}
       {orderStatusColumn && (
         <div className="overflow-x-auto">
-        <Tabs
-          value={orderStatusTab}
-          onValueChange={handleStatusTabChange}
-        >
-          <TabsList
-            className="flex w-max justify-start gap-1"
-            role="tablist"
-            aria-label="Filter orders by status"
-          >
-            <TabsTrigger value="all" className="gap-2">
-              <span>All</span>
-              <Badge variant="secondary" className="rounded-sm px-1.5">
-                {allOrdersCount}
-              </Badge>
-            </TabsTrigger>
-            {orderStatuses.map((status) => {
-              const StatusIcon = status.icon;
-              const count = orderStatusCounts?.get(status.value) ?? 0;
-              return (
-                <TabsTrigger
-                  key={status.value}
-                  value={status.value}
-                  className="gap-2"
-                >
-                  {StatusIcon && <StatusIcon className="size-3" />}
-                  <span className="hidden text-xs md:inline">
-                    {status.label}
-                  </span>
-                  <Badge variant="secondary" className="rounded-sm px-1.5">
-                    {count}
-                  </Badge>
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
-        </Tabs>
+          <Tabs value={orderStatusTab} onValueChange={handleStatusTabChange}>
+            <TabsList
+              className="flex w-max justify-start gap-1"
+              role="tablist"
+              aria-label="Filter orders by status"
+            >
+              <TabsTrigger value="all" className="gap-2">
+                <span>All</span>
+                <Badge variant="secondary" className="rounded-sm px-1.5">
+                  {allOrdersCount}
+                </Badge>
+              </TabsTrigger>
+              {orderStatuses.map((status) => {
+                const StatusIcon = status.icon;
+                const count = orderStatusCounts?.get(status.value) ?? 0;
+                return (
+                  <TabsTrigger
+                    key={status.value}
+                    value={status.value}
+                    className="gap-2"
+                  >
+                    {StatusIcon && <StatusIcon className="size-3" />}
+                    <span className="hidden text-xs md:inline">
+                      {status.label}
+                    </span>
+                    <Badge variant="secondary" className="rounded-sm px-1.5">
+                      {count}
+                    </Badge>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </Tabs>
         </div>
       )}
       {/* Row 2: search + filter */}

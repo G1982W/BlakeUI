@@ -16,7 +16,9 @@ import registry from "@/registry.json";
 Banners use the same toast system (Sonner) but stay visible until the user closes them. They show a close (×) button and support three variants.
 
 <ComponentPreview name="banner">
-  <BannerDemoButtons />
+  <div className="flex justify-center">
+    <BannerDemoButtons />
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -44,7 +46,7 @@ import { Banner } from "@/components/ui/banner";
 
 <Banner variant="caution" onClose={() => setShow(false)}>
   Please review the updated terms.
-</Banner>
+</Banner>;
 ```
 
 ## Examples
@@ -103,8 +105,8 @@ import { banner } from "@/components/ui/banner";
 banner(message, { variant?, title?, description? });
 ```
 
-| Option       | Type                    | Description                          |
-| ------------ | ----------------------- | ------------------------------------ |
-| `variant`    | `"default" \| "caution" \| "critical"` | Visual variant. Default: `"default"`. |
-| `title`      | `React.ReactNode`       | Optional heading.                    |
-| `description`| `React.ReactNode`       | Body content (overrides `message` when set). |
+| Option        | Type                                   | Description                                  |
+| ------------- | -------------------------------------- | -------------------------------------------- |
+| `variant`     | `"default" \| "caution" \| "critical"` | Visual variant. Default: `"default"`.        |
+| `title`       | `React.ReactNode`                      | Optional heading.                            |
+| `description` | `React.ReactNode`                      | Body content (overrides `message` when set). |

@@ -72,6 +72,8 @@ interface MobileNavigationMenuProps {
 
 interface MenuSubLinkProps {
   link: MenuLink;
+  /** Desktop dropdown sits on a light popover panel; mobile drawer sits on the dark brand bg. */
+  onDark?: boolean;
 }
 
 const NAVIGATION: MenuItem[] = [
@@ -288,7 +290,9 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
   );
 };
 
-const MenuSubLink = ({ link }: MenuSubLinkProps) => {
+const MenuSubLink = ({ link, onDark = false }: MenuSubLinkProps) => {
+  const textColor = onDark ? "text-background" : "text-foreground";
+
   return (
     <a
       href={link.url}
@@ -303,10 +307,10 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
             />
           )}
           <div className="flex flex-col gap-1.5">
-            <h3 className="text-sm leading-none text-background">
+            <h3 className={cn("text-sm leading-none", textColor)}>
               {link.label}
             </h3>
-            <p className="text-sm leading-[1.2] text-background">
+            <p className={cn("text-sm leading-[1.2]", textColor)}>
               {link.description}
             </p>
           </div>
@@ -377,7 +381,7 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
         </AccordionTrigger>
         <AccordionContent>
           {item.links.map((subItem) => (
-            <MenuSubLink key={subItem.label} link={subItem} />
+            <MenuSubLink key={subItem.label} link={subItem} onDark />
           ))}
         </AccordionContent>
       </AccordionItem>

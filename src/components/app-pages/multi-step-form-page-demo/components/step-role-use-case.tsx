@@ -57,7 +57,7 @@ export const StepRoleUseCase = ({ onContinue }: StepRoleUseCaseProps) => {
           <h4 className="text-foreground mb-4 text-lg @lg/msf:mb-8 @lg/msf:text-xl">
             What best describes your role?
           </h4>
-          <div className="grid grid-cols-2 gap-2 @sm/msf:gap-3 @xl/msf:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2 @sm/msf:gap-3 @6xl/msf:grid-cols-3">
             {roles.map((role) => (
               <button
                 key={role.id}

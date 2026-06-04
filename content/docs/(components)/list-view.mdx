@@ -17,7 +17,9 @@ import registry from "@/registry.json";
 List view renders rows with optional icon, title, secondary info, and value. Use `List` as a wrapper that takes list view components (e.g. `ListItem` children). Choose a `variant` for the layout and set `withBackground` for the optional rounded background.
 
 <ComponentPreview name="list-view">
-  <ListViewDemo />
+  <div className="flex justify-center">
+    <ListViewDemo />
+  </div>
 </ComponentPreview>
 
 ## Installation
@@ -51,18 +53,18 @@ import { FileText } from "lucide-react";
     secondary="Updated yesterday"
     value="2 KB"
   />
-</List>
+</List>;
 ```
 
 ## Variants
 
-| Variant | Shows |
-| --------| ----- |
+| Variant                   | Shows                                   |
+| ------------------------- | --------------------------------------- |
 | `iconTitleSecondaryValue` | Icon, title, secondary, value (default) |
-| `titleSecondaryValue` | Title, secondary, value |
-| `iconTitleValue` | Icon, title, value |
-| `titleValue` | Title, value |
-| `valueOnly` | Value only |
+| `titleSecondaryValue`     | Title, secondary, value                 |
+| `iconTitleValue`          | Icon, title, value                      |
+| `titleValue`              | Title, value                            |
+| `valueOnly`               | Value only                              |
 
 Set `withBackground` to `true` to add a rounded background (e.g. `#F9F6F1` in light mode).
 
@@ -212,10 +214,10 @@ Set `withBackground` to `true` to add a rounded background (e.g. `#F9F6F1` in li
 
 Wrapper that renders an optional `header` and a `ListView` containing its children. Pass `ListItem` (or other list view components) as children.
 
-| Prop      | Type              | Description                          |
-| --------- | ----------------- | ------------------------------------ |
-| `header`  | `React.ReactNode` | Optional title/content above the list |
-| `className` | `string`       | Applied to the wrapper div           |
+| Prop        | Type              | Description                           |
+| ----------- | ----------------- | ------------------------------------- |
+| `header`    | `React.ReactNode` | Optional title/content above the list |
+| `className` | `string`          | Applied to the wrapper div            |
 
 ### ListItem
 
