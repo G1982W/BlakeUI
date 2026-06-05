@@ -7,6 +7,11 @@ const COMPONENTS_DIR = path.resolve(__dirname, "../src/components/ui")
 const OUTPUT_DIR = path.resolve(__dirname, "../src")
 const OUTPUT_FILE = path.join(OUTPUT_DIR, "registry.json")
 
+const EXTRA_SOURCES: Record<string, string> = {
+    "bar-chart": "src/components/bar-chart-demo.tsx",
+    "line-chart": "src/components/line-chart-demo.tsx",
+}
+
 async function buildRegistry() {
     const registry: Record<string, any> = {}
 
@@ -37,6 +42,18 @@ async function buildRegistry() {
                 name: componentName,
                 source: source,
             }
+        }
+    }
+
+    for (const [key, rel] of Object.entries(EXTRA_SOURCES)) {
+        const abs = path.resolve(__dirname, "..", rel)
+        if (!(await fs.pathExists(abs))) {
+            console.warn(`⚠️ Extra source not found: ${rel}`)
+            continue
+        }
+        registry[key] = {
+            name: key,
+            source: await fs.readFile(abs, "utf8"),
         }
     }
 
