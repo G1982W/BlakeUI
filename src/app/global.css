@@ -555,6 +555,12 @@ h6 {
             background: color-mix(in oklab, var(--color-brand) 12%, transparent);
             /* background-color: magenta; */
 
+            /* Dark mode only: 12% brand is nearly invisible on the dark sidebar — strengthen it.
+               Scoped to active sidebar links under .dark, so nothing else is affected. */
+            :where(.dark) & {
+                background: color-mix(in oklab, var(--color-brand) 35%, transparent);
+            }
+
             &::before {
                 display: none;
                 /* content: "";

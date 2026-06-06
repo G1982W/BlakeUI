@@ -280,7 +280,7 @@ const WorkspaceSwitcher = ({
                 onClick={() => setSelected(workspace)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-sm bg-white">
+                <div className="flex size-6 items-center justify-center rounded-sm bg-white dark:bg-sidebar-accent">
                   <img
                     src={workspace.logo}
                     alt={workspace.name}
